@@ -3,5 +3,5 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('pages.secciones.transparencia');
+    return view('pages.secciones.transparencia.index');
 })->name('index');
