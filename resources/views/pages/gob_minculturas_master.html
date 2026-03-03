@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?><!--SPG:
+
+Este archivo HTML se ha asociado a una página principal de SharePoint (archivo .master) del mismo nombre. Mientras los archivos estén asociados, no podrá editar el archivo .master y las operaciones de cambio de nombre, movimiento o eliminación serán recíprocas.
+
+Para elaborar la página principal directamente desde este archivo HTML, solo tiene que editar la página como siempre. Utilice el Generador de fragmentos de código, en https://www.mincultura.gov.co/_layouts/15/ComponentHome.aspx?Url=https%3A%2F%2Fwww%2Emincultura%2Egov%2Eco%2F%5Fcatalogs%2Fmasterpage%2FGobierno%2FGob%5FMinculturasMaster%2Emaster, para crear y personalizar entidades útiles de SharePoint. A continuación, copie y péguelas como fragmentos de código HTML en el código HTML. Los cambios realizados en este archivo se sincronizarán automáticamente con la página principal asociada.
+
+-->
+<!DOCTYPE html[]>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=10" />
+        <!--CS: Iniciar fragmento de código Contenido del encabezado de la página-->
+        <!--SPM:<%@Register Tagprefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"%>-->
+        <!--SPM:<%@Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"%>-->
+        <!--SPM:<%@Register TagPrefix="PublishingNavigation" Namespace="Microsoft.SharePoint.Publishing.Navigation" Assembly="Microsoft.SharePoint.Publishing, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"%>-->
+        <!--SID:00 -->
+        <meta name="GENERATOR" content="Microsoft SharePoint" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Expires" content="0" />
+        <meta http-equiv="Last-Modified" content="202403101331" />
+        <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <link rel="icon" href="/_catalogs/masterpage/Gobierno/img/icons/favicon-white-32x32.png" sizes="32x32" type="image/png">
+		
+        <script type="text/javascript">//<![CDATA[
+            (function(global) {
+                'use strict';
+          
+                // Crear un namespace específico para nuestro script
+                var MyCacheCleaner = MyCacheCleaner || {};
+          
+                // Función para borrar cookies
+                MyCacheCleaner.deleteAllCookies = function() {
+                    var cookies = document.cookie.split(";");
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = cookies[i];
+                        var eqPos = cookie.indexOf("=");
+                        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+                    }
+                };
+          
+                // Función para borrar caché
+                MyCacheCleaner.clearCache = function() {
+                    if ('caches' in window) {
+                        caches.keys().then(function(names) {
+                            for (let name of names) caches.delete(name);
+                        });
+                    }
+                };
+          
+                // Función para limpiar localStorage y sessionStorage
+                MyCacheCleaner.clearStorage = function() {
+                    localStorage.clear();
+                    sessionStorage.clear();
+                };
+          
+                // Función principal para limpiar todo
+                MyCacheCleaner.cleanAll = function() {
+                    MyCacheCleaner.deleteAllCookies();
+                    MyCacheCleaner.clearCache();
+                    MyCacheCleaner.clearStorage();
+                };
+          
+                // Ejecutar la función principal al cargar la página
+                MyCacheCleaner.cleanAll();
+          
+                // Exponer el namespace globalmente si se necesita usar en otros scripts
+                global.MyCacheCleaner = MyCacheCleaner;
+            })(window);
+          //]]>
+        </script>
+        <!--MS:<SharePoint:RobotsMetaTag runat="server">-->
+        <!--ME:</SharePoint:RobotsMetaTag>-->
+        <!--MS:<SharePoint:PageTitle runat="server">-->
+            <!--MS:<asp:ContentPlaceHolder id="PlaceHolderPageTitle" runat="server">-->
+                <!--MS:<SharePoint:ProjectProperty Property="Title" runat="server">-->
+                <!--ME:</SharePoint:ProjectProperty>-->
+            <!--ME:</asp:ContentPlaceHolder>-->
+        <!--ME:</SharePoint:PageTitle>-->
+        <!--MS:<SharePoint:StartScript runat="server">-->
+        <!--ME:</SharePoint:StartScript>-->
+        <!--MS:<SharePoint:CssLink runat="server" Version="15">-->
+        <!--ME:</SharePoint:CssLink>-->
+        <!--MS:<SharePoint:CacheManifestLink runat="server">-->
+        <!--ME:</SharePoint:CacheManifestLink>-->
+        <!--MS:<SharePoint:PageRenderMode runat="server" RenderModeType="Standard">-->
+        <!--ME:</SharePoint:PageRenderMode>-->
+        <!--MS:<SharePoint:ScriptLink language="javascript" name="core.js" OnDemand="true" runat="server" Localizable="false">-->
+        <!--ME:</SharePoint:ScriptLink>-->
+        <!--MS:<SharePoint:ScriptLink language="javascript" name="menu.js" OnDemand="true" runat="server" Localizable="false">-->
+        <!--ME:</SharePoint:ScriptLink>-->
+        <!--MS:<SharePoint:ScriptLink language="javascript" name="callout.js" OnDemand="true" runat="server" Localizable="false">-->
+        <!--ME:</SharePoint:ScriptLink>-->
+        <!--MS:<SharePoint:ScriptLink language="javascript" name="sharing.js" OnDemand="true" runat="server" Localizable="false">-->
+        <!--ME:</SharePoint:ScriptLink>-->
+        <!--MS:<SharePoint:ScriptLink language="javascript" name="suitelinks.js" OnDemand="true" runat="server" Localizable="false">-->
+        <!--ME:</SharePoint:ScriptLink>-->
+        <!--MS:<SharePoint:CustomJSUrl runat="server">-->
+        <!--ME:</SharePoint:CustomJSUrl>-->
+        <!--MS:<SharePoint:SoapDiscoveryLink runat="server">-->
+        <!--ME:</SharePoint:SoapDiscoveryLink>-->
+        <!--MS:<SharePoint:AjaxDelta id="DeltaPlaceHolderAdditionalPageHead" Container="false" runat="server">-->
+            <!--MS:<asp:ContentPlaceHolder id="PlaceHolderAdditionalPageHead" runat="server">-->
+            <!--ME:</asp:ContentPlaceHolder>-->
+            <!--MS:<SharePoint:DelegateControl runat="server" ControlId="AdditionalPageHead" AllowMultipleControls="true">-->
+            <!--ME:</SharePoint:DelegateControl>-->
+            <!--MS:<asp:ContentPlaceHolder id="PlaceHolderBodyAreaClass" runat="server">-->
+            <!--ME:</asp:ContentPlaceHolder>-->
+        <!--ME:</SharePoint:AjaxDelta>-->
+        <!--MS:<SharePoint:CssRegistration Name="Themable/corev15.css" runat="server">-->
+        <!--ME:</SharePoint:CssRegistration>-->
+        <!--MS:<SharePoint:AjaxDelta id="DeltaSPWebPartManager" runat="server">-->
+            <!--MS:<WebPartPages:SPWebPartManager runat="server">-->
+            <!--ME:</WebPartPages:SPWebPartManager>-->
+        <!--ME:</SharePoint:AjaxDelta>-->
+        <!--CE: Fin del fragmento de código Contenido del encabezado de la página-->
+        <meta charset="UTF-8" />
+        <meta charset="ISO-8859-1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--DC:Ministerio de Cultura de Colombia-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&amp;display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="/_catalogs/masterpage/Gobierno/css/custom.css" />
+        <link rel="stylesheet" href="/_catalogs/masterpage/Gobierno/css/pruebamenu2.css" />
+        <link rel="stylesheet" href="/_catalogs/masterpage/Gobierno/css/gAccesibilidad.css" />
+               
+        
+        <script src="/_catalogs/masterpage/Gobierno/js/jquery-3.7.1.min.js">//<![CDATA[//]]>
+        </script>
+        <script src="/_catalogs/masterpage/Gobierno/js/busquedasBox.js">//<![CDATA[//]]>
+        </script>
+        <script src="https://kit.fontawesome.com/30c01b6d67.js" crossorigin="anonymous">//<![CDATA[
+        
+        //]]>
+        </script>
+        <!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:ContentTypeId msdt:dt="string">0x0101000F1C8B9E0EB4BE489F09807B2C53288F0054AD6EF48B9F7B45A142F8173F171BD10003D357F861E29844953D5CAA1D4D8A3A</mso:ContentTypeId>
+<mso:HtmlDesignAssociated msdt:dt="string">1</mso:HtmlDesignAssociated>
+<mso:HtmlDesignFromMaster msdt:dt="string">https://www.mincultura.gov.co/_catalogs/masterpage/Gobierno/Gob_MinculturasMaster.html, https://www.mincultura.gov.co/_catalogs/masterpage/Gobierno/Gob_MinculturasMaster.html</mso:HtmlDesignFromMaster>
+<mso:HtmlDesignStatusAndPreview msdt:dt="string">https://www.mincultura.gov.co/_catalogs/masterpage/Gobierno/Gob_MinculturasMaster.html, Conversión correcta.</mso:HtmlDesignStatusAndPreview>
+
+
+
+
+<mso:HtmlDesignConversionSucceeded msdt:dt="string">True</mso:HtmlDesignConversionSucceeded>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+
+    </head>
+    <body>
+        <!--CS: Iniciar fragmento de código Cinta-->
+        <!--SPM:<%@Register Tagprefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"%>-->
+        <!--SPM:<%@Register Tagprefix="wssucw" TagName="Welcome" Src="~/_controltemplates/15/Welcome.ascx"%>-->
+        <!--MS:<SharePoint:SPSecurityTrimmedControl runat="server" HideFromSearchCrawler="true" EmitDiv="true">-->
+            <div id="TurnOnAccessibility" style="display:none" class="s4-notdlg noindex">
+                <a id="linkTurnOnAcc" href="/" class="ms-accessible ms-acc-button" onclick="SetIsAccessibilityFeatureEnabled(true);UpdateAccessibilityUI();document.getElementById('linkTurnOffAcc').focus();return false;">
+                    <!--MS:<SharePoint:EncodedLiteral runat="server" text="&#60;%$Resources:wss,master_turnonaccessibility%&#62;" EncodeMethod="HtmlEncode">-->
+                    <!--ME:</SharePoint:EncodedLiteral>-->
+                </a>
+            </div>
+            <div id="TurnOffAccessibility" style="display:none" class="s4-notdlg noindex">
+                <a id="linkTurnOffAcc" href="/" class="ms-accessible ms-acc-button" onclick="SetIsAccessibilityFeatureEnabled(false);UpdateAccessibilityUI();document.getElementById('linkTurnOnAcc').focus();return false;">
+                    <!--MS:<SharePoint:EncodedLiteral runat="server" text="&#60;%$Resources:wss,master_turnoffaccessibility%&#62;" EncodeMethod="HtmlEncode">-->
+                    <!--ME:</SharePoint:EncodedLiteral>-->
+                </a>
+            </div>
+        <!--ME:</SharePoint:SPSecurityTrimmedControl>-->
+        <div id="ms-designer-ribbon">
+            <!--SID:02 {Cinta}-->
+            <!--PS: Inicio de VISTA PREVIA DE SOLO LECTURA (no modificar) --><div class="DefaultContentBlock" style="background:rgb(0, 114, 198); color:white; width:100%; padding:8px; height:64px; overflow:hidden;">La cinta de opciones de SharePoint estará aquí cuando se vea una vista previa de su archivo o se aplique a su sitio.</div><!--PE: Fin de la VISTA PREVIA DE SOLO LECTURA -->
+        </div>
+        <!--MS:<SharePoint:SPSecurityTrimmedControl runat="server" AuthenticationRestrictions="AnonymousUsersOnly">-->
+            <!--MS:<wssucw:Welcome runat="server" EnableViewState="false">-->
+            <!--ME:</wssucw:Welcome>-->
+        <!--ME:</SharePoint:SPSecurityTrimmedControl>-->
+        <!--CE: Fin del fragmento de código Cinta-->
+        <div id="s4-workspace">
+            <div id="s4-bodyContainer">
+                <!-- Header -->
+                <header>
+                    <div class="row bg-primary-cultura">
+                        <div class="col-12 mx-3 text-left">
+                            <a role="link" aria-label="Logo Gobierno de Colombia. Te llevará al inicio" class="navbar-brand" href="https://www.gov.co/">
+                                <img src="https://cdn.www.gov.co/assets/images/logo.svg" height="40" width="119" alt="Logo gov.co" class="logo-gov" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="container-fluid d-flex bg-secondary-cultura p-4 nav-medium">
+                        <div class="col-md-2 col-lg-2 col-xl-2">
+                            <a class="brand-medium" href="/">
+                                <img src="img/logo-mincultura-vertical.png" width="120" alt="Logo Min Cultura" class="logo-principal" />
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-lg-5 col-xl-6 bg-secondary-cultura d-flex align-items-center justify-content-around">
+                            <!-- barra de busqueda-->
+                            <div data-name="SearchBox" class="top-search">
+                             <!--CS: Iniciar fragmento de código Cuadro de búsqueda--><!--SPM:<%@Register Tagprefix="SearchWC" Namespace="Microsoft.Office.Server.Search.WebControls" Assembly="Microsoft.Office.Server.Search, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"%>--><!--MS:<SearchWC:SearchBoxScriptWebPart UseSiteCollectionSettings="true" EmitStyleReference="false" ShowQuerySuggestions="false" ChromeType="None" UseSharedSettings="true" TryInplaceQuery="false" ServerInitialRender="true" runat="server">--><!--ME:</SearchWC:SearchBoxScriptWebPart>--><!--CE: Fin del fragmento de código Cuadro de búsqueda-->
+
+                          
+                            </div>
+                            <!-- fin barra de busqueda-->
+                        </div>
+                        <div class="col-md-4 col-lg-5 col-xl-4 bg-secondary-cultura d-flex align-items-center justify-content-around">
+                            <div class="d-flex social-links">
+                                <a href="http://www.youtube.com/user/Mincultura?feature=mhw4" target="_blank" alt="Youtube">
+                                    <img src="/_catalogs/masterpage/Gobierno/img/icons/icon-youtube-blanco-relleno.png" class="nav-medium-svg" alt="Youtube Ministerio de Cultura" />
+                                </a>
+                                <a href="http://www.instagram.com/mincultura/" target="_blank" alt="Instagram">
+                                    <img src="/_catalogs/masterpage/Gobierno/img/icons/icon-instagram-blanco-relleno.png" class="nav-medium-svg" alt="Instagram Ministerio de Cultura" />
+                                </a>
+                                <a href="https://www.facebook.com/MinisterioCultura" target="_blank" alt="Facebook">
+                                    <img src="/_catalogs/masterpage/Gobierno/img/icons/icon-facebook-blanco-relleno.png" class="nav-medium-svg" alt="Facebook Ministerio de Cultura" />
+                                </a>
+                                <a href="http://www.twitter.com/mincultura" target="_blank">
+                                    <img src="/_catalogs/masterpage/Gobierno/img/icons/icon-twitter-blanco.png" class="nav-medium-svg" alt="X" />
+                                </a>
+                                <a href="https://www.whatsapp.com/channel/0029VaAuobXJ93wQ0CBRV040" target="_blank" alt="Whatsapp Ministerio de Cultura">
+                                    <img src="/_catalogs/masterpage/Gobierno/img/icons/icon-wa-blanco-relleno.png" class="nav-medium-svg" alt="Whatsapp Ministerio de Cultura" />
+                                </a>
+                                <a href="https://www.tiktok.com/@minculturas" target="_blank" alt="tiktok">
+                                    <img src="/_catalogs/masterpage/Gobierno/img/icons/icon-tiktok-blanco-relleno.png" class="nav-medium-svg" alt="tiktok Ministerio de Cultura" />
+                                </a>
+                                <a href="/Paginas/mapa-del-sitio.aspx" class="mapadesitio">Mapa del Sitio
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-secondary-cultura nav-menu-horizontal">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand d-block d-lg-none" href="/">
+                                <img src="/_catalogs/masterpage/Gobierno/img/logo-mincultura-vertical.png" alt="Logo Min Cultura" class="logo-mobile" />
+                            </a>
+                            <button class="navbar-toggler" type="button" data-bs-theme="dark" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon">
+                                </span>
+                            </button>
+                            <!-- Seacrh M 
+                            <div class="search-mobile pt-4">
+                            </div>   -->
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <!--CS: Iniciar fragmento de código Navegación superior-->
+                                <!--SPM:<%@Register Tagprefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"%>-->
+                                <!--MS:<SharePoint:AjaxDelta runat="server" CssClass="ms-displayInline ms-core-navigation ms-dialogHidden" BlockElement="True" ID="DeltaTopNavigation">-->
+                                    <!--MS:<SharePoint:DelegateControl runat="server" Id="topNavigationDelegate" ControlId="TopNavigationDataSource">-->
+                                        <!--MS:<Template_Controls>-->
+                                            <!--MS:<asp:SiteMapDataSource ShowStartingNode="True" SiteMapProvider="SPNavigationProvider" ID="topSiteMap" runat="server" StartingNodeUrl="sid:1002">-->
+                                            <!--ME:</asp:SiteMapDataSource>-->
+                                        <!--ME:</Template_Controls>-->
+                                    <!--ME:</SharePoint:DelegateControl>-->
+                                    <a name="startNavigation">
+                                    </a>
+                                    <!--MS:<asp:ContentPlaceHolder ID="PlaceHolderTopNavBar" runat="server">-->
+                                        <!--MS:<SharePoint:AspMenu runat="server" UseSeparateCss="false" AdjustForShowStartingNode="True" StaticDisplayLevels="2" AccessKey="1" SkipLinkText="" EnableViewState="False" MaximumDynamicDisplayLevels="1" UseSimpleRendering="True" DataSourceID="topSiteMap" Orientation="Horizontal" ID="TopNavigationMenu">-->
+                                        <!--ME:</SharePoint:AspMenu>-->
+                                    <!--ME:</asp:ContentPlaceHolder>-->
+                                <!--ME:</SharePoint:AjaxDelta>-->
+                                <!--CE: Fin del fragmento de código Navegación superior-->
+                            </div>
+                        </nav>
+                    </div>
+                    <!--Accesibilidad-->
+                    <div id="accesibilidad-menu" class="accesibilidad-menu">
+                        <ul class="accesibilidad-items">
+                            <li>
+                                <a id="high_contrast" class="icon-contrast1" title="Cambiar niveles de contraste">
+                                    <span class="govco-adjust">
+                                    </span>
+                                    <img src="/_catalogs/masterpage/Gobierno/img/accesibilidad/contraste.png" alt="Botón cambiar contraste" class="img-fluid" />
+                                    <span class="accesibilidad-title"> Contraste 
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a id="a_less" href="javascript: void(0)" class="icon-a-less" title="Reducir el tamaño del texto">
+                                    <span class="govco-font-minimize">
+                                    </span>
+                                    <img src="/_catalogs/masterpage/Gobierno/img/accesibilidad/disminuir-txt.png" alt="Botón Reducir el tamaño del texto" class="img-fluid" />
+                                    <span class="accesibilidad-title"> Reducir letra 
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a id="a_more" href="javascript: void(0)" class="icon-a-more" title="Aumentar el tamaño del texto">
+                                    <span class="govco-font-maximize">
+                                    </span>
+                                    <img src="/_catalogs/masterpage/Gobierno/img/accesibilidad/aumentar-txt.png" alt="Botón Aumentar el tamaño del texto" class="img-fluid" />
+                                    <span class="accesibilidad-title"> Aumentar letra 
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a id="c_relevo" href="https://centroderelevo.gov.co/632/w3-channel.html" target="_blank" class="icon-a-less" title="Ir a Centro de Relevo">
+                                    <img src="/_catalogs/masterpage/Gobierno/img/accesibilidad/senas.png" alt="Botón Centro de relevo" class="img-fluid"/>
+                                    <span class="accesibilidad-title"> Centro de relevo </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a id="c_relevo" href="https://maguare.gov.co/" target="_blank" class="icon-a-less" title="Ir a Maguare">
+                                    <img src="/_catalogs/masterpage/Gobierno/img/accesibilidad/maguare.png" alt="Botón Centro de relevo" class="img-fluid"/>
+                                    <span class="accesibilidad-title"> Maguare</span>
+                                </a>
+                            </li>
+                            <!--<li>
+                                <a id="a_initial" href="javascript: void(0)" class="icon-a-more" title="Aumentar el tamaño del texto">
+                                    <span class="govco-font-maximize"></span>
+                                    <img src="/_catalogs/masterpage/Gobierno/img/accesibilidad/maguare.png" alt="Botón Aumentar el tamaño del texto" class="img-fluid"/>
+                                    <span class="accesibilidad-title"> Maguare </span>
+                                </a>
+                            </li>
+                            -->
+                        </ul>
+                    </div>
+                </header>
+                <main>
+                    <div class="container-fluid1">
+                        <div data-name="ContentPlaceHolderMain">
+                            <!--CS: Iniciar fragmento de código PlaceHolderMain-->
+                            <!--SPM:<%@Register Tagprefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"%>-->
+                            <!--MS:<SharePoint:AjaxDelta ID="DeltaPlaceHolderMain" IsMainContent="true" runat="server">-->
+                                <!--MS:<asp:ContentPlaceHolder ID="PlaceHolderMain" runat="server">-->
+                                    <!-- aqui va la zona de contenido-->
+                                <!--ME:</asp:ContentPlaceHolder>-->
+                            <!--ME:</SharePoint:AjaxDelta>-->
+                            <!--CE: Fin del fragmento de código PlaceHolderMain-->
+                        </div>
+                    </div>
+                </main>
+                <!-- Footer -->
+                <footer class="bg-secondary-cultura text-white ">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6 col-xl-3 footer-column text-center">
+                                <img src="/_catalogs/masterpage/Gobierno/img/logo-gov.co.png" height="28" width="146" class="mx-3" alt="Logo gov.co" />
+                                <img src="/_catalogs/masterpage/Gobierno/img/gov.co_co-footer.png" class="mx-3" width="54" height="51" alt="Logo Colombia" />
+                            </div>
+                            <div class="col-md-12 col-lg-6 col-xl-3 footer-column">
+                                <h5>Ministerio de las Culturas
+                                </h5>
+                                <p class="caption-box">Calle 9 No. 8 31
+                                    <br />Bogotá D.C., Colombia</p>
+                                <p class="caption-box">
+                                    <b>Horario de atención:</b>
+                                    <br />Lunes a viernes de 8:00 a. m. a 5:00 p. m. <br />(días no festivos)</p>
+                                    
+                                <p class="caption-box">
+                                    <b>Teléfono:</b>(601) 3424100
+                                    <br/>
+                                    <b>Fax:</b>(601) 3816353 ext. 1183
+                                    <br/>
+                                    <b>Lí­nea gratuita:</b>018000 93808
+ 								</p>
+                                <div class="social-links">
+                                    <a href="http://www.youtube.com/user/Mincultura?feature=mhw4" target="_blank" alt="Youtube">
+                                        <img src="/_catalogs/masterpage/Gobierno/img/icons/icon-youtube-blanco-relleno.png" class="nav-medium-svg" alt="Youtube Ministerio de Cultura" />
+                                    </a>
+                                    <a href="http://www.instagram.com/mincultura/" target="_blank" alt="Instagram">
+                                        <img src="/_catalogs/masterpage/Gobierno/img/icons/icon-instagram-blanco-relleno.png" class="nav-medium-svg" alt="Instagram Ministerio de Cultura" />
+                                    </a>
+                                    <a href="https://www.facebook.com/MinisterioCultura/" target="_blank" alt="Facebook">
+                                        <img src="/_catalogs/masterpage/Gobierno/img/icons/icon-facebook-blanco-relleno.png" class="nav-medium-svg" alt="Facebook Ministerio de Cultura" />
+                                    </a>
+                                    <a href="http://www.twitter.com/mincultura" target="_blank">
+                                        <img src="/_catalogs/masterpage/Gobierno/img/icons/icon-twitter-blanco.png" class="nav-medium-svg" alt="X" />
+                                    </a>
+                                    <a href="https://www.whatsapp.com/channel/0029VaAuobXJ93wQ0CBRV040" target="_blank" alt="Whatsapp Ministerio de Cultura">
+                                        <img src="/_catalogs/masterpage/Gobierno/img/icons/icon-wa-blanco-relleno.png" class="nav-medium-svg" alt="Whatsapp Ministerio de Cultura" />
+                                    </a>
+                                    <a href="https://www.tiktok.com/@minculturas" target="_blank" alt="tiktok">
+                                        <img src="/_catalogs/masterpage/Gobierno/img/icons/icon-tiktok-blanco-relleno.png" class="nav-medium-svg" alt="tiktok Ministerio de Cultura" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6 col-xl-3 footer-column">
+                                <h5>Contacto Correspondencia:
+                                </h5>
+                                <p class="caption-box">
+                                    <b>Presencial:
+                                    </b>Lunes a viernes de 8:00 a.m. a  3:00 p.m. jornada continua<br />Casa Abadí­a, Calle 8 #8a-31
+                                </p>
+                                <p class="caption-box">
+                                    <b>Virtual:</b><br />
+                                    <a class="link-footer" href="mailto:servicioalciudadano@mincultura.gov.co" target="_blank">servicioalciudadano@mincultura.gov.co</a>
+                                    <br />(los correos que se reciban después de las 5:00 p. m., se radicarán el siguiente dí­a hábil)
+                                </p>
+ 								<p class="caption-box">
+ 									<b>Registro de denuncias de corrupción:</b>
+ 									<a class="link-footer" href="mailto:soytransparente@mincultura.gov.co" target="_blank">soytransparente@mincultura.gov.co</a>
+                                    <br/>
+                                    <b>Notificaciones judiciales:</b>
+                                    <br/>
+ 									<a class="link-footer" href="mailto:notificaciones@mincultura.gov.co" target="_blank">notificaciones@mincultura.gov.co</a>
+ 								</p>
+                            </div>
+                            <div class="col-md-12 col-lg-6 col-xl-3 footer-column">
+                                <h5>Servicios a la Ciudadanía
+                                </h5>
+                                <p class="caption-box">
+                                    <a class="link-footer" href="/atencion-y-servicio-a-la-ciudadania/Paginas/atencion-pqrs.aspx">PQRSD</a>
+                                    <br />
+                                    <a class="link-footer" href="/transparencia/Paginas/tramites/preguntas-frecuentes.aspx">Preguntas Frecuentes</a>
+                                    <br />
+                                    <a class="link-footer" href="#">Glosario</a>
+                                    <br />
+                                    <a class="link-footer" href="/atencion-y-servicio-a-la-ciudadania/Paginas/tramites-y-servicios.aspx">Trámites y servicios</a>
+                                </p>
+                                <h5>Acerca del sitio
+                                </h5>
+                                <p class="caption-box">
+                                    <a href="/transparencia/Paginas/transparencia.aspx#politicas" class="link-footer">Políticas</a>
+                                    <br />
+                                    <a class="link-footer" href="/transparencia/Documents/2-normativa/politicas-y-lineamientos/PL-GSI-001_PoliticaGeneraldeSeguridadyPrivacidaddelaInformacion.pdf">Política de privacidad y protección de datos</a>
+                                    <br />
+                                    <a class="link-footer" href="/Paginas/mapa-del-sitio.aspx">Mapa del sitio</a>
+                                    <br />
+                                    <a class="link-footer" href="/transparencia/Documents/2-normativa/politicas-y-lineamientos/PL-GSI-001_PoliticaGeneraldeSeguridadyPrivacidaddelaInformacion.pdf">Términos y condiciones</a>
+                                    <br />
+                                    <a class="link-footer" href="/Paginas/guia-del-usuario.aspx">Accesibilidad</a>
+                                    <br />
+                                    <a class="link-footer" target="_blank" href="https://mng.mincultura.gov.co/Paginas/default.aspx">Pagina anterior (2023)</a>
+                                </p>
+                                <br />
+                                <p class="caption-box">Copyright © 2024
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </body>
+    <script src="/_catalogs/masterpage/Gobierno/js/accesibilidad.js">//<![CDATA[//]]>
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">//<![CDATA[
+    
+    //]]>
+    </script>
+</html>
