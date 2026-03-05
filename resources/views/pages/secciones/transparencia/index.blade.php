@@ -14,6 +14,9 @@
             <a href="{{ route('transparencia.4.planeacion-presupuesto-e-informes.plan-anual-de-adquisiciones') }}" class="list-group-item list-group-item-action">
                 4. Planeación, presupuesto e informes - Plan anual de adquisiciones
             </a>
+            <a href="{{ route('transparencia.9.estados-financieros') }}" class="list-group-item list-group-item-action">
+                9. Información financiera - Estados financieros
+            </a>
         </div>
     </section>
 @endsection

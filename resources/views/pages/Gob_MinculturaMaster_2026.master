@@ -127,13 +127,64 @@
         <link rel="stylesheet" href="/_catalogs/masterpage/Gobierno/css/pruebamenu2.css" />
         <link rel="stylesheet" href="/_catalogs/masterpage/Gobierno/css/gAccesibilidad.css" />
         <style type="text/css">
+            .bg-secondary-cultura {
+                --footer-hover-bg: #f5b400;
+                --footer-hover-fg: #2f2483;
+            }
             .link-footer:hover,
-            .link-footer:focus-visible {
-                color: #2f2483 !important;
-                background-color: #f5b400;
+            .link-footer:focus-visible,
+            .bg-secondary-cultura .footer-column a.link-footer:hover,
+            .bg-secondary-cultura .footer-column a.link-footer:focus-visible {
+                color: var(--footer-hover-fg) !important;
+                background-color: var(--footer-hover-bg);
                 text-decoration: underline;
                 text-decoration-thickness: 2px;
-                outline: 2px solid #2f2483;
+                outline: 2px solid var(--footer-hover-fg);
+                outline-offset: 2px;
+            }
+            .bg-secondary-cultura .social-links a,
+            .bg-secondary-cultura .social-links a:hover,
+            .bg-secondary-cultura .social-links a:focus,
+            .bg-secondary-cultura .social-links a:focus-visible,
+            .bg-secondary-cultura .social-links a:active {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                border: 0 !important;
+                border-bottom: 0 !important;
+                background-image: none !important;
+                text-decoration: none !important;
+                border-radius: 999px;
+                transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+            }
+            .bg-secondary-cultura .social-links a::before,
+            .bg-secondary-cultura .social-links a::after {
+                content: none !important;
+                display: none !important;
+            }
+            .bg-secondary-cultura .social-links a img {
+                display: block;
+                width: 20px !important;
+                height: 20px !important;
+                margin: 0 !important;
+                object-fit: contain;
+            }
+            .bg-secondary-cultura .social-links a[href*="facebook.com"] img {
+                transform: scale(1.35);
+                transform-origin: center;
+            }
+            .bg-secondary-cultura .social-links a:hover,
+            .bg-secondary-cultura .social-links a:focus-visible {
+                background-color: var(--footer-hover-bg);
+                border-bottom: 0 !important;
+                text-decoration: none !important;
+                transform: translateY(-2px);
+                box-shadow: 0 0 0 2px var(--footer-hover-fg);
+            }
+            .bg-secondary-cultura .social-links a:focus-visible {
+                outline: 2px solid #ffffff;
                 outline-offset: 2px;
             }
         </style>
@@ -377,7 +428,7 @@
                             <div class="col-md-12 col-lg-6 col-xl-3 footer-column">
                                 <h5>Contacto Correspondencia:
                                 </h5>
-                                <p class="caption-box">Dirección: Calle 9 No. 8 - 31</p>
+                                <p class="caption-box">Dirección: Calle 9 No. 8 - 31 Bogotá</p>
                                 <p class="caption-box">Lunes a viernes de 8:00 a.m. a 4:00 p.m. jornada continua</p>
                                 <p class="caption-box">
                                     Correo:
@@ -418,7 +469,7 @@
                                     <br />
                                     <a class="link-footer" href="/Paginas/guia-del-usuario.aspx">Accesibilidad</a>
                                     <br />
-                                    <a class="link-footer" target="_blank" href="https://mng.mincultura.gov.co/Paginas/default.aspx">Pagina anterior (2023)</a>
+                                    
                                 </p>
                                 <br />
                                 <p class="caption-box">Copyright © 2026
