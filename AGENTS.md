@@ -6,19 +6,19 @@
 Usar este flujo cuando el usuario pegue correos en el chat para preparar una lista de envio.
 
 1. Solicitar datos obligatorios al usuario.
+- Pedir `numero de boletin`.
 - Pedir `nombre del envio`.
 - Pedir `solicitante`.
-- Pedir `numero de boletin`.
 
 2. Crear carpeta de trabajo.
 - Ruta base: `database/mailing/<nombre-campana>`.
 - El nombre de carpeta se toma exactamente del nombre enviado por el usuario.
 - Crear primero `datos.txt` vacio dentro de la carpeta.
 
-3. Guardar entrada en bruto.
-- Si la base llega en bloques, anexar cada bloque en `datos.txt` sin limpiar contenido previo.
-- Confirmar al final que `datos.txt` contiene la base completa antes de validar.
-- Si `datos.txt` ya existe con contenido, permitir retomar el proceso desde ese archivo sin volver a solicitar toda la base.
+3. Carga manual de la base por parte del usuario.
+- Indicar al usuario que debe pegar la base completa en `datos.txt`.
+- Esperar confirmacion explicita del usuario antes de continuar.
+- Si `datos.txt` ya existe con contenido, permitir retomar el proceso desde ese archivo sin volver a solicitar la base.
 
 4. Validar y normalizar correos.
 - Extraer posibles correos desde `datos.txt`.
@@ -67,6 +67,10 @@ Usar este flujo despues de `Boletin` para redactar el reporte y correo de respue
 6. Generar estructura del correo de respuesta.
 - Incluir: `asunto`, `saludo`, `resumen de depuracion`, `resumen de envio`, `cierre`.
 - Mantener tono profesional y claro.
+- Redactar siempre como respuesta al solicitante (no como informe aislado), haciendo referencia a su solicitud inicial.
+- Iniciar el cuerpo con una frase de respuesta, por ejemplo: `En atencion a su solicitud, se realizo...`.
+- Confirmar explicitamente que el envio fue ejecutado.
+- Incluir siempre en el correo una seccion `Correos descartados en depuracion` con el listado completo de `correos_descartados.txt`.
 - Incluir una linea final con siguiente paso sugerido.
 - No cerrar solicitando metricas faltantes ni condicionando el cierre.
 - Usar cierre estandar: `Quedo atento a cualquier novedad. Saludos cordiales.`
@@ -102,17 +106,21 @@ Usar este flujo para construir la solicitud formal despues de ejecutar `Boletin`
 Usar esta instruccion unica para ejecutar el proceso completo en una sola secuencia.
 
 Entrada minima requerida:
-- `nombre del envio`
 - `numero de boletin`
+- `nombre del envio`
 - `solicitante`
-- base de correos en texto plano
+- confirmacion de que la base fue cargada en `datos.txt`
 - cifras de envio: enviados, entregados, aperturas, clics, rebotes, bajas (si aplica)
 - `descripcion de la solicitud`
 
 Secuencia obligatoria:
-1. Ejecutar `Boletin` y generar `datos.txt`, `correos_validos.txt`, `correos_descartados.txt`.
-2. Ejecutar `Respuesta masivo` con resumen tecnico, lista de rechazados y correo final.
-3. Ejecutar `Crear solicitud` con:
+1. Ejecutar `Boletin`:
+- pedir `numero de boletin`, `nombre del envio` y `solicitante`
+- crear carpeta y archivo `datos.txt`
+- pausar para que el usuario cargue la base en `datos.txt`
+2. Despues de la confirmacion del usuario, continuar con validacion y generar `correos_validos.txt` y `correos_descartados.txt`.
+3. Ejecutar `Respuesta masivo` con resumen tecnico, lista de rechazados y correo final.
+4. Ejecutar `Crear solicitud` con:
 - titulo igual a `nombre del envio`
 - subservicio fijo `Ejecucion de envio de comunicaciones masivas`
 - tarea principal y subtareas ejecutadas con tiempos en minutos.
