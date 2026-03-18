@@ -6,6 +6,9 @@ Route::get('/', function () {
     return view('pages.secciones.transparencia.index');
 })->name('index');
 
+Route::redirect('/Paginas/transparencia.aspx', '/transparencia', 301)->name('legacy.index');
+Route::redirect('/Paginas/default.aspx', '/transparencia', 301)->name('legacy.default');
+
 Route::get('/entidad/entes', function () {
     return view('transparencia.entidad.entes');
 })->name('entidad.entes');

@@ -304,6 +304,22 @@
                                 </p>
                                 <p
                                     style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
+                                    <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe%20del%20Sistema%20de%20Control%20Interno%20Contable%202025.pdf"
+                                        target="_blank"
+                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                        <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                            alt=""
+                                            style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
+                                        del Sistema de Control Interno Contable 2025</a><br />
+                                </p>
+                                <p>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                </p>
+                                <p
+                                    style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                                     <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe%20del%20Sistema%20de%20Control%20Interno%20Contable%202024.pdf"
                                         target="_blank"
                                         style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
@@ -369,6 +385,50 @@
                     <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
+                            <p
+                                style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-size: 18px; color: #4d4d4d; font-family: &quot;nunito sans&quot;;">
+                                <span style="font-weight: bolder;">2026</span>
+                            </p>
+                            <p
+                                style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-size: 18px; color: #4d4d4d; font-family: &quot;nunito sans&quot;;">
+                                <b>Ekogui</b>
+                            </p>
+                            <ul
+                                style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
+                                <li>
+                                    <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe%20EKOGUI%20segundo%20semestre%202025.pdf"
+                                        target="_blank"
+                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
+                                            class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                            alt=""
+                                            style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
+                                        Ekogui segundo semestre 2025</a>&#160;&#160;<em class="ms-rteThemeForeColor-1-5"
+                                        style="text-decoration-style: solid; text-decoration-color: #7f7f7f;">(18-03-2026)</em>
+                                </li>
+                            </ul>
+                            <p
+                                style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
+                                <span
+                                    style="font-weight: bolder; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; background-color: #eaeafe;">Política
+                                    Prevención Daño Antijuridico y Comité Conciliación</span><br />
+                            </p>
+                            <ul
+                                style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
+                                <li
+                                    style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
+                                    <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe%20de%20seguimiento%20PPDA%202024%20-2025%20versi%C3%B3n%202.pdf"
+                                        target="_blank"
+                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
+                                            class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                            alt=""
+                                            style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
+                                        de seguimiento PPDA 2024 -2025 versión 2.</a>&#160;&#160;<em class="ms-rteThemeForeColor-1-5"
+                                        style="text-decoration-style: solid; text-decoration-color: #7f7f7f;">(18-03-2026)</em>
+                                </li>
+                            </ul>
+                            <p>
+                                <br />
+                            </p>
                             <p
                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-size: 18px; color: #4d4d4d; font-family: &quot;nunito sans&quot;;">
                                 <span style="font-weight: bolder;">2025​</span>
@@ -2381,10 +2441,26 @@
                                         <div class="accordion-body">
                                             <span
                                                 style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; font-weight: 700; background-color: #eaeafe;">​Soporte
-                                                al cargue de RENDICIÓN DE LA CUENTA ANUAL CONSOLIDADA</span><br />
+                                                al cargue de rendición de la cuenta anual consolidada</span><br />
                                             <ul>
                                             </ul>
                                             <ul>
+                                                <li
+                                                    style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
+                                                    <p
+                                                        style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
+                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                            lang="ES-CO"><a
+                                                                href="/despacho/Documents/oficina-de-control-interno/2025/2026_03_02_384_CERTIFICADO%20_ANUAL_2025.pdf"
+                                                                target="_blank" style="color: #281e52;"><img
+                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                    src="/_layouts/images/icpdf.png" alt=""
+                                                                    style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />2026_03_02_384_Certificado_ANUAL_2025</a></span><span
+                                                            data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
+                                                                style="color: #7f7f7f; background-color: #eaeafe;">&#160;​</span><em
+                                                                style="color: #7f7f7f; background-color: #eaeafe; text-decoration-style: solid; text-decoration-color: #7f7f7f;">(18-03-2026)</em></span>
+                                                    </p>
+                                                </li>
                                                 <li
                                                     style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                     <p
@@ -2484,6 +2560,18 @@
                                             <ul>
                                                 <li>
                                                     <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO"><a
+                                                            href="/despacho/Documents/oficina-de-control-interno/2025/06_02_2026_II_SEM_2025.pdf"
+                                                            target="_blank"
+                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
+                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                                src="/_layouts/images/icpdf.png" alt=""
+                                                                style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />06_02_2026_II_SEM_2025</a>&#160;</span><span
+                                                        data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
+                                                            style="color: #7f7f7f; background-color: #eaeafe;">&#160;​</span><em
+                                                            style="color: #7f7f7f; background-color: #eaeafe; text-decoration-style: solid; text-decoration-color: #7f7f7f;">(18-03-2026)</em></span>
+                                                </li>
+                                                <li>
+                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO"><a
                                                             href="/despacho/Documents/oficina-de-control-interno/2025/14_07_2025_I_SEM_2025.pdf"
                                                             target="_blank"
                                                             style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
@@ -2529,6 +2617,53 @@
                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-size: 18px; color: #4d4d4d; font-family: &quot;nunito sans&quot;;">
                                                 <span style="font-weight: bolder;">Información registro nacional de
                                                     obras civiles inconclusas<br /></span><span
+                                                    style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; font-weight: 700; background-color: #eaeafe;">2026&#160;</span>
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    <span
+                                                        data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                                data-contrast="none" xml:lang="ES-CO"
+                                                                lang="ES-CO"
+                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">​<a
+                                                                    href="/despacho/Documents/oficina-de-control-interno/2025/03_03_2026_FEB_2026.pdf"
+                                                                    target="_blank"
+                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
+                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                        src="/_layouts/images/icpdf.png"
+                                                                        alt=""
+                                                                        style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />03_03_2026_FEB_2026</a>&#160;</span><span
+                                                                data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
+                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
+                                                                    style="color: #7f7f7f;">&#160;​</span><em
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">(18-03-2026)</em></span></span></span>
+                                                </li>
+                                                <li>
+                                                    <span
+                                                        data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                                data-contrast="none" xml:lang="ES-CO"
+                                                                lang="ES-CO"
+                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">​<a
+                                                                    href="/despacho/Documents/oficina-de-control-interno/2025/03_02_2026_ENE_2026.pdf"
+                                                                    target="_blank"
+                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
+                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                        src="/_layouts/images/icpdf.png"
+                                                                        alt=""
+                                                                        style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />03_02_2026_ENE_2026</a>&#160;</span><span
+                                                                data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
+                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
+                                                                    style="color: #7f7f7f;">&#160;​</span><em
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">(18-03-2026)</em></span></span></span>
+                                                </li>
+                                            </ul>
+                                            <p
+                                                style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-size: 18px; color: #4d4d4d; font-family: &quot;nunito sans&quot;;">
+                                                <span
                                                     style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; font-weight: 700; background-color: #eaeafe;">2025&#160;</span>
                                             </p>
                                             <ul>
