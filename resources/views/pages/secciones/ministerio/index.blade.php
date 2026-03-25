@@ -15,6 +15,10 @@
             <a href="{{ route('ministerio.despacho.sites.pnc') }}" class="list-group-item list-group-item-action">
                 Plan Nacional de Cultura (PNC)
             </a>
+            <a href="{{ route('ministerio.despacho.sites.escenario-del-mundo') }}"
+                class="list-group-item list-group-item-action">
+                Escenario del Mundo
+            </a>
             <a href="{{ route('ministerio.despacho.oficina-de-control-interno.servicios-informacion.index') }}"
                 class="list-group-item list-group-item-action">
                 Oficina de Control Interno - Servicios de información

@@ -1,0 +1,1949 @@
+@php($escenarioAssets = asset('assets/escenario'))
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>#Colombia Escenario del Mundo</title>
+    <meta name="description" content="Escenario del Mundo - Culturas, artes y saberes en movimiento.">
+
+    <link href="https://cdn.www.gov.co/layout-govco-v5/all.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet"
+        crossorigin="anonymous">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap');
+
+        :root {
+            --neon-yellow: #e7ff14;
+            --hot-pink: #ff1ac8;
+            --deep-pink: #e00097;
+            --violet: #5b2a91;
+            --black: #030303;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.5;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background:
+                radial-gradient(circle at 18% 12%, rgba(255, 229, 0, 0.38), transparent 24%),
+                radial-gradient(circle at 82% 10%, rgba(255, 60, 0, 0.28), transparent 26%),
+                radial-gradient(circle at 50% 26%, rgba(255, 0, 170, 0.22), transparent 30%),
+                linear-gradient(180deg, #5d2483 0%, #7d2b83 18%, #ff6a00 46%, #f1ff11 100%);
+            color: var(--white);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        iframe:focus-visible {
+            outline: 3px solid #111;
+            outline-offset: 3px;
+            box-shadow: 0 0 0 4px rgba(231, 255, 20, 0.95);
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 120;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            transform: translateY(-140%);
+            transition: transform 180ms ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .site-shell {
+            width: 100%;
+            margin: 0;
+            background: transparent;
+        }
+
+        .content-limit {
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .content-pad {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        .content-pad-tight {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(0);
+            transition: background-color 180ms ease, border-color 180ms ease, backdrop-filter 180ms ease;
+        }
+
+        .topbar.is-scrolled {
+            background: rgba(0, 0, 0, 0.96);
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+        }
+
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            min-height: 64px;
+        }
+
+        .topbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto;
+        }
+
+        .topbar-nav a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 16px;
+            border-radius: 999px;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+        }
+
+        .topbar-nav a:hover,
+        .topbar-nav a:focus-visible,
+        .topbar-nav a.is-active {
+            background: var(--neon-yellow);
+            color: #111;
+            outline: none;
+        }
+
+        .topbar-mobile-brand {
+            display: none;
+        }
+
+        .topbar-mobile-brand img {
+            width: auto;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .topbar-toggle {
+            display: none;
+            width: 46px;
+            height: 46px;
+            border: 0;
+            border-radius: 50%;
+            background: var(--neon-yellow);
+            color: #111;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .topbar-toggle-lines,
+        .topbar-toggle-lines::before,
+        .topbar-toggle-lines::after {
+            display: block;
+            width: 18px;
+            height: 2px;
+            border-radius: 999px;
+            background: currentColor;
+            transition: transform 180ms ease, opacity 180ms ease;
+            content: "";
+        }
+
+        .topbar-toggle-lines {
+            position: relative;
+        }
+
+        .topbar-toggle-lines::before {
+            position: absolute;
+            top: -6px;
+            left: 0;
+        }
+
+        .topbar-toggle-lines::after {
+            position: absolute;
+            top: 6px;
+            left: 0;
+        }
+
+        .topbar.is-open .topbar-toggle-lines {
+            background: transparent;
+        }
+
+        .topbar.is-open .topbar-toggle-lines::before {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        .topbar.is-open .topbar-toggle-lines::after {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        .site-shell {
+            padding-top: 0;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 640px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at center, rgba(231, 255, 20, 0.24), transparent 32%),
+                linear-gradient(135deg, #ff7b00 0%, #ff2c7a 34%, #f3ff16 100%);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            min-height: 640px;
+        }
+
+        .hero-media {
+            display: block;
+            width: 100%;
+            height: 640px;
+            object-fit: cover;
+        }
+
+        .split-layout {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .encuentro-col {
+            flex: 1 1 50%;
+            min-width: 0;
+        }
+
+        .video-card {
+            position: relative;
+            min-height: 520px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at center, rgba(255, 196, 0, 0.18), transparent 28%),
+                linear-gradient(135deg, #491652 0%, #ff6d3d 52%, #ffcf57 100%);
+        }
+
+        .video-card iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 520px;
+            border: 0;
+        }
+
+        .gif-card {
+            min-height: 520px;
+            background: var(--neon-yellow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gif-card img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 520px;
+            object-fit: cover;
+        }
+
+        .gif-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 28px 30px;
+            text-align: center;
+            color: #111;
+            background: linear-gradient(180deg, rgba(231, 255, 20, 0.82), rgba(231, 255, 20, 0.72));
+        }
+
+        .gif-overlay-inner {
+            max-width: 620px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gif-overlay p {
+            margin: 0 0 24px;
+            font-size: 23px;
+            line-height: 1.34;
+            font-weight: 500;
+            max-width: 600px;
+        }
+
+        .gif-overlay p:last-of-type {
+            margin-bottom: 24px;
+        }
+
+        .gif-overlay-highlight {
+            font-weight: 500;
+            font-size: 25px;
+            line-height: 1.2;
+        }
+
+        .pill-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 160px;
+            min-height: 44px;
+            padding: 11px 18px;
+            border-radius: 999px;
+            background: var(--black);
+            color: var(--neon-yellow);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 14px;
+            border: 2px solid transparent;
+            transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+            will-change: transform;
+        }
+
+        .pill-btn:hover {
+            transform: translateY(-2px);
+            background: #161616;
+            color: #f4ff6d;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+        }
+
+        .pill-btn:active {
+            transform: translateY(0) scale(0.98);
+            background: #000;
+            box-shadow: none;
+        }
+
+        .pill-btn:focus-visible {
+            border-color: var(--neon-yellow);
+        }
+
+        .banner {
+            position: relative;
+            background: linear-gradient(180deg, #532290 0%, #5a2396 100%);
+            overflow: hidden;
+        }
+
+        .banner-layout {
+            position: relative;
+        }
+
+        .banner-track {
+            position: relative;
+            display: grid;
+        }
+
+        .banner-slide {
+            position: relative;
+            grid-area: 1 / 1;
+            display: flex;
+            align-items: stretch;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 320ms ease;
+        }
+
+        .banner-slide.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .banner-slide::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--banner-bg, linear-gradient(90deg, rgba(75, 41, 129, 0.96), rgba(120, 54, 168, 0.94)));
+            z-index: 0;
+            opacity: var(--banner-bg-opacity, 0.72);
+        }
+
+        .banner-copy {
+            position: relative;
+            z-index: 1;
+            flex: 1 1 62%;
+            padding: 34px 34px 32px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            color: #fff;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.24);
+        }
+
+        .banner-copy h2 {
+            margin: 0 0 16px;
+            font-size: 36px;
+            line-height: 1.02;
+            font-weight: 800;
+            max-width: 12ch;
+        }
+
+        .banner-copy p {
+            max-width: 42ch;
+            margin: 0 0 18px;
+            font-size: 17px;
+            line-height: 1.45;
+        }
+
+        .banner-slide[data-banner-light] .banner-copy {
+            color: #111;
+            text-shadow: none;
+        }
+
+        .banner-slide[data-banner-light]::before {
+            background: linear-gradient(180deg, #e7e7e7, #e7e7e7);
+            opacity: 1;
+        }
+
+        .banner-slide[data-banner-light] .pill-btn {
+            background: #111;
+            color: var(--neon-yellow);
+        }
+
+        .banner-logo-wrap {
+            position: relative;
+            z-index: 1;
+            flex: 0 0 38%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 24px 80px 24px 24px;
+        }
+
+        .banner-logo {
+            max-width: min(340px, 72%);
+            max-height: 190px;
+            object-fit: contain;
+            filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.18));
+        }
+
+        .banner-art {
+            position: relative;
+            z-index: 0;
+            inset: 0;
+            position: absolute;
+            background-image: var(--banner-art-desktop);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.22;
+            mix-blend-mode: screen;
+        }
+
+        .banner-controls {
+            position: absolute;
+            left: 24px;
+            right: 24px;
+            bottom: 18px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .banner-dots {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .banner-dot {
+            width: 44px;
+            height: 44px;
+            border: 0;
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            position: relative;
+        }
+
+        .banner-dot::before {
+            content: "";
+            position: absolute;
+            inset: 50% auto auto 50%;
+            width: 12px;
+            height: 12px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.34);
+        }
+
+        .banner-dot.is-active::before {
+            background: var(--neon-yellow);
+        }
+
+        .banner-arrows {
+            display: flex;
+            gap: 8px;
+        }
+
+        .banner-arrow {
+            width: 44px;
+            height: 44px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.72);
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .banner-arrow:hover {
+            transform: translateY(-2px);
+            background: var(--neon-yellow);
+            color: #111;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .banner-arrow:active {
+            transform: scale(0.96);
+        }
+
+        .banner-toggle {
+            min-width: 44px;
+            height: 44px;
+            border: 0;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.72);
+            color: #fff;
+            padding: 0 14px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .banner-toggle:hover {
+            transform: translateY(-2px);
+            background: var(--neon-yellow);
+            color: #111;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .banner-toggle:active {
+            transform: scale(0.98);
+        }
+
+        .cards-zone {
+            position: relative;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .cards-zone::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url('{{ $escenarioAssets }}/escenario-fondo-manos.png') center top / cover no-repeat;
+            transform: scale(1.04);
+            transform-origin: center center;
+            animation: cards-bg-zoom 18s ease-in-out infinite alternate;
+            will-change: transform;
+        }
+
+        .cards-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            width: 100%;
+        }
+
+        .cards-inner {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 46px;
+            padding-right: 46px;
+            padding-top: 52px;
+            padding-bottom: 64px;
+        }
+
+        @keyframes cards-bg-zoom {
+            from {
+                transform: scale(1.04);
+            }
+
+            to {
+                transform: scale(1.11);
+            }
+        }
+
+        .cards-title {
+            position: relative;
+            z-index: 1;
+            margin: 0 0 36px;
+            color: #111;
+            font-size: clamp(36px, 5vw, 56px);
+            line-height: 1;
+            font-weight: 900;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 0 0 16px 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+            transform: translateY(22px);
+            opacity: 0;
+            transition: transform 240ms ease, box-shadow 240ms ease, opacity 500ms ease;
+        }
+
+        .card.is-visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .card.is-visible:hover,
+        .card.is-visible:focus-within {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+        }
+
+        .card-media {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+        }
+
+        .card-media::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #040404, #101010);
+            transform: scale(1);
+            transform-origin: center center;
+            transition: transform 320ms ease;
+        }
+
+        .card:hover .card-media::before,
+        .card:focus-within .card-media::before {
+            transform: scale(1.08);
+        }
+
+        .card-body {
+            padding: 18px 18px 20px;
+            color: #1d1d1d;
+        }
+
+        .card-body p {
+            margin: 0 0 14px;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .mini-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 116px;
+            min-height: 44px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--neon-yellow);
+            color: #111;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 800;
+            border: 2px solid transparent;
+            transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .mini-btn:hover {
+            transform: translateY(-2px);
+            background: #111;
+            color: var(--neon-yellow);
+            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14);
+        }
+
+        .mini-btn:active {
+            transform: scale(0.98);
+        }
+
+        .mini-btn:focus-visible {
+            border-color: #111;
+        }
+
+        .footer {
+            background: linear-gradient(180deg, rgba(18, 7, 39, 0.96), rgba(8, 3, 20, 0.98));
+            padding: 42px 20px 34px;
+            text-align: center;
+        }
+
+        #encuentro {
+            background: #e7ff14;
+        }
+
+        #movimiento {
+            background: linear-gradient(180deg, #57239a 0%, #59239d 100%);
+        }
+
+        #contenidos {
+            background-color: #e7ff14;
+        }
+
+        .footer-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 192px;
+            padding: 9px 18px;
+            border-radius: 999px;
+            background: var(--neon-yellow);
+            color: #111;
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 20px;
+            border: 2px solid transparent;
+            transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .footer-link:hover {
+            transform: translateY(-2px);
+            background: #fff;
+            color: #111;
+            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.24);
+        }
+
+        .footer-link:active {
+            transform: scale(0.98);
+        }
+
+        .footer-link:focus-visible {
+            border-color: var(--neon-yellow);
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .socials a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.52);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.02);
+            transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+        }
+
+        .socials a span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-0.5px);
+        }
+
+        .socials a svg {
+            width: 16px;
+            height: 16px;
+            display: block;
+            fill: currentColor;
+        }
+
+        .socials a:hover {
+            transform: translateY(-2px);
+            background: var(--neon-yellow);
+            border-color: var(--neon-yellow);
+            color: #111;
+        }
+
+        .socials a:active {
+            transform: scale(0.96);
+        }
+
+        .topbar-nav a:active,
+        .topbar-toggle:active {
+            transform: scale(0.98);
+        }
+
+        @media (min-width: 1600px) {
+            .topbar-inner {
+                min-height: 74px;
+            }
+
+            .topbar-nav a {
+                min-height: 42px;
+                padding: 0 18px;
+                font-size: 13px;
+            }
+
+            .hero,
+            .hero-inner,
+            .hero-media {
+                min-height: 720px;
+                height: 720px;
+            }
+
+            .banner,
+            .banner-layout,
+            .banner-track,
+            .banner-slide {
+                min-height: 0;
+            }
+
+            .banner-copy {
+                padding-left: 96px;
+                padding-right: 48px;
+            }
+
+            .banner-copy h2 {
+                font-size: 46px;
+                max-width: 780px;
+            }
+
+            .banner-copy p {
+                max-width: 760px;
+                font-size: 18px;
+            }
+
+            .banner-logo-wrap {
+                padding-right: 96px;
+            }
+
+            .banner-logo {
+                max-width: min(390px, 74%);
+                max-height: 210px;
+            }
+
+            .cards-title {
+                margin-bottom: 32px;
+            }
+
+            .cards-grid {
+                gap: 22px;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .hero {
+                min-height: 520px;
+            }
+
+            .hero-inner {
+                min-height: 520px;
+            }
+
+            .hero-media {
+                height: 520px;
+            }
+
+            .video-card,
+            .gif-card,
+            .video-card iframe,
+            .gif-card img {
+                min-height: 420px;
+            }
+
+            .gif-overlay p {
+                font-size: 19px;
+            }
+
+            .banner-copy {
+                padding: 24px 24px 22px 28px;
+            }
+
+            .banner-copy h2 {
+                font-size: 30px;
+            }
+
+            .banner-copy p {
+                font-size: 15px;
+            }
+
+            .cards-inner {
+                padding-left: 24px;
+                padding-right: 24px;
+                padding-bottom: 40px;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .content-pad-tight {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 880px) {
+            .topbar {
+                padding: 8px 10px 0;
+                background: transparent;
+                border-bottom-color: transparent;
+                backdrop-filter: none;
+                box-shadow: none;
+            }
+
+            .topbar.is-scrolled {
+                background: transparent;
+                border-bottom-color: transparent;
+                backdrop-filter: none;
+            }
+
+            .topbar.is-open {
+                background: transparent;
+                backdrop-filter: none;
+            }
+
+            .topbar .content-limit,
+            .topbar .content-pad {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .topbar-inner {
+                min-height: 62px;
+                gap: 12px;
+                padding: 10px 14px;
+                border-radius: 14px;
+                background: linear-gradient(135deg, rgba(255, 120, 24, 0.96), rgba(133, 68, 34, 0.92));
+                box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+                position: relative;
+                z-index: 2;
+            }
+
+            .topbar.is-open .topbar-inner {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            .topbar-mobile-brand {
+                display: inline-flex;
+                align-items: center;
+                flex: 1 1 auto;
+                max-width: calc(100% - 60px);
+                min-width: 0;
+            }
+
+            .topbar-mobile-brand img {
+                width: auto;
+                height: 42px;
+                max-width: 100%;
+            }
+
+            .topbar-toggle {
+                display: inline-flex;
+                margin-left: auto;
+                width: 44px;
+                height: 44px;
+                flex: 0 0 44px;
+                background: var(--neon-yellow);
+                box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+            }
+
+            .topbar-nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                padding: 10px;
+                border-radius: 0 0 18px 18px;
+                background: rgba(38, 17, 63, 0.88);
+                box-shadow: 0 18px 34px rgba(0, 0, 0, 0.26);
+                border-bottom: 0;
+                z-index: 1;
+            }
+
+            .topbar.is-open .topbar-nav {
+                display: flex;
+            }
+
+            .topbar-nav a {
+                justify-content: flex-start;
+                min-height: 48px;
+                padding: 0 16px;
+                border-radius: 16px;
+                background: var(--neon-yellow);
+                color: #111;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.14);
+            }
+
+            .banner-copy {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .banner-logo-wrap {
+                padding-right: 24px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .content-pad {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .content-pad-tight {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .split-layout,
+            .banner-layout {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .banner,
+            .banner-layout,
+            .banner-track,
+            .banner-slide {
+                min-height: 0;
+            }
+
+            .banner-slide {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr);
+                grid-template-rows: auto 1fr auto;
+                align-content: start;
+                overflow: hidden;
+                isolation: isolate;
+            }
+
+            #encuentro {
+                background: #e7ff14;
+            }
+
+            .banner-art {
+                background-image: var(--banner-art-mobile, var(--banner-art-desktop));
+                inset: 0;
+                width: auto;
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                opacity: 1 !important;
+                mix-blend-mode: normal;
+            }
+
+            .banner-slide::before {
+                background:
+                    linear-gradient(180deg,
+                        rgba(54, 21, 150, 0.86) 0%,
+                        rgba(72, 31, 192, 0.72) 36%,
+                        rgba(72, 31, 192, 0.40) 58%,
+                        rgba(72, 31, 192, 0.82) 100%);
+                opacity: 1;
+            }
+
+            .banner-slide[data-banner-light]::before {
+                background: linear-gradient(180deg, #e7e7e7, #e7e7e7);
+            }
+
+            .hero {
+                min-height: 360px;
+            }
+
+            .hero-inner {
+                min-height: 360px;
+            }
+
+            .hero-media {
+                height: 360px;
+                object-position: center;
+            }
+
+            .video-card,
+            .video-card iframe {
+                min-height: 300px;
+            }
+
+            .gif-card {
+                min-height: auto;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .gif-card img {
+                width: 100%;
+                height: 240px;
+                min-height: 240px;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .gif-overlay {
+                position: relative;
+                inset: auto;
+                padding: 42px 20px 30px;
+                background: #e7ff14;
+            }
+
+            .gif-overlay p {
+                margin-bottom: 18px;
+                font-size: 17px;
+                line-height: 1.3;
+            }
+
+            .banner-copy {
+                width: 100%;
+                max-width: min(320px, 72%);
+                padding: 28px 20px 12px;
+                flex: 1 1 auto;
+                align-items: flex-start;
+                justify-content: flex-start;
+                text-shadow: 0 2px 14px rgba(0, 0, 0, 0.28);
+            }
+
+            .banner-copy h2 {
+                font-size: 22px;
+                line-height: 1.06;
+                max-width: 100%;
+                margin-bottom: 14px;
+            }
+
+            .banner-copy p {
+                font-size: 14px;
+                margin-bottom: 14px;
+                max-width: 100%;
+            }
+
+            .banner-logo-wrap {
+                width: 100%;
+                flex: 0 0 auto;
+                min-height: 112px;
+                justify-content: flex-start;
+                align-items: flex-end;
+                padding: 0 20px 74px;
+                margin-top: auto;
+            }
+
+            .banner-logo {
+                max-width: 150px;
+                max-height: 84px;
+            }
+
+            .banner-slide:nth-child(1) .banner-art {
+                background-position: center center;
+            }
+
+            .banner-slide:nth-child(2) .banner-art {
+                background-position: 66% center;
+            }
+
+            .banner-slide:nth-child(3) .banner-art {
+                background-position: 62% center;
+            }
+
+            .banner-logo-wrap:empty {
+                display: none;
+            }
+
+            .banner-slide[data-banner-light] .banner-copy {
+                text-shadow: none;
+                color: #111;
+            }
+
+            .banner-controls {
+                left: 16px;
+                right: 16px;
+                bottom: 10px;
+                justify-content: center;
+            }
+
+            .banner-arrows {
+                display: none;
+            }
+
+            .cards-inner {
+                padding-left: 28px;
+                padding-right: 28px;
+                padding-top: 38px;
+                padding-bottom: 44px;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 16px;
+            }
+
+            .cards-title {
+                margin-bottom: 26px;
+                font-size: 40px;
+            }
+
+            .card-body {
+                padding: 14px 14px 16px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .hero {
+                min-height: 240px;
+            }
+
+            .hero-inner {
+                min-height: 240px;
+            }
+
+            .hero-media {
+                height: 240px;
+                object-position: center;
+            }
+
+            .topbar-inner {
+                min-height: 60px;
+            }
+
+            .topbar-nav {
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-bottom: 12px;
+            }
+
+            .topbar-nav a {
+                font-size: 11px;
+                min-height: 42px;
+            }
+
+            .video-card,
+            .video-card iframe {
+                min-height: 220px;
+            }
+
+            .gif-card {
+                min-height: auto;
+            }
+
+            .gif-card img {
+                height: 180px;
+                min-height: 180px;
+            }
+
+            .gif-overlay {
+                padding: 34px 16px 24px;
+            }
+
+            .gif-overlay-inner {
+                max-width: 100%;
+            }
+
+            .gif-overlay p {
+                font-size: 15px;
+                line-height: 1.28;
+                margin-bottom: 14px;
+                max-width: 320px;
+            }
+
+            .gif-overlay-highlight {
+                font-size: 18px;
+                margin-bottom: 18px;
+            }
+
+            .banner,
+            .banner-layout,
+            .banner-track,
+            .banner-slide {
+                min-height: 0;
+            }
+
+            .banner-slide {
+                justify-content: flex-start;
+            }
+
+            .banner-copy {
+                max-width: min(260px, 74%);
+                padding: 24px 16px 10px;
+            }
+
+            .banner-copy h2 {
+                font-size: 18px;
+                max-width: 100%;
+            }
+
+            .banner-copy p {
+                font-size: 12px;
+                line-height: 1.35;
+                max-width: 100%;
+            }
+
+            .banner-logo-wrap {
+                padding: 0 16px 64px;
+                min-height: 96px;
+            }
+
+            .banner-logo {
+                max-width: 132px;
+                max-height: 72px;
+            }
+
+            .banner-slide:nth-child(1) .banner-art {
+                background-position: center center;
+            }
+
+            .banner-slide:nth-child(2) .banner-art {
+                background-position: 68% center;
+            }
+
+            .banner-slide:nth-child(3) .banner-art {
+                background-position: 64% center;
+            }
+
+            .banner-slide[data-banner-light]::before {
+                background: linear-gradient(180deg, #e7e7e7, #e7e7e7);
+            }
+
+            .banner-dots {
+                gap: 6px;
+            }
+
+            .banner-dot {
+                width: 44px;
+                height: 44px;
+            }
+
+            .pill-btn,
+            .footer-link {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-inner {
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 30px;
+                padding-bottom: 34px;
+            }
+
+            .cards-title {
+                font-size: 34px;
+                margin-bottom: 22px;
+            }
+
+            .card {
+                border-radius: 0 0 14px 14px;
+            }
+
+            .card-media {
+                aspect-ratio: 1.15 / 1;
+            }
+
+            .card-body {
+                padding: 14px 14px 18px;
+            }
+
+            .card-body p {
+                font-size: 13px;
+                line-height: 1.5;
+            }
+
+            .socials {
+                gap: 10px;
+            }
+
+            .socials a {
+                width: 38px;
+                height: 38px;
+                font-size: 13px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .cards-zone::before {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+    <main class="site-shell" id="main-content">
+        <header class="topbar" id="topbar">
+            <div class="content-limit content-pad">
+                <div class="topbar-inner">
+                    <a class="topbar-mobile-brand" href="#inicio" aria-label="Ir al inicio">
+                        <img src="{{ $escenarioAssets }}/escenario-portada.png" alt="Escenario del Mundo">
+                    </a>
+
+                    <button class="topbar-toggle" type="button" aria-expanded="false" aria-controls="topbar-nav"
+                        aria-label="Abrir navegación">
+                        <span class="topbar-toggle-lines"></span>
+                    </button>
+
+                    <nav class="topbar-nav" id="topbar-nav" aria-label="Secciones del proyecto">
+                        <a href="#inicio">Inicio</a>
+                        <a href="#encuentro">Encuentro</a>
+                        <a href="#movimiento">Movimiento</a>
+                        <a href="#contenidos">Contenidos</a>
+                        <a href="#contacto">Contacto</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <section id="inicio" class="hero">
+            <div class="content-limit content-pad-tight">
+                <div class="hero-inner">
+                    <video class="hero-media" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+                        <source src="{{ $escenarioAssets }}/banner-principal-logo.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <section id="encuentro" class="split">
+            <div class="content-limit content-pad-tight split-layout">
+                <div class="encuentro-col video-card">
+                    <iframe
+                        src="https://www.youtube.com/embed/KEUXlVqMWXI?rel=0&modestbranding=1"
+                        title="Video de YouTube"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="encuentro-col gif-card">
+                    <img src="{{ $escenarioAssets }}/banner-ojo-960x600.gif" alt="Escenario del Mundo">
+                    <div class="gif-overlay">
+                        <div class="gif-overlay-inner">
+                            <p>
+                                Nuestro país está vivo cuando nuestras culturas, artes y saberes se movilizan y generan
+                                encuentros en nuestros territorios y el mundo. Por eso, creamos el Sistema Nacional de
+                                Circulación que da origen a la Plataforma Circuitos Vivos.
+                            </p>
+                            <p>
+                                Comenzamos este viaje con una agenda durante marzo y abril en torno a las artes escénicas
+                                y vivas.
+                            </p>
+                            <p class="gif-overlay-highlight">¡Tú también eres parte!</p>
+                            <a class="pill-btn" href="#contenidos">Conoce más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="movimiento" class="banner">
+            <div class="content-limit content-pad-tight banner-layout">
+                <div class="banner-track" id="banner-track">
+                    <article class="banner-slide is-active" data-banner-slide
+                        style="--banner-bg: linear-gradient(90deg, rgba(75, 41, 129, 0.98), rgba(120, 54, 168, 0.94)); --banner-bg-opacity: 0.24;">
+                        <div class="banner-art"
+                            style="--banner-art-desktop: url('{{ $escenarioAssets }}/escenario-1869x350-circulos-alt.png'); --banner-art-mobile: url('{{ $escenarioAssets }}/escenario-mobile-banner-circulos.png'); opacity: 1; mix-blend-mode: normal; background-position: center center;"></div>
+                        <div class="banner-copy">
+                            <h2>Culturas, artes y saberes en movimiento</h2>
+                            <div>
+                                <a class="pill-btn" href="#contenidos">Más información</a>
+                            </div>
+                        </div>
+                        <div class="banner-logo-wrap">
+                            <img class="banner-logo" src="{{ $escenarioAssets }}/escenario-logo-circuito.png"
+                                alt="Logo del banner">
+                        </div>
+                    </article>
+
+                    <article class="banner-slide" data-banner-slide
+                        style="--banner-bg: linear-gradient(90deg, rgba(42, 22, 92, 0.98), rgba(230, 0, 151, 0.84)); --banner-bg-opacity: 0.18;">
+                        <div class="banner-art"
+                            style="--banner-art-desktop: url('{{ $escenarioAssets }}/escenario-1869x350-fiav-alt.png'); --banner-art-mobile: url('{{ $escenarioAssets }}/escenario-mobile-banner-circulos-alt-2.png'); opacity: 1; mix-blend-mode: normal; background-position: center center;"></div>
+                        <div class="banner-copy">
+                            <h2>El FIAV se descentraliza y viaja a todas las regiones</h2>
+                            <div>
+                                <a class="pill-btn" href="#contenidos">Más información</a>
+                            </div>
+                        </div>
+                        <div class="banner-logo-wrap">
+                            <img class="banner-logo" src="{{ $escenarioAssets }}/escenario-logo-fian.png"
+                                alt="Logo del banner">
+                        </div>
+                    </article>
+
+                    <article class="banner-slide" data-banner-slide
+                        style="--banner-bg: linear-gradient(90deg, rgba(157, 149, 40, 0.98), rgba(201, 183, 177, 0.9)); --banner-bg-opacity: 0.18;">
+                        <div class="banner-art"
+                            style="--banner-art-desktop: url('{{ $escenarioAssets }}/escenario-1869x350-teatro-alt.png'); --banner-art-mobile: url('{{ $escenarioAssets }}/escenario-mobile-banner-circulos-alt.png'); opacity: 1; mix-blend-mode: normal; background-position: center center;"></div>
+                        <div class="banner-copy">
+                            <h2>¡Celebra el Día Internacional del Teatro!</h2>
+                            <p>135 funciones gratuitas a nivel nacional en salas concertadas de todo el país.</p>
+                            <div>
+                                <a class="pill-btn" href="#contenidos">Más información</a>
+                            </div>
+                        </div>
+                        <div class="banner-logo-wrap">
+                            <img class="banner-logo" src="{{ $escenarioAssets }}/escenario-logo-teatro.png"
+                                alt="Logo del banner">
+                        </div>
+                    </article>
+
+                    <article class="banner-slide" data-banner-slide data-banner-light
+                        style="--banner-bg: linear-gradient(90deg, #e7e7e7, #e7e7e7); --banner-bg-opacity: 1;">
+                        <div class="banner-art"
+                            style="--banner-art-desktop: none; --banner-art-mobile: none; opacity: 0;"></div>
+                        <div class="banner-copy">
+                            <h2>Iberescena 2026- 25 al 28 de marzo</h2>
+                            <p>
+                                Colombia es la sede de la Reunión del Consejo Intergubernamental de IBERESCENA, el Fondo
+                                de Ayudas para las Artes Escénicas Iberoamericanas
+                            </p>
+                            <div>
+                                <a class="pill-btn" href="#contenidos">Más información</a>
+                            </div>
+                        </div>
+                        <div class="banner-logo-wrap"></div>
+                    </article>
+
+                    <article class="banner-slide" data-banner-slide data-banner-light
+                        style="--banner-bg: linear-gradient(90deg, #e7e7e7, #e7e7e7); --banner-bg-opacity: 1;">
+                        <div class="banner-art"
+                            style="--banner-art-desktop: none; --banner-art-mobile: none; opacity: 0;"></div>
+                        <div class="banner-copy">
+                            <h2>Colombia le rinde homenaje a la maestra Delia Zapata Olivella</h2>
+                            <div>
+                                <a class="pill-btn" href="#contenidos">Más información</a>
+                            </div>
+                        </div>
+                        <div class="banner-logo-wrap"></div>
+                    </article>
+
+                    <div class="banner-controls">
+                        <div class="banner-dots" id="banner-dots">
+                            <button class="banner-dot is-active" type="button" aria-label="Ir al banner 1"></button>
+                            <button class="banner-dot" type="button" aria-label="Ir al banner 2"></button>
+                            <button class="banner-dot" type="button" aria-label="Ir al banner 3"></button>
+                            <button class="banner-dot" type="button" aria-label="Ir al banner 4"></button>
+                            <button class="banner-dot" type="button" aria-label="Ir al banner 5"></button>
+                        </div>
+                        <div class="banner-arrows">
+                            <button class="banner-toggle" id="banner-toggle" type="button" aria-pressed="false"
+                                aria-label="Pausar carrusel">Pausar</button>
+                            <button class="banner-arrow" id="banner-prev" type="button" aria-label="Banner anterior">&#8249;</button>
+                            <button class="banner-arrow" id="banner-next" type="button" aria-label="Banner siguiente">&#8250;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contenidos" class="cards-zone">
+            <div class="cards-inner">
+                <h2 class="cards-title">Noticias</h2>
+                <div class="cards-grid">
+                    <article class="card">
+                        <div class="card-media"></div>
+                        <div class="card-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
+                                tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                            </p>
+                            <a class="mini-btn" href="#">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media"></div>
+                        <div class="card-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
+                                tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                            </p>
+                            <a class="mini-btn" href="#">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media"></div>
+                        <div class="card-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
+                                tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                            </p>
+                            <a class="mini-btn" href="#">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media"></div>
+                        <div class="card-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
+                                tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                            </p>
+                            <a class="mini-btn" href="#">Leer más</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contacto" class="footer">
+            <div class="content-limit content-pad">
+                <a class="footer-link" href="https://www.mincultura.gov.co/" target="_blank" rel="noreferrer">
+                    https://www.mincultura.gov.co/
+                </a>
+                <div class="socials">
+                    <a href="https://www.facebook.com/MinisterioCultura/" target="_blank" rel="noreferrer"
+                        aria-label="Facebook de Mincultura">
+                        <span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6H17V4.1c-.4-.1-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.1H7v3.2h3v8.2h3.5Z" />
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://x.com/mincultura" target="_blank" rel="noreferrer"
+                        aria-label="X de Mincultura">
+                        <span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M18.9 3H21l-4.6 5.3L21.8 21h-4.2l-3.3-4.8L10.1 21H8l4.9-5.6L7.7 3h4.3l3 4.4L18.9 3Zm-1.5 16.3H18L11.2 4.6h-.7l6.9 14.7Z" />
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://www.instagram.com/mincultura/" target="_blank" rel="noreferrer"
+                        aria-label="Instagram de Mincultura">
+                        <span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M12 7.1A4.9 4.9 0 1 0 12 17a4.9 4.9 0 0 0 0-9.9Zm0 8.1A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4Zm6.2-8.3a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM21 7c-.1-1.5-.4-2.5-1.1-3.3-.8-.8-1.8-1.1-3.3-1.1C15.1 2.5 14.8 2.5 12 2.5s-3.1 0-4.6.1c-1.5.1-2.5.4-3.3 1.1C3.3 4.5 3 5.5 2.9 7 2.8 8.5 2.8 8.8 2.8 12s0 3.5.1 5c.1 1.5.4 2.5 1.1 3.3.8.8 1.8 1.1 3.3 1.1 1.5.1 1.8.1 4.6.1s3.1 0 4.6-.1c1.5-.1 2.5-.4 3.3-1.1.8-.8 1.1-1.8 1.1-3.3.1-1.5.1-1.8.1-5s0-3.5-.1-5Zm-2 10.3c-.1 1.1-.2 1.7-.5 2.1-.4.4-1 .5-2.1.5-1.5.1-1.8.1-4.4.1s-2.9 0-4.4-.1c-1.1-.1-1.7-.2-2.1-.5-.4-.4-.5-1-.5-2.1C4.9 15.8 4.9 15.5 4.9 12s0-3.8.1-5.3c.1-1.1.2-1.7.5-2.1.4-.4 1-.5 2.1-.5C9.1 4 9.4 4 12 4s2.9 0 4.4.1c1.1.1 1.7.2 2.1.5.4.4.5 1 .5 2.1.1 1.5.1 1.8.1 5.3s0 3.8-.1 5.3Z" />
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://www.youtube.com/@Mincultura" target="_blank" rel="noreferrer"
+                        aria-label="YouTube de Mincultura">
+                        <span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M21.6 7.2a2.9 2.9 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.9 2.9 0 0 0-2 2A30.7 30.7 0 0 0 2 12a30.7 30.7 0 0 0 .4 4.8 2.9 2.9 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.9 2.9 0 0 0 2-2A30.7 30.7 0 0 0 22 12a30.7 30.7 0 0 0-.4-4.8ZM10.1 15.1V8.9l5.2 3.1-5.2 3.1Z" />
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        (() => {
+            const cards = document.querySelectorAll('.card');
+            const topbar = document.getElementById('topbar');
+            const toggle = document.querySelector('.topbar-toggle');
+            const nav = document.getElementById('topbar-nav');
+            const navLinks = nav ? [...nav.querySelectorAll('a')] : [];
+            const sections = [...document.querySelectorAll('section[id], footer[id]')];
+            const slides = [...document.querySelectorAll('[data-banner-slide]')];
+            const dots = [...document.querySelectorAll('.banner-dot')];
+            const prevButton = document.getElementById('banner-prev');
+            const nextButton = document.getElementById('banner-next');
+            const toggleButton = document.getElementById('banner-toggle');
+            const heroVideo = document.querySelector('.hero-media');
+            let currentSlide = 0;
+            let bannerTimer = null;
+            let bannerPaused = false;
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    setTimeout(() => {
+                        entry.target.classList.add('is-visible');
+                    }, index * 90);
+
+                    observer.unobserve(entry.target);
+                });
+            }, { threshold: 0.2 });
+
+            cards.forEach((card) => observer.observe(card));
+
+            const renderBanner = (index) => {
+                if (!slides.length) {
+                    return;
+                }
+
+                currentSlide = (index + slides.length) % slides.length;
+
+                slides.forEach((slide, slideIndex) => {
+                    slide.classList.toggle('is-active', slideIndex === currentSlide);
+                });
+
+                dots.forEach((dot, dotIndex) => {
+                    dot.classList.toggle('is-active', dotIndex === currentSlide);
+                });
+            };
+
+            const queueBanner = () => {
+                if (!slides.length || bannerPaused || reduceMotion.matches) {
+                    return;
+                }
+
+                window.clearInterval(bannerTimer);
+                bannerTimer = window.setInterval(() => {
+                    renderBanner(currentSlide + 1);
+                }, 5000);
+            };
+
+            if (slides.length) {
+                renderBanner(0);
+                queueBanner();
+
+                dots.forEach((dot, dotIndex) => {
+                    dot.addEventListener('click', () => {
+                        renderBanner(dotIndex);
+                        queueBanner();
+                    });
+                });
+
+                if (prevButton) {
+                    prevButton.addEventListener('click', () => {
+                        renderBanner(currentSlide - 1);
+                        queueBanner();
+                    });
+                }
+
+                if (nextButton) {
+                    nextButton.addEventListener('click', () => {
+                        renderBanner(currentSlide + 1);
+                        queueBanner();
+                    });
+                }
+
+                if (toggleButton) {
+                    const syncCarouselToggle = () => {
+                        toggleButton.textContent = bannerPaused ? 'Reanudar' : 'Pausar';
+                        toggleButton.setAttribute('aria-pressed', bannerPaused ? 'true' : 'false');
+                        toggleButton.setAttribute('aria-label', bannerPaused ? 'Reanudar carrusel' : 'Pausar carrusel');
+                    };
+
+                    syncCarouselToggle();
+
+                    toggleButton.addEventListener('click', () => {
+                        bannerPaused = !bannerPaused;
+                        window.clearInterval(bannerTimer);
+                        if (!bannerPaused) {
+                            queueBanner();
+                        }
+                        syncCarouselToggle();
+                    });
+                }
+
+                const bannerTrack = document.getElementById('banner-track');
+                if (bannerTrack) {
+                    bannerTrack.addEventListener('mouseenter', () => {
+                        window.clearInterval(bannerTimer);
+                    });
+
+                    bannerTrack.addEventListener('mouseleave', () => {
+                        if (!bannerPaused) {
+                            queueBanner();
+                        }
+                    });
+
+                    bannerTrack.addEventListener('focusin', () => {
+                        window.clearInterval(bannerTimer);
+                    });
+
+                    bannerTrack.addEventListener('focusout', () => {
+                        if (!bannerPaused) {
+                            queueBanner();
+                        }
+                    });
+                }
+            }
+
+            if (heroVideo && reduceMotion.matches) {
+                heroVideo.pause();
+                heroVideo.removeAttribute('autoplay');
+            }
+
+            const handleReducedMotionChange = (event) => {
+                window.clearInterval(bannerTimer);
+                if (event.matches) {
+                    bannerPaused = true;
+                    if (toggleButton) {
+                        toggleButton.textContent = 'Reanudar';
+                        toggleButton.setAttribute('aria-pressed', 'true');
+                        toggleButton.setAttribute('aria-label', 'Reanudar carrusel');
+                    }
+                    if (heroVideo) {
+                        heroVideo.pause();
+                    }
+                    return;
+                }
+
+                bannerPaused = false;
+                if (toggleButton) {
+                    toggleButton.textContent = 'Pausar';
+                    toggleButton.setAttribute('aria-pressed', 'false');
+                    toggleButton.setAttribute('aria-label', 'Pausar carrusel');
+                }
+                queueBanner();
+            };
+
+            if (typeof reduceMotion.addEventListener === 'function') {
+                reduceMotion.addEventListener('change', handleReducedMotionChange);
+            } else if (typeof reduceMotion.addListener === 'function') {
+                reduceMotion.addListener(handleReducedMotionChange);
+            }
+
+            if (topbar && toggle && nav) {
+                const closeMenu = () => {
+                    topbar.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                };
+
+                const openMenu = () => {
+                    topbar.classList.add('is-open');
+                    toggle.setAttribute('aria-expanded', 'true');
+                };
+
+                toggle.addEventListener('click', () => {
+                    if (topbar.classList.contains('is-open')) {
+                        closeMenu();
+                        return;
+                    }
+
+                    openMenu();
+                });
+
+                navLinks.forEach((link) => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth <= 880) {
+                            closeMenu();
+                        }
+                    });
+                });
+
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 880) {
+                        closeMenu();
+                    }
+                });
+
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape') {
+                        closeMenu();
+                    }
+                });
+            }
+
+            const setActiveLink = () => {
+                let currentId = 'inicio';
+
+                sections.forEach((section) => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 120 && rect.bottom >= 120) {
+                        currentId = section.id;
+                    }
+                });
+
+                navLinks.forEach((link) => {
+                    const isActive = link.getAttribute('href') === `#${currentId}`;
+                    link.classList.toggle('is-active', isActive);
+                });
+            };
+
+            const syncTopbarState = () => {
+                if (!topbar) {
+                    return;
+                }
+
+                topbar.classList.toggle('is-scrolled', window.scrollY > 24);
+            };
+
+            syncTopbarState();
+            setActiveLink();
+            document.addEventListener('scroll', syncTopbarState, { passive: true });
+            document.addEventListener('scroll', setActiveLink, { passive: true });
+        })();
+    </script>
+    <script src="https://cdn.www.gov.co/layout-govco-v5/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
