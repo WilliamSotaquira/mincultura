@@ -1,4 +1,3 @@
-@php($escenarioAssets = asset('assets/escenario'))
 <!DOCTYPE html>
 <html lang="es">
 
@@ -485,14 +484,16 @@
 
         .banner-controls {
             position: absolute;
-            left: 24px;
-            right: 24px;
+            left: 50%;
             bottom: 18px;
             z-index: 2;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             gap: 18px;
+            width: max-content;
+            max-width: calc(100% - 48px);
+            transform: translateX(-50%);
         }
 
         .banner-dots {
@@ -592,7 +593,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: url('{{ $escenarioAssets }}/escenario-fondo-manos.png') center top / cover no-repeat;
+            background: url('https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-fondo-manos.png') center top / cover no-repeat;
             transform: scale(1.04);
             transform-origin: center center;
             animation: cards-bg-zoom 18s ease-in-out infinite alternate;
@@ -603,21 +604,39 @@
             position: relative;
             z-index: 1;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
             width: 100%;
+            overflow: hidden;
+        }
+
+        @media (min-width: 1101px) {
+            .cards-grid > .card:nth-last-child(3):nth-child(4n + 1) {
+                grid-column: 2;
+            }
+
+            .cards-grid > .card:nth-last-child(2):nth-child(4n + 1) {
+                grid-column: 2;
+            }
+        }
+
+        .cards-header {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 36px;
         }
 
         .cards-inner {
             position: relative;
             z-index: 1;
             width: 100%;
-            max-width: 1400px;
+            max-width: 1240px;
             margin: 0 auto;
             padding-left: 46px;
             padding-right: 46px;
             padding-top: 52px;
-            padding-bottom: 64px;
+            padding-bottom: 84px;
+            overflow: hidden;
         }
 
         @keyframes cards-bg-zoom {
@@ -633,7 +652,7 @@
         .cards-title {
             position: relative;
             z-index: 1;
-            margin: 0 0 36px;
+            margin: 0;
             color: #111;
             font-size: clamp(36px, 5vw, 56px);
             line-height: 1;
@@ -645,6 +664,9 @@
             border-radius: 0 0 16px 16px;
             overflow: hidden;
             box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             transform: translateY(22px);
             opacity: 0;
             transition: transform 240ms ease, box-shadow 240ms ease, opacity 500ms ease;
@@ -657,7 +679,7 @@
 
         .card.is-visible:hover,
         .card.is-visible:focus-within {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-6px);
             box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
         }
 
@@ -667,24 +689,38 @@
             overflow: hidden;
         }
 
-        .card-media::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, #040404, #101010);
+        .card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transform: scale(1);
             transform-origin: center center;
             transition: transform 320ms ease;
         }
 
-        .card:hover .card-media::before,
-        .card:focus-within .card-media::before {
+        .card:hover .card-media img,
+        .card:focus-within .card-media img {
             transform: scale(1.08);
         }
 
         .card-body {
             padding: 18px 18px 20px;
             color: #1d1d1d;
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+        }
+
+        .card-body h3 {
+            margin: 0 0 14px;
+            font-size: 19px;
+            line-height: 1.18;
+            font-weight: 800;
+            min-height: calc(19px * 1.18 * 4);
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            overflow: hidden;
         }
 
         .card-body p {
@@ -697,9 +733,12 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-width: 116px;
+            align-self: flex-start;
+            width: fit-content;
+            min-width: 92px;
             min-height: 44px;
-            padding: 8px 14px;
+            padding: 8px 12px;
+            margin-top: auto;
             border-radius: 999px;
             background: var(--neon-yellow);
             color: #111;
@@ -883,6 +922,7 @@
             }
 
             .cards-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
                 gap: 22px;
             }
         }
@@ -926,11 +966,12 @@
             .cards-inner {
                 padding-left: 24px;
                 padding-right: 24px;
-                padding-bottom: 40px;
+                padding-bottom: 56px;
             }
 
             .cards-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 18px;
             }
 
             .content-pad-tight {
@@ -1213,9 +1254,12 @@
             }
 
             .banner-controls {
-                left: 16px;
-                right: 16px;
-                bottom: 10px;
+                position: static;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                margin-top: 12px;
+                padding: 0 20px 18px;
                 justify-content: center;
             }
 
@@ -1227,7 +1271,7 @@
                 padding-left: 28px;
                 padding-right: 28px;
                 padding-top: 38px;
-                padding-bottom: 44px;
+                padding-bottom: 60px;
             }
 
             .cards-grid {
@@ -1235,13 +1279,21 @@
                 gap: 16px;
             }
 
-            .cards-title {
+            .cards-header {
                 margin-bottom: 26px;
+            }
+
+            .cards-title {
                 font-size: 40px;
             }
 
             .card-body {
                 padding: 14px 14px 16px;
+            }
+
+            .card-body h3 {
+                font-size: 18px;
+                min-height: calc(18px * 1.18 * 4);
             }
         }
 
@@ -1370,7 +1422,22 @@
                 height: 44px;
             }
 
-            .pill-btn,
+            .banner-controls {
+                position: static;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                margin-top: 12px;
+                padding: 0 16px 16px;
+                justify-content: center;
+            }
+
+            .pill-btn {
+                width: fit-content;
+                max-width: none;
+                align-self: flex-start;
+            }
+
             .footer-link {
                 width: 100%;
                 max-width: 280px;
@@ -1378,18 +1445,22 @@
 
             .cards-grid {
                 grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .cards-header {
+                margin-bottom: 22px;
             }
 
             .cards-inner {
                 padding-left: 20px;
                 padding-right: 20px;
                 padding-top: 30px;
-                padding-bottom: 34px;
+                padding-bottom: 46px;
             }
 
             .cards-title {
                 font-size: 34px;
-                margin-bottom: 22px;
             }
 
             .card {
@@ -1402,6 +1473,10 @@
 
             .card-body {
                 padding: 14px 14px 18px;
+            }
+
+            .card-body h3 {
+                min-height: auto;
             }
 
             .card-body p {
@@ -1447,7 +1522,7 @@
             <div class="content-limit content-pad">
                 <div class="topbar-inner">
                     <a class="topbar-mobile-brand" href="#inicio" aria-label="Ir al inicio">
-                        <img src="{{ $escenarioAssets }}/escenario-portada.png" alt="Escenario del Mundo">
+                        <img src="https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-portada.png" alt="Escenario del Mundo">
                     </a>
 
                     <button class="topbar-toggle" type="button" aria-expanded="false" aria-controls="topbar-nav"
@@ -1469,8 +1544,9 @@
         <section id="inicio" class="hero">
             <div class="content-limit content-pad-tight">
                 <div class="hero-inner">
-                    <video class="hero-media" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-                        <source src="{{ $escenarioAssets }}/banner-principal-logo.mp4" type="video/mp4">
+                    <video class="hero-media" autoplay muted loop playsinline webkit-playsinline="true" preload="auto"
+                        aria-hidden="true">
+                        <source src="https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/banner-principal-logo.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -1488,7 +1564,7 @@
                 </div>
 
                 <div class="encuentro-col gif-card">
-                    <img src="{{ $escenarioAssets }}/banner-ojo-960x600.gif" alt="Escenario del Mundo">
+                    <img src="https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/banner-ojo-960x600.gif" alt="Escenario del Mundo">
                     <div class="gif-overlay">
                         <div class="gif-overlay-inner">
                             <p>
@@ -1501,7 +1577,7 @@
                                 y vivas.
                             </p>
                             <p class="gif-overlay-highlight">¡Tú también eres parte!</p>
-                            <a class="pill-btn" href="#contenidos">Conoce más</a>
+                            <a class="pill-btn" href="https://www.mincultura.gov.co/noticias/Paginas/el-minculturas-lanza-el-sistema-nacional-de-circulacion-artistica-y-cultural-para-impulsar-el-acceso-de-las%20comunidades-a-las-expresiones-culturales.aspx">Conoce más</a>
                         </div>
                     </div>
                 </div>
@@ -1512,41 +1588,9 @@
             <div class="content-limit content-pad-tight banner-layout">
                 <div class="banner-track" id="banner-track">
                     <article class="banner-slide is-active" data-banner-slide
-                        style="--banner-bg: linear-gradient(90deg, rgba(75, 41, 129, 0.98), rgba(120, 54, 168, 0.94)); --banner-bg-opacity: 0.24;">
-                        <div class="banner-art"
-                            style="--banner-art-desktop: url('{{ $escenarioAssets }}/escenario-1869x350-circulos-alt.png'); --banner-art-mobile: url('{{ $escenarioAssets }}/escenario-mobile-banner-circulos.png'); opacity: 1; mix-blend-mode: normal; background-position: center center;"></div>
-                        <div class="banner-copy">
-                            <h2>Culturas, artes y saberes en movimiento</h2>
-                            <div>
-                                <a class="pill-btn" href="#contenidos">Más información</a>
-                            </div>
-                        </div>
-                        <div class="banner-logo-wrap">
-                            <img class="banner-logo" src="{{ $escenarioAssets }}/escenario-logo-circuito.png"
-                                alt="Logo del banner">
-                        </div>
-                    </article>
-
-                    <article class="banner-slide" data-banner-slide
-                        style="--banner-bg: linear-gradient(90deg, rgba(42, 22, 92, 0.98), rgba(230, 0, 151, 0.84)); --banner-bg-opacity: 0.18;">
-                        <div class="banner-art"
-                            style="--banner-art-desktop: url('{{ $escenarioAssets }}/escenario-1869x350-fiav-alt.png'); --banner-art-mobile: url('{{ $escenarioAssets }}/escenario-mobile-banner-circulos-alt-2.png'); opacity: 1; mix-blend-mode: normal; background-position: center center;"></div>
-                        <div class="banner-copy">
-                            <h2>El FIAV se descentraliza y viaja a todas las regiones</h2>
-                            <div>
-                                <a class="pill-btn" href="#contenidos">Más información</a>
-                            </div>
-                        </div>
-                        <div class="banner-logo-wrap">
-                            <img class="banner-logo" src="{{ $escenarioAssets }}/escenario-logo-fian.png"
-                                alt="Logo del banner">
-                        </div>
-                    </article>
-
-                    <article class="banner-slide" data-banner-slide
                         style="--banner-bg: linear-gradient(90deg, rgba(157, 149, 40, 0.98), rgba(201, 183, 177, 0.9)); --banner-bg-opacity: 0.18;">
                         <div class="banner-art"
-                            style="--banner-art-desktop: url('{{ $escenarioAssets }}/escenario-1869x350-teatro-alt.png'); --banner-art-mobile: url('{{ $escenarioAssets }}/escenario-mobile-banner-circulos-alt.png'); opacity: 1; mix-blend-mode: normal; background-position: center center;"></div>
+                            style="--banner-art-desktop: url('https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-1869x350-teatro-alt.png'); --banner-art-mobile: url('https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-mobile-banner-circulos-alt.png'); opacity: 1; mix-blend-mode: normal; background-position: center center;"></div>
                         <div class="banner-copy">
                             <h2>¡Celebra el Día Internacional del Teatro!</h2>
                             <p>135 funciones gratuitas a nivel nacional en salas concertadas de todo el país.</p>
@@ -1555,7 +1599,39 @@
                             </div>
                         </div>
                         <div class="banner-logo-wrap">
-                            <img class="banner-logo" src="{{ $escenarioAssets }}/escenario-logo-teatro.png"
+                            <img class="banner-logo" src="https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-logo-teatro.png"
+                                alt="Logo del banner">
+                        </div>
+                    </article>
+
+                    <article class="banner-slide" data-banner-slide
+                        style="--banner-bg: linear-gradient(90deg, rgba(42, 22, 92, 0.98), rgba(230, 0, 151, 0.84)); --banner-bg-opacity: 0.18;">
+                        <div class="banner-art"
+                            style="--banner-art-desktop: url('https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-1869x350-fiav-alt.png'); --banner-art-mobile: url('https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-mobile-banner-circulos-alt-2.png'); opacity: 1; mix-blend-mode: normal; background-position: center center;"></div>
+                        <div class="banner-copy">
+                            <h2>El FIAV se descentraliza y viaja a todas las regiones</h2>
+                            <div>
+                                <a class="pill-btn" href="#contenidos">Más información</a>
+                            </div>
+                        </div>
+                        <div class="banner-logo-wrap">
+                            <img class="banner-logo" src="https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-logo-fian.png"
+                                alt="Logo del banner">
+                        </div>
+                    </article>
+
+                    <article class="banner-slide" data-banner-slide
+                        style="--banner-bg: linear-gradient(90deg, rgba(75, 41, 129, 0.98), rgba(120, 54, 168, 0.94)); --banner-bg-opacity: 0.24;">
+                        <div class="banner-art"
+                            style="--banner-art-desktop: url('https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-1869x350-circulos-alt.png'); --banner-art-mobile: url('https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-mobile-banner-circulos.png'); opacity: 1; mix-blend-mode: normal; background-position: center center;"></div>
+                        <div class="banner-copy">
+                            <h2>Culturas, artes y saberes en movimiento</h2>
+                            <div>
+                                <a class="pill-btn" href="#contenidos">Más información</a>
+                            </div>
+                        </div>
+                        <div class="banner-logo-wrap">
+                            <img class="banner-logo" src="https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-logo-circuito.png"
                                 alt="Logo del banner">
                         </div>
                     </article>
@@ -1611,46 +1687,92 @@
 
         <section id="contenidos" class="cards-zone">
             <div class="cards-inner">
-                <h2 class="cards-title">Noticias</h2>
+                <div class="cards-header">
+                    <h2 class="cards-title">Noticias</h2>
+                </div>
                 <div class="cards-grid">
                     <article class="card">
-                        <div class="card-media"></div>
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/dia-mundial-teatro.jpg"
+                                alt="Día Mundial del Teatro">
+                        </div>
                         <div class="card-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
-                                tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                            </p>
-                            <a class="mini-btn" href="#">Leer más</a>
+                            <h3>Con 150 funciones gratuitas en todo el país, Colombia celebra el Día Mundial del Teatro</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/con-150-funciones-gratuitas-en-todo-el-pais-colombia-celebra-el-dia-mundial-del-teatro.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
                         </div>
                     </article>
                     <article class="card">
-                        <div class="card-media"></div>
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/fiav-bogota-2026-parques-calles.jpg"
+                                alt="FIAV en calles y parques de Bogotá">
+                        </div>
                         <div class="card-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
-                                tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                            </p>
-                            <a class="mini-btn" href="#">Leer más</a>
+                            <h3>FIAV llega a las calles y parques de Bogotá con eventos gratuitos</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/fiav-llega-a-las-calles-y-parques-de-bogota-con-eventos-gratuitos.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
                         </div>
                     </article>
                     <article class="card">
-                        <div class="card-media"></div>
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/caribe-fiav-bogota.jpg"
+                                alt="El Caribe colombiano en el FIAV Bogotá 2026">
+                        </div>
                         <div class="card-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
-                                tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                            </p>
-                            <a class="mini-btn" href="#">Leer más</a>
+                            <h3>El Caribe colombiano presente en el FIAV Bogotá 2026 para mostrar lo mejor de sus artes vivas</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/el-caribe-colombiano-presente-en-el-fiav-bogota-2026-para-mostrar-lo-mejor-de-sus-artes-vivas.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
                         </div>
                     </article>
                     <article class="card">
-                        <div class="card-media"></div>
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/fiav-2026.jpg"
+                                alt="FIAV">
+                        </div>
                         <div class="card-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
-                                tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                            </p>
-                            <a class="mini-btn" href="#">Leer más</a>
+                            <h3>Estas serán las ciudades y obras que estarán por el país durante el FIAV Bogotá 2026</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/estas-seran-las-ciudades-y-obras-que-estaran-por-el-pais-durante-el-fiav-bogota-2026.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/plataforma-circuitos-vivos.jpg"
+                                alt="Circuitos Vivos">
+                        </div>
+                        <div class="card-body">
+                            <h3>El Minculturas impulsa la descentralización de la oferta cultural en Colombia con la Plataforma Circuitos Vivos</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/el-minculturas-impulsa-la-descentralizacion-de-la-oferta-cultural-en-colombia-con-la-plataforma-circuitos-vivos.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/delia-zapata-olivella.jpg"
+                                alt="Homenaje a Delia Zapata Olivella">
+                        </div>
+                        <div class="card-body">
+                            <h3>Año Delia: Colombia conmemora el centenario de Delia Zapata Olivella</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/ano-delia-colombia-conmemora-el-centenario-de-delia-zapata-olivella.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/iberescena-2026.jpg"
+                                alt="Iberescena">
+                        </div>
+                        <div class="card-body">
+                            <h3>Colombia acoge la reunión Iberescena en el marco del FIAV Bogotá 2026</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/colombia-acoge-la-reunion-iberescena-en-el-marco-del-fiav-bogota-2026.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
                         </div>
                     </article>
                 </div>
@@ -1834,9 +1956,26 @@
                 }
             }
 
-            if (heroVideo && reduceMotion.matches) {
-                heroVideo.pause();
-                heroVideo.removeAttribute('autoplay');
+            if (heroVideo) {
+                const tryPlayHeroVideo = () => {
+                    heroVideo.muted = true;
+                    heroVideo.defaultMuted = true;
+                    heroVideo.setAttribute('muted', '');
+
+                    const playAttempt = heroVideo.play();
+                    if (playAttempt && typeof playAttempt.catch === 'function') {
+                        playAttempt.catch(() => {});
+                    }
+                };
+
+                if (reduceMotion.matches) {
+                    heroVideo.pause();
+                    heroVideo.removeAttribute('autoplay');
+                } else {
+                    tryPlayHeroVideo();
+                    heroVideo.addEventListener('loadedmetadata', tryPlayHeroVideo);
+                    heroVideo.addEventListener('canplay', tryPlayHeroVideo);
+                }
             }
 
             const handleReducedMotionChange = (event) => {
@@ -1859,6 +1998,15 @@
                     toggleButton.textContent = 'Pausar';
                     toggleButton.setAttribute('aria-pressed', 'false');
                     toggleButton.setAttribute('aria-label', 'Pausar carrusel');
+                }
+                if (heroVideo) {
+                    heroVideo.setAttribute('autoplay', '');
+                    heroVideo.muted = true;
+                    heroVideo.defaultMuted = true;
+                    const playAttempt = heroVideo.play();
+                    if (playAttempt && typeof playAttempt.catch === 'function') {
+                        playAttempt.catch(() => {});
+                    }
                 }
                 queueBanner();
             };
