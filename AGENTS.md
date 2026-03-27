@@ -11,8 +11,9 @@ Usar este flujo cuando el usuario pegue correos en el chat para preparar una lis
 - Pedir `solicitante`.
 
 2. Crear carpeta de trabajo.
-- Ruta base: `database/mailing/<nombre-campana>`.
-- El nombre de carpeta se toma exactamente del nombre enviado por el usuario.
+- Ruta base: `database/mailing/boletin <numero de boletin>`.
+- La carpeta debe crearse usando solo el `numero de boletin`.
+- No usar el `nombre del envio` para crear rutas o nombres de carpeta.
 - Crear primero `datos.txt` vacio dentro de la carpeta.
 
 3. Carga manual de la base por parte del usuario.
@@ -43,7 +44,7 @@ Usar este flujo despues de `Boletin` para redactar el reporte y correo de respue
 1. Recibir el numero de boletin.
 - Solicitar explicitamente al usuario el `numero de boletin`.
 - El usuario indica el numero (ejemplo: `boletin 94`).
-- Ir a `database/mailing/<nombre-boletin>`.
+- Ir a `database/mailing/boletin <numero de boletin>`.
 
 2. Leer resultados de base de datos.
 - Leer `correos_validos.txt`.
@@ -57,7 +58,9 @@ Usar este flujo despues de `Boletin` para redactar el reporte y correo de respue
 
 4. Solicitar cifras de envio al usuario.
 - Pedir explicitamente las cifras del envio para completar el reporte.
-- Campos esperados: enviados, entregados, aperturas, clics, rebotes, bajas (si aplica).
+- Campos esperados: enviados, entregados, rebotes.
+- Si estan disponibles, agregar aperturas, clics y bajas.
+- Si aperturas, clics o bajas no estan disponibles, continuar el cierre con las cifras existentes sin bloquear la respuesta.
 
 5. Analizar cifras de forma general.
 - Hacer un analisis breve, general y orientado a resultados.
@@ -110,7 +113,8 @@ Entrada minima requerida:
 - `nombre del envio`
 - `solicitante`
 - confirmacion de que la base fue cargada en `datos.txt`
-- cifras de envio: enviados, entregados, aperturas, clics, rebotes, bajas (si aplica)
+- cifras de envio: enviados, entregados, rebotes
+- aperturas, clics y bajas solo si estan disponibles
 - `descripcion de la solicitud`
 
 Secuencia obligatoria:
@@ -126,7 +130,7 @@ Secuencia obligatoria:
 - tarea principal y subtareas ejecutadas con tiempos en minutos.
 
 Regla de continuidad:
-- Si el usuario dice `retomar` o solicita `tomar datos de la carpeta`, leer directamente `database/mailing/<boletin>/datos.txt` y continuar el flujo desde validacion sin pedir nuevamente la base.
+- Si el usuario dice `retomar` o solicita `tomar datos de la carpeta`, leer directamente `database/mailing/boletin <numero de boletin>/datos.txt` y continuar el flujo desde validacion sin pedir nuevamente la base.
 
 ### Plantilla rapida (usar por defecto)
 
