@@ -18,6 +18,10 @@ Route::get('/despacho/sites/escenario-del-mundo', function () {
     return view('ministerio.despacho.sites.escenario-del-mundo');
 })->name('despacho.sites.escenario-del-mundo');
 
+Route::get('/despacho/sites/casa-comun', function () {
+    return view('ministerio.despacho.sites.casa-comun');
+})->name('despacho.sites.casa-comun');
+
 Route::get('/despacho/oficina-de-control-interno/servicios-informacion', function () {
     return view('ministerio.despacho.oficina-de-control-interno.servicios-informacion.index');
 })->name('despacho.oficina-de-control-interno.servicios-informacion.index');

@@ -1693,6 +1693,30 @@
                 <div class="cards-grid">
                     <article class="card">
                         <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/inicio-la-funcion-del-fiav.jpg"
+                                alt="Inicio del FIAV Bogotá 2026">
+                        </div>
+                        <div class="card-body">
+                            <h3>Con un despliegue de talento nacional, inició la función del FIAV Bogotá 2026</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/con-un-despliegue-de-talento-nacional-inicio-la-funcion-del-fiav-bogota-2026.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/fase-2-del-portafolio-colombia.jpg"
+                                alt="Portafolio Colombia en el Mundo">
+                        </div>
+                        <div class="card-body">
+                            <h3>Minculturas lanza la Fase 2 del Portafolio Colombia en el Mundo, convocatoria que proyectará a artistas colombianos en escenarios globales</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/minculturas-lanza-la-fase-2-del-portafolio-colombia-en-el-mundo-convocatoria-que-proyectara-a-artistas-colombianos.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media">
                             <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/dia-mundial-teatro.jpg"
                                 alt="Día Mundial del Teatro">
                         </div>
