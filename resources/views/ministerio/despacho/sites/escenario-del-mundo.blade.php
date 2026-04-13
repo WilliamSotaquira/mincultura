@@ -1693,6 +1693,78 @@
                 <div class="cards-grid">
                     <article class="card">
                         <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/teatro-ministerio-bogota.jpg"
+                                alt="El Ministerio que sacó el teatro de Bogotá">
+                        </div>
+                        <div class="card-body">
+                            <h3>El Ministerio que sacó el teatro de Bogotá</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/el-ministerio-que-saco-el-teatro-de-bogota.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/fiav-quibdo-portada.jpg"
+                                alt="Boxeo en las calles llevó el FIAV a Quibdó">
+                        </div>
+                        <div class="card-body">
+                            <h3>‘Boxeo en las calles’ llevó el FIAV a Quibdó con humor, acrobacia y participación del público</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/boxeo-en-las-calles-llevo-el-FIAV-a-quibdo-con-humor-acrobacia-y-participacion-del-publico.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/Estrategia-sistema-nacional-de-circulacion-circuitos-vivos-2026.jpg"
+                                alt="Convocatoria Circuitos Vivos 2026">
+                        </div>
+                        <div class="card-body">
+                            <h3>Estos son los seleccionados de la convocatoria Circuitos Vivos</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/ministerio-de-las-culturas-las-artes-y-los-saberes-estrategia-sistema-nacional-de-circulacion-circuitos-vivos-2026.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/participacion-circuitos-vivos.jpg"
+                                alt="Participación en la invitación pública de Circuitos Vivos">
+                        </div>
+                        <div class="card-body">
+                            <h3>Agradecemos a los artistas, agrupaciones y colectivos que participaron en la invitación pública de Circuitos Vivos</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/agradecemos-a-los-artistas-agrupaciones-y-colectivos-que-participaron-en-la-invitacion-publica-de-circuitos-vivos.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/cierre-fiav-2026.jpg"
+                                alt="El FIAV llevó las artes vivas a las regiones del país">
+                        </div>
+                        <div class="card-body">
+                            <h3>El FIAV llevó las artes vivas a las regiones del país y consolidó a Colombia como escenario del mundo</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/el-FIAV-llevo-las-artes-vivas-a-las-regiones-del-pais-y-consolido-a-colombia-como-escenario-del-mundo.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/ano-delia-yannai-kadamani.png"
+                                alt="Año del Centenario del Natalicio de Delia Zapata Olivella">
+                        </div>
+                        <div class="card-body">
+                            <h3>Ministra de las Culturas, Yannai Kadamani, declara el 2026 como el Año del Centenario del Natalicio de Delia Zapata Olivella</h3>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/ministra-de-las-culturas-yannai-kadamani-declara-el-2026-como-el-ano-del-centenario-del-natalicio-de-delia-zapata-olivella.aspx"
+                                target="_blank" rel="noreferrer">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-media">
                             <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/inicio-la-funcion-del-fiav.jpg"
                                 alt="Inicio del FIAV Bogotá 2026">
                         </div>
