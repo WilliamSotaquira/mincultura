@@ -1546,7 +1546,7 @@
                 <div class="hero-inner">
                     <video class="hero-media" autoplay muted loop playsinline webkit-playsinline="true" preload="auto"
                         aria-hidden="true">
-                        <source src="https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/banner-principal-logo.mp4" type="video/mp4">
+                        <source src="https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/VIDEO_BANNER_CIRCUITOS_02/VIDEO_BANNER_CIRCUITOS_02.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>

@@ -1,3 +1,24 @@
+@php
+    $catalogPath = resource_path('data/casa-comun-matriz.json');
+    $catalog = ['themes' => [], 'items' => [], 'total_items' => 0];
+
+    if (is_file($catalogPath)) {
+        $catalog = json_decode(file_get_contents($catalogPath), true) ?: $catalog;
+    }
+
+    $catalogThemes = $catalog['themes'] ?? [];
+    $catalogItems = $catalog['items'] ?? [];
+    $catalogTotal = $catalog['total_items'] ?? count($catalogItems);
+    $defaultTheme = $catalogThemes[0] ?? [
+        'slug' => 'somos-diversidad-linguistica',
+        'name' => 'Somos diversidad lingüística',
+        'lead' => '',
+        'copy' => '',
+        'count' => 0,
+        'types' => [],
+        'keywords' => [],
+    ];
+@endphp
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,8 +37,11 @@
         body{margin:0;min-width:320px;background:#020305;font-family:'Google Sans',sans-serif;color:var(--cream)}
         a{color:inherit;text-decoration:none}
         img,video,svg{display:block;max-width:100%}
-        .page{overflow-x:clip;background:#020305}
-        .wrap{width:min(100% - 18px,1040px);margin:0 auto}
+        .page{position:relative;overflow-x:clip;background:#49556f}
+        .page::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(255,255,255,.13) 0 1px,transparent 1px 5px);mix-blend-mode:screen;opacity:.55;pointer-events:none;z-index:0}
+        .page > *{position:relative;z-index:1}
+        .wrap,.wrap-contained{width:min(100%,1040px);margin:0 auto}
+        .wrap-full{width:100%;max-width:none;margin:0 auto}
 
         .poster-hero{position:relative;background:#49556f;overflow:hidden}
         .poster-hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(255,255,255,.13) 0 1px,transparent 1px 5px);mix-blend-mode:screen;opacity:.55;pointer-events:none}
@@ -44,29 +68,28 @@
         .right-main{filter:drop-shadow(-12px 22px 24px rgba(17,22,41,.16))}
         .right-main img{opacity:.82}
 
-        .house-panel{position:relative;z-index:5;width:min(100% - 48px,1080px);margin:0 auto 0;padding:60px clamp(20px,3.4vw,40px) 0;background:transparent;clip-path:polygon(50% 0,100% 14%,100% 100%,0 100%,0 14%);box-shadow:none;overflow:hidden}
+        .house-panel{position:relative;z-index:5;width:min(100% - 48px,1080px);height:clamp(320px,35.3vw,381px);margin:0 auto 0;padding:0;background:transparent;clip-path:polygon(50% 0,100% 14%,100% 100%,0 100%,0 14%);box-shadow:none;overflow:hidden}
         .house-panel::before,.house-panel::after{content:none}
-        .roof-carousel{position:absolute;left:0;right:0;top:60px;height:318px;z-index:3;overflow:hidden}
+        .roof-carousel{position:absolute;inset:0;z-index:3;overflow:hidden}
         .roof-slide{position:absolute;inset:0;opacity:0;transition:opacity .55s ease}
         .roof-slide.is-active{opacity:1}
         .roof-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent 62%)}
-        .roof-slide-media{width:100%;height:100%;object-fit:cover;object-position:center top}
-        .roof-dots{position:absolute;left:50%;top:332px;z-index:6;display:flex;gap:10px;transform:translateX(-50%)}
+        .roof-slide-media{width:100%;height:100%;object-fit:cover;object-position:center center}
+        .roof-dots{position:absolute;left:50%;bottom:18px;z-index:6;display:flex;gap:10px;transform:translateX(-50%)}
         .roof-dot{width:12px;height:12px;padding:0;border:0;border-radius:999px;background:rgba(244,235,190,.34);box-shadow:0 0 0 1px rgba(9,14,18,.18);cursor:pointer;transition:transform .18s ease,background-color .18s ease}
         .roof-dot[aria-selected="true"]{background:var(--cream);transform:scale(1.16)}
         .roof-dot:focus-visible{outline:2px solid rgba(244,235,190,.92);outline-offset:3px}
 
-        .themes-section{position:relative;z-index:4;padding:480px 0 34px}
-        .themes-title{position:relative;z-index:4;max-width:860px;margin:0 auto 24px;text-align:right;font-family:'Alternate Gothic',sans-serif;font-size:48px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
-        .themes-stage{position:relative;max-width:860px;margin:0 auto}
-        .themes-stage::before{content:"";position:absolute;left:-132px;right:-132px;top:-245px;height:266px;background:linear-gradient(180deg,rgba(92,102,132,.98),rgba(78,88,118,.98));z-index:1}
+        .themes-section{position:relative;z-index:4;padding:72px 0 34px}
+        .themes-title{position:relative;z-index:4;max-width:860px;margin:0 auto 42px;text-align:right;font-family:'Alternate Gothic',sans-serif;font-size:48px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
+        .themes-stage{position:relative;max-width:860px;margin:0 auto;padding-top:14px}
         .board{position:relative;z-index:2;overflow:visible;color:var(--text);background:linear-gradient(180deg,var(--mint) 0%,var(--mint-dark) 100%);box-shadow:0 22px 44px rgba(14,27,34,.28)}
-        .chip-row{position:absolute;left:14px;right:14px;top:-18px;display:grid;grid-template-columns:repeat(8,1fr);gap:7px}
+        .chip-row{position:absolute;left:14px;right:14px;top:-18px;display:grid;grid-template-columns:repeat(var(--chip-count,8),1fr);gap:7px}
         .board-layers{position:absolute;inset:0;z-index:1;pointer-events:none}
         .board-collage-left{position:absolute;left:-102px;top:-546px;width:min(71vw,700px);height:1060px}
         .board-collage-right{position:absolute;right:-112px;top:-102px;width:min(24vw,214px);height:382px;opacity:.9}
         .board-panel,.topic-grid{position:relative;z-index:3}
-        .chip{display:flex;align-items:center;justify-content:center;height:32px;padding:0;border:0;clip-path:polygon(12% 100%,0 40%,50% 0,100% 40%,88% 100%);font-size:12px;font-weight:700;color:#1c2730;background:transparent;cursor:pointer;transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
+        .chip{display:flex;align-items:center;justify-content:center;height:36px;padding:0;border:0;clip-path:polygon(12% 100%,0 40%,50% 0,100% 40%,88% 100%);font-size:15px;font-weight:700;color:#1c2730;background:transparent;cursor:pointer;transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
         .chip:hover{transform:translateY(-2px)}
         .chip:focus-visible{outline:2px solid rgba(24,33,39,.7);outline-offset:2px}
         .chip[aria-selected="true"]{transform:translateY(-4px);filter:saturate(1.06) brightness(1.02);box-shadow:0 9px 0 rgba(34,53,60,.16)}
@@ -79,21 +102,115 @@
         .chip:nth-child(7){background:#b8e6ef}
         .chip:nth-child(8){background:#c8dbef}
         .board-panel{display:block}
-        .board-intro{display:grid;grid-template-columns:1.2fr .92fr;align-items:stretch;min-height:184px;border-bottom:1px solid var(--line)}
-        .board-copy{display:flex;flex-direction:column;justify-content:flex-start;padding:22px 18px 12px}
+        .board-intro{display:grid;grid-template-columns:1.2fr .92fr;align-items:stretch;min-height:196px;border-bottom:1px solid var(--line)}
+        .board-copy{display:flex;flex-direction:column;justify-content:flex-start;padding:22px 18px 14px}
         .board-copy:first-child{border-right:1px solid var(--line)}
-        .board-copy h2{margin:0;font-family:'Alternate Gothic',sans-serif;font-size:34px;line-height:.96;letter-spacing:.02em;text-transform:uppercase}
-        .board-copy p{margin:0;font-size:13px;line-height:1.56;color:rgba(20,33,38,.86)}
+        .board-copy-search{gap:10px}
+        .board-eyebrow{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(20,33,38,.56)}
+        .board-copy h2{margin:0;font-family:'Alternate Gothic',sans-serif;font-size:40px;line-height:.96;letter-spacing:.02em;text-transform:uppercase}
+        .board-copy p{margin:0;font-size:17px;line-height:1.58;color:rgba(20,33,38,.86)}
         .board-copy .lead{margin-top:10px;max-width:34ch}
-        .topic-grid{display:grid;grid-template-columns:repeat(3,1fr)}
-        .topic-card{display:flex;flex-direction:column;gap:8px;min-height:102px;padding:12px 14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background-color .2s ease,box-shadow .2s ease}
-        .topic-card:nth-child(3n){border-right:0}
-        .topic-card:hover{background:rgba(255,255,255,.12)}
-        .topic-card.is-emphasis{background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 2px rgba(20,33,38,.18)}
-        .topic-card h3{margin:0;font-size:13px;font-weight:700;line-height:1.24;text-transform:uppercase}
-        .topic-card p{margin:0;font-size:11px;line-height:1.48;color:rgba(20,33,38,.8)}
-        .topic-link{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+        .catalog-stats{display:flex;flex-wrap:wrap;gap:8px}
+        .stat-pill{display:inline-flex;align-items:center;min-height:34px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.22);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#172128}
+        .catalog-keywords{font-size:15px;line-height:1.6;color:rgba(20,33,38,.72)}
+        .catalog-layout{position:relative;border-top:1px solid var(--line)}
+        .catalog-main{min-width:0}
+        .catalog-main-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid rgba(20,33,38,.12);background:rgba(255,255,255,.08)}
+        .catalog-toolbar-main-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+        .catalog-sidebar-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border:1px solid rgba(20,33,38,.16);border-radius:999px;background:rgba(255,255,255,.42);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#162127;cursor:pointer}
+        .catalog-sidebar-toggle:hover{background:rgba(255,255,255,.56)}
+        .catalog-sidebar-toggle:focus-visible{outline:2px solid rgba(24,33,39,.46);outline-offset:2px}
+        .catalog-sidebar-backdrop{position:fixed;inset:0;background:rgba(7,12,16,.38);backdrop-filter:blur(2px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility .22s linear;z-index:44}
+        .catalog-layout.is-sidebar-open .catalog-sidebar-backdrop{opacity:1;visibility:visible;pointer-events:auto}
+        .catalog-tools{position:fixed;top:0;right:0;bottom:0;z-index:45;display:flex;flex-direction:column;gap:14px;width:min(420px,100vw);padding:18px;border-left:1px solid rgba(20,33,38,.12);background:rgba(113, 224, 197, .96);box-shadow:-20px 0 48px rgba(0,0,0,.24);overflow-y:auto;transform:translateX(100%);transition:transform .24s ease}
+        .catalog-layout.is-sidebar-open .catalog-tools{transform:translateX(0)}
+        .catalog-sidebar-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+        .catalog-sidebar-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#162127}
+        .catalog-sidebar-close{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;padding:0;border:1px solid rgba(20,33,38,.16);border-radius:999px;background:rgba(255,255,255,.34);font-size:18px;line-height:1;color:#162127;cursor:pointer}
+        .catalog-sidebar-close:focus-visible{outline:2px solid rgba(24,33,39,.46);outline-offset:2px}
+        .catalog-sidebar-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:auto;padding-top:6px}
+        .catalog-sidebar-accept{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border:0;border-radius:999px;background:rgba(20,33,38,.92);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff5ce;cursor:pointer}
+        .catalog-sidebar-accept:focus-visible{outline:2px solid rgba(24,33,39,.46);outline-offset:2px}
+        .catalog-search-row{display:grid;grid-template-columns:1fr;gap:12px;align-items:end}
+        .catalog-search-compact{display:flex;flex-direction:column;gap:6px}
+        .catalog-search-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(20,33,38,.66)}
+        .catalog-search-compact input{width:100%;min-height:50px;padding:0 16px;border:1px solid rgba(20,33,38,.14);background:rgba(255,255,255,.3);font-size:18px;color:#10171c}
+        .catalog-search-compact input::placeholder{color:rgba(16,23,28,.52)}
+        .catalog-search-compact input:focus-visible{outline:2px solid rgba(24,33,39,.46);outline-offset:2px}
+        .catalog-search-copy{font-size:14px;line-height:1.55;color:rgba(20,33,38,.68)}
+        .catalog-filters-shell{border:1px solid rgba(20,33,38,.12);background:rgba(255,255,255,.12)}
+        .catalog-filters-shell[open]{background:rgba(255,255,255,.18)}
+        .catalog-filters-shell summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;cursor:pointer;list-style:none}
+        .catalog-filters-shell summary::-webkit-details-marker{display:none}
+        .catalog-filters-shell summary span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#162127}
+        .catalog-filters-shell summary strong{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;padding:0 10px;border-radius:999px;background:rgba(20,33,38,.12);font-size:12px;color:#162127}
+        .catalog-filters-content{display:flex;flex-direction:column;gap:12px;padding:0 14px 14px}
+        .catalog-search{display:flex;flex-direction:column;gap:8px}
+        .catalog-search span{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(20,33,38,.66)}
+        .catalog-search input{width:100%;min-height:42px;padding:0 14px;border:1px solid rgba(20,33,38,.14);background:rgba(255,255,255,.3);font:inherit;color:#10171c}
+        .catalog-search input::placeholder{color:rgba(16,23,28,.52)}
+        .catalog-search input:focus-visible{outline:2px solid rgba(24,33,39,.46);outline-offset:2px}
+        .catalog-hint{font-size:14px;line-height:1.55;color:rgba(20,33,38,.68)}
+        .catalog-filter-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}
+        .catalog-active-filters{display:flex;flex:1 1 260px;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px;line-height:1.5;color:rgba(20,33,38,.68)}
+        .catalog-filter-placeholder{color:rgba(20,33,38,.68)}
+        .catalog-filter-chip{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;background:rgba(20,33,38,.84);font-size:12px;font-weight:700;letter-spacing:.03em;color:#fff7de}
+        .catalog-clear-btn{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 16px;border:0;border-radius:999px;background:rgba(20,33,38,.9);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff5ce;cursor:pointer}
+        .catalog-clear-btn[hidden]{display:none}
+        .catalog-filters-grid{display:grid;grid-template-columns:1fr;gap:10px}
+        .filter-card{display:flex;flex-direction:column;gap:10px;padding:14px;border:1px solid rgba(20,33,38,.12);background:rgba(255,255,255,.16)}
+        .filter-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+        .filter-card-head span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#162127}
+        .filter-card-head strong{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;padding:0 10px;border-radius:999px;background:rgba(20,33,38,.12);font-size:12px;color:#162127}
+        .type-filter-list{display:flex;flex-wrap:wrap;gap:8px}
+        .type-filter-option{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid rgba(20,33,38,.12);background:rgba(255,255,255,.34);font-size:14px;color:#162127;cursor:pointer}
+        .type-filter-option input{margin:0}
+        .type-filter-option small{font-size:12px;color:rgba(22,33,39,.62)}
+        .responsable-filter-list{display:flex;flex-direction:column;gap:8px;max-height:220px;overflow-y:auto;padding-right:4px}
+        .responsable-filter-option{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;width:100%;padding:12px 14px;border:1px solid rgba(20,33,38,.12);background:rgba(255,255,255,.34);font:inherit;font-size:14px;line-height:1.4;color:#162127;text-align:left;cursor:pointer}
+        .responsable-filter-option.is-active{background:rgba(20,33,38,.88);border-color:rgba(20,33,38,.88);color:#fff7de}
+        .responsable-filter-option span{flex:1 1 auto;min-width:0;overflow-wrap:anywhere}
+        .responsable-filter-option small{flex:0 0 auto;font-size:12px;color:rgba(22,33,39,.62)}
+        .responsable-filter-option.is-active small{color:rgba(255,247,222,.78)}
+        .keyword-search-row{display:flex;gap:8px}
+        .keyword-search-row input{flex:1 1 auto;min-height:44px;padding:0 14px;border:1px solid rgba(20,33,38,.12);background:rgba(255,255,255,.4);font:inherit;font-size:15px;color:#162127}
+        .keyword-search-row button{flex:0 0 auto;min-width:92px;min-height:44px;padding:0 14px;border:0;background:rgba(20,33,38,.9);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff5ce;cursor:pointer}
+        .keyword-search-row input::placeholder{color:rgba(22,33,39,.48)}
+        .keyword-suggestions{display:flex;flex-wrap:wrap;gap:8px;max-height:120px;overflow-y:auto}
+        .keyword-suggestion{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 12px;border:1px solid rgba(20,33,38,.12);background:rgba(255,255,255,.34);font-size:12px;color:#162127;cursor:pointer}
+        .keyword-suggestion small{font-size:12px;color:rgba(22,33,39,.62)}
+        .keyword-selected{display:flex;flex-wrap:wrap;gap:8px}
+        .keyword-chip{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 14px;border-radius:999px;background:rgba(20,33,38,.86);font-size:12px;font-weight:700;letter-spacing:.04em;color:#fff7de}
+        .keyword-chip button{padding:0;border:0;background:none;font:inherit;color:inherit;cursor:pointer}
+        .filter-empty{font-size:14px;line-height:1.5;color:rgba(20,33,38,.64)}
+        .topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(20,33,38,.12);overflow-y:auto;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:rgba(20,33,38,.38) rgba(255,255,255,.06)}
+        .topic-grid::-webkit-scrollbar{width:10px}
+        .topic-grid::-webkit-scrollbar-track{background:rgba(255,255,255,.06)}
+        .topic-grid::-webkit-scrollbar-thumb{background:rgba(20,33,38,.32)}
+        .topic-grid::-webkit-scrollbar-thumb:hover{background:rgba(20,33,38,.46)}
+        .topic-card{position:relative;display:flex;flex-direction:column;gap:10px;min-height:196px;padding:14px 14px 16px;background:rgba(255,255,255,.08);transition:background-color .2s ease,box-shadow .2s ease;overflow:visible}
+        .topic-card:hover,.topic-card:focus-within,.topic-card.is-tooltip-open{background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 1px rgba(20,33,38,.1)}
+        .topic-card.is-hidden{display:none}
+        .topic-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+        .topic-type{display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+        .topic-type{background:rgba(255,255,255,.42)}
+        .topic-card h3{margin:0;font-size:17px;font-weight:700;line-height:1.34;text-transform:uppercase}
+        .topic-card p{margin:0;font-size:14px;line-height:1.6;color:rgba(20,33,38,.82)}
+        .topic-meta-line{margin-top:auto;font-size:13px;line-height:1.5;color:rgba(20,33,38,.64)}
+        .topic-link{margin-top:0;display:inline-flex;align-items:center;gap:8px;padding:0;border:0;background:none;font:inherit;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:inherit;cursor:pointer}
         .topic-link::before{content:"";width:18px;height:2px;background:rgba(20,33,38,.56)}
+        .catalog-tooltip{position:absolute;left:12px;right:12px;top:calc(100% - 8px);z-index:9;padding:14px;border:1px solid rgba(20,33,38,.12);background:#fff5ce;color:#162127;box-shadow:0 18px 38px rgba(0,0,0,.2);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .18s ease,transform .18s ease,visibility .18s linear}
+        .topic-card:hover .catalog-tooltip,.topic-card:focus-within .catalog-tooltip,.topic-card.is-tooltip-open .catalog-tooltip{opacity:1;visibility:visible;transform:translateY(0)}
+        .tooltip-theme{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(22,33,39,.56)}
+        .tooltip-description{margin:0 0 12px;font-size:14px;line-height:1.65;color:rgba(20,33,38,.86)}
+        .tooltip-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+        .tooltip-tags span{display:inline-flex;align-items:center;min-height:28px;padding:0 12px;border-radius:999px;background:rgba(20,33,38,.08);font-size:12px;color:#162127}
+        .tooltip-detail-list{display:flex;flex-direction:column;gap:8px}
+        .tooltip-detail-list p{margin:0;font-size:13px;line-height:1.6;color:rgba(20,33,38,.82)}
+        .tooltip-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+        .tooltip-link{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 16px;border-radius:999px;background:rgba(20,33,38,.92);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff9e2}
+        .catalog-empty{padding:18px 16px;font-size:14px;line-height:1.6;color:rgba(20,33,38,.74);background:rgba(255,255,255,.1)}
+        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
         .highlights{position:relative;z-index:2;padding:36px 0 52px}
         .highlights::before{content:"";position:absolute;inset:0;background-image:url('{{ asset('assets/casa-comun/layer-stripes.png') }}');background-size:280px auto;background-repeat:repeat;opacity:.1;mix-blend-mode:screen;pointer-events:none}
@@ -135,48 +252,54 @@
         .socials svg{width:13px;height:13px;fill:#fff}
 
         @media (max-width:900px){
-            .house-panel{width:min(100% - 32px,1080px);padding-top:52px}
-            .roof-carousel{top:52px;height:286px}
-            .roof-dots{top:294px}
-            .themes-section{padding-top:326px}
-            .themes-title{max-width:800px;font-size:44px}
+            .house-panel{width:min(100% - 32px,1080px);height:clamp(280px,35.3vw,339px);padding-top:0}
+            .roof-carousel{inset:0}
+            .roof-dots{bottom:16px}
+            .themes-section{padding-top:56px}
+            .themes-title{max-width:800px;margin-bottom:36px;font-size:44px}
             .themes-stage{max-width:800px}
-            .themes-stage::before{left:-94px;right:-94px;top:-154px;height:232px}
             .board-collage-left{left:-66px;top:-450px;width:min(69vw,580px);height:874px}
             .board-collage-right{right:-88px;top:-82px;width:min(24vw,182px);height:336px}
             .board-intro,.strip-grid,.strip-sonido .strip-grid{grid-template-columns:1fr}
-            .strip-grid{height:auto}
+            .catalog-search-row,.catalog-filters-grid{grid-template-columns:1fr}
+            .catalog-tools{width:min(100vw,380px)}
+        .strip-grid{height:auto}
             .strip-copy,.strip-art{height:auto;min-height:0}
             .board-copy:first-child{border-right:0;border-bottom:1px solid var(--line)}
             .strip-copy,.strip-mirada .strip-copy,.strip-sonido .strip-copy{align-items:center;text-align:center;padding:18px 18px 24px}
         }
 
         @media (max-width:720px){
-            .wrap{width:min(100% - 12px,1040px)}
+            .wrap,.wrap-contained{width:min(100%,1040px)}
+            .wrap-full{width:100%}
             .sky-media{height:228px}
-            .roof-carousel{top:38px;height:188px}
-            .roof-dots{top:204px;gap:8px}
+            .roof-carousel{inset:0}
+            .roof-dots{bottom:12px;gap:8px}
             .roof-dot{width:10px;height:10px}
-            .themes-section{padding-top:164px}
-            .themes-stage::before{left:-14px;right:-14px;top:-72px;height:128px}
+            .themes-section{padding-top:40px}
             .board-layers{display:none}
-            .house-panel{width:100%;margin-top:0;padding:38px 14px 0;clip-path:polygon(50% 0,100% 10%,100% 100%,0 100%,0 10%)}
+            .house-panel{width:100%;height:clamp(180px,35.3vw,260px);margin-top:0;padding:0;clip-path:polygon(50% 0,100% 10%,100% 100%,0 100%,0 10%)}
             .themes-title,.highlights-title,.strip-copy h2{font-size:40px}
+            .themes-title{margin-bottom:32px}
             .themes-stage,.cards,.highlights-title{max-width:100%}
-            .themes-stage::before{left:-14px;right:-14px;top:-52px;height:88px}
             .chip-row{grid-template-columns:repeat(4,1fr);row-gap:5px;top:-31px}
             .board-intro{min-height:0}
             .board-copy{padding:36px 16px 16px}
-            .board-copy h2{font-size:30px}
-            .board-copy p{font-size:13px}
-            .topic-card h3{font-size:13px}
-            .topic-card p{font-size:12px}
+            .board-copy h2{font-size:34px}
+            .board-copy p{font-size:15px}
+            .catalog-search-compact input{font-size:16px}
+            .catalog-search-copy,.catalog-hint,.catalog-active-filters,.filter-empty{font-size:13px}
+            .topic-card h3{font-size:15px}
+            .topic-card p{font-size:13px}
+            .topic-meta-line,.tooltip-detail-list p{font-size:12px}
             .card h3{font-size:13px}
             .card p{font-size:11px}
             .strip-copy p{font-size:13px}
             .topic-grid,.cards{grid-template-columns:1fr}
-            .topic-card:nth-child(3n){border-right:1px solid var(--line)}
             .topic-card{min-height:0;padding:14px 16px}
+            .topic-meta-line{margin-top:0}
+            .catalog-tooltip{position:static;left:auto;right:auto;top:auto;display:none;margin-top:12px;opacity:1;visibility:visible;transform:none}
+            .topic-card:hover .catalog-tooltip,.topic-card:focus-within .catalog-tooltip,.topic-card.is-tooltip-open .catalog-tooltip{display:block}
             .card img{aspect-ratio:1.1/1}
             .strip-art{min-height:108px}
             .strip-sonido .strip-art{order:2}
@@ -235,8 +358,11 @@
                         <button class="roof-dot" type="button" aria-label="Ver diapositiva 1" aria-selected="true"></button>
                         <button class="roof-dot" type="button" aria-label="Ver diapositiva 2" aria-selected="false"></button>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <section class="themes-section">
+        <section class="themes-section">
                         <h1 class="themes-title">Tematicas</h1>
                         <div class="themes-stage">
                             <div class="board-layers" aria-hidden="true">
@@ -260,60 +386,165 @@
                             </div>
 
                             <div class="board">
-                                <div class="chip-row" role="tablist" aria-label="Tematicas de Casa Común">
-                                    <button class="chip" id="tema-tab-1" role="tab" type="button" aria-selected="true" aria-controls="temas-panel" tabindex="0" data-title="Somos territorios bioculturales y economias populares" data-lead="Un mapa editorial para reunir conversaciones sobre cuidado, intercambio, memoria y formas de vida compartidas." data-copy="Casa Común reúne prácticas, relatos y experiencias que surgen desde los territorios. Aquí convergen creación comunitaria, saberes situados, circulación cultural y economías populares con una mirada viva, cercana y contemporánea." data-focus="territorio economias">+</button>
-                                    <button class="chip" id="tema-tab-2" role="tab" type="button" aria-selected="false" aria-controls="temas-panel" tabindex="-1" data-title="Memorias compartidas que siguen activando comunidad" data-lead="Relatos, celebraciones, archivos y oralidades que cuidan el pasado para mantenerlo presente." data-copy="Esta entrada destaca procesos donde la memoria no se conserva en silencio: circula en fiestas, repertorios, documentos, voces y prácticas que sostienen identidades colectivas." data-focus="patrimonio participacion">✦</button>
-                                    <button class="chip" id="tema-tab-3" role="tab" type="button" aria-selected="false" aria-controls="temas-panel" tabindex="-1" data-title="Territorio, ambiente y cuidado comun" data-lead="Acciones colectivas que conectan diversidad biocultural, gestión local y maneras sostenibles de habitar." data-copy="Aquí aparecen experiencias de protección del entorno, vínculos comunitarios y decisiones compartidas que entienden la cultura como una forma concreta de cuidado del territorio." data-focus="territorio saberes">◌</button>
-                                    <button class="chip" id="tema-tab-4" role="tab" type="button" aria-selected="false" aria-controls="temas-panel" tabindex="-1" data-title="Circulacion cultural y escenarios de encuentro" data-lead="Rutas, festivales, espacios y plataformas que conectan públicos, creadoras, creadores y comunidades." data-copy="Casa Común también se mueve. Esta temática reúne experiencias donde la circulación amplía el alcance de los contenidos y fortalece la vida cultural local." data-focus="circulacion participacion">∞</button>
-                                    <button class="chip" id="tema-tab-5" role="tab" type="button" aria-selected="false" aria-controls="temas-panel" tabindex="-1" data-title="Economias populares que sostienen la vida cultural" data-lead="Intercambios, oficios y emprendimientos solidarios que producen bienestar material y simbólico." data-copy="Este tabpanel reúne prácticas productivas, redes locales y formas de cooperación que hacen posible la creación, la circulación y la permanencia de proyectos culturales." data-focus="economias">✳</button>
-                                <button class="chip" id="tema-tab-6" role="tab" type="button" aria-selected="false" aria-controls="temas-panel" tabindex="-1" data-title="Saberes locales e innovacion cotidiana" data-lead="Aprendizajes situados que mezclan tradición, experimentación y soluciones nacidas desde la experiencia." data-copy="La cultura también se transmite como conocimiento útil. Aquí se reconocen prácticas pedagógicas, técnicas, oficios y metodologías que evolucionan sin romper su raíz territorial." data-focus="saberes patrimonio">✷</button>
-                                    <button class="chip" id="tema-tab-7" role="tab" type="button" aria-selected="false" aria-controls="temas-panel" tabindex="-1" data-title="Participacion y tejido social para un futuro comun" data-lead="Conversaciones abiertas que fortalecen vínculos, confianza y capacidad colectiva de decisión." data-copy="Esta temática pone el foco en procesos donde la cultura convoca, organiza y abre espacios de participación para imaginar comunidades más conectadas, diversas y sostenibles." data-focus="participacion circulacion">↗</button>
-                                    <button class="chip" id="tema-tab-8" role="tab" type="button" aria-selected="false" aria-controls="temas-panel" tabindex="-1" data-title="Futuros posibles desde el territorio" data-lead="Miradas contemporáneas que integran creación, sostenibilidad, innovación y bienestar compartido." data-copy="El tabpanel también proyecta horizontes. Aquí se agrupan relatos y prácticas que ensayan nuevas formas de colaboración entre cultura, comunidad y transformación social." data-focus="territorio participacion saberes">⟡</button>
+                                <div class="chip-row" role="tablist" aria-label="Tematicas de Casa Común" style="--chip-count: {{ max(count($catalogThemes), 1) }};">
+                                    @foreach ($catalogThemes as $index => $theme)
+                                        <button
+                                            class="chip"
+                                            id="tema-tab-{{ $index + 1 }}"
+                                            role="tab"
+                                            type="button"
+                                            aria-selected="{{ $index === 0 ? 'true' : 'false' }}"
+                                            aria-controls="temas-panel"
+                                            tabindex="{{ $index === 0 ? '0' : '-1' }}"
+                                            data-theme="{{ $theme['slug'] }}"
+                                            data-title="{{ $theme['name'] }}"
+                                            data-lead="{{ $theme['lead'] }}"
+                                            data-copy="{{ $theme['copy'] }}"
+                                            data-count="{{ $theme['count'] }}"
+                                            data-types="{{ implode(' · ', $theme['types'] ?? []) }}"
+                                            data-keywords="{{ implode(' · ', $theme['keywords'] ?? []) }}"
+                                            aria-label="{{ $theme['name'] }} ({{ $theme['count'] }} contenidos)"
+                                        >{{ $theme['symbol'] }}</button>
+                                    @endforeach
                                 </div>
 
                                 <div class="board-panel" id="temas-panel" role="tabpanel" tabindex="0" aria-labelledby="tema-tab-1">
                                     <div class="board-intro">
                                         <div class="board-copy">
-                                            <h2 id="themes-panel-title">Somos territorios bioculturales y economias populares</h2>
-                                            <p class="lead" id="themes-panel-lead">Un mapa editorial para reunir conversaciones sobre cuidado, intercambio, memoria y formas de vida compartidas.</p>
+                                            <p class="board-eyebrow">Matriz clasificada</p>
+                                            <h2 id="themes-panel-title">{{ $defaultTheme['name'] }}</h2>
+                                            <p class="lead" id="themes-panel-lead">{{ $defaultTheme['lead'] }}</p>
                                         </div>
-                                        <div class="board-copy">
-                                            <p id="themes-panel-copy">Casa Común reúne prácticas, relatos y experiencias que surgen desde los territorios. Aquí convergen creación comunitaria, saberes situados, circulación cultural y economías populares con una mirada viva, cercana y contemporánea.</p>
+                                        <div class="board-copy board-copy-search">
+                                            <p id="themes-panel-copy">{{ $defaultTheme['copy'] }}</p>
+                                            <div class="catalog-stats" aria-live="polite">
+                                                <span class="stat-pill" id="themes-results-count">{{ $defaultTheme['count'] }} contenidos</span>
+                                                <span class="stat-pill" id="themes-panel-types">{{ implode(' · ', $defaultTheme['types'] ?? []) }}</span>
+                                            </div>
+                                            <p class="catalog-keywords" id="themes-panel-keywords">{{ implode(' · ', $defaultTheme['keywords'] ?? []) }}</p>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="catalog-layout">
+                                    <div class="catalog-sidebar-backdrop" id="catalog-sidebar-backdrop" hidden></div>
+                                    <aside class="catalog-tools" id="catalog-tools-sidebar">
+                                        <div class="catalog-sidebar-head">
+                                            <span class="catalog-sidebar-title">Filtros de la matriz</span>
+                                            <button class="catalog-sidebar-close" id="catalog-sidebar-close" type="button" aria-label="Cerrar filtros">×</button>
+                                        </div>
+                                        <div class="catalog-search-row">
+                                            <label class="catalog-search-compact" for="themes-search">
+                                                <span class="catalog-search-label">Buscar en la matriz</span>
+                                                <input id="themes-search" type="search" placeholder="Producto, responsable, tema o formato">
+                                                <span class="catalog-search-copy">La búsqueda textual recorre nombre, descripción, entidad, tipo de contenido y términos asociados dentro de la temática activa.</span>
+                                            </label>
+                                        </div>
+                                        <details class="catalog-filters-shell" id="catalog-filters-shell" open>
+                                            <summary>
+                                                <span>Filtros avanzados</span>
+                                                <strong id="catalog-filters-toggle-count">0</strong>
+                                            </summary>
+                                            <div class="catalog-filters-content">
+                                                <div class="catalog-filters-grid">
+                                                    <section class="filter-card" aria-labelledby="filter-type-title">
+                                                        <div class="filter-card-head">
+                                                            <span id="filter-type-title">Tipos</span>
+                                                            <strong id="filter-type-count">0</strong>
+                                                        </div>
+                                                        <div class="type-filter-list" id="filter-type-options"></div>
+                                                        <p class="filter-empty" id="filter-type-empty" hidden>No hay tipos disponibles para esta temática.</p>
+                                                    </section>
+                                                    <section class="filter-card" aria-labelledby="filter-responsable-title">
+                                                        <div class="filter-card-head">
+                                                            <span id="filter-responsable-title">Responsable</span>
+                                                            <strong id="filter-responsable-count">0</strong>
+                                                        </div>
+                                                        <div class="responsable-filter-list" id="filter-responsable-options"></div>
+                                                        <p class="catalog-hint">Selecciona una entidad o dependencia para concentrar la revisión en un origen específico.</p>
+                                                    </section>
+                                                    <section class="filter-card" aria-labelledby="filter-keyword-title">
+                                                        <div class="filter-card-head">
+                                                            <span id="filter-keyword-title">Palabras clave</span>
+                                                            <strong id="filter-keyword-count">0</strong>
+                                                        </div>
+                                                        <div class="keyword-search-row">
+                                                            <input id="filter-keyword-input" type="search" placeholder="Buscar palabra clave">
+                                                            <button id="filter-keyword-clear" type="button" hidden>Limpiar</button>
+                                                        </div>
+                                                        <div class="keyword-selected" id="filter-keyword-selected"></div>
+                                                        <div class="keyword-suggestions" id="filter-keyword-suggestions"></div>
+                                                        <p class="filter-empty" id="filter-keyword-empty" hidden>No hay coincidencias para esa palabra clave.</p>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </details>
+                                        <div class="catalog-sidebar-actions">
+                                            <button class="catalog-sidebar-accept" id="catalog-sidebar-accept" type="button">Aceptar</button>
+                                        </div>
+                                    </aside>
 
-                                <div class="topic-grid">
-                                    <article class="topic-card d1 is-emphasis" data-topic="patrimonio">
-                                        <h3>Patrimonio vivo y memorias compartidas</h3>
-                                        <p>Procesos que protegen archivos, oralidades, celebraciones y relatos con valor para las comunidades.</p>
-                                        <a class="topic-link" href="#!">Conocer más</a>
-                                    </article>
-                                    <article class="topic-card d2 is-emphasis" data-topic="economias">
-                                        <h3>Economias populares y oficios culturales</h3>
-                                        <p>Redes de intercambio, emprendimientos solidarios y prácticas que sostienen la vida cultural cotidiana.</p>
-                                        <a class="topic-link" href="#!">Explorar</a>
-                                    </article>
-                                    <article class="topic-card d3 is-emphasis" data-topic="territorio">
-                                        <h3>Territorio, ambiente y cuidado comun</h3>
-                                        <p>Acciones colectivas que articulan diversidad biocultural, gestión local y nuevas formas de habitar.</p>
-                                        <a class="topic-link" href="#!">Ver historias</a>
-                                    </article>
-                                    <article class="topic-card d4" data-topic="circulacion">
-                                        <h3>Circulacion cultural y escenarios de encuentro</h3>
-                                        <p>Rutas, festivales, espacios culturales y plataformas que ponen en diálogo públicos y comunidades.</p>
-                                        <a class="topic-link" href="#!">Recorrer</a>
-                                    </article>
-                                    <article class="topic-card d5" data-topic="saberes">
-                                        <h3>Saberes locales e innovacion cotidiana</h3>
-                                        <p>Aprendizajes situados que conectan tradición, experimentación y soluciones nacidas del territorio.</p>
-                                        <a class="topic-link" href="#!">Descubrir</a>
-                                    </article>
-                                    <article class="topic-card d6" data-topic="participacion">
-                                        <h3>Participacion, tejido social y futuro comun</h3>
-                                        <p>Conversaciones abiertas para imaginar comunidades más conectadas, diversas y sostenibles.</p>
-                                        <a class="topic-link" href="#!">Sumarse</a>
-                                    </article>
+                                    <div class="catalog-main">
+                                        <div class="catalog-main-toolbar">
+                                            <div class="catalog-toolbar-main-actions">
+                                                <button class="catalog-sidebar-toggle" id="catalog-sidebar-toggle" type="button" aria-expanded="false" aria-controls="catalog-tools-sidebar">Mostrar filtros</button>
+                                                <button class="catalog-clear-btn" id="catalog-clear-filters" type="button" hidden>Limpiar filtros</button>
+                                            </div>
+                                            <div class="catalog-active-filters" id="catalog-active-filters">
+                                                <span class="catalog-filter-placeholder">Sin filtros adicionales activos.</span>
+                                            </div>
+                                        </div>
+                                        <div class="topic-grid" id="themes-catalog-grid">
+                                            @foreach ($catalogItems as $item)
+                                                <article
+                                                    class="topic-card topic-card-catalog"
+                                                    data-theme="{{ $item['theme_slug'] }}"
+                                                    data-search="{{ $item['search_text'] }}"
+                                                    data-type-value="{{ $item['type'] ?: 'Contenido' }}"
+                                                    data-responsable="{{ $item['responsable'] }}"
+                                                    data-keywords="{{ implode('||', $item['keywords'] ?? []) }}"
+                                                >
+                                                    <div class="topic-card-head">
+                                                        <span class="topic-type">{{ $item['type'] ?: 'Contenido' }}</span>
+                                                    </div>
+                                                    <h3>{{ $item['title'] }}</h3>
+                                                    <p>{{ \Illuminate\Support\Str::limit(preg_replace('/\s+/', ' ', $item['description']), 170) }}</p>
+                                                    <div class="topic-meta-line">{{ $item['responsable'] }}</div>
+                                                    <button class="topic-link tooltip-toggle" type="button" aria-expanded="false" aria-controls="tooltip-{{ $item['id'] }}">Ver detalle</button>
+
+                                                    <div class="catalog-tooltip" id="tooltip-{{ $item['id'] }}" role="tooltip">
+                                                        <p class="tooltip-theme">{{ $item['theme'] }}</p>
+                                                        <p class="tooltip-description">{{ $item['description'] }}</p>
+
+                                                        @if (!empty($item['keywords']))
+                                                            <div class="tooltip-tags">
+                                                                @foreach (array_slice($item['keywords'], 0, 5) as $keyword)
+                                                                    <span>{{ $keyword }}</span>
+                                                                @endforeach
+                                                            </div>
+                                                        @endif
+
+                                                        <div class="tooltip-detail-list">
+                                                            @if (!empty($item['responsable']))
+                                                                <p><strong>Responsable:</strong> {{ $item['responsable'] }}</p>
+                                                            @endif
+                                                        </div>
+
+                                                        @if (!empty($item['link']) || !empty($item['asset_link']))
+                                                            <div class="tooltip-actions">
+                                                                @if (!empty($item['link']))
+                                                                    <a class="tooltip-link" href="{{ $item['link'] }}" target="_blank" rel="noreferrer">Abrir contenido</a>
+                                                                @endif
+                                                                @if (!empty($item['asset_link']))
+                                                                    <a class="tooltip-link" href="{{ $item['asset_link'] }}" target="_blank" rel="noreferrer">Abrir pieza</a>
+                                                                @endif
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </article>
+                                            @endforeach
+                                        </div>
+                                        <p class="catalog-empty" id="themes-empty" hidden>No hay coincidencias para la búsqueda actual. Ajusta el término o cambia la temática activa.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -350,12 +581,9 @@
                             </article>
                         </div>
                     </section>
-                </div>
-            </div>
-        </section>
 
         <section class="feature-strip strip-mirada">
-            <div class="wrap strip-grid">
+            <div class="wrap-full strip-grid">
                 <div class="strip-art" aria-hidden="true"></div>
                 <div class="strip-copy">
                     <h2>Somos mirada</h2>
@@ -366,7 +594,7 @@
         </section>
 
         <section class="feature-strip strip-sonido">
-            <div class="wrap strip-grid">
+            <div class="wrap-full strip-grid">
                 <div class="strip-copy">
                     <h2>Somos sonido, somos voces</h2>
                     <p>Escuchas abiertas para conocer acentos, memorias, archivos y ritmos que habitan Casa Comun.</p>
@@ -444,11 +672,420 @@
             const title = document.getElementById('themes-panel-title');
             const lead = document.getElementById('themes-panel-lead');
             const copy = document.getElementById('themes-panel-copy');
-            const cards = Array.from(document.querySelectorAll('.topic-card[data-topic]'));
+            const types = document.getElementById('themes-panel-types');
+            const keywords = document.getElementById('themes-panel-keywords');
+            const resultsCount = document.getElementById('themes-results-count');
+            const searchInput = document.getElementById('themes-search');
+            const emptyState = document.getElementById('themes-empty');
+            const grid = document.getElementById('themes-catalog-grid');
+            const catalogLayout = document.querySelector('.catalog-layout');
+            const sidebarToggle = document.getElementById('catalog-sidebar-toggle');
+            const sidebarBackdrop = document.getElementById('catalog-sidebar-backdrop');
+            const sidebarClose = document.getElementById('catalog-sidebar-close');
+            const sidebarAccept = document.getElementById('catalog-sidebar-accept');
+            const activeFiltersLabel = document.getElementById('catalog-active-filters');
+            const filtersToggleCount = document.getElementById('catalog-filters-toggle-count');
+            const clearFiltersButton = document.getElementById('catalog-clear-filters');
+            const typeOptions = document.getElementById('filter-type-options');
+            const typeCount = document.getElementById('filter-type-count');
+            const typeEmpty = document.getElementById('filter-type-empty');
+            const responsableOptions = document.getElementById('filter-responsable-options');
+            const responsableCount = document.getElementById('filter-responsable-count');
+            const keywordInput = document.getElementById('filter-keyword-input');
+            const keywordSuggestions = document.getElementById('filter-keyword-suggestions');
+            const keywordSelected = document.getElementById('filter-keyword-selected');
+            const keywordCount = document.getElementById('filter-keyword-count');
+            const keywordEmpty = document.getElementById('filter-keyword-empty');
+            const keywordClear = document.getElementById('filter-keyword-clear');
+            const cards = Array.from(document.querySelectorAll('.topic-card[data-theme]'));
+            const tooltipButtons = Array.from(document.querySelectorAll('.tooltip-toggle'));
 
-            if (!tabs.length || !panel || !title || !lead || !copy) return;
+            if (!tabs.length || !panel || !title || !lead || !copy || !resultsCount || !searchInput || !grid) return;
+
+            const normalizeText = (value) => (value || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            let activeTheme = tabs.find((tab) => tab.getAttribute('aria-selected') === 'true')?.dataset.theme || '';
+            const activeSelections = {
+                type: new Set(),
+                responsable: '',
+                keyword: new Set(),
+            };
+            let themeMaps = {
+                type: new Map(),
+                responsable: new Map(),
+                keyword: new Map(),
+            };
+
+            const resetFilterInputs = () => {
+                if (keywordInput) keywordInput.value = '';
+            };
+
+            const getSelectedFilterLabels = () => {
+                const labels = [];
+
+                Array.from(activeSelections.type)
+                    .map((value) => Array.from(themeMaps.type.keys()).find((item) => normalizeText(item) === value) || value)
+                    .sort((a, b) => a.localeCompare(b, 'es'))
+                    .forEach((label) => labels.push(`Tipo: ${label}`));
+
+                if (activeSelections.responsable) {
+                    const responsableLabel = Array.from(themeMaps.responsable.keys()).find((item) => normalizeText(item) === activeSelections.responsable) || activeSelections.responsable;
+                    labels.push(`Responsable: ${responsableLabel}`);
+                }
+
+                Array.from(activeSelections.keyword)
+                    .map((value) => Array.from(themeMaps.keyword.keys()).find((item) => normalizeText(item) === value) || value)
+                    .sort((a, b) => a.localeCompare(b, 'es'))
+                    .forEach((label) => labels.push(`Palabra clave: ${label}`));
+
+                return labels;
+            };
+
+            const updateActiveFilterState = () => {
+                const selectedCount = activeSelections.type.size + activeSelections.keyword.size + (activeSelections.responsable ? 1 : 0);
+
+                if (activeFiltersLabel) {
+                    activeFiltersLabel.innerHTML = '';
+
+                    if (!selectedCount) {
+                        const placeholder = document.createElement('span');
+                        placeholder.className = 'catalog-filter-placeholder';
+                        placeholder.textContent = 'Sin filtros adicionales activos.';
+                        activeFiltersLabel.append(placeholder);
+                    } else {
+                        getSelectedFilterLabels().forEach((label) => {
+                            const chip = document.createElement('span');
+                            chip.className = 'catalog-filter-chip';
+                            chip.textContent = label;
+                            activeFiltersLabel.append(chip);
+                        });
+                    }
+                }
+
+                if (filtersToggleCount) {
+                    filtersToggleCount.textContent = selectedCount;
+                }
+
+                if (clearFiltersButton) {
+                    clearFiltersButton.hidden = selectedCount === 0;
+                }
+            };
+
+            const syncSidebarToggle = () => {
+                if (!catalogLayout || !sidebarToggle) return;
+
+                const expanded = catalogLayout.classList.contains('is-sidebar-open');
+                sidebarToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                sidebarToggle.textContent = expanded ? 'Ocultar filtros' : 'Mostrar filtros';
+                if (sidebarBackdrop) sidebarBackdrop.hidden = !expanded;
+                document.body.style.overflow = expanded ? 'hidden' : '';
+            };
+
+            const openSidebar = () => {
+                if (!catalogLayout) return;
+                catalogLayout.classList.add('is-sidebar-open');
+                syncSidebarToggle();
+            };
+
+            const closeSidebar = () => {
+                if (!catalogLayout) return;
+                catalogLayout.classList.remove('is-sidebar-open');
+                syncSidebarToggle();
+            };
+
+            const getThemeMaps = () => {
+                const themeCards = cards.filter((card) => card.dataset.theme === activeTheme);
+                const optionMaps = {
+                    type: new Map(),
+                    responsable: new Map(),
+                    keyword: new Map(),
+                };
+
+                themeCards.forEach((card) => {
+                    const typeLabel = (card.dataset.typeValue || '').trim();
+                    const responsableLabel = (card.dataset.responsable || '').trim();
+                    const keywordValues = (card.dataset.keywords || '').split('||').map((value) => value.trim()).filter(Boolean);
+
+                    if (typeLabel) optionMaps.type.set(typeLabel, (optionMaps.type.get(typeLabel) || 0) + 1);
+                    if (responsableLabel) optionMaps.responsable.set(responsableLabel, (optionMaps.responsable.get(responsableLabel) || 0) + 1);
+
+                    keywordValues.forEach((keyword) => {
+                        optionMaps.keyword.set(keyword, (optionMaps.keyword.get(keyword) || 0) + 1);
+                    });
+                });
+
+                return optionMaps;
+            };
+
+            const renderTypeOptions = () => {
+                if (!typeOptions || !typeCount || !typeEmpty) return;
+
+                const entries = Array.from(themeMaps.type.entries()).sort((a, b) => {
+                    if (b[1] !== a[1]) return b[1] - a[1];
+                    return a[0].localeCompare(b[0], 'es');
+                });
+
+                const available = new Set(entries.map(([label]) => normalizeText(label)));
+                Array.from(activeSelections.type).forEach((value) => {
+                    if (!available.has(value)) activeSelections.type.delete(value);
+                });
+
+                typeOptions.innerHTML = '';
+                typeCount.textContent = entries.length;
+                typeEmpty.hidden = entries.length !== 0;
+
+                entries.forEach(([label, amount]) => {
+                    const option = document.createElement('label');
+                    option.className = 'type-filter-option';
+
+                    const input = document.createElement('input');
+                    input.type = 'checkbox';
+                    input.value = normalizeText(label);
+                    input.checked = activeSelections.type.has(input.value);
+                    input.addEventListener('change', () => {
+                        if (input.checked) activeSelections.type.add(input.value);
+                        else activeSelections.type.delete(input.value);
+                        updateActiveFilterState();
+                        applyFilters();
+                    });
+
+                    const text = document.createElement('span');
+                    text.textContent = label;
+
+                    const count = document.createElement('small');
+                    count.textContent = amount;
+
+                    option.append(input, text, count);
+                    typeOptions.append(option);
+                });
+            };
+
+            const renderResponsableOptions = () => {
+                if (!responsableOptions || !responsableCount) return;
+
+                const entries = Array.from(themeMaps.responsable.entries()).sort((a, b) => a[0].localeCompare(b[0], 'es'));
+                const available = new Set(entries.map(([label]) => normalizeText(label)));
+
+                if (activeSelections.responsable && !available.has(activeSelections.responsable)) {
+                    activeSelections.responsable = '';
+                }
+
+                responsableOptions.innerHTML = '';
+                responsableCount.textContent = entries.length;
+
+                const allButton = document.createElement('button');
+                allButton.type = 'button';
+                allButton.className = `responsable-filter-option${activeSelections.responsable ? '' : ' is-active'}`;
+                allButton.innerHTML = '<span>Todos los responsables</span>';
+                allButton.addEventListener('click', () => {
+                    activeSelections.responsable = '';
+                    renderResponsableOptions();
+                    updateActiveFilterState();
+                    applyFilters();
+                });
+                responsableOptions.append(allButton);
+
+                entries.forEach(([label, amount]) => {
+                    const value = normalizeText(label);
+                    const option = document.createElement('button');
+                    option.type = 'button';
+                    option.className = `responsable-filter-option${value === activeSelections.responsable ? ' is-active' : ''}`;
+
+                    const text = document.createElement('span');
+                    text.textContent = label;
+
+                    const count = document.createElement('small');
+                    count.textContent = amount;
+
+                    option.append(text, count);
+                    option.addEventListener('click', () => {
+                        activeSelections.responsable = activeSelections.responsable === value ? '' : value;
+                        renderResponsableOptions();
+                        updateActiveFilterState();
+                        applyFilters();
+                    });
+                    responsableOptions.append(option);
+                });
+            };
+
+            const renderKeywordChips = () => {
+                if (!keywordSelected || !keywordClear) return;
+
+                keywordSelected.innerHTML = '';
+                keywordClear.hidden = activeSelections.keyword.size === 0;
+
+                Array.from(activeSelections.keyword)
+                    .map((value) => Array.from(themeMaps.keyword.keys()).find((item) => normalizeText(item) === value) || value)
+                    .sort((a, b) => a.localeCompare(b, 'es'))
+                    .forEach((label) => {
+                        const chip = document.createElement('span');
+                        chip.className = 'keyword-chip';
+                        chip.textContent = label;
+
+                        const remove = document.createElement('button');
+                        remove.type = 'button';
+                        remove.textContent = '×';
+                        remove.setAttribute('aria-label', `Quitar ${label}`);
+                        remove.addEventListener('click', () => {
+                            activeSelections.keyword.delete(normalizeText(label));
+                            renderKeywordChips();
+                            renderKeywordSuggestions();
+                            updateActiveFilterState();
+                            applyFilters();
+                        });
+
+                        chip.append(remove);
+                        keywordSelected.append(chip);
+                    });
+            };
+
+            const renderKeywordSuggestions = () => {
+                if (!keywordSuggestions || !keywordCount || !keywordEmpty) return;
+
+                const entries = Array.from(themeMaps.keyword.entries()).sort((a, b) => {
+                    if (b[1] !== a[1]) return b[1] - a[1];
+                    return a[0].localeCompare(b[0], 'es');
+                });
+                const available = new Set(entries.map(([label]) => normalizeText(label)));
+
+                Array.from(activeSelections.keyword).forEach((value) => {
+                    if (!available.has(value)) activeSelections.keyword.delete(value);
+                });
+
+                const query = normalizeText(keywordInput?.value || '');
+                const filtered = entries
+                    .filter(([label]) => !activeSelections.keyword.has(normalizeText(label)))
+                    .filter(([label]) => !query || normalizeText(label).includes(query))
+                    .slice(0, 12);
+
+                keywordCount.textContent = entries.length;
+                keywordSuggestions.innerHTML = '';
+                keywordEmpty.hidden = filtered.length !== 0;
+
+                filtered.forEach(([label, amount]) => {
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'keyword-suggestion';
+                    button.innerHTML = `<span>${label}</span><small>${amount}</small>`;
+                    button.addEventListener('click', () => {
+                        activeSelections.keyword.add(normalizeText(label));
+                        renderKeywordChips();
+                        renderKeywordSuggestions();
+                        updateActiveFilterState();
+                        applyFilters();
+                    });
+                    keywordSuggestions.append(button);
+                });
+            };
+
+            const buildFilterControls = () => {
+                themeMaps = getThemeMaps();
+                renderTypeOptions();
+                renderResponsableOptions();
+                renderKeywordChips();
+                renderKeywordSuggestions();
+                updateActiveFilterState();
+            };
+
+            const closeTooltip = (card) => {
+                if (!card) return;
+                card.classList.remove('is-tooltip-open');
+                const toggle = card.querySelector('.tooltip-toggle');
+                if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            };
+
+            const closeAllTooltips = (exceptCard = null) => {
+                cards.forEach((card) => {
+                    if (card !== exceptCard) closeTooltip(card);
+                });
+            };
+
+            const updateCatalogViewport = () => {
+                const visibleCards = cards.filter((card) => !card.classList.contains('is-hidden'));
+
+                if (!visibleCards.length) {
+                    grid.style.maxHeight = '0px';
+                    grid.scrollTop = 0;
+                    return;
+                }
+
+                const columnCount = Math.max(
+                    1,
+                    new Set(
+                        visibleCards
+                            .slice(0, 9)
+                            .map((card) => Math.round(card.getBoundingClientRect().left))
+                    ).size
+                );
+                const targetRows = Math.ceil(Math.min(9, visibleCards.length) / columnCount);
+                const rows = [];
+
+                visibleCards.forEach((card) => {
+                    const top = card.offsetTop;
+                    const bottom = top + card.offsetHeight;
+                    const lastRow = rows[rows.length - 1];
+
+                    if (!lastRow || Math.abs(lastRow.top - top) > 2) {
+                        rows.push({ top, bottom });
+                        return;
+                    }
+
+                    lastRow.bottom = Math.max(lastRow.bottom, bottom);
+                });
+
+                const visibleHeight = rows[targetRows - 1].bottom - rows[0].top;
+                grid.style.maxHeight = `${visibleHeight}px`;
+
+                if (visibleCards.length <= 9) {
+                    grid.scrollTop = 0;
+                }
+            };
+
+            const applyFilters = () => {
+                const query = normalizeText(searchInput.value);
+                const tokens = query ? query.split(' ').filter(Boolean) : [];
+                const hasQuery = tokens.length > 0;
+                let visibleCount = 0;
+
+                cards.forEach((card) => {
+                    const inTheme = hasQuery ? true : card.dataset.theme === activeTheme;
+                    const searchable = normalizeText(card.dataset.search || '');
+                    const matchesQuery = !hasQuery || searchable.includes(query) || tokens.every((token) => searchable.includes(token));
+                    const typeValue = normalizeText(card.dataset.typeValue || '');
+                    const responsableValue = normalizeText(card.dataset.responsable || '');
+                    const keywordValues = (card.dataset.keywords || '').split('||').map((value) => normalizeText(value)).filter(Boolean);
+                    const matchesType = !activeSelections.type.size || activeSelections.type.has(typeValue);
+                    const matchesResponsable = !activeSelections.responsable || activeSelections.responsable === responsableValue;
+                    const matchesKeyword = !activeSelections.keyword.size || keywordValues.some((value) => activeSelections.keyword.has(value));
+                    const visible = inTheme && matchesQuery && matchesType && matchesResponsable && matchesKeyword;
+
+                    card.classList.toggle('is-hidden', !visible);
+
+                    if (!visible) {
+                        closeTooltip(card);
+                        return;
+                    }
+
+                    visibleCount += 1;
+                });
+
+                resultsCount.textContent = `${visibleCount} contenido${visibleCount === 1 ? '' : 's'}`;
+
+                if (emptyState) {
+                    emptyState.hidden = visibleCount !== 0;
+                }
+
+                updateCatalogViewport();
+            };
 
             const activateTab = (tab, moveFocus = true) => {
+                activeTheme = tab.dataset.theme || 'all';
+
                 tabs.forEach((item) => {
                     const selected = item === tab;
                     item.setAttribute('aria-selected', selected ? 'true' : 'false');
@@ -458,12 +1095,16 @@
                 title.textContent = tab.dataset.title || '';
                 lead.textContent = tab.dataset.lead || '';
                 copy.textContent = tab.dataset.copy || '';
+                if (types) types.textContent = tab.dataset.types || '';
+                if (keywords) keywords.textContent = tab.dataset.keywords || '';
                 panel.setAttribute('aria-labelledby', tab.id);
-
-                const focusTopics = new Set((tab.dataset.focus || '').split(/\s+/).filter(Boolean));
-                cards.forEach((card) => {
-                    card.classList.toggle('is-emphasis', focusTopics.has(card.dataset.topic));
-                });
+                activeSelections.type.clear();
+                activeSelections.keyword.clear();
+                activeSelections.responsable = '';
+                resetFilterInputs();
+                buildFilterControls();
+                closeAllTooltips();
+                applyFilters();
 
                 if (moveFocus) tab.focus();
             };
@@ -483,6 +1124,76 @@
                     activateTab(tabs[nextIndex]);
                 });
             });
+
+            ['input', 'search', 'change', 'keyup'].forEach((eventName) => {
+                searchInput.addEventListener(eventName, applyFilters);
+            });
+            if (keywordInput) {
+                keywordInput.addEventListener('input', renderKeywordSuggestions);
+            }
+            if (keywordClear) {
+                keywordClear.addEventListener('click', () => {
+                    activeSelections.keyword.clear();
+                    if (keywordInput) keywordInput.value = '';
+                    renderKeywordChips();
+                    renderKeywordSuggestions();
+                    updateActiveFilterState();
+                    applyFilters();
+                });
+            }
+
+            if (clearFiltersButton) {
+                clearFiltersButton.addEventListener('click', () => {
+                    activeSelections.type.clear();
+                    activeSelections.keyword.clear();
+                    activeSelections.responsable = '';
+                    resetFilterInputs();
+                    buildFilterControls();
+                    applyFilters();
+                });
+            }
+
+            sidebarToggle?.addEventListener('click', () => {
+                if (!catalogLayout) return;
+                if (catalogLayout.classList.contains('is-sidebar-open')) closeSidebar();
+                else openSidebar();
+            });
+
+            sidebarClose?.addEventListener('click', closeSidebar);
+            sidebarAccept?.addEventListener('click', closeSidebar);
+            sidebarBackdrop?.addEventListener('click', closeSidebar);
+
+            tooltipButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const card = button.closest('.topic-card');
+                    const willOpen = !card.classList.contains('is-tooltip-open');
+
+                    closeAllTooltips(card);
+                    card.classList.toggle('is-tooltip-open', willOpen);
+                    button.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+                });
+            });
+
+            cards.forEach((card) => {
+                card.addEventListener('focusout', (event) => {
+                    if (card.contains(event.relatedTarget)) return;
+                    closeTooltip(card);
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (event.target.closest('.topic-card')) return;
+                closeAllTooltips();
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') closeSidebar();
+            });
+
+            window.addEventListener('resize', updateCatalogViewport);
+            buildFilterControls();
+            syncSidebarToggle();
+            applyFilters();
         })();
     </script>
 </body>
