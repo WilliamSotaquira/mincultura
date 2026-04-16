@@ -31,26 +31,42 @@
         @font-face{font-family:'Google Sans';src:url('{{ asset('assets/casa-comun/GoogleSans-Regular.ttf') }}') format('truetype');font-weight:400;font-style:normal}
         @font-face{font-family:'Google Sans';src:url('{{ asset('assets/casa-comun/GoogleSans-Bold.ttf') }}') format('truetype');font-weight:700;font-style:normal}
 
-        :root{--ink:#06090f;--poster:#5b6484;--poster-deep:#4e5876;--cream:#f4ebbe;--butter:#eed367;--teal:#58d7c9;--teal-deep:#2fc2b0;--mint:#70d7b5;--mint-dark:#4cc4ab;--pink:#e88bc1;--orange:#ef9141;--red:#c85c4f;--aqua:#4cd0c7;--line:rgba(18,26,35,.16);--text:#162127;--shadow:0 28px 70px rgba(0,0,0,.28)}
+        :root{--ink:#06090f;--poster:#5b6484;--poster-deep:#4e5876;--cream:#f4ebbe;--butter:#eed367;--teal:#58d7c9;--teal-deep:#2fc2b0;--mint:#70d7b5;--mint-dark:#4cc4ab;--pink:#e88bc1;--orange:#ef9141;--red:#c85c4f;--aqua:#4cd0c7;--line:rgba(18,26,35,.16);--text:#162127;--shadow:0 28px 70px rgba(0,0,0,.28);--font-scale:1;--focus-ring:#fff2a8}
         *{box-sizing:border-box}
         html{scroll-behavior:smooth}
-        body{margin:0;min-width:320px;background:#020305;font-family:'Google Sans',sans-serif;color:var(--cream)}
+        body{margin:0;min-width:320px;background:#020305;font-family:'Google Sans',sans-serif;color:var(--cream);font-size:calc(16px * var(--font-scale));line-height:1.5}
         a{color:inherit;text-decoration:none}
         img,video,svg{display:block;max-width:100%}
+        a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--focus-ring);outline-offset:3px}
+        .skip-link{position:fixed;left:14px;top:14px;z-index:70;padding:12px 16px;border-radius:12px;background:#111823;color:#fff5ce;font-size:13px;font-weight:700;transform:translateY(-150%);transition:transform .18s ease}
+        .skip-link:focus{transform:translateY(0)}
+        .accessibility-bar{position:sticky;top:0;z-index:60;display:flex;justify-content:center;padding:10px 14px;background:rgba(6,9,15,.88);backdrop-filter:blur(10px);border-bottom:1px solid rgba(244,235,190,.12)}
+        .accessibility-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;width:min(100%,1040px)}
+        .accessibility-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,235,190,.72)}
+        .accessibility-btn{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 14px;border:1px solid rgba(244,235,190,.24);border-radius:999px;background:rgba(255,255,255,.06);color:var(--cream);font-size:12px;font-weight:700;letter-spacing:.05em;cursor:pointer}
+        .accessibility-btn.is-active{background:var(--cream);color:#172029}
         .page{position:relative;overflow-x:clip;background:#49556f}
         .page::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(255,255,255,.13) 0 1px,transparent 1px 5px);mix-blend-mode:screen;opacity:.55;pointer-events:none;z-index:0}
         .page > *{position:relative;z-index:1}
-        .wrap,.wrap-contained{width:min(100%,1040px);margin:0 auto}
+        .wrap,.wrap-contained{width:min(100%,1200px);margin:0 auto}
         .wrap-full{width:100%;max-width:none;margin:0 auto}
 
         .poster-hero{position:relative;background:#49556f;overflow:hidden}
         .poster-hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(255,255,255,.13) 0 1px,transparent 1px 5px);mix-blend-mode:screen;opacity:.55;pointer-events:none}
-        .sky-media{position:absolute;inset:0 0 auto;height:280px;overflow:hidden}
+        .sky-media{position:absolute;inset:0 0 auto;height:380px;overflow:hidden}
         .sky-media img,.sky-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
         .sky-media img{filter:saturate(.65) brightness(1.05)}
         .sky-media video{opacity:.22;mix-blend-mode:multiply}
 
-        .poster-shell{position:relative;padding:0}
+        .poster-shell{position:relative;padding:0 0 28px}
+        .hero-intro{position:relative;z-index:6;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:16px;width:min(100% - 48px,1180px);margin:0 auto;padding:24px 0 0}
+        .hero-copy{max-width:560px}
+        .hero-kicker{margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,235,190,.72)}
+        .hero-copy h1{margin:0;font-family:'Alternate Gothic',sans-serif;font-size:clamp(54px,7vw,96px);line-height:.92;letter-spacing:.03em;text-transform:uppercase;color:var(--cream);text-wrap:balance}
+        .hero-copy p{margin:14px 0 0;max-width:44ch;font-size:18px;line-height:1.6;color:rgba(244,235,190,.88)}
+        .hero-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+        .hero-btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;background:var(--cream);color:#172029;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+        .hero-btn.is-secondary{background:rgba(255,255,255,.08);color:var(--cream);border:1px solid rgba(244,235,190,.24)}
 
 
         .collage-left,.collage-right{display:none}
@@ -68,7 +84,7 @@
         .right-main{filter:drop-shadow(-12px 22px 24px rgba(17,22,41,.16))}
         .right-main img{opacity:.82}
 
-        .house-panel{position:relative;z-index:5;width:min(100% - 48px,1080px);height:clamp(320px,35.3vw,381px);margin:0 auto 0;padding:0;background:transparent;clip-path:polygon(50% 0,100% 14%,100% 100%,0 100%,0 14%);box-shadow:none;overflow:hidden}
+        .house-panel{position:relative;z-index:5;width:min(100% - 48px,1180px);height:clamp(320px,35.3vw,420px);margin:0 auto 0;padding:0;background:transparent;clip-path:polygon(50% 0,100% 14%,100% 100%,0 100%,0 14%);box-shadow:none;overflow:hidden}
         .house-panel::before,.house-panel::after{content:none}
         .roof-carousel{position:absolute;inset:0;z-index:3;overflow:hidden}
         .roof-slide{position:absolute;inset:0;opacity:0;transition:opacity .55s ease}
@@ -81,18 +97,20 @@
         .roof-dot:focus-visible{outline:2px solid rgba(244,235,190,.92);outline-offset:3px}
 
         .themes-section{position:relative;z-index:4;padding:72px 0 34px}
-        .themes-title{position:relative;z-index:4;max-width:860px;margin:0 auto 42px;text-align:right;font-family:'Alternate Gothic',sans-serif;font-size:48px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
-        .themes-stage{position:relative;max-width:860px;margin:0 auto;padding-top:14px}
-        .board{position:relative;z-index:2;overflow:visible;color:var(--text);background:linear-gradient(180deg,var(--mint) 0%,var(--mint-dark) 100%);box-shadow:0 22px 44px rgba(14,27,34,.28)}
-        .chip-row{position:absolute;left:14px;right:14px;top:-18px;display:grid;grid-template-columns:repeat(var(--chip-count,8),1fr);gap:7px}
+        .themes-title{position:relative;z-index:4;max-width:1120px;margin:0 auto 42px;text-align:right;font-family:'Alternate Gothic',sans-serif;font-size:48px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
+        .themes-summary{max-width:1120px;margin:0 auto 18px;padding:0 0 4px;font-size:16px;line-height:1.65;color:rgba(244,235,190,.84)}
+        .themes-stage{position:relative;max-width:1120px;margin:0 auto;padding-top:14px}
+        .board{position:relative;z-index:2;overflow:visible;color:var(--text);background:linear-gradient(180deg,var(--theme-chip-color, var(--mint)) 0 232px,var(--mint-dark) 232px 100%);box-shadow:0 22px 44px rgba(14,27,34,.28);transition:background .2s ease}
+        .board::before{content:"";position:absolute;left:0;right:0;top:0;height:38px;background:var(--theme-chip-color, var(--mint));z-index:4;pointer-events:none}
+        .chip-row{position:absolute;left:14px;right:14px;top:-54px;display:grid;grid-template-columns:repeat(var(--chip-count,8),1fr);gap:8px;z-index:3}
         .board-layers{position:absolute;inset:0;z-index:1;pointer-events:none}
         .board-collage-left{position:absolute;left:-102px;top:-546px;width:min(71vw,700px);height:1060px}
         .board-collage-right{position:absolute;right:-112px;top:-102px;width:min(24vw,214px);height:382px;opacity:.9}
-        .board-panel,.topic-grid{position:relative;z-index:3}
-        .chip{display:flex;align-items:center;justify-content:center;height:36px;padding:0;border:0;clip-path:polygon(12% 100%,0 40%,50% 0,100% 40%,88% 100%);font-size:15px;font-weight:700;color:#1c2730;background:transparent;cursor:pointer;transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
+        .board-panel,.topic-grid{position:relative;z-index:2}
+        .chip{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;height:58px;padding:12px 6px 0;border:0;clip-path:polygon(50% 0,100% 32%,100% 100%,0 100%,0 32%);font-size:18px;font-weight:700;line-height:1;color:#1c2730;background:transparent;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,height .18s ease,padding-top .18s ease,z-index .18s ease}
         .chip:hover{transform:translateY(-2px)}
         .chip:focus-visible{outline:2px solid rgba(24,33,39,.7);outline-offset:2px}
-        .chip[aria-selected="true"]{transform:translateY(-4px);filter:saturate(1.06) brightness(1.02);box-shadow:0 9px 0 rgba(34,53,60,.16)}
+        .chip[aria-selected="true"]{z-index:5;height:76px;padding-top:18px;transform:translateY(-8px);filter:none;box-shadow:none}
         .chip:nth-child(1){background:#f3d44f}
         .chip:nth-child(2){background:#76d677}
         .chip:nth-child(3){background:#f2a857}
@@ -101,8 +119,8 @@
         .chip:nth-child(6){background:#d1ef8d}
         .chip:nth-child(7){background:#b8e6ef}
         .chip:nth-child(8){background:#c8dbef}
-        .board-panel{display:block}
-        .board-intro{display:grid;grid-template-columns:1.2fr .92fr;align-items:stretch;min-height:196px;border-bottom:1px solid var(--line)}
+        .board-panel{display:block;padding-top:26px;background:var(--theme-chip-color, rgba(255,255,255,.16));transition:background-color .2s ease}
+        .board-intro{display:grid;grid-template-columns:1.2fr .92fr;align-items:stretch;min-height:196px;border-bottom:1px solid var(--line);background:transparent}
         .board-copy{display:flex;flex-direction:column;justify-content:flex-start;padding:22px 18px 14px}
         .board-copy:first-child{border-right:1px solid var(--line)}
         .board-copy-search{gap:10px}
@@ -183,7 +201,7 @@
         .keyword-chip{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 14px;border-radius:999px;background:rgba(20,33,38,.86);font-size:12px;font-weight:700;letter-spacing:.04em;color:#fff7de}
         .keyword-chip button{padding:0;border:0;background:none;font:inherit;color:inherit;cursor:pointer}
         .filter-empty{font-size:14px;line-height:1.5;color:rgba(20,33,38,.64)}
-        .topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(20,33,38,.12);overflow-y:auto;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:rgba(20,33,38,.38) rgba(255,255,255,.06)}
+        .topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;align-content:start;background:rgba(20,33,38,.12);overflow:visible}
         .topic-grid::-webkit-scrollbar{width:10px}
         .topic-grid::-webkit-scrollbar-track{background:rgba(255,255,255,.06)}
         .topic-grid::-webkit-scrollbar-thumb{background:rgba(20,33,38,.32)}
@@ -199,23 +217,26 @@
         .topic-meta-line{margin-top:auto;font-size:13px;line-height:1.5;color:rgba(20,33,38,.64)}
         .topic-link{margin-top:0;display:inline-flex;align-items:center;gap:8px;padding:0;border:0;background:none;font:inherit;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:inherit;cursor:pointer}
         .topic-link::before{content:"";width:18px;height:2px;background:rgba(20,33,38,.56)}
-        .catalog-tooltip{position:absolute;left:12px;right:12px;top:calc(100% - 8px);z-index:9;padding:14px;border:1px solid rgba(20,33,38,.12);background:#fff5ce;color:#162127;box-shadow:0 18px 38px rgba(0,0,0,.2);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .18s ease,transform .18s ease,visibility .18s linear}
-        .topic-card:hover .catalog-tooltip,.topic-card:focus-within .catalog-tooltip,.topic-card.is-tooltip-open .catalog-tooltip{opacity:1;visibility:visible;transform:translateY(0)}
-        .tooltip-theme{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(22,33,39,.56)}
-        .tooltip-description{margin:0 0 12px;font-size:14px;line-height:1.65;color:rgba(20,33,38,.86)}
-        .tooltip-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
-        .tooltip-tags span{display:inline-flex;align-items:center;min-height:28px;padding:0 12px;border-radius:999px;background:rgba(20,33,38,.08);font-size:12px;color:#162127}
-        .tooltip-detail-list{display:flex;flex-direction:column;gap:8px}
+        .catalog-tooltip{position:fixed;left:var(--tooltip-left,16px);top:var(--tooltip-top,16px);z-index:52;width:min(380px,calc(100vw - 32px));max-height:calc(100vh - 32px);padding:16px 16px 14px;border:1px solid rgba(20,33,38,.12);background:#fff5ce;color:#162127;box-shadow:0 18px 38px rgba(0,0,0,.2);overflow:auto;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .18s ease,transform .18s ease,visibility .18s linear}
+        .topic-card.is-tooltip-open .catalog-tooltip{opacity:1;visibility:visible;transform:translateY(0)}
+        .tooltip-theme{margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(22,33,39,.56)}
+        .tooltip-description{margin:0 0 14px;font-size:14px;line-height:1.65;color:rgba(20,33,38,.86)}
+        .tooltip-cluster{display:grid;gap:12px;padding-top:12px;border-top:1px solid rgba(20,33,38,.1)}
+        .tooltip-group{display:grid;gap:6px}
+        .tooltip-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(22,33,39,.54)}
+        .tooltip-tags{display:flex;flex-wrap:wrap;gap:6px}
+        .tooltip-tags span{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border-radius:999px;background:rgba(20,33,38,.08);font-size:11px;font-weight:700;color:#162127}
+        .tooltip-detail-list{display:flex;flex-direction:column;gap:6px}
         .tooltip-detail-list p{margin:0;font-size:13px;line-height:1.6;color:rgba(20,33,38,.82)}
-        .tooltip-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+        .tooltip-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
         .tooltip-link{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 16px;border-radius:999px;background:rgba(20,33,38,.92);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff9e2}
         .catalog-empty{padding:18px 16px;font-size:14px;line-height:1.6;color:rgba(20,33,38,.74);background:rgba(255,255,255,.1)}
         .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
         .highlights{position:relative;z-index:2;padding:36px 0 52px}
         .highlights::before{content:"";position:absolute;inset:0;background-image:url('{{ asset('assets/casa-comun/layer-stripes.png') }}');background-size:280px auto;background-repeat:repeat;opacity:.1;mix-blend-mode:screen;pointer-events:none}
-        .highlights-title{max-width:860px;margin:0 auto 18px;font-family:'Alternate Gothic',sans-serif;font-size:50px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
-        .cards{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+        .highlights-title{max-width:1120px;margin:0 auto 18px;font-family:'Alternate Gothic',sans-serif;font-size:50px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
+        .cards{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
         .card{display:flex;flex-direction:column;overflow:hidden;min-height:100%;box-shadow:0 18px 40px rgba(0,0,0,.16)}
         .card img{width:100%;aspect-ratio:1/1;object-fit:cover}
         .card-body{display:flex;flex:1 1 auto;flex-direction:column;gap:10px;padding:12px 12px 14px;color:#261d1f}
@@ -224,7 +245,7 @@
         .card-orange{background:linear-gradient(180deg,#f39a49,#ef8740)}
         .card h3{margin:0;font-size:13px;font-weight:700;line-height:1.34;text-transform:uppercase}
         .card p{margin:0;font-size:11px;line-height:1.48;color:rgba(30,22,25,.76)}
-        .mini-btn{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;min-height:30px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.92);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+        .mini-btn{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;min-height:34px;padding:0 16px;border-radius:999px;background:#fff7de;color:#172029;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
 
         .feature-strip{position:relative;overflow:hidden}
         .strip-grid{display:grid;grid-template-columns:1.12fr .88fr;align-items:stretch;height:280px}
@@ -250,14 +271,20 @@
         .socials{display:flex;justify-content:center;gap:10px}
         .socials a{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.08)}
         .socials svg{width:13px;height:13px;fill:#fff}
+        body.is-high-contrast{--poster:#131820;--poster-deep:#0f131a;--cream:#fff9d7;--mint:#d7f178;--mint-dark:#bdd656;--line:rgba(255,249,215,.2);--text:#0f1115;--focus-ring:#ffffff}
+        body.is-high-contrast .page{background:#0f131a}
+        body.is-high-contrast .mini-btn,body.is-high-contrast .strip-btn,body.is-high-contrast .hero-btn{background:#fff9d7;color:#000}
+        body.is-high-contrast .hero-btn.is-secondary,body.is-high-contrast .accessibility-btn{background:#000;color:#fff9d7;border-color:#fff9d7}
 
         @media (max-width:900px){
-            .house-panel{width:min(100% - 32px,1080px);height:clamp(280px,35.3vw,339px);padding-top:0}
+            .hero-intro{grid-template-columns:1fr;align-items:start;padding:28px 0 16px}
+            .hero-actions{justify-content:flex-start}
+            .house-panel{width:min(100% - 32px,1180px);height:clamp(280px,35.3vw,380px);padding-top:0}
             .roof-carousel{inset:0}
             .roof-dots{bottom:16px}
             .themes-section{padding-top:56px}
-            .themes-title{max-width:800px;margin-bottom:36px;font-size:44px}
-            .themes-stage{max-width:800px}
+            .themes-title{max-width:1080px;margin-bottom:36px;font-size:44px}
+            .themes-stage{max-width:1080px}
             .board-collage-left{left:-66px;top:-450px;width:min(69vw,580px);height:874px}
             .board-collage-right{right:-88px;top:-82px;width:min(24vw,182px);height:336px}
             .board-intro,.strip-grid,.strip-sonido .strip-grid{grid-template-columns:1fr}
@@ -270,9 +297,14 @@
         }
 
         @media (max-width:720px){
+            .accessibility-bar{padding:8px 10px}
+            .accessibility-tools{justify-content:flex-start}
+            .accessibility-label{width:100%}
             .wrap,.wrap-contained{width:min(100%,1040px)}
             .wrap-full{width:100%}
-            .sky-media{height:228px}
+            .sky-media{height:300px}
+            .hero-intro{width:min(100% - 24px,1080px);padding:22px 0 12px}
+            .hero-copy p{font-size:15px}
             .roof-carousel{inset:0}
             .roof-dots{bottom:12px;gap:8px}
             .roof-dot{width:10px;height:10px}
@@ -282,7 +314,8 @@
             .themes-title,.highlights-title,.strip-copy h2{font-size:40px}
             .themes-title{margin-bottom:32px}
             .themes-stage,.cards,.highlights-title{max-width:100%}
-            .chip-row{grid-template-columns:repeat(4,1fr);row-gap:5px;top:-31px}
+            .chip-row{grid-template-columns:repeat(4,1fr);row-gap:6px;top:-54px}
+            .board-panel{padding-top:48px}
             .board-intro{min-height:0}
             .board-copy{padding:36px 16px 16px}
             .board-copy h2{font-size:34px}
@@ -298,8 +331,8 @@
             .topic-grid,.cards{grid-template-columns:1fr}
             .topic-card{min-height:0;padding:14px 16px}
             .topic-meta-line{margin-top:0}
-            .catalog-tooltip{position:static;left:auto;right:auto;top:auto;display:none;margin-top:12px;opacity:1;visibility:visible;transform:none}
-            .topic-card:hover .catalog-tooltip,.topic-card:focus-within .catalog-tooltip,.topic-card.is-tooltip-open .catalog-tooltip{display:block}
+            .catalog-tooltip{position:static;left:auto;right:auto;top:auto;display:none;width:auto;max-height:none;margin-top:12px;opacity:1;visibility:visible;transform:none;overflow:visible}
+            .topic-card.is-tooltip-open .catalog-tooltip{display:block}
             .card img{aspect-ratio:1.1/1}
             .strip-art{min-height:108px}
             .strip-sonido .strip-art{order:2}
@@ -316,8 +349,19 @@
 
 
 <body>
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido</a>
+    <div class="accessibility-bar" aria-label="Herramientas de accesibilidad">
+        <div class="accessibility-tools">
+            <span class="accessibility-label">Accesibilidad</span>
+            <button class="accessibility-btn" id="font-decrease" type="button" aria-label="Disminuir tamaño de texto">A-</button>
+            <button class="accessibility-btn" id="font-reset" type="button" aria-label="Restablecer tamaño de texto">A</button>
+            <button class="accessibility-btn" id="font-increase" type="button" aria-label="Aumentar tamaño de texto">A+</button>
+            <button class="accessibility-btn" id="contrast-toggle" type="button" aria-pressed="false">Alto contraste</button>
+        </div>
+    </div>
     <div class="page">
-        <section class="poster-hero">
+        <main id="contenido-principal">
+        <section class="poster-hero" id="inicio">
             <div class="sky-media" aria-hidden="true">
                 <img src="{{ asset('assets/casa-comun/hero-bg.png') }}" alt="">
                 <video autoplay muted loop playsinline preload="metadata" poster="{{ asset('assets/casa-comun/hero-bg.png') }}">
@@ -359,11 +403,24 @@
                         <button class="roof-dot" type="button" aria-label="Ver diapositiva 2" aria-selected="false"></button>
                     </div>
                 </div>
+
+                <div class="hero-intro">
+                    <div class="hero-copy">
+                        <p class="hero-kicker">Diversidad cultural y lingüística</p>
+                        <h1>Colombia pluriétnica, saberes en casa común</h1>
+                        <p>Un espacio para visibilizar pueblos, memorias, lenguas nativas y derechos culturales desde una lectura amplia del territorio, las comunidades y sus procesos.</p>
+                    </div>
+                    <div class="hero-actions">
+                        <a class="hero-btn" href="#tematicas">Explorar contenidos</a>
+                        <a class="hero-btn is-secondary" href="#destacados">Ver destacados</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="themes-section">
-                        <h1 class="themes-title">Tematicas</h1>
+        <section class="themes-section" id="tematicas">
+                        <h2 class="themes-title">Tematicas</h2>
+                        <p class="themes-summary">La matriz actual permite navegar contenidos por tema, responsable, formato y palabras clave. Sigue pendiente reorganizar esta navegación con eje principal por pueblos étnicos y capas territoriales y lingüísticas.</p>
                         <div class="themes-stage">
                             <div class="board-layers" aria-hidden="true">
                                 <div class="board-collage-left">
@@ -514,31 +571,39 @@
                                                     <div class="catalog-tooltip" id="tooltip-{{ $item['id'] }}" role="tooltip">
                                                         <p class="tooltip-theme">{{ $item['theme'] }}</p>
                                                         <p class="tooltip-description">{{ $item['description'] }}</p>
+                                                        <div class="tooltip-cluster">
+                                                            @if (!empty($item['keywords']))
+                                                                <div class="tooltip-group">
+                                                                    <span class="tooltip-label">Claves de lectura</span>
+                                                                    <div class="tooltip-tags">
+                                                                        @foreach (array_slice($item['keywords'], 0, 4) as $keyword)
+                                                                            <span>{{ $keyword }}</span>
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
+                                                            @endif
 
-                                                        @if (!empty($item['keywords']))
-                                                            <div class="tooltip-tags">
-                                                                @foreach (array_slice($item['keywords'], 0, 5) as $keyword)
-                                                                    <span>{{ $keyword }}</span>
-                                                                @endforeach
-                                                            </div>
-                                                        @endif
-
-                                                        <div class="tooltip-detail-list">
                                                             @if (!empty($item['responsable']))
-                                                                <p><strong>Responsable:</strong> {{ $item['responsable'] }}</p>
+                                                                <div class="tooltip-group tooltip-detail-list">
+                                                                    <span class="tooltip-label">Responsable</span>
+                                                                    <p>{{ $item['responsable'] }}</p>
+                                                                </div>
+                                                            @endif
+
+                                                            @if (!empty($item['link']) || !empty($item['asset_link']))
+                                                                <div class="tooltip-group">
+                                                                    <span class="tooltip-label">Acceso</span>
+                                                                    <div class="tooltip-actions">
+                                                                        @if (!empty($item['link']))
+                                                                            <a class="tooltip-link" href="{{ $item['link'] }}" target="_blank" rel="noreferrer">Ver recurso</a>
+                                                                        @endif
+                                                                        @if (!empty($item['asset_link']))
+                                                                            <a class="tooltip-link" href="{{ $item['asset_link'] }}" target="_blank" rel="noreferrer">Abrir pieza</a>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
                                                             @endif
                                                         </div>
-
-                                                        @if (!empty($item['link']) || !empty($item['asset_link']))
-                                                            <div class="tooltip-actions">
-                                                                @if (!empty($item['link']))
-                                                                    <a class="tooltip-link" href="{{ $item['link'] }}" target="_blank" rel="noreferrer">Abrir contenido</a>
-                                                                @endif
-                                                                @if (!empty($item['asset_link']))
-                                                                    <a class="tooltip-link" href="{{ $item['asset_link'] }}" target="_blank" rel="noreferrer">Abrir pieza</a>
-                                                                @endif
-                                                            </div>
-                                                        @endif
                                                     </div>
                                                 </article>
                                             @endforeach
@@ -550,7 +615,7 @@
                         </div>
                     </section>
 
-                    <section class="highlights">
+                    <section class="highlights" id="destacados">
                         <h2 class="highlights-title">Destacados</h2>
                         <div class="cards">
                             <article class="card d1">
@@ -558,7 +623,7 @@
                                 <div class="card-body card-pink">
                                     <h3>Cantaoras, rituales y encuentros donde la voz sostiene memoria y comunidad.</h3>
                                     <p>Relatos sonoros, transmisión oral y celebraciones que continúan moviendo la cultura desde el territorio.</p>
-                                    <a class="mini-btn" href="#!">Leer más</a>
+                                    <a class="mini-btn" href="#tematicas">Explorar contenidos</a>
                                 </div>
                             </article>
 
@@ -567,7 +632,7 @@
                                 <div class="card-body card-yellow">
                                     <h3>Escenas y públicos que hacen del espacio cultural un punto de encuentro abierto.</h3>
                                     <p>Experiencias de circulación, creación escénica y gestión local que fortalecen la vida cultural.</p>
-                                    <a class="mini-btn" href="#!">Leer más</a>
+                                    <a class="mini-btn" href="#tematicas">Explorar contenidos</a>
                                 </div>
                             </article>
 
@@ -576,35 +641,35 @@
                                 <div class="card-body card-orange">
                                     <h3>Procesos colectivos que convierten la cultura en motor de economías populares.</h3>
                                     <p>Redes, emprendimientos y prácticas colaborativas que activan producción simbólica y bienestar local.</p>
-                                    <a class="mini-btn" href="#!">Leer más</a>
+                                    <a class="mini-btn" href="#tematicas">Explorar contenidos</a>
                                 </div>
                             </article>
                         </div>
                     </section>
 
-        <section class="feature-strip strip-mirada">
+        <section class="feature-strip strip-mirada" id="mirada">
             <div class="wrap-full strip-grid">
                 <div class="strip-art" aria-hidden="true"></div>
                 <div class="strip-copy">
                     <h2>Somos mirada</h2>
                     <p>Galerias, piezas y relatos visuales para recorrer el territorio desde otras perspectivas.</p>
-                    <a class="strip-btn" href="#!">Descubre aqui</a>
+                    <a class="strip-btn" href="#destacados">Descubre aquí</a>
                 </div>
             </div>
         </section>
 
-        <section class="feature-strip strip-sonido">
+        <section class="feature-strip strip-sonido" id="sonido">
             <div class="wrap-full strip-grid">
                 <div class="strip-copy">
                     <h2>Somos sonido, somos voces</h2>
                     <p>Escuchas abiertas para conocer acentos, memorias, archivos y ritmos que habitan Casa Comun.</p>
-                    <a class="strip-btn" href="#!">Escucha aqui</a>
+                    <a class="strip-btn" href="#tematicas">Escucha aquí</a>
                 </div>
                 <div class="strip-art" aria-hidden="true"></div>
             </div>
         </section>
 
-        <footer class="footer">
+        <footer class="footer" id="contacto">
             <a class="footer-pill" href="https://www.mincultura.gov.co/" target="_blank" rel="noreferrer">https://www.mincultura.gov.co/</a>
             <div class="socials" aria-label="Redes sociales">
                 <a href="https://www.facebook.com/MinisterioCultura/" target="_blank" rel="noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.4 21v-8h2.7l.4-3.1h-3.1V8.2c0-.9.3-1.5 1.6-1.5h1.7V4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.4v1.7H7.6V13h2.9v8h2.9Z"/></svg></a>
@@ -613,9 +678,44 @@
                 <a href="https://www.youtube.com/@Mincultura" target="_blank" rel="noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.4 7.3a2.8 2.8 0 0 0-2-2c-1.7-.5-7.4-.5-7.4-.5s-5.7 0-7.4.5a2.8 2.8 0 0 0-2 2A30 30 0 0 0 2.2 12a30 30 0 0 0 .4 4.7 2.8 2.8 0 0 0 2 2c1.7.5 7.4.5 7.4.5s5.7 0 7.4-.5a2.8 2.8 0 0 0 2-2 30 30 0 0 0 .4-4.7 30 30 0 0 0-.4-4.7ZM10.2 15.3V8.7L15.9 12l-5.7 3.3Z"/></svg></a>
             </div>
         </footer>
+        </main>
     </div>
 
     <script>
+        (() => {
+            const body = document.body;
+            const increaseButton = document.getElementById('font-increase');
+            const decreaseButton = document.getElementById('font-decrease');
+            const resetButton = document.getElementById('font-reset');
+            const contrastButton = document.getElementById('contrast-toggle');
+            let fontScale = 1;
+
+            const syncScale = () => {
+                body.style.setProperty('--font-scale', fontScale.toFixed(2));
+            };
+
+            increaseButton?.addEventListener('click', () => {
+                fontScale = Math.min(1.3, fontScale + 0.1);
+                syncScale();
+            });
+
+            decreaseButton?.addEventListener('click', () => {
+                fontScale = Math.max(0.9, fontScale - 0.1);
+                syncScale();
+            });
+
+            resetButton?.addEventListener('click', () => {
+                fontScale = 1;
+                syncScale();
+            });
+
+            contrastButton?.addEventListener('click', () => {
+                const active = body.classList.toggle('is-high-contrast');
+                contrastButton.classList.toggle('is-active', active);
+                contrastButton.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+        })();
+
         (() => {
             const carousel = document.querySelector('[data-roof-carousel]');
             const slides = Array.from(document.querySelectorAll('[data-roof-slide]'));
@@ -668,6 +768,7 @@
 
         (() => {
             const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+            const board = document.querySelector('.board');
             const panel = document.getElementById('temas-panel');
             const title = document.getElementById('themes-panel-title');
             const lead = document.getElementById('themes-panel-lead');
@@ -699,6 +800,7 @@
             const keywordClear = document.getElementById('filter-keyword-clear');
             const cards = Array.from(document.querySelectorAll('.topic-card[data-theme]'));
             const tooltipButtons = Array.from(document.querySelectorAll('.tooltip-toggle'));
+            let activeTooltipCard = null;
 
             if (!tabs.length || !panel || !title || !lead || !copy || !resultsCount || !searchInput || !grid) return;
 
@@ -719,6 +821,13 @@
                 type: new Map(),
                 responsable: new Map(),
                 keyword: new Map(),
+            };
+
+            const syncThemeAccent = (tab) => {
+                if (!tab || !panel) return;
+                const chipColor = window.getComputedStyle(tab).backgroundColor;
+                if (board) board.style.setProperty('--theme-chip-color', chipColor);
+                panel.style.setProperty('--theme-chip-color', chipColor);
             };
 
             const resetFilterInputs = () => {
@@ -997,6 +1106,7 @@
                 card.classList.remove('is-tooltip-open');
                 const toggle = card.querySelector('.tooltip-toggle');
                 if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                if (activeTooltipCard === card) activeTooltipCard = null;
             };
 
             const closeAllTooltips = (exceptCard = null) => {
@@ -1005,45 +1115,41 @@
                 });
             };
 
+            const positionTooltip = (card) => {
+                if (!card || window.innerWidth <= 720) return;
+
+                const tooltip = card.querySelector('.catalog-tooltip');
+                const toggle = card.querySelector('.tooltip-toggle');
+                if (!tooltip || !toggle) return;
+
+                const spacing = 16;
+                const toggleRect = toggle.getBoundingClientRect();
+
+                tooltip.style.setProperty('--tooltip-left', `${spacing}px`);
+                tooltip.style.setProperty('--tooltip-top', `${spacing}px`);
+
+                const tooltipRect = tooltip.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+
+                let left = toggleRect.left;
+                if (left + tooltipRect.width > viewportWidth - spacing) {
+                    left = viewportWidth - spacing - tooltipRect.width;
+                }
+                left = Math.max(spacing, left);
+
+                let top = toggleRect.bottom + 10;
+                if (top + tooltipRect.height > viewportHeight - spacing) {
+                    top = toggleRect.top - tooltipRect.height - 10;
+                }
+                top = Math.max(spacing, top);
+
+                tooltip.style.setProperty('--tooltip-left', `${Math.round(left)}px`);
+                tooltip.style.setProperty('--tooltip-top', `${Math.round(top)}px`);
+            };
+
             const updateCatalogViewport = () => {
-                const visibleCards = cards.filter((card) => !card.classList.contains('is-hidden'));
-
-                if (!visibleCards.length) {
-                    grid.style.maxHeight = '0px';
-                    grid.scrollTop = 0;
-                    return;
-                }
-
-                const columnCount = Math.max(
-                    1,
-                    new Set(
-                        visibleCards
-                            .slice(0, 9)
-                            .map((card) => Math.round(card.getBoundingClientRect().left))
-                    ).size
-                );
-                const targetRows = Math.ceil(Math.min(9, visibleCards.length) / columnCount);
-                const rows = [];
-
-                visibleCards.forEach((card) => {
-                    const top = card.offsetTop;
-                    const bottom = top + card.offsetHeight;
-                    const lastRow = rows[rows.length - 1];
-
-                    if (!lastRow || Math.abs(lastRow.top - top) > 2) {
-                        rows.push({ top, bottom });
-                        return;
-                    }
-
-                    lastRow.bottom = Math.max(lastRow.bottom, bottom);
-                });
-
-                const visibleHeight = rows[targetRows - 1].bottom - rows[0].top;
-                grid.style.maxHeight = `${visibleHeight}px`;
-
-                if (visibleCards.length <= 9) {
-                    grid.scrollTop = 0;
-                }
+                return;
             };
 
             const applyFilters = () => {
@@ -1097,6 +1203,7 @@
                 copy.textContent = tab.dataset.copy || '';
                 if (types) types.textContent = tab.dataset.types || '';
                 if (keywords) keywords.textContent = tab.dataset.keywords || '';
+                syncThemeAccent(tab);
                 panel.setAttribute('aria-labelledby', tab.id);
                 activeSelections.type.clear();
                 activeSelections.keyword.clear();
@@ -1171,6 +1278,8 @@
                     closeAllTooltips(card);
                     card.classList.toggle('is-tooltip-open', willOpen);
                     button.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+                    activeTooltipCard = willOpen ? card : null;
+                    if (willOpen) positionTooltip(card);
                 });
             });
 
@@ -1187,13 +1296,23 @@
             });
 
             document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape') closeSidebar();
+                if (event.key === 'Escape') {
+                    closeSidebar();
+                    closeAllTooltips();
+                }
             });
 
-            window.addEventListener('resize', updateCatalogViewport);
-            buildFilterControls();
+            window.addEventListener('resize', () => {
+                updateCatalogViewport();
+                if (activeTooltipCard) positionTooltip(activeTooltipCard);
+            });
+            window.addEventListener('scroll', () => {
+                if (activeTooltipCard) positionTooltip(activeTooltipCard);
+            }, { passive: true });
             syncSidebarToggle();
-            applyFilters();
+
+            const initialTab = tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') || tabs[0];
+            if (initialTab) activateTab(initialTab, false);
         })();
     </script>
 </body>
