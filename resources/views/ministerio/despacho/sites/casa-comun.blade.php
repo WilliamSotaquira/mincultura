@@ -9,6 +9,15 @@
     $catalogThemes = $catalog['themes'] ?? [];
     $catalogItems = $catalog['items'] ?? [];
     $catalogTotal = $catalog['total_items'] ?? count($catalogItems);
+    $themeIcons = [
+        0 => 'assets/casa-comun/icon-lips.png',
+        1 => 'assets/casa-comun/icon-face.png',
+        2 => 'assets/casa-comun/icon-dialogue.png',
+        3 => 'assets/casa-comun/icon-dove.png',
+        4 => 'assets/casa-comun/icon-hands.png',
+        5 => 'assets/casa-comun/icon-hand.png',
+        6 => 'assets/casa-comun/icon-house.png',
+    ];
     $defaultTheme = $catalogThemes[0] ?? [
         'slug' => 'somos-diversidad-linguistica',
         'name' => 'Lenguas nativas y memorias vivas',
@@ -59,23 +68,20 @@
         .sky-media video{opacity:.22;mix-blend-mode:multiply}
 
         .poster-shell{position:relative;padding:0 0 28px}
-        .hero-intro{position:relative;z-index:6;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:16px;width:min(100% - 48px,1180px);margin:0 auto;padding:24px 0 0}
+        .hero-intro{position:relative;z-index:6;display:grid;grid-template-columns:minmax(0,520px) minmax(320px,1fr);align-items:end;gap:24px;width:min(100% - 48px,1180px);margin:0 auto;padding:24px 0 0}
         .hero-copy{max-width:560px}
         .hero-kicker{margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,235,190,.72)}
         .hero-copy h1{margin:0;font-family:'Alternate Gothic',sans-serif;font-size:clamp(54px,7vw,96px);line-height:.92;letter-spacing:.03em;text-transform:uppercase;color:var(--cream);text-wrap:balance}
         .hero-copy p{margin:14px 0 0;max-width:44ch;font-size:18px;line-height:1.6;color:rgba(244,235,190,.88)}
-        .hero-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+        .hero-side{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:28px;min-height:100%;padding-bottom:10px}
+        .hero-window{width:min(36vw,460px);margin-right:18px;pointer-events:none}
+        .hero-window video{display:block;width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 20px 24px rgba(17,22,41,.18));opacity:.96}
+        .hero-actions{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:flex-end}
         .hero-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:999px;background:var(--cream);color:#172029;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
         .hero-btn.is-secondary{background:rgba(255,255,255,.08);color:var(--cream);border:1px solid rgba(244,235,190,.24)}
 
 
         .collage-left,.collage-right{display:none}
-        .collage-left{left:-126px;top:54px;width:min(54vw,620px);height:700px}
-        .performer-ghost,.performer-main{position:absolute;inset:0}
-        .performer-ghost img,.performer-main img{width:100%;height:100%;object-fit:contain;object-position:left bottom}
-        .performer-ghost{left:10px;top:12px;opacity:.18;mix-blend-mode:screen;filter:hue-rotate(-8deg) saturate(1.08) brightness(.88)}
-        .performer-main{filter:drop-shadow(0 24px 26px rgba(17,22,41,.28))}
-        .performer-main img{opacity:.96}
         .collage-right{right:-72px;top:160px;width:min(34vw,320px);height:640px;opacity:.78}
         .collage-right::before{content:"";position:absolute;left:-32px;top:118px;width:112px;height:250px;background:linear-gradient(180deg,rgba(255,255,255,.24),transparent)}
         .right-ghost,.right-main{position:absolute;inset:0}
@@ -108,9 +114,12 @@
         .board-collage-right{position:absolute;right:-112px;top:-102px;width:min(24vw,214px);height:382px;opacity:.9}
         .board-panel,.topic-grid{position:relative;z-index:2}
         .chip{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;height:58px;min-height:58px;padding:12px 6px 0;border:0;clip-path:polygon(50% 0,100% 32%,100% 100%,0 100%,0 32%);font-size:18px;font-weight:700;line-height:1;color:#1c2730;background:transparent;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,height .18s ease,padding-top .18s ease,z-index .18s ease}
-        .chip:hover{transform:translateY(-2px)}
+        .chip:hover{z-index:6;transform:translateY(-2px)}
         .chip:focus-visible{outline:2px solid rgba(24,33,39,.7);outline-offset:2px}
         .chip[aria-selected="true"]{z-index:5;height:76px;padding-top:18px;transform:translateY(-8px);filter:none;box-shadow:none}
+        .chip[aria-selected="false"]:focus-visible{z-index:6}
+        .chip-icon{width:26px;height:26px;object-fit:contain}
+        .chip[aria-selected="true"] .chip-icon{width:30px;height:30px}
         .chip:nth-child(1){background:#f3d44f}
         .chip:nth-child(2){background:#76d677}
         .chip:nth-child(3){background:#f2a857}
@@ -119,7 +128,7 @@
         .chip:nth-child(6){background:#d1ef8d}
         .chip:nth-child(7){background:#b8e6ef}
         .chip:nth-child(8){background:#c8dbef}
-        .board-panel{display:block;padding-top:26px;background:var(--theme-chip-color, rgba(255,255,255,.16));transition:background-color .2s ease}
+        .board-panel{display:block;padding-top:24px;background:var(--theme-chip-color, rgba(255,255,255,.16));transition:background-color .2s ease}
         .board-intro{display:grid;grid-template-columns:1.2fr .92fr;align-items:stretch;min-height:196px;border-bottom:1px solid var(--line);background:transparent}
         .board-copy{display:flex;flex-direction:column;justify-content:flex-start;padding:22px 18px 14px}
         .board-copy:first-child{border-right:1px solid var(--line)}
@@ -205,7 +214,7 @@
         .keyword-chip{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border-radius:999px;background:rgba(20,33,38,.86);font-size:12px;font-weight:700;letter-spacing:.04em;color:#fff7de}
         .keyword-chip button{display:inline-flex;align-items:center;justify-content:center;min-width:24px;min-height:24px;padding:0;border:0;background:none;font:inherit;color:inherit;cursor:pointer}
         .filter-empty{font-size:14px;line-height:1.5;color:rgba(20,33,38,.64)}
-        .topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;align-content:start;background:rgba(20,33,38,.12);overflow:visible}
+        .topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:24px;align-content:start;background:rgba(20,33,38,.12);overflow:visible}
         .topic-grid::-webkit-scrollbar{width:10px}
         .topic-grid::-webkit-scrollbar-track{background:rgba(255,255,255,.06)}
         .topic-grid::-webkit-scrollbar-thumb{background:rgba(20,33,38,.32)}
@@ -288,8 +297,9 @@
         }
 
         @media (max-width:900px){
-            .hero-intro{grid-template-columns:1fr;align-items:start;padding:28px 0 16px}
-            .hero-actions{justify-content:flex-start}
+            .hero-intro{grid-template-columns:minmax(0,460px) minmax(260px,1fr);padding:28px 0 16px}
+            .hero-side{padding-bottom:10px}
+            .hero-window{width:min(34vw,320px);margin-right:8px;opacity:.92}
             .house-panel{width:min(100% - 32px,1180px);height:clamp(280px,35.3vw,380px);padding-top:0}
             .roof-carousel{inset:0}
             .roof-dots{bottom:16px}
@@ -314,8 +324,11 @@
             .wrap,.wrap-contained{width:min(100%,1040px)}
             .wrap-full{width:100%}
             .sky-media{height:300px}
-            .hero-intro{width:min(100% - 24px,1080px);padding:22px 0 12px}
+            .hero-intro{grid-template-columns:1fr;width:min(100% - 24px,1080px);padding:22px 0 12px}
             .hero-copy p{font-size:15px}
+            .hero-side{align-items:flex-start;min-height:0;margin-top:18px;padding-bottom:0}
+            .hero-window{display:none}
+            .hero-actions{justify-content:flex-start;min-height:0;margin-top:18px;padding-bottom:0}
             .roof-carousel{inset:0}
             .roof-dots{bottom:12px;gap:8px}
             .roof-dot{width:10px;height:10px}
@@ -384,15 +397,6 @@
             </div>
 
             <div class="wrap poster-shell">
-                <div class="collage-left" aria-hidden="true">
-                    <span class="performer-ghost">
-                        <img src="{{ asset('assets/casa-comun/layer-performer.png') }}" alt="">
-                    </span>
-                    <span class="performer-main">
-                        <img src="{{ asset('assets/casa-comun/layer-performer.png') }}" alt="">
-                    </span>
-                </div>
-
                 <div class="collage-right" aria-hidden="true">
                     <span class="right-ghost">
                         <img src="{{ asset('assets/casa-comun/layer-right-figure.png') }}" alt="">
@@ -424,9 +428,16 @@
                         <h1>Colombia pluriétnica, saberes en casa común</h1>
                         <p>Un espacio para visibilizar pueblos, memorias, lenguas nativas y derechos culturales desde una lectura amplia del territorio, las comunidades y sus procesos.</p>
                     </div>
-                    <div class="hero-actions">
-                        <a class="hero-btn" href="#tematicas">Explorar contenidos</a>
-                        <a class="hero-btn is-secondary" href="#destacados">Ver destacados</a>
+                    <div class="hero-side">
+                        <div class="hero-window" aria-hidden="true">
+                            <video autoplay muted loop playsinline preload="metadata">
+                                <source src="{{ asset('assets/casa-comun/ventana-casa-01.mp4') }}" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="hero-actions">
+                            <a class="hero-btn" href="#tematicas">Explorar contenidos</a>
+                            <a class="hero-btn is-secondary" href="#destacados">Ver destacados</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -475,7 +486,12 @@
                                             data-types="{{ implode(' · ', $theme['types'] ?? []) }}"
                                             data-keywords="{{ implode('||', $theme['keywords'] ?? []) }}"
                                             aria-label="{{ $theme['name'] }} ({{ $theme['count'] }} contenidos)"
-                                        >{{ $theme['symbol'] }}</button>
+                                            title="{{ $index === 0 ? '' : $theme['name'] }}"
+                                        >@if (isset($themeIcons[$index]))
+                                            <img class="chip-icon" src="{{ asset($themeIcons[$index]) }}" alt="">
+                                        @else
+                                            {{ $theme['symbol'] }}
+                                        @endif</button>
                                     @endforeach
                                 </div>
 
@@ -1262,6 +1278,7 @@
                     const selected = item === tab;
                     item.setAttribute('aria-selected', selected ? 'true' : 'false');
                     item.tabIndex = selected ? 0 : -1;
+                    item.title = selected ? '' : (item.dataset.title || '');
                 });
 
                 title.textContent = tab.dataset.title || '';
