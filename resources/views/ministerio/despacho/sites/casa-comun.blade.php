@@ -133,35 +133,59 @@
 
         .accessibility-bar {
             position: fixed;
-            top: 10px;
-            left: 0;
-            right: 0;
+            top: 14px;
+            right: 14px;
             z-index: 60;
-            display: flex;
-            justify-content: flex-end;
+            display: grid;
+            justify-items: end;
+            gap: 8px
+        }
+
+        .accessibility-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 42px;
             padding: 0 14px;
-            background: transparent;
-            pointer-events: none
+            border: 1px solid rgba(244, 235, 190, .18);
+            border-radius: 999px;
+            background: rgba(6, 9, 15, .74);
+            color: var(--cream);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, .16);
+            cursor: pointer
+        }
+
+        .accessibility-toggle[aria-expanded="true"] {
+            background: rgba(17, 24, 35, .92)
         }
 
         .accessibility-tools {
             display: inline-flex;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: center;
             gap: 6px;
-            min-height: 48px;
-            padding: 6px 8px;
+            width: min(280px, calc(100vw - 28px));
+            padding: 8px;
             border: 1px solid rgba(244, 235, 190, .16);
-            border-radius: 999px;
-            background: rgba(6, 9, 15, .62);
+            border-radius: 20px;
+            background: rgba(6, 9, 15, .78);
             backdrop-filter: blur(10px);
-            box-shadow: 0 12px 26px rgba(0, 0, 0, .18);
-            pointer-events: auto
+            box-shadow: 0 12px 26px rgba(0, 0, 0, .18)
+        }
+
+        .accessibility-tools[hidden] {
+            display: none
         }
 
         .accessibility-label {
-            padding: 0 8px 0 6px;
+            width: 100%;
+            padding: 2px 4px 4px;
             font-size: 10px;
             font-weight: 700;
             letter-spacing: .08em;
@@ -293,7 +317,7 @@
             z-index: 6;
             display: grid;
             grid-template-columns: minmax(0, 520px) minmax(320px, 1fr);
-            align-items: end;
+            align-items: center;
             gap: 24px;
             width: min(100% - 48px, 1180px);
             margin: 0 auto;
@@ -316,7 +340,7 @@
         .hero-copy h1 {
             margin: 0;
             font-family: 'Alternate Gothic', sans-serif;
-            font-size: calc(clamp(54px, 7vw, 96px) * var(--font-scale));
+            font-size: calc(clamp(54px, 7vw, 68px) * var(--font-scale));
             line-height: .92;
             letter-spacing: .03em;
             text-transform: uppercase;
@@ -621,6 +645,14 @@
             grid-template-columns: repeat(var(--chip-count, 8), 1fr);
             gap: 8px;
             z-index: 3
+        }
+
+        .chip-mobile-toggle {
+            display: none
+        }
+
+        .chip-mobile-toggle-icon {
+            display: none
         }
 
         .board-layers {
@@ -2551,15 +2583,28 @@
         }
 
         @media (max-width:720px) {
+            .poster-shell {
+                padding-bottom: 12px
+            }
+
             .accessibility-bar {
-                top: 8px;
-                padding: 0 10px
+                top: auto;
+                right: 12px;
+                bottom: calc(12px + env(safe-area-inset-bottom));
+                left: auto;
+                justify-items: end
+            }
+
+            .accessibility-toggle {
+                min-height: 40px;
+                padding: 0 12px;
+                font-size: 10px
             }
 
             .accessibility-tools {
+                width: min(248px, calc(100vw - 24px));
                 justify-content: flex-start;
-                max-width: 100%;
-                overflow-x: auto
+                overflow-x: visible
             }
 
             .accessibility-label {
@@ -2582,7 +2627,9 @@
             .hero-intro {
                 grid-template-columns: 1fr;
                 width: min(100% - 24px, 1080px);
-                padding: 22px 0 12px
+                gap: 18px;
+                margin-top: -26px;
+                padding: 0 0 12px
             }
 
             .hero-copy p {
@@ -2609,6 +2656,10 @@
 
             .roof-carousel {
                 inset: 0
+            }
+
+            .roof-slide {
+                padding-top: 80px
             }
 
             .roof-dots {
@@ -2646,8 +2697,9 @@
 
             .house-panel {
                 width: 100%;
-                height: clamp(180px, 35.3vw, 260px);
+                height: clamp(300px, 35.3vw, 260px);
                 margin-top: 0;
+                margin-bottom: 80px;
                 padding: 0;
                 clip-path: polygon(50% 0, 100% 10%, 100% 100%, 0 100%, 0 10%)
             }
@@ -2669,13 +2721,137 @@
             }
 
             .chip-row {
-                grid-template-columns: repeat(4, 1fr);
-                row-gap: 6px;
-                top: -54px
+                position: relative;
+                z-index: 5;
+                left: auto;
+                right: auto;
+                top: 0;
+                display: none;
+                gap: 8px;
+                margin: 8px 12px 0;
+                padding: 10px;
+                border-radius: 18px;
+                background: rgba(255, 245, 206, .22);
+                box-shadow: inset 0 0 0 1px rgba(20, 33, 38, .08)
+            }
+
+            .chip-mobile-toggle {
+                position: relative;
+                z-index: 5;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                width: calc(100% - 24px);
+                margin: 0 12px 0;
+                min-height: 56px;
+                padding: 0 18px;
+                border: 1px solid rgba(20, 33, 38, .12);
+                border-radius: 18px;
+                background: linear-gradient(180deg, rgba(255, 245, 206, .92), rgba(255, 240, 187, .88));
+                color: #172029;
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: .04em;
+                text-align: left;
+                cursor: pointer;
+                box-shadow: 0 10px 22px rgba(14, 27, 34, .14)
+            }
+
+            .chip-mobile-toggle-icon {
+                display: inline-flex;
+                flex: 0 0 22px;
+                width: 22px;
+                height: 22px;
+                align-items: center;
+                justify-content: center
+            }
+
+            .chip-mobile-toggle-icon img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain
+            }
+
+            .chip-mobile-toggle-label {
+                flex: 1 1 auto;
+                min-width: 0
+            }
+
+            .chip-mobile-toggle::after {
+                content: "▾";
+                flex: 0 0 auto;
+                font-size: 14px;
+                color: rgba(23, 32, 41, .72);
+                transition: transform .18s ease
+            }
+
+            .board.is-mobile-tabs-open .chip-mobile-toggle::after {
+                transform: rotate(180deg)
+            }
+
+            .board.is-mobile-tabs-open .chip-row {
+                display: flex;
+                flex-direction: column
+            }
+
+            .chip {
+                width: 100%;
+                max-width: none;
+                min-width: 0;
+                height: auto;
+                min-height: 56px;
+                justify-content: flex-start;
+                gap: 12px;
+                padding: 14px 16px;
+                clip-path: none;
+                border-radius: 16px;
+                border: 1px solid rgba(20, 33, 38, .08);
+                font-size: 14px;
+                line-height: 1.2;
+                text-align: left;
+                transform: none;
+                box-shadow: none
+            }
+
+            .chip::after {
+                content: attr(data-title);
+                flex: 1 1 auto;
+                min-width: 0;
+                font-size: 13px;
+                font-weight: 700;
+                line-height: 1.25;
+                letter-spacing: .01em;
+                text-transform: none
+            }
+
+            .chip:hover {
+                transform: none
+            }
+
+            .chip[aria-selected="true"] {
+                width: 100%;
+                max-width: none;
+                min-height: 60px;
+                margin: 0;
+                padding-top: 14px;
+                transform: none;
+                box-shadow: 0 10px 20px rgba(14, 27, 34, .16)
+            }
+
+            .chip-icon,
+            .chip[aria-selected="true"] .chip-icon {
+                width: 24px;
+                height: 24px;
+                flex: 0 0 24px
             }
 
             .board-panel {
-                padding-top: 48px
+                padding-top: 18px
+            }
+
+            .board {
+                padding-top: 24px
             }
 
             .board-intro {
@@ -2876,12 +3052,13 @@
 
         @media (max-width:560px) {
             .accessibility-bar {
-                justify-content: center
+                right: 10px;
+                bottom: calc(10px + env(safe-area-inset-bottom))
             }
 
             .accessibility-tools {
-                width: min(100%, 340px);
-                justify-content: space-between;
+                width: min(232px, calc(100vw - 20px));
+                justify-content: flex-start;
                 padding: 6px
             }
 
@@ -2896,8 +3073,35 @@
                 font-size: 10px
             }
 
+            .chip-row {
+                gap: 8px;
+                padding: 14px 8px 10px
+            }
+
+            .chip-mobile-toggle {
+                width: calc(100% - 16px);
+                margin: 0 8px 0;
+                min-height: 48px;
+                padding: 0 14px;
+                font-size: 12px
+            }
+
+            .chip {
+                min-height: 52px;
+                padding: 12px 14px
+            }
+
+            .chip::after {
+                font-size: 12px
+            }
+
             .hero-copy h1 {
-                font-size: clamp(42px, 14vw, 64px)
+                font-size: clamp(26px, 8.4vw, 40px)
+            }
+
+            .hero-intro {
+                margin-top: -34px;
+                padding-bottom: 10px
             }
 
             .themes-title,
@@ -3071,7 +3275,10 @@
 <body>
     <a class="skip-link" href="#contenido-principal">Saltar al contenido</a>
     <div class="accessibility-bar" aria-label="Herramientas de accesibilidad">
-        <div class="accessibility-tools" role="toolbar" aria-label="Ajustes de accesibilidad">
+        <button class="accessibility-toggle" id="accessibility-toggle" type="button" aria-expanded="false"
+            aria-controls="accessibility-tools">Accesibilidad</button>
+        <div class="accessibility-tools" id="accessibility-tools" role="toolbar" aria-label="Ajustes de accesibilidad"
+            hidden>
             <span class="accessibility-label">Accesibilidad</span>
             <button class="accessibility-btn" id="font-decrease" data-size type="button"
                 aria-label="Disminuir tamaño de texto">A-</button>
@@ -3181,6 +3388,11 @@
                     </div>
 
                     <div class="board">
+                        <button class="chip-mobile-toggle" id="themes-mobile-toggle" type="button"
+                            aria-expanded="false" aria-controls="themes-tablist">
+                            <span class="chip-mobile-toggle-icon" id="themes-mobile-toggle-icon" aria-hidden="true"></span>
+                            <span class="chip-mobile-toggle-label" id="themes-mobile-toggle-label">Seleccionar temática</span>
+                        </button>
                         <div class="chip-row" id="themes-tablist" role="tablist"
                             aria-label="Tematicas de Casa Común" style="--chip-count: 7;"></div>
 
@@ -9717,11 +9929,20 @@
     <script>
         (() => {
             const body = document.body;
+            const accessibilityBar = document.querySelector('.accessibility-bar');
+            const accessibilityToggle = document.getElementById('accessibility-toggle');
+            const accessibilityTools = document.getElementById('accessibility-tools');
             const increaseButton = document.getElementById('font-increase');
             const decreaseButton = document.getElementById('font-decrease');
             const resetButton = document.getElementById('font-reset');
             const contrastButton = document.getElementById('contrast-toggle');
             let fontScale = 1;
+
+            const setAccessibilityPanel = (expanded) => {
+                if (!accessibilityToggle || !accessibilityTools) return;
+                accessibilityToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                accessibilityTools.hidden = !expanded;
+            };
 
             const syncScale = () => {
                 body.style.setProperty('--font-scale', fontScale.toFixed(2));
@@ -9742,6 +9963,11 @@
                     contrastButton.setAttribute('aria-pressed', highContrastActive ? 'true' : 'false');
                 }
             };
+
+            accessibilityToggle?.addEventListener('click', () => {
+                const expanded = accessibilityToggle.getAttribute('aria-expanded') === 'true';
+                setAccessibilityPanel(!expanded);
+            });
 
             increaseButton?.addEventListener('click', () => {
                 fontScale = Math.min(1.3, fontScale + 0.1);
@@ -9766,8 +9992,27 @@
                 syncAccessibilityUI();
             });
 
+            document.addEventListener('click', (event) => {
+                if (!accessibilityBar || accessibilityTools?.hidden) return;
+                if (accessibilityBar.contains(event.target)) return;
+                setAccessibilityPanel(false);
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key !== 'Escape' || accessibilityTools?.hidden) return;
+                setAccessibilityPanel(false);
+                accessibilityToggle?.focus();
+            });
+
+            accessibilityTools?.addEventListener('focusout', (event) => {
+                if (accessibilityTools.hidden) return;
+                if (accessibilityBar?.contains(event.relatedTarget)) return;
+                setAccessibilityPanel(false);
+            });
+
             syncScale();
             syncAccessibilityUI();
+            setAccessibilityPanel(false);
         })();
 
         (() => {
@@ -10092,6 +10337,9 @@
             ];
             const tabsRoot = document.getElementById('themes-tablist');
             const board = document.querySelector('.board');
+            const mobileToggle = document.getElementById('themes-mobile-toggle');
+            const mobileToggleIcon = document.getElementById('themes-mobile-toggle-icon');
+            const mobileToggleLabel = document.getElementById('themes-mobile-toggle-label');
             const panel = document.getElementById('temas-panel');
             const title = document.getElementById('themes-panel-title');
             const lead = document.getElementById('themes-panel-lead');
@@ -10135,6 +10383,29 @@
                 .toLowerCase()
                 .replace(/\s+/g, ' ')
                 .trim();
+
+            const syncMobileTabsUI = (activeTab) => {
+                if (!mobileToggle) return;
+                if (mobileToggleLabel) {
+                    mobileToggleLabel.textContent = activeTab?.dataset.title || 'Seleccionar temática';
+                }
+                if (mobileToggleIcon) {
+                    mobileToggleIcon.innerHTML = '';
+                    const activeIcon = activeTab?.querySelector('.chip-icon');
+                    if (activeIcon) {
+                        const icon = document.createElement('img');
+                        icon.src = activeIcon.getAttribute('src') || '';
+                        icon.alt = '';
+                        mobileToggleIcon.append(icon);
+                    }
+                }
+            };
+
+            const setMobileTabsOpen = (expanded) => {
+                if (!mobileToggle || !board) return;
+                mobileToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                board.classList.toggle('is-mobile-tabs-open', expanded);
+            };
 
             let activeTheme = tabs.find((tab) => tab.getAttribute('aria-selected') === 'true')?.dataset.theme || '';
             const activeSelections = {
@@ -10728,6 +10999,8 @@
                 buildFilterControls();
                 closeAllTooltips();
                 applyFilters();
+                syncMobileTabsUI(tab);
+                if (window.innerWidth <= 720) setMobileTabsOpen(false);
 
                 if (moveFocus) tab.focus();
             };
@@ -10789,8 +11062,13 @@
             sidebarClose?.addEventListener('click', closeSidebar);
             sidebarAccept?.addEventListener('click', closeSidebar);
             sidebarBackdrop?.addEventListener('click', closeSidebar);
+            mobileToggle?.addEventListener('click', () => {
+                const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+                setMobileTabsOpen(!expanded);
+            });
 
             document.addEventListener('click', (event) => {
+                if (!event.target.closest('.board')) setMobileTabsOpen(false);
                 if (event.target.closest('.topic-card')) return;
                 closeAllTooltips();
             });
@@ -10811,6 +11089,7 @@
             window.addEventListener('resize', () => {
                 updateCatalogViewport();
                 if (activeTooltipCard) positionTooltip(activeTooltipCard);
+                if (window.innerWidth > 720) setMobileTabsOpen(false);
             });
             window.addEventListener('scroll', () => {
                 if (activeTooltipCard) positionTooltip(activeTooltipCard);
@@ -10831,6 +11110,7 @@
                 bindTabEvents();
                 const initialTab = tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') || tabs[0];
                 if (initialTab) activateTab(initialTab, false);
+                else syncMobileTabsUI(null);
             } catch (error) {
                 title.textContent = 'No fue posible cargar las temáticas';
                 lead.textContent = 'Verifique la disponibilidad de los datos embebidos en la página.';
