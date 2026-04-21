@@ -1,0 +1,666 @@
+[
+  {
+    "date": "22 abril 2026",
+    "time": "11:30 a. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Gobernanza Cultural para la Paz, Organizació y Formación sobre el Sistema Nacional de Cultura",
+    "description": "Generar, en la FILBo, un diálogo de saberes e intercambio de experiencias sobre gobernanza cultural para la paz y formación en el Sistema Nacional de Cultura en ocho regiones del país. Se instalará un stand con fotografías, relatos y publicaciones de la Dirección de Fomento Regional, donde se socializan experiencias y la caracterización de organizaciones en 15 nodos de distintas regiones.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "22 abril 2026",
+    "time": "2:00 p. m.",
+    "entity": "Instituto Colombiano de Antropología e Historia",
+    "title": "Conflicto, Paz y Tierras: 10 años del Acuerdo de Paz",
+    "description": "Este conversatorio presenta los resultados de dos investigaciones sobre restitución de tierras y las transiciones del conflicto tras la firma del Acuerdo de Paz de 2016. Un espacio para analizar sus hallazgos y aportar a la comprensión de los cambios en los territorios.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "22 abril 2026",
+    "time": "4:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Novedades editoriales de la Biblioteca Nacional de Colombia",
+    "description": "Durante este evento, se presentarán las novedades editoriales que lanzó la BNC desde la pasada Feria Internacional del Libro de Bogotá.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "22 abril 2026",
+    "time": "5:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Crear para resistir, conversar para transformar",
+    "description": "A veces las palabras no alcanzan para expresar lo que duele o asusta. Por eso este espacio comienza creando: una experiencia que mezcla palabra, cuerpo y artes plásticas para explorar cómo el arte y la cultura nos ayudan a ser y expresarnos. Luego, abriremos una conversación sobre creatividad, comunidad y resistencia. Un lugar para sentir, pensar y hablar sin filtros, dirigido a jóvenes.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "22 abril 2026",
+    "time": "6:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Desde el principio, selección de cuentos, crónicas y otros escritos antes del guión de Humberto Dorado Miranda",
+    "description": "Participan: Humberto Dorado Miranda y Dominique Rodríguez Organiza: Ser Zanja",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "23 abril 2026",
+    "time": "10:30 a. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Red Estudiantil por la Memoria y el Patrimonio - Taller de apropiación social del patrimonio cultural",
+    "description": "Taller de apropiación social del patrimonio cultural, enfocado a estudiantes de 9 a 11 grado, con énfasis en proyectos que puedan servir para el cumplimiento de las 80 horas del servicio social obligatorio.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "23 abril 2026",
+    "time": "1:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "En la evolución del turismo cultural, la historia de los barrio extramuros en Cartagena- Taller Cartográfico",
+    "description": "Taller cartográfico para reconstruir la historia de los barrios extramurales surgidos junto a las murallas de Cartagena tras la Independencia y su retiro en el siglo XIX, medida que impulsó la consolidación de la ciudad como destino turístico. Un espacio para leer el territorio, reconocer memorias y comprender sus transformaciones urbanas.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "23 abril 2026",
+    "time": "2:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "¿Cómo se gestan herramientas para la educación musical en Colombia?",
+    "description": "Este conversatorio abre un diálogo sobre la creación de herramientas para la educación musical en Colombia, a partir de experiencias en la elaboración de guías y cuadernos de ejercicios para trompeta, eufonio y clarinete, publicados el último año, así como de la guía “En clave de PEM”. Procesos impulsados por el Grupo de Música de la Dirección de Artes, orientados a fortalecer la formación y las escuelas de música en el país.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "23 abril 2026",
+    "time": "3:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Consciencia sonora: Taller introductorio sobre particularidades sonoras de lenguas indígenas en Colombia",
+    "description": "La lengua es un elemento clave de la cultura. Su pérdida implica el riesgo de desaparecer formas únicas de nombrar el mundo y sonidos poco comunes. Este espacio invita a conocer y reproducir rasgos consonánticos y vocálicos de lenguas indígenas de Colombia, y a reflexionar sobre su papel en la construcción de valores culturales y en la diversidad lingüística del país.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "23 abril 2026",
+    "time": "5:00 p. m.",
+    "entity": "Instituto Colombiano de Antropología e Historia",
+    "title": "Territorialidades indígenas en tensión",
+    "description": "Presentación de los hallazgos y conclusiones de las investigaciones que se han llevado a cabo en el ICANH sobre territorialidades indígenas en tensión en diversos territorios del país.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "23 abril 2026",
+    "time": "6:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Disputar el canon de la novela colombiana: cuerpo, memoria y territorio en Zapata Olivella, Burgos Cantor y Espinosa",
+    "description": "Lanzamiento del libro Disputar el canon de la novela colombiana, con una charla entre el autor y Catalina Correa. El diálogo abordará cómo Manuel Zapata Olivella, Roberto Burgos Cantor y Germán Espinosa imaginaron el Caribe desde una perspectiva distinta al “boom”, visibilizando miradas y aspectos poco explorados en la literatura del país.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "23 abril 2026",
+    "time": "7:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Defendiendo del territorio desde el cine comunitario",
+    "description": "En este conversatorio, integrantes de los colectivos No le saque la piedra a la montaña (Bogotá), Yosokwi (Sierra Nevada de Santa Marta) y El Rostro de mi Pueblo (Curbaradó, Darién) nos contarán cómo a través del cine comunitario se da la defensa, resistencia y apropiación del territorio en el que se encuentran.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "24 abril 2026",
+    "time": "10:30 a. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Paisaje Cultural Cafetero para niños",
+    "description": "Un taller para enseñar a los niños y niñas la importancia del Paisaje Cultural Cafetero de Colombia a través de material didáctico.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "24 abril 2026",
+    "time": "1:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Conversatorio: Cómo hacer cine comunitario en Colombia",
+    "description": "Espacio de intercambio sobre cine comunitario en Colombia. A partir del diálogo entre procesos territoriales y pedagógicos, se abordarán creación colectiva, formación audiovisual, sostenibilidad y el papel del cine en la paz, la memoria y la transformación social. Participan iniciativas como las Escuelas Audiovisuales Comunitarias, la Escuela Audiovisual Infantil de Belén de los Andaquíes y Ojo al Sancocho.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "24 abril 2026",
+    "time": "3:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Bibliotecas comunitarias, populares e itinerantes: tejiendo palabras, territorios y resistencias.",
+    "description": "En Colombia, las bibliotecas comunitarias, populares e itinerantes (BICOPOI) tienen una larga trayectoria y múltiples historias. Esta conversación presenta sus apuestas y esfuerzos por construir una red nacional que fortalezca su sostenibilidad, su agencia política y su papel como fuerzas transformadoras en diversos territorios del país.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "24 abril 2026",
+    "time": "5:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Presentación del libro \"Casimiro. Memoria biocultural del barrio El Reposo de Quibdó, Chocó\"",
+    "description": "Casimiro, una quebrada del barrio El Reposo en Quibdó, es el centro de un proceso comunitario liderado por jóvenes de “La ruta de los cuidados”, enfocado en su limpieza y recuperación. La publicación Casimiro. Memoria biocultural… recoge voces sobre la memoria del barrio y sus especies. El libro surge junto a la Biblioteca Nacional, en el Plan “Arnoldo Palacios” del Chocó.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "24 abril 2026",
+    "time": "6:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "¿Quieres estudiar la Maestría en Enseñanza de Español como Lengua Extranjera? Descubre qué investigan nuestros estudiantes",
+    "description": "Encuentro con los profesores de la maestría y una muestra de clase abierta.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "24 abril 2026",
+    "time": "7:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Club de escucha Gaceta sonora: El club negro de Colombia",
+    "description": "Espacio de escucha en torno al pódcast El club negro de Colombia, de Gaceta Sonora, basado en el libro de Rosa Chamorro. Tras un fragmento, dialoga el musicólogo Ángel Perea Escobar sobre memoria y pensamiento afrocolombiano, a partir de figuras como Manuel Zapata Olivella y Delia Zapata Olivella.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "25 abril 2026",
+    "time": "10:30 a. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Pijaraña, pijaraña, ilustra los versos la araña",
+    "description": "Taller de la serie «leer es mi cuento» con la ilustradora: Gabriela Otálora hablará sobre el proceso de ilustrar un libro de poesía de tradición oral para niños y niñas, a partir de su trabajo en la serie «Leer es mi cuento». Un espacio para acercarse al universo de la ilustración infantil y a las decisiones creativas detrás de las imágenes que acompañan la lectura.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "25 abril 2026",
+    "time": "12:30 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Taller y charla: Así se construye un carnaval, oficios, redes y economías de la fiesta de Pasto",
+    "description": "Espacio híbrido de charla y taller para comprender el carnaval desde su producción material. Liderado por el Taller Escuela de Carnaval Ruano (Pasto), combina creación de una pieza breve con diálogo sobre oficios, materiales, economías y redes que sostienen la fiesta. Aborda el papel de las mujeres y las formas de vivir el carnaval más allá de la agenda oficial.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "25 abril 2026",
+    "time": "2:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Isabel Carrasquilla y Magda Moreno: contando después de muertas",
+    "description": "En Santo Domingo (Antioquia), a finales del siglo XIX, surgió la Sociedad de El Tercer Piso y sus tertulias de lectura. En 2024 se retoma este espacio para leer, investigar y dialogar sobre sus integrantes. La actividad aborda textos de Isabel Carrasquilla y Magda Moreno, con lectura en voz alta y reflexión colectiva sobre su obra y contexto.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "25 abril 2026",
+    "time": "3:00 p. m.",
+    "entity": "Instituto Colombiano de Antropología e Historia",
+    "title": "El galeón cabe en una taza",
+    "description": "Una cata de chocolate para hablar sobre los cargamentos donde se hallaron tazas de porcelana y restos de cacao, recolectados en 2025 para su estudio. ¿Qué hacían estos objetos en una nave asociada a otros cargamentos? ¿Qué rutas siguieron y qué revelan sobre el comercio en el Caribe? Este encuentro explora estas preguntas y propone una experiencia con aroma y sabor a chocolate para acercarse a esta historia.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "25 abril 2026",
+    "time": "4:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Relata 20 años. dos décadas de formación en escritura creativa.",
+    "description": "En esta charla, moderada por Juan Afanador, líder del componente de formación de la Gerencia de Literatura, discuten sobre el estado de la formación en escritura y sus futuros deseables. Charlan Giuseppe Caputo y Tania Ganitsky.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "25 abril 2026",
+    "time": "6:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Presentación de la publicación \"Fundar Cuidado: seis figuras de conservación en territorios de Colombia\"",
+    "description": "En alianza con Fondo Acción, la Maestría en Escritura Creativa del Instituto Caro y Cuervo presenta siete cuadernillos sobre protección ambiental y vínculos con ecosistemas del país. Se lanza Fundar cuidado, que recoge experiencias comunitarias en distintas regiones. Resultado de un proyecto de apropiación social del conocimiento en 2025, dirigido al público general.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "25 abril 2026",
+    "time": "7:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Sobre reparación simbólica y práctica artística",
+    "description": "Desde 2023, el Grupo de Artes Plásticas y Visuales acompaña procesos de memoria y reparación simbólica con víctimas del Estado, como Madres de Falsos Positivos, buscadoras de La Escombrera y la Comunidad de Paz de San José de Apartadó. Esta conversación aborda estos proyectos y cómo el arte, desde el rol creativo de las víctimas, se convierte en una herramienta de reparación y transformación.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "26 abril 2026",
+    "time": "12:30 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Taller experiencial Memorias mayores, prácticas artísticas para la paz",
+    "description": "Taller vivencial que presenta el trabajo con personas mayores portadoras de saberes artísticos y culturales. A través de un diálogo intergeneracional con jóvenes, un sabedor tradicional compartirá su experiencia mediante la oralidad, la escucha, la experimentación y la creación. Un espacio para intercambiar conocimientos y disfrutar de las artes en la FILBo.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "26 abril 2026",
+    "time": "2:00 p. m.",
+    "entity": "AGN",
+    "title": "Colombia vista desde los archivos del National Security Archivos donados a la Comisión de la Verdad",
+    "description": "Lectura del conflicto armado colombiano a partir de documentos desclasificados de EE. UU. reunidos por el National Security Archive y usados por la Comisión de la Verdad. Se analizan cables, informes y memorandos sobre guerra, paz, narcotráfico y actores armados, en diálogo con archivos y testimonios, para abrir nuevas preguntas sobre memoria e investigación",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "26 abril 2026",
+    "time": "3:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "La traducción de literatura latinoamericana al bengalí Conversación con el escritor Anisuz Zaman (India)",
+    "description": "En conversación con Alfonso Carvajal, Anisuz Zaman reflexiona sobre los vínculos entre la literatura colombiana y la India a partir de su trabajo de traducción al bengalí. El diálogo aborda la traducción como lectura profunda y mediación cultural entre distintos contextos lingüísticos.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "26 abril 2026",
+    "time": "4:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Presentación de libro “Mabungú triunfo: poéticas de resistencia afro en María Teresa Ramírez”de Francy Yobanna Morales Acosta",
+    "description": "Conversatorio sobre Mabungú triunfo: poéticas de resistencia afro en María Teresa Ramírez, con la autora y dos invitadas. El diálogo abordará la obra de María Teresa Ramírez y su valor en la poesía en palenquero, lengua poco estudiada en Colombia. Un espacio dirigido a público general y a especialistas en literatura y poesía.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "26 abril 2026",
+    "time": "5:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Lanzamiento publicaciones resultado Becas de Estímulos Grupo de Danza",
+    "description": "Presentación de publicaciones en danza: Dramaturgias del bailarín en Colombia de Lina Villegas; Cartilla pedagogía en movimiento del Colectivo Sol Femenino del Putumayo; Cartilla raíces en evolución de Andrés José Rincón; y Danzas y expresiones coreográficas de Tunja de Sofía Fonseca.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "26 abril 2026",
+    "time": "6:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Curar como territorio",
+    "description": "A partir del 47 Salón Nacional de Artistas – KAUKA, asamblea de mundos posibles, esta conversación aborda la curaduría desde lo territorial como ejercicio de autonomía política, simbólica y cultural. El encuentro funciona como pre-lanzamiento de su línea editorial y catálogo, y propone reflexionar sobre otras formas de construir y narrar el arte desde los territorios.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "27 abril 2026",
+    "time": "10:30 a. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Maguaré viaja con nosotros",
+    "description": "Taller “Maguaré viaja con nosotros”, dirigido a niñas y niños de 0 a 6 años, que promueve sus derechos culturales mediante experiencias lúdicas y sensoriales. A partir de un mapa de Colombia, se desarrollan actividades de juego, sonido, movimiento y creación colectiva para explorar la diversidad cultural, fortalecer la identidad territorial y fomentar la participación activa.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "27 abril 2026",
+    "time": "1:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Surgir: Memoria de la historia de la lengua de señas colombiana",
+    "description": "Conversatorio sobre un texto que narra la historia de la Lengua de Señas Colombiana (LSC), con participación de expertos. Dirigido a la comunidad sorda y al público interesado, propicia el diálogo y el intercambio de saberes. Presenta avances del proyecto “100 años de la educación de las personas sordas en Colombia – Fase II”, centrado en instituciones y colectivos.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "27 abril 2026",
+    "time": "2:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Entre letras y trazos, ¿cómo se recupera el patrimonio cultural?",
+    "description": "Entre letras y trazos, este conversatorio de la Biblioteca Nacional de Colombia explora la recuperación del patrimonio bibliográfico y documental. Con la mirada del caricaturista Andrés González, se reflexiona sobre el papel de la caricatura en la historia y la importancia de preservarla. Un espacio para pensar la memoria desde el arte y su proyección hacia el futuro.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "27 abril 2026",
+    "time": "3:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Taller: Radio Consultas. Experimentación radiofónica con el archivo de Radio Sutatenza",
+    "description": "Este taller explora, de forma práctica, el método de alfabetización de Radio Sutatenza. A partir de guiones, boletines y cartillas, recrea el curso de Alfabeto de 1962 para analizar sus estrategias. Dirigido a docentes, estudiantes e investigadores, propone un ejercicio sonoro que conecta radio, pedagogía y materiales impresos, y reflexiona sobre su impacto en la educación rural.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "27 abril 2026",
+    "time": "5:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Presentación de libro digital. \"De-volver al San Juan. Memorias y vivencias del Hospital San Juan de Dios\"",
+    "description": "Con 461 años, el Hospital Universitario San Juan de Dios es símbolo de cuidado y resistencia en Bogotá. De-volver al San Juan reúne voces de trabajadoras, vecinos y personas vinculadas que sostuvieron su memoria y defendieron su misión. El libro, resultado de un proyecto entre el Instituto Caro y Cuervo y MinCulturas, recoge testimonios que evidencian una resistencia colectiva y persistente.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "27 abril 2026",
+    "time": "6:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Presentación catálogo Metales y Numismáica",
+    "description": "Se realizará la presentación del libro, moderada por el equipo del museo, donde se compartirán los detalles de su proceso de creación y su relevancia para la cultura del país.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "27 abril 2026",
+    "time": "7:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Colombia, país de la oralidad",
+    "description": "La narración oral, o cuentería, ha sido clave para transmitir conocimientos, valores y memoria colectiva. Esta actividad presenta un balance de documentos sobre esta práctica entre 1990 y 2025, evidenciando su permanencia y aportes a la cultura, el arte y la sociedad. Un espacio para reconocer el valor de la palabra hablada y sus raíces ancestrales.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "28 abril 2026",
+    "time": "10:30 a. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Taller: Al pie de los cerros, a la orilla del río",
+    "description": "Este taller explora la relación con el lugar que habitamos, desde las costumbres, la vida cotidiana, la comunidad y la memoria. A través de material didáctico sobre el barrio Las Aguas, se reflexiona sobre la importancia de reconocer el territorio como base para la apropiación y construcción del patrimonio local.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "28 abril 2026",
+    "time": "11:30 a. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Construyamos un hogar para la paz",
+    "description": "¿Sabías que la paz también se construye desde lo cotidiano? Este espacio invita a reconocer el hogar y la comunidad como puntos de partida para una sociedad más justa. A través de un material didáctico, crearemos casas y un barrio de papel, donde cada acción elegida aporta a la construcción colectiva de paz desde pequeñas decisiones diarias.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "28 abril 2026",
+    "time": "1:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Presentación de Poemas de superación personal o curso relámpago para ser un traficante de llovizna",
+    "description": "Poemas de superación personal o curso relámpago para ser un traficante de llovizna (Literatelia, 2025) reúne 28 poemas que exploran la vida cotidiana desde miradas múltiples atravesadas por lo emocional y lo mediático. Con prólogo de Hugo de Mendoza y edición de Manuel Ceballos, el libro rinde homenaje a Luis Vidales. Presenta: Jorge Valbuena.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "28 abril 2026",
+    "time": "2:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Memoriante: una experiencia para reconocer las memorias sobre la Toma y Retoma del Palacio de Justicia",
+    "description": "El Museo de la Independencia Casa del Florero presenta Memoriante, una experiencia educativa para reflexionar sobre la Toma y Retoma del Palacio de Justicia. Invita a acercarse al conflicto desde la escucha y la narración, y a explorar distintas memorias del 6 y 7 de noviembre de 1985 mediante dinámicas pedagógicas que promueven el diálogo y la construcción de relatos colectivos.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "28 abril 2026",
+    "time": "3:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Planes locales de lectura, escritura, oralidad y bibliotecas en el país: apuestas para la vida",
+    "description": "Conversatorio con equipos que lideran planes locales de lectura, escritura, oralidad y bibliotecas en distintas regiones del país. Moderado por el PNLEOB, el diálogo abordará cómo estas estrategias se relacionan con el cuidado de la vida, la justicia social y epistémica, y la construcción de paz desde los territorios.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "28 abril 2026",
+    "time": "4:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Lanzamiento de publicaciones con enfoque étnico",
+    "description": "Lanzamiento de la cartilla Danzantes de Males: Historia de Kenana y Jeima, que narra la experiencia de dos jóvenes del pueblo Nukak Baká. Un espacio para conocer sus historias y acercarse a las memorias, saberes y expresiones culturales de esta comunidad.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "28 abril 2026",
+    "time": "5:00 p. m.",
+    "entity": "AGN",
+    "title": "Los imperialismo del pasado y el presente",
+    "description": "De los imperios coloniales a las potencias actuales, este conversatorio cruza archivos, prensa y memoria para rastrear continuidades de dominación en América y el Caribe. Analiza cómo se justifican hoy las injerencias, qué resistencias han dejado huella y cómo leer el presente con mirada histórica. Un espacio para reconocer patrones, tensiones y abrir preguntas con el público.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "28 abril 2026",
+    "time": "6:00 p. m.",
+    "entity": "AGN",
+    "title": "Lanzamiento de la colección otras colombias Posibles",
+    "description": "En alianza con MiCASa, el Archivo General de la Nación presenta nuevos títulos de la colección Otras Colombias Posibles. A los dos libros de 2025 se suman diez más que abordan miradas afro e indígenas, luchas de las mujeres, culturas campesinas, migraciones, economía, ciudad, ambiente, estéticas disidentes y memorias para la paz y la reparación.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "28 abril 2026",
+    "time": "7:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Charla: 50 años después de León de Greiff",
+    "description": "Charla sobre la vida y obra de León de Greiff, a 50 años de su muerte. El encuentro aborda sus múltiples facetas como poeta, editor, cuentista, traductor, melómano y hombre de radio, destacando su legado en la literatura y la cultura colombiana.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "29 abril 2026",
+    "time": "10:30 a. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Mi territorio es patrimonio - conoce y comparte los patrimonios con el material educativo",
+    "description": "Espacio que presenta una herramienta para la sensibilización y apropiación del patrimonio en contextos locales. Invita a reconocer lo propio, lo comunitario y lo colectivo. A través de actividades participativas, se exploran valores emocionales, simbólicos e históricos del patrimonio, fortaleciendo la conexión con los territorios, las memorias y los saberes que nos constituyen.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "29 abril 2026",
+    "time": "11:30 a. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Presentación de El sacrilegio",
+    "description": "El amor y la violencia atraviesan esta novela histórica sobre una adolescente boliviana que huye con un cura y enfrenta múltiples peripecias en medio de las violencias colombianas. La historia se sitúa en el sur del Tolima, entre la pobreza y la lucha campesina, antes y después del asesinato de Jorge Eliécer Gaitán.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "29 abril 2026",
+    "time": "2:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Lanzamiento Fugas de Tinta No. 18",
+    "description": "En este espacio, Cristian Valencia conversa con personas privadas de la libertad que han encontrado en la escritura creativa nuevas formas de expresión. Incluye el lanzamiento del más reciente volumen de Fugas de Tinta, en alianza con el INPEC.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "29 abril 2026",
+    "time": "3:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Conversatorio. Promoción de lectura y crítica literaria desde clubes de lectura afrocentrados",
+    "description": "Los clubes de lectura son espacios clave del ecosistema cultural. Este conversatorio explora experiencias que van más allá de la difusión: el colectivo Kutusoma, con enfoque afrocentrado, y Entre Nosotras, dedicado a autoras racializadas. A través del diálogo con sus directoras, se conocerán sus dinámicas y su papel en la educación y la difusión cultural con enfoque equitativo.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "29 abril 2026",
+    "time": "4:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "La causa criminal contra Rafael Larrañaga y el judío Barchillona. El genocidio cauchero más allá de La Vorágine",
+    "description": "Presentación de un libro sobre la causa criminal contra el pastuso Rafael Larrañaga y el judío Isaac Jacobo Barchillona, personajes retratados por José Eustasio Rivera. El texto aborda un proceso histórico inédito que permite conocer una faceta oscura del país y el contexto que dio origen a La Vorágine.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "29 abril 2026",
+    "time": "5:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Maestrías ICC | Escuchamos tus preguntas",
+    "description": "Encuentro con los profesores de la maestría y una muestra de clase abierta.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "29 abril 2026",
+    "time": "6:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Investigar el títere, imaginar un arte del objeto",
+    "description": "El arte titiritero es un sistema vivo de transmisión cultural que ha perdurado por la oralidad, la experiencia y la resistencia comunitaria. Su marginalidad ha impulsado lenguajes y pedagogías propias, donde música, voz y sonido son centrales. Ante una memoria fragmentada y en riesgo, se destaca la importancia de documentar y fortalecer espacios como la FIATO para su proyección.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "30 abril 2026",
+    "time": "10:30 a. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Relatos polifónicos de país",
+    "description": "Mesa de radio en vivo sobre nuevas publicaciones de la DACMI, en el marco de la Red de Comunicación para la Vida. Libros como Relatos polifónicos de país y Pautas para el trabajo audiovisual con pueblos indígenas serán el punto de partida para un diálogo entre autores y público sobre diversidad cultural, comunicación y creación en Colombia.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "30 abril 2026",
+    "time": "11:30 a. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Del aguacate al zopilote: taller para buscar y compartir las palabras nativas de nuestro continente",
+    "description": "Clarisa Ruiz escribió un libro en el que las palabras son los personajes principales y, en esta entrega de la serie «Leer es mi cuento» recoge palabras que son muy propias de nuestra lengua (incluso cuando vienen de otros idiomas) para dotarlas de nuevos sentidos, los cuales dialogan a la perfección con las ilustraciones de Juan Camilo Mayorga",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "30 abril 2026",
+    "time": "1:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "El ensayo narrativo en la disrupción del contenido: Presentación de La soberanía y el cuerpo: dialéctica de la resistencia.",
+    "description": "La soberanía y el cuerpo: dialéctica de la resistencia se inscribe en el ensayo narrativo. No busca trama ni clímax, sino indagar, desde la memoria y la experiencia, en escenas que piensan el mundo. Propone la literatura como forma de conocimiento y reflexión, y se distancia de tendencias que privilegian el exceso, el adorno y las moralejas de consuelo en el arte contemporáneo.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "30 abril 2026",
+    "time": "3:00 p. m.",
+    "entity": "Instituto Colombiano de Antropología e Historia",
+    "title": "Pirámides prehispánicas en Popayán",
+    "description": "Se presentarán los resultados de la investigación “Caracterización del conjunto de pirámides prehispánicas en Popayán” de Víctor González, que analiza su ubicación, tipologías, estado de conservación y valor patrimonial. El estudio aporta nuevas lecturas sobre estos vestigios arqueológicos, su relación con el territorio, sus usos históricos y su importancia para la memoria y la comprensión de las sociedades que habitaron la región.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "30 abril 2026",
+    "time": "4:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "El Réquiem del Silencio y Don Guillermo: dos publicaciones para escuchar la voz de las víctimas en el marco del centenario de Guillermo Cano.",
+    "description": "Conversatorio con Lizeth Acosta, Diego Pérez y Johanna Calderón sobre dos publicaciones de la BNC: la colección Don Guillermo y el Réquiem del Silencio Op. 143 de Blas Emilio Atehortúa. El diálogo abordará sus procesos editoriales y su aporte a la memoria cultural del país.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "30 abril 2026",
+    "time": "5:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "El circo investiga",
+    "description": "Panel de discusión entre ganadorxs de las becas de investigación en circo entre 2023 y 2025.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "30 abril 2026",
+    "time": "6:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Relatos polifónicos de país",
+    "description": "Mesa de radio en vivo sobre nuevas publicaciones de la DACMI en la Red de Comunicación para la Vida. Libros como Relatos polifónicos de país y Pautas y recomendaciones para el trabajo audiovisual y cinematográfico con pueblos indígenas serán el punto de partida para un diálogo abierto entre autores y público sobre la diversidad cultural, la comunicación y las formas de creación en Colombia.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "30 abril 2026",
+    "time": "7:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Lanzamiento del libro \"Rescate tipográfico. Perspectivas y experiencias de investigación en el suroccidente colombiano\"",
+    "description": "El evento ofrece una mirada actual de la tipografía en Colombia desde el Laboratorio Entre Plomos de la Universidad del Cauca y el trabajo de rescate patrimonial de La Linterna y el Taller Escuela de Artes Gráficas en Cali. Un espacio para que público y diseñadores conozcan la impresión tipográfica artesanal y las iniciativas que buscan mantenerla vigente.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "1 mayo 2026",
+    "time": "10:30 a. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "ZOOM AL PÚBLICO",
+    "description": "Taller creativo para socializar los resultados del Estudio de Públicos de Cine Colombiano 2025. Propone un espacio de mediación audiovisual que acerca esta investigación del FDC y la DACMI (2024–2025). Desde la pedagogía artística, introduce hallazgos clave y fomenta la reflexión sobre la creación audiovisual en diálogo con las demandas, deseos y motivaciones de los públicos.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "1 mayo 2026",
+    "time": "12:30 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Conversatorio entre talentos de la cinematografía nacional en torno a películas colombiana",
+    "description": "Este evento tiene como objetivo la promoción del cine colombiano en el marco de la campaña El Cine Colombiano ¡Nos Late! - nuestrocine.co",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "1 mayo 2026",
+    "time": "2:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "La formación artística como política pública en el ámbito nacional e internacional",
+    "description": "Conversatorio entre expertos de políticas públicas del sector artístico y cultural.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "1 mayo 2026",
+    "time": "3:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Artes para la paz: Ecosistemas de formación Artística",
+    "description": "Conversatorio entre líderes de procesos de formación artística y cultural en ámbitos escolares y comunitarios. El diálogo aborda experiencias, retos y aportes a la consolidación de ecosistemas artísticos en los territorios, destacando el papel de la educación y la creación en el fortalecimiento cultural y la participación.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "1 mayo 2026",
+    "time": "4:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Lanzamiento del libro: Testamento goliardo, de Helcías Martán Góngora",
+    "description": "Esta antología hace parte de la colección Posteris Lvmen de la Universidad del Cauca, que publicará 100 libros de autores caucanos para conmemorar su centenario. Es resultado de un proyecto investigativo desarrollado en alianza con el Instituto Caro y Cuervo.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "1 mayo 2026",
+    "time": "5:00 p. m.",
+    "entity": "AGN",
+    "title": "Las memorias incómodas de la migración en Colombia",
+    "description": "Mirada histórica a la migración “indeseada” en Colombia: sirio-libaneses, chinos, “comunistas” y otros grupos señalados como amenaza. Desde el siglo XIX se revisan leyes, expedientes y prensa para entender la construcción de prejuicios y controles. También se explora cómo estas comunidades resistieron, se asentaron y transformaron el país, y qué preguntas abre hoy ese archivo sobre ciudadanía y derechos.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "1 mayo 2026",
+    "time": "6:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Lectura en voz alta: Mujeres y poesía contemporánea",
+    "description": "El Ministerio de las Culturas presenta una colección de poesía con cuatro cuadernillos que reúnen a 45 poetas colombianas en distintos momentos de su trayectoria. Sus voces exploran temas como ciencia ficción, erotismo y lo fantástico, ampliando el panorama de la poesía escrita por mujeres. El lanzamiento incluye lectura en voz alta y presentación de la compiladora Camila Charry.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "1 mayo 2026",
+    "time": "7:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Presentación del libro: Vocabulario tipográfico",
+    "description": "El “Vocabulario tipográfico” del Instituto Caro y Cuervo da a conocer la terminología de la impresión tipográfica, un oficio que aún se preserva en la Imprenta Patriótica. Esta edición, basada en la guía de Juan José Morato Caldeiro, fue compuesta en linotipia e impresa en máquinas tipográficas, destacando su carácter artesanal y su vínculo con la tradición de la imprenta.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "2 mayo 2026",
+    "time": "10:30 a. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Red Estudiantil por la Memoria y el Patrimonio - Taller de apropiación social del patrimonio cultural",
+    "description": "Taller de apropiación social del patrimonio cultural dirigido a estudiantes de grados 9° a 11°. Se enfoca en el diseño de proyectos que aporten al cumplimiento de las 80 horas de servicio social obligatorio, promoviendo el reconocimiento, la valoración y la participación activa en la protección del patrimonio cultural.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "2 mayo 2026",
+    "time": "1:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Taller sobre la tipografía de Yerbabuena del Instituto Caro y Cuervo",
+    "description": "Los participantes conocerán, de la voz de uno de sus creadores, el proceso de diseño de la tipografía de la estrategia “Colombia, casa común”. El espacio abordará decisiones estéticas, conceptuales y técnicas, y permitirá comprender cómo la tipografía contribuye a construir identidad visual y comunicar una apuesta cultural.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "2 mayo 2026",
+    "time": "2:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Lanzamiento Antología Relata 2025",
+    "description": "En este espacio, Johana Marcela Rozo charla con dos autores de la Antología Relata 2025.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "2 mayo 2026",
+    "time": "3:00 p. m.",
+    "entity": "Instituto Colombiano de Antropología e Historia",
+    "title": "El galeón San Jose a futuro. ¿Cómo conservarlo?",
+    "description": "El naufragio del galeón San José plantea un dilema: ¿conservar sus restos en el fondo del mar o extraerlos? Este evento, con sustento científico, aborda las implicaciones de ambas opciones y busca ofrecer elementos para comprender un debate vigente a nivel global sobre patrimonio, conservación y memoria.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "2 mayo 2026",
+    "time": "4:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "El futuro está lleno de deseo. 20 años de Relata",
+    "description": "Encuentro teórico-práctico para explorar el deseo como motor de futuros posibles para Relata. A partir de poesía y literatura especulativa, se reflexiona sobre imaginación, fantasía y cuerpo en la construcción de espacios colectivos de lectura y escritura. Dirigido por Alejo Morales y Paula Castillo.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "2 mayo 2026",
+    "time": "6:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Presentación del libro: El oro no flota",
+    "description": "Presentación del libro El oro no flota. A partir del galeón San José, el encuentro propone mirar más allá del “tesoro sumergido” y acercarse, desde la imaginación, a lo que permanece en el fondo del mar. Con Andrés Ospina y Diego Bohórquez, se exploran cruces entre historia, literatura e ilustración para recrear y reinventar el pasado.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "2 mayo 2026",
+    "time": "7:00 p. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Pedagogías que caminan - sobre autonomías pedagógicas y escuelas territoriales",
+    "description": "Conversación sobre los giros pedagógicos en Artes Plásticas y Visuales desde la Escuela Itinerante de APV, que propone modelos horizontales, colectivos y situados para la formación artística. El encuentro incluye el lanzamiento de sus publicaciones 2024 y 2025 y reflexiona sobre nuevas formas de construir escuela desde los territorios.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "3 mayo 2026",
+    "time": "10:30 a. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "A de aerolito: leer con los sentidos",
+    "description": "Taller multisensorial para explorar formas de leer y comunicarnos. A partir del aerolito, pieza del Museo Nacional, se invita a descubrir la letra A en distintos sistemas: braille, Lengua de Señas Colombiana y sistema alfanumérico. Un espacio para reconocer la diversidad de lenguajes y promover la inclusión a través de experiencias sensoriales.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "3 mayo 2026",
+    "time": "3:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Lanzamiento de la Biblioteca Rafael Gutiérrez Girardot (Capítulo Colombia). Tomo I. Poesía colombiana. Ensayos críticos",
+    "description": "Conversatorio sobre el proyecto Biblioteca Rafael Gutiérrez (Capítulo Colombia), investigación que reúne la obra de Rafael Gutiérrez Girardot. Liderado por el GELCIL de la Universidad de Antioquia y el Instituto Caro y Cuervo, presenta el primer tomo de una colección de 11 volúmenes, que recoge su mirada crítica sobre la poesía y el pensamiento en su tiempo.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "3 mayo 2026",
+    "time": "4:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Voces vivas Presentación del primer repositorio de lenguas nativas de Colombia",
+    "description": "Presentación del primer repositorio de lenguas nativas de Colombia, desarrollado por comunidades indígenas y el Instituto Caro y Cuervo. El proyecto documenta 15 lenguas y reúne memorias lingüísticas y culturales. En la sesión se compartirá su proceso de creación y los contenidos disponibles, invitando a explorar la diversidad lingüística del país.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "4 mayo 2026",
+    "time": "10:30 a. m.",
+    "entity": "Ministerio de las Culturas, las Artes y los Saberes",
+    "title": "Taller: Historias en capas, color en juego - El legado de Beatriz González",
+    "description": "A través de un juego creativo con imágenes de la Independencia y la exploración del color, este taller propone un acercamiento a la obra de Beatriz González. Los participantes experimentarán con la apropiación y transformación de imágenes para comprender cómo el arte resignifica el pasado y lo conecta con la vida cotidiana.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "4 mayo 2026",
+    "time": "3:00 p. m.",
+    "entity": "Instituto Caro y Cuervo",
+    "title": "Lanzamiento de un nuevo título de la Biblioteca Común \"El trabajo de Waldina Dávila de Ponce\"",
+    "description": "La Biblioteca Común presenta el segundo título de su colección, dedicado a Waldina Dávila. El evento dará a conocer a esta autora del siglo XIX y destacará su pensamiento crítico sobre las consecuencias de la guerra en el ámbito familiar, invitando a redescubrir su obra y su lugar en la literatura colombiana.",
+    "location": "Auditorio estand: Colombia, casa común"
+  },
+  {
+    "date": "4 mayo 2026",
+    "time": "4:00 p. m.",
+    "entity": "Biblioteca Nacional de Colombia",
+    "title": "Del taller a la publicación: presentación de Corazón de lava de Paula Alejandra Rojas",
+    "description": "Corazón de lava reúne ocho cuentos sobre niñas y adolescentes que, en su tránsito a la adultez, enfrentan su lado oculto. Finalista de premios nacionales, el libro surge del trabajo del Taller Lispector. En este espacio, su autora conversa con Natalia Guzmán y Dayro Martínez sobre procesos de lectura y edición colectiva.",
+    "location": "Auditorio estand: Colombia, casa común"
+  }
+]

@@ -27,6 +27,52 @@
         'types' => [],
         'keywords' => [],
     ];
+    $memoryCarouselSlides = [
+        [
+            'title' => 'Historias que sostienen la memoria',
+            'description' => 'Territorios en resistencia',
+            'button_text' => 'Leer mas',
+            'button_link' => '#tematicas',
+            'image' => asset('assets/casa-comun/memory-slide-01.png'),
+        ],
+        [
+            'title' => 'Voces que cuidan el territorio',
+            'description' => 'Relatos colectivos y saberes en movimiento',
+            'button_text' => 'Explorar',
+            'button_link' => '#destacados',
+            'image' => asset('assets/casa-comun/memory-slide-02.png'),
+        ],
+    ];
+    $partnerEntities = [
+        [
+            'name' => 'Biblioteca Nacional de Colombia',
+            'image' => asset('assets/casa-comun/partner-biblioteca-nacional.png'),
+        ],
+        [
+            'name' => 'Instituto Caro y Cuervo',
+            'image' => asset('assets/casa-comun/partner-caro-cuervo.png'),
+        ],
+        [
+            'name' => 'ICANH',
+            'image' => asset('assets/casa-comun/partner-icanh.png'),
+        ],
+        [
+            'name' => 'DACMI',
+            'image' => asset('assets/casa-comun/partner-dacmi.png'),
+        ],
+        [
+            'name' => 'Grupo Cine Comunitario',
+            'image' => asset('assets/casa-comun/partner-grupo-cine-comunitario.png'),
+        ],
+    ];
+    $filboSchedulePath = resource_path('data/filbo-programacion-casa-comun.json');
+    $filboSchedule = [];
+
+    if (is_file($filboSchedulePath)) {
+        $filboSchedule = json_decode(file_get_contents($filboSchedulePath), true) ?: [];
+    }
+
+    $filboScheduleByDate = collect($filboSchedule)->groupBy('date');
 @endphp
 <!DOCTYPE html>
 <html lang="es">
@@ -43,17 +89,21 @@
         :root{--ink:#06090f;--poster:#5b6484;--poster-deep:#4e5876;--cream:#f4ebbe;--butter:#eed367;--teal:#58d7c9;--teal-deep:#2fc2b0;--mint:#70d7b5;--mint-dark:#4cc4ab;--pink:#e88bc1;--orange:#ef9141;--red:#c85c4f;--aqua:#4cd0c7;--line:rgba(18,26,35,.16);--text:#162127;--shadow:0 28px 70px rgba(0,0,0,.28);--font-scale:1;--focus-ring:#fff2a8}
         *{box-sizing:border-box}
         html{scroll-behavior:smooth}
-        body{margin:0;min-width:320px;background:#020305;font-family:'Google Sans',sans-serif;color:var(--cream);font-size:calc(16px * var(--font-scale));line-height:1.5}
+        body{margin:0;min-width:320px;background:#020305;font-family:'Google Sans',sans-serif;color:var(--cream);font-size:16px;line-height:1.5}
         a{color:inherit;text-decoration:none}
         img,video,svg{display:block;max-width:100%}
         a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus-ring);outline-offset:3px}
+        p,li,label,input,summary,button,.hero-kicker,.themes-summary,.catalog-search-copy,.catalog-hint,.catalog-active-filters,.filter-empty,.topic-meta-line,.tooltip-description,.tooltip-detail-list p,.catalog-empty,.footer-pill,.catalog-keywords-list,.stat-pill,.partner-item,.accessibility-label{font-size:calc(1em * var(--font-scale))}
         .skip-link{position:fixed;left:14px;top:14px;z-index:70;padding:12px 16px;border-radius:12px;background:#111823;color:#fff5ce;font-size:13px;font-weight:700;transform:translateY(-150%);transition:transform .18s ease}
         .skip-link:focus{transform:translateY(0)}
-        .accessibility-bar{position:sticky;top:0;z-index:60;display:flex;justify-content:center;padding:10px 14px;background:rgba(6,9,15,.88);backdrop-filter:blur(10px);border-bottom:1px solid rgba(244,235,190,.12)}
-        .accessibility-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;width:min(100%,1040px)}
-        .accessibility-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,235,190,.72)}
-        .accessibility-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border:1px solid rgba(244,235,190,.24);border-radius:999px;background:rgba(255,255,255,.06);color:var(--cream);font-size:12px;font-weight:700;letter-spacing:.05em;cursor:pointer}
-        .accessibility-btn.is-active{background:var(--cream);color:#172029}
+        .accessibility-bar{position:fixed;top:10px;left:0;right:0;z-index:60;display:flex;justify-content:flex-end;padding:0 14px;background:transparent;pointer-events:none}
+        .accessibility-tools{display:inline-flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:6px;min-height:48px;padding:6px 8px;border:1px solid rgba(244,235,190,.16);border-radius:999px;background:rgba(6,9,15,.62);backdrop-filter:blur(10px);box-shadow:0 12px 26px rgba(0,0,0,.18);pointer-events:auto}
+        .accessibility-label{padding:0 8px 0 6px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,235,190,.66);white-space:nowrap}
+        .accessibility-btn{display:inline-flex;align-items:center;justify-content:center;min-width:36px;min-height:36px;padding:0 12px;border:1px solid rgba(244,235,190,.18);border-radius:999px;background:rgba(255,255,255,.05);color:var(--cream);font-size:11px;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background-color .18s ease,border-color .18s ease,color .18s ease,opacity .18s ease}
+        .accessibility-btn[data-size]{padding:0;line-height:1}
+        .accessibility-btn:hover{background:rgba(255,255,255,.12)}
+        .accessibility-btn.is-active{background:var(--cream);color:#172029;border-color:var(--cream)}
+        .accessibility-btn:disabled{opacity:.46;cursor:not-allowed}
         .page{position:relative;overflow-x:clip;background:#49556f}
         .page::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(255,255,255,.13) 0 1px,transparent 1px 5px);mix-blend-mode:screen;opacity:.55;pointer-events:none;z-index:0}
         .page > *{position:relative;z-index:1}
@@ -71,7 +121,7 @@
         .hero-intro{position:relative;z-index:6;display:grid;grid-template-columns:minmax(0,520px) minmax(320px,1fr);align-items:end;gap:24px;width:min(100% - 48px,1180px);margin:0 auto;padding:24px 0 0}
         .hero-copy{max-width:560px}
         .hero-kicker{margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,235,190,.72)}
-        .hero-copy h1{margin:0;font-family:'Alternate Gothic',sans-serif;font-size:clamp(54px,7vw,96px);line-height:.92;letter-spacing:.03em;text-transform:uppercase;color:var(--cream);text-wrap:balance}
+        .hero-copy h1{margin:0;font-family:'Alternate Gothic',sans-serif;font-size:calc(clamp(54px,7vw,96px) * var(--font-scale));line-height:.92;letter-spacing:.03em;text-transform:uppercase;color:var(--cream);text-wrap:balance}
         .hero-copy p{margin:14px 0 0;max-width:44ch;font-size:18px;line-height:1.6;color:rgba(244,235,190,.88)}
         .hero-side{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:28px;min-height:100%;padding-bottom:10px}
         .hero-window{width:min(36vw,460px);margin-right:18px;pointer-events:none}
@@ -97,13 +147,16 @@
         .roof-slide.is-active{opacity:1}
         .roof-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent 62%)}
         .roof-slide-media{width:100%;height:100%;object-fit:cover;object-position:center center}
-        .roof-dots{position:absolute;left:50%;bottom:18px;z-index:6;display:flex;gap:10px;transform:translateX(-50%)}
+        .roof-slide-content{position:absolute;left:50%;bottom:28px;z-index:5;display:flex;justify-content:center;transform:translateX(-50%)}
+        .roof-slide-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border:1px solid rgba(20,33,38,.2);border-radius:999px;background:rgba(255,245,206,.94);color:#172029;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+        .roof-dots{position:absolute;right:22px;bottom:18px;z-index:6;display:flex;gap:10px}
         .roof-dot{width:12px;height:12px;padding:0;border:0;border-radius:999px;background:rgba(244,235,190,.34);box-shadow:0 0 0 1px rgba(9,14,18,.18);cursor:pointer;transition:transform .18s ease,background-color .18s ease}
         .roof-dot[aria-selected="true"]{background:var(--cream);transform:scale(1.16)}
         .roof-dot:focus-visible{outline:2px solid rgba(244,235,190,.92);outline-offset:3px}
+        .roof-carousel.is-modal-open .roof-dots{opacity:.2;pointer-events:none}
 
         .themes-section{position:relative;z-index:4;padding:72px 0 34px}
-        .themes-title{position:relative;z-index:4;max-width:1120px;margin:0 auto 42px;text-align:right;font-family:'Alternate Gothic',sans-serif;font-size:48px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
+        .themes-title{position:relative;z-index:4;max-width:1120px;margin:0 auto 42px;text-align:right;font-family:'Alternate Gothic',sans-serif;font-size:calc(48px * var(--font-scale));letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
         .themes-summary{position:relative;z-index:2;max-width:1120px;margin:0 auto 18px;padding:0 0 4px;font-size:16px;line-height:1.65;color:rgba(244,235,190,.84)}
         .themes-stage{position:relative;max-width:1120px;margin:0 auto;padding-top:70px}
         .board{position:relative;z-index:2;overflow:visible;color:var(--text);background:linear-gradient(180deg,var(--theme-chip-color, var(--mint)) 0 232px,var(--mint-dark) 232px 100%);box-shadow:0 22px 44px rgba(14,27,34,.28);transition:background .2s ease}
@@ -134,7 +187,7 @@
         .board-copy:first-child{border-right:1px solid var(--line)}
         .board-copy-search{gap:10px}
         .board-eyebrow{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(20,33,38,.56)}
-        .board-copy h2{margin:0;font-family:'Alternate Gothic',sans-serif;font-size:40px;line-height:.96;letter-spacing:.02em;text-transform:uppercase;overflow-wrap:anywhere}
+        .board-copy h2{margin:0;font-family:'Alternate Gothic',sans-serif;font-size:calc(40px * var(--font-scale));line-height:.96;letter-spacing:.02em;text-transform:uppercase;overflow-wrap:anywhere}
         .board-copy p{margin:0;font-size:17px;line-height:1.58;color:rgba(20,33,38,.86)}
         .board-copy .lead{margin-top:10px;max-width:34ch}
         .catalog-stats{display:flex;flex-wrap:wrap;gap:8px}
@@ -251,7 +304,7 @@
 
         .highlights{position:relative;z-index:2;padding:36px 0 52px}
         .highlights::before{content:"";position:absolute;inset:0;background-image:url('{{ asset('assets/casa-comun/layer-stripes.png') }}');background-size:280px auto;background-repeat:repeat;opacity:.1;mix-blend-mode:screen;pointer-events:none}
-        .highlights-title{max-width:1120px;margin:0 auto 18px;font-family:'Alternate Gothic',sans-serif;font-size:50px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
+        .highlights-title{max-width:1120px;margin:0 auto 18px;font-family:'Alternate Gothic',sans-serif;font-size:calc(50px * var(--font-scale));letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
         .cards{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
         .card{display:flex;flex-direction:column;overflow:hidden;min-height:100%;box-shadow:0 18px 40px rgba(0,0,0,.16)}
         .card img{width:100%;aspect-ratio:1/1;object-fit:cover}
@@ -263,10 +316,34 @@
         .card p{margin:0;font-size:11px;line-height:1.48;color:rgba(30,22,25,.76)}
         .mini-btn{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;min-height:44px;padding:0 16px;border-radius:999px;background:#fff7de;color:#172029;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
 
+        .memory-carousel-section{position:relative;padding:0 0 56px;background:#49556f}
+        .memory-carousel-shell{position:relative;max-width:1120px;margin:0 auto;padding:0 12px}
+        .memory-carousel-shell::before{content:"";position:absolute;left:0;right:0;top:-28px;height:176px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.1) 0 8px,transparent 8px 32px);opacity:.3;pointer-events:none}
+        .memory-carousel{position:relative;overflow:hidden;min-height:300px;background:#d8b92a;border-radius:18px;box-shadow:0 18px 42px rgba(0,0,0,.18)}
+        .memory-slide{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,65%) minmax(0,35%);min-height:300px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .32s ease,visibility .32s ease}
+        .memory-slide.is-active{opacity:1;visibility:visible;pointer-events:auto}
+        .memory-slide::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(216,185,42,.94) 0%,rgba(216,185,42,.86) 42%,rgba(216,185,42,.34) 68%,rgba(62,75,110,.44) 100%);z-index:1}
+        .memory-slide::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(255,255,255,.16) 0 1px,transparent 1px 5px);mix-blend-mode:screen;opacity:.44;z-index:2;pointer-events:none}
+        .memory-slide-media{position:absolute;inset:0}
+        .memory-slide-media img{width:100%;height:100%;object-fit:cover;object-position:center center}
+        .memory-slide-content{position:relative;z-index:3;grid-column:1 / 2;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;gap:12px;width:100%;max-width:none;min-height:300px;padding:28px 42px 96px;color:#fff8dd}
+        .memory-slide-content h2{margin:0;max-width:11ch;font-family:'Alternate Gothic',sans-serif;font-size:calc(clamp(24px,2.7vw,40px) * var(--font-scale));line-height:.9;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance;text-shadow:0 2px 10px rgba(0,0,0,.12)}
+        .memory-slide-content p{margin:0;max-width:24ch;font-size:17px;line-height:1.35;color:rgba(255,248,221,.95)}
+        .memory-slide-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 24px;border-radius:999px;background:#f8f0d2;color:#1b222c;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 10px 20px rgba(0,0,0,.12)}
+        .memory-carousel-controls{position:absolute;inset:auto 0 12px 0;z-index:4;display:block;pointer-events:none}
+        .memory-carousel-actions{display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;background:rgba(16,22,29,.12);backdrop-filter:blur(6px)}
+        .memory-carousel-control{display:inline-flex;align-items:center;justify-content:center;min-width:34px;min-height:34px;padding:0 10px;border:1px solid rgba(255,248,221,.14);border-radius:999px;background:rgba(16,22,29,.18);color:#fff8dd;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background-color .18s ease,border-color .18s ease,color .18s ease,transform .18s ease}
+        .memory-carousel-control.is-icon{min-width:34px;padding:0;font-size:14px;line-height:1}
+        .memory-carousel-control:hover{background:rgba(16,22,29,.34);border-color:rgba(255,248,221,.24);transform:translateY(-1px)}
+        .memory-carousel-dot{width:9px;height:9px;padding:0;border:0;border-radius:999px;background:rgba(255,248,221,.28);cursor:pointer;transition:transform .18s ease,background-color .18s ease}
+        .memory-carousel-dot[aria-selected="true"]{background:#fff8dd;transform:scale(1.14)}
+        .memory-carousel-nav{position:absolute;left:50%;bottom:46px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;transform:translateX(-50%);pointer-events:auto}
+        .memory-carousel-actions{position:absolute;right:16px;bottom:0;pointer-events:auto}
+
         .feature-strip{position:relative;overflow:hidden}
         .strip-grid{display:grid;grid-template-columns:1.12fr .88fr;align-items:stretch;height:280px}
         .strip-copy{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;height:280px;padding:22px 20px;text-align:center;overflow:hidden}
-        .strip-copy h2{margin:0 0 8px;font-family:'Alternate Gothic',sans-serif;font-size:54px;letter-spacing:.05em;text-transform:uppercase}
+        .strip-copy h2{margin:0 0 8px;font-family:'Alternate Gothic',sans-serif;font-size:calc(54px * var(--font-scale));letter-spacing:.05em;text-transform:uppercase}
         .strip-copy p{margin:0 0 12px;font-size:15px;line-height:1.54}
         .strip-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:999px;background:rgba(255,248,223,.92);color:#172029;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
         .strip-art{position:relative;height:280px;min-height:280px;overflow:hidden}
@@ -282,6 +359,33 @@
         .strip-sonido .strip-grid{grid-template-columns:.98fr 1.02fr}
         .strip-sonido .strip-copy{align-items:flex-start;text-align:left;padding-left:34px}
 
+        .partners-section{position:relative;padding:0 0 32px;background:#000}
+        .partners-section::before{content:"";position:absolute;left:0;right:0;top:0;height:20px;background:linear-gradient(90deg,#57c6b5 0 8%,#f1b65b 8% 9.5%,#57c6b5 9.5% 12%,#f1b65b 12% 13.5%,#57c6b5 13.5% 16%,#f1b65b 16% 17.5%,#57c6b5 17.5% 20%,#f1b65b 20% 21.5%,#57c6b5 21.5% 24%,#f1b65b 24% 25.5%,#57c6b5 25.5% 28%,#f1b65b 28% 29.5%,#57c6b5 29.5% 32%,#f1b65b 32% 33.5%,#57c6b5 33.5% 36%,#f1b65b 36% 37.5%,#57c6b5 37.5% 40%,#f1b65b 40% 41.5%,#57c6b5 41.5% 44%,#f1b65b 44% 45.5%,#57c6b5 45.5% 48%,#f1b65b 48% 49.5%,#57c6b5 49.5% 52%,#f1b65b 52% 53.5%,#57c6b5 53.5% 56%,#f1b65b 56% 57.5%,#57c6b5 57.5% 60%,#f1b65b 60% 61.5%,#57c6b5 61.5% 64%,#f1b65b 64% 65.5%,#57c6b5 65.5% 68%,#f1b65b 68% 69.5%,#57c6b5 69.5% 72%,#f1b65b 72% 73.5%,#57c6b5 73.5% 76%,#f1b65b 76% 77.5%,#57c6b5 77.5% 80%,#f1b65b 80% 81.5%,#57c6b5 81.5% 84%,#f1b65b 84% 85.5%,#57c6b5 85.5% 88%,#f1b65b 88% 89.5%,#57c6b5 89.5% 100%)}
+        .partners-shell{position:relative;max-width:1120px;margin:0 auto;padding:54px 18px 10px}
+        .partners-panel{position:relative;padding:40px 24px 26px;border-top:1px solid rgba(255,255,255,.2);border-bottom:1px solid rgba(255,255,255,.14);background:#000}
+        .partners-title{margin:0 0 36px;text-align:center;font-size:15px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+        .partners-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:center;gap:24px}
+        .partner-item{display:flex;align-items:center;justify-content:center;min-height:92px}
+        .partner-item img{display:block;max-width:100%;max-height:76px;width:auto;height:auto;object-fit:contain}
+        .partner-item.is-caro img,.partner-item.is-icanh img{max-height:86px}
+
+        .program-modal[hidden]{display:none}
+        .program-modal{position:fixed;inset:0;z-index:90}
+        .program-modal-backdrop{position:absolute;inset:0;background:rgba(3,7,12,.72);backdrop-filter:blur(6px)}
+        .program-modal-dialog{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+        .program-modal-panel{width:min(760px,100%);max-height:min(88vh,900px);padding:24px;border:1px solid rgba(244,235,190,.16);background:#fff5ce;color:#172029;box-shadow:0 28px 70px rgba(0,0,0,.32);overflow:auto}
+        .program-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px}
+        .program-modal-title{margin:0;font-family:'Alternate Gothic',sans-serif;font-size:42px;line-height:.92;letter-spacing:.03em;text-transform:uppercase;color:#111920}
+        .program-modal-copy{margin:8px 0 0;font-size:15px;line-height:1.6;color:rgba(17,25,32,.82)}
+        .program-modal-close{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:44px;min-height:44px;padding:0;border:1px solid rgba(20,33,38,.18);border-radius:999px;background:#fff9e2;color:#172029;font-size:22px;line-height:1;cursor:pointer}
+        .program-modal-list{display:grid;gap:12px}
+        .program-modal-day{display:grid;gap:10px}
+        .program-modal-day-title{margin:6px 0 0;font-family:'Alternate Gothic',sans-serif;font-size:28px;line-height:.96;letter-spacing:.03em;text-transform:uppercase;color:#111920}
+        .program-modal-item{display:grid;gap:6px;padding:16px 18px;border:1px solid rgba(20,33,38,.12);background:rgba(255,255,255,.42)}
+        .program-modal-meta{display:flex;flex-wrap:wrap;gap:8px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(17,25,32,.68)}
+        .program-modal-item h4{margin:0;font-size:20px;line-height:1.2;text-transform:uppercase}
+        .program-modal-item p{margin:0;font-size:15px;line-height:1.58;color:rgba(17,25,32,.8)}
+
         .footer{padding:24px 14px 34px;background:#020305;text-align:center}
         .footer-pill{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:0 16px;border-radius:999px;background:#f7f0ce;color:#18202a;font-size:11px;font-weight:700;margin-bottom:16px}
         .socials{display:flex;justify-content:center;gap:10px}
@@ -290,7 +394,8 @@
         body.is-high-contrast{--poster:#131820;--poster-deep:#0f131a;--cream:#fff9d7;--mint:#d7f178;--mint-dark:#bdd656;--line:rgba(255,249,215,.2);--text:#0f1115;--focus-ring:#ffffff}
         body.is-high-contrast .page{background:#0f131a}
         body.is-high-contrast .mini-btn,body.is-high-contrast .strip-btn,body.is-high-contrast .hero-btn{background:#fff9d7;color:#000}
-        body.is-high-contrast .hero-btn.is-secondary,body.is-high-contrast .accessibility-btn{background:#000;color:#fff9d7;border-color:#fff9d7}
+        body.is-high-contrast .hero-btn.is-secondary,body.is-high-contrast .accessibility-btn{background:rgba(0,0,0,.76);color:#fff9d7;border-color:#fff9d7}
+        body.is-high-contrast .accessibility-btn.is-active{background:#fff9d7;color:#000}
 
         @media (max-width:1100px){
             .topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -302,7 +407,8 @@
             .hero-window{width:min(34vw,320px);margin-right:8px;opacity:.92}
             .house-panel{width:min(100% - 32px,1180px);height:clamp(280px,35.3vw,380px);padding-top:0}
             .roof-carousel{inset:0}
-            .roof-dots{bottom:16px}
+            .roof-dots{right:18px;bottom:18px}
+            .roof-slide-content{bottom:26px}
             .themes-section{padding-top:56px}
             .themes-title{max-width:1080px;margin-bottom:36px;font-size:44px}
             .themes-stage{max-width:1080px}
@@ -315,12 +421,14 @@
             .strip-copy,.strip-art{height:auto;min-height:0}
             .board-copy:first-child{border-right:0;border-bottom:1px solid var(--line)}
             .strip-copy,.strip-mirada .strip-copy,.strip-sonido .strip-copy{align-items:center;text-align:center;padding:18px 18px 24px}
+            .memory-slide{grid-template-columns:minmax(0,68%) minmax(0,32%)}
+            .partners-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
         }
 
         @media (max-width:720px){
-            .accessibility-bar{padding:8px 10px}
-            .accessibility-tools{justify-content:flex-start}
-            .accessibility-label{width:100%}
+            .accessibility-bar{top:8px;padding:0 10px}
+            .accessibility-tools{justify-content:flex-start;max-width:100%;overflow-x:auto}
+            .accessibility-label{padding-right:4px}
             .wrap,.wrap-contained{width:min(100%,1040px)}
             .wrap-full{width:100%}
             .sky-media{height:300px}
@@ -330,8 +438,10 @@
             .hero-window{display:none}
             .hero-actions{justify-content:flex-start;min-height:0;margin-top:18px;padding-bottom:0}
             .roof-carousel{inset:0}
-            .roof-dots{bottom:12px;gap:8px}
+            .roof-dots{right:14px;bottom:14px;gap:8px}
             .roof-dot{width:10px;height:10px}
+            .roof-slide-content{left:14px;right:56px;bottom:14px;justify-content:flex-start;transform:none;width:auto}
+            .roof-slide-btn{width:100%;max-width:240px}
             .themes-section{padding-top:40px}
             .board-layers{display:none}
             .house-panel{width:100%;height:clamp(180px,35.3vw,260px);margin-top:0;padding:0;clip-path:polygon(50% 0,100% 10%,100% 100%,0 100%,0 10%)}
@@ -361,9 +471,71 @@
             .catalog-tooltip{position:static;left:auto;right:auto;top:auto;display:none;width:auto;max-height:none;margin-top:12px;opacity:1;visibility:visible;transform:none;overflow:visible}
             .topic-card.is-tooltip-open .catalog-tooltip{display:block}
             .card img{aspect-ratio:1.1/1}
+            .memory-carousel-section{padding-bottom:42px}
+            .memory-carousel-shell{padding:0}
+            .memory-carousel-shell::before{top:-18px;height:110px}
+            .memory-carousel{min-height:360px}
+            .memory-slide{grid-template-columns:1fr;min-height:360px}
+            .memory-slide::before{background:linear-gradient(180deg,rgba(216,185,42,.94) 0%,rgba(216,185,42,.88) 56%,rgba(216,185,42,.56) 100%)}
+            .memory-slide-content{grid-column:1 / -1;max-width:100%;min-height:360px;padding:24px 24px 98px}
+            .memory-slide-content h2{max-width:10ch}
+            .memory-slide-content p{font-size:16px;max-width:22ch}
+            .memory-carousel-controls{inset:auto 0 12px 0}
+            .memory-carousel-actions{justify-content:center}
+            .partners-shell{padding:46px 0 0}
+            .partners-panel{padding:34px 18px 24px}
+            .partners-title{margin-bottom:28px;font-size:14px}
+            .partners-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
+            .partner-item{min-height:76px}
+            .partner-item img{max-height:62px}
+            .partner-item.is-caro img,.partner-item.is-icanh img{max-height:72px}
             .strip-art{min-height:108px}
             .strip-sonido .strip-art{order:2}
             .strip-sonido .strip-copy{order:1}
+        }
+
+        @media (max-width:560px){
+            .accessibility-bar{justify-content:center}
+            .accessibility-tools{width:min(100%,340px);justify-content:space-between;padding:6px}
+            .accessibility-label{display:none}
+            .accessibility-btn{min-width:34px;min-height:34px;padding:0 10px;font-size:10px}
+            .hero-copy h1{font-size:clamp(42px,14vw,64px)}
+            .themes-title,.highlights-title,.strip-copy h2{font-size:34px}
+            .memory-carousel-shell::before{display:none}
+            .memory-carousel{min-height:390px}
+            .memory-slide{min-height:390px}
+            .memory-slide-content{min-height:390px;padding:22px 18px 114px}
+            .memory-slide-content h2{max-width:9ch;font-size:calc(clamp(24px,7.2vw,34px) * var(--font-scale))}
+            .memory-slide-content p{font-size:15px;max-width:22ch}
+            .memory-carousel-controls{inset:auto 0 12px 0}
+            .memory-carousel-nav{bottom:46px}
+            .memory-carousel-actions{left:50%;right:auto;bottom:0;width:auto;gap:8px;transform:translateX(-50%)}
+            .memory-carousel-control{padding:0 10px;font-size:10px}
+            .memory-carousel-control.is-icon{flex:0 0 36px}
+            .memory-carousel-nav{gap:8px}
+            .partners-grid{grid-template-columns:1fr}
+            .partners-panel{padding:30px 16px 22px}
+            .partner-item{min-height:70px}
+            .partner-item img{max-height:58px}
+            .partner-item.is-caro img,.partner-item.is-icanh img{max-height:68px}
+            .footer-pill{max-width:100%;padding:8px 14px;text-align:center;overflow-wrap:anywhere}
+            .program-modal-dialog{padding:12px}
+            .program-modal-panel{padding:18px}
+            .program-modal-title{font-size:34px}
+        }
+
+        @media (max-width:400px){
+            .memory-carousel{min-height:410px}
+            .memory-slide{min-height:410px}
+            .memory-slide-content{min-height:410px;padding:20px 16px 124px}
+            .memory-slide-content h2{max-width:8.5ch;font-size:calc(28px * var(--font-scale))}
+            .memory-slide-content p{font-size:14px}
+            .memory-carousel-actions{flex-wrap:nowrap}
+            .memory-carousel-control{min-width:0}
+            .partners-title{font-size:13px;letter-spacing:.1em}
+            .program-modal-head{gap:12px}
+            .program-modal-title{font-size:30px}
+            .program-modal-item h4{font-size:17px}
         }
 
         @media (prefers-reduced-motion:reduce){
@@ -378,11 +550,11 @@
 <body>
     <a class="skip-link" href="#contenido-principal">Saltar al contenido</a>
     <div class="accessibility-bar" aria-label="Herramientas de accesibilidad">
-        <div class="accessibility-tools">
+        <div class="accessibility-tools" role="toolbar" aria-label="Ajustes de accesibilidad">
             <span class="accessibility-label">Accesibilidad</span>
-            <button class="accessibility-btn" id="font-decrease" type="button" aria-label="Disminuir tamaño de texto">A-</button>
-            <button class="accessibility-btn" id="font-reset" type="button" aria-label="Restablecer tamaño de texto">A</button>
-            <button class="accessibility-btn" id="font-increase" type="button" aria-label="Aumentar tamaño de texto">A+</button>
+            <button class="accessibility-btn" id="font-decrease" data-size type="button" aria-label="Disminuir tamaño de texto">A-</button>
+            <button class="accessibility-btn" id="font-reset" data-size type="button" aria-label="Restablecer tamaño de texto">A</button>
+            <button class="accessibility-btn" id="font-increase" data-size type="button" aria-label="Aumentar tamaño de texto">A+</button>
             <button class="accessibility-btn" id="contrast-toggle" type="button" aria-pressed="false">Alto contraste</button>
         </div>
     </div>
@@ -413,6 +585,9 @@
                         </div>
                         <div class="roof-slide" data-roof-slide="1" aria-hidden="true">
                             <img class="roof-slide-media" src="{{ asset('assets/casa-comun/banner-filbo.png') }}" alt="Banner FILBo Conferias 2026">
+                            <div class="roof-slide-content">
+                                <button class="roof-slide-btn" type="button" data-open-program-modal aria-haspopup="dialog" aria-controls="filbo-program-modal">Ver programación</button>
+                            </div>
                         </div>
                     </div>
 
@@ -688,6 +863,41 @@
                         </div>
                     </section>
 
+        <section class="memory-carousel-section" aria-label="Carrusel de memorias destacadas">
+            <div class="memory-carousel-shell">
+                <div class="memory-carousel" data-memory-carousel aria-roledescription="carrusel">
+                    @foreach ($memoryCarouselSlides as $index => $slide)
+                        <article class="memory-slide{{ $index === 0 ? ' is-active' : '' }}" data-memory-slide="{{ $index }}" aria-hidden="{{ $index === 0 ? 'false' : 'true' }}">
+                            <div class="memory-slide-media" aria-hidden="true">
+                                <img src="{{ $slide['image'] }}" alt="">
+                            </div>
+                            <div class="memory-slide-content">
+                                <h2>{{ $slide['title'] }}</h2>
+                                <p>{{ $slide['description'] }}</p>
+                                <a class="memory-slide-btn" href="{{ $slide['button_link'] }}">{{ $slide['button_text'] }}</a>
+                            </div>
+                        </article>
+                    @endforeach
+
+                    @if (count($memoryCarouselSlides) > 1)
+                        <div class="memory-carousel-controls">
+                            <div class="memory-carousel-nav" aria-label="Indicadores del carrusel de memorias">
+                                @foreach ($memoryCarouselSlides as $index => $slide)
+                                    <button class="memory-carousel-dot" type="button" aria-label="Ver memoria {{ $index + 1 }}" aria-selected="{{ $index === 0 ? 'true' : 'false' }}"></button>
+                                @endforeach
+                            </div>
+                            <div class="memory-carousel-actions" aria-label="Controles del carrusel">
+                                <button class="memory-carousel-control is-icon" type="button" data-memory-prev aria-label="Ver banner anterior">‹</button>
+                                <button class="memory-carousel-control is-icon" type="button" data-memory-toggle aria-pressed="false" aria-label="Pausar carrusel">❚❚</button>
+                                <button class="memory-carousel-control is-icon" type="button" data-memory-next aria-label="Ver banner siguiente">›</button>
+                            </div>
+                        </div>
+                    @endif
+                    <p class="sr-only" aria-live="polite" data-memory-status>Memoria 1 de {{ count($memoryCarouselSlides) }}</p>
+                </div>
+            </div>
+        </section>
+
         <section class="feature-strip strip-mirada" id="mirada">
             <div class="wrap-full strip-grid">
                 <div class="strip-art" aria-hidden="true"></div>
@@ -709,6 +919,55 @@
                 <div class="strip-art" aria-hidden="true"></div>
             </div>
         </section>
+
+        <section class="partners-section" aria-labelledby="partners-title">
+            <div class="partners-shell">
+                <div class="partners-panel">
+                    <h2 class="partners-title" id="partners-title">Entidades participantes</h2>
+                    <div class="partners-grid">
+                        @foreach ($partnerEntities as $partner)
+                            <div class="partner-item{{ in_array($partner['name'], ['Instituto Caro y Cuervo', 'ICANH'], true) ? ($partner['name'] === 'ICANH' ? ' is-icanh' : ' is-caro') : '' }}">
+                                <img src="{{ $partner['image'] }}" alt="{{ $partner['name'] }}">
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="program-modal" id="filbo-program-modal" hidden>
+            <div class="program-modal-backdrop" data-close-program-modal></div>
+            <div class="program-modal-dialog">
+                <div class="program-modal-panel" role="dialog" aria-modal="true" aria-labelledby="filbo-program-title" aria-describedby="filbo-program-description" tabindex="-1">
+                    <div class="program-modal-head">
+                        <div>
+                            <h2 class="program-modal-title" id="filbo-program-title">Programación FILBo 2026</h2>
+                            <p class="program-modal-copy" id="filbo-program-description">Consulte la agenda de actividades programadas para el auditorio de Colombia, casa común en FILBo 2026.</p>
+                        </div>
+                        <button class="program-modal-close" type="button" data-close-program-modal aria-label="Cerrar programación">×</button>
+                    </div>
+                    <div class="program-modal-list">
+                        @forelse ($filboScheduleByDate as $date => $events)
+                            <section class="program-modal-day" aria-labelledby="program-day-{{ \Illuminate\Support\Str::slug($date) }}">
+                                <h3 class="program-modal-day-title" id="program-day-{{ \Illuminate\Support\Str::slug($date) }}">{{ $date }}</h3>
+                                @foreach ($events as $event)
+                                    <article class="program-modal-item">
+                                        <div class="program-modal-meta">
+                                            <span>{{ $event['time'] }}</span>
+                                            <span>{{ $event['entity'] }}</span>
+                                        </div>
+                                        <h4>{{ $event['title'] }}</h4>
+                                        <p>{{ $event['description'] }}</p>
+                                    </article>
+                                @endforeach
+                            </section>
+                        @empty
+                            <p class="program-modal-copy">No hay programación disponible en este momento.</p>
+                        @endforelse
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <footer class="footer" id="contacto">
             <a class="footer-pill" href="https://www.mincultura.gov.co/" target="_blank" rel="noreferrer">https://www.mincultura.gov.co/</a>
@@ -735,26 +994,47 @@
                 body.style.setProperty('--font-scale', fontScale.toFixed(2));
             };
 
+            const syncAccessibilityUI = () => {
+                const canDecrease = fontScale > 0.9;
+                const canIncrease = fontScale < 1.3;
+                const isDefaultScale = Math.abs(fontScale - 1) < 0.01;
+                const highContrastActive = body.classList.contains('is-high-contrast');
+
+                if (decreaseButton) decreaseButton.disabled = !canDecrease;
+                if (increaseButton) increaseButton.disabled = !canIncrease;
+                if (resetButton) resetButton.classList.toggle('is-active', isDefaultScale);
+
+                if (contrastButton) {
+                    contrastButton.classList.toggle('is-active', highContrastActive);
+                    contrastButton.setAttribute('aria-pressed', highContrastActive ? 'true' : 'false');
+                }
+            };
+
             increaseButton?.addEventListener('click', () => {
                 fontScale = Math.min(1.3, fontScale + 0.1);
                 syncScale();
+                syncAccessibilityUI();
             });
 
             decreaseButton?.addEventListener('click', () => {
                 fontScale = Math.max(0.9, fontScale - 0.1);
                 syncScale();
+                syncAccessibilityUI();
             });
 
             resetButton?.addEventListener('click', () => {
                 fontScale = 1;
                 syncScale();
+                syncAccessibilityUI();
             });
 
             contrastButton?.addEventListener('click', () => {
-                const active = body.classList.toggle('is-high-contrast');
-                contrastButton.classList.toggle('is-active', active);
-                contrastButton.setAttribute('aria-pressed', active ? 'true' : 'false');
+                body.classList.toggle('is-high-contrast');
+                syncAccessibilityUI();
             });
+
+            syncScale();
+            syncAccessibilityUI();
         })();
 
         (() => {
@@ -804,6 +1084,182 @@
             carousel.addEventListener('mouseleave', startRotation);
 
             activateSlide(0);
+            startRotation();
+        })();
+
+        (() => {
+            const mainContent = document.getElementById('contenido-principal');
+            const openProgramButton = document.querySelector('[data-open-program-modal]');
+            const carousel = document.querySelector('[data-roof-carousel]');
+            const modal = document.getElementById('filbo-program-modal');
+            const modalPanel = modal?.querySelector('.program-modal-panel');
+            const modalCloseButtons = Array.from(document.querySelectorAll('[data-close-program-modal]'));
+            let lastProgramTrigger = null;
+            let previousBodyOverflow = '';
+            const inertTargets = mainContent ? Array.from(mainContent.children).filter((element) => element !== modal) : [];
+
+            if (!openProgramButton || !modal || !modalPanel) return;
+
+            const getFocusableModalItems = () => {
+                return Array.from(modalPanel.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'))
+                    .filter((element) => !element.hasAttribute('disabled') && !element.getAttribute('aria-hidden'));
+            };
+
+            const focusFirstModalElement = () => {
+                const focusableItems = getFocusableModalItems();
+                (focusableItems[0] || modalPanel).focus();
+            };
+
+            const openProgramModal = () => {
+                lastProgramTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : openProgramButton;
+                modal.hidden = false;
+                inertTargets.forEach((element) => element.setAttribute('inert', ''));
+                carousel?.classList.add('is-modal-open');
+                previousBodyOverflow = document.body.style.overflow;
+                document.body.style.overflow = 'hidden';
+                window.requestAnimationFrame(() => focusFirstModalElement());
+            };
+
+            const closeProgramModal = () => {
+                modal.hidden = true;
+                inertTargets.forEach((element) => element.removeAttribute('inert'));
+                carousel?.classList.remove('is-modal-open');
+                document.body.style.overflow = previousBodyOverflow;
+                (lastProgramTrigger || openProgramButton).focus();
+            };
+
+            openProgramButton.addEventListener('click', openProgramModal);
+            modalCloseButtons.forEach((button) => button.addEventListener('click', closeProgramModal));
+            modal.addEventListener('click', (event) => {
+                if (modal.hidden || !modalPanel) return;
+                if (modalPanel.contains(event.target)) return;
+                closeProgramModal();
+            });
+
+            modal.addEventListener('keydown', (event) => {
+                if (modal.hidden) return;
+
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    closeProgramModal();
+                    return;
+                }
+
+                if (event.key !== 'Tab') return;
+
+                const focusableItems = getFocusableModalItems();
+                if (!focusableItems.length) {
+                    event.preventDefault();
+                    modalPanel?.focus();
+                    return;
+                }
+
+                const firstItem = focusableItems[0];
+                const lastItem = focusableItems[focusableItems.length - 1];
+
+                if (event.shiftKey && document.activeElement === firstItem) {
+                    event.preventDefault();
+                    lastItem.focus();
+                } else if (!event.shiftKey && document.activeElement === lastItem) {
+                    event.preventDefault();
+                    firstItem.focus();
+                }
+            });
+
+            document.addEventListener('focusin', (event) => {
+                if (modal.hidden) return;
+                if (modal.contains(event.target)) return;
+                event.stopPropagation();
+                focusFirstModalElement();
+            });
+        })();
+
+        (() => {
+            const carousel = document.querySelector('[data-memory-carousel]');
+            const slides = Array.from(document.querySelectorAll('[data-memory-slide]'));
+            const dots = Array.from(document.querySelectorAll('.memory-carousel-dot'));
+            const previousButton = document.querySelector('[data-memory-prev]');
+            const nextButton = document.querySelector('[data-memory-next]');
+            const toggleButton = document.querySelector('[data-memory-toggle]');
+            const status = document.querySelector('[data-memory-status]');
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let currentSlide = 0;
+            let rotationId = null;
+            let isPaused = prefersReducedMotion;
+
+            if (!carousel || slides.length < 2 || dots.length !== slides.length) return;
+
+            const activateSlide = (index) => {
+                currentSlide = (index + slides.length) % slides.length;
+
+                slides.forEach((slide, slideIndex) => {
+                    const active = slideIndex === currentSlide;
+                    slide.classList.toggle('is-active', active);
+                    slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+                });
+
+                dots.forEach((dot, dotIndex) => {
+                    dot.setAttribute('aria-selected', dotIndex === currentSlide ? 'true' : 'false');
+                });
+
+                if (status) {
+                    status.textContent = `Memoria ${currentSlide + 1} de ${slides.length}`;
+                }
+            };
+
+            const stopRotation = () => {
+                if (!rotationId) return;
+                window.clearInterval(rotationId);
+                rotationId = null;
+            };
+
+            const syncToggle = () => {
+                if (!toggleButton) return;
+                toggleButton.textContent = isPaused ? '▶' : '❚❚';
+                toggleButton.setAttribute('aria-label', isPaused ? 'Reanudar carrusel' : 'Pausar carrusel');
+                toggleButton.setAttribute('aria-pressed', isPaused ? 'true' : 'false');
+            };
+
+            const startRotation = () => {
+                if (prefersReducedMotion || isPaused) return;
+                stopRotation();
+                rotationId = window.setInterval(() => activateSlide(currentSlide + 1), 5200);
+            };
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    activateSlide(index);
+                    startRotation();
+                });
+            });
+
+            previousButton?.addEventListener('click', () => {
+                activateSlide(currentSlide - 1);
+                startRotation();
+            });
+
+            nextButton?.addEventListener('click', () => {
+                activateSlide(currentSlide + 1);
+                startRotation();
+            });
+
+            toggleButton?.addEventListener('click', () => {
+                isPaused = !isPaused;
+                syncToggle();
+                if (isPaused) stopRotation();
+                else startRotation();
+            });
+
+            carousel.addEventListener('mouseenter', stopRotation);
+            carousel.addEventListener('mouseleave', startRotation);
+            carousel.addEventListener('focusin', stopRotation);
+            carousel.addEventListener('focusout', (event) => {
+                if (carousel.contains(event.relatedTarget)) return;
+                startRotation();
+            });
+
+            activateSlide(0);
+            syncToggle();
             startRotation();
         })();
 
