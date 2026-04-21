@@ -413,14 +413,24 @@
 
         .collage-left,
         .collage-right {
-            display: none
+            position: absolute;
+            z-index: 1;
+            pointer-events: none
+        }
+
+        .collage-left {
+            left: -72px;
+            bottom: 47px;
+            width: min(42vw, 960px);
+            height: 1400px;
+            opacity: .92
         }
 
         .collage-right {
             right: -72px;
             top: 160px;
-            width: min(34vw, 320px);
-            height: 640px;
+            width: min(34vw, 960px);
+            height: 960px;
             opacity: .78
         }
 
@@ -432,6 +442,36 @@
             width: 112px;
             height: 250px;
             background: linear-gradient(180deg, rgba(255, 255, 255, .24), transparent)
+        }
+
+        .performer-ghost,
+        .performer-main {
+            position: absolute;
+            inset: 0
+        }
+
+        .performer-ghost img,
+        .performer-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: left bottom
+        }
+
+        .performer-ghost {
+            left: 16px;
+            top: -8px;
+            opacity: .3;
+            mix-blend-mode: screen;
+            filter: hue-rotate(6deg) saturate(1.08) brightness(.94)
+        }
+
+        .performer-main {
+            filter: drop-shadow(16px 24px 26px rgba(17, 22, 41, .18))
+        }
+
+        .performer-main img {
+            opacity: .88
         }
 
         .right-ghost,
@@ -581,6 +621,17 @@
             position: relative;
             z-index: 4;
             padding: 72px 0 34px
+        }
+
+        .themes-section .collage-left {
+            left: -70px;
+            top: -774px;
+            bottom: auto
+        }
+
+        .themes-section .collage-right {
+            right: 0;
+            top: 300px
         }
 
         .themes-title {
@@ -2488,6 +2539,13 @@
                 opacity: .92
             }
 
+            .collage-left {
+                left: -56px;
+                bottom: -6px;
+                width: min(40vw, 420px);
+                height: 560px
+            }
+
             .house-panel {
                 width: min(100% - 32px, 1180px);
                 height: clamp(280px, 35.3vw, 380px);
@@ -2645,6 +2703,13 @@
 
             .hero-window {
                 display: none
+            }
+
+            .collage-left {
+                left: -48px;
+                bottom: -10px;
+                width: min(54vw, 280px);
+                height: 360px
             }
 
             .hero-actions {
@@ -3305,17 +3370,6 @@
                 </div>
 
                 <div class="wrap poster-shell">
-                    <div class="collage-right" aria-hidden="true">
-                        <span class="right-ghost">
-                            <img src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/layer-right-figure.png"
-                                alt="">
-                        </span>
-                        <span class="right-main">
-                            <img src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/layer-right-figure.png"
-                                alt="">
-                        </span>
-                    </div>
-
                     <div class="house-panel">
                         <div class="roof-carousel" data-roof-carousel>
                             <div class="roof-slide is-active" data-roof-slide="0">
@@ -3372,21 +3426,27 @@
                 <p class="themes-summary">La matriz actual permite navegar contenidos por tema, responsable, formato y
                     palabras clave. Sigue pendiente reorganizar esta navegación con eje principal por pueblos étnicos y
                     capas territoriales y lingüísticas.</p>
+                <div class="collage-left" aria-hidden="true">
+                    <span class="performer-ghost">
+                        <img src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/layer-performer.png"
+                            alt="">
+                    </span>
+                    <span class="performer-main">
+                        <img src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/layer-performer.png"
+                            alt="">
+                    </span>
+                </div>
+                <div class="collage-right" aria-hidden="true">
+                    <span class="right-ghost">
+                        <img src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/layer-right-figure.png"
+                            alt="">
+                    </span>
+                    <span class="right-main">
+                        <img src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/layer-right-figure.png"
+                            alt="">
+                    </span>
+                </div>
                 <div class="themes-stage">
-                    <div class="board-layers" aria-hidden="true">
-                        <div class="board-collage-left">
-                            <span class="performer-ghost">
-                                <img src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/layer-performer.png"
-                                    alt="">
-                            </span>
-                            <span class="performer-main">
-                                <img src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/layer-performer.png"
-                                    alt="">
-                            </span>
-                        </div>
-
-                    </div>
-
                     <div class="board">
                         <button class="chip-mobile-toggle" id="themes-mobile-toggle" type="button"
                             aria-expanded="false" aria-controls="themes-tablist">
