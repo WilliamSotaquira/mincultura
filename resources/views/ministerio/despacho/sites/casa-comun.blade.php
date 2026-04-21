@@ -560,6 +560,8 @@
             bottom: 28px;
             z-index: 5;
             display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
             justify-content: center;
             transform: translateX(-50%)
         }
@@ -568,17 +570,29 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 44px;
-            padding: 0 18px;
+            min-height: 48px;
+            padding: 0 22px;
             border: 1px solid rgba(20, 33, 38, .2);
             border-radius: 999px;
             background: rgba(255, 245, 206, .94);
             color: #172029;
             font-size: 12px;
             font-weight: 700;
-            letter-spacing: .05em;
+            letter-spacing: .04em;
             text-transform: uppercase;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, .18)
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+            transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease
+        }
+
+        .roof-slide-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, .22)
+        }
+
+        .roof-slide-btn.is-secondary {
+            background: rgba(23, 32, 41, .9);
+            color: var(--cream);
+            border-color: rgba(255, 245, 206, .28)
         }
 
         .roof-dots {
@@ -1875,8 +1889,8 @@
 
         .card p {
             margin: 0;
-            font-size: 11px;
-            line-height: 1.48;
+            font-size: 14px;
+            line-height: 1.6;
             color: rgba(30, 22, 25, .76)
         }
 
@@ -2340,7 +2354,7 @@
             max-height: min(88vh, 900px);
             padding: 24px;
             border: 1px solid rgba(244, 235, 190, .16);
-            background: #fff5ce;
+            background: linear-gradient(180deg, #fff7d6 0%, #fff1bf 100%);
             color: #172029;
             box-shadow: 0 28px 70px rgba(0, 0, 0, .32);
             overflow: auto
@@ -2357,18 +2371,19 @@
         .program-modal-title {
             margin: 0;
             font-family: 'Alternate Gothic', sans-serif;
-            font-size: 42px;
-            line-height: .92;
-            letter-spacing: .03em;
+            font-size: 34px;
+            line-height: .95;
+            letter-spacing: .02em;
             text-transform: uppercase;
             color: #111920
         }
 
         .program-modal-copy {
             margin: 8px 0 0;
+            max-width: 62ch;
             font-size: 15px;
             line-height: 1.6;
-            color: rgba(17, 25, 32, .82)
+            color: rgba(17, 25, 32, .84)
         }
 
         .program-modal-close {
@@ -2379,66 +2394,218 @@
             min-width: 44px;
             min-height: 44px;
             padding: 0;
-            border: 1px solid rgba(20, 33, 38, .18);
+            border: 1px solid rgba(20, 33, 38, .24);
             border-radius: 999px;
-            background: #fff9e2;
+            background: rgba(255, 255, 255, .82);
             color: #172029;
             font-size: 22px;
             line-height: 1;
-            cursor: pointer
+            cursor: pointer;
+            transition: background-color .18s ease, transform .18s ease, box-shadow .18s ease
+        }
+
+        .program-modal-close:hover {
+            background: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(20, 33, 38, .12)
+        }
+
+        .program-modal-close:focus-visible,
+        .program-modal-control:focus-visible,
+        .program-modal-reset:focus-visible {
+            outline: 3px solid #0f62fe;
+            outline-offset: 3px
+        }
+
+        .program-modal-toolbar {
+            position: sticky;
+            top: -24px;
+            z-index: 2;
+            margin: 0 -24px 18px;
+            padding: 16px 24px 18px;
+            background: linear-gradient(180deg, rgba(255, 247, 214, .98) 0%, rgba(255, 244, 202, .96) 86%, rgba(255, 244, 202, 0) 100%);
+            backdrop-filter: blur(8px)
+        }
+
+        .program-modal-tools {
+            display: grid;
+            grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+            gap: 12px;
+            margin-bottom: 16px
+        }
+
+        .program-modal-field {
+            display: grid;
+            gap: 6px
+        }
+
+        .program-modal-label {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(17, 25, 32, .76)
+        }
+
+        .program-modal-control {
+            width: 100%;
+            min-height: 48px;
+            padding: 0 16px;
+            border: 1px solid rgba(20, 33, 38, .22);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .96);
+            color: #172029;
+            font-size: 15px;
+            line-height: 1.4;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8)
+        }
+
+        .program-modal-summary {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 14px
+        }
+
+        .program-modal-summary-main {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px
+        }
+
+        .program-modal-count {
+            display: inline-flex;
+            align-items: center;
+            min-height: 32px;
+            padding: 0 12px;
+            border-radius: 999px;
+            background: #172029;
+            color: #fff5ce;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase
+        }
+
+        .program-modal-helper {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: rgba(17, 25, 32, .78)
+        }
+
+        .program-modal-reset {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 16px;
+            border: 1px solid rgba(20, 33, 38, .2);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .7);
+            color: #172029;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color .18s ease, transform .18s ease
+        }
+
+        .program-modal-reset:hover {
+            background: #ffffff;
+            transform: translateY(-1px)
+        }
+
+        .program-modal-reset[hidden] {
+            display: none
         }
 
         .program-modal-list {
             display: grid;
-            gap: 12px
+            gap: 14px
         }
 
         .program-modal-day {
             display: grid;
-            gap: 10px
+            gap: 12px;
+            padding: 16px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, .48);
+            border: 1px solid rgba(20, 33, 38, .12)
         }
 
         .program-modal-day-title {
-            margin: 6px 0 0;
+            margin: 0;
             font-family: 'Alternate Gothic', sans-serif;
-            font-size: 28px;
-            line-height: .96;
-            letter-spacing: .03em;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: .02em;
             text-transform: uppercase;
             color: #111920
         }
 
         .program-modal-item {
             display: grid;
-            gap: 6px;
+            gap: 8px;
             padding: 16px 18px;
             border: 1px solid rgba(20, 33, 38, .12);
-            background: rgba(255, 255, 255, .42)
+            border-radius: 20px;
+            background: rgba(255, 255, 255, .92);
+            box-shadow: 0 12px 26px rgba(20, 33, 38, .06)
         }
 
         .program-modal-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: .05em;
+            align-items: center;
+            gap: 10px
+        }
+
+        .program-modal-time {
+            display: inline-flex;
+            align-items: center;
+            min-height: 26px;
+            padding: 0 9px;
+            border-radius: 999px;
+            background: #172029;
+            color: #fff5ce;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .06em;
+            text-transform: uppercase
+        }
+
+        .program-modal-entity {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .07em;
             text-transform: uppercase;
-            color: rgba(17, 25, 32, .68)
+            color: rgba(17, 25, 32, .7)
         }
 
         .program-modal-item h4 {
             margin: 0;
-            font-size: 20px;
-            line-height: 1.2;
+            font-size: 16px;
+            line-height: 1.28;
             text-transform: uppercase
         }
 
         .program-modal-item p {
             margin: 0;
-            font-size: 15px;
-            line-height: 1.58;
-            color: rgba(17, 25, 32, .8)
+            font-size: 14px;
+            line-height: 1.62;
+            color: rgba(17, 25, 32, .82)
+        }
+
+        .program-modal-empty {
+            padding: 20px 18px;
+            border: 1px dashed rgba(20, 33, 38, .24);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, .66)
         }
 
         .footer {
@@ -2478,8 +2645,8 @@
         }
 
         .socials svg {
-            width: 13px;
-            height: 13px;
+            width: 16px;
+            height: 16px;
             fill: #fff
         }
 
@@ -3268,8 +3435,18 @@
                 padding: 18px
             }
 
+            .program-modal-toolbar {
+                top: -18px;
+                margin: 0 -18px 18px;
+                padding: 14px 18px 18px
+            }
+
             .program-modal-title {
-                font-size: 34px
+                font-size: 30px
+            }
+
+            .program-modal-tools {
+                grid-template-columns: 1fr
             }
         }
 
@@ -3317,8 +3494,28 @@
                 font-size: 30px
             }
 
+            .program-modal-summary {
+                gap: 8px
+            }
+
+            .program-modal-summary-main {
+                gap: 8px
+            }
+
+            .program-modal-day {
+                padding: 14px
+            }
+
+            .program-modal-day-title {
+                font-size: 22px
+            }
+
             .program-modal-item h4 {
-                font-size: 17px
+                font-size: 15px
+            }
+
+            .program-modal-item p {
+                font-size: 14px
             }
         }
 
@@ -3382,6 +3579,9 @@
                                     src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/banner-filbo.png"
                                     alt="Banner FILBo Conferias 2026">
                                 <div class="roof-slide-content">
+                                    <a class="roof-slide-btn is-secondary"
+                                        href="https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.mincultura.gov.co%2Fnoticias%2FPaginas%2Fbienvenidos-a-esta-nuestra-casa-comun-asi-sera-la-presencia-del-ministerio-de-las-culturas-las-artes-y-los-saberes.aspx&data=05%7C02%7Cwsotaquira%40mincultura.gov.co%7Ca37f478f0ca04f073a3308de9ff56dfb%7C93f28b4e935c4c1488ace48697c1fc97%7C0%7C0%7C639124073669619225%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=qXvOuUOdcQkGLSPD%2FHavC4XPZKPe%2ByFzwT5L4bjzTZo%3D&reserved=0"
+                                        target="_blank" rel="noreferrer">¡Sigue la ruta del Ministerio!</a>
                                     <button class="roof-slide-btn" type="button" data-open-program-modal
                                         aria-haspopup="dialog" aria-controls="filbo-program-modal">Ver
                                         programación</button>
@@ -3574,35 +3774,43 @@
                 <h2 class="highlights-title">Destacados</h2>
                 <div class="cards">
                     <article class="card d1">
-                        <img src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/destacado-musica.jpeg"
-                            alt="Artista en escenario">
+                        <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/filbo-2026-casacomun.jpg"
+                            alt="Casa Común en FILBo 2026">
                         <div class="card-body card-pink">
-                            <h3>Cantaoras, rituales y encuentros donde la voz sostiene memoria y comunidad.</h3>
-                            <p>Relatos sonoros, transmisión oral y celebraciones que continúan moviendo la cultura desde
-                                el territorio.</p>
-                            <a class="mini-btn" href="#tematicas">Explorar contenidos</a>
+                            <h3>Bienvenidos a esta, nuestra casa común: así será la presencia del Ministerio de las
+                                Culturas, las Artes y los Saberes.</h3>
+                            <p>Conoce cómo será la presencia institucional del Ministerio en esta edición de FILBo.</p>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/bienvenidos-a-esta-nuestra-casa-comun-asi-sera-la-presencia-del-ministerio-de-las-culturas-las-artes-y-los-saberes.aspx"
+                                target="_blank" rel="noreferrer">Leer noticia</a>
                         </div>
                     </article>
 
                     <article class="card d2">
-                        <img src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/destacado-teatro.jpeg"
-                            alt="Interior de teatro">
+                        <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/artes-paz-filbo.jpg"
+                            alt="Artes para la Paz en FILBo 2026">
                         <div class="card-body card-yellow">
-                            <h3>Escenas y públicos que hacen del espacio cultural un punto de encuentro abierto.</h3>
-                            <p>Experiencias de circulación, creación escénica y gestión local que fortalecen la vida
-                                cultural.</p>
-                            <a class="mini-btn" href="#tematicas">Explorar contenidos</a>
+                            <h3>Artes para la paz: el punto de encuentro para dialogar sobre la formación artística y
+                                cultural en FILBo 2026.</h3>
+                            <p>Revisa esta noticia sobre el espacio de conversación y encuentro alrededor de Artes para
+                                la Paz.</p>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/artes-para-la-paz-el-punto-de-encuentro-para-dialogar-sobre-la-formacion-artistica-y-cultural-en-filbo-2026.aspx"
+                                target="_blank" rel="noreferrer">Leer noticia</a>
                         </div>
                     </article>
 
                     <article class="card d3">
-                        <img src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/destacado-danza.jpeg"
-                            alt="Grupo cultural">
+                        <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/cine-colombia-filbo-2026.jpg"
+                            alt="Cine colombiano y radio comunitaria en FILBo 2026">
                         <div class="card-body card-orange">
-                            <h3>Procesos colectivos que convierten la cultura en motor de economías populares.</h3>
-                            <p>Redes, emprendimientos y prácticas colaborativas que activan producción simbólica y
-                                bienestar local.</p>
-                            <a class="mini-btn" href="#tematicas">Explorar contenidos</a>
+                            <h3>El cine colombiano y la radio comunitaria están en la agenda de FILBo 2026 con nuestra
+                                casa común.</h3>
+                            <p>Consulta la noticia sobre esta agenda de cine colombiano y radio comunitaria en FILBo
+                                2026.</p>
+                            <a class="mini-btn"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/el-cine-colombiano-y-la-radio-comunitaria-estan-en-la-agenda-de-la-flibo-2026-con-nuestra-casa-comun.aspx"
+                                target="_blank" rel="noreferrer">Leer noticia</a>
                         </div>
                     </article>
                 </div>
@@ -3659,8 +3867,10 @@
                     <div class="strip-art" aria-hidden="true"></div>
                     <div class="strip-copy">
                         <h2>Somos mirada</h2>
-                        <p>Galerias, piezas y relatos visuales para recorrer el territorio desde otras perspectivas.</p>
-                        <a class="strip-btn" href="#destacados">Descubre aquí</a>
+                        <p>Galerías, piezas y relatos visuales para recorrer el territorio desde otras perspectivas.</p>
+                        <a class="strip-btn"
+                            href="https://www.youtube.com/watch?v=e1R_I_k7gpE&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=6"
+                            target="_blank" rel="noreferrer">Descubre aquí</a>
                     </div>
                 </div>
             </section>
@@ -3669,9 +3879,11 @@
                 <div class="wrap-full strip-grid">
                     <div class="strip-copy">
                         <h2>Somos sonido, somos voces</h2>
-                        <p>Escuchas abiertas para conocer acentos, memorias, archivos y ritmos que habitan Casa Comun.
+                        <p>Escuchas abiertas para conocer acentos, memorias, archivos y ritmos que habitan Casa Común.
                         </p>
-                        <a class="strip-btn" href="#tematicas">Escucha aquí</a>
+                        <a class="strip-btn"
+                            href="https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
+                            target="_blank" rel="noreferrer">Escucha aquí</a>
                     </div>
                     <div class="strip-art" aria-hidden="true"></div>
                 </div>
@@ -3722,6 +3934,39 @@
                             <button class="program-modal-close" type="button" data-close-program-modal
                                 aria-label="Cerrar programación">×</button>
                         </div>
+                        <div class="program-modal-toolbar">
+                            <p class="sr-only" id="filbo-program-search-help">Puede filtrar por día o escribir un
+                                término para buscar por actividad, entidad o descripción.</p>
+                            <div class="program-modal-tools" aria-label="Filtros de programación">
+                                <div class="program-modal-field">
+                                    <label class="program-modal-label" for="filbo-program-day-filter">Filtrar por
+                                        día</label>
+                                    <select class="program-modal-control" id="filbo-program-day-filter"
+                                        aria-controls="filbo-program-list">
+                                        <option value="">Todos los días</option>
+                                    </select>
+                                </div>
+                                <div class="program-modal-field">
+                                    <label class="program-modal-label" for="filbo-program-search">Buscar
+                                        actividad</label>
+                                    <input class="program-modal-control" id="filbo-program-search" type="search"
+                                        placeholder="Buscar por actividad, entidad o palabra clave"
+                                        autocomplete="off" aria-controls="filbo-program-list"
+                                        aria-describedby="filbo-program-search-help">
+                                </div>
+                            </div>
+                            <div class="program-modal-summary">
+                                <div class="program-modal-summary-main">
+                                    <span class="program-modal-count" id="filbo-program-count" role="status"
+                                        aria-live="polite">0 actividades</span>
+                                    <p class="program-modal-helper" id="filbo-program-helper">Use los filtros para
+                                        encontrar más rápido cada actividad.</p>
+                                </div>
+                                <button class="program-modal-reset" type="button" id="filbo-program-reset"
+                                    aria-controls="filbo-program-day-filter filbo-program-search filbo-program-list"
+                                    hidden>Limpiar filtros</button>
+                            </div>
+                        </div>
                         <div class="program-modal-list" id="filbo-program-list">
                             <p class="program-modal-copy">Cargando programación...</p>
                         </div>
@@ -3733,25 +3978,25 @@
                 <a class="footer-pill" href="https://www.mincultura.gov.co/" target="_blank"
                     rel="noreferrer">https://www.mincultura.gov.co/</a>
                 <div class="socials" aria-label="Redes sociales">
-                    <a href="https://www.facebook.com/MinisterioCultura/" target="_blank" rel="noreferrer"
+                    <a href="https://www.facebook.com/MinisterioCultura" target="_blank" rel="noreferrer"
                         aria-label="Facebook"><svg viewBox="0 0 24 24">
                             <path
-                                d="M13.4 21v-8h2.7l.4-3.1h-3.1V8.2c0-.9.3-1.5 1.6-1.5h1.7V4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.4v1.7H7.6V13h2.9v8h2.9Z" />
+                                d="M22.675 0h-21.35C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.326 24H12.82v-9.294H9.692V11.09h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.617h-3.12V24h6.116C23.407 24 24 23.407 24 22.674V1.326C24 .593 23.407 0 22.675 0z" />
                         </svg></a>
                     <a href="https://www.instagram.com/mincultura/" target="_blank" rel="noreferrer"
                         aria-label="Instagram"><svg viewBox="0 0 24 24">
                             <path
                                 d="M12 7.2A4.8 4.8 0 1 0 12 17a4.8 4.8 0 0 0 0-9.8Zm0 8A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4Zm6.1-8.3a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM21 7c-.1-1.5-.4-2.5-1.1-3.2-.7-.8-1.7-1-3.2-1.1C15.3 2.6 15 2.6 12 2.6s-3.3 0-4.7.1c-1.5.1-2.5.3-3.2 1.1C3.3 4.5 3 5.5 3 7c-.1 1.4-.1 1.8-.1 5s0 3.6.1 5c.1 1.5.3 2.5 1.1 3.2.7.8 1.7 1 3.2 1.1 1.4.1 1.7.1 4.7.1s3.3 0 4.7-.1c1.5-.1 2.5-.3 3.2-1.1.8-.7 1-1.7 1.1-3.2.1-1.4.1-1.7.1-5s0-3.6-.1-5Zm-2 10.2c-.1 1.1-.2 1.7-.5 2-.4.4-1 .5-2 .5-1.5.1-1.7.1-4.5.1s-3 0-4.5-.1c-1-.1-1.6-.2-2-.5-.3-.3-.4-.9-.5-2C5 15.8 5 15.5 5 12s0-3.8.1-5.2c.1-1.1.2-1.7.5-2 .4-.4 1-.5 2-.5C9 4.2 9.2 4.2 12 4.2s3 0 4.5.1c1 .1 1.6.2 2 .5.3.3.4.9.5 2 .1 1.4.1 1.7.1 5.2s0 3.8-.1 5.2Z" />
                         </svg></a>
-                    <a href="https://x.com/mincultura" target="_blank" rel="noreferrer" aria-label="X"><svg
-                            viewBox="0 0 24 24">
+                    <a href="https://twitter.com/mincultura" target="_blank" rel="noreferrer"
+                        aria-label="Twitter/X"><svg viewBox="0 0 24 24">
                             <path
-                                d="M18.8 3H21l-4.8 5.5L22 21h-4.6l-3.7-5.1L9.1 21H7l5-5.8L2.5 3h4.6l3.4 4.7L18.8 3Zm-1.6 16.3h1.3L7.3 4.6H6l11.2 14.7Z" />
+                                d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.933Zm-1.292 19.488h2.039L6.486 3.24H4.298l13.31 17.401Z" />
                         </svg></a>
-                    <a href="https://www.youtube.com/@Mincultura" target="_blank" rel="noreferrer"
+                    <a href="https://www.youtube.com/Mincultura" target="_blank" rel="noreferrer"
                         aria-label="YouTube"><svg viewBox="0 0 24 24">
                             <path
-                                d="M21.4 7.3a2.8 2.8 0 0 0-2-2c-1.7-.5-7.4-.5-7.4-.5s-5.7 0-7.4.5a2.8 2.8 0 0 0-2 2A30 30 0 0 0 2.2 12a30 30 0 0 0 .4 4.7 2.8 2.8 0 0 0 2 2c1.7.5 7.4.5 7.4.5s5.7 0 7.4-.5a2.8 2.8 0 0 0 2-2 30 30 0 0 0 .4-4.7 30 30 0 0 0-.4-4.7ZM10.2 15.3V8.7L15.9 12l-5.7 3.3Z" />
+                                d="M23.498 6.186a2.997 2.997 0 0 0-2.11-2.12C19.53 3.56 12 3.56 12 3.56s-7.53 0-9.389.506A2.997 2.997 0 0 0 .502 6.186 31.243 31.243 0 0 0 0 12a31.243 31.243 0 0 0 .502 5.814 2.997 2.997 0 0 0 2.11 2.12c1.859.506 9.388.506 9.388.506s7.53 0 9.389-.506a2.997 2.997 0 0 0 2.11-2.12A31.243 31.243 0 0 0 24 12a31.243 31.243 0 0 0-.502-5.814ZM9.546 15.568V8.432L15.818 12l-6.272 3.568Z" />
                         </svg></a>
                 </div>
             </footer>
@@ -3760,16 +4005,16 @@
 
     <script id="casa-comun-catalog-data" type="application/json">
 {
-  "updated_at": "2026-04-21T17:43:39",
-  "source_file": "LANDING Registro de acciones y productos – Colombia Casa Común (5).xlsx",
+  "updated_at": "2026-04-21T17:47:14",
+  "source_file": "LANDING Registro de acciones y productos \u2013 Colombia Casa Com\u00fan (5).xlsx",
   "total_items": 148,
   "themes": [
     {
       "slug": "somos-diversidad-linguistica",
-      "name": "Somos diversidad lingüística",
+      "name": "Somos diversidad ling\u00fc\u00edstica",
       "symbol": "+",
       "lead": "Lenguas, oralidades y memorias que preservan conocimientos, relatos y formas propias de nombrar el mundo.",
-      "copy": "Aquí se reúnen contenidos sobre lenguas nativas, documentación lingüística, tradición oral y repositorios que fortalecen la memoria viva desde múltiples pueblos y territorios.",
+      "copy": "Aqu\u00ed se re\u00fanen contenidos sobre lenguas nativas, documentaci\u00f3n ling\u00fc\u00edstica, tradici\u00f3n oral y repositorios que fortalecen la memoria viva desde m\u00faltiples pueblos y territorios.",
       "count": 30,
       "types": [
         "Video",
@@ -3778,9 +4023,9 @@
         "Libro"
       ],
       "keywords": [
-        "Tradición oral",
+        "Tradici\u00f3n oral",
         "Memoria ancestral",
-        "Documentación lingüística",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
         "Lenguas nativas",
         "Saberes ancestrales",
         "Pervivencia cultural"
@@ -3788,10 +4033,10 @@
     },
     {
       "slug": "somos-un-pais-plurietnico-y-multicultural",
-      "name": "Somos un país pluriétnico y multicultural",
-      "symbol": "✦",
-      "lead": "Relatos campesinos, regionales y comunitarios que amplían la mirada sobre la diversidad cultural del país.",
-      "copy": "Esta temática integra piezas que reconocen identidades rurales, memorias colectivas, expresiones sonoras y procesos de representación cultural construidos desde distintos contextos territoriales.",
+      "name": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
+      "symbol": "\u2726",
+      "lead": "Relatos campesinos, regionales y comunitarios que ampl\u00edan la mirada sobre la diversidad cultural del pa\u00eds.",
+      "copy": "Esta tem\u00e1tica integra piezas que reconocen identidades rurales, memorias colectivas, expresiones sonoras y procesos de representaci\u00f3n cultural construidos desde distintos contextos territoriales.",
       "count": 28,
       "types": [
         "Sonoro",
@@ -3803,17 +4048,17 @@
         "Vidas campesinas",
         "Diversidad cultural",
         "Cultura campesina",
-        "Participación comunitaria",
+        "Participaci\u00f3n comunitaria",
         "Memoria campesina",
-        "Prácticas culturales"
+        "Pr\u00e1cticas culturales"
       ]
     },
     {
       "slug": "somos-economias-populares",
-      "name": "Somos economías populares",
-      "symbol": "◌",
-      "lead": "Historias de trabajo, oficio y creación que muestran cómo la cultura también circula como sustento cotidiano.",
-      "copy": "La selección agrupa videoclips y piezas audiovisuales donde las economías populares aparecen como una práctica viva, territorial y profundamente conectada con identidades locales.",
+      "name": "Somos econom\u00edas populares",
+      "symbol": "\u25cc",
+      "lead": "Historias de trabajo, oficio y creaci\u00f3n que muestran c\u00f3mo la cultura tambi\u00e9n circula como sustento cotidiano.",
+      "copy": "La selecci\u00f3n agrupa videoclips y piezas audiovisuales donde las econom\u00edas populares aparecen como una pr\u00e1ctica viva, territorial y profundamente conectada con identidades locales.",
       "count": 5,
       "types": [
         "Videoclip",
@@ -3824,16 +4069,16 @@
         "Territorios",
         "Videoclip",
         "Narrativas audiovisuales",
-        "Representación territorial",
+        "Representaci\u00f3n territorial",
         "Identidad cultural"
       ]
     },
     {
       "slug": "somos-cultura-de-paz",
       "name": "Somos cultura de paz",
-      "symbol": "∞",
-      "lead": "Procesos narrativos y comunitarios que ponen en circulación memoria, participación y construcción de tejido social.",
-      "copy": "En esta línea aparecen contenidos documentales, sonoros y transmedia orientados a la convivencia, la memoria colectiva, el diálogo intercultural y la participación desde los territorios.",
+      "symbol": "\u221e",
+      "lead": "Procesos narrativos y comunitarios que ponen en circulaci\u00f3n memoria, participaci\u00f3n y construcci\u00f3n de tejido social.",
+      "copy": "En esta l\u00ednea aparecen contenidos documentales, sonoros y transmedia orientados a la convivencia, la memoria colectiva, el di\u00e1logo intercultural y la participaci\u00f3n desde los territorios.",
       "count": 17,
       "types": [
         "Podcast",
@@ -3842,20 +4087,20 @@
         "Transmedia"
       ],
       "keywords": [
-        "Antropofonías",
+        "Antropofon\u00edas",
         "ICANH",
         "Identidad territorial",
         "Memoria colectiva",
-        "Conservación del patrimonio",
-        "Capítulo Pueblos Indígenas"
+        "Conservaci\u00f3n del patrimonio",
+        "Cap\u00edtulo Pueblos Ind\u00edgenas"
       ]
     },
     {
       "slug": "somos-territorios-bioculturales-y-economias-populares",
-      "name": "Somos territorios bioculturales y economías populares",
-      "symbol": "✳",
-      "lead": "Saberes, oficios y prácticas que articulan territorio, biodiversidad, producción cultural y vida comunitaria.",
-      "copy": "La temática conecta series, cápsulas y relatos donde convergen economías locales, patrimonio, trabajo colectivo y formas de habitar los territorios desde una perspectiva biocultural.",
+      "name": "Somos territorios bioculturales y econom\u00edas populares",
+      "symbol": "\u2733",
+      "lead": "Saberes, oficios y pr\u00e1cticas que articulan territorio, biodiversidad, producci\u00f3n cultural y vida comunitaria.",
+      "copy": "La tem\u00e1tica conecta series, c\u00e1psulas y relatos donde convergen econom\u00edas locales, patrimonio, trabajo colectivo y formas de habitar los territorios desde una perspectiva biocultural.",
       "count": 31,
       "types": [
         "Video",
@@ -3866,18 +4111,18 @@
       "keywords": [
         "Proyecto Vidas campesinas",
         "Serie audiovisual y sonora",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Saberes ancestrales",
-        "Economía local",
+        "Econom\u00eda local",
         "Patrimonio cultural"
       ]
     },
     {
       "slug": "somos-lenguas-de-colombia-senas-e-inclusion",
-      "name": "Somos lenguas de Colombia, señas e inclusión",
-      "symbol": "✷",
-      "lead": "Publicaciones y relatos que visibilizan inclusión, diversidad lingüística y transmisión de saberes en distintos formatos editoriales.",
-      "copy": "Este grupo organiza contenidos centrados en la pervivencia de lenguas, memoria ancestral, documentación cultural y circulación editorial accesible para distintos públicos.",
+      "name": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
+      "symbol": "\u2737",
+      "lead": "Publicaciones y relatos que visibilizan inclusi\u00f3n, diversidad ling\u00fc\u00edstica y transmisi\u00f3n de saberes en distintos formatos editoriales.",
+      "copy": "Este grupo organiza contenidos centrados en la pervivencia de lenguas, memoria ancestral, documentaci\u00f3n cultural y circulaci\u00f3n editorial accesible para distintos p\u00fablicos.",
       "count": 16,
       "types": [
         "Editorial"
@@ -3886,17 +4131,17 @@
         "Identidad cultural",
         "Saberes ancestrales",
         "Patrimonio intangible",
-        "Documentación lingüística",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
         "Memoria ancestral",
-        "Pervivencia indígena"
+        "Pervivencia ind\u00edgena"
       ]
     },
     {
       "slug": "somos-territorios-bioculturales",
       "name": "Somos territorios bioculturales",
-      "symbol": "↗",
+      "symbol": "\u2197",
       "lead": "Documentales, podcasts y piezas audiovisuales que leen el territorio como espacio de memoria, agua, oficio y sostenibilidad.",
-      "copy": "Aquí se clasifican contenidos donde la vida cotidiana, los ecosistemas, los oficios tradicionales y las tramas locales se narran desde una relación estrecha entre cultura y naturaleza.",
+      "copy": "Aqu\u00ed se clasifican contenidos donde la vida cotidiana, los ecosistemas, los oficios tradicionales y las tramas locales se narran desde una relaci\u00f3n estrecha entre cultura y naturaleza.",
       "count": 21,
       "types": [
         "Documental",
@@ -3906,7 +4151,7 @@
       ],
       "keywords": [
         "ICANH",
-        "Serie Economías populares",
+        "Serie Econom\u00edas populares",
         "Territorio",
         "Diarios del Agua",
         "Historia",
@@ -3918,385 +4163,385 @@
     {
       "id": "somos-diversidad-linguistica-2",
       "row": 2,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "BIBLIOTECA NACIONAL DE COLOMBIA",
       "title": "Oraloteca",
       "type": "Sonoro",
-      "description": "Grabaciones en lengua nativa y español que recogen relatos de origen y saberes ancestrales. A través de la oralidad, se destacan prácticas como el diálogo y la conversación, fundamentales para la vida comunitaria, social y política, y para la transmisión de la memoria colectiva.",
+      "description": "Grabaciones en lengua nativa y espa\u00f1ol que recogen relatos de origen y saberes ancestrales. A trav\u00e9s de la oralidad, se destacan pr\u00e1cticas como el di\u00e1logo y la conversaci\u00f3n, fundamentales para la vida comunitaria, social y pol\u00edtica, y para la transmisi\u00f3n de la memoria colectiva.",
       "keywords": [
         "Grabaciones sonoras",
         "Lenguas nativas",
-        "Español (bilingüismo)",
+        "Espa\u00f1ol (biling\u00fcismo)",
         "Relatos de origen",
         "Saberes ancestrales",
         "Oralidad",
-        "Tradición oral",
-        "Diálogo",
-        "Conversación",
+        "Tradici\u00f3n oral",
+        "Di\u00e1logo",
+        "Conversaci\u00f3n",
         "Vida comunitaria",
         "Vida social",
-        "Participación política",
+        "Participaci\u00f3n pol\u00edtica",
         "Memoria colectiva",
-        "Transmisión cultural",
-        "Prácticas culturales",
+        "Transmisi\u00f3n cultural",
+        "Pr\u00e1cticas culturales",
         "Identidad cultural"
       ],
       "link": "https://www.bibliotecanacional.gov.co/es-co/actividades/noticias/en-la-bnc/podcast-oraloteca-nacional-colombia",
       "asset_link": "",
-      "force_message": "La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política.",
+      "force_message": "La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica.",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística BIBLIOTECA NACIONAL DE COLOMBIA Oraloteca Sonoro Grabaciones en lengua nativa y español que recogen relatos de origen y saberes ancestrales. A través de la oralidad, se destacan prácticas como el diálogo y la conversación, fundamentales para la vida comunitaria, social y política, y para la transmisión de la memoria colectiva. La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política. Grabaciones sonoras Lenguas nativas Español (bilingüismo) Relatos de origen Saberes ancestrales Oralidad Tradición oral Diálogo Conversación Vida comunitaria Vida social Participación política Memoria colectiva Transmisión cultural Prácticas culturales Identidad cultural https://www.bibliotecanacional.gov.co/es-co/actividades/noticias/en-la-bnc/podcast-oraloteca-nacional-colombia"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica BIBLIOTECA NACIONAL DE COLOMBIA Oraloteca Sonoro Grabaciones en lengua nativa y espa\u00f1ol que recogen relatos de origen y saberes ancestrales. A trav\u00e9s de la oralidad, se destacan pr\u00e1cticas como el di\u00e1logo y la conversaci\u00f3n, fundamentales para la vida comunitaria, social y pol\u00edtica, y para la transmisi\u00f3n de la memoria colectiva. La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica. Grabaciones sonoras Lenguas nativas Espa\u00f1ol (biling\u00fcismo) Relatos de origen Saberes ancestrales Oralidad Tradici\u00f3n oral Di\u00e1logo Conversaci\u00f3n Vida comunitaria Vida social Participaci\u00f3n pol\u00edtica Memoria colectiva Transmisi\u00f3n cultural Pr\u00e1cticas culturales Identidad cultural https://www.bibliotecanacional.gov.co/es-co/actividades/noticias/en-la-bnc/podcast-oraloteca-nacional-colombia"
     },
     {
       "id": "somos-diversidad-linguistica-3",
       "row": 3,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "BIBLIOTECA NACIONAL DE COLOMBIA",
       "title": "Mapa vivo de lenguas nativas",
       "type": "Mapa",
-      "description": "Se incluyen en el mapa las Bibliotecas Pública (BP) y Bibliotecas Rurales Itinerantes (BRI) presentes en comunidades étnicas. La tradición oral y la oralitura reflejan la importancia de la oralidad en la vida cotidiana, donde el diálogo, la conversación y la deliberación son esenciales para la construcción comunitaria, social y política.",
+      "description": "Se incluyen en el mapa las Bibliotecas P\u00fablica (BP) y Bibliotecas Rurales Itinerantes (BRI) presentes en comunidades \u00e9tnicas. La tradici\u00f3n oral y la oralitura reflejan la importancia de la oralidad en la vida cotidiana, donde el di\u00e1logo, la conversaci\u00f3n y la deliberaci\u00f3n son esenciales para la construcci\u00f3n comunitaria, social y pol\u00edtica.",
       "keywords": [
-        "Bibliotecas Públicas (BP)",
+        "Bibliotecas P\u00fablicas (BP)",
         "Bibliotecas Rurales Itinerantes (BRI)",
         "Mapeo de bibliotecas",
         "Acceso a la lectura",
         "Cobertura territorial",
-        "Comunidades étnicas",
+        "Comunidades \u00e9tnicas",
         "Enfoque territorial",
         "Oralidad",
         "Oralitura",
-        "Tradición oral",
-        "Diálogo",
-        "Conversación",
-        "Deliberación",
-        "Construcción comunitaria",
-        "Participación social",
-        "Vida política",
+        "Tradici\u00f3n oral",
+        "Di\u00e1logo",
+        "Conversaci\u00f3n",
+        "Deliberaci\u00f3n",
+        "Construcci\u00f3n comunitaria",
+        "Participaci\u00f3n social",
+        "Vida pol\u00edtica",
         "Tejido comunitario",
         "Memoria colectiva"
       ],
       "link": "https://www.bibliotecanacional.gov.co/es-co/actividades/noticias/Documents/Mapa_Etnicas_2026_Red.pdf",
       "asset_link": "",
-      "force_message": "La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política.",
+      "force_message": "La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica.",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística BIBLIOTECA NACIONAL DE COLOMBIA Mapa vivo de lenguas nativas Mapa Se incluyen en el mapa las Bibliotecas Pública (BP) y Bibliotecas Rurales Itinerantes (BRI) presentes en comunidades étnicas. La tradición oral y la oralitura reflejan la importancia de la oralidad en la vida cotidiana, donde el diálogo, la conversación y la deliberación son esenciales para la construcción comunitaria, social y política. La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política. Bibliotecas Públicas (BP) Bibliotecas Rurales Itinerantes (BRI) Mapeo de bibliotecas Acceso a la lectura Cobertura territorial Comunidades étnicas Enfoque territorial Oralidad Oralitura Tradición oral Diálogo Conversación Deliberación Construcción comunitaria Participación social Vida política Tejido comunitario Memoria colectiva https://www.bibliotecanacional.gov.co/es-co/actividades/noticias/Documents/Mapa_Etnicas_2026_Red.pdf"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica BIBLIOTECA NACIONAL DE COLOMBIA Mapa vivo de lenguas nativas Mapa Se incluyen en el mapa las Bibliotecas P\u00fablica (BP) y Bibliotecas Rurales Itinerantes (BRI) presentes en comunidades \u00e9tnicas. La tradici\u00f3n oral y la oralitura reflejan la importancia de la oralidad en la vida cotidiana, donde el di\u00e1logo, la conversaci\u00f3n y la deliberaci\u00f3n son esenciales para la construcci\u00f3n comunitaria, social y pol\u00edtica. La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica. Bibliotecas P\u00fablicas (BP) Bibliotecas Rurales Itinerantes (BRI) Mapeo de bibliotecas Acceso a la lectura Cobertura territorial Comunidades \u00e9tnicas Enfoque territorial Oralidad Oralitura Tradici\u00f3n oral Di\u00e1logo Conversaci\u00f3n Deliberaci\u00f3n Construcci\u00f3n comunitaria Participaci\u00f3n social Vida pol\u00edtica Tejido comunitario Memoria colectiva https://www.bibliotecanacional.gov.co/es-co/actividades/noticias/Documents/Mapa_Etnicas_2026_Red.pdf"
     },
     {
       "id": "somos-diversidad-linguistica-4",
       "row": 4,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "BIBLIOTECA NACIONAL DE COLOMBIA",
       "title": "Memoria de lenguas andinas, resguardada en Bibliotecas Nacionales CAN",
       "type": "Multimedia",
-      "description": "Este proyecto busca crear un producto multimedia que visibilice el patrimonio bibliográfico sobre lenguas nativas de los pueblos originarios presentes en las bibliotecas nacionales de la Comunidad Andina. Incluirá elementos para contextualizar y facilitar su consulta, mediante una curaduría web o un mapeo digital que reúna distintos formatos en un micrositio, a lanzarse con un evento a mediados de este año.",
+      "description": "Este proyecto busca crear un producto multimedia que visibilice el patrimonio bibliogr\u00e1fico sobre lenguas nativas de los pueblos originarios presentes en las bibliotecas nacionales de la Comunidad Andina. Incluir\u00e1 elementos para contextualizar y facilitar su consulta, mediante una curadur\u00eda web o un mapeo digital que re\u00fana distintos formatos en un micrositio, a lanzarse con un evento a mediados de este a\u00f1o.",
       "keywords": [
         "Producto multimedia",
-        "Patrimonio bibliográfico",
+        "Patrimonio bibliogr\u00e1fico",
         "Lenguas nativas",
         "Pueblos originarios",
         "Bibliotecas nacionales",
         "Comunidad Andina",
-        "Visibilización cultural",
-        "Curaduría web",
+        "Visibilizaci\u00f3n cultural",
+        "Curadur\u00eda web",
         "Mapeo digital",
         "Micrositio",
-        "Acceso a la información",
+        "Acceso a la informaci\u00f3n",
         "Consulta digital",
         "Contenidos multiformato",
-        "Gestión del conocimiento",
-        "Difusión cultural",
+        "Gesti\u00f3n del conocimiento",
+        "Difusi\u00f3n cultural",
         "Lanzamiento de proyecto"
       ],
       "link": "",
       "asset_link": "",
-      "force_message": "La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política.",
-      "availability_note": "Este proyecto se lanza en julio. Aún no hay link.",
-      "search_text": "Somos diversidad lingüística BIBLIOTECA NACIONAL DE COLOMBIA Memoria de lenguas andinas, resguardada en Bibliotecas Nacionales CAN Multimedia Este proyecto busca crear un producto multimedia que visibilice el patrimonio bibliográfico sobre lenguas nativas de los pueblos originarios presentes en las bibliotecas nacionales de la Comunidad Andina. Incluirá elementos para contextualizar y facilitar su consulta, mediante una curaduría web o un mapeo digital que reúna distintos formatos en un micrositio, a lanzarse con un evento a mediados de este año. La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política. Producto multimedia Patrimonio bibliográfico Lenguas nativas Pueblos originarios Bibliotecas nacionales Comunidad Andina Visibilización cultural Curaduría web Mapeo digital Micrositio Acceso a la información Consulta digital Contenidos multiformato Gestión del conocimiento Difusión cultural Lanzamiento de proyecto Este proyecto se lanza en julio. Aún no hay link."
+      "force_message": "La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica.",
+      "availability_note": "Este proyecto se lanza en julio. A\u00fan no hay link.",
+      "search_text": "Somos diversidad ling\u00fc\u00edstica BIBLIOTECA NACIONAL DE COLOMBIA Memoria de lenguas andinas, resguardada en Bibliotecas Nacionales CAN Multimedia Este proyecto busca crear un producto multimedia que visibilice el patrimonio bibliogr\u00e1fico sobre lenguas nativas de los pueblos originarios presentes en las bibliotecas nacionales de la Comunidad Andina. Incluir\u00e1 elementos para contextualizar y facilitar su consulta, mediante una curadur\u00eda web o un mapeo digital que re\u00fana distintos formatos en un micrositio, a lanzarse con un evento a mediados de este a\u00f1o. La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica. Producto multimedia Patrimonio bibliogr\u00e1fico Lenguas nativas Pueblos originarios Bibliotecas nacionales Comunidad Andina Visibilizaci\u00f3n cultural Curadur\u00eda web Mapeo digital Micrositio Acceso a la informaci\u00f3n Consulta digital Contenidos multiformato Gesti\u00f3n del conocimiento Difusi\u00f3n cultural Lanzamiento de proyecto Este proyecto se lanza en julio. A\u00fan no hay link."
     },
     {
       "id": "somos-diversidad-linguistica-5",
       "row": 5,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "BIBLIOTECA NACIONAL DE COLOMBIA",
-      "title": "Catálogo de materiales en la Biblioteca Nacional de Colombia",
-      "type": "Catálogo",
-      "description": "Colección Afro en la Biblioteca Nacional de Colombia.",
+      "title": "Cat\u00e1logo de materiales en la Biblioteca Nacional de Colombia",
+      "type": "Cat\u00e1logo",
+      "description": "Colecci\u00f3n Afro en la Biblioteca Nacional de Colombia.",
       "keywords": [
-        "Colección Afro",
+        "Colecci\u00f3n Afro",
         "Biblioteca Nacional de Colombia",
         "Memoria de las lenguas",
         "Patrimonio documental",
         "Diversidad cultural",
-        "Investigación preliminar",
+        "Investigaci\u00f3n preliminar",
         "Colecciones especializadas",
-        "Curaduría bibliográfica",
-        "Visibilización étnica",
-        "Gestión de colecciones"
+        "Curadur\u00eda bibliogr\u00e1fica",
+        "Visibilizaci\u00f3n \u00e9tnica",
+        "Gesti\u00f3n de colecciones"
       ],
       "link": "https://bibliotecanacionalcolombia-my.sharepoint.com/:x:/g/personal/vbaena_bibliotecanacional_gov_co/IQATkxvyqn2OQZCswT2mG1GsAU2Xin7buWwkYOH7rvpclx0?e=RyBiTI",
       "asset_link": "",
-      "force_message": "La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política.",
+      "force_message": "La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica.",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística BIBLIOTECA NACIONAL DE COLOMBIA Catálogo de materiales en la Biblioteca Nacional de Colombia Catálogo Colección Afro en la Biblioteca Nacional de Colombia. La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política. Colección Afro Biblioteca Nacional de Colombia Memoria de las lenguas Patrimonio documental Diversidad cultural Investigación preliminar Colecciones especializadas Curaduría bibliográfica Visibilización étnica Gestión de colecciones https://bibliotecanacionalcolombia-my.sharepoint.com/:x:/g/personal/vbaena_bibliotecanacional_gov_co/IQATkxvyqn2OQZCswT2mG1GsAU2Xin7buWwkYOH7rvpclx0?e=RyBiTI"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica BIBLIOTECA NACIONAL DE COLOMBIA Cat\u00e1logo de materiales en la Biblioteca Nacional de Colombia Cat\u00e1logo Colecci\u00f3n Afro en la Biblioteca Nacional de Colombia. La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica. Colecci\u00f3n Afro Biblioteca Nacional de Colombia Memoria de las lenguas Patrimonio documental Diversidad cultural Investigaci\u00f3n preliminar Colecciones especializadas Curadur\u00eda bibliogr\u00e1fica Visibilizaci\u00f3n \u00e9tnica Gesti\u00f3n de colecciones https://bibliotecanacionalcolombia-my.sharepoint.com/:x:/g/personal/vbaena_bibliotecanacional_gov_co/IQATkxvyqn2OQZCswT2mG1GsAU2Xin7buWwkYOH7rvpclx0?e=RyBiTI"
     },
     {
       "id": "somos-diversidad-linguistica-6",
       "row": 6,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "BIBLIOTECA NACIONAL DE COLOMBIA",
       "title": "Editorial El caminar de los hijos del tabaco, la coca y la yuca dulce",
       "type": "Libro",
-      "description": "Libro escrito por líderes Uitoto Mɨnɨka, Pɨɨnemuna (Bora), Ivhuza (Okaina) y Gáigómɨjo (Muinane), conocidos como gente de centro. Narra su historia desde los orígenes hasta hoy en tres capítulos: el primero aborda el origen y sus principios filosóficos; el segundo, las “bonanzas” y las resistencias; y el tercero, la organización indígena y la reconstrucción sociocultural con un sistema de gobierno propio.",
+      "description": "Libro escrito por l\u00edderes Uitoto M\u0268n\u0268ka, P\u0268\u0268nemuna (Bora), Ivhuza (Okaina) y G\u00e1ig\u00f3m\u0268jo (Muinane), conocidos como gente de centro. Narra su historia desde los or\u00edgenes hasta hoy en tres cap\u00edtulos: el primero aborda el origen y sus principios filos\u00f3ficos; el segundo, las \u201cbonanzas\u201d y las resistencias; y el tercero, la organizaci\u00f3n ind\u00edgena y la reconstrucci\u00f3n sociocultural con un sistema de gobierno propio.",
       "keywords": [
-        "Autoría indígena",
+        "Autor\u00eda ind\u00edgena",
         "Gente de centro",
-        "Uitoto Mɨnɨka",
-        "Bora (Pɨɨnemuna)",
+        "Uitoto M\u0268n\u0268ka",
+        "Bora (P\u0268\u0268nemuna)",
         "Okaina (Ivhuza)",
-        "Muinane (Gáigómɨjo)",
+        "Muinane (G\u00e1ig\u00f3m\u0268jo)",
         "Relatos de origen",
-        "Filosofía indígena",
-        "Memoria histórica",
+        "Filosof\u00eda ind\u00edgena",
+        "Memoria hist\u00f3rica",
         "Bonanzas",
         "Extractivismo",
-        "Resistencias indígenas",
-        "Organización indígena",
+        "Resistencias ind\u00edgenas",
+        "Organizaci\u00f3n ind\u00edgena",
         "Gobierno propio",
-        "Autonomía",
-        "Reconstrucción sociocultural",
+        "Autonom\u00eda",
+        "Reconstrucci\u00f3n sociocultural",
         "Saberes ancestrales",
         "Narrativa propia"
       ],
       "link": "",
       "asset_link": "",
-      "force_message": "La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política.",
-      "availability_note": "Este libro está impreso. Estamos en proceso de subirlo a la Biblioteca Digital",
-      "search_text": "Somos diversidad lingüística BIBLIOTECA NACIONAL DE COLOMBIA Editorial El caminar de los hijos del tabaco, la coca y la yuca dulce Libro Libro escrito por líderes Uitoto Mɨnɨka, Pɨɨnemuna (Bora), Ivhuza (Okaina) y Gáigómɨjo (Muinane), conocidos como gente de centro. Narra su historia desde los orígenes hasta hoy en tres capítulos: el primero aborda el origen y sus principios filosóficos; el segundo, las “bonanzas” y las resistencias; y el tercero, la organización indígena y la reconstrucción sociocultural con un sistema de gobierno propio. La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política. Autoría indígena Gente de centro Uitoto Mɨnɨka Bora (Pɨɨnemuna) Okaina (Ivhuza) Muinane (Gáigómɨjo) Relatos de origen Filosofía indígena Memoria histórica Bonanzas Extractivismo Resistencias indígenas Organización indígena Gobierno propio Autonomía Reconstrucción sociocultural Saberes ancestrales Narrativa propia Este libro está impreso. Estamos en proceso de subirlo a la Biblioteca Digital"
+      "force_message": "La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica.",
+      "availability_note": "Este libro est\u00e1 impreso. Estamos en proceso de subirlo a la Biblioteca Digital",
+      "search_text": "Somos diversidad ling\u00fc\u00edstica BIBLIOTECA NACIONAL DE COLOMBIA Editorial El caminar de los hijos del tabaco, la coca y la yuca dulce Libro Libro escrito por l\u00edderes Uitoto M\u0268n\u0268ka, P\u0268\u0268nemuna (Bora), Ivhuza (Okaina) y G\u00e1ig\u00f3m\u0268jo (Muinane), conocidos como gente de centro. Narra su historia desde los or\u00edgenes hasta hoy en tres cap\u00edtulos: el primero aborda el origen y sus principios filos\u00f3ficos; el segundo, las \u201cbonanzas\u201d y las resistencias; y el tercero, la organizaci\u00f3n ind\u00edgena y la reconstrucci\u00f3n sociocultural con un sistema de gobierno propio. La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica. Autor\u00eda ind\u00edgena Gente de centro Uitoto M\u0268n\u0268ka Bora (P\u0268\u0268nemuna) Okaina (Ivhuza) Muinane (G\u00e1ig\u00f3m\u0268jo) Relatos de origen Filosof\u00eda ind\u00edgena Memoria hist\u00f3rica Bonanzas Extractivismo Resistencias ind\u00edgenas Organizaci\u00f3n ind\u00edgena Gobierno propio Autonom\u00eda Reconstrucci\u00f3n sociocultural Saberes ancestrales Narrativa propia Este libro est\u00e1 impreso. Estamos en proceso de subirlo a la Biblioteca Digital"
     },
     {
       "id": "somos-diversidad-linguistica-7",
       "row": 7,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "BIBLIOTECA NACIONAL DE COLOMBIA",
       "title": "Editorial Una tribu cosmopolita. Memoria de la Gente de Centro",
       "type": "Libro",
-      "description": "Esta obra es una compilación de testimonios de los pueblos indígenas que sufrieron el holocausto cauchero, a finales del siglo xix e inicios del xx. A lo largo de sus páginas, los miembros de los pueblos bora, uitoto, muinane y ocaina relatan e ilustran los procesos de violencia que los llevó casi a la exterminación. Este texto, además de ser un documento testimonial, pone en relieve un proceso sistemático de memoria que solo fue posible gracias al proceso de sanación que lo acompañó. ​ \n\n\"Endulzar la palabra nace de los mayores. Ellos nos han explicado, porque lo hemos preguntado, cómo podemos sanar esa herida de la época de la cauchería, la barbarie, las masacres, las torturas y las violaciones de derechos. Lo primero que nos han encomedado los mayores es endulzar; endulzar ese aire, ese ambiente de dolor, esos recuerdos, esos malos momentos. En dulzando la palabra se pudieron contar estos episodios fuertes para nosotros\". Manuel Sueche y Juan Carlos Gittoma.",
+      "description": "Esta obra es una compilaci\u00f3n de testimonios de los pueblos ind\u00edgenas que sufrieron el holocausto cauchero, a finales del siglo xix e inicios del xx. A lo largo de sus p\u00e1ginas, los miembros de los pueblos bora, uitoto, muinane y ocaina relatan e ilustran los procesos de violencia que los llev\u00f3 casi a la exterminaci\u00f3n. Este texto, adem\u00e1s de ser un documento testimonial, pone en relieve un proceso sistem\u00e1tico de memoria que solo fue posible gracias al proceso de sanaci\u00f3n que lo acompa\u00f1\u00f3. \u200b \n\n\"Endulzar la palabra nace de los mayores. Ellos nos han explicado, porque lo hemos preguntado, c\u00f3mo podemos sanar esa herida de la \u00e9poca de la caucher\u00eda, la barbarie, las masacres, las torturas y las violaciones de derechos. Lo primero que nos han encomedado los mayores es endulzar; endulzar ese aire, ese ambiente de dolor, esos recuerdos, esos malos momentos. En dulzando la palabra se pudieron contar estos episodios fuertes para nosotros\". Manuel Sueche y Juan Carlos Gittoma.",
       "keywords": [
-        "Autoría indígena",
-        "Indígenas del Amazonas",
-        "Indígenas del Amazonas",
+        "Autor\u00eda ind\u00edgena",
+        "Ind\u00edgenas del Amazonas",
+        "Ind\u00edgenas del Amazonas",
         "Industria del caucho",
-        "Memoria histórica",
+        "Memoria hist\u00f3rica",
         "Bonanzas",
         "Extractivismo",
-        "Resistencias indígenas",
-        "Organización indígena",
+        "Resistencias ind\u00edgenas",
+        "Organizaci\u00f3n ind\u00edgena",
         "Gobierno propio",
-        "Autonomía",
-        "Reconstrucción sociocultural",
+        "Autonom\u00eda",
+        "Reconstrucci\u00f3n sociocultural",
         "Saberes ancestrales",
         "Narrativa propia"
       ],
       "link": "https://www.bibliotecanacional.gov.co/es-co/actividades/actividad-cultural/exposiciones/capitulos?Expo=3&Cap=15",
       "asset_link": "",
-      "force_message": "La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política.",
+      "force_message": "La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica.",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística BIBLIOTECA NACIONAL DE COLOMBIA Editorial Una tribu cosmopolita. Memoria de la Gente de Centro Libro Esta obra es una compilación de testimonios de los pueblos indígenas que sufrieron el holocausto cauchero, a finales del siglo xix e inicios del xx. A lo largo de sus páginas, los miembros de los pueblos bora, uitoto, muinane y ocaina relatan e ilustran los procesos de violencia que los llevó casi a la exterminación. Este texto, además de ser un documento testimonial, pone en relieve un proceso sistemático de memoria que solo fue posible gracias al proceso de sanación que lo acompañó. ​ \"Endulzar la palabra nace de los mayores. Ellos nos han explicado, porque lo hemos preguntado, cómo podemos sanar esa herida de la época de la cauchería, la barbarie, las masacres, las torturas y las violaciones de derechos. Lo primero que nos han encomedado los mayores es endulzar; endulzar ese aire, ese ambiente de dolor, esos recuerdos, esos malos momentos. En dulzando la palabra se pudieron contar estos episodios fuertes para nosotros\". Manuel Sueche y Juan Carlos Gittoma. La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política. Autoría indígena Indígenas del Amazonas Indígenas del Amazonas Industria del caucho Memoria histórica Bonanzas Extractivismo Resistencias indígenas Organización indígena Gobierno propio Autonomía Reconstrucción sociocultural Saberes ancestrales Narrativa propia https://www.bibliotecanacional.gov.co/es-co/actividades/actividad-cultural/exposiciones/capitulos?Expo=3&Cap=15"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica BIBLIOTECA NACIONAL DE COLOMBIA Editorial Una tribu cosmopolita. Memoria de la Gente de Centro Libro Esta obra es una compilaci\u00f3n de testimonios de los pueblos ind\u00edgenas que sufrieron el holocausto cauchero, a finales del siglo xix e inicios del xx. A lo largo de sus p\u00e1ginas, los miembros de los pueblos bora, uitoto, muinane y ocaina relatan e ilustran los procesos de violencia que los llev\u00f3 casi a la exterminaci\u00f3n. Este texto, adem\u00e1s de ser un documento testimonial, pone en relieve un proceso sistem\u00e1tico de memoria que solo fue posible gracias al proceso de sanaci\u00f3n que lo acompa\u00f1\u00f3. \u200b \"Endulzar la palabra nace de los mayores. Ellos nos han explicado, porque lo hemos preguntado, c\u00f3mo podemos sanar esa herida de la \u00e9poca de la caucher\u00eda, la barbarie, las masacres, las torturas y las violaciones de derechos. Lo primero que nos han encomedado los mayores es endulzar; endulzar ese aire, ese ambiente de dolor, esos recuerdos, esos malos momentos. En dulzando la palabra se pudieron contar estos episodios fuertes para nosotros\". Manuel Sueche y Juan Carlos Gittoma. La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica. Autor\u00eda ind\u00edgena Ind\u00edgenas del Amazonas Ind\u00edgenas del Amazonas Industria del caucho Memoria hist\u00f3rica Bonanzas Extractivismo Resistencias ind\u00edgenas Organizaci\u00f3n ind\u00edgena Gobierno propio Autonom\u00eda Reconstrucci\u00f3n sociocultural Saberes ancestrales Narrativa propia https://www.bibliotecanacional.gov.co/es-co/actividades/actividad-cultural/exposiciones/capitulos?Expo=3&Cap=15"
     },
     {
       "id": "somos-diversidad-linguistica-8",
       "row": 8,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR",
       "title": "Cartillas El poder de nuestra palabra con relatos de origen arhuacos",
       "type": "Cartillas",
-      "description": "Colección de cinco relatos: Ka’gʉmʉ A’bʉnna (origen de la tierra), Matuna zʉ ɉumamʉ (poder de Matuna), Nʉnbo’ (pájaro atrapa gente), Terunna (padre del ayu) y Tupe (hombres come gente). Surge del trabajo colectivo ɄNGɄNAMɄSI, dentro del proyecto IKɄ ZɄ ANUGWE ARUNHAMɄ, con participación de comunidades, sabedores e instituciones, como un aporte a la memoria y pagamento a la Madre Tierra.",
+      "description": "Colecci\u00f3n de cinco relatos: Ka\u2019g\u0289m\u0289 A\u2019b\u0289nna (origen de la tierra), Matuna z\u0289 \u0249umam\u0289 (poder de Matuna), N\u0289nbo\u2019 (p\u00e1jaro atrapa gente), Terunna (padre del ayu) y Tupe (hombres come gente). Surge del trabajo colectivo \u0244NG\u0244NAM\u0244SI, dentro del proyecto IK\u0244 Z\u0244 ANUGWE ARUNHAM\u0244, con participaci\u00f3n de comunidades, sabedores e instituciones, como un aporte a la memoria y pagamento a la Madre Tierra.",
       "keywords": [
         "Relatos tradicionales",
-        "Narrativas indígenas",
-        "Cosmogonía",
+        "Narrativas ind\u00edgenas",
+        "Cosmogon\u00eda",
         "Origen de la tierra",
-        "Mitología indígena",
+        "Mitolog\u00eda ind\u00edgena",
         "Matuna (poder espiritual)",
-        "Seres míticos",
-        "Tradición oral",
+        "Seres m\u00edticos",
+        "Tradici\u00f3n oral",
         "Memoria colectiva",
         "Sabedores",
         "Trabajo colectivo",
-        "Comunidades indígenas",
-        "ɄNGɄNAMɄSI",
-        "IKɄ ZɄ ANUGWE ARUNHAMɄ",
-        "Espiritualidad indígena",
+        "Comunidades ind\u00edgenas",
+        "\u0244NG\u0244NAM\u0244SI",
+        "IK\u0244 Z\u0244 ANUGWE ARUNHAM\u0244",
+        "Espiritualidad ind\u00edgena",
         "Pagamento a la madre tierra",
-        "Relación con la naturaleza",
-        "Transmisión de saberes"
+        "Relaci\u00f3n con la naturaleza",
+        "Transmisi\u00f3n de saberes"
       ],
       "link": "",
       "asset_link": "",
-      "force_message": "La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política.",
+      "force_message": "La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica.",
       "availability_note": "Este material es impreso, por lo que no hay enlace",
-      "search_text": "Somos diversidad lingüística MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR Cartillas El poder de nuestra palabra con relatos de origen arhuacos Cartillas Colección de cinco relatos: Ka’gʉmʉ A’bʉnna (origen de la tierra), Matuna zʉ ɉumamʉ (poder de Matuna), Nʉnbo’ (pájaro atrapa gente), Terunna (padre del ayu) y Tupe (hombres come gente). Surge del trabajo colectivo ɄNGɄNAMɄSI, dentro del proyecto IKɄ ZɄ ANUGWE ARUNHAMɄ, con participación de comunidades, sabedores e instituciones, como un aporte a la memoria y pagamento a la Madre Tierra. La tradición oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el diálogo, la deliberación, la conversación, como prácticas necesarias para la vida comunitaria, social y política. Relatos tradicionales Narrativas indígenas Cosmogonía Origen de la tierra Mitología indígena Matuna (poder espiritual) Seres míticos Tradición oral Memoria colectiva Sabedores Trabajo colectivo Comunidades indígenas ɄNGɄNAMɄSI IKɄ ZɄ ANUGWE ARUNHAMɄ Espiritualidad indígena Pagamento a la madre tierra Relación con la naturaleza Transmisión de saberes Este material es impreso, por lo que no hay enlace"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR Cartillas El poder de nuestra palabra con relatos de origen arhuacos Cartillas Colecci\u00f3n de cinco relatos: Ka\u2019g\u0289m\u0289 A\u2019b\u0289nna (origen de la tierra), Matuna z\u0289 \u0249umam\u0289 (poder de Matuna), N\u0289nbo\u2019 (p\u00e1jaro atrapa gente), Terunna (padre del ayu) y Tupe (hombres come gente). Surge del trabajo colectivo \u0244NG\u0244NAM\u0244SI, dentro del proyecto IK\u0244 Z\u0244 ANUGWE ARUNHAM\u0244, con participaci\u00f3n de comunidades, sabedores e instituciones, como un aporte a la memoria y pagamento a la Madre Tierra. La tradici\u00f3n oral y la oralitura son solo algunas de las expresiones de las oralidades. Reconocemos la presencia de la oralidad en nuestras interacciones cotidianas, en el di\u00e1logo, la deliberaci\u00f3n, la conversaci\u00f3n, como pr\u00e1cticas necesarias para la vida comunitaria, social y pol\u00edtica. Relatos tradicionales Narrativas ind\u00edgenas Cosmogon\u00eda Origen de la tierra Mitolog\u00eda ind\u00edgena Matuna (poder espiritual) Seres m\u00edticos Tradici\u00f3n oral Memoria colectiva Sabedores Trabajo colectivo Comunidades ind\u00edgenas \u0244NG\u0244NAM\u0244SI IK\u0244 Z\u0244 ANUGWE ARUNHAM\u0244 Espiritualidad ind\u00edgena Pagamento a la madre tierra Relaci\u00f3n con la naturaleza Transmisi\u00f3n de saberes Este material es impreso, por lo que no hay enlace"
     },
     {
       "id": "somos-diversidad-linguistica-9",
       "row": 9,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR",
       "title": "Documental La Ceiba",
       "type": "Documental",
-      "description": "Documental en palenquero con subtítulos en español. La Ceiba explora la medicina ancestral palenquera y sus raíces mágicas y religiosas, evidenciando la herencia africana en el Caribe colombiano. A través del árbol sagrado de la ceiba, conecta cielo, tierra y espíritu, y dialoga con el baobab como símbolo de resistencia. Producción de la Escuela de Comunicación Audiovisual Konda Ku Monikongo (Mahates–Palenque).",
+      "description": "Documental en palenquero con subt\u00edtulos en espa\u00f1ol. La Ceiba explora la medicina ancestral palenquera y sus ra\u00edces m\u00e1gicas y religiosas, evidenciando la herencia africana en el Caribe colombiano. A trav\u00e9s del \u00e1rbol sagrado de la ceiba, conecta cielo, tierra y esp\u00edritu, y dialoga con el baobab como s\u00edmbolo de resistencia. Producci\u00f3n de la Escuela de Comunicaci\u00f3n Audiovisual Konda Ku Monikongo (Mahates\u2013Palenque).",
       "keywords": [
         "Documental",
         "Lengua palenquera",
-        "Subtítulos en español",
+        "Subt\u00edtulos en espa\u00f1ol",
         "Medicina ancestral",
         "Saberes afrodescendientes",
         "Espiritualidad afro",
         "Herencia africana",
         "Caribe colombiano",
-        "Ceiba (árbol sagrado)",
+        "Ceiba (\u00e1rbol sagrado)",
         "Baobab",
-        "Cosmovisión",
-        "Conexión cielo–tierra–espíritu",
+        "Cosmovisi\u00f3n",
+        "Conexi\u00f3n cielo\u2013tierra\u2013esp\u00edritu",
         "Simbolismo",
         "Resistencia cultural",
         "Memoria afro",
-        "Producción comunitaria",
+        "Producci\u00f3n comunitaria",
         "Konda Ku Monikongo",
-        "Comunicación audiovisual comunitaria"
+        "Comunicaci\u00f3n audiovisual comunitaria"
       ],
       "link": "https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20COM%202024/02_Proyectos%20Grupo%20COM%202024/4_Afrocolombias/02.%20Escuelas%20de%20Comunicaci%C3%B3n%20AFRO/02_AFROCOLOMBIAS%20NACIONAL/1_%20Escuelas%20Nacionales/6_Consejo%20Comunitario%20Ma-Kankamana%20de%20la%20Comunidad%20de%20San%20Basilio%20De%20Palenque/3_TERCER_PAGO_3_20%25/1.%20CONTENIDOS/1.%20PRODUCTO/LA%20CEIBA%20CORTE%201.1.mp4?csf=1&web=1&e=QUjJhm",
       "asset_link": "",
-      "force_message": "La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país.\n\nRelatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir.",
+      "force_message": "La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds.\n\nRelatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir.",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR Documental La Ceiba Documental Documental en palenquero con subtítulos en español. La Ceiba explora la medicina ancestral palenquera y sus raíces mágicas y religiosas, evidenciando la herencia africana en el Caribe colombiano. A través del árbol sagrado de la ceiba, conecta cielo, tierra y espíritu, y dialoga con el baobab como símbolo de resistencia. Producción de la Escuela de Comunicación Audiovisual Konda Ku Monikongo (Mahates–Palenque). La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país. Relatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir. Documental Lengua palenquera Subtítulos en español Medicina ancestral Saberes afrodescendientes Espiritualidad afro Herencia africana Caribe colombiano Ceiba (árbol sagrado) Baobab Cosmovisión Conexión cielo–tierra–espíritu Simbolismo Resistencia cultural Memoria afro Producción comunitaria Konda Ku Monikongo Comunicación audiovisual comunitaria https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20COM%202024/02_Proyectos%20Grupo%20COM%202024/4_Afrocolombias/02.%20Escuelas%20de%20Comunicaci%C3%B3n%20AFRO/02_AFROCOLOMBIAS%20NACIONAL/1_%20Escuelas%20Nacionales/6_Consejo%20Comunitario%20Ma-Kankamana%20de%20la%20Comunidad%20de%20San%20Basilio%20De%20Palenque/3_TERCER_PAGO_3_20%25/1.%20CONTENIDOS/1.%20PRODUCTO/LA%20CEIBA%20CORTE%201.1.mp4?csf=1&web=1&e=QUjJhm"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR Documental La Ceiba Documental Documental en palenquero con subt\u00edtulos en espa\u00f1ol. La Ceiba explora la medicina ancestral palenquera y sus ra\u00edces m\u00e1gicas y religiosas, evidenciando la herencia africana en el Caribe colombiano. A trav\u00e9s del \u00e1rbol sagrado de la ceiba, conecta cielo, tierra y esp\u00edritu, y dialoga con el baobab como s\u00edmbolo de resistencia. Producci\u00f3n de la Escuela de Comunicaci\u00f3n Audiovisual Konda Ku Monikongo (Mahates\u2013Palenque). La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds. Relatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir. Documental Lengua palenquera Subt\u00edtulos en espa\u00f1ol Medicina ancestral Saberes afrodescendientes Espiritualidad afro Herencia africana Caribe colombiano Ceiba (\u00e1rbol sagrado) Baobab Cosmovisi\u00f3n Conexi\u00f3n cielo\u2013tierra\u2013esp\u00edritu Simbolismo Resistencia cultural Memoria afro Producci\u00f3n comunitaria Konda Ku Monikongo Comunicaci\u00f3n audiovisual comunitaria https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20COM%202024/02_Proyectos%20Grupo%20COM%202024/4_Afrocolombias/02.%20Escuelas%20de%20Comunicaci%C3%B3n%20AFRO/02_AFROCOLOMBIAS%20NACIONAL/1_%20Escuelas%20Nacionales/6_Consejo%20Comunitario%20Ma-Kankamana%20de%20la%20Comunidad%20de%20San%20Basilio%20De%20Palenque/3_TERCER_PAGO_3_20%25/1.%20CONTENIDOS/1.%20PRODUCTO/LA%20CEIBA%20CORTE%201.1.mp4?csf=1&web=1&e=QUjJhm"
     },
     {
       "id": "somos-diversidad-linguistica-10",
       "row": 10,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR",
       "title": "Documental Lendro Ri Monde",
       "type": "Documental",
-      "description": "Documental en palenquero con subtítulos en español. Lendro ri Monde explora la relación entre el monte y la vida palenquera, como fuente económica, cultural y social. Este espacio de trabajo y sustento se entrelaza con la música y la identidad del pueblo, reflejando su resiliencia. La obra resalta la transmisión de saberes a nuevas generaciones. Producción de la Escuela de Comunicación Audiovisual Konda Ku Monikongo.",
+      "description": "Documental en palenquero con subt\u00edtulos en espa\u00f1ol. Lendro ri Monde explora la relaci\u00f3n entre el monte y la vida palenquera, como fuente econ\u00f3mica, cultural y social. Este espacio de trabajo y sustento se entrelaza con la m\u00fasica y la identidad del pueblo, reflejando su resiliencia. La obra resalta la transmisi\u00f3n de saberes a nuevas generaciones. Producci\u00f3n de la Escuela de Comunicaci\u00f3n Audiovisual Konda Ku Monikongo.",
       "keywords": [
         "Documental",
         "Lengua palenquera",
-        "Subtítulos en español",
+        "Subt\u00edtulos en espa\u00f1ol",
         "Monte / territorio",
-        "Relación naturaleza–cultura",
+        "Relaci\u00f3n naturaleza\u2013cultura",
         "Vida palenquera",
-        "Economía comunitaria",
+        "Econom\u00eda comunitaria",
         "Sustento tradicional",
         "Identidad cultural",
-        "Música tradicional",
+        "M\u00fasica tradicional",
         "Resiliencia",
         "Saberes ancestrales",
-        "Transmisión generacional",
+        "Transmisi\u00f3n generacional",
         "Juventudes",
         "Memoria colectiva",
-        "Producción comunitaria",
+        "Producci\u00f3n comunitaria",
         "Konda Ku Monikongo",
-        "Comunicación audiovisual comunitaria"
+        "Comunicaci\u00f3n audiovisual comunitaria"
       ],
       "link": "https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20COM%202024/02_Proyectos%20Grupo%20COM%202024/4_Afrocolombias/02.%20Escuelas%20de%20Comunicaci%C3%B3n%20AFRO/02_AFROCOLOMBIAS%20NACIONAL/1_%20Escuelas%20Nacionales/6_Consejo%20Comunitario%20Ma-Kankamana%20de%20la%20Comunidad%20de%20San%20Basilio%20De%20Palenque/3_TERCER_PAGO_3_20%25/1.%20CONTENIDOS/2.%20PRODUCTO/Lendro%20ri%20monde.mp4?csf=1&web=1&e=4JXROZ",
       "asset_link": "",
-      "force_message": "La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país.\n\nRelatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir.",
+      "force_message": "La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds.\n\nRelatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir.",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR Documental Lendro Ri Monde Documental Documental en palenquero con subtítulos en español. Lendro ri Monde explora la relación entre el monte y la vida palenquera, como fuente económica, cultural y social. Este espacio de trabajo y sustento se entrelaza con la música y la identidad del pueblo, reflejando su resiliencia. La obra resalta la transmisión de saberes a nuevas generaciones. Producción de la Escuela de Comunicación Audiovisual Konda Ku Monikongo. La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país. Relatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir. Documental Lengua palenquera Subtítulos en español Monte / territorio Relación naturaleza–cultura Vida palenquera Economía comunitaria Sustento tradicional Identidad cultural Música tradicional Resiliencia Saberes ancestrales Transmisión generacional Juventudes Memoria colectiva Producción comunitaria Konda Ku Monikongo Comunicación audiovisual comunitaria https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20COM%202024/02_Proyectos%20Grupo%20COM%202024/4_Afrocolombias/02.%20Escuelas%20de%20Comunicaci%C3%B3n%20AFRO/02_AFROCOLOMBIAS%20NACIONAL/1_%20Escuelas%20Nacionales/6_Consejo%20Comunitario%20Ma-Kankamana%20de%20la%20Comunidad%20de%20San%20Basilio%20De%20Palenque/3_TERCER_PAGO_3_20%25/1.%20CONTENIDOS/2.%20PRODUCTO/Lendro%20ri%20monde.mp4?csf=1&web=1&e=4JXROZ"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR Documental Lendro Ri Monde Documental Documental en palenquero con subt\u00edtulos en espa\u00f1ol. Lendro ri Monde explora la relaci\u00f3n entre el monte y la vida palenquera, como fuente econ\u00f3mica, cultural y social. Este espacio de trabajo y sustento se entrelaza con la m\u00fasica y la identidad del pueblo, reflejando su resiliencia. La obra resalta la transmisi\u00f3n de saberes a nuevas generaciones. Producci\u00f3n de la Escuela de Comunicaci\u00f3n Audiovisual Konda Ku Monikongo. La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds. Relatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir. Documental Lengua palenquera Subt\u00edtulos en espa\u00f1ol Monte / territorio Relaci\u00f3n naturaleza\u2013cultura Vida palenquera Econom\u00eda comunitaria Sustento tradicional Identidad cultural M\u00fasica tradicional Resiliencia Saberes ancestrales Transmisi\u00f3n generacional Juventudes Memoria colectiva Producci\u00f3n comunitaria Konda Ku Monikongo Comunicaci\u00f3n audiovisual comunitaria https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20COM%202024/02_Proyectos%20Grupo%20COM%202024/4_Afrocolombias/02.%20Escuelas%20de%20Comunicaci%C3%B3n%20AFRO/02_AFROCOLOMBIAS%20NACIONAL/1_%20Escuelas%20Nacionales/6_Consejo%20Comunitario%20Ma-Kankamana%20de%20la%20Comunidad%20de%20San%20Basilio%20De%20Palenque/3_TERCER_PAGO_3_20%25/1.%20CONTENIDOS/2.%20PRODUCTO/Lendro%20ri%20monde.mp4?csf=1&web=1&e=4JXROZ"
     },
     {
       "id": "somos-diversidad-linguistica-11",
       "row": 11,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR",
-      "title": "Documental The Dogs Hero Kella – Alberto May Williams",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR",
+      "title": "Documental The Dogs Hero Kella \u2013 Alberto May Williams",
       "type": "Documental",
-      "description": "Documental en creole con subtítulos en español. The Dogs Hero Kella, de Alberto May Williams, retrata a un hombre raizal, antes conocido por su emblemático bar, que hoy dedica su vida a proteger a los animales de la isla, especialmente perros, mediante un refugio canino. Producción de la Escuela de Comunicación Native Films Fundation, en el Archipiélago de San Andrés, Providencia y Santa Catalina.",
+      "description": "Documental en creole con subt\u00edtulos en espa\u00f1ol. The Dogs Hero Kella, de Alberto May Williams, retrata a un hombre raizal, antes conocido por su emblem\u00e1tico bar, que hoy dedica su vida a proteger a los animales de la isla, especialmente perros, mediante un refugio canino. Producci\u00f3n de la Escuela de Comunicaci\u00f3n Native Films Fundation, en el Archipi\u00e9lago de San Andr\u00e9s, Providencia y Santa Catalina.",
       "keywords": [
         "Documental",
         "Lengua creole",
-        "Subtítulos en español",
+        "Subt\u00edtulos en espa\u00f1ol",
         "Pueblo raizal",
-        "San Andrés, Providencia y Santa Catalina",
-        "Identidad isleña",
+        "San Andr\u00e9s, Providencia y Santa Catalina",
+        "Identidad isle\u00f1a",
         "Historia de vida",
         "Liderazgo comunitario",
-        "Protección animal",
+        "Protecci\u00f3n animal",
         "Bienestar animal",
         "Refugio canino",
-        "Relación humano–animal",
-        "Transformación personal",
+        "Relaci\u00f3n humano\u2013animal",
+        "Transformaci\u00f3n personal",
         "Trabajo comunitario",
         "Resiliencia",
-        "Producción comunitaria",
+        "Producci\u00f3n comunitaria",
         "Native Films Fundation",
-        "Comunicación audiovisual comunitaria"
+        "Comunicaci\u00f3n audiovisual comunitaria"
       ],
       "link": "https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CMI%202023/02_Proyectos%20Grupo%20CMI%202023/01_Comunicaci%C3%B3n%20para%20el%20buen%20vivir/02_Afrocolombias/3.%20Formaci%C3%B3n%20en%20comunicaci%C3%B3n/ESCUELAS%20DE%20FORMACI%C3%93N%202023/01.%20Escuelas%20de%20Formaci%C3%B3n/12.%20NATIVE%20FILMS/02.%20DOCUMENTACION%20-%20SEGUNDO%20DESEMBOLSO/02.%20Productos%20-%20Entregables/Documentales/Kella_TheDogsHero2_RS.mp4?csf=1&web=1&e=AL7AR1",
       "asset_link": "",
-      "force_message": "La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país.\n\nRelatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir.",
+      "force_message": "La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds.\n\nRelatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir.",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR Documental The Dogs Hero Kella – Alberto May Williams Documental Documental en creole con subtítulos en español. The Dogs Hero Kella, de Alberto May Williams, retrata a un hombre raizal, antes conocido por su emblemático bar, que hoy dedica su vida a proteger a los animales de la isla, especialmente perros, mediante un refugio canino. Producción de la Escuela de Comunicación Native Films Fundation, en el Archipiélago de San Andrés, Providencia y Santa Catalina. La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país. Relatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir. Documental Lengua creole Subtítulos en español Pueblo raizal San Andrés, Providencia y Santa Catalina Identidad isleña Historia de vida Liderazgo comunitario Protección animal Bienestar animal Refugio canino Relación humano–animal Transformación personal Trabajo comunitario Resiliencia Producción comunitaria Native Films Fundation Comunicación audiovisual comunitaria https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CMI%202023/02_Proyectos%20Grupo%20CMI%202023/01_Comunicaci%C3%B3n%20para%20el%20buen%20vivir/02_Afrocolombias/3.%20Formaci%C3%B3n%20en%20comunicaci%C3%B3n/ESCUELAS%20DE%20FORMACI%C3%93N%202023/01.%20Escuelas%20de%20Formaci%C3%B3n/12.%20NATIVE%20FILMS/02.%20DOCUMENTACION%20-%20SEGUNDO%20DESEMBOLSO/02.%20Productos%20-%20Entregables/Documentales/Kella_TheDogsHero2_RS.mp4?csf=1&web=1&e=AL7AR1"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR Documental The Dogs Hero Kella \u2013 Alberto May Williams Documental Documental en creole con subt\u00edtulos en espa\u00f1ol. The Dogs Hero Kella, de Alberto May Williams, retrata a un hombre raizal, antes conocido por su emblem\u00e1tico bar, que hoy dedica su vida a proteger a los animales de la isla, especialmente perros, mediante un refugio canino. Producci\u00f3n de la Escuela de Comunicaci\u00f3n Native Films Fundation, en el Archipi\u00e9lago de San Andr\u00e9s, Providencia y Santa Catalina. La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds. Relatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir. Documental Lengua creole Subt\u00edtulos en espa\u00f1ol Pueblo raizal San Andr\u00e9s, Providencia y Santa Catalina Identidad isle\u00f1a Historia de vida Liderazgo comunitario Protecci\u00f3n animal Bienestar animal Refugio canino Relaci\u00f3n humano\u2013animal Transformaci\u00f3n personal Trabajo comunitario Resiliencia Producci\u00f3n comunitaria Native Films Fundation Comunicaci\u00f3n audiovisual comunitaria https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CMI%202023/02_Proyectos%20Grupo%20CMI%202023/01_Comunicaci%C3%B3n%20para%20el%20buen%20vivir/02_Afrocolombias/3.%20Formaci%C3%B3n%20en%20comunicaci%C3%B3n/ESCUELAS%20DE%20FORMACI%C3%93N%202023/01.%20Escuelas%20de%20Formaci%C3%B3n/12.%20NATIVE%20FILMS/02.%20DOCUMENTACION%20-%20SEGUNDO%20DESEMBOLSO/02.%20Productos%20-%20Entregables/Documentales/Kella_TheDogsHero2_RS.mp4?csf=1&web=1&e=AL7AR1"
     },
     {
       "id": "somos-diversidad-linguistica-12",
       "row": 12,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR",
-      "title": "Documental A Raizal Woman – Silvia Archbold",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR",
+      "title": "Documental A Raizal Woman \u2013 Silvia Archbold",
       "type": "Documental",
-      "description": "Documental en creole con subtítulos en español. A Raizal Woman, de Silvia Archbold, narra la vida de Silvia Archbold Livingston, quien superó una grave enfermedad y la oposición familiar para convertirse en una líder raizal comprometida con su comunidad. Producción de la Escuela de Comunicación Native Films Fundation, en el Archipiélago de San Andrés, Providencia y Santa Catalina.",
+      "description": "Documental en creole con subt\u00edtulos en espa\u00f1ol. A Raizal Woman, de Silvia Archbold, narra la vida de Silvia Archbold Livingston, quien super\u00f3 una grave enfermedad y la oposici\u00f3n familiar para convertirse en una l\u00edder raizal comprometida con su comunidad. Producci\u00f3n de la Escuela de Comunicaci\u00f3n Native Films Fundation, en el Archipi\u00e9lago de San Andr\u00e9s, Providencia y Santa Catalina.",
       "keywords": [
         "Documental",
         "Lengua creole",
-        "Subtítulos en español",
+        "Subt\u00edtulos en espa\u00f1ol",
         "Pueblo raizal",
-        "San Andrés, Providencia y Santa Catalina",
+        "San Andr\u00e9s, Providencia y Santa Catalina",
         "Identidad raizal",
         "Liderazgo femenino",
         "Mujer raizal",
         "Historia de vida",
-        "Superación personal",
+        "Superaci\u00f3n personal",
         "Enfermedad y resiliencia",
         "Liderazgo comunitario",
         "Compromiso social",
         "Empoderamiento",
         "Memoria comunitaria",
-        "Producción audiovisual comunitaria",
+        "Producci\u00f3n audiovisual comunitaria",
         "Native Films Fundation",
         "Cultura caribe insular"
       ],
       "link": "https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CMI%202023/02_Proyectos%20Grupo%20CMI%202023/01_Comunicaci%C3%B3n%20para%20el%20buen%20vivir/02_Afrocolombias/3.%20Formaci%C3%B3n%20en%20comunicaci%C3%B3n/ESCUELAS%20DE%20FORMACI%C3%93N%202023/01.%20Escuelas%20de%20Formaci%C3%B3n/12.%20NATIVE%20FILMS/02.%20DOCUMENTACION%20-%20SEGUNDO%20DESEMBOLSO/02.%20Productos%20-%20Entregables/Documentales/MISS%20SILVIA_2_RS.mp4?csf=1&web=1&e=ishaZB",
       "asset_link": "",
-      "force_message": "La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país.\n\nRelatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir.",
+      "force_message": "La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds.\n\nRelatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir.",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR Documental A Raizal Woman – Silvia Archbold Documental Documental en creole con subtítulos en español. A Raizal Woman, de Silvia Archbold, narra la vida de Silvia Archbold Livingston, quien superó una grave enfermedad y la oposición familiar para convertirse en una líder raizal comprometida con su comunidad. Producción de la Escuela de Comunicación Native Films Fundation, en el Archipiélago de San Andrés, Providencia y Santa Catalina. La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país. Relatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir. Documental Lengua creole Subtítulos en español Pueblo raizal San Andrés, Providencia y Santa Catalina Identidad raizal Liderazgo femenino Mujer raizal Historia de vida Superación personal Enfermedad y resiliencia Liderazgo comunitario Compromiso social Empoderamiento Memoria comunitaria Producción audiovisual comunitaria Native Films Fundation Cultura caribe insular https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CMI%202023/02_Proyectos%20Grupo%20CMI%202023/01_Comunicaci%C3%B3n%20para%20el%20buen%20vivir/02_Afrocolombias/3.%20Formaci%C3%B3n%20en%20comunicaci%C3%B3n/ESCUELAS%20DE%20FORMACI%C3%93N%202023/01.%20Escuelas%20de%20Formaci%C3%B3n/12.%20NATIVE%20FILMS/02.%20DOCUMENTACION%20-%20SEGUNDO%20DESEMBOLSO/02.%20Productos%20-%20Entregables/Documentales/MISS%20SILVIA_2_RS.mp4?csf=1&web=1&e=ishaZB"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR Documental A Raizal Woman \u2013 Silvia Archbold Documental Documental en creole con subt\u00edtulos en espa\u00f1ol. A Raizal Woman, de Silvia Archbold, narra la vida de Silvia Archbold Livingston, quien super\u00f3 una grave enfermedad y la oposici\u00f3n familiar para convertirse en una l\u00edder raizal comprometida con su comunidad. Producci\u00f3n de la Escuela de Comunicaci\u00f3n Native Films Fundation, en el Archipi\u00e9lago de San Andr\u00e9s, Providencia y Santa Catalina. La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds. Relatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir. Documental Lengua creole Subt\u00edtulos en espa\u00f1ol Pueblo raizal San Andr\u00e9s, Providencia y Santa Catalina Identidad raizal Liderazgo femenino Mujer raizal Historia de vida Superaci\u00f3n personal Enfermedad y resiliencia Liderazgo comunitario Compromiso social Empoderamiento Memoria comunitaria Producci\u00f3n audiovisual comunitaria Native Films Fundation Cultura caribe insular https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CMI%202023/02_Proyectos%20Grupo%20CMI%202023/01_Comunicaci%C3%B3n%20para%20el%20buen%20vivir/02_Afrocolombias/3.%20Formaci%C3%B3n%20en%20comunicaci%C3%B3n/ESCUELAS%20DE%20FORMACI%C3%93N%202023/01.%20Escuelas%20de%20Formaci%C3%B3n/12.%20NATIVE%20FILMS/02.%20DOCUMENTACION%20-%20SEGUNDO%20DESEMBOLSO/02.%20Productos%20-%20Entregables/Documentales/MISS%20SILVIA_2_RS.mp4?csf=1&web=1&e=ishaZB"
     },
     {
       "id": "somos-diversidad-linguistica-13",
       "row": 13,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR",
       "title": "Podcast Rezos y santiguos: herencia espiritual de Palenque",
       "type": "Podcast",
-      "description": "Podcast en lengua palenquera. Rezos y Santiguos: Herencia espiritual de San Basilio de Palenque honra las raíces y la tradición oral del territorio. Los rezos y santiguos se entienden como resistencia espiritual. Participan niños, jóvenes y adultos de La Bonga, del proceso “Escuela de Comunicación y Territorio para la Vida” (Afrocolombias). Producción del colectivo Narradoras y Narradores de la memoria Kuchá Suto de San Basilio de Palenque.",
+      "description": "Podcast en lengua palenquera. Rezos y Santiguos: Herencia espiritual de San Basilio de Palenque honra las ra\u00edces y la tradici\u00f3n oral del territorio. Los rezos y santiguos se entienden como resistencia espiritual. Participan ni\u00f1os, j\u00f3venes y adultos de La Bonga, del proceso \u201cEscuela de Comunicaci\u00f3n y Territorio para la Vida\u201d (Afrocolombias). Producci\u00f3n del colectivo Narradoras y Narradores de la memoria Kuch\u00e1 Suto de San Basilio de Palenque.",
       "keywords": [
         "Podcast",
         "Lengua palenquera",
-        "Tradición oral",
+        "Tradici\u00f3n oral",
         "Rezos",
         "Santiguos",
         "Espiritualidad afrodescendiente",
@@ -4305,1215 +4550,1215 @@
         "Saberes ancestrales",
         "San Basilio de Palenque",
         "Comunidad afro",
-        "Transmisión generacional",
-        "Niñez y juventudes",
-        "Participación comunitaria",
-        "Educación comunitaria",
-        "Escuela de Comunicación y Territorio para la Vida",
-        "Narradoras y Narradores de la memoria Kuchá Suto",
-        "Comunicación comunitaria"
+        "Transmisi\u00f3n generacional",
+        "Ni\u00f1ez y juventudes",
+        "Participaci\u00f3n comunitaria",
+        "Educaci\u00f3n comunitaria",
+        "Escuela de Comunicaci\u00f3n y Territorio para la Vida",
+        "Narradoras y Narradores de la memoria Kuch\u00e1 Suto",
+        "Comunicaci\u00f3n comunitaria"
       ],
       "link": "https://mcultura.sharepoint.com/:u:/s/DACMI/IQDYIk3NV06SRJMalScNzuHJAevj99b6qA1kdjVhahiKIAw?e=nonHSO",
       "asset_link": "",
-      "force_message": "La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país.\n\nRelatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir.",
+      "force_message": "La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds.\n\nRelatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir.",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR Podcast Rezos y santiguos: herencia espiritual de Palenque Podcast Podcast en lengua palenquera. Rezos y Santiguos: Herencia espiritual de San Basilio de Palenque honra las raíces y la tradición oral del territorio. Los rezos y santiguos se entienden como resistencia espiritual. Participan niños, jóvenes y adultos de La Bonga, del proceso “Escuela de Comunicación y Territorio para la Vida” (Afrocolombias). Producción del colectivo Narradoras y Narradores de la memoria Kuchá Suto de San Basilio de Palenque. La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país. Relatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir. Podcast Lengua palenquera Tradición oral Rezos Santiguos Espiritualidad afrodescendiente Resistencia espiritual Memoria colectiva Saberes ancestrales San Basilio de Palenque Comunidad afro Transmisión generacional Niñez y juventudes Participación comunitaria Educación comunitaria Escuela de Comunicación y Territorio para la Vida Narradoras y Narradores de la memoria Kuchá Suto Comunicación comunitaria https://mcultura.sharepoint.com/:u:/s/DACMI/IQDYIk3NV06SRJMalScNzuHJAevj99b6qA1kdjVhahiKIAw?e=nonHSO"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR Podcast Rezos y santiguos: herencia espiritual de Palenque Podcast Podcast en lengua palenquera. Rezos y Santiguos: Herencia espiritual de San Basilio de Palenque honra las ra\u00edces y la tradici\u00f3n oral del territorio. Los rezos y santiguos se entienden como resistencia espiritual. Participan ni\u00f1os, j\u00f3venes y adultos de La Bonga, del proceso \u201cEscuela de Comunicaci\u00f3n y Territorio para la Vida\u201d (Afrocolombias). Producci\u00f3n del colectivo Narradoras y Narradores de la memoria Kuch\u00e1 Suto de San Basilio de Palenque. La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds. Relatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir. Podcast Lengua palenquera Tradici\u00f3n oral Rezos Santiguos Espiritualidad afrodescendiente Resistencia espiritual Memoria colectiva Saberes ancestrales San Basilio de Palenque Comunidad afro Transmisi\u00f3n generacional Ni\u00f1ez y juventudes Participaci\u00f3n comunitaria Educaci\u00f3n comunitaria Escuela de Comunicaci\u00f3n y Territorio para la Vida Narradoras y Narradores de la memoria Kuch\u00e1 Suto Comunicaci\u00f3n comunitaria https://mcultura.sharepoint.com/:u:/s/DACMI/IQDYIk3NV06SRJMalScNzuHJAevj99b6qA1kdjVhahiKIAw?e=nonHSO"
     },
     {
       "id": "somos-diversidad-linguistica-14",
       "row": 14,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR",
-      "title": "Documental Memoria de un pescador: donde la historia y el mañana se encuentran",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR",
+      "title": "Documental Memoria de un pescador: donde la historia y el ma\u00f1ana se encuentran",
       "type": "Documental",
-      "description": "Documental en creole con subtítulos en español. Memoria de un pescador: donde la historia y el mañana se encuentran Explora la pesca artesanal y su vínculo con la identidad cultural de Providencia. Recupera memorias transmitidas entre generaciones y aborda los retos actuales del oficio, como la preservación de técnicas ancestrales y las restricciones legales. Producción del proceso Sucomedia de San Andrés Islas.",
+      "description": "Documental en creole con subt\u00edtulos en espa\u00f1ol. Memoria de un pescador: donde la historia y el ma\u00f1ana se encuentran Explora la pesca artesanal y su v\u00ednculo con la identidad cultural de Providencia. Recupera memorias transmitidas entre generaciones y aborda los retos actuales del oficio, como la preservaci\u00f3n de t\u00e9cnicas ancestrales y las restricciones legales. Producci\u00f3n del proceso Sucomedia de San Andr\u00e9s Islas.",
       "keywords": [
         "Documental",
         "Lengua creole",
-        "Subtítulos en español",
+        "Subt\u00edtulos en espa\u00f1ol",
         "Pesca artesanal",
         "Providencia",
         "Identidad cultural",
-        "Cultura isleña",
+        "Cultura isle\u00f1a",
         "Oficios tradicionales",
         "Saberes ancestrales",
-        "Transmisión generacional",
+        "Transmisi\u00f3n generacional",
         "Memoria colectiva",
-        "Relación con el mar",
-        "Economía local",
+        "Relaci\u00f3n con el mar",
+        "Econom\u00eda local",
         "Sostenibilidad",
         "Restricciones legales",
         "Transformaciones del oficio",
-        "Producción comunitaria",
+        "Producci\u00f3n comunitaria",
         "Sucomedia",
         "Caribe insular"
       ],
       "link": "https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20COM%202024/02_Proyectos%20Grupo%20COM%202024/4_Afrocolombias/02.%20Escuelas%20de%20Comunicaci%C3%B3n%20AFRO/02_AFROCOLOMBIAS%20NACIONAL/1_%20Escuelas%20Nacionales/4_Suco%20Media%20SAS/3_TERCER_PAGO_3_20%25/1.%20CONTENIDOS/1.%20PRODUCTO/Documental%20Memoria%20de%20un%20Pescador.mp4?csf=1&web=1&e=VXULA7",
       "asset_link": "",
-      "force_message": "La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país.\n\nRelatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir.",
+      "force_message": "La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds.\n\nRelatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir.",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACIÓN PARA EL BUEN VIVIR Documental Memoria de un pescador: donde la historia y el mañana se encuentran Documental Documental en creole con subtítulos en español. Memoria de un pescador: donde la historia y el mañana se encuentran Explora la pesca artesanal y su vínculo con la identidad cultural de Providencia. Recupera memorias transmitidas entre generaciones y aborda los retos actuales del oficio, como la preservación de técnicas ancestrales y las restricciones legales. Producción del proceso Sucomedia de San Andrés Islas. La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país. Relatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir. Documental Lengua creole Subtítulos en español Pesca artesanal Providencia Identidad cultural Cultura isleña Oficios tradicionales Saberes ancestrales Transmisión generacional Memoria colectiva Relación con el mar Economía local Sostenibilidad Restricciones legales Transformaciones del oficio Producción comunitaria Sucomedia Caribe insular https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20COM%202024/02_Proyectos%20Grupo%20COM%202024/4_Afrocolombias/02.%20Escuelas%20de%20Comunicaci%C3%B3n%20AFRO/02_AFROCOLOMBIAS%20NACIONAL/1_%20Escuelas%20Nacionales/4_Suco%20Media%20SAS/3_TERCER_PAGO_3_20%25/1.%20CONTENIDOS/1.%20PRODUCTO/Documental%20Memoria%20de%20un%20Pescador.mp4?csf=1&web=1&e=VXULA7"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS-COMUNICACI\u00d3N PARA EL BUEN VIVIR Documental Memoria de un pescador: donde la historia y el ma\u00f1ana se encuentran Documental Documental en creole con subt\u00edtulos en espa\u00f1ol. Memoria de un pescador: donde la historia y el ma\u00f1ana se encuentran Explora la pesca artesanal y su v\u00ednculo con la identidad cultural de Providencia. Recupera memorias transmitidas entre generaciones y aborda los retos actuales del oficio, como la preservaci\u00f3n de t\u00e9cnicas ancestrales y las restricciones legales. Producci\u00f3n del proceso Sucomedia de San Andr\u00e9s Islas. La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds. Relatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir. Documental Lengua creole Subt\u00edtulos en espa\u00f1ol Pesca artesanal Providencia Identidad cultural Cultura isle\u00f1a Oficios tradicionales Saberes ancestrales Transmisi\u00f3n generacional Memoria colectiva Relaci\u00f3n con el mar Econom\u00eda local Sostenibilidad Restricciones legales Transformaciones del oficio Producci\u00f3n comunitaria Sucomedia Caribe insular https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20COM%202024/02_Proyectos%20Grupo%20COM%202024/4_Afrocolombias/02.%20Escuelas%20de%20Comunicaci%C3%B3n%20AFRO/02_AFROCOLOMBIAS%20NACIONAL/1_%20Escuelas%20Nacionales/4_Suco%20Media%20SAS/3_TERCER_PAGO_3_20%25/1.%20CONTENIDOS/1.%20PRODUCTO/Documental%20Memoria%20de%20un%20Pescador.mp4?csf=1&web=1&e=VXULA7"
     },
     {
       "id": "somos-diversidad-linguistica-15",
       "row": 15,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - internacionalización",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - internacionalizaci\u00f3n",
       "title": "Multimedia Relatos propios: lenguas nativas",
       "type": "Multimedia",
-      "description": "La Multimedia Relatos Propios Lenguas Nativas es una plataforma digital que reúne producciones sonoras, audiovisuales y narrativas de Comunicación para el Buen Vivir y Afrocolombias. Organiza contenidos por pueblos, lenguas y territorios, con recorridos interactivos que acercan a la diversidad cultural del país. Integra mapas, fichas, catálogos y recursos creados entre 2023 y 2025, además de espacios de consulta, juego y eventos, como un espacio vivo de narrativas propias.",
+      "description": "La Multimedia Relatos Propios Lenguas Nativas es una plataforma digital que re\u00fane producciones sonoras, audiovisuales y narrativas de Comunicaci\u00f3n para el Buen Vivir y Afrocolombias. Organiza contenidos por pueblos, lenguas y territorios, con recorridos interactivos que acercan a la diversidad cultural del pa\u00eds. Integra mapas, fichas, cat\u00e1logos y recursos creados entre 2023 y 2025, adem\u00e1s de espacios de consulta, juego y eventos, como un espacio vivo de narrativas propias.",
       "keywords": [
         "Plataforma digital",
         "Multimedia",
         "Relatos propios",
         "Lenguas nativas",
         "Diversidad cultural",
-        "Comunicación para el Buen Vivir",
+        "Comunicaci\u00f3n para el Buen Vivir",
         "Afrocolombias",
-        "Producción sonora",
-        "Producción audiovisual",
+        "Producci\u00f3n sonora",
+        "Producci\u00f3n audiovisual",
         "Narrativas digitales",
-        "Organización por pueblos",
-        "Organización por territorios",
-        "Organización por lenguas",
+        "Organizaci\u00f3n por pueblos",
+        "Organizaci\u00f3n por territorios",
+        "Organizaci\u00f3n por lenguas",
         "Recorridos interactivos",
         "Mapas interactivos"
       ],
       "link": "http://lenguasnativas.conectacultura.co/relatos-propios",
       "asset_link": "",
-      "force_message": "La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país.\n\nRelatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir.",
+      "force_message": "La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds.\n\nRelatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir.",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - internacionalización Multimedia Relatos propios: lenguas nativas Multimedia La Multimedia Relatos Propios Lenguas Nativas es una plataforma digital que reúne producciones sonoras, audiovisuales y narrativas de Comunicación para el Buen Vivir y Afrocolombias. Organiza contenidos por pueblos, lenguas y territorios, con recorridos interactivos que acercan a la diversidad cultural del país. Integra mapas, fichas, catálogos y recursos creados entre 2023 y 2025, además de espacios de consulta, juego y eventos, como un espacio vivo de narrativas propias. La comunicación en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A través de narrativas propias, estos procesos comunicativos fortalecen la transmisión intergeneracional, la resistencia cultural y el diálogo intercultural, convirtiéndose en un aporte clave para la construcción de paz y el reconocimiento de la diversidad que sostiene el país. Relatos Propios – Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos indígenas y afrocolombianos para narrar el país desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminación y el Buen Vivir. Plataforma digital Multimedia Relatos propios Lenguas nativas Diversidad cultural Comunicación para el Buen Vivir Afrocolombias Producción sonora Producción audiovisual Narrativas digitales Organización por pueblos Organización por territorios Organización por lenguas Recorridos interactivos Mapas interactivos http://lenguasnativas.conectacultura.co/relatos-propios"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - internacionalizaci\u00f3n Multimedia Relatos propios: lenguas nativas Multimedia La Multimedia Relatos Propios Lenguas Nativas es una plataforma digital que re\u00fane producciones sonoras, audiovisuales y narrativas de Comunicaci\u00f3n para el Buen Vivir y Afrocolombias. Organiza contenidos por pueblos, lenguas y territorios, con recorridos interactivos que acercan a la diversidad cultural del pa\u00eds. Integra mapas, fichas, cat\u00e1logos y recursos creados entre 2023 y 2025, adem\u00e1s de espacios de consulta, juego y eventos, como un espacio vivo de narrativas propias. La comunicaci\u00f3n en lengua palenquera y creole es una herramienta fundamental para preservar la memoria, la identidad y los saberes ancestrales de los pueblos palenqueros y raizales. A trav\u00e9s de narrativas propias, estos procesos comunicativos fortalecen la transmisi\u00f3n intergeneracional, la resistencia cultural y el di\u00e1logo intercultural, convirti\u00e9ndose en un aporte clave para la construcci\u00f3n de paz y el reconocimiento de la diversidad que sostiene el pa\u00eds. Relatos Propios \u2013 Lenguas Nativas es una apuesta por las narrativas propias, las lenguas maternas, la memoria viva y la defensa de los territorios: una plataforma construida desde los pueblos ind\u00edgenas y afrocolombianos para narrar el pa\u00eds desde sus lenguas, narrativas, saberes y formas de vida, reafirmando que la diversidad cultural es base de la autodeterminaci\u00f3n y el Buen Vivir. Plataforma digital Multimedia Relatos propios Lenguas nativas Diversidad cultural Comunicaci\u00f3n para el Buen Vivir Afrocolombias Producci\u00f3n sonora Producci\u00f3n audiovisual Narrativas digitales Organizaci\u00f3n por pueblos Organizaci\u00f3n por territorios Organizaci\u00f3n por lenguas Recorridos interactivos Mapas interactivos http://lenguasnativas.conectacultura.co/relatos-propios"
     },
     {
       "id": "somos-diversidad-linguistica-16",
       "row": 16,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - internacionalización",
-      "title": "Guías gráficas Destinos para la internacionalización del cine afrocolombiano",
-      "type": "Guías gráficas",
-      "description": "Estas rutas son guías gráficas de consulta que orientan la internacionalización del cine colombiano, especialmente en clave afro e indígena. Ofrecen información sobre financiación, circulación y distribución para la industria audiovisual. Cine en Ruta apoya estrategias para cine afrocolombiano en festivales, mercados y espacios internacionales. La Ruta Muntu impulsa el cine afrocolombiano, promoviendo conexiones con África, Brasil, EE. UU. y Europa y nuevos públicos globales.",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - internacionalizaci\u00f3n",
+      "title": "Gu\u00edas gr\u00e1ficas Destinos para la internacionalizaci\u00f3n del cine afrocolombiano",
+      "type": "Gu\u00edas gr\u00e1ficas",
+      "description": "Estas rutas son gu\u00edas gr\u00e1ficas de consulta que orientan la internacionalizaci\u00f3n del cine colombiano, especialmente en clave afro e ind\u00edgena. Ofrecen informaci\u00f3n sobre financiaci\u00f3n, circulaci\u00f3n y distribuci\u00f3n para la industria audiovisual. Cine en Ruta apoya estrategias para cine afrocolombiano en festivales, mercados y espacios internacionales. La Ruta Muntu impulsa el cine afrocolombiano, promoviendo conexiones con \u00c1frica, Brasil, EE. UU. y Europa y nuevos p\u00fablicos globales.",
       "keywords": [
-        "Rutas de internacionalización",
+        "Rutas de internacionalizaci\u00f3n",
         "Cine colombiano",
-        "Cine indígena",
+        "Cine ind\u00edgena",
         "Cine afrocolombiano",
         "Industria audiovisual",
-        "Circulación internacional",
-        "Distribución audiovisual",
-        "Financiación",
+        "Circulaci\u00f3n internacional",
+        "Distribuci\u00f3n audiovisual",
+        "Financiaci\u00f3n",
         "Mercados audiovisuales",
         "Festivales de cine",
-        "Estrategias de circulación",
+        "Estrategias de circulaci\u00f3n",
         "Cine en Ruta",
         "Ruta Muntu",
         "Conexiones internacionales",
-        "África",
+        "\u00c1frica",
         "Brasil",
         "Estados Unidos",
         "Europa",
-        "Públicos globales",
+        "P\u00fablicos globales",
         "Diversidad cultural",
-        "Redes de colaboración",
-        "Proyección internacional"
+        "Redes de colaboraci\u00f3n",
+        "Proyecci\u00f3n internacional"
       ],
       "link": "https://drive.google.com/file/d/18BavPBhVzTdCCFU_l9v9_iWxozJse1ef/view",
       "asset_link": "",
-      "force_message": "Estos instrumentos hacen parte de la estrategia de internacionalización: Cine Biocultural Colombiano de la Dirección de Audiovisuales, Cine y Medios Interactivos. El objetivo es abrir caminos para las producciones nacionales y nuevas oportunidades en el mundo, para agentes del sector cinematográfico del país.",
+      "force_message": "Estos instrumentos hacen parte de la estrategia de internacionalizaci\u00f3n: Cine Biocultural Colombiano de la Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos. El objetivo es abrir caminos para las producciones nacionales y nuevas oportunidades en el mundo, para agentes del sector cinematogr\u00e1fico del pa\u00eds.",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - internacionalización Guías gráficas Destinos para la internacionalización del cine afrocolombiano Guías gráficas Estas rutas son guías gráficas de consulta que orientan la internacionalización del cine colombiano, especialmente en clave afro e indígena. Ofrecen información sobre financiación, circulación y distribución para la industria audiovisual. Cine en Ruta apoya estrategias para cine afrocolombiano en festivales, mercados y espacios internacionales. La Ruta Muntu impulsa el cine afrocolombiano, promoviendo conexiones con África, Brasil, EE. UU. y Europa y nuevos públicos globales. Estos instrumentos hacen parte de la estrategia de internacionalización: Cine Biocultural Colombiano de la Dirección de Audiovisuales, Cine y Medios Interactivos. El objetivo es abrir caminos para las producciones nacionales y nuevas oportunidades en el mundo, para agentes del sector cinematográfico del país. Rutas de internacionalización Cine colombiano Cine indígena Cine afrocolombiano Industria audiovisual Circulación internacional Distribución audiovisual Financiación Mercados audiovisuales Festivales de cine Estrategias de circulación Cine en Ruta Ruta Muntu Conexiones internacionales África Brasil Estados Unidos Europa Públicos globales Diversidad cultural Redes de colaboración Proyección internacional https://drive.google.com/file/d/18BavPBhVzTdCCFU_l9v9_iWxozJse1ef/view"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - internacionalizaci\u00f3n Gu\u00edas gr\u00e1ficas Destinos para la internacionalizaci\u00f3n del cine afrocolombiano Gu\u00edas gr\u00e1ficas Estas rutas son gu\u00edas gr\u00e1ficas de consulta que orientan la internacionalizaci\u00f3n del cine colombiano, especialmente en clave afro e ind\u00edgena. Ofrecen informaci\u00f3n sobre financiaci\u00f3n, circulaci\u00f3n y distribuci\u00f3n para la industria audiovisual. Cine en Ruta apoya estrategias para cine afrocolombiano en festivales, mercados y espacios internacionales. La Ruta Muntu impulsa el cine afrocolombiano, promoviendo conexiones con \u00c1frica, Brasil, EE. UU. y Europa y nuevos p\u00fablicos globales. Estos instrumentos hacen parte de la estrategia de internacionalizaci\u00f3n: Cine Biocultural Colombiano de la Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos. El objetivo es abrir caminos para las producciones nacionales y nuevas oportunidades en el mundo, para agentes del sector cinematogr\u00e1fico del pa\u00eds. Rutas de internacionalizaci\u00f3n Cine colombiano Cine ind\u00edgena Cine afrocolombiano Industria audiovisual Circulaci\u00f3n internacional Distribuci\u00f3n audiovisual Financiaci\u00f3n Mercados audiovisuales Festivales de cine Estrategias de circulaci\u00f3n Cine en Ruta Ruta Muntu Conexiones internacionales \u00c1frica Brasil Estados Unidos Europa P\u00fablicos globales Diversidad cultural Redes de colaboraci\u00f3n Proyecci\u00f3n internacional https://drive.google.com/file/d/18BavPBhVzTdCCFU_l9v9_iWxozJse1ef/view"
     },
     {
       "id": "somos-diversidad-linguistica-18",
       "row": 18,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Editorial Los indigenismos léxicos en el español de Colombia",
+      "title": "Editorial Los indigenismos l\u00e9xicos en el espa\u00f1ol de Colombia",
       "type": "Publicaciones",
-      "description": "Los “préstamos léxicos” son palabras que pasan de una lengua a otra por contacto cultural. En América, los indigenismos han enriquecido el español desde la Conquista, nombrando nuevas realidades. Esta acción visibiliza palabras de origen caribe, tupí-guaraní y muisca como arepa, totuma o maracuyá, resaltando la presencia viva de lenguas nativas. A través de la alianza entre La Casa de las Palabras y El Tiempo, se promueve su reconocimiento en formatos impresos y digitales.",
+      "description": "Los \u201cpr\u00e9stamos l\u00e9xicos\u201d son palabras que pasan de una lengua a otra por contacto cultural. En Am\u00e9rica, los indigenismos han enriquecido el espa\u00f1ol desde la Conquista, nombrando nuevas realidades. Esta acci\u00f3n visibiliza palabras de origen caribe, tup\u00ed-guaran\u00ed y muisca como arepa, totuma o maracuy\u00e1, resaltando la presencia viva de lenguas nativas. A trav\u00e9s de la alianza entre La Casa de las Palabras y El Tiempo, se promueve su reconocimiento en formatos impresos y digitales.",
       "keywords": [
-        "Préstamos léxicos",
+        "Pr\u00e9stamos l\u00e9xicos",
         "Contacto cultural",
         "Indigenismos",
         "Lenguas nativas",
-        "Español en América",
-        "Diversidad lingüística",
+        "Espa\u00f1ol en Am\u00e9rica",
+        "Diversidad ling\u00fc\u00edstica",
         "Caribe",
-        "Tupí-guaraní",
+        "Tup\u00ed-guaran\u00ed",
         "Muisca",
         "Arepa",
         "Totuma",
-        "Maracuyá",
-        "Patrimonio lingüístico",
-        "Visibilización cultural",
+        "Maracuy\u00e1",
+        "Patrimonio ling\u00fc\u00edstico",
+        "Visibilizaci\u00f3n cultural",
         "Lengua viva",
         "Intercambio cultural",
-        "Historia lingüística",
+        "Historia ling\u00fc\u00edstica",
         "La Casa de las Palabras",
         "El Tiempo",
-        "Difusión en medios",
+        "Difusi\u00f3n en medios",
         "Formatos impresos",
         "Contenidos digitales"
       ],
       "link": "https://lenguasyliteraturasnativas.caroycuervo.gov.co/los-indigenismos-lexicos-en-el-espanol-de-colombia/",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Editorial Los indigenismos léxicos en el español de Colombia Publicaciones Los “préstamos léxicos” son palabras que pasan de una lengua a otra por contacto cultural. En América, los indigenismos han enriquecido el español desde la Conquista, nombrando nuevas realidades. Esta acción visibiliza palabras de origen caribe, tupí-guaraní y muisca como arepa, totuma o maracuyá, resaltando la presencia viva de lenguas nativas. A través de la alianza entre La Casa de las Palabras y El Tiempo, se promueve su reconocimiento en formatos impresos y digitales. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Préstamos léxicos Contacto cultural Indigenismos Lenguas nativas Español en América Diversidad lingüística Caribe Tupí-guaraní Muisca Arepa Totuma Maracuyá Patrimonio lingüístico Visibilización cultural Lengua viva Intercambio cultural Historia lingüística La Casa de las Palabras El Tiempo Difusión en medios Formatos impresos Contenidos digitales https://lenguasyliteraturasnativas.caroycuervo.gov.co/los-indigenismos-lexicos-en-el-espanol-de-colombia/"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo Editorial Los indigenismos l\u00e9xicos en el espa\u00f1ol de Colombia Publicaciones Los \u201cpr\u00e9stamos l\u00e9xicos\u201d son palabras que pasan de una lengua a otra por contacto cultural. En Am\u00e9rica, los indigenismos han enriquecido el espa\u00f1ol desde la Conquista, nombrando nuevas realidades. Esta acci\u00f3n visibiliza palabras de origen caribe, tup\u00ed-guaran\u00ed y muisca como arepa, totuma o maracuy\u00e1, resaltando la presencia viva de lenguas nativas. A trav\u00e9s de la alianza entre La Casa de las Palabras y El Tiempo, se promueve su reconocimiento en formatos impresos y digitales. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Pr\u00e9stamos l\u00e9xicos Contacto cultural Indigenismos Lenguas nativas Espa\u00f1ol en Am\u00e9rica Diversidad ling\u00fc\u00edstica Caribe Tup\u00ed-guaran\u00ed Muisca Arepa Totuma Maracuy\u00e1 Patrimonio ling\u00fc\u00edstico Visibilizaci\u00f3n cultural Lengua viva Intercambio cultural Historia ling\u00fc\u00edstica La Casa de las Palabras El Tiempo Difusi\u00f3n en medios Formatos impresos Contenidos digitales https://lenguasyliteraturasnativas.caroycuervo.gov.co/los-indigenismos-lexicos-en-el-espanol-de-colombia/"
     },
     {
       "id": "somos-diversidad-linguistica-19",
       "row": 19,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Programa de Documentación de Lenguas Nativas",
+      "title": "Programa de Documentaci\u00f3n de Lenguas Nativas",
       "type": "Programa",
-      "description": "Es una iniciativa que desarrolla actividades de formación, investigación y acompañamiento para registrar, preservar y fortalecer las lenguas nativas de Colombia. A través de talleres, ciclos de formación en territorio y apoyo técnico a comunidades indígenas, el programa impulsa la creación de materiales lingüísticos y culturales que contribuyen a la salvaguardia del patrimonio inmaterial del país.",
+      "description": "Es una iniciativa que desarrolla actividades de formaci\u00f3n, investigaci\u00f3n y acompa\u00f1amiento para registrar, preservar y fortalecer las lenguas nativas de Colombia. A trav\u00e9s de talleres, ciclos de formaci\u00f3n en territorio y apoyo t\u00e9cnico a comunidades ind\u00edgenas, el programa impulsa la creaci\u00f3n de materiales ling\u00fc\u00edsticos y culturales que contribuyen a la salvaguardia del patrimonio inmaterial del pa\u00eds.",
       "keywords": [
         "Iniciativa cultural",
         "Lenguas nativas",
-        "Salvaguardia lingüística",
+        "Salvaguardia ling\u00fc\u00edstica",
         "Patrimonio inmaterial",
-        "Formación",
-        "Investigación",
-        "Acompañamiento comunitario",
-        "Comunidades indígenas",
+        "Formaci\u00f3n",
+        "Investigaci\u00f3n",
+        "Acompa\u00f1amiento comunitario",
+        "Comunidades ind\u00edgenas",
         "Enfoque territorial",
         "Talleres",
-        "Ciclos de formación",
+        "Ciclos de formaci\u00f3n",
         "Fortalecimiento cultural",
-        "Registro lingüístico",
-        "Preservación cultural",
-        "Materiales lingüísticos",
-        "Producción cultural",
-        "Transmisión de saberes",
-        "Diversidad lingüística"
+        "Registro ling\u00fc\u00edstico",
+        "Preservaci\u00f3n cultural",
+        "Materiales ling\u00fc\u00edsticos",
+        "Producci\u00f3n cultural",
+        "Transmisi\u00f3n de saberes",
+        "Diversidad ling\u00fc\u00edstica"
       ],
       "link": "https://www.caroycuervo.gov.co/sala-de-prensa/programa-de-documentacion-de-lenguas/ https://www.caroycuervo.gov.co/la-lengua-como-el-hogar-la-historia-de-una-madre-que-siembra-el-nasa-yuwe-en-su-hija/ https://www.caroycuervo.gov.co/documentar-para-no-olvidar-el-reto-de-preservar-lenguas-indigenas-en-colombia/ https://www.caroycuervo.gov.co/podemos-perderlo-todo-incluido-el-territorio-pero-nunca-la-lengua-mirana-elio-mirana/ https://www.caroycuervo.gov.co/reunirse-alrededor-del-fuego-para-mantener-vivo-el-namui-wam-la-lengua-de-los-misak/ https://www.caroycuervo.gov.co/reencontrarse-con-el-pensamiento-y-recuperar-la-palabra-murui/",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Programa de Documentación de Lenguas Nativas Programa Es una iniciativa que desarrolla actividades de formación, investigación y acompañamiento para registrar, preservar y fortalecer las lenguas nativas de Colombia. A través de talleres, ciclos de formación en territorio y apoyo técnico a comunidades indígenas, el programa impulsa la creación de materiales lingüísticos y culturales que contribuyen a la salvaguardia del patrimonio inmaterial del país. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Iniciativa cultural Lenguas nativas Salvaguardia lingüística Patrimonio inmaterial Formación Investigación Acompañamiento comunitario Comunidades indígenas Enfoque territorial Talleres Ciclos de formación Fortalecimiento cultural Registro lingüístico Preservación cultural Materiales lingüísticos Producción cultural Transmisión de saberes Diversidad lingüística https://www.caroycuervo.gov.co/sala-de-prensa/programa-de-documentacion-de-lenguas/ https://www.caroycuervo.gov.co/la-lengua-como-el-hogar-la-historia-de-una-madre-que-siembra-el-nasa-yuwe-en-su-hija/ https://www.caroycuervo.gov.co/documentar-para-no-olvidar-el-reto-de-preservar-lenguas-indigenas-en-colombia/ https://www.caroycuervo.gov.co/podemos-perderlo-todo-incluido-el-territorio-pero-nunca-la-lengua-mirana-elio-mirana/ https://www.caroycuervo.gov.co/reunirse-alrededor-del-fuego-para-mantener-vivo-el-namui-wam-la-lengua-de-los-misak/ https://www.caroycuervo.gov.co/reencontrarse-con-el-pensamiento-y-recuperar-la-palabra-murui/"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo Programa de Documentaci\u00f3n de Lenguas Nativas Programa Es una iniciativa que desarrolla actividades de formaci\u00f3n, investigaci\u00f3n y acompa\u00f1amiento para registrar, preservar y fortalecer las lenguas nativas de Colombia. A trav\u00e9s de talleres, ciclos de formaci\u00f3n en territorio y apoyo t\u00e9cnico a comunidades ind\u00edgenas, el programa impulsa la creaci\u00f3n de materiales ling\u00fc\u00edsticos y culturales que contribuyen a la salvaguardia del patrimonio inmaterial del pa\u00eds. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Iniciativa cultural Lenguas nativas Salvaguardia ling\u00fc\u00edstica Patrimonio inmaterial Formaci\u00f3n Investigaci\u00f3n Acompa\u00f1amiento comunitario Comunidades ind\u00edgenas Enfoque territorial Talleres Ciclos de formaci\u00f3n Fortalecimiento cultural Registro ling\u00fc\u00edstico Preservaci\u00f3n cultural Materiales ling\u00fc\u00edsticos Producci\u00f3n cultural Transmisi\u00f3n de saberes Diversidad ling\u00fc\u00edstica https://www.caroycuervo.gov.co/sala-de-prensa/programa-de-documentacion-de-lenguas/ https://www.caroycuervo.gov.co/la-lengua-como-el-hogar-la-historia-de-una-madre-que-siembra-el-nasa-yuwe-en-su-hija/ https://www.caroycuervo.gov.co/documentar-para-no-olvidar-el-reto-de-preservar-lenguas-indigenas-en-colombia/ https://www.caroycuervo.gov.co/podemos-perderlo-todo-incluido-el-territorio-pero-nunca-la-lengua-mirana-elio-mirana/ https://www.caroycuervo.gov.co/reunirse-alrededor-del-fuego-para-mantener-vivo-el-namui-wam-la-lengua-de-los-misak/ https://www.caroycuervo.gov.co/reencontrarse-con-el-pensamiento-y-recuperar-la-palabra-murui/"
     },
     {
       "id": "somos-diversidad-linguistica-20",
       "row": 20,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Cápsula de video ¿Qué se pierde cuando desaparece una lengua?",
+      "title": "C\u00e1psula de video \u00bfQu\u00e9 se pierde cuando desaparece una lengua?",
       "type": "Video",
-      "description": "Miembros del Programa de Documentación de Lenguas Nativas reflexionan sobre lo que para ellos significa la pérdida del idioma y la importancia de los procesos de documentación lingüística.",
+      "description": "Miembros del Programa de Documentaci\u00f3n de Lenguas Nativas reflexionan sobre lo que para ellos significa la p\u00e9rdida del idioma y la importancia de los procesos de documentaci\u00f3n ling\u00fc\u00edstica.",
       "keywords": [
         "Iniciativa cultural",
         "Lenguas nativas",
-        "Salvaguardia lingüística",
+        "Salvaguardia ling\u00fc\u00edstica",
         "Patrimonio inmaterial",
-        "Comunidades indígenas",
+        "Comunidades ind\u00edgenas",
         "Enfoque territorial",
-        "Documentación lingüística",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
         "Fortalecimiento cultural",
-        "Registro lingüístico",
-        "Preservación cultural",
-        "Diversidad lingüística"
+        "Registro ling\u00fc\u00edstico",
+        "Preservaci\u00f3n cultural",
+        "Diversidad ling\u00fc\u00edstica"
       ],
       "link": "https://www.youtube.com/shorts/A_CbkRU86-8",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Cápsula de video ¿Qué se pierde cuando desaparece una lengua? Video Miembros del Programa de Documentación de Lenguas Nativas reflexionan sobre lo que para ellos significa la pérdida del idioma y la importancia de los procesos de documentación lingüística. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Iniciativa cultural Lenguas nativas Salvaguardia lingüística Patrimonio inmaterial Comunidades indígenas Enfoque territorial Documentación lingüística Fortalecimiento cultural Registro lingüístico Preservación cultural Diversidad lingüística https://www.youtube.com/shorts/A_CbkRU86-8"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo C\u00e1psula de video \u00bfQu\u00e9 se pierde cuando desaparece una lengua? Video Miembros del Programa de Documentaci\u00f3n de Lenguas Nativas reflexionan sobre lo que para ellos significa la p\u00e9rdida del idioma y la importancia de los procesos de documentaci\u00f3n ling\u00fc\u00edstica. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Iniciativa cultural Lenguas nativas Salvaguardia ling\u00fc\u00edstica Patrimonio inmaterial Comunidades ind\u00edgenas Enfoque territorial Documentaci\u00f3n ling\u00fc\u00edstica Fortalecimiento cultural Registro ling\u00fc\u00edstico Preservaci\u00f3n cultural Diversidad ling\u00fc\u00edstica https://www.youtube.com/shorts/A_CbkRU86-8"
     },
     {
       "id": "somos-diversidad-linguistica-21",
       "row": 21,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Cápsula de video En busca del origen Cacua",
+      "title": "C\u00e1psula de video En busca del origen Cacua",
       "type": "Video",
-      "description": "Como parte del trabajo de recuperación y preservación de la memoria y la lengua cacua, adelantado por la comunidad Cacua Wacará y el Instituto Caro y Cuervo, Elena López, sabedora cacua, comparte en cacua el relato de la mujer Poój, una rana que se transforma en mujer y acompaña a un caminante.",
+      "description": "Como parte del trabajo de recuperaci\u00f3n y preservaci\u00f3n de la memoria y la lengua cacua, adelantado por la comunidad Cacua Wacar\u00e1 y el Instituto Caro y Cuervo, Elena L\u00f3pez, sabedora cacua, comparte en cacua el relato de la mujer Po\u00f3j, una rana que se transforma en mujer y acompa\u00f1a a un caminante.",
       "keywords": [
         "Pueblo cacua",
         "Lengua cacua",
         "Memoria ancestral",
-        "Tradición oral",
-        "Sabiduría ancestral",
-        "Cosmovisión indígena",
+        "Tradici\u00f3n oral",
+        "Sabidur\u00eda ancestral",
+        "Cosmovisi\u00f3n ind\u00edgena",
         "Pervivencia cultural",
-        "Salvaguardia lingüística",
-        "Documentación lingüística",
+        "Salvaguardia ling\u00fc\u00edstica",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
         "Patrimonio inmaterial"
       ],
       "link": "https://www.youtube.com/shorts/ayxTEN9HMIM",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Cápsula de video En busca del origen Cacua Video Como parte del trabajo de recuperación y preservación de la memoria y la lengua cacua, adelantado por la comunidad Cacua Wacará y el Instituto Caro y Cuervo, Elena López, sabedora cacua, comparte en cacua el relato de la mujer Poój, una rana que se transforma en mujer y acompaña a un caminante. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Pueblo cacua Lengua cacua Memoria ancestral Tradición oral Sabiduría ancestral Cosmovisión indígena Pervivencia cultural Salvaguardia lingüística Documentación lingüística Patrimonio inmaterial https://www.youtube.com/shorts/ayxTEN9HMIM"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo C\u00e1psula de video En busca del origen Cacua Video Como parte del trabajo de recuperaci\u00f3n y preservaci\u00f3n de la memoria y la lengua cacua, adelantado por la comunidad Cacua Wacar\u00e1 y el Instituto Caro y Cuervo, Elena L\u00f3pez, sabedora cacua, comparte en cacua el relato de la mujer Po\u00f3j, una rana que se transforma en mujer y acompa\u00f1a a un caminante. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Pueblo cacua Lengua cacua Memoria ancestral Tradici\u00f3n oral Sabidur\u00eda ancestral Cosmovisi\u00f3n ind\u00edgena Pervivencia cultural Salvaguardia ling\u00fc\u00edstica Documentaci\u00f3n ling\u00fc\u00edstica Patrimonio inmaterial https://www.youtube.com/shorts/ayxTEN9HMIM"
     },
     {
       "id": "somos-diversidad-linguistica-22",
       "row": 22,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Cápsula de video La historia en los cantos de los nukak",
+      "title": "C\u00e1psula de video La historia en los cantos de los nukak",
       "type": "Video",
-      "description": "En sus canciones, los nukak preservan su historia, su cultura y su vida cotidiana. \n\nMarina López, documentalista y miembro de la comunidad cacua, y Katherine Bolaños, investigadora del programa de documentación lingüística del Instituto Caro y Cuervo, viajaron al Guaviare para reunirse con miembros de la comunidad nukak. \n\nAllí, Mauricio Yau, sabedor local, les habló sobre la importancia de las canciones en su cultura. Porque una canción no necesita imágenes, su testimonio tampoco las tiene. \n\nDurante la visita, no se permitió el registro en video por razones culturales. Según sus costumbres, cuando una persona muere, su palabra desaparece con ella. Por esta razón, muchos miembros de la comunidad evitan ver imágenes o referencias de quienes han fallecido. Esta tradición también se extiende a los registros visuales, que se consideran parte de aquello que no debe permanecer tras la muerte.",
+      "description": "En sus canciones, los nukak preservan su historia, su cultura y su vida cotidiana. \n\nMarina L\u00f3pez, documentalista y miembro de la comunidad cacua, y Katherine Bola\u00f1os, investigadora del programa de documentaci\u00f3n ling\u00fc\u00edstica del Instituto Caro y Cuervo, viajaron al Guaviare para reunirse con miembros de la comunidad nukak. \n\nAll\u00ed, Mauricio Yau, sabedor local, les habl\u00f3 sobre la importancia de las canciones en su cultura. Porque una canci\u00f3n no necesita im\u00e1genes, su testimonio tampoco las tiene. \n\nDurante la visita, no se permiti\u00f3 el registro en video por razones culturales. Seg\u00fan sus costumbres, cuando una persona muere, su palabra desaparece con ella. Por esta raz\u00f3n, muchos miembros de la comunidad evitan ver im\u00e1genes o referencias de quienes han fallecido. Esta tradici\u00f3n tambi\u00e9n se extiende a los registros visuales, que se consideran parte de aquello que no debe permanecer tras la muerte.",
       "keywords": [
         "Pueblo Nukak",
         "Cantos tradicionales",
         "Memoria ancestral",
-        "Tradición oral",
-        "Sabiduría ancestral",
-        "Cosmovisión indígena",
+        "Tradici\u00f3n oral",
+        "Sabidur\u00eda ancestral",
+        "Cosmovisi\u00f3n ind\u00edgena",
         "Pervivencia cultural",
-        "Prácticas culturales",
-        "Salvaguardia lingüística"
+        "Pr\u00e1cticas culturales",
+        "Salvaguardia ling\u00fc\u00edstica"
       ],
       "link": "https://www.youtube.com/shorts/hqm8if324rg",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Cápsula de video La historia en los cantos de los nukak Video En sus canciones, los nukak preservan su historia, su cultura y su vida cotidiana. Marina López, documentalista y miembro de la comunidad cacua, y Katherine Bolaños, investigadora del programa de documentación lingüística del Instituto Caro y Cuervo, viajaron al Guaviare para reunirse con miembros de la comunidad nukak. Allí, Mauricio Yau, sabedor local, les habló sobre la importancia de las canciones en su cultura. Porque una canción no necesita imágenes, su testimonio tampoco las tiene. Durante la visita, no se permitió el registro en video por razones culturales. Según sus costumbres, cuando una persona muere, su palabra desaparece con ella. Por esta razón, muchos miembros de la comunidad evitan ver imágenes o referencias de quienes han fallecido. Esta tradición también se extiende a los registros visuales, que se consideran parte de aquello que no debe permanecer tras la muerte. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Pueblo Nukak Cantos tradicionales Memoria ancestral Tradición oral Sabiduría ancestral Cosmovisión indígena Pervivencia cultural Prácticas culturales Salvaguardia lingüística https://www.youtube.com/shorts/hqm8if324rg"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo C\u00e1psula de video La historia en los cantos de los nukak Video En sus canciones, los nukak preservan su historia, su cultura y su vida cotidiana. Marina L\u00f3pez, documentalista y miembro de la comunidad cacua, y Katherine Bola\u00f1os, investigadora del programa de documentaci\u00f3n ling\u00fc\u00edstica del Instituto Caro y Cuervo, viajaron al Guaviare para reunirse con miembros de la comunidad nukak. All\u00ed, Mauricio Yau, sabedor local, les habl\u00f3 sobre la importancia de las canciones en su cultura. Porque una canci\u00f3n no necesita im\u00e1genes, su testimonio tampoco las tiene. Durante la visita, no se permiti\u00f3 el registro en video por razones culturales. Seg\u00fan sus costumbres, cuando una persona muere, su palabra desaparece con ella. Por esta raz\u00f3n, muchos miembros de la comunidad evitan ver im\u00e1genes o referencias de quienes han fallecido. Esta tradici\u00f3n tambi\u00e9n se extiende a los registros visuales, que se consideran parte de aquello que no debe permanecer tras la muerte. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Pueblo Nukak Cantos tradicionales Memoria ancestral Tradici\u00f3n oral Sabidur\u00eda ancestral Cosmovisi\u00f3n ind\u00edgena Pervivencia cultural Pr\u00e1cticas culturales Salvaguardia ling\u00fc\u00edstica https://www.youtube.com/shorts/hqm8if324rg"
     },
     {
       "id": "somos-diversidad-linguistica-23",
       "row": 23,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Cápsula de video El fuego como símbolo de resistencia y origen de la lengua de los misak",
+      "title": "C\u00e1psula de video El fuego como s\u00edmbolo de resistencia y origen de la lengua de los misak",
       "type": "Video",
-      "description": "En el Resguardo Indígena Misak de San Antonio, ubicado en Morales (Cauca), el fuego no es solo calor: es memoria, es lengua y es identidad. \n\nMientras los más pequeños aprenden a grabar su cultura y costumbres con celulares, los tatas y mamas lideran el Pishi Ya, un encuentro alrededor del fogón en el que toman decisiones importantes para su comunidad, fortalecen su espíritu y conectan con sus raíces.",
+      "description": "En el Resguardo Ind\u00edgena Misak de San Antonio, ubicado en Morales (Cauca), el fuego no es solo calor: es memoria, es lengua y es identidad. \n\nMientras los m\u00e1s peque\u00f1os aprenden a grabar su cultura y costumbres con celulares, los tatas y mamas lideran el Pishi Ya, un encuentro alrededor del fog\u00f3n en el que toman decisiones importantes para su comunidad, fortalecen su esp\u00edritu y conectan con sus ra\u00edces.",
       "keywords": [
         "Pueblo misak",
         "Namui wam",
         "Memoria ancestral",
         "Identidad cultural",
         "Pishi Ya",
-        "Tradición oral",
-        "Transmisión de saberes",
+        "Tradici\u00f3n oral",
+        "Transmisi\u00f3n de saberes",
         "Fortalecimiento cultural",
-        "Pervivencia indígena"
+        "Pervivencia ind\u00edgena"
       ],
       "link": "https://www.youtube.com/shorts/6tfqFSrr_x0",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Cápsula de video El fuego como símbolo de resistencia y origen de la lengua de los misak Video En el Resguardo Indígena Misak de San Antonio, ubicado en Morales (Cauca), el fuego no es solo calor: es memoria, es lengua y es identidad. Mientras los más pequeños aprenden a grabar su cultura y costumbres con celulares, los tatas y mamas lideran el Pishi Ya, un encuentro alrededor del fogón en el que toman decisiones importantes para su comunidad, fortalecen su espíritu y conectan con sus raíces. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Pueblo misak Namui wam Memoria ancestral Identidad cultural Pishi Ya Tradición oral Transmisión de saberes Fortalecimiento cultural Pervivencia indígena https://www.youtube.com/shorts/6tfqFSrr_x0"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo C\u00e1psula de video El fuego como s\u00edmbolo de resistencia y origen de la lengua de los misak Video En el Resguardo Ind\u00edgena Misak de San Antonio, ubicado en Morales (Cauca), el fuego no es solo calor: es memoria, es lengua y es identidad. Mientras los m\u00e1s peque\u00f1os aprenden a grabar su cultura y costumbres con celulares, los tatas y mamas lideran el Pishi Ya, un encuentro alrededor del fog\u00f3n en el que toman decisiones importantes para su comunidad, fortalecen su esp\u00edritu y conectan con sus ra\u00edces. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Pueblo misak Namui wam Memoria ancestral Identidad cultural Pishi Ya Tradici\u00f3n oral Transmisi\u00f3n de saberes Fortalecimiento cultural Pervivencia ind\u00edgena https://www.youtube.com/shorts/6tfqFSrr_x0"
     },
     {
       "id": "somos-diversidad-linguistica-24",
       "row": 24,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Cápsula de video El canto de la perra de monte",
+      "title": "C\u00e1psula de video El canto de la perra de monte",
       "type": "Video",
-      "description": "Desde las ciudades amazónicas de Leticia (Colombia) y Tabatinga (Brasil), el documentador Elio Miraña está interesado en la documentación de los cantos, que dentro de su cultura son esenciales para el bienestar de su pueblo. Porque los cantos son fragmentos de historias; las historias son curaciones. Entonces, los cantos son curaciones con las que se armoniza el territorio.\n\nEn una visita con Neeba Jʉmille (Elvira Miraña), la última abuela del clan Neebaje, Elio registró el canto de arrullo de la perra de monte. Este canto cuenta la historia de una perra con la capacidad de transformarse en mujer, que, durante las noches de baile, se acerca a las malocas para robarse a los niños varones y transformarlos en perros.",
+      "description": "Desde las ciudades amaz\u00f3nicas de Leticia (Colombia) y Tabatinga (Brasil), el documentador Elio Mira\u00f1a est\u00e1 interesado en la documentaci\u00f3n de los cantos, que dentro de su cultura son esenciales para el bienestar de su pueblo. Porque los cantos son fragmentos de historias; las historias son curaciones. Entonces, los cantos son curaciones con las que se armoniza el territorio.\n\nEn una visita con Neeba J\u0289mille (Elvira Mira\u00f1a), la \u00faltima abuela del clan Neebaje, Elio registr\u00f3 el canto de arrullo de la perra de monte. Este canto cuenta la historia de una perra con la capacidad de transformarse en mujer, que, durante las noches de baile, se acerca a las malocas para robarse a los ni\u00f1os varones y transformarlos en perros.",
       "keywords": [
-        "Pueblo miraña",
-        "Lengua miraña",
+        "Pueblo mira\u00f1a",
+        "Lengua mira\u00f1a",
         "Cantos tradicionales",
         "Memoria ancestral",
-        "Tradición oral",
-        "Sabiduría ancestral",
-        "Cosmovisión indígena",
-        "Documentación lingüística",
+        "Tradici\u00f3n oral",
+        "Sabidur\u00eda ancestral",
+        "Cosmovisi\u00f3n ind\u00edgena",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
         "Pervivencia cultural"
       ],
       "link": "https://www.youtube.com/shorts/q7xpw5Hqwk8",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Cápsula de video El canto de la perra de monte Video Desde las ciudades amazónicas de Leticia (Colombia) y Tabatinga (Brasil), el documentador Elio Miraña está interesado en la documentación de los cantos, que dentro de su cultura son esenciales para el bienestar de su pueblo. Porque los cantos son fragmentos de historias; las historias son curaciones. Entonces, los cantos son curaciones con las que se armoniza el territorio. En una visita con Neeba Jʉmille (Elvira Miraña), la última abuela del clan Neebaje, Elio registró el canto de arrullo de la perra de monte. Este canto cuenta la historia de una perra con la capacidad de transformarse en mujer, que, durante las noches de baile, se acerca a las malocas para robarse a los niños varones y transformarlos en perros. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Pueblo miraña Lengua miraña Cantos tradicionales Memoria ancestral Tradición oral Sabiduría ancestral Cosmovisión indígena Documentación lingüística Pervivencia cultural https://www.youtube.com/shorts/q7xpw5Hqwk8"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo C\u00e1psula de video El canto de la perra de monte Video Desde las ciudades amaz\u00f3nicas de Leticia (Colombia) y Tabatinga (Brasil), el documentador Elio Mira\u00f1a est\u00e1 interesado en la documentaci\u00f3n de los cantos, que dentro de su cultura son esenciales para el bienestar de su pueblo. Porque los cantos son fragmentos de historias; las historias son curaciones. Entonces, los cantos son curaciones con las que se armoniza el territorio. En una visita con Neeba J\u0289mille (Elvira Mira\u00f1a), la \u00faltima abuela del clan Neebaje, Elio registr\u00f3 el canto de arrullo de la perra de monte. Este canto cuenta la historia de una perra con la capacidad de transformarse en mujer, que, durante las noches de baile, se acerca a las malocas para robarse a los ni\u00f1os varones y transformarlos en perros. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Pueblo mira\u00f1a Lengua mira\u00f1a Cantos tradicionales Memoria ancestral Tradici\u00f3n oral Sabidur\u00eda ancestral Cosmovisi\u00f3n ind\u00edgena Documentaci\u00f3n ling\u00fc\u00edstica Pervivencia cultural https://www.youtube.com/shorts/q7xpw5Hqwk8"
     },
     {
       "id": "somos-diversidad-linguistica-25",
       "row": 25,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Cápsula de video La siembra y la cosecha de la sandona",
+      "title": "C\u00e1psula de video La siembra y la cosecha de la sandona",
       "type": "Video",
-      "description": "En la vereda Muchivioy, en el municipio de Santiago (Putumayo), Juana Jacanamijoy, sabedora inga, compartió con el equipo de documentación el proceso de siembra y cosecha de la sandona o sigsi, un tubérculo fundamental para la alimentación de la comunidad, que llegó al territorio desde Sibundoy. \n\nEsta visita fue una oportunidad para resaltar la importancia del cuidado de la chagra y la cosecha de alimentos propios sin el uso de químicos, una práctica que se ha ido perdiendo pero que resulta esencial para el sostenimiento de su pueblo.",
+      "description": "En la vereda Muchivioy, en el municipio de Santiago (Putumayo), Juana Jacanamijoy, sabedora inga, comparti\u00f3 con el equipo de documentaci\u00f3n el proceso de siembra y cosecha de la sandona o sigsi, un tub\u00e9rculo fundamental para la alimentaci\u00f3n de la comunidad, que lleg\u00f3 al territorio desde Sibundoy. \n\nEsta visita fue una oportunidad para resaltar la importancia del cuidado de la chagra y la cosecha de alimentos propios sin el uso de qu\u00edmicos, una pr\u00e1ctica que se ha ido perdiendo pero que resulta esencial para el sostenimiento de su pueblo.",
       "keywords": [
         "Pueblo Inga",
         "Alimentos tradicionales",
         "Memoria ancestral",
-        "Sabiduría ancestral",
-        "Prácticas agrícolas",
-        "Preservación cultural",
-        "Pervivencia indígena"
+        "Sabidur\u00eda ancestral",
+        "Pr\u00e1cticas agr\u00edcolas",
+        "Preservaci\u00f3n cultural",
+        "Pervivencia ind\u00edgena"
       ],
       "link": "https://www.youtube.com/shorts/pdwu-cznFqs",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Cápsula de video La siembra y la cosecha de la sandona Video En la vereda Muchivioy, en el municipio de Santiago (Putumayo), Juana Jacanamijoy, sabedora inga, compartió con el equipo de documentación el proceso de siembra y cosecha de la sandona o sigsi, un tubérculo fundamental para la alimentación de la comunidad, que llegó al territorio desde Sibundoy. Esta visita fue una oportunidad para resaltar la importancia del cuidado de la chagra y la cosecha de alimentos propios sin el uso de químicos, una práctica que se ha ido perdiendo pero que resulta esencial para el sostenimiento de su pueblo. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Pueblo Inga Alimentos tradicionales Memoria ancestral Sabiduría ancestral Prácticas agrícolas Preservación cultural Pervivencia indígena https://www.youtube.com/shorts/pdwu-cznFqs"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo C\u00e1psula de video La siembra y la cosecha de la sandona Video En la vereda Muchivioy, en el municipio de Santiago (Putumayo), Juana Jacanamijoy, sabedora inga, comparti\u00f3 con el equipo de documentaci\u00f3n el proceso de siembra y cosecha de la sandona o sigsi, un tub\u00e9rculo fundamental para la alimentaci\u00f3n de la comunidad, que lleg\u00f3 al territorio desde Sibundoy. Esta visita fue una oportunidad para resaltar la importancia del cuidado de la chagra y la cosecha de alimentos propios sin el uso de qu\u00edmicos, una pr\u00e1ctica que se ha ido perdiendo pero que resulta esencial para el sostenimiento de su pueblo. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Pueblo Inga Alimentos tradicionales Memoria ancestral Sabidur\u00eda ancestral Pr\u00e1cticas agr\u00edcolas Preservaci\u00f3n cultural Pervivencia ind\u00edgena https://www.youtube.com/shorts/pdwu-cznFqs"
     },
     {
       "id": "somos-diversidad-linguistica-26",
       "row": 26,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Cápsula de video Historias que cuentan, que sanan, que tejen, que inspiran",
+      "title": "C\u00e1psula de video Historias que cuentan, que sanan, que tejen, que inspiran",
       "type": "Video",
-      "description": "Para las mujeres kamëntšá del Valle de Sibundoy (Tabanok), en el Putumayo, el tejido ha sido un oficio ancestral que mantiene viva su cosmovisión, sus relatos y su lengua.\n\nCon el deseo de preservar estos saberes, María Antonia Narváez Agreda, documentadora de la lengua kamëntšá, recorre su territorio escuchando las voces de las tejedoras. Su trabajo hace parte del Programa de documentación de diez lenguas para el 2025 del Instituto Caro y Cuervo, una apuesta por salvaguardar idiomas indígenas en riesgo de desaparición. \n\nEn esta ocasión, la documentara presenta un extracto de su entrevista con la sabedora Margarita Chindoy Chindoy , en la vereda Machindinoy (Sibundoy, Putumayo), con apoyo técnico de Alex Achicanoy Botina.",
+      "description": "Para las mujeres kam\u00ebnt\u0161\u00e1 del Valle de Sibundoy (Tabanok), en el Putumayo, el tejido ha sido un oficio ancestral que mantiene viva su cosmovisi\u00f3n, sus relatos y su lengua.\n\nCon el deseo de preservar estos saberes, Mar\u00eda Antonia Narv\u00e1ez Agreda, documentadora de la lengua kam\u00ebnt\u0161\u00e1, recorre su territorio escuchando las voces de las tejedoras. Su trabajo hace parte del Programa de documentaci\u00f3n de diez lenguas para el 2025 del Instituto Caro y Cuervo, una apuesta por salvaguardar idiomas ind\u00edgenas en riesgo de desaparici\u00f3n. \n\nEn esta ocasi\u00f3n, la documentara presenta un extracto de su entrevista con la sabedora Margarita Chindoy Chindoy , en la vereda Machindinoy (Sibundoy, Putumayo), con apoyo t\u00e9cnico de Alex Achicanoy Botina.",
       "keywords": [
-        "Pueblo kamëntšá",
-        "Lengua kamëntšá",
+        "Pueblo kam\u00ebnt\u0161\u00e1",
+        "Lengua kam\u00ebnt\u0161\u00e1",
         "Tejido ancestral",
         "Memoria ancestral",
-        "Sabiduría de las tejedoras",
-        "Cosmovisión indígena",
-        "Tradición oral",
-        "Documentación lingüística",
-        "Salvaguardia lingüística",
+        "Sabidur\u00eda de las tejedoras",
+        "Cosmovisi\u00f3n ind\u00edgena",
+        "Tradici\u00f3n oral",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
+        "Salvaguardia ling\u00fc\u00edstica",
         "Pervivencia cultural"
       ],
       "link": "https://www.youtube.com/watch?v=e1R_I_k7gpE&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=6",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Cápsula de video Historias que cuentan, que sanan, que tejen, que inspiran Video Para las mujeres kamëntšá del Valle de Sibundoy (Tabanok), en el Putumayo, el tejido ha sido un oficio ancestral que mantiene viva su cosmovisión, sus relatos y su lengua. Con el deseo de preservar estos saberes, María Antonia Narváez Agreda, documentadora de la lengua kamëntšá, recorre su territorio escuchando las voces de las tejedoras. Su trabajo hace parte del Programa de documentación de diez lenguas para el 2025 del Instituto Caro y Cuervo, una apuesta por salvaguardar idiomas indígenas en riesgo de desaparición. En esta ocasión, la documentara presenta un extracto de su entrevista con la sabedora Margarita Chindoy Chindoy , en la vereda Machindinoy (Sibundoy, Putumayo), con apoyo técnico de Alex Achicanoy Botina. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Pueblo kamëntšá Lengua kamëntšá Tejido ancestral Memoria ancestral Sabiduría de las tejedoras Cosmovisión indígena Tradición oral Documentación lingüística Salvaguardia lingüística Pervivencia cultural https://www.youtube.com/watch?v=e1R_I_k7gpE&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=6"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo C\u00e1psula de video Historias que cuentan, que sanan, que tejen, que inspiran Video Para las mujeres kam\u00ebnt\u0161\u00e1 del Valle de Sibundoy (Tabanok), en el Putumayo, el tejido ha sido un oficio ancestral que mantiene viva su cosmovisi\u00f3n, sus relatos y su lengua. Con el deseo de preservar estos saberes, Mar\u00eda Antonia Narv\u00e1ez Agreda, documentadora de la lengua kam\u00ebnt\u0161\u00e1, recorre su territorio escuchando las voces de las tejedoras. Su trabajo hace parte del Programa de documentaci\u00f3n de diez lenguas para el 2025 del Instituto Caro y Cuervo, una apuesta por salvaguardar idiomas ind\u00edgenas en riesgo de desaparici\u00f3n. En esta ocasi\u00f3n, la documentara presenta un extracto de su entrevista con la sabedora Margarita Chindoy Chindoy , en la vereda Machindinoy (Sibundoy, Putumayo), con apoyo t\u00e9cnico de Alex Achicanoy Botina. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Pueblo kam\u00ebnt\u0161\u00e1 Lengua kam\u00ebnt\u0161\u00e1 Tejido ancestral Memoria ancestral Sabidur\u00eda de las tejedoras Cosmovisi\u00f3n ind\u00edgena Tradici\u00f3n oral Documentaci\u00f3n ling\u00fc\u00edstica Salvaguardia ling\u00fc\u00edstica Pervivencia cultural https://www.youtube.com/watch?v=e1R_I_k7gpE&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=6"
     },
     {
       "id": "somos-diversidad-linguistica-27",
       "row": 27,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Cápsula de video La escolarización dentro de los territorios inga",
+      "title": "C\u00e1psula de video La escolarizaci\u00f3n dentro de los territorios inga",
       "type": "Video",
-      "description": "Desde el interior del Cabildo Inga de Santiago (Putumayo), Mónica Jansasoy Tisoy escucha los testimonios de las mayoras y los mayores para conocer las experiencias de su comunidad, tanto las agradables como aquellas dolorosas que tuvieron lugar durante el periodo de escolarización impuesta por la Iglesia católica.\n\nEn esta oportunidad, Mónica, documentadora de la lengua inga, se desplazó hasta la vereda Muchivioy para recoger el testimonio de Margarita Jajoy sobre las dificultades que enfrentó para asistir a la escuela durante su infancia y el papel de la instrucción religiosa en la educación.",
+      "description": "Desde el interior del Cabildo Inga de Santiago (Putumayo), M\u00f3nica Jansasoy Tisoy escucha los testimonios de las mayoras y los mayores para conocer las experiencias de su comunidad, tanto las agradables como aquellas dolorosas que tuvieron lugar durante el periodo de escolarizaci\u00f3n impuesta por la Iglesia cat\u00f3lica.\n\nEn esta oportunidad, M\u00f3nica, documentadora de la lengua inga, se desplaz\u00f3 hasta la vereda Muchivioy para recoger el testimonio de Margarita Jajoy sobre las dificultades que enfrent\u00f3 para asistir a la escuela durante su infancia y el papel de la instrucci\u00f3n religiosa en la educaci\u00f3n.",
       "keywords": [
         "Pueblo Inga",
         "Lengua inga",
         "Memoria ancestral",
         "Testimonios de los mayores",
-        "Escolarización indígena",
+        "Escolarizaci\u00f3n ind\u00edgena",
         "Historia comunitaria",
-        "Tradición oral",
-        "Documentación lingüística",
-        "Preservación cultural",
-        "Pervivencia indígena"
+        "Tradici\u00f3n oral",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
+        "Preservaci\u00f3n cultural",
+        "Pervivencia ind\u00edgena"
       ],
       "link": "https://www.youtube.com/watch?v=yLlyjt2OnqM&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=5",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Cápsula de video La escolarización dentro de los territorios inga Video Desde el interior del Cabildo Inga de Santiago (Putumayo), Mónica Jansasoy Tisoy escucha los testimonios de las mayoras y los mayores para conocer las experiencias de su comunidad, tanto las agradables como aquellas dolorosas que tuvieron lugar durante el periodo de escolarización impuesta por la Iglesia católica. En esta oportunidad, Mónica, documentadora de la lengua inga, se desplazó hasta la vereda Muchivioy para recoger el testimonio de Margarita Jajoy sobre las dificultades que enfrentó para asistir a la escuela durante su infancia y el papel de la instrucción religiosa en la educación. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Pueblo Inga Lengua inga Memoria ancestral Testimonios de los mayores Escolarización indígena Historia comunitaria Tradición oral Documentación lingüística Preservación cultural Pervivencia indígena https://www.youtube.com/watch?v=yLlyjt2OnqM&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=5"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo C\u00e1psula de video La escolarizaci\u00f3n dentro de los territorios inga Video Desde el interior del Cabildo Inga de Santiago (Putumayo), M\u00f3nica Jansasoy Tisoy escucha los testimonios de las mayoras y los mayores para conocer las experiencias de su comunidad, tanto las agradables como aquellas dolorosas que tuvieron lugar durante el periodo de escolarizaci\u00f3n impuesta por la Iglesia cat\u00f3lica. En esta oportunidad, M\u00f3nica, documentadora de la lengua inga, se desplaz\u00f3 hasta la vereda Muchivioy para recoger el testimonio de Margarita Jajoy sobre las dificultades que enfrent\u00f3 para asistir a la escuela durante su infancia y el papel de la instrucci\u00f3n religiosa en la educaci\u00f3n. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Pueblo Inga Lengua inga Memoria ancestral Testimonios de los mayores Escolarizaci\u00f3n ind\u00edgena Historia comunitaria Tradici\u00f3n oral Documentaci\u00f3n ling\u00fc\u00edstica Preservaci\u00f3n cultural Pervivencia ind\u00edgena https://www.youtube.com/watch?v=yLlyjt2OnqM&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=5"
     },
     {
       "id": "somos-diversidad-linguistica-28",
       "row": 28,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Cápsula de video El tejido tsombiasb",
+      "title": "C\u00e1psula de video El tejido tsombiasb",
       "type": "Video",
-      "description": "En la vereda Tamabioy, en el municipio de Sibundoy, el equipo de documentalistas kamëntšá visitó a la mamita Luz María Victoria Chicunque para conocer más sobre el proceso de tejido del tsombiash (faja o ceñidor femenino) desde su niñez.\n\nEn su relato cuenta cómo empezó tejiendo las primeras líneas y, posteriormente, las labores (patrones o dibujos con símbolos). Cada labor tiene su nombre y significado, representando creencias del territorio, así como deidades naturales: el sol (Shinÿ️), la luna (Juashcón) y las estrellas (Shinÿinÿantem), además de elementos cotidianos como el canasto (sbarëk), utilizado para recolectar semillas, alimentos y frutos del jajañ (chagra).",
+      "description": "En la vereda Tamabioy, en el municipio de Sibundoy, el equipo de documentalistas kam\u00ebnt\u0161\u00e1 visit\u00f3 a la mamita Luz Mar\u00eda Victoria Chicunque para conocer m\u00e1s sobre el proceso de tejido del tsombiash (faja o ce\u00f1idor femenino) desde su ni\u00f1ez.\n\nEn su relato cuenta c\u00f3mo empez\u00f3 tejiendo las primeras l\u00edneas y, posteriormente, las labores (patrones o dibujos con s\u00edmbolos). Cada labor tiene su nombre y significado, representando creencias del territorio, as\u00ed como deidades naturales: el sol (Shin\u00ff\ufe0f), la luna (Juashc\u00f3n) y las estrellas (Shin\u00ffin\u00ffantem), adem\u00e1s de elementos cotidianos como el canasto (sbar\u00ebk), utilizado para recolectar semillas, alimentos y frutos del jaja\u00f1 (chagra).",
       "keywords": [
         "Pueblo inga",
         "Lengua inga",
         "Memoria ancestral",
-        "Escolarización indígena",
-        "Tradición oral",
-        "Documentación lingüística",
+        "Escolarizaci\u00f3n ind\u00edgena",
+        "Tradici\u00f3n oral",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
         "Pervivencia cultural"
       ],
       "link": "https://www.youtube.com/watch?v=Kq3eD4zJjWE&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=4",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Cápsula de video El tejido tsombiasb Video En la vereda Tamabioy, en el municipio de Sibundoy, el equipo de documentalistas kamëntšá visitó a la mamita Luz María Victoria Chicunque para conocer más sobre el proceso de tejido del tsombiash (faja o ceñidor femenino) desde su niñez. En su relato cuenta cómo empezó tejiendo las primeras líneas y, posteriormente, las labores (patrones o dibujos con símbolos). Cada labor tiene su nombre y significado, representando creencias del territorio, así como deidades naturales: el sol (Shinÿ️), la luna (Juashcón) y las estrellas (Shinÿinÿantem), además de elementos cotidianos como el canasto (sbarëk), utilizado para recolectar semillas, alimentos y frutos del jajañ (chagra). Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Pueblo inga Lengua inga Memoria ancestral Escolarización indígena Tradición oral Documentación lingüística Pervivencia cultural https://www.youtube.com/watch?v=Kq3eD4zJjWE&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=4"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo C\u00e1psula de video El tejido tsombiasb Video En la vereda Tamabioy, en el municipio de Sibundoy, el equipo de documentalistas kam\u00ebnt\u0161\u00e1 visit\u00f3 a la mamita Luz Mar\u00eda Victoria Chicunque para conocer m\u00e1s sobre el proceso de tejido del tsombiash (faja o ce\u00f1idor femenino) desde su ni\u00f1ez. En su relato cuenta c\u00f3mo empez\u00f3 tejiendo las primeras l\u00edneas y, posteriormente, las labores (patrones o dibujos con s\u00edmbolos). Cada labor tiene su nombre y significado, representando creencias del territorio, as\u00ed como deidades naturales: el sol (Shin\u00ff\ufe0f), la luna (Juashc\u00f3n) y las estrellas (Shin\u00ffin\u00ffantem), adem\u00e1s de elementos cotidianos como el canasto (sbar\u00ebk), utilizado para recolectar semillas, alimentos y frutos del jaja\u00f1 (chagra). Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Pueblo inga Lengua inga Memoria ancestral Escolarizaci\u00f3n ind\u00edgena Tradici\u00f3n oral Documentaci\u00f3n ling\u00fc\u00edstica Pervivencia cultural https://www.youtube.com/watch?v=Kq3eD4zJjWE&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=4"
     },
     {
       "id": "somos-diversidad-linguistica-29",
       "row": 29,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Cápsula de video Cantos y arrullos para no olvidar la palabra",
+      "title": "C\u00e1psula de video Cantos y arrullos para no olvidar la palabra",
       "type": "Video",
-      "description": "En este video vemos y escuchamos a la abuela Genoveva, partera y sabedora de las plantas y de los bailes tradicionales de los murui.\n\nEmocionada por poder conversar con alguien más en su lengua, la abuela se unió al proceso de documentación que adelanta Luz Dary Flórez, también murui, en Leticia, Amazonas. En el encuentro, interpretó un canto y un arrullo para dormir a los niños en su lengua.",
+      "description": "En este video vemos y escuchamos a la abuela Genoveva, partera y sabedora de las plantas y de los bailes tradicionales de los murui.\n\nEmocionada por poder conversar con alguien m\u00e1s en su lengua, la abuela se uni\u00f3 al proceso de documentaci\u00f3n que adelanta Luz Dary Fl\u00f3rez, tambi\u00e9n murui, en Leticia, Amazonas. En el encuentro, interpret\u00f3 un canto y un arrullo para dormir a los ni\u00f1os en su lengua.",
       "keywords": [
         "Pueblo murui",
         "Lengua murui",
         "Cantos tradicionales",
         "Arrullos ancestrales",
         "Memoria ancestral",
-        "Sabiduría de las abuelas",
-        "Cosmovisión indígena",
-        "Tradición oral",
-        "Documentación lingüística",
+        "Sabidur\u00eda de las abuelas",
+        "Cosmovisi\u00f3n ind\u00edgena",
+        "Tradici\u00f3n oral",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
         "Pervivencia cultural"
       ],
       "link": "https://www.youtube.com/watch?v=8vcYGrB_hFg&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=3",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Cápsula de video Cantos y arrullos para no olvidar la palabra Video En este video vemos y escuchamos a la abuela Genoveva, partera y sabedora de las plantas y de los bailes tradicionales de los murui. Emocionada por poder conversar con alguien más en su lengua, la abuela se unió al proceso de documentación que adelanta Luz Dary Flórez, también murui, en Leticia, Amazonas. En el encuentro, interpretó un canto y un arrullo para dormir a los niños en su lengua. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Pueblo murui Lengua murui Cantos tradicionales Arrullos ancestrales Memoria ancestral Sabiduría de las abuelas Cosmovisión indígena Tradición oral Documentación lingüística Pervivencia cultural https://www.youtube.com/watch?v=8vcYGrB_hFg&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=3"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo C\u00e1psula de video Cantos y arrullos para no olvidar la palabra Video En este video vemos y escuchamos a la abuela Genoveva, partera y sabedora de las plantas y de los bailes tradicionales de los murui. Emocionada por poder conversar con alguien m\u00e1s en su lengua, la abuela se uni\u00f3 al proceso de documentaci\u00f3n que adelanta Luz Dary Fl\u00f3rez, tambi\u00e9n murui, en Leticia, Amazonas. En el encuentro, interpret\u00f3 un canto y un arrullo para dormir a los ni\u00f1os en su lengua. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Pueblo murui Lengua murui Cantos tradicionales Arrullos ancestrales Memoria ancestral Sabidur\u00eda de las abuelas Cosmovisi\u00f3n ind\u00edgena Tradici\u00f3n oral Documentaci\u00f3n ling\u00fc\u00edstica Pervivencia cultural https://www.youtube.com/watch?v=8vcYGrB_hFg&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=3"
     },
     {
       "id": "somos-diversidad-linguistica-30",
       "row": 30,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Cápsula de video En vida, una canción en lengua kamëntšá",
+      "title": "C\u00e1psula de video En vida, una canci\u00f3n en lengua kam\u00ebnt\u0161\u00e1",
       "type": "Video",
-      "description": "Con el deseo de documentar su idioma y las prácticas cultuales de su pueblo, María Antonia Narváez Agreda, documentadora de la lengua kamëntšá, se reunió con batá Eufracia Agreda Miticanoy, en el municipio de Sibundoy (Putumayo), para registrar una canción de su comunidad.\n\nEste canto habla sobre el compartir, el cuidado y la importancia de disfrutar y divertirse, siempre con prudencia para evitar cualquier problema de salud.",
+      "description": "Con el deseo de documentar su idioma y las pr\u00e1cticas cultuales de su pueblo, Mar\u00eda Antonia Narv\u00e1ez Agreda, documentadora de la lengua kam\u00ebnt\u0161\u00e1, se reuni\u00f3 con bat\u00e1 Eufracia Agreda Miticanoy, en el municipio de Sibundoy (Putumayo), para registrar una canci\u00f3n de su comunidad.\n\nEste canto habla sobre el compartir, el cuidado y la importancia de disfrutar y divertirse, siempre con prudencia para evitar cualquier problema de salud.",
       "keywords": [
-        "Kamëntšá",
-        "Lengua kamëntšá",
+        "Kam\u00ebnt\u0161\u00e1",
+        "Lengua kam\u00ebnt\u0161\u00e1",
         "Cantos tradicionales",
         "Memoria ancestral",
-        "Sabiduría de las mayores",
-        "Cosmovisión indígena",
-        "Tradición oral",
-        "Documentación lingüística",
+        "Sabidur\u00eda de las mayores",
+        "Cosmovisi\u00f3n ind\u00edgena",
+        "Tradici\u00f3n oral",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
         "Fortalecimiento cultural",
         "Pervivencia cultural"
       ],
       "link": "https://www.youtube.com/watch?v=pGvc3CZhRAo&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=2",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Cápsula de video En vida, una canción en lengua kamëntšá Video Con el deseo de documentar su idioma y las prácticas cultuales de su pueblo, María Antonia Narváez Agreda, documentadora de la lengua kamëntšá, se reunió con batá Eufracia Agreda Miticanoy, en el municipio de Sibundoy (Putumayo), para registrar una canción de su comunidad. Este canto habla sobre el compartir, el cuidado y la importancia de disfrutar y divertirse, siempre con prudencia para evitar cualquier problema de salud. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Kamëntšá Lengua kamëntšá Cantos tradicionales Memoria ancestral Sabiduría de las mayores Cosmovisión indígena Tradición oral Documentación lingüística Fortalecimiento cultural Pervivencia cultural https://www.youtube.com/watch?v=pGvc3CZhRAo&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=2"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo C\u00e1psula de video En vida, una canci\u00f3n en lengua kam\u00ebnt\u0161\u00e1 Video Con el deseo de documentar su idioma y las pr\u00e1cticas cultuales de su pueblo, Mar\u00eda Antonia Narv\u00e1ez Agreda, documentadora de la lengua kam\u00ebnt\u0161\u00e1, se reuni\u00f3 con bat\u00e1 Eufracia Agreda Miticanoy, en el municipio de Sibundoy (Putumayo), para registrar una canci\u00f3n de su comunidad. Este canto habla sobre el compartir, el cuidado y la importancia de disfrutar y divertirse, siempre con prudencia para evitar cualquier problema de salud. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Kam\u00ebnt\u0161\u00e1 Lengua kam\u00ebnt\u0161\u00e1 Cantos tradicionales Memoria ancestral Sabidur\u00eda de las mayores Cosmovisi\u00f3n ind\u00edgena Tradici\u00f3n oral Documentaci\u00f3n ling\u00fc\u00edstica Fortalecimiento cultural Pervivencia cultural https://www.youtube.com/watch?v=pGvc3CZhRAo&list=PLddip9xtzY_zaOdYNgfcftmyz7TeOqRCB&index=2"
     },
     {
       "id": "somos-diversidad-linguistica-31",
       "row": 31,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
       "title": "Repositorio de Lenguas Nativas de Colombia",
       "type": "Repositorio",
-      "description": "Repositorio de Lenguas Nativas de Colombia del Instituto Caro y Cuervo\n\nEn el marco de la Feria Internacional del Libro de Bogotá (FILBo) 2026, el Instituto Caro y Cuervo presenta el Repositorio de Lenguas Nativas de Colombia, un acervo digital que resguardará las voces, cantos, narrativas orales y saberes ancestrales de comunidades indígenas de distintos lugares del país. Se trata del primer repositorio que busca recopilar materiales de todas las lenguas habladas en Colombia, constituyéndose en una apuesta sin precedentes por la preservación y visibilización de la diversidad lingüística nacional.\n\nEl repositorio es uno de los resultados del Programa de Documentación de Lenguas Nativas, una iniciativa que en 2026 avanza en el registro audiovisual y sonoro de quince lenguas: miraña, inga, kamëntsá, murui, cacua, nukak, nasa yuwe, namui wam, tatuyo, barasano, wayuunaiki, dʉmʉna, kankuamo, embera y mapayerri, junto con las prácticas culturales y los saberes que las habitan. Hasta la fecha, este trabajo ha producido más de 130 horas de grabación, 50 productos audiovisuales que incluyen palabras, frases, narrativas y canciones, y el registro de entre 100 y 300 términos por lengua en un software especializado para la construcción de diccionarios.\n\nEste repositorio también se distingue por ser el primero construido con el liderazgo de miembros de comunidades indígenas y bajo principios de autonomía en la gobernanza de los datos. Son los propios documentadores quienes no solo lideran los procesos en sus territorios, sino que además alimentan de manera continua este acervo, garantizando que los contenidos respondan a sus perspectivas, necesidades y formas de transmisión del conocimiento.\n\nLos contenidos del repositorio cuentan con distintos niveles de acceso definidos por los propios miembros de las comunidades. Algunos estarán disponibles para consulta abierta de toda la ciudadanía, mientras que otros serán de acceso restringido para integrantes de los pueblos e investigadores, en respeto de su autonomía sobre la circulación de estos saberes. En este sentido, el repositorio ha sido concebido desde su origen como una plataforma accesible para el público general, que trasciende el ámbito académico y promueve un acercamiento amplio, respetuoso y significativo a las lenguas y culturas del país.\n\nEste archivo es posible gracias al trabajo de los documentadores indígenas Elio Miraña, Mónica Jansasoy, María Antonia Narváez, Luz Dary Flórez, Marina López, Andersson Causaya, Leonel Cabiyarí, Jesús López y Leonel Vega, quienes lideran los procesos en sus territorios, con el acompañamiento de las investigadoras del Instituto Caro y Cuervo Yaty Urquijo y Katherine Bolaños.\n\nEl repositorio es un proyecto vivo, en permanente construcción, que crecerá de manera progresiva a medida que los documentadores continúen con su labor en sus territorios. Inicialmente contará con los contenidos documentados en 2025, sobre las lenguas cacua, nukak, inga, miraña, kamëntsá, murui, nasa yuwe y namui wam, y, a lo largo de este año, se irá complementando con archivos de las otras lenguas que están siendo documentadas. Este repositorio tiene como objetivo abarcar todas las 65 lenguas indígenas del país, así como las dos lenguas criollas y el romaní.\n\nEl Repositorio de Lenguas Nativas de Colombia es una invitación abierta a escuchar, conocer y reconocer las múltiples formas en que este país nombra el mundo. Es, además, una apuesta por preservar estos conocimientos para las generaciones venideras, de modo que puedan encontrar en estos materiales un punto de encuentro consigo mismas y con sus territorios.\n\nEl repositorio puede consultarse en repositoriolenguas.caroycuervo.gov.co.",
+      "description": "Repositorio de Lenguas Nativas de Colombia del Instituto Caro y Cuervo\n\nEn el marco de la Feria Internacional del Libro de Bogot\u00e1 (FILBo) 2026, el Instituto Caro y Cuervo presenta el Repositorio de Lenguas Nativas de Colombia, un acervo digital que resguardar\u00e1 las voces, cantos, narrativas orales y saberes ancestrales de comunidades ind\u00edgenas de distintos lugares del pa\u00eds. Se trata del primer repositorio que busca recopilar materiales de todas las lenguas habladas en Colombia, constituy\u00e9ndose en una apuesta sin precedentes por la preservaci\u00f3n y visibilizaci\u00f3n de la diversidad ling\u00fc\u00edstica nacional.\n\nEl repositorio es uno de los resultados del Programa de Documentaci\u00f3n de Lenguas Nativas, una iniciativa que en 2026 avanza en el registro audiovisual y sonoro de quince lenguas: mira\u00f1a, inga, kam\u00ebnts\u00e1, murui, cacua, nukak, nasa yuwe, namui wam, tatuyo, barasano, wayuunaiki, d\u0289m\u0289na, kankuamo, embera y mapayerri, junto con las pr\u00e1cticas culturales y los saberes que las habitan. Hasta la fecha, este trabajo ha producido m\u00e1s de 130 horas de grabaci\u00f3n, 50 productos audiovisuales que incluyen palabras, frases, narrativas y canciones, y el registro de entre 100 y 300 t\u00e9rminos por lengua en un software especializado para la construcci\u00f3n de diccionarios.\n\nEste repositorio tambi\u00e9n se distingue por ser el primero construido con el liderazgo de miembros de comunidades ind\u00edgenas y bajo principios de autonom\u00eda en la gobernanza de los datos. Son los propios documentadores quienes no solo lideran los procesos en sus territorios, sino que adem\u00e1s alimentan de manera continua este acervo, garantizando que los contenidos respondan a sus perspectivas, necesidades y formas de transmisi\u00f3n del conocimiento.\n\nLos contenidos del repositorio cuentan con distintos niveles de acceso definidos por los propios miembros de las comunidades. Algunos estar\u00e1n disponibles para consulta abierta de toda la ciudadan\u00eda, mientras que otros ser\u00e1n de acceso restringido para integrantes de los pueblos e investigadores, en respeto de su autonom\u00eda sobre la circulaci\u00f3n de estos saberes. En este sentido, el repositorio ha sido concebido desde su origen como una plataforma accesible para el p\u00fablico general, que trasciende el \u00e1mbito acad\u00e9mico y promueve un acercamiento amplio, respetuoso y significativo a las lenguas y culturas del pa\u00eds.\n\nEste archivo es posible gracias al trabajo de los documentadores ind\u00edgenas Elio Mira\u00f1a, M\u00f3nica Jansasoy, Mar\u00eda Antonia Narv\u00e1ez, Luz Dary Fl\u00f3rez, Marina L\u00f3pez, Andersson Causaya, Leonel Cabiyar\u00ed, Jes\u00fas L\u00f3pez y Leonel Vega, quienes lideran los procesos en sus territorios, con el acompa\u00f1amiento de las investigadoras del Instituto Caro y Cuervo Yaty Urquijo y Katherine Bola\u00f1os.\n\nEl repositorio es un proyecto vivo, en permanente construcci\u00f3n, que crecer\u00e1 de manera progresiva a medida que los documentadores contin\u00faen con su labor en sus territorios. Inicialmente contar\u00e1 con los contenidos documentados en 2025, sobre las lenguas cacua, nukak, inga, mira\u00f1a, kam\u00ebnts\u00e1, murui, nasa yuwe y namui wam, y, a lo largo de este a\u00f1o, se ir\u00e1 complementando con archivos de las otras lenguas que est\u00e1n siendo documentadas. Este repositorio tiene como objetivo abarcar todas las 65 lenguas ind\u00edgenas del pa\u00eds, as\u00ed como las dos lenguas criollas y el roman\u00ed.\n\nEl Repositorio de Lenguas Nativas de Colombia es una invitaci\u00f3n abierta a escuchar, conocer y reconocer las m\u00faltiples formas en que este pa\u00eds nombra el mundo. Es, adem\u00e1s, una apuesta por preservar estos conocimientos para las generaciones venideras, de modo que puedan encontrar en estos materiales un punto de encuentro consigo mismas y con sus territorios.\n\nEl repositorio puede consultarse en repositoriolenguas.caroycuervo.gov.co.",
       "keywords": [
         "Repositorio de Lenguas Nativas",
         "Lenguas nativas",
-        "Diversidad lingüística",
-        "Patrimonio lingüístico",
-        "Preservación lingüística",
-        "Comunidades indígenas",
+        "Diversidad ling\u00fc\u00edstica",
+        "Patrimonio ling\u00fc\u00edstico",
+        "Preservaci\u00f3n ling\u00fc\u00edstica",
+        "Comunidades ind\u00edgenas",
         "Saberes ancestrales",
-        "Documentación de Lenguas Nativas",
+        "Documentaci\u00f3n de Lenguas Nativas",
         "Repositorio digital",
         "Salvaguardia cultural",
-        "Revitalización lingüística"
+        "Revitalizaci\u00f3n ling\u00fc\u00edstica"
       ],
       "link": "",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Repositorio de Lenguas Nativas de Colombia Repositorio Repositorio de Lenguas Nativas de Colombia del Instituto Caro y Cuervo En el marco de la Feria Internacional del Libro de Bogotá (FILBo) 2026, el Instituto Caro y Cuervo presenta el Repositorio de Lenguas Nativas de Colombia, un acervo digital que resguardará las voces, cantos, narrativas orales y saberes ancestrales de comunidades indígenas de distintos lugares del país. Se trata del primer repositorio que busca recopilar materiales de todas las lenguas habladas en Colombia, constituyéndose en una apuesta sin precedentes por la preservación y visibilización de la diversidad lingüística nacional. El repositorio es uno de los resultados del Programa de Documentación de Lenguas Nativas, una iniciativa que en 2026 avanza en el registro audiovisual y sonoro de quince lenguas: miraña, inga, kamëntsá, murui, cacua, nukak, nasa yuwe, namui wam, tatuyo, barasano, wayuunaiki, dʉmʉna, kankuamo, embera y mapayerri, junto con las prácticas culturales y los saberes que las habitan. Hasta la fecha, este trabajo ha producido más de 130 horas de grabación, 50 productos audiovisuales que incluyen palabras, frases, narrativas y canciones, y el registro de entre 100 y 300 términos por lengua en un software especializado para la construcción de diccionarios. Este repositorio también se distingue por ser el primero construido con el liderazgo de miembros de comunidades indígenas y bajo principios de autonomía en la gobernanza de los datos. Son los propios documentadores quienes no solo lideran los procesos en sus territorios, sino que además alimentan de manera continua este acervo, garantizando que los contenidos respondan a sus perspectivas, necesidades y formas de transmisión del conocimiento. Los contenidos del repositorio cuentan con distintos niveles de acceso definidos por los propios miembros de las comunidades. Algunos estarán disponibles para consulta abierta de toda la ciudadanía, mientras que otros serán de acceso restringido para integrantes de los pueblos e investigadores, en respeto de su autonomía sobre la circulación de estos saberes. En este sentido, el repositorio ha sido concebido desde su origen como una plataforma accesible para el público general, que trasciende el ámbito académico y promueve un acercamiento amplio, respetuoso y significativo a las lenguas y culturas del país. Este archivo es posible gracias al trabajo de los documentadores indígenas Elio Miraña, Mónica Jansasoy, María Antonia Narváez, Luz Dary Flórez, Marina López, Andersson Causaya, Leonel Cabiyarí, Jesús López y Leonel Vega, quienes lideran los procesos en sus territorios, con el acompañamiento de las investigadoras del Instituto Caro y Cuervo Yaty Urquijo y Katherine Bolaños. El repositorio es un proyecto vivo, en permanente construcción, que crecerá de manera progresiva a medida que los documentadores continúen con su labor en sus territorios. Inicialmente contará con los contenidos documentados en 2025, sobre las lenguas cacua, nukak, inga, miraña, kamëntsá, murui, nasa yuwe y namui wam, y, a lo largo de este año, se irá complementando con archivos de las otras lenguas que están siendo documentadas. Este repositorio tiene como objetivo abarcar todas las 65 lenguas indígenas del país, así como las dos lenguas criollas y el romaní. El Repositorio de Lenguas Nativas de Colombia es una invitación abierta a escuchar, conocer y reconocer las múltiples formas en que este país nombra el mundo. Es, además, una apuesta por preservar estos conocimientos para las generaciones venideras, de modo que puedan encontrar en estos materiales un punto de encuentro consigo mismas y con sus territorios. El repositorio puede consultarse en repositoriolenguas.caroycuervo.gov.co. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Repositorio de Lenguas Nativas Lenguas nativas Diversidad lingüística Patrimonio lingüístico Preservación lingüística Comunidades indígenas Saberes ancestrales Documentación de Lenguas Nativas Repositorio digital Salvaguardia cultural Revitalización lingüística repositoriolenguas.caroycuervo.gov.co (actualmente el enlace no está activo, pero funcionará en los próximos días) https://drive.google.com/drive/folders/1DW44cLMa4u01SQuZrbJuKV3n9bxx0PC3?usp=drive_link"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo Repositorio de Lenguas Nativas de Colombia Repositorio Repositorio de Lenguas Nativas de Colombia del Instituto Caro y Cuervo En el marco de la Feria Internacional del Libro de Bogot\u00e1 (FILBo) 2026, el Instituto Caro y Cuervo presenta el Repositorio de Lenguas Nativas de Colombia, un acervo digital que resguardar\u00e1 las voces, cantos, narrativas orales y saberes ancestrales de comunidades ind\u00edgenas de distintos lugares del pa\u00eds. Se trata del primer repositorio que busca recopilar materiales de todas las lenguas habladas en Colombia, constituy\u00e9ndose en una apuesta sin precedentes por la preservaci\u00f3n y visibilizaci\u00f3n de la diversidad ling\u00fc\u00edstica nacional. El repositorio es uno de los resultados del Programa de Documentaci\u00f3n de Lenguas Nativas, una iniciativa que en 2026 avanza en el registro audiovisual y sonoro de quince lenguas: mira\u00f1a, inga, kam\u00ebnts\u00e1, murui, cacua, nukak, nasa yuwe, namui wam, tatuyo, barasano, wayuunaiki, d\u0289m\u0289na, kankuamo, embera y mapayerri, junto con las pr\u00e1cticas culturales y los saberes que las habitan. Hasta la fecha, este trabajo ha producido m\u00e1s de 130 horas de grabaci\u00f3n, 50 productos audiovisuales que incluyen palabras, frases, narrativas y canciones, y el registro de entre 100 y 300 t\u00e9rminos por lengua en un software especializado para la construcci\u00f3n de diccionarios. Este repositorio tambi\u00e9n se distingue por ser el primero construido con el liderazgo de miembros de comunidades ind\u00edgenas y bajo principios de autonom\u00eda en la gobernanza de los datos. Son los propios documentadores quienes no solo lideran los procesos en sus territorios, sino que adem\u00e1s alimentan de manera continua este acervo, garantizando que los contenidos respondan a sus perspectivas, necesidades y formas de transmisi\u00f3n del conocimiento. Los contenidos del repositorio cuentan con distintos niveles de acceso definidos por los propios miembros de las comunidades. Algunos estar\u00e1n disponibles para consulta abierta de toda la ciudadan\u00eda, mientras que otros ser\u00e1n de acceso restringido para integrantes de los pueblos e investigadores, en respeto de su autonom\u00eda sobre la circulaci\u00f3n de estos saberes. En este sentido, el repositorio ha sido concebido desde su origen como una plataforma accesible para el p\u00fablico general, que trasciende el \u00e1mbito acad\u00e9mico y promueve un acercamiento amplio, respetuoso y significativo a las lenguas y culturas del pa\u00eds. Este archivo es posible gracias al trabajo de los documentadores ind\u00edgenas Elio Mira\u00f1a, M\u00f3nica Jansasoy, Mar\u00eda Antonia Narv\u00e1ez, Luz Dary Fl\u00f3rez, Marina L\u00f3pez, Andersson Causaya, Leonel Cabiyar\u00ed, Jes\u00fas L\u00f3pez y Leonel Vega, quienes lideran los procesos en sus territorios, con el acompa\u00f1amiento de las investigadoras del Instituto Caro y Cuervo Yaty Urquijo y Katherine Bola\u00f1os. El repositorio es un proyecto vivo, en permanente construcci\u00f3n, que crecer\u00e1 de manera progresiva a medida que los documentadores contin\u00faen con su labor en sus territorios. Inicialmente contar\u00e1 con los contenidos documentados en 2025, sobre las lenguas cacua, nukak, inga, mira\u00f1a, kam\u00ebnts\u00e1, murui, nasa yuwe y namui wam, y, a lo largo de este a\u00f1o, se ir\u00e1 complementando con archivos de las otras lenguas que est\u00e1n siendo documentadas. Este repositorio tiene como objetivo abarcar todas las 65 lenguas ind\u00edgenas del pa\u00eds, as\u00ed como las dos lenguas criollas y el roman\u00ed. El Repositorio de Lenguas Nativas de Colombia es una invitaci\u00f3n abierta a escuchar, conocer y reconocer las m\u00faltiples formas en que este pa\u00eds nombra el mundo. Es, adem\u00e1s, una apuesta por preservar estos conocimientos para las generaciones venideras, de modo que puedan encontrar en estos materiales un punto de encuentro consigo mismas y con sus territorios. El repositorio puede consultarse en repositoriolenguas.caroycuervo.gov.co. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Repositorio de Lenguas Nativas Lenguas nativas Diversidad ling\u00fc\u00edstica Patrimonio ling\u00fc\u00edstico Preservaci\u00f3n ling\u00fc\u00edstica Comunidades ind\u00edgenas Saberes ancestrales Documentaci\u00f3n de Lenguas Nativas Repositorio digital Salvaguardia cultural Revitalizaci\u00f3n ling\u00fc\u00edstica repositoriolenguas.caroycuervo.gov.co (actualmente el enlace no est\u00e1 activo, pero funcionar\u00e1 en los pr\u00f3ximos d\u00edas) https://drive.google.com/drive/folders/1DW44cLMa4u01SQuZrbJuKV3n9bxx0PC3?usp=drive_link"
     },
     {
       "id": "somos-diversidad-linguistica-32",
       "row": 32,
-      "theme": "Somos diversidad lingüística",
+      "theme": "Somos diversidad ling\u00fc\u00edstica",
       "theme_slug": "somos-diversidad-linguistica",
       "responsable": "Instituto Caro y Cuervo",
-      "title": "Actualización del Mapa de lenguas nativas de Colombia",
+      "title": "Actualizaci\u00f3n del Mapa de lenguas nativas de Colombia",
       "type": "Programa",
-      "description": "Integrantes de pueblos indígenas de Colombia, en articulación con el Instituto Caro y Cuervo, la Dirección de Poblaciones del Ministerio de las Culturas, las Artes y los Saberes, Amazon Conservation Team, el Instituto Geográfico Agustín Codazzi y el Instituto Colombiano de Antropología e Historia, avanzan en la actualización del Mapa de Lenguas Nativas de Colombia.\n\nEste proceso busca consolidar un mapa concebido como una herramienta viva, en constante construcción y transformación, capaz de dar cuenta de la diversidad lingüística del país desde una perspectiva amplia e incluyente. Más allá de ubicar geográficamente las lenguas, la iniciativa pretende visibilizar a los pueblos desde sus propias formas de nombrarse, reconocer la riqueza de sus prácticas culturales y ofrecer una comprensión más profunda sobre dónde se hablan las lenguas y cuál es su situación actual.\n\nEl Mapa de Lenguas Nativas se proyecta como un instrumento clave para el reconocimiento, la salvaguardia y la valoración del patrimonio lingüístico de Colombia, así como un punto de encuentro entre comunidades, instituciones y saberes que contribuye al fortalecimiento de la diversidad cultural del país.",
+      "description": "Integrantes de pueblos ind\u00edgenas de Colombia, en articulaci\u00f3n con el Instituto Caro y Cuervo, la Direcci\u00f3n de Poblaciones del Ministerio de las Culturas, las Artes y los Saberes, Amazon Conservation Team, el Instituto Geogr\u00e1fico Agust\u00edn Codazzi y el Instituto Colombiano de Antropolog\u00eda e Historia, avanzan en la actualizaci\u00f3n del Mapa de Lenguas Nativas de Colombia.\n\nEste proceso busca consolidar un mapa concebido como una herramienta viva, en constante construcci\u00f3n y transformaci\u00f3n, capaz de dar cuenta de la diversidad ling\u00fc\u00edstica del pa\u00eds desde una perspectiva amplia e incluyente. M\u00e1s all\u00e1 de ubicar geogr\u00e1ficamente las lenguas, la iniciativa pretende visibilizar a los pueblos desde sus propias formas de nombrarse, reconocer la riqueza de sus pr\u00e1cticas culturales y ofrecer una comprensi\u00f3n m\u00e1s profunda sobre d\u00f3nde se hablan las lenguas y cu\u00e1l es su situaci\u00f3n actual.\n\nEl Mapa de Lenguas Nativas se proyecta como un instrumento clave para el reconocimiento, la salvaguardia y la valoraci\u00f3n del patrimonio ling\u00fc\u00edstico de Colombia, as\u00ed como un punto de encuentro entre comunidades, instituciones y saberes que contribuye al fortalecimiento de la diversidad cultural del pa\u00eds.",
       "keywords": [
         "Mapa de lenguas",
-        "Documentación lingüística",
-        "Registro lingüístico",
-        "Salvaguardia lingüística",
-        "Preservación cultural",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
+        "Registro ling\u00fc\u00edstico",
+        "Salvaguardia ling\u00fc\u00edstica",
+        "Preservaci\u00f3n cultural",
         "Fortalecimiento cultural"
       ],
       "link": "https://www.caroycuervo.gov.co/desde-los-pueblos-con-los-pueblos-asi-avanzamos-en-la-actualizacion-del-mapa-de-lenguas-nativas-de-colombia/ https://www.flickr.com/photos/caroycuervo/albums/72177720331844010/",
       "asset_link": "",
-      "force_message": "Las lenguas indígenas viven en lo que decimos todos los días.\n\nNuestro español también tiene raíces indígenas.\n\nLa raíz indígena de nuestro español",
+      "force_message": "Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas.\n\nNuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas.\n\nLa ra\u00edz ind\u00edgena de nuestro espa\u00f1ol",
       "availability_note": "",
-      "search_text": "Somos diversidad lingüística Instituto Caro y Cuervo Actualización del Mapa de lenguas nativas de Colombia Programa Integrantes de pueblos indígenas de Colombia, en articulación con el Instituto Caro y Cuervo, la Dirección de Poblaciones del Ministerio de las Culturas, las Artes y los Saberes, Amazon Conservation Team, el Instituto Geográfico Agustín Codazzi y el Instituto Colombiano de Antropología e Historia, avanzan en la actualización del Mapa de Lenguas Nativas de Colombia. Este proceso busca consolidar un mapa concebido como una herramienta viva, en constante construcción y transformación, capaz de dar cuenta de la diversidad lingüística del país desde una perspectiva amplia e incluyente. Más allá de ubicar geográficamente las lenguas, la iniciativa pretende visibilizar a los pueblos desde sus propias formas de nombrarse, reconocer la riqueza de sus prácticas culturales y ofrecer una comprensión más profunda sobre dónde se hablan las lenguas y cuál es su situación actual. El Mapa de Lenguas Nativas se proyecta como un instrumento clave para el reconocimiento, la salvaguardia y la valoración del patrimonio lingüístico de Colombia, así como un punto de encuentro entre comunidades, instituciones y saberes que contribuye al fortalecimiento de la diversidad cultural del país. Las lenguas indígenas viven en lo que decimos todos los días. Nuestro español también tiene raíces indígenas. La raíz indígena de nuestro español Mapa de lenguas Documentación lingüística Registro lingüístico Salvaguardia lingüística Preservación cultural Fortalecimiento cultural https://www.caroycuervo.gov.co/desde-los-pueblos-con-los-pueblos-asi-avanzamos-en-la-actualizacion-del-mapa-de-lenguas-nativas-de-colombia/ https://www.flickr.com/photos/caroycuervo/albums/72177720331844010/"
+      "search_text": "Somos diversidad ling\u00fc\u00edstica Instituto Caro y Cuervo Actualizaci\u00f3n del Mapa de lenguas nativas de Colombia Programa Integrantes de pueblos ind\u00edgenas de Colombia, en articulaci\u00f3n con el Instituto Caro y Cuervo, la Direcci\u00f3n de Poblaciones del Ministerio de las Culturas, las Artes y los Saberes, Amazon Conservation Team, el Instituto Geogr\u00e1fico Agust\u00edn Codazzi y el Instituto Colombiano de Antropolog\u00eda e Historia, avanzan en la actualizaci\u00f3n del Mapa de Lenguas Nativas de Colombia. Este proceso busca consolidar un mapa concebido como una herramienta viva, en constante construcci\u00f3n y transformaci\u00f3n, capaz de dar cuenta de la diversidad ling\u00fc\u00edstica del pa\u00eds desde una perspectiva amplia e incluyente. M\u00e1s all\u00e1 de ubicar geogr\u00e1ficamente las lenguas, la iniciativa pretende visibilizar a los pueblos desde sus propias formas de nombrarse, reconocer la riqueza de sus pr\u00e1cticas culturales y ofrecer una comprensi\u00f3n m\u00e1s profunda sobre d\u00f3nde se hablan las lenguas y cu\u00e1l es su situaci\u00f3n actual. El Mapa de Lenguas Nativas se proyecta como un instrumento clave para el reconocimiento, la salvaguardia y la valoraci\u00f3n del patrimonio ling\u00fc\u00edstico de Colombia, as\u00ed como un punto de encuentro entre comunidades, instituciones y saberes que contribuye al fortalecimiento de la diversidad cultural del pa\u00eds. Las lenguas ind\u00edgenas viven en lo que decimos todos los d\u00edas. Nuestro espa\u00f1ol tambi\u00e9n tiene ra\u00edces ind\u00edgenas. La ra\u00edz ind\u00edgena de nuestro espa\u00f1ol Mapa de lenguas Documentaci\u00f3n ling\u00fc\u00edstica Registro ling\u00fc\u00edstico Salvaguardia ling\u00fc\u00edstica Preservaci\u00f3n cultural Fortalecimiento cultural https://www.caroycuervo.gov.co/desde-los-pueblos-con-los-pueblos-asi-avanzamos-en-la-actualizacion-del-mapa-de-lenguas-nativas-de-colombia/ https://www.flickr.com/photos/caroycuervo/albums/72177720331844010/"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-33",
       "row": 33,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Cápsula de Video Yo quisiera vivir en el paraíso",
+      "title": "C\u00e1psula de Video Yo quisiera vivir en el para\u00edso",
       "type": "Video",
-      "description": "La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación.",
+      "description": "La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n.",
       "keywords": [
         "Vidas campesinas",
         "Cultura campesina",
         "Identidad rural",
-        "Narrativas de nación",
-        "Representación social",
+        "Narrativas de naci\u00f3n",
+        "Representaci\u00f3n social",
         "Diversidad cultural",
         "Diversidad regional",
-        "Inclusión",
+        "Inclusi\u00f3n",
         "Enfoque territorial",
-        "Investigación colaborativa",
-        "Participación comunitaria",
-        "Espacios de diálogo",
-        "Transformación cultural",
+        "Investigaci\u00f3n colaborativa",
+        "Participaci\u00f3n comunitaria",
+        "Espacios de di\u00e1logo",
+        "Transformaci\u00f3n cultural",
         "Memoria campesina",
-        "Prácticas culturales",
+        "Pr\u00e1cticas culturales",
         "Reconocimiento social",
-        "Música campesina"
+        "M\u00fasica campesina"
       ],
       "link": "https://www.youtube.com/shorts/DICSihgX_OU",
       "asset_link": "",
-      "force_message": "La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país!",
+      "force_message": "La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds!",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Cápsula de Video Yo quisiera vivir en el paraíso Video La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación. La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país! Vidas campesinas Cultura campesina Identidad rural Narrativas de nación Representación social Diversidad cultural Diversidad regional Inclusión Enfoque territorial Investigación colaborativa Participación comunitaria Espacios de diálogo Transformación cultural Memoria campesina Prácticas culturales Reconocimiento social Música campesina https://www.youtube.com/shorts/DICSihgX_OU"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH C\u00e1psula de Video Yo quisiera vivir en el para\u00edso Video La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n. La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds! Vidas campesinas Cultura campesina Identidad rural Narrativas de naci\u00f3n Representaci\u00f3n social Diversidad cultural Diversidad regional Inclusi\u00f3n Enfoque territorial Investigaci\u00f3n colaborativa Participaci\u00f3n comunitaria Espacios de di\u00e1logo Transformaci\u00f3n cultural Memoria campesina Pr\u00e1cticas culturales Reconocimiento social M\u00fasica campesina https://www.youtube.com/shorts/DICSihgX_OU"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-34",
       "row": 34,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Composición musical Somos Campesinos",
+      "title": "Composici\u00f3n musical Somos Campesinos",
       "type": "Sonoro",
-      "description": "La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta inicitiva busca incidir en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación.",
+      "description": "La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta inicitiva busca incidir en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n.",
       "keywords": [
         "Vidas campesinas",
         "Cultura campesina",
         "Identidad rural",
-        "Narrativas de nación",
-        "Representación cultural",
+        "Narrativas de naci\u00f3n",
+        "Representaci\u00f3n cultural",
         "Diversidad cultural",
         "Diversidad regional",
-        "Inclusión",
+        "Inclusi\u00f3n",
         "Enfoque territorial",
-        "Investigación colaborativa",
-        "Participación comunitaria",
-        "Espacios de diálogo",
-        "Transformación de narrativas",
+        "Investigaci\u00f3n colaborativa",
+        "Participaci\u00f3n comunitaria",
+        "Espacios de di\u00e1logo",
+        "Transformaci\u00f3n de narrativas",
         "Memoria campesina",
-        "Prácticas culturales",
+        "Pr\u00e1cticas culturales",
         "Reconocimiento social",
-        "Música campesina"
+        "M\u00fasica campesina"
       ],
       "link": "https://open.spotify.com/intl-es/track/5CdycWicFUq4jColTv8CBs?si=64536e13fa48463c&nd=1&dlsi=cec411540c2b4f74",
       "asset_link": "",
-      "force_message": "La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país!",
+      "force_message": "La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds!",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Composición musical Somos Campesinos Sonoro La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta inicitiva busca incidir en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación. La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país! Vidas campesinas Cultura campesina Identidad rural Narrativas de nación Representación cultural Diversidad cultural Diversidad regional Inclusión Enfoque territorial Investigación colaborativa Participación comunitaria Espacios de diálogo Transformación de narrativas Memoria campesina Prácticas culturales Reconocimiento social Música campesina https://open.spotify.com/intl-es/track/5CdycWicFUq4jColTv8CBs?si=64536e13fa48463c&nd=1&dlsi=cec411540c2b4f74"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Composici\u00f3n musical Somos Campesinos Sonoro La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta inicitiva busca incidir en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n. La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds! Vidas campesinas Cultura campesina Identidad rural Narrativas de naci\u00f3n Representaci\u00f3n cultural Diversidad cultural Diversidad regional Inclusi\u00f3n Enfoque territorial Investigaci\u00f3n colaborativa Participaci\u00f3n comunitaria Espacios de di\u00e1logo Transformaci\u00f3n de narrativas Memoria campesina Pr\u00e1cticas culturales Reconocimiento social M\u00fasica campesina https://open.spotify.com/intl-es/track/5CdycWicFUq4jColTv8CBs?si=64536e13fa48463c&nd=1&dlsi=cec411540c2b4f74"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-35",
       "row": 35,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Composición musical El tesoro",
+      "title": "Composici\u00f3n musical El tesoro",
       "type": "Sonoro",
-      "description": "La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación.",
+      "description": "La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n.",
       "keywords": [
         "Vidas campesinas",
         "Cultura campesina",
         "Identidad rural",
-        "Narrativas de nación",
-        "Representación cultural",
+        "Narrativas de naci\u00f3n",
+        "Representaci\u00f3n cultural",
         "Diversidad cultural",
         "Diversidad regional",
-        "Inclusión",
+        "Inclusi\u00f3n",
         "Enfoque territorial",
-        "Investigación colaborativa",
-        "Participación comunitaria",
-        "Espacios de diálogo",
-        "Transformación de narrativas",
+        "Investigaci\u00f3n colaborativa",
+        "Participaci\u00f3n comunitaria",
+        "Espacios de di\u00e1logo",
+        "Transformaci\u00f3n de narrativas",
         "Memoria campesina",
-        "Prácticas culturales",
+        "Pr\u00e1cticas culturales",
         "Reconocimiento social",
-        "Música campesina"
+        "M\u00fasica campesina"
       ],
       "link": "https://open.spotify.com/intl-es/track/64aulKuVu2F5dUXunHXez2?si=6b28115326f24df1&nd=1&dlsi=63a6f7c995914cbb",
       "asset_link": "",
-      "force_message": "La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país!",
+      "force_message": "La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds!",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Composición musical El tesoro Sonoro La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación. La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país! Vidas campesinas Cultura campesina Identidad rural Narrativas de nación Representación cultural Diversidad cultural Diversidad regional Inclusión Enfoque territorial Investigación colaborativa Participación comunitaria Espacios de diálogo Transformación de narrativas Memoria campesina Prácticas culturales Reconocimiento social Música campesina https://open.spotify.com/intl-es/track/64aulKuVu2F5dUXunHXez2?si=6b28115326f24df1&nd=1&dlsi=63a6f7c995914cbb"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Composici\u00f3n musical El tesoro Sonoro La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n. La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds! Vidas campesinas Cultura campesina Identidad rural Narrativas de naci\u00f3n Representaci\u00f3n cultural Diversidad cultural Diversidad regional Inclusi\u00f3n Enfoque territorial Investigaci\u00f3n colaborativa Participaci\u00f3n comunitaria Espacios de di\u00e1logo Transformaci\u00f3n de narrativas Memoria campesina Pr\u00e1cticas culturales Reconocimiento social M\u00fasica campesina https://open.spotify.com/intl-es/track/64aulKuVu2F5dUXunHXez2?si=6b28115326f24df1&nd=1&dlsi=63a6f7c995914cbb"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-36",
       "row": 36,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Composición musical Tonada del arcoiris",
+      "title": "Composici\u00f3n musical Tonada del arcoiris",
       "type": "Sonoro",
-      "description": "La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación.",
+      "description": "La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n.",
       "keywords": [
         "Vidas campesinas",
         "Cultura campesina",
         "Identidad rural",
-        "Narrativas de nación",
-        "Representación cultural",
+        "Narrativas de naci\u00f3n",
+        "Representaci\u00f3n cultural",
         "Diversidad cultural",
         "Diversidad regional",
-        "Inclusión",
+        "Inclusi\u00f3n",
         "Enfoque territorial",
-        "Investigación colaborativa",
-        "Participación comunitaria",
-        "Espacios de diálogo",
-        "Transformación de narrativas",
+        "Investigaci\u00f3n colaborativa",
+        "Participaci\u00f3n comunitaria",
+        "Espacios de di\u00e1logo",
+        "Transformaci\u00f3n de narrativas",
         "Memoria campesina",
-        "Prácticas culturales",
+        "Pr\u00e1cticas culturales",
         "Reconocimiento social",
-        "Música campesina"
+        "M\u00fasica campesina"
       ],
       "link": "https://open.spotify.com/intl-es/track/5W0b96rV74nne5rhtoukk8?si=ede9b48ddead49ff&nd=1&dlsi=06d4b015c4fb4c85",
       "asset_link": "",
-      "force_message": "La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país!",
+      "force_message": "La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds!",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Composición musical Tonada del arcoiris Sonoro La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación. La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país! Vidas campesinas Cultura campesina Identidad rural Narrativas de nación Representación cultural Diversidad cultural Diversidad regional Inclusión Enfoque territorial Investigación colaborativa Participación comunitaria Espacios de diálogo Transformación de narrativas Memoria campesina Prácticas culturales Reconocimiento social Música campesina https://open.spotify.com/intl-es/track/5W0b96rV74nne5rhtoukk8?si=ede9b48ddead49ff&nd=1&dlsi=06d4b015c4fb4c85"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Composici\u00f3n musical Tonada del arcoiris Sonoro La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n. La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds! Vidas campesinas Cultura campesina Identidad rural Narrativas de naci\u00f3n Representaci\u00f3n cultural Diversidad cultural Diversidad regional Inclusi\u00f3n Enfoque territorial Investigaci\u00f3n colaborativa Participaci\u00f3n comunitaria Espacios de di\u00e1logo Transformaci\u00f3n de narrativas Memoria campesina Pr\u00e1cticas culturales Reconocimiento social M\u00fasica campesina https://open.spotify.com/intl-es/track/5W0b96rV74nne5rhtoukk8?si=ede9b48ddead49ff&nd=1&dlsi=06d4b015c4fb4c85"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-37",
       "row": 37,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Composición musical Hay que sembrar",
+      "title": "Composici\u00f3n musical Hay que sembrar",
       "type": "Sonoro",
-      "description": "La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación",
+      "description": "La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n",
       "keywords": [
         "Vidas campesinas",
         "Cultura campesina",
         "Identidad rural",
-        "Narrativas de nación",
-        "Representación cultural",
+        "Narrativas de naci\u00f3n",
+        "Representaci\u00f3n cultural",
         "Diversidad cultural",
         "Diversidad regional",
-        "Inclusión",
+        "Inclusi\u00f3n",
         "Enfoque territorial",
-        "Investigación colaborativa",
-        "Participación comunitaria",
-        "Espacios de diálogo",
-        "Transformación de narrativas",
+        "Investigaci\u00f3n colaborativa",
+        "Participaci\u00f3n comunitaria",
+        "Espacios de di\u00e1logo",
+        "Transformaci\u00f3n de narrativas",
         "Memoria campesina",
-        "Prácticas culturales",
+        "Pr\u00e1cticas culturales",
         "Reconocimiento social",
-        "Música campesina"
+        "M\u00fasica campesina"
       ],
       "link": "https://open.spotify.com/intl-es/track/5CdycWicFUq4jColTv8CBs?si=64536e13fa48463c&nd=1&dlsi=92297bdebec44158",
       "asset_link": "",
-      "force_message": "La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país!",
+      "force_message": "La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds!",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Composición musical Hay que sembrar Sonoro La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país! Vidas campesinas Cultura campesina Identidad rural Narrativas de nación Representación cultural Diversidad cultural Diversidad regional Inclusión Enfoque territorial Investigación colaborativa Participación comunitaria Espacios de diálogo Transformación de narrativas Memoria campesina Prácticas culturales Reconocimiento social Música campesina https://open.spotify.com/intl-es/track/5CdycWicFUq4jColTv8CBs?si=64536e13fa48463c&nd=1&dlsi=92297bdebec44158"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Composici\u00f3n musical Hay que sembrar Sonoro La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds! Vidas campesinas Cultura campesina Identidad rural Narrativas de naci\u00f3n Representaci\u00f3n cultural Diversidad cultural Diversidad regional Inclusi\u00f3n Enfoque territorial Investigaci\u00f3n colaborativa Participaci\u00f3n comunitaria Espacios de di\u00e1logo Transformaci\u00f3n de narrativas Memoria campesina Pr\u00e1cticas culturales Reconocimiento social M\u00fasica campesina https://open.spotify.com/intl-es/track/5CdycWicFUq4jColTv8CBs?si=64536e13fa48463c&nd=1&dlsi=92297bdebec44158"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-38",
       "row": 38,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Composición musical Con zapatillas o botas",
+      "title": "Composici\u00f3n musical Con zapatillas o botas",
       "type": "Sonoro",
-      "description": "La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia, incidiendo en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación.",
+      "description": "La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia, incidiendo en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n.",
       "keywords": [
         "Vidas campesinas",
         "Cultura campesina",
         "Identidad rural",
-        "Narrativas de nación",
-        "Representación cultural",
+        "Narrativas de naci\u00f3n",
+        "Representaci\u00f3n cultural",
         "Diversidad cultural",
         "Diversidad regional",
-        "Inclusión",
+        "Inclusi\u00f3n",
         "Enfoque territorial",
-        "Investigación colaborativa",
-        "Participación comunitaria",
-        "Espacios de diálogo",
-        "Transformación de narrativas",
+        "Investigaci\u00f3n colaborativa",
+        "Participaci\u00f3n comunitaria",
+        "Espacios de di\u00e1logo",
+        "Transformaci\u00f3n de narrativas",
         "Memoria campesina",
-        "Prácticas culturales",
+        "Pr\u00e1cticas culturales",
         "Reconocimiento social",
-        "Música campesina"
+        "M\u00fasica campesina"
       ],
       "link": "https://open.spotify.com/intl-es/track/4ei8KDPBbRa5comqMkrt5r?si=a0033be3ff164b88",
       "asset_link": "",
-      "force_message": "La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país!",
+      "force_message": "La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds!",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Composición musical Con zapatillas o botas Sonoro La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia, incidiendo en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación. La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país! Vidas campesinas Cultura campesina Identidad rural Narrativas de nación Representación cultural Diversidad cultural Diversidad regional Inclusión Enfoque territorial Investigación colaborativa Participación comunitaria Espacios de diálogo Transformación de narrativas Memoria campesina Prácticas culturales Reconocimiento social Música campesina https://open.spotify.com/intl-es/track/4ei8KDPBbRa5comqMkrt5r?si=a0033be3ff164b88"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Composici\u00f3n musical Con zapatillas o botas Sonoro La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia, incidiendo en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n. La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds! Vidas campesinas Cultura campesina Identidad rural Narrativas de naci\u00f3n Representaci\u00f3n cultural Diversidad cultural Diversidad regional Inclusi\u00f3n Enfoque territorial Investigaci\u00f3n colaborativa Participaci\u00f3n comunitaria Espacios de di\u00e1logo Transformaci\u00f3n de narrativas Memoria campesina Pr\u00e1cticas culturales Reconocimiento social M\u00fasica campesina https://open.spotify.com/intl-es/track/4ei8KDPBbRa5comqMkrt5r?si=a0033be3ff164b88"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-39",
       "row": 39,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Composición musical Semillas del futuro",
+      "title": "Composici\u00f3n musical Semillas del futuro",
       "type": "Sonoro",
-      "description": "La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación.",
+      "description": "La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n.",
       "keywords": [
         "Vidas campesinas",
         "Cultura campesina",
         "Identidad rural",
-        "Narrativas de nación",
-        "Representación cultural",
+        "Narrativas de naci\u00f3n",
+        "Representaci\u00f3n cultural",
         "Diversidad cultural",
         "Diversidad regional",
-        "Inclusión",
+        "Inclusi\u00f3n",
         "Enfoque territorial",
-        "Investigación colaborativa",
-        "Participación comunitaria",
-        "Espacios de diálogo",
-        "Transformación de narrativas",
+        "Investigaci\u00f3n colaborativa",
+        "Participaci\u00f3n comunitaria",
+        "Espacios de di\u00e1logo",
+        "Transformaci\u00f3n de narrativas",
         "Memoria campesina",
-        "Prácticas culturales",
+        "Pr\u00e1cticas culturales",
         "Reconocimiento social",
-        "Música campesina"
+        "M\u00fasica campesina"
       ],
       "link": "https://open.spotify.com/intl-es/track/5W0b96rV74nne5rhtoukk8?si=73cac6b965584e92",
       "asset_link": "",
-      "force_message": "La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país!",
+      "force_message": "La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds!",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Composición musical Semillas del futuro Sonoro La música nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformación de las narrativas de nación sobre las formas de vida campesina, promoviendo una visión inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representación de las vidas campesinas a través de la investigación colaborativa, la generación de espacios de diálogo y participación. La música nos recuerda que Colombia es campesina. ¡Y así le cantan campesinas y campesinos a nuestro país! Vidas campesinas Cultura campesina Identidad rural Narrativas de nación Representación cultural Diversidad cultural Diversidad regional Inclusión Enfoque territorial Investigación colaborativa Participación comunitaria Espacios de diálogo Transformación de narrativas Memoria campesina Prácticas culturales Reconocimiento social Música campesina https://open.spotify.com/intl-es/track/5W0b96rV74nne5rhtoukk8?si=73cac6b965584e92"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Composici\u00f3n musical Semillas del futuro Sonoro La m\u00fasica nos recuerda que Colombia es campesina. Vidas campesinas es un proyecto que busca incidir en la transformaci\u00f3n de las narrativas de naci\u00f3n sobre las formas de vida campesina, promoviendo una visi\u00f3n inclusiva y respetuosa de la diversidad cultural y regional de Colombia. Esta iniciativa busca incidir en las formas de representaci\u00f3n de las vidas campesinas a trav\u00e9s de la investigaci\u00f3n colaborativa, la generaci\u00f3n de espacios de di\u00e1logo y participaci\u00f3n. La m\u00fasica nos recuerda que Colombia es campesina. \u00a1Y as\u00ed le cantan campesinas y campesinos a nuestro pa\u00eds! Vidas campesinas Cultura campesina Identidad rural Narrativas de naci\u00f3n Representaci\u00f3n cultural Diversidad cultural Diversidad regional Inclusi\u00f3n Enfoque territorial Investigaci\u00f3n colaborativa Participaci\u00f3n comunitaria Espacios de di\u00e1logo Transformaci\u00f3n de narrativas Memoria campesina Pr\u00e1cticas culturales Reconocimiento social M\u00fasica campesina https://open.spotify.com/intl-es/track/5W0b96rV74nne5rhtoukk8?si=73cac6b965584e92"
     },
     {
       "id": "somos-economias-populares-40",
       "row": 40,
-      "theme": "Somos economías populares",
+      "theme": "Somos econom\u00edas populares",
       "theme_slug": "somos-economias-populares",
       "responsable": "ICANH",
-      "title": "Videoclip Así se vive el campo",
+      "title": "Videoclip As\u00ed se vive el campo",
       "type": "Videoclip",
-      "description": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta. Videoclip de la canción Así se vive en el campo compuesta e interpretada por Pedro Nel Amado Buitrago y Campesino Faculto (Juan Ramón Amado Quintero), con imágenes de una jornada de Convite y sacanza de papa en San Pedro de Iguaque y Motavita.",
+      "description": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta. Videoclip de la canci\u00f3n As\u00ed se vive en el campo compuesta e interpretada por Pedro Nel Amado Buitrago y Campesino Faculto (Juan Ram\u00f3n Amado Quintero), con im\u00e1genes de una jornada de Convite y sacanza de papa en San Pedro de Iguaque y Motavita.",
       "keywords": [
         "Diversidad cultural",
         "Territorios",
         "Vida campesina",
         "Cultura rural",
-        "Música campesina",
+        "M\u00fasica campesina",
         "Videoclip",
-        "Representación territorial",
-        "Boyacá",
+        "Representaci\u00f3n territorial",
+        "Boyac\u00e1",
         "Caribe",
-        "Bogotá",
-        "Guainía",
+        "Bogot\u00e1",
+        "Guain\u00eda",
         "Identidad cultural",
-        "Prácticas campesinas",
+        "Pr\u00e1cticas campesinas",
         "Convite",
         "Sacanza de papa",
         "Trabajo comunitario",
-        "Tradición rural",
+        "Tradici\u00f3n rural",
         "Pedro Nel Amado Buitrago",
         "Campesino Faculto",
         "Narrativas audiovisuales"
       ],
       "link": "https://www.youtube.com/watch?v=9a60iotLujI",
       "asset_link": "",
-      "force_message": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta.",
+      "force_message": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta.",
       "availability_note": "",
-      "search_text": "Somos economías populares ICANH Videoclip Así se vive el campo Videoclip La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta. Videoclip de la canción Así se vive en el campo compuesta e interpretada por Pedro Nel Amado Buitrago y Campesino Faculto (Juan Ramón Amado Quintero), con imágenes de una jornada de Convite y sacanza de papa en San Pedro de Iguaque y Motavita. La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta. Diversidad cultural Territorios Vida campesina Cultura rural Música campesina Videoclip Representación territorial Boyacá Caribe Bogotá Guainía Identidad cultural Prácticas campesinas Convite Sacanza de papa Trabajo comunitario Tradición rural Pedro Nel Amado Buitrago Campesino Faculto Narrativas audiovisuales https://www.youtube.com/watch?v=9a60iotLujI"
+      "search_text": "Somos econom\u00edas populares ICANH Videoclip As\u00ed se vive el campo Videoclip La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta. Videoclip de la canci\u00f3n As\u00ed se vive en el campo compuesta e interpretada por Pedro Nel Amado Buitrago y Campesino Faculto (Juan Ram\u00f3n Amado Quintero), con im\u00e1genes de una jornada de Convite y sacanza de papa en San Pedro de Iguaque y Motavita. La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta. Diversidad cultural Territorios Vida campesina Cultura rural M\u00fasica campesina Videoclip Representaci\u00f3n territorial Boyac\u00e1 Caribe Bogot\u00e1 Guain\u00eda Identidad cultural Pr\u00e1cticas campesinas Convite Sacanza de papa Trabajo comunitario Tradici\u00f3n rural Pedro Nel Amado Buitrago Campesino Faculto Narrativas audiovisuales https://www.youtube.com/watch?v=9a60iotLujI"
     },
     {
       "id": "somos-economias-populares-41",
       "row": 41,
-      "theme": "Somos economías populares",
+      "theme": "Somos econom\u00edas populares",
       "theme_slug": "somos-economias-populares",
       "responsable": "ICANH",
       "title": "Videoclip Sempegua, mi tierra",
       "type": "Videoclip",
-      "description": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta.Videoclip de la canción Sempegua, mi tierra, de Alfonso Rocha y Leonar Morales, rodado en Sempegua y en la ciénaga de Zapatosa, que ilustra sobre las diversas maneras en que los habitantes de la región viven el día a día de la economía popular.",
+      "description": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta.Videoclip de la canci\u00f3n Sempegua, mi tierra, de Alfonso Rocha y Leonar Morales, rodado en Sempegua y en la ci\u00e9naga de Zapatosa, que ilustra sobre las diversas maneras en que los habitantes de la regi\u00f3n viven el d\u00eda a d\u00eda de la econom\u00eda popular.",
       "keywords": [
         "Diversidad cultural",
         "Territorios",
         "Vida cotidiana",
-        "Economía popular",
+        "Econom\u00eda popular",
         "Cultura local",
-        "Música tradicional",
+        "M\u00fasica tradicional",
         "Videoclip",
         "Identidad cultural",
-        "Región Caribe",
+        "Regi\u00f3n Caribe",
         "Sempegua",
-        "Ciénaga de Zapatosa",
+        "Ci\u00e9naga de Zapatosa",
         "Alfonso Rocha",
         "Leonar Morales",
-        "Prácticas económicas",
+        "Pr\u00e1cticas econ\u00f3micas",
         "Trabajo comunitario",
         "Narrativas audiovisuales",
-        "Representación territorial",
+        "Representaci\u00f3n territorial",
         "Cultura anfibia"
       ],
       "link": "https://www.youtube.com/watch?v=OMBEbA1jh80",
       "asset_link": "",
-      "force_message": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta.",
+      "force_message": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta.",
       "availability_note": "",
-      "search_text": "Somos economías populares ICANH Videoclip Sempegua, mi tierra Videoclip La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta.Videoclip de la canción Sempegua, mi tierra, de Alfonso Rocha y Leonar Morales, rodado en Sempegua y en la ciénaga de Zapatosa, que ilustra sobre las diversas maneras en que los habitantes de la región viven el día a día de la economía popular. La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta. Diversidad cultural Territorios Vida cotidiana Economía popular Cultura local Música tradicional Videoclip Identidad cultural Región Caribe Sempegua Ciénaga de Zapatosa Alfonso Rocha Leonar Morales Prácticas económicas Trabajo comunitario Narrativas audiovisuales Representación territorial Cultura anfibia https://www.youtube.com/watch?v=OMBEbA1jh80"
+      "search_text": "Somos econom\u00edas populares ICANH Videoclip Sempegua, mi tierra Videoclip La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta.Videoclip de la canci\u00f3n Sempegua, mi tierra, de Alfonso Rocha y Leonar Morales, rodado en Sempegua y en la ci\u00e9naga de Zapatosa, que ilustra sobre las diversas maneras en que los habitantes de la regi\u00f3n viven el d\u00eda a d\u00eda de la econom\u00eda popular. La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta. Diversidad cultural Territorios Vida cotidiana Econom\u00eda popular Cultura local M\u00fasica tradicional Videoclip Identidad cultural Regi\u00f3n Caribe Sempegua Ci\u00e9naga de Zapatosa Alfonso Rocha Leonar Morales Pr\u00e1cticas econ\u00f3micas Trabajo comunitario Narrativas audiovisuales Representaci\u00f3n territorial Cultura anfibia https://www.youtube.com/watch?v=OMBEbA1jh80"
     },
     {
       "id": "somos-economias-populares-42",
       "row": 42,
-      "theme": "Somos economías populares",
+      "theme": "Somos econom\u00edas populares",
       "theme_slug": "somos-economias-populares",
       "responsable": "ICANH",
       "title": "Videoclip Bajo el sol",
       "type": "Videoclip",
-      "description": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta. Compuesto para la producción audiovisual y sonora Economías populares. Videoclip de Bajo el sol, canción del artista JHECO, con los escenarios del cerro de Mavecure, el mercado de El Paujil y las calles de Inírida, cantada en curripaco y español.",
+      "description": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta. Compuesto para la producci\u00f3n audiovisual y sonora Econom\u00edas populares. Videoclip de Bajo el sol, canci\u00f3n del artista JHECO, con los escenarios del cerro de Mavecure, el mercado de El Paujil y las calles de In\u00edrida, cantada en curripaco y espa\u00f1ol.",
       "keywords": [
         "Diversidad cultural",
         "Territorios",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Vida cotidiana",
-        "Música",
+        "M\u00fasica",
         "Videoclip",
         "JHECO",
         "Curripaco",
-        "Español (bilingüismo)",
+        "Espa\u00f1ol (biling\u00fcismo)",
         "Lenguas nativas",
         "Identidad cultural",
-        "Guainía",
+        "Guain\u00eda",
         "Cerro de Mavecure",
-        "Inírida",
+        "In\u00edrida",
         "Mercado de El Paujil",
         "Trabajo local",
-        "Prácticas económicas",
+        "Pr\u00e1cticas econ\u00f3micas",
         "Narrativas audiovisuales",
-        "Representación territorial"
+        "Representaci\u00f3n territorial"
       ],
       "link": "https://www.youtube.com/watch?v=UVvkf-CJPFE",
       "asset_link": "",
-      "force_message": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta.",
+      "force_message": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta.",
       "availability_note": "",
-      "search_text": "Somos economías populares ICANH Videoclip Bajo el sol Videoclip La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta. Compuesto para la producción audiovisual y sonora Economías populares. Videoclip de Bajo el sol, canción del artista JHECO, con los escenarios del cerro de Mavecure, el mercado de El Paujil y las calles de Inírida, cantada en curripaco y español. La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta. Diversidad cultural Territorios Economías populares Vida cotidiana Música Videoclip JHECO Curripaco Español (bilingüismo) Lenguas nativas Identidad cultural Guainía Cerro de Mavecure Inírida Mercado de El Paujil Trabajo local Prácticas económicas Narrativas audiovisuales Representación territorial https://www.youtube.com/watch?v=UVvkf-CJPFE"
+      "search_text": "Somos econom\u00edas populares ICANH Videoclip Bajo el sol Videoclip La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta. Compuesto para la producci\u00f3n audiovisual y sonora Econom\u00edas populares. Videoclip de Bajo el sol, canci\u00f3n del artista JHECO, con los escenarios del cerro de Mavecure, el mercado de El Paujil y las calles de In\u00edrida, cantada en curripaco y espa\u00f1ol. La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta. Diversidad cultural Territorios Econom\u00edas populares Vida cotidiana M\u00fasica Videoclip JHECO Curripaco Espa\u00f1ol (biling\u00fcismo) Lenguas nativas Identidad cultural Guain\u00eda Cerro de Mavecure In\u00edrida Mercado de El Paujil Trabajo local Pr\u00e1cticas econ\u00f3micas Narrativas audiovisuales Representaci\u00f3n territorial https://www.youtube.com/watch?v=UVvkf-CJPFE"
     },
     {
       "id": "somos-economias-populares-43",
       "row": 43,
-      "theme": "Somos economías populares",
+      "theme": "Somos econom\u00edas populares",
       "theme_slug": "somos-economias-populares",
       "responsable": "ICANH",
       "title": "Videoclip El Siete existe",
       "type": "Videoclip",
-      "description": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta.Videoclip de la canción El 7 existe de la rapera bogotana Feback (Fernanda Blanco), que ilustra con su lírica los pormenores de la vida cotidiana en el mercado de autopartes del Siete de agosto, tanto en los talleres donde mujeres mecánicas trabajan día a día, como en las calles del barrio.",
+      "description": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta.Videoclip de la canci\u00f3n El 7 existe de la rapera bogotana Feback (Fernanda Blanco), que ilustra con su l\u00edrica los pormenores de la vida cotidiana en el mercado de autopartes del Siete de agosto, tanto en los talleres donde mujeres mec\u00e1nicas trabajan d\u00eda a d\u00eda, como en las calles del barrio.",
       "keywords": [
         "Diversidad cultural",
         "Territorios",
         "Vida urbana",
         "Cultura popular",
-        "Música urbana",
+        "M\u00fasica urbana",
         "Rap",
         "Videoclip",
         "Feback (Fernanda Blanco)",
-        "Bogotá",
+        "Bogot\u00e1",
         "Siete de Agosto",
         "Mercado de autopartes",
-        "Trabajo mecánico",
-        "Mujeres mecánicas",
-        "Género y trabajo",
+        "Trabajo mec\u00e1nico",
+        "Mujeres mec\u00e1nicas",
+        "G\u00e9nero y trabajo",
         "Vida cotidiana",
-        "Economía popular",
+        "Econom\u00eda popular",
         "Barrio",
         "Narrativas audiovisuales",
-        "Representación urbana"
+        "Representaci\u00f3n urbana"
       ],
       "link": "https://www.youtube.com/watch?v=RDSuHcJlZCc",
       "asset_link": "",
-      "force_message": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta.",
+      "force_message": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta.",
       "availability_note": "",
-      "search_text": "Somos economías populares ICANH Videoclip El Siete existe Videoclip La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta.Videoclip de la canción El 7 existe de la rapera bogotana Feback (Fernanda Blanco), que ilustra con su lírica los pormenores de la vida cotidiana en el mercado de autopartes del Siete de agosto, tanto en los talleres donde mujeres mecánicas trabajan día a día, como en las calles del barrio. La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta. Diversidad cultural Territorios Vida urbana Cultura popular Música urbana Rap Videoclip Feback (Fernanda Blanco) Bogotá Siete de Agosto Mercado de autopartes Trabajo mecánico Mujeres mecánicas Género y trabajo Vida cotidiana Economía popular Barrio Narrativas audiovisuales Representación urbana https://www.youtube.com/watch?v=RDSuHcJlZCc"
+      "search_text": "Somos econom\u00edas populares ICANH Videoclip El Siete existe Videoclip La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta.Videoclip de la canci\u00f3n El 7 existe de la rapera bogotana Feback (Fernanda Blanco), que ilustra con su l\u00edrica los pormenores de la vida cotidiana en el mercado de autopartes del Siete de agosto, tanto en los talleres donde mujeres mec\u00e1nicas trabajan d\u00eda a d\u00eda, como en las calles del barrio. La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta. Diversidad cultural Territorios Vida urbana Cultura popular M\u00fasica urbana Rap Videoclip Feback (Fernanda Blanco) Bogot\u00e1 Siete de Agosto Mercado de autopartes Trabajo mec\u00e1nico Mujeres mec\u00e1nicas G\u00e9nero y trabajo Vida cotidiana Econom\u00eda popular Barrio Narrativas audiovisuales Representaci\u00f3n urbana https://www.youtube.com/watch?v=RDSuHcJlZCc"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-44",
       "row": 44,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Podcast En movimiento: músicas y fronteras",
+      "title": "Podcast En movimiento: m\u00fasicas y fronteras",
       "type": "Podcast",
-      "description": "En Movimiento: músicas y fronteras es un podcast que se enfoca en la música y su relación con las fronteras, explorando y celebrando la diversidad cultural y musical en Colombia. A lo largo de ocho episodios, exploramos distintas narrativas y perspectivas relacionadas con expresiones culturales de poblaciones fronterizas, su relación con la población migrante y los paisajes sonoros que los acompañan.",
+      "description": "En Movimiento: m\u00fasicas y fronteras es un podcast que se enfoca en la m\u00fasica y su relaci\u00f3n con las fronteras, explorando y celebrando la diversidad cultural y musical en Colombia. A lo largo de ocho episodios, exploramos distintas narrativas y perspectivas relacionadas con expresiones culturales de poblaciones fronterizas, su relaci\u00f3n con la poblaci\u00f3n migrante y los paisajes sonoros que los acompa\u00f1an.",
       "keywords": [
         "Podcast",
-        "Música",
+        "M\u00fasica",
         "Fronteras",
-        "Músicas fronterizas",
+        "M\u00fasicas fronterizas",
         "Diversidad cultural",
         "Paisajes sonoros",
         "Narrativas culturales",
         "Expresiones culturales",
         "Poblaciones fronterizas",
-        "Migración",
+        "Migraci\u00f3n",
         "Interculturalidad",
         "Identidad cultural",
         "Territorio",
         "Movilidad humana",
         "Sonoridades",
-        "Relación cultura–territorio",
-        "Producción sonora"
+        "Relaci\u00f3n cultura\u2013territorio",
+        "Producci\u00f3n sonora"
       ],
       "link": "https://open.spotify.com/show/43DiLAqH6fAGv5qtdDJlme?si=0ee8770b52ef44ef",
       "asset_link": "",
-      "force_message": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta.",
+      "force_message": "La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Podcast En movimiento: músicas y fronteras Podcast En Movimiento: músicas y fronteras es un podcast que se enfoca en la música y su relación con las fronteras, explorando y celebrando la diversidad cultural y musical en Colombia. A lo largo de ocho episodios, exploramos distintas narrativas y perspectivas relacionadas con expresiones culturales de poblaciones fronterizas, su relación con la población migrante y los paisajes sonoros que los acompañan. La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del país. De Guainía a Boyacá, del Caribe a Bogotá, la vida se canta. Podcast Música Fronteras Músicas fronterizas Diversidad cultural Paisajes sonoros Narrativas culturales Expresiones culturales Poblaciones fronterizas Migración Interculturalidad Identidad cultural Territorio Movilidad humana Sonoridades Relación cultura–territorio Producción sonora https://open.spotify.com/show/43DiLAqH6fAGv5qtdDJlme?si=0ee8770b52ef44ef"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Podcast En movimiento: m\u00fasicas y fronteras Podcast En Movimiento: m\u00fasicas y fronteras es un podcast que se enfoca en la m\u00fasica y su relaci\u00f3n con las fronteras, explorando y celebrando la diversidad cultural y musical en Colombia. A lo largo de ocho episodios, exploramos distintas narrativas y perspectivas relacionadas con expresiones culturales de poblaciones fronterizas, su relaci\u00f3n con la poblaci\u00f3n migrante y los paisajes sonoros que los acompa\u00f1an. La diversidad en Colombia se refleja en las formas que tenemos de vivir en los diferentes territorios del pa\u00eds. De Guain\u00eda a Boyac\u00e1, del Caribe a Bogot\u00e1, la vida se canta. Podcast M\u00fasica Fronteras M\u00fasicas fronterizas Diversidad cultural Paisajes sonoros Narrativas culturales Expresiones culturales Poblaciones fronterizas Migraci\u00f3n Interculturalidad Identidad cultural Territorio Movilidad humana Sonoridades Relaci\u00f3n cultura\u2013territorio Producci\u00f3n sonora https://open.spotify.com/show/43DiLAqH6fAGv5qtdDJlme?si=0ee8770b52ef44ef"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-45",
       "row": 45,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
       "title": "Documental Saberes soberanos",
       "type": "Documental",
-      "description": "Campesinas y campesinos, líderes sociales, artistas, profesionales y técnicos de los municipios de Morelia, San José del Fragua, Belén de los Andaquíes, El Doncello, Solano y Florencia, en el departamento del Caquetá, se han unido en un espacio autónomo y comunitario de investigación y educación propia. Todos ellos buscan frenar la deforestación en las veredas, restaurar los bosques, mejorar la calidad de las aguas, planificar las fincas y generar sistemas de producción basados en la naturaleza.",
+      "description": "Campesinas y campesinos, l\u00edderes sociales, artistas, profesionales y t\u00e9cnicos de los municipios de Morelia, San Jos\u00e9 del Fragua, Bel\u00e9n de los Andaqu\u00edes, El Doncello, Solano y Florencia, en el departamento del Caquet\u00e1, se han unido en un espacio aut\u00f3nomo y comunitario de investigaci\u00f3n y educaci\u00f3n propia. Todos ellos buscan frenar la deforestaci\u00f3n en las veredas, restaurar los bosques, mejorar la calidad de las aguas, planificar las fincas y generar sistemas de producci\u00f3n basados en la naturaleza.",
       "keywords": [
         "Campesinos y campesinas",
         "Liderazgo social",
-        "Participación comunitaria",
-        "Investigación comunitaria",
-        "Educación propia",
-        "Autonomía territorial",
-        "Caquetá",
+        "Participaci\u00f3n comunitaria",
+        "Investigaci\u00f3n comunitaria",
+        "Educaci\u00f3n propia",
+        "Autonom\u00eda territorial",
+        "Caquet\u00e1",
         "Morelia",
-        "San José del Fragua",
-        "Belén de los Andaquíes",
+        "San Jos\u00e9 del Fragua",
+        "Bel\u00e9n de los Andaqu\u00edes",
         "El Doncello",
         "Solano",
         "Florencia",
-        "Deforestación",
-        "Restauración de bosques",
+        "Deforestaci\u00f3n",
+        "Restauraci\u00f3n de bosques",
         "Cuidado del agua",
-        "Planificación territorial",
+        "Planificaci\u00f3n territorial",
         "Sistemas productivos sostenibles",
-        "Producción basada en la naturaleza",
+        "Producci\u00f3n basada en la naturaleza",
         "Sostenibilidad ambiental"
       ],
       "link": "https://www.youtube.com/watch?v=YAlY5hnZgBY&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=34",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Documental Saberes soberanos Documental Campesinas y campesinos, líderes sociales, artistas, profesionales y técnicos de los municipios de Morelia, San José del Fragua, Belén de los Andaquíes, El Doncello, Solano y Florencia, en el departamento del Caquetá, se han unido en un espacio autónomo y comunitario de investigación y educación propia. Todos ellos buscan frenar la deforestación en las veredas, restaurar los bosques, mejorar la calidad de las aguas, planificar las fincas y generar sistemas de producción basados en la naturaleza. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Campesinos y campesinas Liderazgo social Participación comunitaria Investigación comunitaria Educación propia Autonomía territorial Caquetá Morelia San José del Fragua Belén de los Andaquíes El Doncello Solano Florencia Deforestación Restauración de bosques Cuidado del agua Planificación territorial Sistemas productivos sostenibles Producción basada en la naturaleza Sostenibilidad ambiental https://www.youtube.com/watch?v=YAlY5hnZgBY&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=34"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Documental Saberes soberanos Documental Campesinas y campesinos, l\u00edderes sociales, artistas, profesionales y t\u00e9cnicos de los municipios de Morelia, San Jos\u00e9 del Fragua, Bel\u00e9n de los Andaqu\u00edes, El Doncello, Solano y Florencia, en el departamento del Caquet\u00e1, se han unido en un espacio aut\u00f3nomo y comunitario de investigaci\u00f3n y educaci\u00f3n propia. Todos ellos buscan frenar la deforestaci\u00f3n en las veredas, restaurar los bosques, mejorar la calidad de las aguas, planificar las fincas y generar sistemas de producci\u00f3n basados en la naturaleza. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Campesinos y campesinas Liderazgo social Participaci\u00f3n comunitaria Investigaci\u00f3n comunitaria Educaci\u00f3n propia Autonom\u00eda territorial Caquet\u00e1 Morelia San Jos\u00e9 del Fragua Bel\u00e9n de los Andaqu\u00edes El Doncello Solano Florencia Deforestaci\u00f3n Restauraci\u00f3n de bosques Cuidado del agua Planificaci\u00f3n territorial Sistemas productivos sostenibles Producci\u00f3n basada en la naturaleza Sostenibilidad ambiental https://www.youtube.com/watch?v=YAlY5hnZgBY&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=34"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-46",
       "row": 46,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
       "title": "Documental De pasados y presentes remotos",
       "type": "Documental",
-      "description": "En la vereda Bocas del Raudal de San José del Guaviare, afectada durante décadas por las inclemencias de la guerra, la comunidad campesina aprovecha desde 2016 las oportunidades que trajo la firma del Acuerdo de Paz entre las FARC-EP y el gobierno colombiano. La región, antes mayoritariamente cocalera, desafía hoy las tensiones propias de una vida campesina que ha sumado a sus actividades productivas el turismo comunitario, la conservación ambiental y la protección del patrimonio arqueológico.",
+      "description": "En la vereda Bocas del Raudal de San Jos\u00e9 del Guaviare, afectada durante d\u00e9cadas por las inclemencias de la guerra, la comunidad campesina aprovecha desde 2016 las oportunidades que trajo la firma del Acuerdo de Paz entre las FARC-EP y el gobierno colombiano. La regi\u00f3n, antes mayoritariamente cocalera, desaf\u00eda hoy las tensiones propias de una vida campesina que ha sumado a sus actividades productivas el turismo comunitario, la conservaci\u00f3n ambiental y la protecci\u00f3n del patrimonio arqueol\u00f3gico.",
       "keywords": [
         "Comunidad campesina",
-        "San José del Guaviare",
+        "San Jos\u00e9 del Guaviare",
         "Bocas del Raudal",
         "Posconflicto",
         "Acuerdo de Paz",
         "FARC-EP",
-        "Transformación territorial",
-        "Sustitución de economías ilícitas",
+        "Transformaci\u00f3n territorial",
+        "Sustituci\u00f3n de econom\u00edas il\u00edcitas",
         "Turismo comunitario",
-        "Conservación ambiental",
-        "Patrimonio arqueológico",
+        "Conservaci\u00f3n ambiental",
+        "Patrimonio arqueol\u00f3gico",
         "Memoria territorial",
         "Resiliencia",
         "Desarrollo rural",
-        "Diversificación productiva",
-        "Economía campesina",
-        "Construcción de paz"
+        "Diversificaci\u00f3n productiva",
+        "Econom\u00eda campesina",
+        "Construcci\u00f3n de paz"
       ],
       "link": "https://www.youtube.com/watch?v=QtbQh-x3ohI&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=33",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Documental De pasados y presentes remotos Documental En la vereda Bocas del Raudal de San José del Guaviare, afectada durante décadas por las inclemencias de la guerra, la comunidad campesina aprovecha desde 2016 las oportunidades que trajo la firma del Acuerdo de Paz entre las FARC-EP y el gobierno colombiano. La región, antes mayoritariamente cocalera, desafía hoy las tensiones propias de una vida campesina que ha sumado a sus actividades productivas el turismo comunitario, la conservación ambiental y la protección del patrimonio arqueológico. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Comunidad campesina San José del Guaviare Bocas del Raudal Posconflicto Acuerdo de Paz FARC-EP Transformación territorial Sustitución de economías ilícitas Turismo comunitario Conservación ambiental Patrimonio arqueológico Memoria territorial Resiliencia Desarrollo rural Diversificación productiva Economía campesina Construcción de paz https://www.youtube.com/watch?v=QtbQh-x3ohI&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=33"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Documental De pasados y presentes remotos Documental En la vereda Bocas del Raudal de San Jos\u00e9 del Guaviare, afectada durante d\u00e9cadas por las inclemencias de la guerra, la comunidad campesina aprovecha desde 2016 las oportunidades que trajo la firma del Acuerdo de Paz entre las FARC-EP y el gobierno colombiano. La regi\u00f3n, antes mayoritariamente cocalera, desaf\u00eda hoy las tensiones propias de una vida campesina que ha sumado a sus actividades productivas el turismo comunitario, la conservaci\u00f3n ambiental y la protecci\u00f3n del patrimonio arqueol\u00f3gico. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Comunidad campesina San Jos\u00e9 del Guaviare Bocas del Raudal Posconflicto Acuerdo de Paz FARC-EP Transformaci\u00f3n territorial Sustituci\u00f3n de econom\u00edas il\u00edcitas Turismo comunitario Conservaci\u00f3n ambiental Patrimonio arqueol\u00f3gico Memoria territorial Resiliencia Desarrollo rural Diversificaci\u00f3n productiva Econom\u00eda campesina Construcci\u00f3n de paz https://www.youtube.com/watch?v=QtbQh-x3ohI&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=33"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-47",
       "row": 47,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
       "title": "Documental Cuidar lo nuestro",
       "type": "Documental",
-      "description": "En el contexto actual del conflicto armado en Colombia y pese al Acuerdo de paz con las FARC-EP, distintos actores se disputan el control de los territorios, sus recursos y las fidelidades de las comunidades. Como una forma de defender los territorios vulnerados, las guardias indígenas, campesinas y cimarronas del municipio de Suárez, al norte del departamento del Cauca, son un ejemplo de resistencia pacífica, de convivencias interculturales y una alternativa a la defensa de la vida campesina.",
+      "description": "En el contexto actual del conflicto armado en Colombia y pese al Acuerdo de paz con las FARC-EP, distintos actores se disputan el control de los territorios, sus recursos y las fidelidades de las comunidades. Como una forma de defender los territorios vulnerados, las guardias ind\u00edgenas, campesinas y cimarronas del municipio de Su\u00e1rez, al norte del departamento del Cauca, son un ejemplo de resistencia pac\u00edfica, de convivencias interculturales y una alternativa a la defensa de la vida campesina.",
       "keywords": [
         "Conflicto armado",
         "Posacuerdo de paz",
         "Disputa territorial",
         "Control de recursos",
-        "Suárez (Cauca)",
+        "Su\u00e1rez (Cauca)",
         "Norte del Cauca",
-        "Guardias indígenas",
+        "Guardias ind\u00edgenas",
         "Guardias campesinas",
         "Guardias cimarronas",
-        "Resistencia pacífica",
+        "Resistencia pac\u00edfica",
         "Defensa del territorio",
         "Defensa de la vida",
         "Convivencia intercultural",
-        "Autonomía comunitaria",
-        "Organización social",
+        "Autonom\u00eda comunitaria",
+        "Organizaci\u00f3n social",
         "Seguridad comunitaria",
         "Justicia propia",
-        "Protección comunitaria"
+        "Protecci\u00f3n comunitaria"
       ],
       "link": "https://www.youtube.com/watch?v=M_YXgXdRecQ",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Documental Cuidar lo nuestro Documental En el contexto actual del conflicto armado en Colombia y pese al Acuerdo de paz con las FARC-EP, distintos actores se disputan el control de los territorios, sus recursos y las fidelidades de las comunidades. Como una forma de defender los territorios vulnerados, las guardias indígenas, campesinas y cimarronas del municipio de Suárez, al norte del departamento del Cauca, son un ejemplo de resistencia pacífica, de convivencias interculturales y una alternativa a la defensa de la vida campesina. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Conflicto armado Posacuerdo de paz Disputa territorial Control de recursos Suárez (Cauca) Norte del Cauca Guardias indígenas Guardias campesinas Guardias cimarronas Resistencia pacífica Defensa del territorio Defensa de la vida Convivencia intercultural Autonomía comunitaria Organización social Seguridad comunitaria Justicia propia Protección comunitaria https://www.youtube.com/watch?v=M_YXgXdRecQ"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Documental Cuidar lo nuestro Documental En el contexto actual del conflicto armado en Colombia y pese al Acuerdo de paz con las FARC-EP, distintos actores se disputan el control de los territorios, sus recursos y las fidelidades de las comunidades. Como una forma de defender los territorios vulnerados, las guardias ind\u00edgenas, campesinas y cimarronas del municipio de Su\u00e1rez, al norte del departamento del Cauca, son un ejemplo de resistencia pac\u00edfica, de convivencias interculturales y una alternativa a la defensa de la vida campesina. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Conflicto armado Posacuerdo de paz Disputa territorial Control de recursos Su\u00e1rez (Cauca) Norte del Cauca Guardias ind\u00edgenas Guardias campesinas Guardias cimarronas Resistencia pac\u00edfica Defensa del territorio Defensa de la vida Convivencia intercultural Autonom\u00eda comunitaria Organizaci\u00f3n social Seguridad comunitaria Justicia propia Protecci\u00f3n comunitaria https://www.youtube.com/watch?v=M_YXgXdRecQ"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-48",
       "row": 48,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Cápsula de vídeo Huerta de Lupe",
+      "title": "C\u00e1psula de v\u00eddeo Huerta de Lupe",
       "type": "Video",
-      "description": "Conocemos toda la diversidad que habita la finca La Lupe, recorriéndola en compañia de doña Yolanda quien nos comparte el proceso del ciclo de vida de los alimentos y plantas medicinales que siembra, cuida, cosecha y consume junto a su familia. Doña Yolanda nos muestra cómo el abono que produce en su cocina es alimento para sus cultivos.",
+      "description": "Conocemos toda la diversidad que habita la finca La Lupe, recorri\u00e9ndola en compa\u00f1ia de do\u00f1a Yolanda quien nos comparte el proceso del ciclo de vida de los alimentos y plantas medicinales que siembra, cuida, cosecha y consume junto a su familia. Do\u00f1a Yolanda nos muestra c\u00f3mo el abono que produce en su cocina es alimento para sus cultivos.",
       "keywords": [
         "Finca La Lupe",
         "Vida campesina",
-        "Agroecología",
+        "Agroecolog\u00eda",
         "Ciclo de vida de los alimentos",
         "Plantas medicinales",
         "Saberes campesinos",
         "Agricultura familiar",
-        "Producción sostenible",
-        "Abonos orgánicos",
-        "Economía del cuidado",
+        "Producci\u00f3n sostenible",
+        "Abonos org\u00e1nicos",
+        "Econom\u00eda del cuidado",
         "Autoconsumo",
-        "Soberanía alimentaria",
-        "Prácticas agroecológicas",
+        "Soberan\u00eda alimentaria",
+        "Pr\u00e1cticas agroecol\u00f3gicas",
         "Conocimiento tradicional",
         "Trabajo familiar",
-        "Relación naturaleza–alimentación",
+        "Relaci\u00f3n naturaleza\u2013alimentaci\u00f3n",
         "Diversidad biocultural"
       ],
       "link": "https://www.youtube.com/shorts/iRAPewJFBkI",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Cápsula de vídeo Huerta de Lupe Video Conocemos toda la diversidad que habita la finca La Lupe, recorriéndola en compañia de doña Yolanda quien nos comparte el proceso del ciclo de vida de los alimentos y plantas medicinales que siembra, cuida, cosecha y consume junto a su familia. Doña Yolanda nos muestra cómo el abono que produce en su cocina es alimento para sus cultivos. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Finca La Lupe Vida campesina Agroecología Ciclo de vida de los alimentos Plantas medicinales Saberes campesinos Agricultura familiar Producción sostenible Abonos orgánicos Economía del cuidado Autoconsumo Soberanía alimentaria Prácticas agroecológicas Conocimiento tradicional Trabajo familiar Relación naturaleza–alimentación Diversidad biocultural https://www.youtube.com/shorts/iRAPewJFBkI"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH C\u00e1psula de v\u00eddeo Huerta de Lupe Video Conocemos toda la diversidad que habita la finca La Lupe, recorri\u00e9ndola en compa\u00f1ia de do\u00f1a Yolanda quien nos comparte el proceso del ciclo de vida de los alimentos y plantas medicinales que siembra, cuida, cosecha y consume junto a su familia. Do\u00f1a Yolanda nos muestra c\u00f3mo el abono que produce en su cocina es alimento para sus cultivos. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Finca La Lupe Vida campesina Agroecolog\u00eda Ciclo de vida de los alimentos Plantas medicinales Saberes campesinos Agricultura familiar Producci\u00f3n sostenible Abonos org\u00e1nicos Econom\u00eda del cuidado Autoconsumo Soberan\u00eda alimentaria Pr\u00e1cticas agroecol\u00f3gicas Conocimiento tradicional Trabajo familiar Relaci\u00f3n naturaleza\u2013alimentaci\u00f3n Diversidad biocultural https://www.youtube.com/shorts/iRAPewJFBkI"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-49",
       "row": 49,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Cápsula de vídeo La mata no es quien mata",
+      "title": "C\u00e1psula de v\u00eddeo La mata no es quien mata",
       "type": "Video",
-      "description": "Dos visiones campesinas sobre la siembra y uso de la hoja de coca nos proponen una mirada más allá de la estigmatización de la mal llamada \"mata que mata\". Las alternativas de transformación de la coca que involucran lo colectivo atraviesan el uso tradicional de los pueblos indígenas hasta la elaboración de productos medicinales, etílicos y gastronómicos.",
+      "description": "Dos visiones campesinas sobre la siembra y uso de la hoja de coca nos proponen una mirada m\u00e1s all\u00e1 de la estigmatizaci\u00f3n de la mal llamada \"mata que mata\". Las alternativas de transformaci\u00f3n de la coca que involucran lo colectivo atraviesan el uso tradicional de los pueblos ind\u00edgenas hasta la elaboraci\u00f3n de productos medicinales, et\u00edlicos y gastron\u00f3micos.",
       "keywords": [
         "Hoja de coca",
         "Cultura campesina",
         "Saberes tradicionales",
         "Uso ancestral",
-        "Pueblos indígenas",
-        "Desestigmatización",
+        "Pueblos ind\u00edgenas",
+        "Desestigmatizaci\u00f3n",
         "Narrativas alternativas",
-        "Transformación de la coca",
-        "Economía campesina",
-        "Producción alternativa",
+        "Transformaci\u00f3n de la coca",
+        "Econom\u00eda campesina",
+        "Producci\u00f3n alternativa",
         "Productos medicinales",
-        "Usos gastronómicos",
-        "Usos etílicos",
+        "Usos gastron\u00f3micos",
+        "Usos et\u00edlicos",
         "Trabajo colectivo",
         "Conocimiento tradicional",
         "Diversidad cultural",
-        "Soberanía productiva"
+        "Soberan\u00eda productiva"
       ],
       "link": "https://www.youtube.com/watch?v=VMHQAqYwoSg",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Cápsula de vídeo La mata no es quien mata Video Dos visiones campesinas sobre la siembra y uso de la hoja de coca nos proponen una mirada más allá de la estigmatización de la mal llamada \"mata que mata\". Las alternativas de transformación de la coca que involucran lo colectivo atraviesan el uso tradicional de los pueblos indígenas hasta la elaboración de productos medicinales, etílicos y gastronómicos. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Hoja de coca Cultura campesina Saberes tradicionales Uso ancestral Pueblos indígenas Desestigmatización Narrativas alternativas Transformación de la coca Economía campesina Producción alternativa Productos medicinales Usos gastronómicos Usos etílicos Trabajo colectivo Conocimiento tradicional Diversidad cultural Soberanía productiva https://www.youtube.com/watch?v=VMHQAqYwoSg"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH C\u00e1psula de v\u00eddeo La mata no es quien mata Video Dos visiones campesinas sobre la siembra y uso de la hoja de coca nos proponen una mirada m\u00e1s all\u00e1 de la estigmatizaci\u00f3n de la mal llamada \"mata que mata\". Las alternativas de transformaci\u00f3n de la coca que involucran lo colectivo atraviesan el uso tradicional de los pueblos ind\u00edgenas hasta la elaboraci\u00f3n de productos medicinales, et\u00edlicos y gastron\u00f3micos. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Hoja de coca Cultura campesina Saberes tradicionales Uso ancestral Pueblos ind\u00edgenas Desestigmatizaci\u00f3n Narrativas alternativas Transformaci\u00f3n de la coca Econom\u00eda campesina Producci\u00f3n alternativa Productos medicinales Usos gastron\u00f3micos Usos et\u00edlicos Trabajo colectivo Conocimiento tradicional Diversidad cultural Soberan\u00eda productiva https://www.youtube.com/watch?v=VMHQAqYwoSg"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-50",
       "row": 50,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Cápsula de vídeo Fogones campesinos",
+      "title": "C\u00e1psula de v\u00eddeo Fogones campesinos",
       "type": "Video",
-      "description": "En el mundo campesino se encienden los fogones. El tradicional fogón de leña, el fogón a gas y el innovador fogón de biogás son elementos vitales para la preparación de alimentos. Doña Yolanda y su hijo Iván explican cómo funcionan los biodigestores, un sistema de producción autónomo de biogas a partir del excremento de los animales que crían en su finca.",
+      "description": "En el mundo campesino se encienden los fogones. El tradicional fog\u00f3n de le\u00f1a, el fog\u00f3n a gas y el innovador fog\u00f3n de biog\u00e1s son elementos vitales para la preparaci\u00f3n de alimentos. Do\u00f1a Yolanda y su hijo Iv\u00e1n explican c\u00f3mo funcionan los biodigestores, un sistema de producci\u00f3n aut\u00f3nomo de biogas a partir del excremento de los animales que cr\u00edan en su finca.",
       "keywords": [
         "Mundo campesino",
         "Fogones tradicionales",
-        "Fogón de leña",
-        "Fogón a gas",
-        "Fogón de biogás",
-        "Preparación de alimentos",
+        "Fog\u00f3n de le\u00f1a",
+        "Fog\u00f3n a gas",
+        "Fog\u00f3n de biog\u00e1s",
+        "Preparaci\u00f3n de alimentos",
         "Saberes rurales",
-        "Energía alternativa",
+        "Energ\u00eda alternativa",
         "Biodigestores",
-        "Producción autónoma",
-        "Biogás",
+        "Producci\u00f3n aut\u00f3noma",
+        "Biog\u00e1s",
         "Aprovechamiento de residuos",
         "Excremento animal",
         "Sostenibilidad",
-        "Economía campesina",
-        "Innovación rural",
+        "Econom\u00eda campesina",
+        "Innovaci\u00f3n rural",
         "Finca campesina",
-        "Prácticas ancestrales y tecnológicas",
-        "Transición energética rural",
-        "Autogestión energética"
+        "Pr\u00e1cticas ancestrales y tecnol\u00f3gicas",
+        "Transici\u00f3n energ\u00e9tica rural",
+        "Autogesti\u00f3n energ\u00e9tica"
       ],
       "link": "https://www.youtube.com/watch?v=51JGieT5zUo&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=46",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Cápsula de vídeo Fogones campesinos Video En el mundo campesino se encienden los fogones. El tradicional fogón de leña, el fogón a gas y el innovador fogón de biogás son elementos vitales para la preparación de alimentos. Doña Yolanda y su hijo Iván explican cómo funcionan los biodigestores, un sistema de producción autónomo de biogas a partir del excremento de los animales que crían en su finca. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Mundo campesino Fogones tradicionales Fogón de leña Fogón a gas Fogón de biogás Preparación de alimentos Saberes rurales Energía alternativa Biodigestores Producción autónoma Biogás Aprovechamiento de residuos Excremento animal Sostenibilidad Economía campesina Innovación rural Finca campesina Prácticas ancestrales y tecnológicas Transición energética rural Autogestión energética https://www.youtube.com/watch?v=51JGieT5zUo&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=46"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH C\u00e1psula de v\u00eddeo Fogones campesinos Video En el mundo campesino se encienden los fogones. El tradicional fog\u00f3n de le\u00f1a, el fog\u00f3n a gas y el innovador fog\u00f3n de biog\u00e1s son elementos vitales para la preparaci\u00f3n de alimentos. Do\u00f1a Yolanda y su hijo Iv\u00e1n explican c\u00f3mo funcionan los biodigestores, un sistema de producci\u00f3n aut\u00f3nomo de biogas a partir del excremento de los animales que cr\u00edan en su finca. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Mundo campesino Fogones tradicionales Fog\u00f3n de le\u00f1a Fog\u00f3n a gas Fog\u00f3n de biog\u00e1s Preparaci\u00f3n de alimentos Saberes rurales Energ\u00eda alternativa Biodigestores Producci\u00f3n aut\u00f3noma Biog\u00e1s Aprovechamiento de residuos Excremento animal Sostenibilidad Econom\u00eda campesina Innovaci\u00f3n rural Finca campesina Pr\u00e1cticas ancestrales y tecnol\u00f3gicas Transici\u00f3n energ\u00e9tica rural Autogesti\u00f3n energ\u00e9tica https://www.youtube.com/watch?v=51JGieT5zUo&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=46"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-51",
       "row": 51,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Cápsula de vídeo Sin campo no hay futuro",
+      "title": "C\u00e1psula de v\u00eddeo Sin campo no hay futuro",
       "type": "Video",
-      "description": "Sin campo no hay ciudad. Para que un vaso de leche llegue a una mesa en la ciudad se requiere el trabajo diario de muchas familias campesinas. Un trabajo cotidiano de cuidado que implica una relación de intimidad y afectos con las vacas y terneros para un buen ordeño. Uno de los mayores retos de la producción lechera es que los campesinos puedan realizar localmente procesos de transformación de la leche para que el mayor beneficio económico quede en manos de los pequeños productores.",
+      "description": "Sin campo no hay ciudad. Para que un vaso de leche llegue a una mesa en la ciudad se requiere el trabajo diario de muchas familias campesinas. Un trabajo cotidiano de cuidado que implica una relaci\u00f3n de intimidad y afectos con las vacas y terneros para un buen orde\u00f1o. Uno de los mayores retos de la producci\u00f3n lechera es que los campesinos puedan realizar localmente procesos de transformaci\u00f3n de la leche para que el mayor beneficio econ\u00f3mico quede en manos de los peque\u00f1os productores.",
       "keywords": [
-        "Economías Populares",
+        "Econom\u00edas Populares",
         "Campo y ciudad",
         "Interdependencia rural-urbana",
-        "Producción lechera",
+        "Producci\u00f3n lechera",
         "Cadena de valor de la leche",
         "Trabajo campesino",
-        "Economía rural",
+        "Econom\u00eda rural",
         "Familias campesinas",
-        "Ordeño",
+        "Orde\u00f1o",
         "Cuidado animal",
         "Bienestar animal",
-        "Relación humano-animal",
-        "Vínculo afectivo",
-        "Producción sostenible",
-        "Transformación de la leche",
+        "Relaci\u00f3n humano-animal",
+        "V\u00ednculo afectivo",
+        "Producci\u00f3n sostenible",
+        "Transformaci\u00f3n de la leche",
         "Valor agregado",
-        "Economía local",
-        "Comercialización justa",
-        "Soberanía alimentaria",
-        "Pequeños productores",
-        "Desafíos del campo"
+        "Econom\u00eda local",
+        "Comercializaci\u00f3n justa",
+        "Soberan\u00eda alimentaria",
+        "Peque\u00f1os productores",
+        "Desaf\u00edos del campo"
       ],
       "link": "https://www.youtube.com/watch?v=ca0-LXT3YhM&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=43",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Cápsula de vídeo Sin campo no hay futuro Video Sin campo no hay ciudad. Para que un vaso de leche llegue a una mesa en la ciudad se requiere el trabajo diario de muchas familias campesinas. Un trabajo cotidiano de cuidado que implica una relación de intimidad y afectos con las vacas y terneros para un buen ordeño. Uno de los mayores retos de la producción lechera es que los campesinos puedan realizar localmente procesos de transformación de la leche para que el mayor beneficio económico quede en manos de los pequeños productores. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Economías Populares Campo y ciudad Interdependencia rural-urbana Producción lechera Cadena de valor de la leche Trabajo campesino Economía rural Familias campesinas Ordeño Cuidado animal Bienestar animal Relación humano-animal Vínculo afectivo Producción sostenible Transformación de la leche Valor agregado Economía local Comercialización justa Soberanía alimentaria Pequeños productores Desafíos del campo https://www.youtube.com/watch?v=ca0-LXT3YhM&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=43"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH C\u00e1psula de v\u00eddeo Sin campo no hay futuro Video Sin campo no hay ciudad. Para que un vaso de leche llegue a una mesa en la ciudad se requiere el trabajo diario de muchas familias campesinas. Un trabajo cotidiano de cuidado que implica una relaci\u00f3n de intimidad y afectos con las vacas y terneros para un buen orde\u00f1o. Uno de los mayores retos de la producci\u00f3n lechera es que los campesinos puedan realizar localmente procesos de transformaci\u00f3n de la leche para que el mayor beneficio econ\u00f3mico quede en manos de los peque\u00f1os productores. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Econom\u00edas Populares Campo y ciudad Interdependencia rural-urbana Producci\u00f3n lechera Cadena de valor de la leche Trabajo campesino Econom\u00eda rural Familias campesinas Orde\u00f1o Cuidado animal Bienestar animal Relaci\u00f3n humano-animal V\u00ednculo afectivo Producci\u00f3n sostenible Transformaci\u00f3n de la leche Valor agregado Econom\u00eda local Comercializaci\u00f3n justa Soberan\u00eda alimentaria Peque\u00f1os productores Desaf\u00edos del campo https://www.youtube.com/watch?v=ca0-LXT3YhM&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=43"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-52",
       "row": 52,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Cápsula de vídeo Señor prontoalivio",
+      "title": "C\u00e1psula de v\u00eddeo Se\u00f1or prontoalivio",
       "type": "Video",
-      "description": "Prontoalivio para la tos. Dayana cuida todos los días su huerta donde siembra plantas medicinales para ella y sus hijas. Una muestra de la relación de afecto y cuidado de las mujeres con su familia y sus plantas.",
+      "description": "Prontoalivio para la tos. Dayana cuida todos los d\u00edas su huerta donde siembra plantas medicinales para ella y sus hijas. Una muestra de la relaci\u00f3n de afecto y cuidado de las mujeres con su familia y sus plantas.",
       "keywords": [
         "Plantas medicinales",
         "Huerta casera",
@@ -5527,124 +5772,124 @@
         "Tos (alivio natural)",
         "Autocuidado",
         "Cultivo de plantas",
-        "Relación humano-naturaleza",
+        "Relaci\u00f3n humano-naturaleza",
         "Afecto y cuidado",
         "Bienestar familiar",
         "Conocimiento herbal",
-        "Prácticas tradicionales",
-        "Soberanía medicinal"
+        "Pr\u00e1cticas tradicionales",
+        "Soberan\u00eda medicinal"
       ],
       "link": "https://www.youtube.com/watch?v=MScs6fJWHr8&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=36",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Cápsula de vídeo Señor prontoalivio Video Prontoalivio para la tos. Dayana cuida todos los días su huerta donde siembra plantas medicinales para ella y sus hijas. Una muestra de la relación de afecto y cuidado de las mujeres con su familia y sus plantas. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Plantas medicinales Huerta casera Medicina tradicional Remedios naturales Cuidado familiar Saberes ancestrales Mujeres campesinas Rol de cuidado Salud natural Tos (alivio natural) Autocuidado Cultivo de plantas Relación humano-naturaleza Afecto y cuidado Bienestar familiar Conocimiento herbal Prácticas tradicionales Soberanía medicinal https://www.youtube.com/watch?v=MScs6fJWHr8&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=36"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH C\u00e1psula de v\u00eddeo Se\u00f1or prontoalivio Video Prontoalivio para la tos. Dayana cuida todos los d\u00edas su huerta donde siembra plantas medicinales para ella y sus hijas. Una muestra de la relaci\u00f3n de afecto y cuidado de las mujeres con su familia y sus plantas. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Plantas medicinales Huerta casera Medicina tradicional Remedios naturales Cuidado familiar Saberes ancestrales Mujeres campesinas Rol de cuidado Salud natural Tos (alivio natural) Autocuidado Cultivo de plantas Relaci\u00f3n humano-naturaleza Afecto y cuidado Bienestar familiar Conocimiento herbal Pr\u00e1cticas tradicionales Soberan\u00eda medicinal https://www.youtube.com/watch?v=MScs6fJWHr8&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=36"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-53",
       "row": 53,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Cápsula de vídeo El río es fuente de vida",
+      "title": "C\u00e1psula de v\u00eddeo El r\u00edo es fuente de vida",
       "type": "Video",
-      "description": "Antonio es un hombre que tiene como uno de sus oficios medir el río todos los días para monitorear las crecientes y posibles desbordes. Esto le ha dado un conocimiento profundo sobre el río y sus ciclos anuales.",
+      "description": "Antonio es un hombre que tiene como uno de sus oficios medir el r\u00edo todos los d\u00edas para monitorear las crecientes y posibles desbordes. Esto le ha dado un conocimiento profundo sobre el r\u00edo y sus ciclos anuales.",
       "keywords": [
-        "Monitoreo del río",
+        "Monitoreo del r\u00edo",
         "Niveles del agua",
         "Crecientes",
         "Desbordamientos",
-        "Gestión del riesgo",
-        "Conocimiento empírico",
+        "Gesti\u00f3n del riesgo",
+        "Conocimiento emp\u00edrico",
         "Saberes locales",
-        "Ciclos del río",
-        "Observación diaria",
+        "Ciclos del r\u00edo",
+        "Observaci\u00f3n diaria",
         "Oficios del territorio",
         "Vigilancia comunitaria",
-        "Prevención de desastres",
-        "Relación humano-naturaleza",
-        "Hidrología local",
-        "Adaptación al entorno",
+        "Prevenci\u00f3n de desastres",
+        "Relaci\u00f3n humano-naturaleza",
+        "Hidrolog\u00eda local",
+        "Adaptaci\u00f3n al entorno",
         "Memoria ambiental",
-        "Cultura ribereña"
+        "Cultura ribere\u00f1a"
       ],
       "link": "https://www.youtube.com/shorts/RfdV2t5BopQ",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Cápsula de vídeo El río es fuente de vida Video Antonio es un hombre que tiene como uno de sus oficios medir el río todos los días para monitorear las crecientes y posibles desbordes. Esto le ha dado un conocimiento profundo sobre el río y sus ciclos anuales. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Monitoreo del río Niveles del agua Crecientes Desbordamientos Gestión del riesgo Conocimiento empírico Saberes locales Ciclos del río Observación diaria Oficios del territorio Vigilancia comunitaria Prevención de desastres Relación humano-naturaleza Hidrología local Adaptación al entorno Memoria ambiental Cultura ribereña https://www.youtube.com/shorts/RfdV2t5BopQ"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH C\u00e1psula de v\u00eddeo El r\u00edo es fuente de vida Video Antonio es un hombre que tiene como uno de sus oficios medir el r\u00edo todos los d\u00edas para monitorear las crecientes y posibles desbordes. Esto le ha dado un conocimiento profundo sobre el r\u00edo y sus ciclos anuales. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Monitoreo del r\u00edo Niveles del agua Crecientes Desbordamientos Gesti\u00f3n del riesgo Conocimiento emp\u00edrico Saberes locales Ciclos del r\u00edo Observaci\u00f3n diaria Oficios del territorio Vigilancia comunitaria Prevenci\u00f3n de desastres Relaci\u00f3n humano-naturaleza Hidrolog\u00eda local Adaptaci\u00f3n al entorno Memoria ambiental Cultura ribere\u00f1a https://www.youtube.com/shorts/RfdV2t5BopQ"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-54",
       "row": 54,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Cápsula de vídeo Saber sobar",
+      "title": "C\u00e1psula de v\u00eddeo Saber sobar",
       "type": "Video",
-      "description": "Doña Ofelia recibe en su casa a un niño enfermo del estómago. Con la sospecha de que el niño está descuajado, doña Ofelia se dispone a sobarlo para curarle su mal de estómago.",
+      "description": "Do\u00f1a Ofelia recibe en su casa a un ni\u00f1o enfermo del est\u00f3mago. Con la sospecha de que el ni\u00f1o est\u00e1 descuajado, do\u00f1a Ofelia se dispone a sobarlo para curarle su mal de est\u00f3mago.",
       "keywords": [
         "Medicina tradicional",
-        "Sobandería",
+        "Sobander\u00eda",
         "Descuajado",
-        "Dolor de estómago",
-        "Curación tradicional",
+        "Dolor de est\u00f3mago",
+        "Curaci\u00f3n tradicional",
         "Saberes ancestrales",
-        "Sanación comunitaria",
-        "Prácticas de cuidado",
-        "Atención doméstica",
+        "Sanaci\u00f3n comunitaria",
+        "Pr\u00e1cticas de cuidado",
+        "Atenci\u00f3n dom\u00e9stica",
         "Medicina popular",
         "Cuerpo y equilibrio",
-        "Conocimiento empírico",
+        "Conocimiento emp\u00edrico",
         "Mujeres sabedoras",
-        "Transmisión de saberes",
+        "Transmisi\u00f3n de saberes",
         "Cultura rural",
         "Salud comunitaria"
       ],
       "link": "https://www.youtube.com/watch?v=WMTPk_KX4BE&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=35",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Cápsula de vídeo Saber sobar Video Doña Ofelia recibe en su casa a un niño enfermo del estómago. Con la sospecha de que el niño está descuajado, doña Ofelia se dispone a sobarlo para curarle su mal de estómago. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Medicina tradicional Sobandería Descuajado Dolor de estómago Curación tradicional Saberes ancestrales Sanación comunitaria Prácticas de cuidado Atención doméstica Medicina popular Cuerpo y equilibrio Conocimiento empírico Mujeres sabedoras Transmisión de saberes Cultura rural Salud comunitaria https://www.youtube.com/watch?v=WMTPk_KX4BE&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=35"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH C\u00e1psula de v\u00eddeo Saber sobar Video Do\u00f1a Ofelia recibe en su casa a un ni\u00f1o enfermo del est\u00f3mago. Con la sospecha de que el ni\u00f1o est\u00e1 descuajado, do\u00f1a Ofelia se dispone a sobarlo para curarle su mal de est\u00f3mago. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Medicina tradicional Sobander\u00eda Descuajado Dolor de est\u00f3mago Curaci\u00f3n tradicional Saberes ancestrales Sanaci\u00f3n comunitaria Pr\u00e1cticas de cuidado Atenci\u00f3n dom\u00e9stica Medicina popular Cuerpo y equilibrio Conocimiento emp\u00edrico Mujeres sabedoras Transmisi\u00f3n de saberes Cultura rural Salud comunitaria https://www.youtube.com/watch?v=WMTPk_KX4BE&list=PLtPYRLbXJ5KFaClNB0k3oqcNsGN3VOnrS&index=35"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-55",
       "row": 55,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Cápsula de vídeo El oro es vivo",
+      "title": "C\u00e1psula de v\u00eddeo El oro es vivo",
       "type": "Video",
-      "description": "Omaira y Leonilde van al río a buscar oro. Con su cuerpo dan vueltas y vueltas a la batea, tal como lo hacían sus ancestros. Con su mirada buscan detenidamente el brillo dorado que se asoma entre las piedras, la tierra y el agua. Encontrar el oro no es tarea fácil porque, en palabras de Omaira, el oro es un metal vivo que no comparte con gente envidiosa, solo se muestra a personas de buen corazón.",
+      "description": "Omaira y Leonilde van al r\u00edo a buscar oro. Con su cuerpo dan vueltas y vueltas a la batea, tal como lo hac\u00edan sus ancestros. Con su mirada buscan detenidamente el brillo dorado que se asoma entre las piedras, la tierra y el agua. Encontrar el oro no es tarea f\u00e1cil porque, en palabras de Omaira, el oro es un metal vivo que no comparte con gente envidiosa, solo se muestra a personas de buen coraz\u00f3n.",
       "keywords": [
-        "Minería artesanal",
+        "Miner\u00eda artesanal",
         "Barequeo",
         "Batea",
-        "Búsqueda de oro",
+        "B\u00fasqueda de oro",
         "Saberes ancestrales",
         "Oficios tradicionales",
         "Mujeres mineras",
-        "Trabajo en el río",
-        "Relación espiritual con la naturaleza",
-        "Cosmovisión del oro",
+        "Trabajo en el r\u00edo",
+        "Relaci\u00f3n espiritual con la naturaleza",
+        "Cosmovisi\u00f3n del oro",
         "Metal vivo",
         "Paciencia y destreza",
-        "Observación detallada",
-        "Cultura ribereña",
-        "Tradición oral",
-        "Economía de subsistencia",
+        "Observaci\u00f3n detallada",
+        "Cultura ribere\u00f1a",
+        "Tradici\u00f3n oral",
+        "Econom\u00eda de subsistencia",
         "Herencia ancestral"
       ],
       "link": "https://www.youtube.com/watch?v=DRduippHOAI",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Cápsula de vídeo El oro es vivo Video Omaira y Leonilde van al río a buscar oro. Con su cuerpo dan vueltas y vueltas a la batea, tal como lo hacían sus ancestros. Con su mirada buscan detenidamente el brillo dorado que se asoma entre las piedras, la tierra y el agua. Encontrar el oro no es tarea fácil porque, en palabras de Omaira, el oro es un metal vivo que no comparte con gente envidiosa, solo se muestra a personas de buen corazón. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Minería artesanal Barequeo Batea Búsqueda de oro Saberes ancestrales Oficios tradicionales Mujeres mineras Trabajo en el río Relación espiritual con la naturaleza Cosmovisión del oro Metal vivo Paciencia y destreza Observación detallada Cultura ribereña Tradición oral Economía de subsistencia Herencia ancestral https://www.youtube.com/watch?v=DRduippHOAI"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH C\u00e1psula de v\u00eddeo El oro es vivo Video Omaira y Leonilde van al r\u00edo a buscar oro. Con su cuerpo dan vueltas y vueltas a la batea, tal como lo hac\u00edan sus ancestros. Con su mirada buscan detenidamente el brillo dorado que se asoma entre las piedras, la tierra y el agua. Encontrar el oro no es tarea f\u00e1cil porque, en palabras de Omaira, el oro es un metal vivo que no comparte con gente envidiosa, solo se muestra a personas de buen coraz\u00f3n. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Miner\u00eda artesanal Barequeo Batea B\u00fasqueda de oro Saberes ancestrales Oficios tradicionales Mujeres mineras Trabajo en el r\u00edo Relaci\u00f3n espiritual con la naturaleza Cosmovisi\u00f3n del oro Metal vivo Paciencia y destreza Observaci\u00f3n detallada Cultura ribere\u00f1a Tradici\u00f3n oral Econom\u00eda de subsistencia Herencia ancestral https://www.youtube.com/watch?v=DRduippHOAI"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-56",
       "row": 56,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
       "title": "Mensaje sonoro De una vaca vive mucha gente",
@@ -5653,248 +5898,248 @@
       "keywords": [
         "Vidas campesinas",
         "Esfuerzo rural",
-        "Producción lechera",
+        "Producci\u00f3n lechera",
         "Trabajo diario",
         "Madrugadas campesinas",
         "Cuidado animal",
-        "Ordeño",
+        "Orde\u00f1o",
         "Cadena alimentaria",
         "Campo y ciudad",
         "Interdependencia",
-        "Alimentación"
+        "Alimentaci\u00f3n"
       ],
       "link": "https://open.spotify.com/episode/0vsFAp9yGDGqevLhBtqTyP?si=062c747d623b4c6d",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Mensaje sonoro De una vaca vive mucha gente Sonoro Un mensaje que nos invita a comprender el esfuerzo de las vidas campesinas para poner un vaso de leche en nuestras mesas. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Vidas campesinas Esfuerzo rural Producción lechera Trabajo diario Madrugadas campesinas Cuidado animal Ordeño Cadena alimentaria Campo y ciudad Interdependencia Alimentación https://open.spotify.com/episode/0vsFAp9yGDGqevLhBtqTyP?si=062c747d623b4c6d"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Mensaje sonoro De una vaca vive mucha gente Sonoro Un mensaje que nos invita a comprender el esfuerzo de las vidas campesinas para poner un vaso de leche en nuestras mesas. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Vidas campesinas Esfuerzo rural Producci\u00f3n lechera Trabajo diario Madrugadas campesinas Cuidado animal Orde\u00f1o Cadena alimentaria Campo y ciudad Interdependencia Alimentaci\u00f3n https://open.spotify.com/episode/0vsFAp9yGDGqevLhBtqTyP?si=062c747d623b4c6d"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-57",
       "row": 57,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Mensaje sonoro El río tiene memoria",
+      "title": "Mensaje sonoro El r\u00edo tiene memoria",
       "type": "Sonoro",
-      "description": "Una joven cantautora caqueteña que estudia en Bogotá, nos comparte los aprendizajes que el río le ha dado para cantar por las vidas campesinas donde quiera que se encuentre, porque el rio \"nos ensenó a pensar en colectivo\".",
+      "description": "Una joven cantautora caquete\u00f1a que estudia en Bogot\u00e1, nos comparte los aprendizajes que el r\u00edo le ha dado para cantar por las vidas campesinas donde quiera que se encuentre, porque el rio \"nos ensen\u00f3 a pensar en colectivo\".",
       "keywords": [
         "Cantautora",
         "Joven artista",
-        "Caquetá",
-        "Bogotá",
-        "Inspiración del río",
+        "Caquet\u00e1",
+        "Bogot\u00e1",
+        "Inspiraci\u00f3n del r\u00edo",
         "Vidas campesinas",
-        "Música con sentido social",
-        "Aprendizajes del río",
+        "M\u00fasica con sentido social",
+        "Aprendizajes del r\u00edo",
         "Pensamiento colectivo",
         "Cultura rural",
-        "Tradición y modernidad",
+        "Tradici\u00f3n y modernidad",
         "Voz de la comunidad",
-        "Conexión con el territorio",
+        "Conexi\u00f3n con el territorio",
         "Arte comprometido",
         "Memoria campesina",
-        "Educación artística",
-        "Transformación social"
+        "Educaci\u00f3n art\u00edstica",
+        "Transformaci\u00f3n social"
       ],
       "link": "https://open.spotify.com/episode/0fVY4zBLDRMlU9L36lnA58?si=95982b1750ef49e4",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Mensaje sonoro El río tiene memoria Sonoro Una joven cantautora caqueteña que estudia en Bogotá, nos comparte los aprendizajes que el río le ha dado para cantar por las vidas campesinas donde quiera que se encuentre, porque el rio \"nos ensenó a pensar en colectivo\". Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Cantautora Joven artista Caquetá Bogotá Inspiración del río Vidas campesinas Música con sentido social Aprendizajes del río Pensamiento colectivo Cultura rural Tradición y modernidad Voz de la comunidad Conexión con el territorio Arte comprometido Memoria campesina Educación artística Transformación social https://open.spotify.com/episode/0fVY4zBLDRMlU9L36lnA58?si=95982b1750ef49e4"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Mensaje sonoro El r\u00edo tiene memoria Sonoro Una joven cantautora caquete\u00f1a que estudia en Bogot\u00e1, nos comparte los aprendizajes que el r\u00edo le ha dado para cantar por las vidas campesinas donde quiera que se encuentre, porque el rio \"nos ensen\u00f3 a pensar en colectivo\". Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Cantautora Joven artista Caquet\u00e1 Bogot\u00e1 Inspiraci\u00f3n del r\u00edo Vidas campesinas M\u00fasica con sentido social Aprendizajes del r\u00edo Pensamiento colectivo Cultura rural Tradici\u00f3n y modernidad Voz de la comunidad Conexi\u00f3n con el territorio Arte comprometido Memoria campesina Educaci\u00f3n art\u00edstica Transformaci\u00f3n social https://open.spotify.com/episode/0fVY4zBLDRMlU9L36lnA58?si=95982b1750ef49e4"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-58",
       "row": 58,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Mensaje sonoro En el campo está el futuro",
+      "title": "Mensaje sonoro En el campo est\u00e1 el futuro",
       "type": "Sonoro",
-      "description": "Los pregones se escuchan temprano en las calles de los pueblos caqueteños con los que las y los campesinos ofrecen sus productos. Esta copla nos invita a promover cadenas de producción que garanticen la vida digna de las vidas campesinas.",
+      "description": "Los pregones se escuchan temprano en las calles de los pueblos caquete\u00f1os con los que las y los campesinos ofrecen sus productos. Esta copla nos invita a promover cadenas de producci\u00f3n que garanticen la vida digna de las vidas campesinas.",
       "keywords": [
         "Pregones",
         "Calles de pueblo",
-        "Caquetá",
+        "Caquet\u00e1",
         "Campesinos y campesinas",
         "Oferta de productos",
         "Coplas tradicionales",
-        "Economía local",
-        "Producción campesina",
+        "Econom\u00eda local",
+        "Producci\u00f3n campesina",
         "Vida digna",
         "Cadenas de valor",
         "Comercio justo",
         "Cultura popular",
         "Saberes rurales",
-        "Tradición oral",
-        "Sostenibilidad económica",
-        "Promoción del campo",
+        "Tradici\u00f3n oral",
+        "Sostenibilidad econ\u00f3mica",
+        "Promoci\u00f3n del campo",
         "Identidad regional"
       ],
       "link": "https://open.spotify.com/episode/5qZrGoTGI8JwDU4Xnz81D3?si=7ea1236bc79643f3",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Mensaje sonoro En el campo está el futuro Sonoro Los pregones se escuchan temprano en las calles de los pueblos caqueteños con los que las y los campesinos ofrecen sus productos. Esta copla nos invita a promover cadenas de producción que garanticen la vida digna de las vidas campesinas. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Pregones Calles de pueblo Caquetá Campesinos y campesinas Oferta de productos Coplas tradicionales Economía local Producción campesina Vida digna Cadenas de valor Comercio justo Cultura popular Saberes rurales Tradición oral Sostenibilidad económica Promoción del campo Identidad regional https://open.spotify.com/episode/5qZrGoTGI8JwDU4Xnz81D3?si=7ea1236bc79643f3"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Mensaje sonoro En el campo est\u00e1 el futuro Sonoro Los pregones se escuchan temprano en las calles de los pueblos caquete\u00f1os con los que las y los campesinos ofrecen sus productos. Esta copla nos invita a promover cadenas de producci\u00f3n que garanticen la vida digna de las vidas campesinas. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Pregones Calles de pueblo Caquet\u00e1 Campesinos y campesinas Oferta de productos Coplas tradicionales Econom\u00eda local Producci\u00f3n campesina Vida digna Cadenas de valor Comercio justo Cultura popular Saberes rurales Tradici\u00f3n oral Sostenibilidad econ\u00f3mica Promoci\u00f3n del campo Identidad regional https://open.spotify.com/episode/5qZrGoTGI8JwDU4Xnz81D3?si=7ea1236bc79643f3"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-59",
       "row": 59,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
       "title": "Mensaje sonoro Pregones son sabores",
       "type": "Sonoro",
-      "description": "Los pregones se escuchan temprano en las calles de los pueblos caquetenos con los que las y los campesinos ofrecen sus productos. Esta copla nos invita a promover cadenas de producción que garanticen la vida digna de las vidas campesinas.",
+      "description": "Los pregones se escuchan temprano en las calles de los pueblos caquetenos con los que las y los campesinos ofrecen sus productos. Esta copla nos invita a promover cadenas de producci\u00f3n que garanticen la vida digna de las vidas campesinas.",
       "keywords": [
         "Pregones",
         "Calles de pueblo",
-        "Caquetá",
+        "Caquet\u00e1",
         "Campesinos y campesinas",
         "Oferta de productos",
         "Coplas tradicionales",
-        "Economía local",
-        "Producción campesina",
+        "Econom\u00eda local",
+        "Producci\u00f3n campesina",
         "Vida digna",
         "Cadenas de valor",
         "Comercio justo",
         "Cultura popular",
         "Saberes rurales",
-        "Tradición oral",
-        "Sostenibilidad económica",
-        "Promoción del campo",
+        "Tradici\u00f3n oral",
+        "Sostenibilidad econ\u00f3mica",
+        "Promoci\u00f3n del campo",
         "Identidad regional"
       ],
       "link": "https://open.spotify.com/episode/0HBXBxa8uije8ggncoirU5?si=16c825cc2b674869",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Mensaje sonoro Pregones son sabores Sonoro Los pregones se escuchan temprano en las calles de los pueblos caquetenos con los que las y los campesinos ofrecen sus productos. Esta copla nos invita a promover cadenas de producción que garanticen la vida digna de las vidas campesinas. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Pregones Calles de pueblo Caquetá Campesinos y campesinas Oferta de productos Coplas tradicionales Economía local Producción campesina Vida digna Cadenas de valor Comercio justo Cultura popular Saberes rurales Tradición oral Sostenibilidad económica Promoción del campo Identidad regional https://open.spotify.com/episode/0HBXBxa8uije8ggncoirU5?si=16c825cc2b674869"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Mensaje sonoro Pregones son sabores Sonoro Los pregones se escuchan temprano en las calles de los pueblos caquetenos con los que las y los campesinos ofrecen sus productos. Esta copla nos invita a promover cadenas de producci\u00f3n que garanticen la vida digna de las vidas campesinas. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Pregones Calles de pueblo Caquet\u00e1 Campesinos y campesinas Oferta de productos Coplas tradicionales Econom\u00eda local Producci\u00f3n campesina Vida digna Cadenas de valor Comercio justo Cultura popular Saberes rurales Tradici\u00f3n oral Sostenibilidad econ\u00f3mica Promoci\u00f3n del campo Identidad regional https://open.spotify.com/episode/0HBXBxa8uije8ggncoirU5?si=16c825cc2b674869"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-60",
       "row": 60,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
       "responsable": "ICANH",
-      "title": "Mensaje sonoro De cómo curar la picadura de raya",
+      "title": "Mensaje sonoro De c\u00f3mo curar la picadura de raya",
       "type": "Sonoro",
-      "description": "En curas, remedios y saberes, William nos cuenta como la sabiduría de las vidas campesinas lo curó de la picadura de una raya, en medio de los remolinos del Raudal del Guayabero.",
+      "description": "En curas, remedios y saberes, William nos cuenta como la sabidur\u00eda de las vidas campesinas lo cur\u00f3 de la picadura de una raya, en medio de los remolinos del Raudal del Guayabero.",
       "keywords": [
         "Saberes campesinos",
         "Medicina tradicional",
         "Remedios naturales",
-        "Curación ancestral",
+        "Curaci\u00f3n ancestral",
         "William",
         "Picadura de raya",
         "Raudal del Guayabero",
-        "Experiencia en el río",
-        "Conocimiento empírico",
-        "Relación humano-naturaleza",
-        "Protección y cuidado",
+        "Experiencia en el r\u00edo",
+        "Conocimiento emp\u00edrico",
+        "Relaci\u00f3n humano-naturaleza",
+        "Protecci\u00f3n y cuidado",
         "Cultura rural",
-        "Sabiduría popular",
-        "Oficios y prácticas del campo",
+        "Sabidur\u00eda popular",
+        "Oficios y pr\u00e1cticas del campo",
         "Resiliencia ante riesgos naturales",
-        "Tradición oral"
+        "Tradici\u00f3n oral"
       ],
       "link": "https://open.spotify.com/episode/7JlImc0wFU8XznXn2UFwXF?si=3869965fc1f0416f",
       "asset_link": "",
-      "force_message": "Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
+      "force_message": "Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural ICANH Mensaje sonoro De cómo curar la picadura de raya Sonoro En curas, remedios y saberes, William nos cuenta como la sabiduría de las vidas campesinas lo curó de la picadura de una raya, en medio de los remolinos del Raudal del Guayabero. Colombia se construye desde nuestra relación con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Saberes campesinos Medicina tradicional Remedios naturales Curación ancestral William Picadura de raya Raudal del Guayabero Experiencia en el río Conocimiento empírico Relación humano-naturaleza Protección y cuidado Cultura rural Sabiduría popular Oficios y prácticas del campo Resiliencia ante riesgos naturales Tradición oral https://open.spotify.com/episode/7JlImc0wFU8XznXn2UFwXF?si=3869965fc1f0416f"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural ICANH Mensaje sonoro De c\u00f3mo curar la picadura de raya Sonoro En curas, remedios y saberes, William nos cuenta como la sabidur\u00eda de las vidas campesinas lo cur\u00f3 de la picadura de una raya, en medio de los remolinos del Raudal del Guayabero. Colombia se construye desde nuestra relaci\u00f3n con la tierra. Conocimientos que se crean y se comparten a diario para vivir mejor. Saberes campesinos Medicina tradicional Remedios naturales Curaci\u00f3n ancestral William Picadura de raya Raudal del Guayabero Experiencia en el r\u00edo Conocimiento emp\u00edrico Relaci\u00f3n humano-naturaleza Protecci\u00f3n y cuidado Cultura rural Sabidur\u00eda popular Oficios y pr\u00e1cticas del campo Resiliencia ante riesgos naturales Tradici\u00f3n oral https://open.spotify.com/episode/7JlImc0wFU8XznXn2UFwXF?si=3869965fc1f0416f"
     },
     {
       "id": "somos-cultura-de-paz-61",
       "row": 61,
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS",
-      "title": "Transmedia Túnel del Tiempo",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS",
+      "title": "Transmedia T\u00fanel del Tiempo",
       "type": "Transmedia",
-      "description": "Túnel del Tiempo es un proyecto transmedia de comunicación propia desarrollado en el marco de la conmemoración de los 500 años de Santa Marta. Es un ejercicio de participación étnica, gobernanza narrativa y soberanía cultural y digital, con los siete pueblos indígenas del distrito (Arhuaco, Wiwa, Kogui, Kankuamo, Ette Ennaka, Wayuu y Taganga). La plataforma web se estructura en un mapa interactivo con documentales, piezas sonoras, fotogalerías y contenidos del proceso, como memoria de resistencia cultural y espiritual.",
+      "description": "T\u00fanel del Tiempo es un proyecto transmedia de comunicaci\u00f3n propia desarrollado en el marco de la conmemoraci\u00f3n de los 500 a\u00f1os de Santa Marta. Es un ejercicio de participaci\u00f3n \u00e9tnica, gobernanza narrativa y soberan\u00eda cultural y digital, con los siete pueblos ind\u00edgenas del distrito (Arhuaco, Wiwa, Kogui, Kankuamo, Ette Ennaka, Wayuu y Taganga). La plataforma web se estructura en un mapa interactivo con documentales, piezas sonoras, fotogaler\u00edas y contenidos del proceso, como memoria de resistencia cultural y espiritual.",
       "keywords": [
-        "Túnel del Tiempo",
+        "T\u00fanel del Tiempo",
         "Proyecto transmedia",
-        "Comunicación propia",
-        "Conmemoración 500 años Santa Marta",
-        "Participación étnica",
+        "Comunicaci\u00f3n propia",
+        "Conmemoraci\u00f3n 500 a\u00f1os Santa Marta",
+        "Participaci\u00f3n \u00e9tnica",
         "Gobernanza narrativa",
-        "Soberanía cultural",
-        "Soberanía digital",
-        "Pueblos indígenas",
+        "Soberan\u00eda cultural",
+        "Soberan\u00eda digital",
+        "Pueblos ind\u00edgenas",
         "Arhuaco, Wiwa, Kogui, Kankuamo, Ette Ennaka, Wayuu, Taganga",
         "Plataforma web",
         "Mapa interactivo",
         "Documentales",
         "Piezas sonoras",
-        "Fotogalerías",
+        "Fotogaler\u00edas",
         "Memoria cultural",
         "Resistencia cultural",
-        "Espiritualidad indígena",
+        "Espiritualidad ind\u00edgena",
         "Contenidos participativos"
       ],
       "link": "https://tuneldeltiemposantamarta.mincultura.gov.co/index.html",
       "asset_link": "",
-      "force_message": "El Túnel del Tiempo es un dispositivo digital de memoria y gobernanza cultural donde los siete pueblos indígenas relatan la resistencia cultural y espiritual en el marco de los 500 años de Santa Marta. El Túnel es un ejercicio de comunicación propia y soberanía que reafirma el derecho de los pueblos a narrarse, a existir y a decidir sobre la circulación de sus memorias.",
+      "force_message": "El T\u00fanel del Tiempo es un dispositivo digital de memoria y gobernanza cultural donde los siete pueblos ind\u00edgenas relatan la resistencia cultural y espiritual en el marco de los 500 a\u00f1os de Santa Marta. El T\u00fanel es un ejercicio de comunicaci\u00f3n propia y soberan\u00eda que reafirma el derecho de los pueblos a narrarse, a existir y a decidir sobre la circulaci\u00f3n de sus memorias.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS Transmedia Túnel del Tiempo Transmedia Túnel del Tiempo es un proyecto transmedia de comunicación propia desarrollado en el marco de la conmemoración de los 500 años de Santa Marta. Es un ejercicio de participación étnica, gobernanza narrativa y soberanía cultural y digital, con los siete pueblos indígenas del distrito (Arhuaco, Wiwa, Kogui, Kankuamo, Ette Ennaka, Wayuu y Taganga). La plataforma web se estructura en un mapa interactivo con documentales, piezas sonoras, fotogalerías y contenidos del proceso, como memoria de resistencia cultural y espiritual. El Túnel del Tiempo es un dispositivo digital de memoria y gobernanza cultural donde los siete pueblos indígenas relatan la resistencia cultural y espiritual en el marco de los 500 años de Santa Marta. El Túnel es un ejercicio de comunicación propia y soberanía que reafirma el derecho de los pueblos a narrarse, a existir y a decidir sobre la circulación de sus memorias. Túnel del Tiempo Proyecto transmedia Comunicación propia Conmemoración 500 años Santa Marta Participación étnica Gobernanza narrativa Soberanía cultural Soberanía digital Pueblos indígenas Arhuaco, Wiwa, Kogui, Kankuamo, Ette Ennaka, Wayuu, Taganga Plataforma web Mapa interactivo Documentales Piezas sonoras Fotogalerías Memoria cultural Resistencia cultural Espiritualidad indígena Contenidos participativos https://tuneldeltiemposantamarta.mincultura.gov.co/index.html"
+      "search_text": "Somos cultura de paz MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS Transmedia T\u00fanel del Tiempo Transmedia T\u00fanel del Tiempo es un proyecto transmedia de comunicaci\u00f3n propia desarrollado en el marco de la conmemoraci\u00f3n de los 500 a\u00f1os de Santa Marta. Es un ejercicio de participaci\u00f3n \u00e9tnica, gobernanza narrativa y soberan\u00eda cultural y digital, con los siete pueblos ind\u00edgenas del distrito (Arhuaco, Wiwa, Kogui, Kankuamo, Ette Ennaka, Wayuu y Taganga). La plataforma web se estructura en un mapa interactivo con documentales, piezas sonoras, fotogaler\u00edas y contenidos del proceso, como memoria de resistencia cultural y espiritual. El T\u00fanel del Tiempo es un dispositivo digital de memoria y gobernanza cultural donde los siete pueblos ind\u00edgenas relatan la resistencia cultural y espiritual en el marco de los 500 a\u00f1os de Santa Marta. El T\u00fanel es un ejercicio de comunicaci\u00f3n propia y soberan\u00eda que reafirma el derecho de los pueblos a narrarse, a existir y a decidir sobre la circulaci\u00f3n de sus memorias. T\u00fanel del Tiempo Proyecto transmedia Comunicaci\u00f3n propia Conmemoraci\u00f3n 500 a\u00f1os Santa Marta Participaci\u00f3n \u00e9tnica Gobernanza narrativa Soberan\u00eda cultural Soberan\u00eda digital Pueblos ind\u00edgenas Arhuaco, Wiwa, Kogui, Kankuamo, Ette Ennaka, Wayuu, Taganga Plataforma web Mapa interactivo Documentales Piezas sonoras Fotogaler\u00edas Memoria cultural Resistencia cultural Espiritualidad ind\u00edgena Contenidos participativos https://tuneldeltiemposantamarta.mincultura.gov.co/index.html"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-62",
       "row": 62,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS",
       "title": "Documental Bullerengue, memoria viva de Puerto Escondido",
       "type": "Documental",
-      "description": "Documental de la Escuela de Comunicación Carambantúa Lab: Narrativas del Bullerengue. Bullerengue, Memoria Viva de Puerto Escondido recoge memorias orales, historias de vida y prácticas culturales de maestros, maestras y sabedoras del bullerengue. Explora sus raíces ancestrales, la identidad y el territorio, mostrando cómo esta tradición ha resistido el tiempo y cómo las nuevas generaciones continúan heredando y recreando este legado cultural.",
+      "description": "Documental de la Escuela de Comunicaci\u00f3n Carambant\u00faa Lab: Narrativas del Bullerengue. Bullerengue, Memoria Viva de Puerto Escondido recoge memorias orales, historias de vida y pr\u00e1cticas culturales de maestros, maestras y sabedoras del bullerengue. Explora sus ra\u00edces ancestrales, la identidad y el territorio, mostrando c\u00f3mo esta tradici\u00f3n ha resistido el tiempo y c\u00f3mo las nuevas generaciones contin\u00faan heredando y recreando este legado cultural.",
       "keywords": [
         "Documental",
-        "Escuela de Comunicación Carambantúa Lab",
+        "Escuela de Comunicaci\u00f3n Carambant\u00faa Lab",
         "Narrativas del Bullerengue",
         "Bullerengue",
         "Memoria viva",
         "Puerto Escondido",
         "Memorias orales",
         "Historias de vida",
-        "Prácticas culturales",
+        "Pr\u00e1cticas culturales",
         "Maestros y maestras",
         "Sabedoras",
-        "Raíces ancestrales",
+        "Ra\u00edces ancestrales",
         "Identidad cultural",
         "Territorio",
         "Resistencia cultural",
         "Herencia intergeneracional",
         "Legado cultural",
-        "Tradición musical",
+        "Tradici\u00f3n musical",
         "Cultura afrocolombiana",
-        "Recreación cultural"
+        "Recreaci\u00f3n cultural"
       ],
       "link": "https://mcultura.sharepoint.com/sites/DACMI/_layouts/15/stream.aspx?id=%2Fsites%2FDACMI%2FDocumentos%20compartidos%2FGeneral%2FGrupo%20CCT%202025%2F003%5FCONVENIOS%20GRUPO%20COM%5F2025%2F1%5F0798%5FCONVENIO%20INTERADMINISTRATIVO%20FONDO%20MIXTO%20DE%20NARI%C3%91O%2F3%5F%20EJECUCI%C3%93N%2F5%5F%20ESTRATEGIAS%2F1%5FAFROCOLOMBIAS%2F1%5FFORMACI%C3%93N%2F004%5FEscuelas%20Comunicaci%C3%B3n%20Afrocolombias2025%2F9%2E%20%20PUERTO%20ESCONDIDO%2F3%5F%20pago%5F10%25%2F1%2E%20Contenidos%2F1%2E%20Contenido%2FDocumental%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ea7b1548c%2D54ac%2D4513%2D933c%2D56fd0506d4af",
       "asset_link": "",
-      "force_message": "La comunicación es memoria viva: guarda la palabra, el ritmo y los relatos que las comunidades han sembrado en su territorio. Desde el bullerengue hasta las voces de los ríos, comunicar es preservar lo que permanece, transmitir identidad y proyectar futuro desde la memoria colectiva.",
+      "force_message": "La comunicaci\u00f3n es memoria viva: guarda la palabra, el ritmo y los relatos que las comunidades han sembrado en su territorio. Desde el bullerengue hasta las voces de los r\u00edos, comunicar es preservar lo que permanece, transmitir identidad y proyectar futuro desde la memoria colectiva.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS Documental Bullerengue, memoria viva de Puerto Escondido Documental Documental de la Escuela de Comunicación Carambantúa Lab: Narrativas del Bullerengue. Bullerengue, Memoria Viva de Puerto Escondido recoge memorias orales, historias de vida y prácticas culturales de maestros, maestras y sabedoras del bullerengue. Explora sus raíces ancestrales, la identidad y el territorio, mostrando cómo esta tradición ha resistido el tiempo y cómo las nuevas generaciones continúan heredando y recreando este legado cultural. La comunicación es memoria viva: guarda la palabra, el ritmo y los relatos que las comunidades han sembrado en su territorio. Desde el bullerengue hasta las voces de los ríos, comunicar es preservar lo que permanece, transmitir identidad y proyectar futuro desde la memoria colectiva. Documental Escuela de Comunicación Carambantúa Lab Narrativas del Bullerengue Bullerengue Memoria viva Puerto Escondido Memorias orales Historias de vida Prácticas culturales Maestros y maestras Sabedoras Raíces ancestrales Identidad cultural Territorio Resistencia cultural Herencia intergeneracional Legado cultural Tradición musical Cultura afrocolombiana Recreación cultural https://mcultura.sharepoint.com/sites/DACMI/_layouts/15/stream.aspx?id=%2Fsites%2FDACMI%2FDocumentos%20compartidos%2FGeneral%2FGrupo%20CCT%202025%2F003%5FCONVENIOS%20GRUPO%20COM%5F2025%2F1%5F0798%5FCONVENIO%20INTERADMINISTRATIVO%20FONDO%20MIXTO%20DE%20NARI%C3%91O%2F3%5F%20EJECUCI%C3%93N%2F5%5F%20ESTRATEGIAS%2F1%5FAFROCOLOMBIAS%2F1%5FFORMACI%C3%93N%2F004%5FEscuelas%20Comunicaci%C3%B3n%20Afrocolombias2025%2F9%2E%20%20PUERTO%20ESCONDIDO%2F3%5F%20pago%5F10%25%2F1%2E%20Contenidos%2F1%2E%20Contenido%2FDocumental%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ea7b1548c%2D54ac%2D4513%2D933c%2D56fd0506d4af"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS Documental Bullerengue, memoria viva de Puerto Escondido Documental Documental de la Escuela de Comunicaci\u00f3n Carambant\u00faa Lab: Narrativas del Bullerengue. Bullerengue, Memoria Viva de Puerto Escondido recoge memorias orales, historias de vida y pr\u00e1cticas culturales de maestros, maestras y sabedoras del bullerengue. Explora sus ra\u00edces ancestrales, la identidad y el territorio, mostrando c\u00f3mo esta tradici\u00f3n ha resistido el tiempo y c\u00f3mo las nuevas generaciones contin\u00faan heredando y recreando este legado cultural. La comunicaci\u00f3n es memoria viva: guarda la palabra, el ritmo y los relatos que las comunidades han sembrado en su territorio. Desde el bullerengue hasta las voces de los r\u00edos, comunicar es preservar lo que permanece, transmitir identidad y proyectar futuro desde la memoria colectiva. Documental Escuela de Comunicaci\u00f3n Carambant\u00faa Lab Narrativas del Bullerengue Bullerengue Memoria viva Puerto Escondido Memorias orales Historias de vida Pr\u00e1cticas culturales Maestros y maestras Sabedoras Ra\u00edces ancestrales Identidad cultural Territorio Resistencia cultural Herencia intergeneracional Legado cultural Tradici\u00f3n musical Cultura afrocolombiana Recreaci\u00f3n cultural https://mcultura.sharepoint.com/sites/DACMI/_layouts/15/stream.aspx?id=%2Fsites%2FDACMI%2FDocumentos%20compartidos%2FGeneral%2FGrupo%20CCT%202025%2F003%5FCONVENIOS%20GRUPO%20COM%5F2025%2F1%5F0798%5FCONVENIO%20INTERADMINISTRATIVO%20FONDO%20MIXTO%20DE%20NARI%C3%91O%2F3%5F%20EJECUCI%C3%93N%2F5%5F%20ESTRATEGIAS%2F1%5FAFROCOLOMBIAS%2F1%5FFORMACI%C3%93N%2F004%5FEscuelas%20Comunicaci%C3%B3n%20Afrocolombias2025%2F9%2E%20%20PUERTO%20ESCONDIDO%2F3%5F%20pago%5F10%25%2F1%2E%20Contenidos%2F1%2E%20Contenido%2FDocumental%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ea7b1548c%2D54ac%2D4513%2D933c%2D56fd0506d4af"
     },
     {
       "id": "somos-cultura-de-paz-63",
       "row": 63,
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS",
       "title": "Reportaje Pusandao",
       "type": "Reportaje",
-      "description": "Colectivo Las Leyendas del Magüí. Relatos Magüireños. Pusandao. El relato aborda el río Magüí y su importancia para la vida en Magüí Payán, así como la preocupación por su contaminación debido a la extracción de oro, evidenciando impactos ambientales y sociales. La comunicación es memoria viva: guarda la palabra, el ritmo y los relatos del territorio, preservando identidad y proyectando futuro desde la memoria colectiva.",
+      "description": "Colectivo Las Leyendas del Mag\u00fc\u00ed. Relatos Mag\u00fcire\u00f1os. Pusandao. El relato aborda el r\u00edo Mag\u00fc\u00ed y su importancia para la vida en Mag\u00fc\u00ed Pay\u00e1n, as\u00ed como la preocupaci\u00f3n por su contaminaci\u00f3n debido a la extracci\u00f3n de oro, evidenciando impactos ambientales y sociales. La comunicaci\u00f3n es memoria viva: guarda la palabra, el ritmo y los relatos del territorio, preservando identidad y proyectando futuro desde la memoria colectiva.",
       "keywords": [
-        "Colectivo Las Leyendas del Magüí",
-        "Relatos Magüireños",
+        "Colectivo Las Leyendas del Mag\u00fc\u00ed",
+        "Relatos Mag\u00fcire\u00f1os",
         "Pusandao",
-        "Río Magüí",
-        "Magüí Payán",
-        "Importancia del río",
-        "Contaminación ambiental",
-        "Minería de oro",
+        "R\u00edo Mag\u00fc\u00ed",
+        "Mag\u00fc\u00ed Pay\u00e1n",
+        "Importancia del r\u00edo",
+        "Contaminaci\u00f3n ambiental",
+        "Miner\u00eda de oro",
         "Impactos sociales y ambientales",
         "Memoria viva",
         "Palabra y relato",
@@ -5903,37 +6148,37 @@
         "Cultura local",
         "Territorio y comunidad",
         "Memoria colectiva",
-        "Conservación del patrimonio",
+        "Conservaci\u00f3n del patrimonio",
         "Sostenibilidad",
-        "Comunicación participativa",
-        "Proyección futura desde la memoria"
+        "Comunicaci\u00f3n participativa",
+        "Proyecci\u00f3n futura desde la memoria"
       ],
       "link": "https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20COM%202024/02_Proyectos%20Grupo%20COM%202024/4_Afrocolombias/02.%20Escuelas%20de%20Comunicaci%C3%B3n%20AFRO/01_PAC%C3%8DFICO%20NARI%C3%91ENSE/01.%20Escuelas/1_FUNDACION%20BOGANDO%20PRODUCCIONES/3_PAGO%203/1.%20CONTENIDOS/3.%20PRODUCTO/3.%20PUSANDAO.mp4?csf=1&web=1&e=fBlv70",
       "asset_link": "",
-      "force_message": "La comunicación es memoria viva: guarda la palabra, el ritmo y los relatos que las comunidades han sembrado en su territorio. Desde el bullerengue hasta las voces de los ríos, comunicar es preservar lo que permanece, transmitir identidad y proyectar futuro desde la memoria colectiva.",
+      "force_message": "La comunicaci\u00f3n es memoria viva: guarda la palabra, el ritmo y los relatos que las comunidades han sembrado en su territorio. Desde el bullerengue hasta las voces de los r\u00edos, comunicar es preservar lo que permanece, transmitir identidad y proyectar futuro desde la memoria colectiva.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS Reportaje Pusandao Reportaje Colectivo Las Leyendas del Magüí. Relatos Magüireños. Pusandao. El relato aborda el río Magüí y su importancia para la vida en Magüí Payán, así como la preocupación por su contaminación debido a la extracción de oro, evidenciando impactos ambientales y sociales. La comunicación es memoria viva: guarda la palabra, el ritmo y los relatos del territorio, preservando identidad y proyectando futuro desde la memoria colectiva. La comunicación es memoria viva: guarda la palabra, el ritmo y los relatos que las comunidades han sembrado en su territorio. Desde el bullerengue hasta las voces de los ríos, comunicar es preservar lo que permanece, transmitir identidad y proyectar futuro desde la memoria colectiva. Colectivo Las Leyendas del Magüí Relatos Magüireños Pusandao Río Magüí Magüí Payán Importancia del río Contaminación ambiental Minería de oro Impactos sociales y ambientales Memoria viva Palabra y relato Ritmo tradicional Identidad territorial Cultura local Territorio y comunidad Memoria colectiva Conservación del patrimonio Sostenibilidad Comunicación participativa Proyección futura desde la memoria https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20COM%202024/02_Proyectos%20Grupo%20COM%202024/4_Afrocolombias/02.%20Escuelas%20de%20Comunicaci%C3%B3n%20AFRO/01_PAC%C3%8DFICO%20NARI%C3%91ENSE/01.%20Escuelas/1_FUNDACION%20BOGANDO%20PRODUCCIONES/3_PAGO%203/1.%20CONTENIDOS/3.%20PRODUCTO/3.%20PUSANDAO.mp4?csf=1&web=1&e=fBlv70"
+      "search_text": "Somos cultura de paz MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS Reportaje Pusandao Reportaje Colectivo Las Leyendas del Mag\u00fc\u00ed. Relatos Mag\u00fcire\u00f1os. Pusandao. El relato aborda el r\u00edo Mag\u00fc\u00ed y su importancia para la vida en Mag\u00fc\u00ed Pay\u00e1n, as\u00ed como la preocupaci\u00f3n por su contaminaci\u00f3n debido a la extracci\u00f3n de oro, evidenciando impactos ambientales y sociales. La comunicaci\u00f3n es memoria viva: guarda la palabra, el ritmo y los relatos del territorio, preservando identidad y proyectando futuro desde la memoria colectiva. La comunicaci\u00f3n es memoria viva: guarda la palabra, el ritmo y los relatos que las comunidades han sembrado en su territorio. Desde el bullerengue hasta las voces de los r\u00edos, comunicar es preservar lo que permanece, transmitir identidad y proyectar futuro desde la memoria colectiva. Colectivo Las Leyendas del Mag\u00fc\u00ed Relatos Mag\u00fcire\u00f1os Pusandao R\u00edo Mag\u00fc\u00ed Mag\u00fc\u00ed Pay\u00e1n Importancia del r\u00edo Contaminaci\u00f3n ambiental Miner\u00eda de oro Impactos sociales y ambientales Memoria viva Palabra y relato Ritmo tradicional Identidad territorial Cultura local Territorio y comunidad Memoria colectiva Conservaci\u00f3n del patrimonio Sostenibilidad Comunicaci\u00f3n participativa Proyecci\u00f3n futura desde la memoria https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20COM%202024/02_Proyectos%20Grupo%20COM%202024/4_Afrocolombias/02.%20Escuelas%20de%20Comunicaci%C3%B3n%20AFRO/01_PAC%C3%8DFICO%20NARI%C3%91ENSE/01.%20Escuelas/1_FUNDACION%20BOGANDO%20PRODUCCIONES/3_PAGO%203/1.%20CONTENIDOS/3.%20PRODUCTO/3.%20PUSANDAO.mp4?csf=1&web=1&e=fBlv70"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-64",
       "row": 64,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS",
-      "title": "Documental El Bullerengue y las voces del río",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS",
+      "title": "Documental El Bullerengue y las voces del r\u00edo",
       "type": "Documental",
-      "description": "Escuela Voces Vivas del Río de Guaduas. El Bullerengue y las Voces del Río. El proyecto muestra la conexión entre el bullerengue y las voces del río, destacando cómo matronas, juglares, sabedores, maestros y hacedores han preservado esta tradición cultural a través de generaciones. La comunicación es memoria viva: guarda la palabra, el ritmo y los relatos del territorio, preservando identidad y proyectando futuro desde la memoria colectiva.",
+      "description": "Escuela Voces Vivas del R\u00edo de Guaduas. El Bullerengue y las Voces del R\u00edo. El proyecto muestra la conexi\u00f3n entre el bullerengue y las voces del r\u00edo, destacando c\u00f3mo matronas, juglares, sabedores, maestros y hacedores han preservado esta tradici\u00f3n cultural a trav\u00e9s de generaciones. La comunicaci\u00f3n es memoria viva: guarda la palabra, el ritmo y los relatos del territorio, preservando identidad y proyectando futuro desde la memoria colectiva.",
       "keywords": [
-        "Escuela Voces Vivas del Río de Guaduas",
+        "Escuela Voces Vivas del R\u00edo de Guaduas",
         "Bullerengue",
-        "Voces del río",
-        "Tradición cultural",
+        "Voces del r\u00edo",
+        "Tradici\u00f3n cultural",
         "Matronas",
         "Juglares",
         "Sabedores",
         "Maestros",
         "Hacedores",
-        "Preservación intergeneracional",
+        "Preservaci\u00f3n intergeneracional",
         "Memoria viva",
         "Palabra y relato",
         "Ritmo tradicional",
@@ -5941,707 +6186,707 @@
         "Territorio",
         "Memoria colectiva",
         "Herencia cultural",
-        "Educación comunitaria",
-        "Proyección futura",
+        "Educaci\u00f3n comunitaria",
+        "Proyecci\u00f3n futura",
         "Cultura afrocolombiana"
       ],
       "link": "https://mcultura.sharepoint.com/sites/DACMI/Documentos%20compartidos/Forms/AllItems.aspx?id=%2Fsites%2FDACMI%2FDocumentos%20compartidos%2FGeneral%2FGrupo%20COM%202024%2F03%5FConvenios%20Grupo%20COM%202024%2F02%5FCONVENIO%20AFROCOLOMBIAS%5F2035%5F24%2F3%5FEJECUCI%C3%93N%2FESTRATEGIA%5F1%5FFORTALECIMIENTO%20COMUNICACI%C3%93N%20AFROCOLOMBIANA%2F00%5FESCUELAS%20DE%20COMUNICACI%C3%93N%2F2%5FCONVOCATORIA%20ESCUELAS%20NACIONAL%2F2%5FOrganizaci%C3%B3n%20de%20profesionales%20Afrodescendiente%20ra%C3%ADces%20de%20%C3%89bano%2F3%5FTERCER%5FPAGO%5F20%25%2F1%2E%20CONTENIDOS%2F2%2E%20PRODUCTO&viewid=812fa338%2Dbf7a%2D4ee1%2D8fe5%2Dbbb9b939e0f6&ct=1708359294608&or=OWA%2DNT&cid=9ed5b085%2D6b37%2Ddcc0%2Ddd84%2Dd71de767bec9",
       "asset_link": "",
-      "force_message": "La comunicación es memoria viva: guarda la palabra, el ritmo y los relatos que las comunidades han sembrado en su territorio. Desde el bullerengue hasta las voces de los ríos, comunicar es preservar lo que permanece, transmitir identidad y proyectar futuro desde la memoria colectiva.",
+      "force_message": "La comunicaci\u00f3n es memoria viva: guarda la palabra, el ritmo y los relatos que las comunidades han sembrado en su territorio. Desde el bullerengue hasta las voces de los r\u00edos, comunicar es preservar lo que permanece, transmitir identidad y proyectar futuro desde la memoria colectiva.",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS Documental El Bullerengue y las voces del río Documental Escuela Voces Vivas del Río de Guaduas. El Bullerengue y las Voces del Río. El proyecto muestra la conexión entre el bullerengue y las voces del río, destacando cómo matronas, juglares, sabedores, maestros y hacedores han preservado esta tradición cultural a través de generaciones. La comunicación es memoria viva: guarda la palabra, el ritmo y los relatos del territorio, preservando identidad y proyectando futuro desde la memoria colectiva. La comunicación es memoria viva: guarda la palabra, el ritmo y los relatos que las comunidades han sembrado en su territorio. Desde el bullerengue hasta las voces de los ríos, comunicar es preservar lo que permanece, transmitir identidad y proyectar futuro desde la memoria colectiva. Escuela Voces Vivas del Río de Guaduas Bullerengue Voces del río Tradición cultural Matronas Juglares Sabedores Maestros Hacedores Preservación intergeneracional Memoria viva Palabra y relato Ritmo tradicional Identidad cultural Territorio Memoria colectiva Herencia cultural Educación comunitaria Proyección futura Cultura afrocolombiana https://mcultura.sharepoint.com/sites/DACMI/Documentos%20compartidos/Forms/AllItems.aspx?id=%2Fsites%2FDACMI%2FDocumentos%20compartidos%2FGeneral%2FGrupo%20COM%202024%2F03%5FConvenios%20Grupo%20COM%202024%2F02%5FCONVENIO%20AFROCOLOMBIAS%5F2035%5F24%2F3%5FEJECUCI%C3%93N%2FESTRATEGIA%5F1%5FFORTALECIMIENTO%20COMUNICACI%C3%93N%20AFROCOLOMBIANA%2F00%5FESCUELAS%20DE%20COMUNICACI%C3%93N%2F2%5FCONVOCATORIA%20ESCUELAS%20NACIONAL%2F2%5FOrganizaci%C3%B3n%20de%20profesionales%20Afrodescendiente%20ra%C3%ADces%20de%20%C3%89bano%2F3%5FTERCER%5FPAGO%5F20%25%2F1%2E%20CONTENIDOS%2F2%2E%20PRODUCTO&viewid=812fa338%2Dbf7a%2D4ee1%2D8fe5%2Dbbb9b939e0f6&ct=1708359294608&or=OWA%2DNT&cid=9ed5b085%2D6b37%2Ddcc0%2Ddd84%2Dd71de767bec9"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS Documental El Bullerengue y las voces del r\u00edo Documental Escuela Voces Vivas del R\u00edo de Guaduas. El Bullerengue y las Voces del R\u00edo. El proyecto muestra la conexi\u00f3n entre el bullerengue y las voces del r\u00edo, destacando c\u00f3mo matronas, juglares, sabedores, maestros y hacedores han preservado esta tradici\u00f3n cultural a trav\u00e9s de generaciones. La comunicaci\u00f3n es memoria viva: guarda la palabra, el ritmo y los relatos del territorio, preservando identidad y proyectando futuro desde la memoria colectiva. La comunicaci\u00f3n es memoria viva: guarda la palabra, el ritmo y los relatos que las comunidades han sembrado en su territorio. Desde el bullerengue hasta las voces de los r\u00edos, comunicar es preservar lo que permanece, transmitir identidad y proyectar futuro desde la memoria colectiva. Escuela Voces Vivas del R\u00edo de Guaduas Bullerengue Voces del r\u00edo Tradici\u00f3n cultural Matronas Juglares Sabedores Maestros Hacedores Preservaci\u00f3n intergeneracional Memoria viva Palabra y relato Ritmo tradicional Identidad cultural Territorio Memoria colectiva Herencia cultural Educaci\u00f3n comunitaria Proyecci\u00f3n futura Cultura afrocolombiana https://mcultura.sharepoint.com/sites/DACMI/Documentos%20compartidos/Forms/AllItems.aspx?id=%2Fsites%2FDACMI%2FDocumentos%20compartidos%2FGeneral%2FGrupo%20COM%202024%2F03%5FConvenios%20Grupo%20COM%202024%2F02%5FCONVENIO%20AFROCOLOMBIAS%5F2035%5F24%2F3%5FEJECUCI%C3%93N%2FESTRATEGIA%5F1%5FFORTALECIMIENTO%20COMUNICACI%C3%93N%20AFROCOLOMBIANA%2F00%5FESCUELAS%20DE%20COMUNICACI%C3%93N%2F2%5FCONVOCATORIA%20ESCUELAS%20NACIONAL%2F2%5FOrganizaci%C3%B3n%20de%20profesionales%20Afrodescendiente%20ra%C3%ADces%20de%20%C3%89bano%2F3%5FTERCER%5FPAGO%5F20%25%2F1%2E%20CONTENIDOS%2F2%2E%20PRODUCTO&viewid=812fa338%2Dbf7a%2D4ee1%2D8fe5%2Dbbb9b939e0f6&ct=1708359294608&or=OWA%2DNT&cid=9ed5b085%2D6b37%2Ddcc0%2Ddd84%2Dd71de767bec9"
     },
     {
       "id": "somos-cultura-de-paz-65",
       "row": 65,
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Memoria y Circulación.",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Memoria y Circulaci\u00f3n.",
       "title": "Video memoria patrimonio audiovisual CRIDEC",
       "type": "Video",
-      "description": "Video memoria que reúne voces de líderes indígenas, comuneros y profesionales que reflexionan sobre el valor de las memorias audiovisuales registradas dentro de los territorios del departamento de Caldas filiales al Consejo Regional Indígena de Caldas (CRIDEC). Es importante dar a conocer cómo se está llevando a acabo el proceso de gestión de la memoria en el marco del Programa de Patrimonio Audiovisual Colombiano, Capítulo Pueblos Indígenas (PACCPI).",
+      "description": "Video memoria que re\u00fane voces de l\u00edderes ind\u00edgenas, comuneros y profesionales que reflexionan sobre el valor de las memorias audiovisuales registradas dentro de los territorios del departamento de Caldas filiales al Consejo Regional Ind\u00edgena de Caldas (CRIDEC). Es importante dar a conocer c\u00f3mo se est\u00e1 llevando a acabo el proceso de gesti\u00f3n de la memoria en el marco del Programa de Patrimonio Audiovisual Colombiano, Cap\u00edtulo Pueblos Ind\u00edgenas (PACCPI).",
       "keywords": [
         "Video memoria",
-        "Líderes indígenas",
+        "L\u00edderes ind\u00edgenas",
         "Comuneros",
         "Profesionales",
-        "Reflexión sobre memorias audiovisuales",
+        "Reflexi\u00f3n sobre memorias audiovisuales",
         "Territorios de Caldas",
-        "Consejo Regional Indígena de Caldas (CRIDEC)",
-        "Gestión de la memoria",
+        "Consejo Regional Ind\u00edgena de Caldas (CRIDEC)",
+        "Gesti\u00f3n de la memoria",
         "Programa de Patrimonio Audiovisual Colombiano (PACCPI)",
-        "Capítulo Pueblos Indígenas",
+        "Cap\u00edtulo Pueblos Ind\u00edgenas",
         "Registro audiovisual",
-        "Cultura indígena",
-        "Conservación del patrimonio",
+        "Cultura ind\u00edgena",
+        "Conservaci\u00f3n del patrimonio",
         "Identidad territorial",
         "Memoria colectiva",
         "Procesos comunitarios",
         "Patrimonio cultural",
-        "Difusión cultural",
-        "Participación indígena",
-        "Memoria histórica"
+        "Difusi\u00f3n cultural",
+        "Participaci\u00f3n ind\u00edgena",
+        "Memoria hist\u00f3rica"
       ],
       "link": "https://mcultura-my.sharepoint.com/:v:/g/personal/avillanueva_mincultura_gov_co/IQBoZkpaqepUS5s2phXZJEZkAaipaEbfg0xTt2jQ1OIcCaw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=JUah2G",
       "asset_link": "",
       "force_message": "Salvaguardar el patrimonio audiovisual es salvaguardar la memoria de nuestros ancestros, de nuestras luchas, de nuestro proceso organizativo.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Memoria y Circulación. Video memoria patrimonio audiovisual CRIDEC Video Video memoria que reúne voces de líderes indígenas, comuneros y profesionales que reflexionan sobre el valor de las memorias audiovisuales registradas dentro de los territorios del departamento de Caldas filiales al Consejo Regional Indígena de Caldas (CRIDEC). Es importante dar a conocer cómo se está llevando a acabo el proceso de gestión de la memoria en el marco del Programa de Patrimonio Audiovisual Colombiano, Capítulo Pueblos Indígenas (PACCPI). Salvaguardar el patrimonio audiovisual es salvaguardar la memoria de nuestros ancestros, de nuestras luchas, de nuestro proceso organizativo. Video memoria Líderes indígenas Comuneros Profesionales Reflexión sobre memorias audiovisuales Territorios de Caldas Consejo Regional Indígena de Caldas (CRIDEC) Gestión de la memoria Programa de Patrimonio Audiovisual Colombiano (PACCPI) Capítulo Pueblos Indígenas Registro audiovisual Cultura indígena Conservación del patrimonio Identidad territorial Memoria colectiva Procesos comunitarios Patrimonio cultural Difusión cultural Participación indígena Memoria histórica https://mcultura-my.sharepoint.com/:v:/g/personal/avillanueva_mincultura_gov_co/IQBoZkpaqepUS5s2phXZJEZkAaipaEbfg0xTt2jQ1OIcCaw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=JUah2G"
+      "search_text": "Somos cultura de paz MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Memoria y Circulaci\u00f3n. Video memoria patrimonio audiovisual CRIDEC Video Video memoria que re\u00fane voces de l\u00edderes ind\u00edgenas, comuneros y profesionales que reflexionan sobre el valor de las memorias audiovisuales registradas dentro de los territorios del departamento de Caldas filiales al Consejo Regional Ind\u00edgena de Caldas (CRIDEC). Es importante dar a conocer c\u00f3mo se est\u00e1 llevando a acabo el proceso de gesti\u00f3n de la memoria en el marco del Programa de Patrimonio Audiovisual Colombiano, Cap\u00edtulo Pueblos Ind\u00edgenas (PACCPI). Salvaguardar el patrimonio audiovisual es salvaguardar la memoria de nuestros ancestros, de nuestras luchas, de nuestro proceso organizativo. Video memoria L\u00edderes ind\u00edgenas Comuneros Profesionales Reflexi\u00f3n sobre memorias audiovisuales Territorios de Caldas Consejo Regional Ind\u00edgena de Caldas (CRIDEC) Gesti\u00f3n de la memoria Programa de Patrimonio Audiovisual Colombiano (PACCPI) Cap\u00edtulo Pueblos Ind\u00edgenas Registro audiovisual Cultura ind\u00edgena Conservaci\u00f3n del patrimonio Identidad territorial Memoria colectiva Procesos comunitarios Patrimonio cultural Difusi\u00f3n cultural Participaci\u00f3n ind\u00edgena Memoria hist\u00f3rica https://mcultura-my.sharepoint.com/:v:/g/personal/avillanueva_mincultura_gov_co/IQBoZkpaqepUS5s2phXZJEZkAaipaEbfg0xTt2jQ1OIcCaw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=JUah2G"
     },
     {
       "id": "somos-cultura-de-paz-66",
       "row": 66,
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Memoria y Circulación.",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Memoria y Circulaci\u00f3n.",
       "title": "Video Guardianes de la imagen y saberes del Padre Fuego en el CRIHU",
       "type": "Video",
-      "description": "A través de rostros, simbologías, medicina ancestral y el palabreo alrededor del Padre Fuego, se revela la importancia del patrimonio audiovisual, los riesgos de su pérdida, el despertar de conciencia con la implementación del Patrimonio Audiovisual Colombiano, Capítulo Pueblos Indígenas, PACCPI en los ocho pueblos del CRIHU.",
+      "description": "A trav\u00e9s de rostros, simbolog\u00edas, medicina ancestral y el palabreo alrededor del Padre Fuego, se revela la importancia del patrimonio audiovisual, los riesgos de su p\u00e9rdida, el despertar de conciencia con la implementaci\u00f3n del Patrimonio Audiovisual Colombiano, Cap\u00edtulo Pueblos Ind\u00edgenas, PACCPI en los ocho pueblos del CRIHU.",
       "keywords": [
-        "Rostros y simbologías",
+        "Rostros y simbolog\u00edas",
         "Medicina ancestral",
         "Padre Fuego",
         "Patrimonio audiovisual",
-        "Riesgos de pérdida",
+        "Riesgos de p\u00e9rdida",
         "Despertar de conciencia",
-        "Implementación PACCPI",
-        "Capítulo Pueblos Indígenas",
+        "Implementaci\u00f3n PACCPI",
+        "Cap\u00edtulo Pueblos Ind\u00edgenas",
         "Ocho pueblos del CRIHU",
-        "Cultura indígena",
-        "Tradición oral",
+        "Cultura ind\u00edgena",
+        "Tradici\u00f3n oral",
         "Memoria colectiva",
-        "Conservación del patrimonio",
+        "Conservaci\u00f3n del patrimonio",
         "Identidad cultural",
         "Saberes ancestrales",
-        "Comunicación audiovisual",
-        "Preservación histórica",
-        "Territorio indígena",
-        "Participación comunitaria",
-        "Protección del patrimonio intangible"
+        "Comunicaci\u00f3n audiovisual",
+        "Preservaci\u00f3n hist\u00f3rica",
+        "Territorio ind\u00edgena",
+        "Participaci\u00f3n comunitaria",
+        "Protecci\u00f3n del patrimonio intangible"
       ],
       "link": "https://mcultura-my.sharepoint.com/:v:/g/personal/avillanueva_mincultura_gov_co/IQAJ_x7nWYlAQKBtr05xwBLHAXgwb47s-3sdJxKYbJ5WmrY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=UJfThE",
       "asset_link": "",
-      "force_message": "El territorio también es un archivo. En cada piedra y en cada árbol se guarda la huella de quienes nos enseñaron a mirar con respeto.",
+      "force_message": "El territorio tambi\u00e9n es un archivo. En cada piedra y en cada \u00e1rbol se guarda la huella de quienes nos ense\u00f1aron a mirar con respeto.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Memoria y Circulación. Video Guardianes de la imagen y saberes del Padre Fuego en el CRIHU Video A través de rostros, simbologías, medicina ancestral y el palabreo alrededor del Padre Fuego, se revela la importancia del patrimonio audiovisual, los riesgos de su pérdida, el despertar de conciencia con la implementación del Patrimonio Audiovisual Colombiano, Capítulo Pueblos Indígenas, PACCPI en los ocho pueblos del CRIHU. El territorio también es un archivo. En cada piedra y en cada árbol se guarda la huella de quienes nos enseñaron a mirar con respeto. Rostros y simbologías Medicina ancestral Padre Fuego Patrimonio audiovisual Riesgos de pérdida Despertar de conciencia Implementación PACCPI Capítulo Pueblos Indígenas Ocho pueblos del CRIHU Cultura indígena Tradición oral Memoria colectiva Conservación del patrimonio Identidad cultural Saberes ancestrales Comunicación audiovisual Preservación histórica Territorio indígena Participación comunitaria Protección del patrimonio intangible https://mcultura-my.sharepoint.com/:v:/g/personal/avillanueva_mincultura_gov_co/IQAJ_x7nWYlAQKBtr05xwBLHAXgwb47s-3sdJxKYbJ5WmrY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=UJfThE"
+      "search_text": "Somos cultura de paz MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Memoria y Circulaci\u00f3n. Video Guardianes de la imagen y saberes del Padre Fuego en el CRIHU Video A trav\u00e9s de rostros, simbolog\u00edas, medicina ancestral y el palabreo alrededor del Padre Fuego, se revela la importancia del patrimonio audiovisual, los riesgos de su p\u00e9rdida, el despertar de conciencia con la implementaci\u00f3n del Patrimonio Audiovisual Colombiano, Cap\u00edtulo Pueblos Ind\u00edgenas, PACCPI en los ocho pueblos del CRIHU. El territorio tambi\u00e9n es un archivo. En cada piedra y en cada \u00e1rbol se guarda la huella de quienes nos ense\u00f1aron a mirar con respeto. Rostros y simbolog\u00edas Medicina ancestral Padre Fuego Patrimonio audiovisual Riesgos de p\u00e9rdida Despertar de conciencia Implementaci\u00f3n PACCPI Cap\u00edtulo Pueblos Ind\u00edgenas Ocho pueblos del CRIHU Cultura ind\u00edgena Tradici\u00f3n oral Memoria colectiva Conservaci\u00f3n del patrimonio Identidad cultural Saberes ancestrales Comunicaci\u00f3n audiovisual Preservaci\u00f3n hist\u00f3rica Territorio ind\u00edgena Participaci\u00f3n comunitaria Protecci\u00f3n del patrimonio intangible https://mcultura-my.sharepoint.com/:v:/g/personal/avillanueva_mincultura_gov_co/IQAJ_x7nWYlAQKBtr05xwBLHAXgwb47s-3sdJxKYbJ5WmrY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=UJfThE"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-82",
       "row": 82,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
       "title": "Documental El Siete",
       "type": "Documental",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. Fanny trabaja junto a sus socios en un oficio tradicionalmente masculino: los talleres mecánicos del barrio Siete de Agosto en Bogotá. Orgullosa de ganarse la vida en el que define como el mercado de autopartes más grande de América Latina, ella forma parte del nutrido mundo de latoneros, electricistas, torneros, pintores, gomeros, vendedores ambulantes y mecánicos del Siete de Agosto.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Fanny trabaja junto a sus socios en un oficio tradicionalmente masculino: los talleres mec\u00e1nicos del barrio Siete de Agosto en Bogot\u00e1. Orgullosa de ganarse la vida en el que define como el mercado de autopartes m\u00e1s grande de Am\u00e9rica Latina, ella forma parte del nutrido mundo de latoneros, electricistas, torneros, pintores, gomeros, vendedores ambulantes y mec\u00e1nicos del Siete de Agosto.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Fanny",
         "Oficio tradicionalmente masculino",
-        "Talleres mecánicos",
-        "Barrio Siete de Agosto, Bogotá",
+        "Talleres mec\u00e1nicos",
+        "Barrio Siete de Agosto, Bogot\u00e1",
         "Mercado de autopartes",
-        "América Latina",
+        "Am\u00e9rica Latina",
         "Latoneros",
         "Electricistas",
         "Torneros",
         "Pintores",
         "Gomeros",
         "Vendedores ambulantes",
-        "Mecánicos",
+        "Mec\u00e1nicos",
         "Trabajo urbano",
-        "Economía informal",
+        "Econom\u00eda informal",
         "Empoderamiento femenino",
         "Cultura laboral",
         "Comunidad de oficios"
       ],
       "link": "https://www.youtube.com/watch?v=Lti0bxftY3M",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Documental El Siete Documental Producción de la serie audiovisual y sonora Economías populares. Fanny trabaja junto a sus socios en un oficio tradicionalmente masculino: los talleres mecánicos del barrio Siete de Agosto en Bogotá. Orgullosa de ganarse la vida en el que define como el mercado de autopartes más grande de América Latina, ella forma parte del nutrido mundo de latoneros, electricistas, torneros, pintores, gomeros, vendedores ambulantes y mecánicos del Siete de Agosto. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Fanny Oficio tradicionalmente masculino Talleres mecánicos Barrio Siete de Agosto, Bogotá Mercado de autopartes América Latina Latoneros Electricistas Torneros Pintores Gomeros Vendedores ambulantes Mecánicos Trabajo urbano Economía informal Empoderamiento femenino Cultura laboral Comunidad de oficios https://www.youtube.com/watch?v=Lti0bxftY3M"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Documental El Siete Documental Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Fanny trabaja junto a sus socios en un oficio tradicionalmente masculino: los talleres mec\u00e1nicos del barrio Siete de Agosto en Bogot\u00e1. Orgullosa de ganarse la vida en el que define como el mercado de autopartes m\u00e1s grande de Am\u00e9rica Latina, ella forma parte del nutrido mundo de latoneros, electricistas, torneros, pintores, gomeros, vendedores ambulantes y mec\u00e1nicos del Siete de Agosto. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Fanny Oficio tradicionalmente masculino Talleres mec\u00e1nicos Barrio Siete de Agosto, Bogot\u00e1 Mercado de autopartes Am\u00e9rica Latina Latoneros Electricistas Torneros Pintores Gomeros Vendedores ambulantes Mec\u00e1nicos Trabajo urbano Econom\u00eda informal Empoderamiento femenino Cultura laboral Comunidad de oficios https://www.youtube.com/watch?v=Lti0bxftY3M"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-83",
       "row": 83,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
       "title": "Documental El convite",
       "type": "Documental",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. Hernán Pacheco se autodefine como papero de nacimiento, de profesión y vocación; según lo permitan los ciclos climáticos, convoca un par de veces al año a la recolección de la cosecha de papa en su terreno en San Pedro de Iguaque. Juan Ramón y Pedro Nel, músicos empíricos reconocidos en la región, compondrán en paralelo la canción Así se vive en el campo, cuyo proceso creativo podremos apreciar y disfrutar.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Hern\u00e1n Pacheco se autodefine como papero de nacimiento, de profesi\u00f3n y vocaci\u00f3n; seg\u00fan lo permitan los ciclos clim\u00e1ticos, convoca un par de veces al a\u00f1o a la recolecci\u00f3n de la cosecha de papa en su terreno en San Pedro de Iguaque. Juan Ram\u00f3n y Pedro Nel, m\u00fasicos emp\u00edricos reconocidos en la regi\u00f3n, compondr\u00e1n en paralelo la canci\u00f3n As\u00ed se vive en el campo, cuyo proceso creativo podremos apreciar y disfrutar.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
-        "Hernán Pacheco",
+        "Econom\u00edas populares",
+        "Hern\u00e1n Pacheco",
         "Papero",
-        "Recolección de papa",
+        "Recolecci\u00f3n de papa",
         "San Pedro de Iguaque",
-        "Ciclos climáticos",
+        "Ciclos clim\u00e1ticos",
         "Agricultura campesina",
         "Trabajo rural",
-        "Juan Ramón y Pedro Nel",
-        "Músicos empíricos",
-        "Composición musical",
-        "Canción “Así se vive en el campo”",
+        "Juan Ram\u00f3n y Pedro Nel",
+        "M\u00fasicos emp\u00edricos",
+        "Composici\u00f3n musical",
+        "Canci\u00f3n \u201cAs\u00ed se vive en el campo\u201d",
         "Procesos creativos",
         "Cultura campesina",
         "Saberes locales",
-        "Tradición y oficio",
+        "Tradici\u00f3n y oficio",
         "Vida en el campo",
         "Identidad rural",
         "Narrativa audiovisual"
       ],
       "link": "https://www.youtube.com/watch?v=HpDO8SEFNy8",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Documental El convite Documental Producción de la serie audiovisual y sonora Economías populares. Hernán Pacheco se autodefine como papero de nacimiento, de profesión y vocación; según lo permitan los ciclos climáticos, convoca un par de veces al año a la recolección de la cosecha de papa en su terreno en San Pedro de Iguaque. Juan Ramón y Pedro Nel, músicos empíricos reconocidos en la región, compondrán en paralelo la canción Así se vive en el campo, cuyo proceso creativo podremos apreciar y disfrutar. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Hernán Pacheco Papero Recolección de papa San Pedro de Iguaque Ciclos climáticos Agricultura campesina Trabajo rural Juan Ramón y Pedro Nel Músicos empíricos Composición musical Canción “Así se vive en el campo” Procesos creativos Cultura campesina Saberes locales Tradición y oficio Vida en el campo Identidad rural Narrativa audiovisual https://www.youtube.com/watch?v=HpDO8SEFNy8"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Documental El convite Documental Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Hern\u00e1n Pacheco se autodefine como papero de nacimiento, de profesi\u00f3n y vocaci\u00f3n; seg\u00fan lo permitan los ciclos clim\u00e1ticos, convoca un par de veces al a\u00f1o a la recolecci\u00f3n de la cosecha de papa en su terreno en San Pedro de Iguaque. Juan Ram\u00f3n y Pedro Nel, m\u00fasicos emp\u00edricos reconocidos en la regi\u00f3n, compondr\u00e1n en paralelo la canci\u00f3n As\u00ed se vive en el campo, cuyo proceso creativo podremos apreciar y disfrutar. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Hern\u00e1n Pacheco Papero Recolecci\u00f3n de papa San Pedro de Iguaque Ciclos clim\u00e1ticos Agricultura campesina Trabajo rural Juan Ram\u00f3n y Pedro Nel M\u00fasicos emp\u00edricos Composici\u00f3n musical Canci\u00f3n \u201cAs\u00ed se vive en el campo\u201d Procesos creativos Cultura campesina Saberes locales Tradici\u00f3n y oficio Vida en el campo Identidad rural Narrativa audiovisual https://www.youtube.com/watch?v=HpDO8SEFNy8"
     },
     {
       "id": "somos-economias-populares-84",
       "row": 84,
-      "theme": "Somos economías populares",
+      "theme": "Somos econom\u00edas populares",
       "theme_slug": "somos-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video Aquí vivimos al diario",
+      "title": "C\u00e1psula de video Aqu\u00ed vivimos al diario",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. Uno de los oficios diarios de Karol es arreglar alternadores y arranques de carros en el barrio Siete de Agosto, en la ciudad de Bogotá. Karol narra los retos que enfrenta cotidianamente al ser una madre trabajadora que vive al diario y que usa su ingenio para reparar piezas mecánicas.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Uno de los oficios diarios de Karol es arreglar alternadores y arranques de carros en el barrio Siete de Agosto, en la ciudad de Bogot\u00e1. Karol narra los retos que enfrenta cotidianamente al ser una madre trabajadora que vive al diario y que usa su ingenio para reparar piezas mec\u00e1nicas.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Karol",
-        "Oficio mecánico",
-        "Reparación de alternadores y arranques",
-        "Barrio Siete de Agosto, Bogotá",
+        "Oficio mec\u00e1nico",
+        "Reparaci\u00f3n de alternadores y arranques",
+        "Barrio Siete de Agosto, Bogot\u00e1",
         "Trabajo diario",
         "Madre trabajadora",
         "Retos cotidianos",
         "Ingenio y habilidad",
-        "Economía urbana",
-        "Oficios técnicos",
+        "Econom\u00eda urbana",
+        "Oficios t\u00e9cnicos",
         "Vida laboral femenina",
         "Resiliencia",
         "Cultura del trabajo",
-        "Comunidad de mecánicos",
-        "Economía informal",
-        "Autonomía económica",
+        "Comunidad de mec\u00e1nicos",
+        "Econom\u00eda informal",
+        "Autonom\u00eda econ\u00f3mica",
         "Narrativa personal",
         "Experiencia urbana"
       ],
       "link": "https://www.youtube.com/watch?v=Sw8aQGVImaw",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos economías populares ICANH Cápsula de video Aquí vivimos al diario Video Producción de la serie audiovisual y sonora Economías populares. Uno de los oficios diarios de Karol es arreglar alternadores y arranques de carros en el barrio Siete de Agosto, en la ciudad de Bogotá. Karol narra los retos que enfrenta cotidianamente al ser una madre trabajadora que vive al diario y que usa su ingenio para reparar piezas mecánicas. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Karol Oficio mecánico Reparación de alternadores y arranques Barrio Siete de Agosto, Bogotá Trabajo diario Madre trabajadora Retos cotidianos Ingenio y habilidad Economía urbana Oficios técnicos Vida laboral femenina Resiliencia Cultura del trabajo Comunidad de mecánicos Economía informal Autonomía económica Narrativa personal Experiencia urbana https://www.youtube.com/watch?v=Sw8aQGVImaw"
+      "search_text": "Somos econom\u00edas populares ICANH C\u00e1psula de video Aqu\u00ed vivimos al diario Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Uno de los oficios diarios de Karol es arreglar alternadores y arranques de carros en el barrio Siete de Agosto, en la ciudad de Bogot\u00e1. Karol narra los retos que enfrenta cotidianamente al ser una madre trabajadora que vive al diario y que usa su ingenio para reparar piezas mec\u00e1nicas. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Karol Oficio mec\u00e1nico Reparaci\u00f3n de alternadores y arranques Barrio Siete de Agosto, Bogot\u00e1 Trabajo diario Madre trabajadora Retos cotidianos Ingenio y habilidad Econom\u00eda urbana Oficios t\u00e9cnicos Vida laboral femenina Resiliencia Cultura del trabajo Comunidad de mec\u00e1nicos Econom\u00eda informal Autonom\u00eda econ\u00f3mica Narrativa personal Experiencia urbana https://www.youtube.com/watch?v=Sw8aQGVImaw"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-85",
       "row": 85,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video Nos toca guerrearla",
+      "title": "C\u00e1psula de video Nos toca guerrearla",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. Los saberes, oficios y especialidades de las trabajadoras y trabajadores del barrio Siete de Agosto en Bogotá expresan las diferentes formas de rebusque y creatividad que ocurren en las economías populares.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Los saberes, oficios y especialidades de las trabajadoras y trabajadores del barrio Siete de Agosto en Bogot\u00e1 expresan las diferentes formas de rebusque y creatividad que ocurren en las econom\u00edas populares.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Saberes y oficios",
         "Trabajadoras y trabajadores",
-        "Barrio Siete de Agosto, Bogotá",
+        "Barrio Siete de Agosto, Bogot\u00e1",
         "Rebusque",
         "Creatividad",
-        "Economía informal",
+        "Econom\u00eda informal",
         "Vida urbana",
         "Experiencia laboral"
       ],
       "link": "https://www.youtube.com/watch?v=DJKAUP8u9HY",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video Nos toca guerrearla Video Producción de la serie audiovisual y sonora Economías populares. Los saberes, oficios y especialidades de las trabajadoras y trabajadores del barrio Siete de Agosto en Bogotá expresan las diferentes formas de rebusque y creatividad que ocurren en las economías populares. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Saberes y oficios Trabajadoras y trabajadores Barrio Siete de Agosto, Bogotá Rebusque Creatividad Economía informal Vida urbana Experiencia laboral https://www.youtube.com/watch?v=DJKAUP8u9HY"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video Nos toca guerrearla Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Los saberes, oficios y especialidades de las trabajadoras y trabajadores del barrio Siete de Agosto en Bogot\u00e1 expresan las diferentes formas de rebusque y creatividad que ocurren en las econom\u00edas populares. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Saberes y oficios Trabajadoras y trabajadores Barrio Siete de Agosto, Bogot\u00e1 Rebusque Creatividad Econom\u00eda informal Vida urbana Experiencia laboral https://www.youtube.com/watch?v=DJKAUP8u9HY"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-86",
       "row": 86,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video No me falta nada",
+      "title": "C\u00e1psula de video No me falta nada",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. Sandra, una mujer yerbatera de la plaza de mercado del barrio Siete de Agosto, vive de vender todo tipo de plantas medicinales, aceites esenciales, veladoras, estampas de santos, baños y sahumerios para la prosperidad, la abundancia y el amor. Ella es el reflejo de conocimientos, creencias y rituales populares sobre plantas, remedios, santos y rezos.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Sandra, una mujer yerbatera de la plaza de mercado del barrio Siete de Agosto, vive de vender todo tipo de plantas medicinales, aceites esenciales, veladoras, estampas de santos, ba\u00f1os y sahumerios para la prosperidad, la abundancia y el amor. Ella es el reflejo de conocimientos, creencias y rituales populares sobre plantas, remedios, santos y rezos.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Sandra",
         "Yerbatera",
-        "Plaza de mercado, Barrio Siete de Agosto, Bogotá",
+        "Plaza de mercado, Barrio Siete de Agosto, Bogot\u00e1",
         "Plantas medicinales",
         "Aceites esenciales",
         "Veladoras y estampas de santos",
-        "Baños y sahumerios",
+        "Ba\u00f1os y sahumerios",
         "Prosperidad, abundancia y amor",
         "Conocimientos y creencias populares",
         "Rituales y remedios tradicionales",
         "Saberes ancestrales",
         "Cultura popular",
-        "Economía informal"
+        "Econom\u00eda informal"
       ],
       "link": "https://www.youtube.com/watch?v=sJYtzOnKxeQ",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video No me falta nada Video Producción de la serie audiovisual y sonora Economías populares. Sandra, una mujer yerbatera de la plaza de mercado del barrio Siete de Agosto, vive de vender todo tipo de plantas medicinales, aceites esenciales, veladoras, estampas de santos, baños y sahumerios para la prosperidad, la abundancia y el amor. Ella es el reflejo de conocimientos, creencias y rituales populares sobre plantas, remedios, santos y rezos. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Sandra Yerbatera Plaza de mercado, Barrio Siete de Agosto, Bogotá Plantas medicinales Aceites esenciales Veladoras y estampas de santos Baños y sahumerios Prosperidad, abundancia y amor Conocimientos y creencias populares Rituales y remedios tradicionales Saberes ancestrales Cultura popular Economía informal https://www.youtube.com/watch?v=sJYtzOnKxeQ"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video No me falta nada Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Sandra, una mujer yerbatera de la plaza de mercado del barrio Siete de Agosto, vive de vender todo tipo de plantas medicinales, aceites esenciales, veladoras, estampas de santos, ba\u00f1os y sahumerios para la prosperidad, la abundancia y el amor. Ella es el reflejo de conocimientos, creencias y rituales populares sobre plantas, remedios, santos y rezos. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Sandra Yerbatera Plaza de mercado, Barrio Siete de Agosto, Bogot\u00e1 Plantas medicinales Aceites esenciales Veladoras y estampas de santos Ba\u00f1os y sahumerios Prosperidad, abundancia y amor Conocimientos y creencias populares Rituales y remedios tradicionales Saberes ancestrales Cultura popular Econom\u00eda informal https://www.youtube.com/watch?v=sJYtzOnKxeQ"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-87",
       "row": 87,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video Las comadres y el puntal",
+      "title": "C\u00e1psula de video Las comadres y el puntal",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. La labor de las mujeres de San Pedro de Iguaque en la preparación de El puntal, una de las comidas que se les ofrece a los obreros agricultores durante la mañana en las jornadas laborales de recolección de la cosecha de papa en Boyacá.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. La labor de las mujeres de San Pedro de Iguaque en la preparaci\u00f3n de El puntal, una de las comidas que se les ofrece a los obreros agricultores durante la ma\u00f1ana en las jornadas laborales de recolecci\u00f3n de la cosecha de papa en Boyac\u00e1.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Mujeres de San Pedro de Iguaque",
-        "Preparación de El puntal",
-        "Alimentación de obreros agrícolas",
-        "Recolección de papa",
-        "Boyacá",
+        "Preparaci\u00f3n de El puntal",
+        "Alimentaci\u00f3n de obreros agr\u00edcolas",
+        "Recolecci\u00f3n de papa",
+        "Boyac\u00e1",
         "Trabajo rural",
         "Apoyo a jornadas laborales",
         "Saberes culinarios tradicionales",
-        "Economía campesina"
+        "Econom\u00eda campesina"
       ],
       "link": "https://www.youtube.com/watch?v=QnkQaRrbOZU",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video Las comadres y el puntal Video Producción de la serie audiovisual y sonora Economías populares. La labor de las mujeres de San Pedro de Iguaque en la preparación de El puntal, una de las comidas que se les ofrece a los obreros agricultores durante la mañana en las jornadas laborales de recolección de la cosecha de papa en Boyacá. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Mujeres de San Pedro de Iguaque Preparación de El puntal Alimentación de obreros agrícolas Recolección de papa Boyacá Trabajo rural Apoyo a jornadas laborales Saberes culinarios tradicionales Economía campesina https://www.youtube.com/watch?v=QnkQaRrbOZU"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video Las comadres y el puntal Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. La labor de las mujeres de San Pedro de Iguaque en la preparaci\u00f3n de El puntal, una de las comidas que se les ofrece a los obreros agricultores durante la ma\u00f1ana en las jornadas laborales de recolecci\u00f3n de la cosecha de papa en Boyac\u00e1. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Mujeres de San Pedro de Iguaque Preparaci\u00f3n de El puntal Alimentaci\u00f3n de obreros agr\u00edcolas Recolecci\u00f3n de papa Boyac\u00e1 Trabajo rural Apoyo a jornadas laborales Saberes culinarios tradicionales Econom\u00eda campesina https://www.youtube.com/watch?v=QnkQaRrbOZU"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-88",
       "row": 88,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video La sacanza",
+      "title": "C\u00e1psula de video La sacanza",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. Durante la sacanza de la papa en Boyacá, las jornaleras y jornaleros trabajan varios días para cosechar el producto que se vende en los mercados urbanos de Colombia. Lidia jornalea en la parcela de su hermano durante la cosecha y reflexiona sobre cómo el precio de la papa en el mercado afecta su economía familiar y campesina.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Durante la sacanza de la papa en Boyac\u00e1, las jornaleras y jornaleros trabajan varios d\u00edas para cosechar el producto que se vende en los mercados urbanos de Colombia. Lidia jornalea en la parcela de su hermano durante la cosecha y reflexiona sobre c\u00f3mo el precio de la papa en el mercado afecta su econom\u00eda familiar y campesina.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Sacanza de papa",
         "Jornaleras y jornaleros",
-        "Cosecha en Boyacá",
+        "Cosecha en Boyac\u00e1",
         "Mercado urbano",
-        "Economía familiar y campesina",
+        "Econom\u00eda familiar y campesina",
         "Lidia",
         "Trabajo rural",
         "Impacto del precio en el mercado",
         "Agricultura campesina",
-        "Producción y comercialización"
+        "Producci\u00f3n y comercializaci\u00f3n"
       ],
       "link": "https://www.youtube.com/watch?v=Sg8yjxldxsI",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video La sacanza Video Producción de la serie audiovisual y sonora Economías populares. Durante la sacanza de la papa en Boyacá, las jornaleras y jornaleros trabajan varios días para cosechar el producto que se vende en los mercados urbanos de Colombia. Lidia jornalea en la parcela de su hermano durante la cosecha y reflexiona sobre cómo el precio de la papa en el mercado afecta su economía familiar y campesina. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Sacanza de papa Jornaleras y jornaleros Cosecha en Boyacá Mercado urbano Economía familiar y campesina Lidia Trabajo rural Impacto del precio en el mercado Agricultura campesina Producción y comercialización https://www.youtube.com/watch?v=Sg8yjxldxsI"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video La sacanza Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Durante la sacanza de la papa en Boyac\u00e1, las jornaleras y jornaleros trabajan varios d\u00edas para cosechar el producto que se vende en los mercados urbanos de Colombia. Lidia jornalea en la parcela de su hermano durante la cosecha y reflexiona sobre c\u00f3mo el precio de la papa en el mercado afecta su econom\u00eda familiar y campesina. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Sacanza de papa Jornaleras y jornaleros Cosecha en Boyac\u00e1 Mercado urbano Econom\u00eda familiar y campesina Lidia Trabajo rural Impacto del precio en el mercado Agricultura campesina Producci\u00f3n y comercializaci\u00f3n https://www.youtube.com/watch?v=Sg8yjxldxsI"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-89",
       "row": 89,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video Mi patio es bonito",
+      "title": "C\u00e1psula de video Mi patio es bonito",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. En los patios de las casas en Sempegua, las familias siembran, cuidan y producen una gran diversidad de alimentos, plantas medicinales y ornamentales que aportan a la soberanía y seguridad alimentaria de la comunidad. Los alimentos cosechados impulsan la economía campesina y forman parte de una red de intercambio y trueque entre familias.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. En los patios de las casas en Sempegua, las familias siembran, cuidan y producen una gran diversidad de alimentos, plantas medicinales y ornamentales que aportan a la soberan\u00eda y seguridad alimentaria de la comunidad. Los alimentos cosechados impulsan la econom\u00eda campesina y forman parte de una red de intercambio y trueque entre familias.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Sempegua",
         "Familias campesinas",
-        "Huertas domésticas",
+        "Huertas dom\u00e9sticas",
         "Alimentos, plantas medicinales y ornamentales",
-        "Soberanía alimentaria",
+        "Soberan\u00eda alimentaria",
         "Seguridad alimentaria",
-        "Economía campesina",
+        "Econom\u00eda campesina",
         "Intercambio y trueque",
-        "Producción local",
-        "Saberes agrícolas tradicionales"
+        "Producci\u00f3n local",
+        "Saberes agr\u00edcolas tradicionales"
       ],
       "link": "https://www.youtube.com/watch?v=M8zDMrOm070",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video Mi patio es bonito Video Producción de la serie audiovisual y sonora Economías populares. En los patios de las casas en Sempegua, las familias siembran, cuidan y producen una gran diversidad de alimentos, plantas medicinales y ornamentales que aportan a la soberanía y seguridad alimentaria de la comunidad. Los alimentos cosechados impulsan la economía campesina y forman parte de una red de intercambio y trueque entre familias. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Sempegua Familias campesinas Huertas domésticas Alimentos, plantas medicinales y ornamentales Soberanía alimentaria Seguridad alimentaria Economía campesina Intercambio y trueque Producción local Saberes agrícolas tradicionales https://www.youtube.com/watch?v=M8zDMrOm070"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video Mi patio es bonito Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. En los patios de las casas en Sempegua, las familias siembran, cuidan y producen una gran diversidad de alimentos, plantas medicinales y ornamentales que aportan a la soberan\u00eda y seguridad alimentaria de la comunidad. Los alimentos cosechados impulsan la econom\u00eda campesina y forman parte de una red de intercambio y trueque entre familias. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Sempegua Familias campesinas Huertas dom\u00e9sticas Alimentos, plantas medicinales y ornamentales Soberan\u00eda alimentaria Seguridad alimentaria Econom\u00eda campesina Intercambio y trueque Producci\u00f3n local Saberes agr\u00edcolas tradicionales https://www.youtube.com/watch?v=M8zDMrOm070"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-90",
       "row": 90,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video La uvita",
+      "title": "C\u00e1psula de video La uvita",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. La uvita, también conocida como corozo, es uno de los frutos nativos aprovechables del ecosistema cienaguero en Sempegua y una de las alternativas económicas para los momentos en que el pescado escasea. Las mujeres \"uviteras\" viven de ir al monte a recolectar racimos de uvita para venderlos como fruto, en jugo o en helados.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. La uvita, tambi\u00e9n conocida como corozo, es uno de los frutos nativos aprovechables del ecosistema cienaguero en Sempegua y una de las alternativas econ\u00f3micas para los momentos en que el pescado escasea. Las mujeres \"uviteras\" viven de ir al monte a recolectar racimos de uvita para venderlos como fruto, en jugo o en helados.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Uvita / corozo",
         "Ecosistema cienaguero, Sempegua",
-        "Alternativa económica",
+        "Alternativa econ\u00f3mica",
         "Escasez de pescado",
         "Mujeres uviteras",
-        "Recolección de frutos",
+        "Recolecci\u00f3n de frutos",
         "Venta de fruto, jugo y helados",
-        "Economía local",
-        "Producción comunitaria",
+        "Econom\u00eda local",
+        "Producci\u00f3n comunitaria",
         "Saberes tradicionales"
       ],
       "link": "https://www.youtube.com/watch?v=26GmlIe36O4",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video La uvita Video Producción de la serie audiovisual y sonora Economías populares. La uvita, también conocida como corozo, es uno de los frutos nativos aprovechables del ecosistema cienaguero en Sempegua y una de las alternativas económicas para los momentos en que el pescado escasea. Las mujeres \"uviteras\" viven de ir al monte a recolectar racimos de uvita para venderlos como fruto, en jugo o en helados. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Uvita / corozo Ecosistema cienaguero, Sempegua Alternativa económica Escasez de pescado Mujeres uviteras Recolección de frutos Venta de fruto, jugo y helados Economía local Producción comunitaria Saberes tradicionales https://www.youtube.com/watch?v=26GmlIe36O4"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video La uvita Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. La uvita, tambi\u00e9n conocida como corozo, es uno de los frutos nativos aprovechables del ecosistema cienaguero en Sempegua y una de las alternativas econ\u00f3micas para los momentos en que el pescado escasea. Las mujeres \"uviteras\" viven de ir al monte a recolectar racimos de uvita para venderlos como fruto, en jugo o en helados. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Uvita / corozo Ecosistema cienaguero, Sempegua Alternativa econ\u00f3mica Escasez de pescado Mujeres uviteras Recolecci\u00f3n de frutos Venta de fruto, jugo y helados Econom\u00eda local Producci\u00f3n comunitaria Saberes tradicionales https://www.youtube.com/watch?v=26GmlIe36O4"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-91",
       "row": 91,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video La manaca",
+      "title": "C\u00e1psula de video La manaca",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. En Inírida, subir a la palma de manaca (también conocida como açai) es una actividad que se aprende desde la niñez. La manaca forma parte de la base alimentaria de las familias, y a las mujeres que tienen el oficio de prepararla se les llama «manaqueras». Algunas la pilan y otras la despulpan; hay quienes la consumen con mañoco y otros prefieren acompañarla con almidón.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. En In\u00edrida, subir a la palma de manaca (tambi\u00e9n conocida como a\u00e7ai) es una actividad que se aprende desde la ni\u00f1ez. La manaca forma parte de la base alimentaria de las familias, y a las mujeres que tienen el oficio de prepararla se les llama \u00abmanaqueras\u00bb. Algunas la pilan y otras la despulpan; hay quienes la consumen con ma\u00f1oco y otros prefieren acompa\u00f1arla con almid\u00f3n.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
-        "Inírida",
-        "Palma de manaca / açai",
+        "Econom\u00edas populares",
+        "In\u00edrida",
+        "Palma de manaca / a\u00e7ai",
         "Oficio tradicional",
-        "Niñez y aprendizaje",
+        "Ni\u00f1ez y aprendizaje",
         "Base alimentaria familiar",
         "Mujeres manaqueras",
         "Pilado y despulpado",
-        "Consumo con mañoco o almidón",
+        "Consumo con ma\u00f1oco o almid\u00f3n",
         "Saberes ancestrales",
-        "Economía local",
-        "Producción y preparación de alimentos",
-        "Tradición comunitaria"
+        "Econom\u00eda local",
+        "Producci\u00f3n y preparaci\u00f3n de alimentos",
+        "Tradici\u00f3n comunitaria"
       ],
       "link": "https://www.youtube.com/watch?v=RkvokSVNOfg",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video La manaca Video Producción de la serie audiovisual y sonora Economías populares. En Inírida, subir a la palma de manaca (también conocida como açai) es una actividad que se aprende desde la niñez. La manaca forma parte de la base alimentaria de las familias, y a las mujeres que tienen el oficio de prepararla se les llama «manaqueras». Algunas la pilan y otras la despulpan; hay quienes la consumen con mañoco y otros prefieren acompañarla con almidón. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Inírida Palma de manaca / açai Oficio tradicional Niñez y aprendizaje Base alimentaria familiar Mujeres manaqueras Pilado y despulpado Consumo con mañoco o almidón Saberes ancestrales Economía local Producción y preparación de alimentos Tradición comunitaria https://www.youtube.com/watch?v=RkvokSVNOfg"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video La manaca Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. En In\u00edrida, subir a la palma de manaca (tambi\u00e9n conocida como a\u00e7ai) es una actividad que se aprende desde la ni\u00f1ez. La manaca forma parte de la base alimentaria de las familias, y a las mujeres que tienen el oficio de prepararla se les llama \u00abmanaqueras\u00bb. Algunas la pilan y otras la despulpan; hay quienes la consumen con ma\u00f1oco y otros prefieren acompa\u00f1arla con almid\u00f3n. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares In\u00edrida Palma de manaca / a\u00e7ai Oficio tradicional Ni\u00f1ez y aprendizaje Base alimentaria familiar Mujeres manaqueras Pilado y despulpado Consumo con ma\u00f1oco o almid\u00f3n Saberes ancestrales Econom\u00eda local Producci\u00f3n y preparaci\u00f3n de alimentos Tradici\u00f3n comunitaria https://www.youtube.com/watch?v=RkvokSVNOfg"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-92",
       "row": 92,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video Casabe y mañoco",
+      "title": "C\u00e1psula de video Casabe y ma\u00f1oco",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. Arlenis camina todos los días a trabajar en su conuco, donde siembra yuca brava, yuca dulce y piña. Su abuela le enseñó desde pequeña a trabajar la yuca brava para exprimirle el veneno y preparar casabe, mañoco, almidón, katara y yarubé. Estos alimentos son la base alimentaria de los pueblos indígenas del Guanía y es uno de los principales productos de circulación económica en Inírida.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Arlenis camina todos los d\u00edas a trabajar en su conuco, donde siembra yuca brava, yuca dulce y pi\u00f1a. Su abuela le ense\u00f1\u00f3 desde peque\u00f1a a trabajar la yuca brava para exprimirle el veneno y preparar casabe, ma\u00f1oco, almid\u00f3n, katara y yarub\u00e9. Estos alimentos son la base alimentaria de los pueblos ind\u00edgenas del Guan\u00eda y es uno de los principales productos de circulaci\u00f3n econ\u00f3mica en In\u00edrida.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Arlenis",
         "Conuco",
-        "Siembra de yuca brava, yuca dulce y piña",
-        "Enseñanza de la abuela",
+        "Siembra de yuca brava, yuca dulce y pi\u00f1a",
+        "Ense\u00f1anza de la abuela",
         "Procesamiento de yuca brava",
-        "Casabe, mañoco, almidón, katara, yarubé",
-        "Base alimentaria indígena",
-        "Pueblos indígenas del Guanía",
-        "Circulación económica",
-        "Inírida",
+        "Casabe, ma\u00f1oco, almid\u00f3n, katara, yarub\u00e9",
+        "Base alimentaria ind\u00edgena",
+        "Pueblos ind\u00edgenas del Guan\u00eda",
+        "Circulaci\u00f3n econ\u00f3mica",
+        "In\u00edrida",
         "Saberes ancestrales",
-        "Economía local",
-        "Tradición comunitaria"
+        "Econom\u00eda local",
+        "Tradici\u00f3n comunitaria"
       ],
       "link": "https://www.youtube.com/watch?v=O_4Lg5Qs_AI",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video Casabe y mañoco Video Producción de la serie audiovisual y sonora Economías populares. Arlenis camina todos los días a trabajar en su conuco, donde siembra yuca brava, yuca dulce y piña. Su abuela le enseñó desde pequeña a trabajar la yuca brava para exprimirle el veneno y preparar casabe, mañoco, almidón, katara y yarubé. Estos alimentos son la base alimentaria de los pueblos indígenas del Guanía y es uno de los principales productos de circulación económica en Inírida. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Arlenis Conuco Siembra de yuca brava, yuca dulce y piña Enseñanza de la abuela Procesamiento de yuca brava Casabe, mañoco, almidón, katara, yarubé Base alimentaria indígena Pueblos indígenas del Guanía Circulación económica Inírida Saberes ancestrales Economía local Tradición comunitaria https://www.youtube.com/watch?v=O_4Lg5Qs_AI"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video Casabe y ma\u00f1oco Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Arlenis camina todos los d\u00edas a trabajar en su conuco, donde siembra yuca brava, yuca dulce y pi\u00f1a. Su abuela le ense\u00f1\u00f3 desde peque\u00f1a a trabajar la yuca brava para exprimirle el veneno y preparar casabe, ma\u00f1oco, almid\u00f3n, katara y yarub\u00e9. Estos alimentos son la base alimentaria de los pueblos ind\u00edgenas del Guan\u00eda y es uno de los principales productos de circulaci\u00f3n econ\u00f3mica en In\u00edrida. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Arlenis Conuco Siembra de yuca brava, yuca dulce y pi\u00f1a Ense\u00f1anza de la abuela Procesamiento de yuca brava Casabe, ma\u00f1oco, almid\u00f3n, katara, yarub\u00e9 Base alimentaria ind\u00edgena Pueblos ind\u00edgenas del Guan\u00eda Circulaci\u00f3n econ\u00f3mica In\u00edrida Saberes ancestrales Econom\u00eda local Tradici\u00f3n comunitaria https://www.youtube.com/watch?v=O_4Lg5Qs_AI"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-93",
       "row": 93,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video Me gusta vivir esta vida",
+      "title": "C\u00e1psula de video Me gusta vivir esta vida",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. En la comunidad de La Ceiba han construido un hogar para las abejas meliponas y han propiciado estrategias de cuidado de los peces en los ríos y lagunas en una apuesta por transformar su economía hacia actividades no extractivas y sostenibles.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. En la comunidad de La Ceiba han construido un hogar para las abejas meliponas y han propiciado estrategias de cuidado de los peces en los r\u00edos y lagunas en una apuesta por transformar su econom\u00eda hacia actividades no extractivas y sostenibles.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Comunidad de La Ceiba",
         "Abejas meliponas",
         "Cuidado de peces",
-        "Ríos y lagunas",
-        "Economía sostenible",
+        "R\u00edos y lagunas",
+        "Econom\u00eda sostenible",
         "Actividades no extractivas",
-        "Conservación ambiental",
-        "Producción comunitaria",
+        "Conservaci\u00f3n ambiental",
+        "Producci\u00f3n comunitaria",
         "Saberes tradicionales",
-        "Protección del territorio"
+        "Protecci\u00f3n del territorio"
       ],
       "link": "https://www.youtube.com/watch?v=5zxCbENygQA",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video Me gusta vivir esta vida Video Producción de la serie audiovisual y sonora Economías populares. En la comunidad de La Ceiba han construido un hogar para las abejas meliponas y han propiciado estrategias de cuidado de los peces en los ríos y lagunas en una apuesta por transformar su economía hacia actividades no extractivas y sostenibles. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Comunidad de La Ceiba Abejas meliponas Cuidado de peces Ríos y lagunas Economía sostenible Actividades no extractivas Conservación ambiental Producción comunitaria Saberes tradicionales Protección del territorio https://www.youtube.com/watch?v=5zxCbENygQA"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video Me gusta vivir esta vida Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. En la comunidad de La Ceiba han construido un hogar para las abejas meliponas y han propiciado estrategias de cuidado de los peces en los r\u00edos y lagunas en una apuesta por transformar su econom\u00eda hacia actividades no extractivas y sostenibles. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Comunidad de La Ceiba Abejas meliponas Cuidado de peces R\u00edos y lagunas Econom\u00eda sostenible Actividades no extractivas Conservaci\u00f3n ambiental Producci\u00f3n comunitaria Saberes tradicionales Protecci\u00f3n del territorio https://www.youtube.com/watch?v=5zxCbENygQA"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-94",
       "row": 94,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video Sabor y sabiduría",
+      "title": "C\u00e1psula de video Sabor y sabidur\u00eda",
       "type": "Videos",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. Las cocinas en la casa, en la calle, en la comunidad están llenas de sabores, saberes y sazones en torno a la preparación de alimentos y son el sustento económico de quienes a diario prenden los fogones.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Las cocinas en la casa, en la calle, en la comunidad est\u00e1n llenas de sabores, saberes y sazones en torno a la preparaci\u00f3n de alimentos y son el sustento econ\u00f3mico de quienes a diario prenden los fogones.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
-        "Cocinas domésticas y comunitarias",
-        "Preparación de alimentos",
+        "Econom\u00edas populares",
+        "Cocinas dom\u00e9sticas y comunitarias",
+        "Preparaci\u00f3n de alimentos",
         "Sabores, saberes y sazones",
-        "Sustento económico",
+        "Sustento econ\u00f3mico",
         "Trabajo diario",
         "Fogones",
-        "Economía local",
+        "Econom\u00eda local",
         "Cultura culinaria",
-        "Producción comunitaria",
-        "Tradición gastronómica"
+        "Producci\u00f3n comunitaria",
+        "Tradici\u00f3n gastron\u00f3mica"
       ],
       "link": "https://www.youtube.com/watch?v=QQj6H7ZsgtA",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video Sabor y sabiduría Videos Producción de la serie audiovisual y sonora Economías populares. Las cocinas en la casa, en la calle, en la comunidad están llenas de sabores, saberes y sazones en torno a la preparación de alimentos y son el sustento económico de quienes a diario prenden los fogones. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Cocinas domésticas y comunitarias Preparación de alimentos Sabores, saberes y sazones Sustento económico Trabajo diario Fogones Economía local Cultura culinaria Producción comunitaria Tradición gastronómica https://www.youtube.com/watch?v=QQj6H7ZsgtA"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video Sabor y sabidur\u00eda Videos Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Las cocinas en la casa, en la calle, en la comunidad est\u00e1n llenas de sabores, saberes y sazones en torno a la preparaci\u00f3n de alimentos y son el sustento econ\u00f3mico de quienes a diario prenden los fogones. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Cocinas dom\u00e9sticas y comunitarias Preparaci\u00f3n de alimentos Sabores, saberes y sazones Sustento econ\u00f3mico Trabajo diario Fogones Econom\u00eda local Cultura culinaria Producci\u00f3n comunitaria Tradici\u00f3n gastron\u00f3mica https://www.youtube.com/watch?v=QQj6H7ZsgtA"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-95",
       "row": 95,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video Las mujeres hacemos de todo",
+      "title": "C\u00e1psula de video Las mujeres hacemos de todo",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. Las mujeres realizan diferentes tipos de oficios para rebuscarse la vida, muchas veces tienen doble jornada de trabajo al asumir las labores de cuidado de la familia en el hogar y enfrentan los retos de ser mujeres en un mundo machista.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Las mujeres realizan diferentes tipos de oficios para rebuscarse la vida, muchas veces tienen doble jornada de trabajo al asumir las labores de cuidado de la familia en el hogar y enfrentan los retos de ser mujeres en un mundo machista.",
       "keywords": [
         "Serie audiovisual y sonora",
-        "Economías populares",
+        "Econom\u00edas populares",
         "Mujeres trabajadoras",
         "Diversos oficios",
         "Rebusque",
         "Doble jornada laboral",
         "Cuidado familiar",
-        "Desafíos de género",
+        "Desaf\u00edos de g\u00e9nero",
         "Mundo machista",
-        "Economía informal",
+        "Econom\u00eda informal",
         "Resiliencia femenina",
-        "Trabajo doméstico y productivo"
+        "Trabajo dom\u00e9stico y productivo"
       ],
       "link": "https://www.youtube.com/watch?v=EDdwcp4hzak",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video Las mujeres hacemos de todo Video Producción de la serie audiovisual y sonora Economías populares. Las mujeres realizan diferentes tipos de oficios para rebuscarse la vida, muchas veces tienen doble jornada de trabajo al asumir las labores de cuidado de la familia en el hogar y enfrentan los retos de ser mujeres en un mundo machista. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Economías populares Mujeres trabajadoras Diversos oficios Rebusque Doble jornada laboral Cuidado familiar Desafíos de género Mundo machista Economía informal Resiliencia femenina Trabajo doméstico y productivo https://www.youtube.com/watch?v=EDdwcp4hzak"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video Las mujeres hacemos de todo Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Las mujeres realizan diferentes tipos de oficios para rebuscarse la vida, muchas veces tienen doble jornada de trabajo al asumir las labores de cuidado de la familia en el hogar y enfrentan los retos de ser mujeres en un mundo machista. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Serie audiovisual y sonora Econom\u00edas populares Mujeres trabajadoras Diversos oficios Rebusque Doble jornada laboral Cuidado familiar Desaf\u00edos de g\u00e9nero Mundo machista Econom\u00eda informal Resiliencia femenina Trabajo dom\u00e9stico y productivo https://www.youtube.com/watch?v=EDdwcp4hzak"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-96",
       "row": 96,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
-      "title": "Editorial El sonido de los cantos del pueblo miraña",
+      "title": "Editorial El sonido de los cantos del pueblo mira\u00f1a",
       "type": "Editorial",
-      "description": "Publicación en la que el documentador de la lengua miraña, Elio Miraña, habla sobre la importancia de los cantos y los cantadores para su pueblo. A través de una de estas canciones, escuchamos sus reflexiones sobre el valor de recuperar y fortalecer la lengua.",
+      "description": "Publicaci\u00f3n en la que el documentador de la lengua mira\u00f1a, Elio Mira\u00f1a, habla sobre la importancia de los cantos y los cantadores para su pueblo. A trav\u00e9s de una de estas canciones, escuchamos sus reflexiones sobre el valor de recuperar y fortalecer la lengua.",
       "keywords": [
-        "Documentación lingüística",
-        "Elio Miraña",
-        "Lengua miraña",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
+        "Elio Mira\u00f1a",
+        "Lengua mira\u00f1a",
         "Cantos y cantadores",
-        "Pueblo miraña",
-        "Recuperación lingüística",
+        "Pueblo mira\u00f1a",
+        "Recuperaci\u00f3n ling\u00fc\u00edstica",
         "Fortalecimiento de la lengua",
         "Saberes ancestrales",
-        "Tradición oral",
+        "Tradici\u00f3n oral",
         "Memoria cultural",
         "Patrimonio intangible"
       ],
       "link": "https://www.caroycuervo.gov.co/el-sonido-de-los-cantos-del-pueblo-mirana/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial El sonido de los cantos del pueblo miraña Editorial Publicación en la que el documentador de la lengua miraña, Elio Miraña, habla sobre la importancia de los cantos y los cantadores para su pueblo. A través de una de estas canciones, escuchamos sus reflexiones sobre el valor de recuperar y fortalecer la lengua. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Documentación lingüística Elio Miraña Lengua miraña Cantos y cantadores Pueblo miraña Recuperación lingüística Fortalecimiento de la lengua Saberes ancestrales Tradición oral Memoria cultural Patrimonio intangible https://www.caroycuervo.gov.co/el-sonido-de-los-cantos-del-pueblo-mirana/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial El sonido de los cantos del pueblo mira\u00f1a Editorial Publicaci\u00f3n en la que el documentador de la lengua mira\u00f1a, Elio Mira\u00f1a, habla sobre la importancia de los cantos y los cantadores para su pueblo. A trav\u00e9s de una de estas canciones, escuchamos sus reflexiones sobre el valor de recuperar y fortalecer la lengua. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Documentaci\u00f3n ling\u00fc\u00edstica Elio Mira\u00f1a Lengua mira\u00f1a Cantos y cantadores Pueblo mira\u00f1a Recuperaci\u00f3n ling\u00fc\u00edstica Fortalecimiento de la lengua Saberes ancestrales Tradici\u00f3n oral Memoria cultural Patrimonio intangible https://www.caroycuervo.gov.co/el-sonido-de-los-cantos-del-pueblo-mirana/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-97",
       "row": 97,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
       "title": "Editorial Escuchar, aprender y conservar las historias del pueblo inga",
       "type": "Editorial",
-      "description": "Publicación en la que la documentadora de la lengua inga, Mónica Jansasoy, comparte la importancia que su trabajo ha tenido en la recuperación de las historias de su comunidad, así como en la valoración de los saberes y la identidad propia.",
+      "description": "Publicaci\u00f3n en la que la documentadora de la lengua inga, M\u00f3nica Jansasoy, comparte la importancia que su trabajo ha tenido en la recuperaci\u00f3n de las historias de su comunidad, as\u00ed como en la valoraci\u00f3n de los saberes y la identidad propia.",
       "keywords": [
-        "Documentación lingüística",
-        "Mónica Jansasoy",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
+        "M\u00f3nica Jansasoy",
         "Lengua inga",
-        "Recuperación de historias comunitarias",
+        "Recuperaci\u00f3n de historias comunitarias",
         "Saberes ancestrales",
         "Identidad cultural",
-        "Valoración de la cultura",
-        "Tradición oral",
+        "Valoraci\u00f3n de la cultura",
+        "Tradici\u00f3n oral",
         "Memoria colectiva",
         "Patrimonio intangible"
       ],
       "link": "https://www.caroycuervo.gov.co/escuchar-desde-el-interior-para-aprender-y-conservar-las-historias-del-pueblo-inga/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial Escuchar, aprender y conservar las historias del pueblo inga Editorial Publicación en la que la documentadora de la lengua inga, Mónica Jansasoy, comparte la importancia que su trabajo ha tenido en la recuperación de las historias de su comunidad, así como en la valoración de los saberes y la identidad propia. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Documentación lingüística Mónica Jansasoy Lengua inga Recuperación de historias comunitarias Saberes ancestrales Identidad cultural Valoración de la cultura Tradición oral Memoria colectiva Patrimonio intangible https://www.caroycuervo.gov.co/escuchar-desde-el-interior-para-aprender-y-conservar-las-historias-del-pueblo-inga/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial Escuchar, aprender y conservar las historias del pueblo inga Editorial Publicaci\u00f3n en la que la documentadora de la lengua inga, M\u00f3nica Jansasoy, comparte la importancia que su trabajo ha tenido en la recuperaci\u00f3n de las historias de su comunidad, as\u00ed como en la valoraci\u00f3n de los saberes y la identidad propia. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Documentaci\u00f3n ling\u00fc\u00edstica M\u00f3nica Jansasoy Lengua inga Recuperaci\u00f3n de historias comunitarias Saberes ancestrales Identidad cultural Valoraci\u00f3n de la cultura Tradici\u00f3n oral Memoria colectiva Patrimonio intangible https://www.caroycuervo.gov.co/escuchar-desde-el-interior-para-aprender-y-conservar-las-historias-del-pueblo-inga/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-98",
       "row": 98,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
-      "title": "Editorial El tejido del tsombiash: memoria viva del pueblo kamëntšá",
+      "title": "Editorial El tejido del tsombiash: memoria viva del pueblo kam\u00ebnt\u0161\u00e1",
       "type": "Editorial",
-      "description": "Publicación en la que la documentadora de la lengua kamëntšá, María Antonia Narváez, nos hable sobre la importancia del tsombiash para su pueblo y sobre cómo su trabajo en el Programa de Documentación de Lenguas Nativas contribuye a preservar la memoria, los saberes y la lengua a través de las prácticas culturales.",
+      "description": "Publicaci\u00f3n en la que la documentadora de la lengua kam\u00ebnt\u0161\u00e1, Mar\u00eda Antonia Narv\u00e1ez, nos hable sobre la importancia del tsombiash para su pueblo y sobre c\u00f3mo su trabajo en el Programa de Documentaci\u00f3n de Lenguas Nativas contribuye a preservar la memoria, los saberes y la lengua a trav\u00e9s de las pr\u00e1cticas culturales.",
       "keywords": [
-        "Documentación lingüística",
-        "María Antonia Narváez",
-        "Lengua kamëntšá",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
+        "Mar\u00eda Antonia Narv\u00e1ez",
+        "Lengua kam\u00ebnt\u0161\u00e1",
         "Tsombiash",
-        "Pueblo kamëntšá",
-        "Programa de Documentación de Lenguas Nativas",
-        "Preservación de la memoria",
+        "Pueblo kam\u00ebnt\u0161\u00e1",
+        "Programa de Documentaci\u00f3n de Lenguas Nativas",
+        "Preservaci\u00f3n de la memoria",
         "Saberes ancestrales",
-        "Prácticas culturales",
+        "Pr\u00e1cticas culturales",
         "Fortalecimiento de la lengua",
         "Patrimonio intangible",
         "Identidad cultural"
       ],
       "link": "https://www.caroycuervo.gov.co/el-tejido-del-tsombiash-memoria-viva-del-pueblo-kamentsa/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial El tejido del tsombiash: memoria viva del pueblo kamëntšá Editorial Publicación en la que la documentadora de la lengua kamëntšá, María Antonia Narváez, nos hable sobre la importancia del tsombiash para su pueblo y sobre cómo su trabajo en el Programa de Documentación de Lenguas Nativas contribuye a preservar la memoria, los saberes y la lengua a través de las prácticas culturales. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Documentación lingüística María Antonia Narváez Lengua kamëntšá Tsombiash Pueblo kamëntšá Programa de Documentación de Lenguas Nativas Preservación de la memoria Saberes ancestrales Prácticas culturales Fortalecimiento de la lengua Patrimonio intangible Identidad cultural https://www.caroycuervo.gov.co/el-tejido-del-tsombiash-memoria-viva-del-pueblo-kamentsa/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial El tejido del tsombiash: memoria viva del pueblo kam\u00ebnt\u0161\u00e1 Editorial Publicaci\u00f3n en la que la documentadora de la lengua kam\u00ebnt\u0161\u00e1, Mar\u00eda Antonia Narv\u00e1ez, nos hable sobre la importancia del tsombiash para su pueblo y sobre c\u00f3mo su trabajo en el Programa de Documentaci\u00f3n de Lenguas Nativas contribuye a preservar la memoria, los saberes y la lengua a trav\u00e9s de las pr\u00e1cticas culturales. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Documentaci\u00f3n ling\u00fc\u00edstica Mar\u00eda Antonia Narv\u00e1ez Lengua kam\u00ebnt\u0161\u00e1 Tsombiash Pueblo kam\u00ebnt\u0161\u00e1 Programa de Documentaci\u00f3n de Lenguas Nativas Preservaci\u00f3n de la memoria Saberes ancestrales Pr\u00e1cticas culturales Fortalecimiento de la lengua Patrimonio intangible Identidad cultural https://www.caroycuervo.gov.co/el-tejido-del-tsombiash-memoria-viva-del-pueblo-kamentsa/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-99",
       "row": 99,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
       "title": "Editorial La caguana, legado de las mujeres murui",
       "type": "Editorial",
-      "description": "Publicación sobre el trabajo de documentación de Luz Dary Flórez, documentadora murui, sobre un alimento importante para su comunidad que fortalece la lengua y las tradiciones de su pueblo.",
+      "description": "Publicaci\u00f3n sobre el trabajo de documentaci\u00f3n de Luz Dary Fl\u00f3rez, documentadora murui, sobre un alimento importante para su comunidad que fortalece la lengua y las tradiciones de su pueblo.",
       "keywords": [
-        "Documentación lingüística",
-        "Luz Dary Flórez",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
+        "Luz Dary Fl\u00f3rez",
         "Pueblo murui",
         "Alimento tradicional",
         "Fortalecimiento de la lengua",
-        "Preservación de tradiciones",
+        "Preservaci\u00f3n de tradiciones",
         "Saberes ancestrales",
         "Identidad cultural",
         "Patrimonio intangible",
-        "Prácticas comunitarias"
+        "Pr\u00e1cticas comunitarias"
       ],
       "link": "https://www.caroycuervo.gov.co/la-caguana-legado-de-las-mujeres-murui-que-fortalece-la-lengua-y-las-tradiciones-de-su-pueblo/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial La caguana, legado de las mujeres murui Editorial Publicación sobre el trabajo de documentación de Luz Dary Flórez, documentadora murui, sobre un alimento importante para su comunidad que fortalece la lengua y las tradiciones de su pueblo. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Documentación lingüística Luz Dary Flórez Pueblo murui Alimento tradicional Fortalecimiento de la lengua Preservación de tradiciones Saberes ancestrales Identidad cultural Patrimonio intangible Prácticas comunitarias https://www.caroycuervo.gov.co/la-caguana-legado-de-las-mujeres-murui-que-fortalece-la-lengua-y-las-tradiciones-de-su-pueblo/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial La caguana, legado de las mujeres murui Editorial Publicaci\u00f3n sobre el trabajo de documentaci\u00f3n de Luz Dary Fl\u00f3rez, documentadora murui, sobre un alimento importante para su comunidad que fortalece la lengua y las tradiciones de su pueblo. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Documentaci\u00f3n ling\u00fc\u00edstica Luz Dary Fl\u00f3rez Pueblo murui Alimento tradicional Fortalecimiento de la lengua Preservaci\u00f3n de tradiciones Saberes ancestrales Identidad cultural Patrimonio intangible Pr\u00e1cticas comunitarias https://www.caroycuervo.gov.co/la-caguana-legado-de-las-mujeres-murui-que-fortalece-la-lengua-y-las-tradiciones-de-su-pueblo/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-100",
       "row": 100,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
-      "title": "Editorial Los cantos y arrullos como memoria y reivindicación de la lengua murui",
+      "title": "Editorial Los cantos y arrullos como memoria y reivindicaci\u00f3n de la lengua murui",
       "type": "Editorial",
-      "description": "Publicación sobre el trabajo de documentación de Luz Dary Flórez, documentadora murui, alrededor de los cantos murui.",
+      "description": "Publicaci\u00f3n sobre el trabajo de documentaci\u00f3n de Luz Dary Fl\u00f3rez, documentadora murui, alrededor de los cantos murui.",
       "keywords": [
-        "Documentación lingüística",
-        "Luz Dary Flórez",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
+        "Luz Dary Fl\u00f3rez",
         "Pueblo murui",
         "Cantos murui",
-        "Preservación de la lengua",
+        "Preservaci\u00f3n de la lengua",
         "Saberes ancestrales",
-        "Tradición oral",
+        "Tradici\u00f3n oral",
         "Memoria cultural",
         "Identidad comunitaria",
         "Patrimonio intangible"
       ],
       "link": "https://www.caroycuervo.gov.co/documentar-para-no-olvidar-el-reto-de-preservar-lenguas-indigenas-en-colombia/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial Los cantos y arrullos como memoria y reivindicación de la lengua murui Editorial Publicación sobre el trabajo de documentación de Luz Dary Flórez, documentadora murui, alrededor de los cantos murui. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Documentación lingüística Luz Dary Flórez Pueblo murui Cantos murui Preservación de la lengua Saberes ancestrales Tradición oral Memoria cultural Identidad comunitaria Patrimonio intangible https://www.caroycuervo.gov.co/documentar-para-no-olvidar-el-reto-de-preservar-lenguas-indigenas-en-colombia/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial Los cantos y arrullos como memoria y reivindicaci\u00f3n de la lengua murui Editorial Publicaci\u00f3n sobre el trabajo de documentaci\u00f3n de Luz Dary Fl\u00f3rez, documentadora murui, alrededor de los cantos murui. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Documentaci\u00f3n ling\u00fc\u00edstica Luz Dary Fl\u00f3rez Pueblo murui Cantos murui Preservaci\u00f3n de la lengua Saberes ancestrales Tradici\u00f3n oral Memoria cultural Identidad comunitaria Patrimonio intangible https://www.caroycuervo.gov.co/documentar-para-no-olvidar-el-reto-de-preservar-lenguas-indigenas-en-colombia/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-101",
       "row": 101,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
       "title": "Editorial En busca del origen del pueblo cacua",
       "type": "Editorial",
-      "description": "Publicación sobre el trabajo de la documentadora Marina López en el Vaupés. Con solo 320 hablantes y clanes en riesgo de desaparecer, el proyecto busca documentar su historia y fortalecer su identidad, evitando que su lengua y cultura caigan en el olvido.",
+      "description": "Publicaci\u00f3n sobre el trabajo de la documentadora Marina L\u00f3pez en el Vaup\u00e9s. Con solo 320 hablantes y clanes en riesgo de desaparecer, el proyecto busca documentar su historia y fortalecer su identidad, evitando que su lengua y cultura caigan en el olvido.",
       "keywords": [
-        "Documentación lingüística",
-        "Marina López",
-        "Vaupés",
+        "Documentaci\u00f3n ling\u00fc\u00edstica",
+        "Marina L\u00f3pez",
+        "Vaup\u00e9s",
         "Lengua en riesgo",
         "320 hablantes",
         "Clanes en peligro",
-        "Preservación cultural",
+        "Preservaci\u00f3n cultural",
         "Fortalecimiento de la identidad",
-        "Memoria histórica",
+        "Memoria hist\u00f3rica",
         "Patrimonio intangible",
-        "Prevención del olvido",
+        "Prevenci\u00f3n del olvido",
         "Saberes ancestrales"
       ],
       "link": "https://www.caroycuervo.gov.co/en-busca-del-origen-del-pueblo-cacua/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial En busca del origen del pueblo cacua Editorial Publicación sobre el trabajo de la documentadora Marina López en el Vaupés. Con solo 320 hablantes y clanes en riesgo de desaparecer, el proyecto busca documentar su historia y fortalecer su identidad, evitando que su lengua y cultura caigan en el olvido. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Documentación lingüística Marina López Vaupés Lengua en riesgo 320 hablantes Clanes en peligro Preservación cultural Fortalecimiento de la identidad Memoria histórica Patrimonio intangible Prevención del olvido Saberes ancestrales https://www.caroycuervo.gov.co/en-busca-del-origen-del-pueblo-cacua/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial En busca del origen del pueblo cacua Editorial Publicaci\u00f3n sobre el trabajo de la documentadora Marina L\u00f3pez en el Vaup\u00e9s. Con solo 320 hablantes y clanes en riesgo de desaparecer, el proyecto busca documentar su historia y fortalecer su identidad, evitando que su lengua y cultura caigan en el olvido. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Documentaci\u00f3n ling\u00fc\u00edstica Marina L\u00f3pez Vaup\u00e9s Lengua en riesgo 320 hablantes Clanes en peligro Preservaci\u00f3n cultural Fortalecimiento de la identidad Memoria hist\u00f3rica Patrimonio intangible Prevenci\u00f3n del olvido Saberes ancestrales https://www.caroycuervo.gov.co/en-busca-del-origen-del-pueblo-cacua/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-102",
       "row": 102,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
       "title": "Edtitorial El encuentro entre los cacua y los nukak",
       "type": "Editorial",
-      "description": "En el marco del programa del Instituto Caro y Cuervo, Marina López y Katherine Bolaños viajaron al Guaviare para trabajar con el pueblo nukak. Allí documentaron su lengua y cultura, y recopilaron relatos sobre los cacua para entender el pasado común, sus migraciones y los cambios que han vivido ambos pueblos.",
+      "description": "En el marco del programa del Instituto Caro y Cuervo, Marina L\u00f3pez y Katherine Bola\u00f1os viajaron al Guaviare para trabajar con el pueblo nukak. All\u00ed documentaron su lengua y cultura, y recopilaron relatos sobre los cacua para entender el pasado com\u00fan, sus migraciones y los cambios que han vivido ambos pueblos.",
       "keywords": [
         "Programa Instituto Caro y Cuervo",
-        "Marina López y Katherine Bolaños",
+        "Marina L\u00f3pez y Katherine Bola\u00f1os",
         "Guaviare",
         "Pueblo nukak",
-        "Documentación de lengua y cultura",
+        "Documentaci\u00f3n de lengua y cultura",
         "Relatos sobre los cacua",
         "Historia compartida",
         "Migraciones",
@@ -6652,386 +6897,386 @@
       ],
       "link": "https://www.caroycuervo.gov.co/el-encuentro-entre-los-cacua-y-los-nukak/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Edtitorial El encuentro entre los cacua y los nukak Editorial En el marco del programa del Instituto Caro y Cuervo, Marina López y Katherine Bolaños viajaron al Guaviare para trabajar con el pueblo nukak. Allí documentaron su lengua y cultura, y recopilaron relatos sobre los cacua para entender el pasado común, sus migraciones y los cambios que han vivido ambos pueblos. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Programa Instituto Caro y Cuervo Marina López y Katherine Bolaños Guaviare Pueblo nukak Documentación de lengua y cultura Relatos sobre los cacua Historia compartida Migraciones Cambios culturales Memoria colectiva Saberes ancestrales Patrimonio intangible https://www.caroycuervo.gov.co/el-encuentro-entre-los-cacua-y-los-nukak/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Edtitorial El encuentro entre los cacua y los nukak Editorial En el marco del programa del Instituto Caro y Cuervo, Marina L\u00f3pez y Katherine Bola\u00f1os viajaron al Guaviare para trabajar con el pueblo nukak. All\u00ed documentaron su lengua y cultura, y recopilaron relatos sobre los cacua para entender el pasado com\u00fan, sus migraciones y los cambios que han vivido ambos pueblos. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Programa Instituto Caro y Cuervo Marina L\u00f3pez y Katherine Bola\u00f1os Guaviare Pueblo nukak Documentaci\u00f3n de lengua y cultura Relatos sobre los cacua Historia compartida Migraciones Cambios culturales Memoria colectiva Saberes ancestrales Patrimonio intangible https://www.caroycuervo.gov.co/el-encuentro-entre-los-cacua-y-los-nukak/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-103",
       "row": 103,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
-      "title": "Editorial El tejido como símbolo de resistencia de los kamëntšá",
+      "title": "Editorial El tejido como s\u00edmbolo de resistencia de los kam\u00ebnt\u0161\u00e1",
       "type": "Editorial",
-      "description": "Desde tiempos inmemoriales, los tejidos han hecho parte de la vida de los kamëntšá biyá, un pueblo ubicado en el Valle de Sibundoy, en el departamento del Putumayo, cuyo nombre se traduce como “hombres de aquí mismo con pensamiento y lengua propia”. Esta interpretación resulta especialmente importante si se conoce el vínculo que se teje desde el momento mismo del nacimiento entre cada una de las personas de esta comunidad y el “aquí mismo” de su territorio.",
+      "description": "Desde tiempos inmemoriales, los tejidos han hecho parte de la vida de los kam\u00ebnt\u0161\u00e1 biy\u00e1, un pueblo ubicado en el Valle de Sibundoy, en el departamento del Putumayo, cuyo nombre se traduce como \u201chombres de aqu\u00ed mismo con pensamiento y lengua propia\u201d. Esta interpretaci\u00f3n resulta especialmente importante si se conoce el v\u00ednculo que se teje desde el momento mismo del nacimiento entre cada una de las personas de esta comunidad y el \u201caqu\u00ed mismo\u201d de su territorio.",
       "keywords": [
         "Tejidos tradicionales",
-        "Pueblo kamëntšá biyá",
+        "Pueblo kam\u00ebnt\u0161\u00e1 biy\u00e1",
         "Valle de Sibundoy, Putumayo",
         "Identidad cultural",
         "Lengua propia",
-        "Vínculo con el territorio",
+        "V\u00ednculo con el territorio",
         "Nacimiento y pertenencia",
         "Saberes ancestrales",
         "Patrimonio material e inmaterial",
-        "Cosmovisión indígena",
+        "Cosmovisi\u00f3n ind\u00edgena",
         "Cultura viva",
-        "Tradición intergeneracional"
+        "Tradici\u00f3n intergeneracional"
       ],
       "link": "https://www.caroycuervo.gov.co/hilando-la-historia-el-tejido-como-simbolo-de-resistencia-de-los-kamentsa/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial El tejido como símbolo de resistencia de los kamëntšá Editorial Desde tiempos inmemoriales, los tejidos han hecho parte de la vida de los kamëntšá biyá, un pueblo ubicado en el Valle de Sibundoy, en el departamento del Putumayo, cuyo nombre se traduce como “hombres de aquí mismo con pensamiento y lengua propia”. Esta interpretación resulta especialmente importante si se conoce el vínculo que se teje desde el momento mismo del nacimiento entre cada una de las personas de esta comunidad y el “aquí mismo” de su territorio. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Tejidos tradicionales Pueblo kamëntšá biyá Valle de Sibundoy, Putumayo Identidad cultural Lengua propia Vínculo con el territorio Nacimiento y pertenencia Saberes ancestrales Patrimonio material e inmaterial Cosmovisión indígena Cultura viva Tradición intergeneracional https://www.caroycuervo.gov.co/hilando-la-historia-el-tejido-como-simbolo-de-resistencia-de-los-kamentsa/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial El tejido como s\u00edmbolo de resistencia de los kam\u00ebnt\u0161\u00e1 Editorial Desde tiempos inmemoriales, los tejidos han hecho parte de la vida de los kam\u00ebnt\u0161\u00e1 biy\u00e1, un pueblo ubicado en el Valle de Sibundoy, en el departamento del Putumayo, cuyo nombre se traduce como \u201chombres de aqu\u00ed mismo con pensamiento y lengua propia\u201d. Esta interpretaci\u00f3n resulta especialmente importante si se conoce el v\u00ednculo que se teje desde el momento mismo del nacimiento entre cada una de las personas de esta comunidad y el \u201caqu\u00ed mismo\u201d de su territorio. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Tejidos tradicionales Pueblo kam\u00ebnt\u0161\u00e1 biy\u00e1 Valle de Sibundoy, Putumayo Identidad cultural Lengua propia V\u00ednculo con el territorio Nacimiento y pertenencia Saberes ancestrales Patrimonio material e inmaterial Cosmovisi\u00f3n ind\u00edgena Cultura viva Tradici\u00f3n intergeneracional https://www.caroycuervo.gov.co/hilando-la-historia-el-tejido-como-simbolo-de-resistencia-de-los-kamentsa/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-104",
       "row": 104,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
-      "title": "Editorial El pueblo Kankuamo, el guardián del equilibrio del mundo",
+      "title": "Editorial El pueblo Kankuamo, el guardi\u00e1n del equilibrio del mundo",
       "type": "Editorial",
-      "description": "El Programa de Documentación de Lenguas 2025 avanza con el trabajo conjunto entre documentalistas de comunidades indígenas y el Instituto Caro y Cuervo, consolidando procesos de investigación y fortalecimiento cultural en distintos territorios del país. Tras encuentros previos con los pueblos cacua y nukak, enfocados en explorar vínculos históricos y lingüísticos, el equipo llegó a Atánquez, en la Sierra Nevada de Santa Marta, territorio del pueblo kankuamo.\n\nEn esta ocasión, el énfasis estuvo en la formación en documentación audiovisual, promoviendo herramientas para que la comunidad pueda organizar, preservar y analizar información relacionada con su lengua. Aunque la lengua kankuama ha sido considerada extinta, persisten vestigios lingüísticos y un fuerte interés colectivo por recuperarla, integrarla en procesos educativos y mantener viva su cosmovisión a través de la memoria y la transmisión cultural.",
+      "description": "El Programa de Documentaci\u00f3n de Lenguas 2025 avanza con el trabajo conjunto entre documentalistas de comunidades ind\u00edgenas y el Instituto Caro y Cuervo, consolidando procesos de investigaci\u00f3n y fortalecimiento cultural en distintos territorios del pa\u00eds. Tras encuentros previos con los pueblos cacua y nukak, enfocados en explorar v\u00ednculos hist\u00f3ricos y ling\u00fc\u00edsticos, el equipo lleg\u00f3 a At\u00e1nquez, en la Sierra Nevada de Santa Marta, territorio del pueblo kankuamo.\n\nEn esta ocasi\u00f3n, el \u00e9nfasis estuvo en la formaci\u00f3n en documentaci\u00f3n audiovisual, promoviendo herramientas para que la comunidad pueda organizar, preservar y analizar informaci\u00f3n relacionada con su lengua. Aunque la lengua kankuama ha sido considerada extinta, persisten vestigios ling\u00fc\u00edsticos y un fuerte inter\u00e9s colectivo por recuperarla, integrarla en procesos educativos y mantener viva su cosmovisi\u00f3n a trav\u00e9s de la memoria y la transmisi\u00f3n cultural.",
       "keywords": [
         "Pueblo kankuamo",
         "Lengua kankuama",
         "Identidad cultural",
-        "Vínculo con el territorio",
+        "V\u00ednculo con el territorio",
         "Madre tierra",
         "Equilibrio del mundo",
         "Saberes ancestrales",
-        "Cosmovisión indígena",
+        "Cosmovisi\u00f3n ind\u00edgena",
         "Cultura viva",
-        "Tradición intergeneracional"
+        "Tradici\u00f3n intergeneracional"
       ],
       "link": "https://www.caroycuervo.gov.co/el-pueblo-kankuamo-el-guardian-del-equilibrio-del-mundo-que-se-resiste-a-desaparecer/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial El pueblo Kankuamo, el guardián del equilibrio del mundo Editorial El Programa de Documentación de Lenguas 2025 avanza con el trabajo conjunto entre documentalistas de comunidades indígenas y el Instituto Caro y Cuervo, consolidando procesos de investigación y fortalecimiento cultural en distintos territorios del país. Tras encuentros previos con los pueblos cacua y nukak, enfocados en explorar vínculos históricos y lingüísticos, el equipo llegó a Atánquez, en la Sierra Nevada de Santa Marta, territorio del pueblo kankuamo. En esta ocasión, el énfasis estuvo en la formación en documentación audiovisual, promoviendo herramientas para que la comunidad pueda organizar, preservar y analizar información relacionada con su lengua. Aunque la lengua kankuama ha sido considerada extinta, persisten vestigios lingüísticos y un fuerte interés colectivo por recuperarla, integrarla en procesos educativos y mantener viva su cosmovisión a través de la memoria y la transmisión cultural. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo kankuamo Lengua kankuama Identidad cultural Vínculo con el territorio Madre tierra Equilibrio del mundo Saberes ancestrales Cosmovisión indígena Cultura viva Tradición intergeneracional https://www.caroycuervo.gov.co/el-pueblo-kankuamo-el-guardian-del-equilibrio-del-mundo-que-se-resiste-a-desaparecer/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial El pueblo Kankuamo, el guardi\u00e1n del equilibrio del mundo Editorial El Programa de Documentaci\u00f3n de Lenguas 2025 avanza con el trabajo conjunto entre documentalistas de comunidades ind\u00edgenas y el Instituto Caro y Cuervo, consolidando procesos de investigaci\u00f3n y fortalecimiento cultural en distintos territorios del pa\u00eds. Tras encuentros previos con los pueblos cacua y nukak, enfocados en explorar v\u00ednculos hist\u00f3ricos y ling\u00fc\u00edsticos, el equipo lleg\u00f3 a At\u00e1nquez, en la Sierra Nevada de Santa Marta, territorio del pueblo kankuamo. En esta ocasi\u00f3n, el \u00e9nfasis estuvo en la formaci\u00f3n en documentaci\u00f3n audiovisual, promoviendo herramientas para que la comunidad pueda organizar, preservar y analizar informaci\u00f3n relacionada con su lengua. Aunque la lengua kankuama ha sido considerada extinta, persisten vestigios ling\u00fc\u00edsticos y un fuerte inter\u00e9s colectivo por recuperarla, integrarla en procesos educativos y mantener viva su cosmovisi\u00f3n a trav\u00e9s de la memoria y la transmisi\u00f3n cultural. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo kankuamo Lengua kankuama Identidad cultural V\u00ednculo con el territorio Madre tierra Equilibrio del mundo Saberes ancestrales Cosmovisi\u00f3n ind\u00edgena Cultura viva Tradici\u00f3n intergeneracional https://www.caroycuervo.gov.co/el-pueblo-kankuamo-el-guardian-del-equilibrio-del-mundo-que-se-resiste-a-desaparecer/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-105",
       "row": 105,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
       "title": "Editorial Reencontrarse con el pensamiento y recuperar la palabra murui",
       "type": "Editorial",
-      "description": "El cabildo TIWA en Leticia (Amazonas), ubicado a la altura del km 6 de la vía Leticia-Tarapacá, es una comunidad multicultural que alberga a nueve pueblos indígenas: murui, yucuna, tikuna, bora, inga, cubeo, tanimuka, cocama y miraña. Desde este lugar, que representa un punto de confluencia de memorias, lenguas y prácticas culturales, la documentadora murui Luz Dary Flórez está adelantando un trabajo fundamental para la preservación cultural de su pueblo: documentar su lengua y los saberes ancestrales de las mujeres mayores de su comunidad. Se ha propuesto recuperar el pensamiento y la palabra de las mujeres del clan ɨmeraiaɨ (gente de boruga), hablantes del dialecto bue del murui, reconociendo en ellas un archivo vivo que resguarda enseñanzas fundamentales para las nuevas generaciones. Este esfuerzo hace parte del Programa de documentación de diez lenguas para el 2025 del Instituto Caro y Cuervo, una iniciativa que busca detener la pérdida de idiomas indígenas que hoy enfrentan serias amenazas de desaparición.",
+      "description": "El cabildo TIWA en Leticia (Amazonas), ubicado a la altura del km 6 de la v\u00eda Leticia-Tarapac\u00e1, es una comunidad multicultural que alberga a nueve pueblos ind\u00edgenas: murui, yucuna, tikuna, bora, inga, cubeo, tanimuka, cocama y mira\u00f1a. Desde este lugar, que representa un punto de confluencia de memorias, lenguas y pr\u00e1cticas culturales, la documentadora murui Luz Dary Fl\u00f3rez est\u00e1 adelantando un trabajo fundamental para la preservaci\u00f3n cultural de su pueblo: documentar su lengua y los saberes ancestrales de las mujeres mayores de su comunidad. Se ha propuesto recuperar el pensamiento y la palabra de las mujeres del clan \u0268meraia\u0268 (gente de boruga), hablantes del dialecto bue del murui, reconociendo en ellas un archivo vivo que resguarda ense\u00f1anzas fundamentales para las nuevas generaciones.\u202fEste esfuerzo hace parte del Programa de documentaci\u00f3n de diez lenguas para el 2025 del Instituto Caro y Cuervo, una iniciativa que busca detener la p\u00e9rdida de idiomas ind\u00edgenas que hoy enfrentan serias amenazas de desaparici\u00f3n.",
       "keywords": [
         "Pueblo murui",
         "Lengua murui",
-        "Recuperación de la palabra",
+        "Recuperaci\u00f3n de la palabra",
         "Memoria ancestral",
         "Saberes de las mujeres",
         "Chagra",
         "Identidad cultural",
-        "Transmisión intergeneracional",
+        "Transmisi\u00f3n intergeneracional",
         "Resistencia cultural",
-        "Pervivencia indígena"
+        "Pervivencia ind\u00edgena"
       ],
       "link": "https://www.caroycuervo.gov.co/reencontrarse-con-el-pensamiento-y-recuperar-la-palabra-murui/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial Reencontrarse con el pensamiento y recuperar la palabra murui Editorial El cabildo TIWA en Leticia (Amazonas), ubicado a la altura del km 6 de la vía Leticia-Tarapacá, es una comunidad multicultural que alberga a nueve pueblos indígenas: murui, yucuna, tikuna, bora, inga, cubeo, tanimuka, cocama y miraña. Desde este lugar, que representa un punto de confluencia de memorias, lenguas y prácticas culturales, la documentadora murui Luz Dary Flórez está adelantando un trabajo fundamental para la preservación cultural de su pueblo: documentar su lengua y los saberes ancestrales de las mujeres mayores de su comunidad. Se ha propuesto recuperar el pensamiento y la palabra de las mujeres del clan ɨmeraiaɨ (gente de boruga), hablantes del dialecto bue del murui, reconociendo en ellas un archivo vivo que resguarda enseñanzas fundamentales para las nuevas generaciones. Este esfuerzo hace parte del Programa de documentación de diez lenguas para el 2025 del Instituto Caro y Cuervo, una iniciativa que busca detener la pérdida de idiomas indígenas que hoy enfrentan serias amenazas de desaparición. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo murui Lengua murui Recuperación de la palabra Memoria ancestral Saberes de las mujeres Chagra Identidad cultural Transmisión intergeneracional Resistencia cultural Pervivencia indígena https://www.caroycuervo.gov.co/reencontrarse-con-el-pensamiento-y-recuperar-la-palabra-murui/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial Reencontrarse con el pensamiento y recuperar la palabra murui Editorial El cabildo TIWA en Leticia (Amazonas), ubicado a la altura del km 6 de la v\u00eda Leticia-Tarapac\u00e1, es una comunidad multicultural que alberga a nueve pueblos ind\u00edgenas: murui, yucuna, tikuna, bora, inga, cubeo, tanimuka, cocama y mira\u00f1a. Desde este lugar, que representa un punto de confluencia de memorias, lenguas y pr\u00e1cticas culturales, la documentadora murui Luz Dary Fl\u00f3rez est\u00e1 adelantando un trabajo fundamental para la preservaci\u00f3n cultural de su pueblo: documentar su lengua y los saberes ancestrales de las mujeres mayores de su comunidad. Se ha propuesto recuperar el pensamiento y la palabra de las mujeres del clan \u0268meraia\u0268 (gente de boruga), hablantes del dialecto bue del murui, reconociendo en ellas un archivo vivo que resguarda ense\u00f1anzas fundamentales para las nuevas generaciones. Este esfuerzo hace parte del Programa de documentaci\u00f3n de diez lenguas para el 2025 del Instituto Caro y Cuervo, una iniciativa que busca detener la p\u00e9rdida de idiomas ind\u00edgenas que hoy enfrentan serias amenazas de desaparici\u00f3n. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo murui Lengua murui Recuperaci\u00f3n de la palabra Memoria ancestral Saberes de las mujeres Chagra Identidad cultural Transmisi\u00f3n intergeneracional Resistencia cultural Pervivencia ind\u00edgena https://www.caroycuervo.gov.co/reencontrarse-con-el-pensamiento-y-recuperar-la-palabra-murui/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-106",
       "row": 106,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
       "title": "Editorial Reunirse alrededor del fuego para mantener vivo el namui wam",
       "type": "Editorial",
-      "description": "En Morales, Cauca, el Resguardo Indígena Misak de San Antonio enfrenta un reto determinante: preservar su lengua en medio de un contexto geosocial en el que el castellano tiene más presencia y uso en la vida cotidiana. La comunidad trabaja en el enraizamiento de su cultura ancestral con el acompañamiento del Instituto Caro y Cuervo y su Programa de documentación de lenguas nativas, cuyo objetivo es contribuir al registro audiovisual de diez lenguas para mitigar su riesgo de desaparición.",
+      "description": "En Morales, Cauca, el Resguardo Ind\u00edgena Misak de San Antonio enfrenta un reto determinante: preservar su lengua en medio de un contexto geosocial en el que el castellano tiene m\u00e1s presencia y uso en la vida cotidiana. La comunidad trabaja en el enraizamiento de su cultura ancestral con el acompa\u00f1amiento del Instituto Caro y Cuervo y su Programa de documentaci\u00f3n de lenguas nativas, cuyo objetivo es contribuir al registro audiovisual de diez lenguas para mitigar su riesgo de desaparici\u00f3n.",
       "keywords": [
         "Pueblo Misak",
         "Namui wam",
         "Lengua propia",
         "Identidad misak",
-        "Nak chak (fogón)",
+        "Nak chak (fog\u00f3n)",
         "Pishi Ya",
         "Memoria ancestral",
-        "Transmisión de saberes",
+        "Transmisi\u00f3n de saberes",
         "Resistencia cultural",
-        "Pervivencia indígena"
+        "Pervivencia ind\u00edgena"
       ],
       "link": "https://www.caroycuervo.gov.co/reunirse-alrededor-del-fuego-para-mantener-vivo-el-namui-wam-la-lengua-de-los-misak/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial Reunirse alrededor del fuego para mantener vivo el namui wam Editorial En Morales, Cauca, el Resguardo Indígena Misak de San Antonio enfrenta un reto determinante: preservar su lengua en medio de un contexto geosocial en el que el castellano tiene más presencia y uso en la vida cotidiana. La comunidad trabaja en el enraizamiento de su cultura ancestral con el acompañamiento del Instituto Caro y Cuervo y su Programa de documentación de lenguas nativas, cuyo objetivo es contribuir al registro audiovisual de diez lenguas para mitigar su riesgo de desaparición. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo Misak Namui wam Lengua propia Identidad misak Nak chak (fogón) Pishi Ya Memoria ancestral Transmisión de saberes Resistencia cultural Pervivencia indígena https://www.caroycuervo.gov.co/reunirse-alrededor-del-fuego-para-mantener-vivo-el-namui-wam-la-lengua-de-los-misak/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial Reunirse alrededor del fuego para mantener vivo el namui wam Editorial En Morales, Cauca, el Resguardo Ind\u00edgena Misak de San Antonio enfrenta un reto determinante: preservar su lengua en medio de un contexto geosocial en el que el castellano tiene m\u00e1s presencia y uso en la vida cotidiana. La comunidad trabaja en el enraizamiento de su cultura ancestral con el acompa\u00f1amiento del Instituto Caro y Cuervo y su Programa de documentaci\u00f3n de lenguas nativas, cuyo objetivo es contribuir al registro audiovisual de diez lenguas para mitigar su riesgo de desaparici\u00f3n. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo Misak Namui wam Lengua propia Identidad misak Nak chak (fog\u00f3n) Pishi Ya Memoria ancestral Transmisi\u00f3n de saberes Resistencia cultural Pervivencia ind\u00edgena https://www.caroycuervo.gov.co/reunirse-alrededor-del-fuego-para-mantener-vivo-el-namui-wam-la-lengua-de-los-misak/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-107",
       "row": 107,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
-      "title": "Editorial “Podemos perderlo todo, pero nunca la lengua miraña”: Elio Miraña",
+      "title": "Editorial \u201cPodemos perderlo todo, pero nunca la lengua mira\u00f1a\u201d: Elio Mira\u00f1a",
       "type": "Editorial",
-      "description": "Miraña es su nombre, como también el de su idioma y su pueblo. Miraña del clan Booanamʉ (Boa) por el lado paterno y del Neebaje (Achiote) por el materno, Elio Miraña, documentador de la lengua miraña en el marco del Programa de documentación de diez lenguas para 2025 del Instituto Caro y Cuervo, dice que, aunque este término de origen tupí fue una forma de colonización que tergiversó la historia de su gente, “lo usamos de apellido porque también es una manera de reconocernos y hermanarnos. Al ser reducidos como población [durante la fiebre del caucho], todos nos consideramos parte de la misma familia, más allá de la diversidad de los clanes”. \n\nLos miraña son un pueblo indígena amazónico cuyo territorio ancestral está ubicado en la quebrada del río Gwaa’i (Pamá), afluente del Paa’i (río Cahuinari). Durante el genocidio cauchero, que tuvo como epicentro el Putumayo, el grupo migró a zonas cercanas al Iñe’i (río Mirití), territorio de comunidades como los matapi y los yucuna. Desde 1937 se estableció en asentamientos ribereños a orillas del río Caquetá o río de la danta (Okajimo), formando las comunidades de Puerto Remanso del Tigre, Mariápolis, San Francisco, Las Palmas y Metá-Quinché.",
+      "description": "Mira\u00f1a es su nombre, como tambi\u00e9n el de su idioma y su pueblo. Mira\u00f1a del clan Booanam\u0289 (Boa) por el lado paterno y del Neebaje (Achiote) por el materno, Elio Mira\u00f1a, documentador de la lengua mira\u00f1a en el marco del Programa de documentaci\u00f3n de diez lenguas para 2025 del Instituto Caro y Cuervo, dice que, aunque este t\u00e9rmino de origen tup\u00ed fue una forma de colonizaci\u00f3n que tergivers\u00f3 la historia de su gente, \u201clo usamos de apellido porque tambi\u00e9n es una manera de reconocernos y hermanarnos. Al ser reducidos como poblaci\u00f3n [durante la fiebre del caucho], todos nos consideramos parte de la misma familia, m\u00e1s all\u00e1 de la diversidad de los clanes\u201d. \n\nLos mira\u00f1a son un pueblo ind\u00edgena amaz\u00f3nico cuyo territorio ancestral est\u00e1 ubicado en la quebrada del r\u00edo Gwaa\u2019i (Pam\u00e1), afluente del Paa\u2019i (r\u00edo Cahuinari). Durante el genocidio cauchero, que tuvo como epicentro el Putumayo, el grupo migr\u00f3 a zonas cercanas al I\u00f1e\u2019i (r\u00edo Mirit\u00ed), territorio de comunidades como los matapi y los yucuna. Desde 1937 se estableci\u00f3 en asentamientos ribere\u00f1os a orillas del r\u00edo Caquet\u00e1 o r\u00edo de la danta (Okajimo), formando las comunidades de Puerto Remanso del Tigre, Mari\u00e1polis, San Francisco, Las Palmas y Met\u00e1-Quinch\u00e9.",
       "keywords": [
-        "Pueblo Miraña",
-        "Lengua miraña",
-        "Elio Miraña",
-        "Preservación lingüística",
+        "Pueblo Mira\u00f1a",
+        "Lengua mira\u00f1a",
+        "Elio Mira\u00f1a",
+        "Preservaci\u00f3n ling\u00fc\u00edstica",
         "Memoria ancestral",
         "Cantos tradicionales",
         "Saberes espirituales",
-        "Transmisión intergeneracional",
-        "Resistencia indígena",
+        "Transmisi\u00f3n intergeneracional",
+        "Resistencia ind\u00edgena",
         "Oralidad",
         "Identidad cultural"
       ],
       "link": "https://www.caroycuervo.gov.co/podemos-perderlo-todo-incluido-el-territorio-pero-nunca-la-lengua-mirana-elio-mirana/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial “Podemos perderlo todo, pero nunca la lengua miraña”: Elio Miraña Editorial Miraña es su nombre, como también el de su idioma y su pueblo. Miraña del clan Booanamʉ (Boa) por el lado paterno y del Neebaje (Achiote) por el materno, Elio Miraña, documentador de la lengua miraña en el marco del Programa de documentación de diez lenguas para 2025 del Instituto Caro y Cuervo, dice que, aunque este término de origen tupí fue una forma de colonización que tergiversó la historia de su gente, “lo usamos de apellido porque también es una manera de reconocernos y hermanarnos. Al ser reducidos como población [durante la fiebre del caucho], todos nos consideramos parte de la misma familia, más allá de la diversidad de los clanes”. Los miraña son un pueblo indígena amazónico cuyo territorio ancestral está ubicado en la quebrada del río Gwaa’i (Pamá), afluente del Paa’i (río Cahuinari). Durante el genocidio cauchero, que tuvo como epicentro el Putumayo, el grupo migró a zonas cercanas al Iñe’i (río Mirití), territorio de comunidades como los matapi y los yucuna. Desde 1937 se estableció en asentamientos ribereños a orillas del río Caquetá o río de la danta (Okajimo), formando las comunidades de Puerto Remanso del Tigre, Mariápolis, San Francisco, Las Palmas y Metá-Quinché. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo Miraña Lengua miraña Elio Miraña Preservación lingüística Memoria ancestral Cantos tradicionales Saberes espirituales Transmisión intergeneracional Resistencia indígena Oralidad Identidad cultural https://www.caroycuervo.gov.co/podemos-perderlo-todo-incluido-el-territorio-pero-nunca-la-lengua-mirana-elio-mirana/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial \u201cPodemos perderlo todo, pero nunca la lengua mira\u00f1a\u201d: Elio Mira\u00f1a Editorial Mira\u00f1a es su nombre, como tambi\u00e9n el de su idioma y su pueblo. Mira\u00f1a del clan Booanam\u0289 (Boa) por el lado paterno y del Neebaje (Achiote) por el materno, Elio Mira\u00f1a, documentador de la lengua mira\u00f1a en el marco del Programa de documentaci\u00f3n de diez lenguas para 2025 del Instituto Caro y Cuervo, dice que, aunque este t\u00e9rmino de origen tup\u00ed fue una forma de colonizaci\u00f3n que tergivers\u00f3 la historia de su gente, \u201clo usamos de apellido porque tambi\u00e9n es una manera de reconocernos y hermanarnos. Al ser reducidos como poblaci\u00f3n [durante la fiebre del caucho], todos nos consideramos parte de la misma familia, m\u00e1s all\u00e1 de la diversidad de los clanes\u201d. Los mira\u00f1a son un pueblo ind\u00edgena amaz\u00f3nico cuyo territorio ancestral est\u00e1 ubicado en la quebrada del r\u00edo Gwaa\u2019i (Pam\u00e1), afluente del Paa\u2019i (r\u00edo Cahuinari). Durante el genocidio cauchero, que tuvo como epicentro el Putumayo, el grupo migr\u00f3 a zonas cercanas al I\u00f1e\u2019i (r\u00edo Mirit\u00ed), territorio de comunidades como los matapi y los yucuna. Desde 1937 se estableci\u00f3 en asentamientos ribere\u00f1os a orillas del r\u00edo Caquet\u00e1 o r\u00edo de la danta (Okajimo), formando las comunidades de Puerto Remanso del Tigre, Mari\u00e1polis, San Francisco, Las Palmas y Met\u00e1-Quinch\u00e9. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo Mira\u00f1a Lengua mira\u00f1a Elio Mira\u00f1a Preservaci\u00f3n ling\u00fc\u00edstica Memoria ancestral Cantos tradicionales Saberes espirituales Transmisi\u00f3n intergeneracional Resistencia ind\u00edgena Oralidad Identidad cultural https://www.caroycuervo.gov.co/podemos-perderlo-todo-incluido-el-territorio-pero-nunca-la-lengua-mirana-elio-mirana/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-108",
       "row": 108,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
-      "title": "Editorial El reto de preservar lenguas indígenas en Colombia",
+      "title": "Editorial El reto de preservar lenguas ind\u00edgenas en Colombia",
       "type": "Editorial",
-      "description": "En el mundo que crean lenguas amazónicas como el murui, el miraña, el cacua y el nukak, las palabras no se clasifican en masculino o femenino, como en el español, sino en la forma y las texturas de los objetos. Cuando un nukak muere, su nombre deja de pronunciarse, y entre los cacuas las historias cumplen un rol sanador. Cada idioma indígena plantea una manera particular de relacionarse con la realidad. Por lo tanto, cada vez que una lengua desaparece, se pierde también un conjunto de conocimientos y la manera como un grupo humano se comunica.\n\nEn Colombia existen al menos 65 lenguas indígenas, habladas por 819.291 personas que viven principalmente en zonas limítrofes del territorio y en asentamientos localizados en diversas regiones. Esta cifra, que se encuentra en el Plan Decenal de Lenguas Nativas 2022-2032, corresponde a menos del 5 % de la población colombiana frente a los más de 50 millones de hablantes de español. Se trata de comunidades que existen desde antes de la conquista y cuyas lenguas están en peligro de desaparición.",
+      "description": "En el mundo que crean lenguas amaz\u00f3nicas como el murui, el mira\u00f1a, el cacua y el nukak, las palabras no se clasifican en masculino o femenino, como en el espa\u00f1ol, sino en la forma y las texturas de los objetos. Cuando un nukak muere, su nombre deja de pronunciarse, y entre los cacuas las historias cumplen un rol sanador. Cada idioma ind\u00edgena plantea una manera particular de relacionarse con la realidad. Por lo tanto, cada vez que una lengua desaparece, se pierde tambi\u00e9n un conjunto de conocimientos y la manera como un grupo humano se comunica.\n\nEn Colombia existen al menos 65 lenguas ind\u00edgenas, habladas por 819.291 personas que viven principalmente en zonas lim\u00edtrofes del territorio y en asentamientos localizados en diversas regiones. Esta cifra, que se encuentra en el Plan Decenal de Lenguas Nativas 2022-2032, corresponde a menos del 5 % de la poblaci\u00f3n colombiana frente a los m\u00e1s de 50 millones de hablantes de espa\u00f1ol. Se trata de comunidades que existen desde antes de la conquista y cuyas lenguas est\u00e1n en peligro de desaparici\u00f3n.",
       "keywords": [
-        "Lenguas indígenas",
-        "Diversidad lingüística",
-        "Preservación cultural",
-        "Documentación audiovisual",
+        "Lenguas ind\u00edgenas",
+        "Diversidad ling\u00fc\u00edstica",
+        "Preservaci\u00f3n cultural",
+        "Documentaci\u00f3n audiovisual",
         "Saberes ancestrales",
-        "Cosmovisiones indígenas",
-        "Transmisión intergeneracional",
-        "Etnoeducación",
+        "Cosmovisiones ind\u00edgenas",
+        "Transmisi\u00f3n intergeneracional",
+        "Etnoeducaci\u00f3n",
         "Identidad cultural",
-        "Pervivencia lingüística"
+        "Pervivencia ling\u00fc\u00edstica"
       ],
       "link": "https://www.caroycuervo.gov.co/documentar-para-no-olvidar-el-reto-de-preservar-lenguas-indigenas-en-colombia/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial El reto de preservar lenguas indígenas en Colombia Editorial En el mundo que crean lenguas amazónicas como el murui, el miraña, el cacua y el nukak, las palabras no se clasifican en masculino o femenino, como en el español, sino en la forma y las texturas de los objetos. Cuando un nukak muere, su nombre deja de pronunciarse, y entre los cacuas las historias cumplen un rol sanador. Cada idioma indígena plantea una manera particular de relacionarse con la realidad. Por lo tanto, cada vez que una lengua desaparece, se pierde también un conjunto de conocimientos y la manera como un grupo humano se comunica. En Colombia existen al menos 65 lenguas indígenas, habladas por 819.291 personas que viven principalmente en zonas limítrofes del territorio y en asentamientos localizados en diversas regiones. Esta cifra, que se encuentra en el Plan Decenal de Lenguas Nativas 2022-2032, corresponde a menos del 5 % de la población colombiana frente a los más de 50 millones de hablantes de español. Se trata de comunidades que existen desde antes de la conquista y cuyas lenguas están en peligro de desaparición. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Lenguas indígenas Diversidad lingüística Preservación cultural Documentación audiovisual Saberes ancestrales Cosmovisiones indígenas Transmisión intergeneracional Etnoeducación Identidad cultural Pervivencia lingüística https://www.caroycuervo.gov.co/documentar-para-no-olvidar-el-reto-de-preservar-lenguas-indigenas-en-colombia/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial El reto de preservar lenguas ind\u00edgenas en Colombia Editorial En el mundo que crean lenguas amaz\u00f3nicas como el murui, el mira\u00f1a, el cacua y el nukak, las palabras no se clasifican en masculino o femenino, como en el espa\u00f1ol, sino en la forma y las texturas de los objetos. Cuando un nukak muere, su nombre deja de pronunciarse, y entre los cacuas las historias cumplen un rol sanador. Cada idioma ind\u00edgena plantea una manera particular de relacionarse con la realidad. Por lo tanto, cada vez que una lengua desaparece, se pierde tambi\u00e9n un conjunto de conocimientos y la manera como un grupo humano se comunica. En Colombia existen al menos 65 lenguas ind\u00edgenas, habladas por 819.291 personas que viven principalmente en zonas lim\u00edtrofes del territorio y en asentamientos localizados en diversas regiones. Esta cifra, que se encuentra en el Plan Decenal de Lenguas Nativas 2022-2032, corresponde a menos del 5 % de la poblaci\u00f3n colombiana frente a los m\u00e1s de 50 millones de hablantes de espa\u00f1ol. Se trata de comunidades que existen desde antes de la conquista y cuyas lenguas est\u00e1n en peligro de desaparici\u00f3n. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Lenguas ind\u00edgenas Diversidad ling\u00fc\u00edstica Preservaci\u00f3n cultural Documentaci\u00f3n audiovisual Saberes ancestrales Cosmovisiones ind\u00edgenas Transmisi\u00f3n intergeneracional Etnoeducaci\u00f3n Identidad cultural Pervivencia ling\u00fc\u00edstica https://www.caroycuervo.gov.co/documentar-para-no-olvidar-el-reto-de-preservar-lenguas-indigenas-en-colombia/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-109",
       "row": 109,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
       "title": "Editorial Cultivar el alimento y la palabra inga",
       "type": "Editorial",
-      "description": "Desde hace varios meses, Mónica Jansasoy, documentadora de la lengua inga, recorre las veredas del municipio de Santiago (Putumayo) para escuchar las voces y trabajar por la preservación cultural de su pueblo. Conocer los testimonios de los mayores relacionados con la escolarización religiosa impuesta por la Iglesia católica a mediados del siglo XIX ha sido uno de sus intereses y un punto de partida para reflexionar sobre otros temas fundamentales como la cosecha de los alimentos propios y los cuentos tradicionales. \n\nEn el marco de su labor dentro del programa de documentación de diez lenguas 2025 del Instituto Caro y Cuervo, el hecho de ser una mujer del Cabildo Inga de Santiago y hablante del idioma le ha abierto puertas como la de Juana Jacanamijoy, una sabedora de la vereda Muchivioy con quien tuvo la oportunidad de conversar sobre la historia y la cosecha de una planta fundamental para la alimentación de la comunidad.",
+      "description": "Desde hace varios meses, M\u00f3nica Jansasoy, documentadora de la lengua inga, recorre las veredas del municipio de Santiago (Putumayo) para escuchar las voces y trabajar por la preservaci\u00f3n cultural de su pueblo. Conocer los testimonios de los mayores relacionados con la escolarizaci\u00f3n religiosa impuesta por la Iglesia cat\u00f3lica a mediados del siglo XIX ha sido uno de sus intereses y un punto de partida para reflexionar sobre otros temas fundamentales como la cosecha de los alimentos propios y los cuentos tradicionales. \n\nEn el marco de su labor dentro del programa de documentaci\u00f3n de diez lenguas 2025 del Instituto Caro y Cuervo, el hecho de ser una mujer del Cabildo Inga de Santiago y hablante del idioma le ha abierto puertas como la de Juana Jacanamijoy, una sabedora de la vereda Muchivioy con quien tuvo la oportunidad de conversar sobre la historia y la cosecha de una planta fundamental para la alimentaci\u00f3n de la comunidad.",
       "keywords": [
         "Pueblo Inga",
         "Lengua inga",
         "Chagra",
         "Alimentos tradicionales",
         "Memoria ancestral",
-        "Sabiduría de las mamitas",
-        "Tradición oral",
+        "Sabidur\u00eda de las mamitas",
+        "Tradici\u00f3n oral",
         "Identidad cultural",
-        "Transmisión de saberes",
-        "Pervivencia indígena"
+        "Transmisi\u00f3n de saberes",
+        "Pervivencia ind\u00edgena"
       ],
       "link": "https://www.caroycuervo.gov.co/cultivar-el-alimento-y-la-palabra-inga/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial Cultivar el alimento y la palabra inga Editorial Desde hace varios meses, Mónica Jansasoy, documentadora de la lengua inga, recorre las veredas del municipio de Santiago (Putumayo) para escuchar las voces y trabajar por la preservación cultural de su pueblo. Conocer los testimonios de los mayores relacionados con la escolarización religiosa impuesta por la Iglesia católica a mediados del siglo XIX ha sido uno de sus intereses y un punto de partida para reflexionar sobre otros temas fundamentales como la cosecha de los alimentos propios y los cuentos tradicionales. En el marco de su labor dentro del programa de documentación de diez lenguas 2025 del Instituto Caro y Cuervo, el hecho de ser una mujer del Cabildo Inga de Santiago y hablante del idioma le ha abierto puertas como la de Juana Jacanamijoy, una sabedora de la vereda Muchivioy con quien tuvo la oportunidad de conversar sobre la historia y la cosecha de una planta fundamental para la alimentación de la comunidad. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo Inga Lengua inga Chagra Alimentos tradicionales Memoria ancestral Sabiduría de las mamitas Tradición oral Identidad cultural Transmisión de saberes Pervivencia indígena https://www.caroycuervo.gov.co/cultivar-el-alimento-y-la-palabra-inga/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial Cultivar el alimento y la palabra inga Editorial Desde hace varios meses, M\u00f3nica Jansasoy, documentadora de la lengua inga, recorre las veredas del municipio de Santiago (Putumayo) para escuchar las voces y trabajar por la preservaci\u00f3n cultural de su pueblo. Conocer los testimonios de los mayores relacionados con la escolarizaci\u00f3n religiosa impuesta por la Iglesia cat\u00f3lica a mediados del siglo XIX ha sido uno de sus intereses y un punto de partida para reflexionar sobre otros temas fundamentales como la cosecha de los alimentos propios y los cuentos tradicionales. En el marco de su labor dentro del programa de documentaci\u00f3n de diez lenguas 2025 del Instituto Caro y Cuervo, el hecho de ser una mujer del Cabildo Inga de Santiago y hablante del idioma le ha abierto puertas como la de Juana Jacanamijoy, una sabedora de la vereda Muchivioy con quien tuvo la oportunidad de conversar sobre la historia y la cosecha de una planta fundamental para la alimentaci\u00f3n de la comunidad. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo Inga Lengua inga Chagra Alimentos tradicionales Memoria ancestral Sabidur\u00eda de las mamitas Tradici\u00f3n oral Identidad cultural Transmisi\u00f3n de saberes Pervivencia ind\u00edgena https://www.caroycuervo.gov.co/cultivar-el-alimento-y-la-palabra-inga/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-110",
       "row": 110,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
       "title": "Editorial La historia de una madre que siembra el nasa yuwe en su hija",
       "type": "Editorial",
-      "description": "Desde el nacimiento de su hija Sara, la mayora Edilma Taquinas, del pueblo Nasa, ha acompañado su crecimiento en su lengua materna: el nasa yuwe. En el municipio de Suárez, al suroccidente de Colombia, donde cada vez se escucha menos este idioma —una de las lenguas nativas en riesgo de desaparecer—, su apuesta es firme: mantener viva la palabra nasa, junto con la cosmovisión de su comunidad, con toda la memoria, el cuidado y el enraizamiento que abarca.",
+      "description": "Desde el nacimiento de su hija Sara, la mayora Edilma Taquinas, del pueblo Nasa, ha acompa\u00f1ado su crecimiento en su lengua materna: el nasa yuwe. En el municipio de Su\u00e1rez, al suroccidente de Colombia, donde cada vez se escucha menos este idioma \u2014una de las lenguas nativas en riesgo de desaparecer\u2014, su apuesta es firme: mantener viva la palabra nasa, junto con la cosmovisi\u00f3n de su comunidad, con toda la memoria, el cuidado y el enraizamiento que abarca.",
       "keywords": [
         "Pueblo Nasa",
         "Nasa yuwe",
         "Lengua materna",
         "Identidad cultural",
-        "Transmisión familiar",
+        "Transmisi\u00f3n familiar",
         "Memoria ancestral",
-        "Cosmovisión nasa",
+        "Cosmovisi\u00f3n nasa",
         "Enraizamiento cultural",
-        "Resistencia lingüística",
-        "Pervivencia indígena"
+        "Resistencia ling\u00fc\u00edstica",
+        "Pervivencia ind\u00edgena"
       ],
       "link": "https://www.caroycuervo.gov.co/la-lengua-como-el-hogar-la-historia-de-una-madre-que-siembra-el-nasa-yuwe-en-su-hija/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial La historia de una madre que siembra el nasa yuwe en su hija Editorial Desde el nacimiento de su hija Sara, la mayora Edilma Taquinas, del pueblo Nasa, ha acompañado su crecimiento en su lengua materna: el nasa yuwe. En el municipio de Suárez, al suroccidente de Colombia, donde cada vez se escucha menos este idioma —una de las lenguas nativas en riesgo de desaparecer—, su apuesta es firme: mantener viva la palabra nasa, junto con la cosmovisión de su comunidad, con toda la memoria, el cuidado y el enraizamiento que abarca. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo Nasa Nasa yuwe Lengua materna Identidad cultural Transmisión familiar Memoria ancestral Cosmovisión nasa Enraizamiento cultural Resistencia lingüística Pervivencia indígena https://www.caroycuervo.gov.co/la-lengua-como-el-hogar-la-historia-de-una-madre-que-siembra-el-nasa-yuwe-en-su-hija/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial La historia de una madre que siembra el nasa yuwe en su hija Editorial Desde el nacimiento de su hija Sara, la mayora Edilma Taquinas, del pueblo Nasa, ha acompa\u00f1ado su crecimiento en su lengua materna: el nasa yuwe. En el municipio de Su\u00e1rez, al suroccidente de Colombia, donde cada vez se escucha menos este idioma \u2014una de las lenguas nativas en riesgo de desaparecer\u2014, su apuesta es firme: mantener viva la palabra nasa, junto con la cosmovisi\u00f3n de su comunidad, con toda la memoria, el cuidado y el enraizamiento que abarca. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo Nasa Nasa yuwe Lengua materna Identidad cultural Transmisi\u00f3n familiar Memoria ancestral Cosmovisi\u00f3n nasa Enraizamiento cultural Resistencia ling\u00fc\u00edstica Pervivencia ind\u00edgena https://www.caroycuervo.gov.co/la-lengua-como-el-hogar-la-historia-de-una-madre-que-siembra-el-nasa-yuwe-en-su-hija/"
     },
     {
       "id": "somos-lenguas-de-colombia-senas-e-inclusion-111",
       "row": 111,
-      "theme": "Somos lenguas de Colombia, señas e inclusión",
+      "theme": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n",
       "theme_slug": "somos-lenguas-de-colombia-senas-e-inclusion",
       "responsable": "INSTITUTO CARO Y CUERVO",
-      "title": "Editorial Mujeres danzantes: guardianas de la tradición kamëntšá",
+      "title": "Editorial Mujeres danzantes: guardianas de la tradici\u00f3n kam\u00ebnt\u0161\u00e1",
       "type": "Editorial",
-      "description": "En el municipio de Sibundoy (Putumayo) vive un grupo de mujeres que danzan para mantener vivas las memorias del pueblo kamëntšá y proteger el idioma, la música tradicional, las plantas medicinales y los tejidos que guardan nuestras historias.\n\nTodas las integrantes de Danzas Vida Or visten tupuyos rojos (blusas) y sus vientres están envueltos por el tsombiash, un cinturón de lana que tiene tejidas las memorias y la cosmovisión de los kamëntšá. Entre los elementos que componen su vestuario también están los collares elaborados con semillas naturales, que representan la conexión con la tierra, y algunas de ellas portan un sheknaj, un bolso tejido que tradicionalmente se utilizaba para guardar las semillas y los frutos, pero cuyo uso ha ido desapareciendo.",
+      "description": "En el municipio de Sibundoy (Putumayo) vive un grupo de mujeres que danzan para mantener vivas las memorias del pueblo kam\u00ebnt\u0161\u00e1 y proteger el idioma, la m\u00fasica tradicional, las plantas medicinales y los tejidos que guardan nuestras historias.\n\nTodas las integrantes de Danzas Vida Or visten tupuyos rojos (blusas) y sus vientres est\u00e1n envueltos por el tsombiash, un cintur\u00f3n de lana que tiene tejidas las memorias y la cosmovisi\u00f3n de los kam\u00ebnt\u0161\u00e1. Entre los elementos que componen su vestuario tambi\u00e9n est\u00e1n los collares elaborados con semillas naturales, que representan la conexi\u00f3n con la tierra, y algunas de ellas portan un sheknaj, un bolso tejido que tradicionalmente se utilizaba para guardar las semillas y los frutos, pero cuyo uso ha ido desapareciendo.",
       "keywords": [
-        "Pueblo Kamëntšá",
-        "Lengua kamëntšá",
+        "Pueblo Kam\u00ebnt\u0161\u00e1",
+        "Lengua kam\u00ebnt\u0161\u00e1",
         "Danzas tradicionales",
         "Memoria ancestral",
-        "Cosmovisión indígena",
+        "Cosmovisi\u00f3n ind\u00edgena",
         "Saberes de las mayores",
         "Identidad cultural",
-        "Pervivencia indígena"
+        "Pervivencia ind\u00edgena"
       ],
       "link": "https://www.caroycuervo.gov.co/mujeres-danzantes-guardianas-de-la-tradicion-kamentsa/",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos lenguas de Colombia, señas e inclusión INSTITUTO CARO Y CUERVO Editorial Mujeres danzantes: guardianas de la tradición kamëntšá Editorial En el municipio de Sibundoy (Putumayo) vive un grupo de mujeres que danzan para mantener vivas las memorias del pueblo kamëntšá y proteger el idioma, la música tradicional, las plantas medicinales y los tejidos que guardan nuestras historias. Todas las integrantes de Danzas Vida Or visten tupuyos rojos (blusas) y sus vientres están envueltos por el tsombiash, un cinturón de lana que tiene tejidas las memorias y la cosmovisión de los kamëntšá. Entre los elementos que componen su vestuario también están los collares elaborados con semillas naturales, que representan la conexión con la tierra, y algunas de ellas portan un sheknaj, un bolso tejido que tradicionalmente se utilizaba para guardar las semillas y los frutos, pero cuyo uso ha ido desapareciendo. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo Kamëntšá Lengua kamëntšá Danzas tradicionales Memoria ancestral Cosmovisión indígena Saberes de las mayores Identidad cultural Pervivencia indígena https://www.caroycuervo.gov.co/mujeres-danzantes-guardianas-de-la-tradicion-kamentsa/"
+      "search_text": "Somos lenguas de Colombia, se\u00f1as e inclusi\u00f3n INSTITUTO CARO Y CUERVO Editorial Mujeres danzantes: guardianas de la tradici\u00f3n kam\u00ebnt\u0161\u00e1 Editorial En el municipio de Sibundoy (Putumayo) vive un grupo de mujeres que danzan para mantener vivas las memorias del pueblo kam\u00ebnt\u0161\u00e1 y proteger el idioma, la m\u00fasica tradicional, las plantas medicinales y los tejidos que guardan nuestras historias. Todas las integrantes de Danzas Vida Or visten tupuyos rojos (blusas) y sus vientres est\u00e1n envueltos por el tsombiash, un cintur\u00f3n de lana que tiene tejidas las memorias y la cosmovisi\u00f3n de los kam\u00ebnt\u0161\u00e1. Entre los elementos que componen su vestuario tambi\u00e9n est\u00e1n los collares elaborados con semillas naturales, que representan la conexi\u00f3n con la tierra, y algunas de ellas portan un sheknaj, un bolso tejido que tradicionalmente se utilizaba para guardar las semillas y los frutos, pero cuyo uso ha ido desapareciendo. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Pueblo Kam\u00ebnt\u0161\u00e1 Lengua kam\u00ebnt\u0161\u00e1 Danzas tradicionales Memoria ancestral Cosmovisi\u00f3n ind\u00edgena Saberes de las mayores Identidad cultural Pervivencia ind\u00edgena https://www.caroycuervo.gov.co/mujeres-danzantes-guardianas-de-la-tradicion-kamentsa/"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-112",
       "row": 112,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Documental Cuentos de pesca: economía y saberes artesanales",
+      "title": "Documental Cuentos de pesca: econom\u00eda y saberes artesanales",
       "type": "Documental",
-      "description": "Producción del ICANH que documenta la vida de pescadores artesanales de la Ciénaga de la Caimanera. Aborda su economía, tradiciones y relación con el agua, mostrando su papel en la historia y dinámica social del Caribe colombiano a través de entrevistas y análisis de su entorno.",
+      "description": "Producci\u00f3n del ICANH que documenta la vida de pescadores artesanales de la Ci\u00e9naga de la Caimanera. Aborda su econom\u00eda, tradiciones y relaci\u00f3n con el agua, mostrando su papel en la historia y din\u00e1mica social del Caribe colombiano a trav\u00e9s de entrevistas y an\u00e1lisis de su entorno.",
       "keywords": [
-        "Producción ICANH",
+        "Producci\u00f3n ICANH",
         "Pescadores artesanales",
-        "Ciénaga de la Caimanera",
-        "Economía local",
+        "Ci\u00e9naga de la Caimanera",
+        "Econom\u00eda local",
         "Tradiciones y cultura",
-        "Relación con el agua",
+        "Relaci\u00f3n con el agua",
         "Historia social del Caribe colombiano",
-        "Dinámica comunitaria",
-        "Entrevistas y análisis del entorno",
+        "Din\u00e1mica comunitaria",
+        "Entrevistas y an\u00e1lisis del entorno",
         "Patrimonio cultural",
         "Saberes ancestrales",
         "Identidad comunitaria"
       ],
       "link": "https://www.youtube.com/watch?v=gMbhhW1Ks3w",
       "asset_link": "",
-      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
+      "force_message": "Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Documental Cuentos de pesca: economía y saberes artesanales Documental Producción del ICANH que documenta la vida de pescadores artesanales de la Ciénaga de la Caimanera. Aborda su economía, tradiciones y relación con el agua, mostrando su papel en la historia y dinámica social del Caribe colombiano a través de entrevistas y análisis de su entorno. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a él, pero también de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Producción ICANH Pescadores artesanales Ciénaga de la Caimanera Economía local Tradiciones y cultura Relación con el agua Historia social del Caribe colombiano Dinámica comunitaria Entrevistas y análisis del entorno Patrimonio cultural Saberes ancestrales Identidad comunitaria https://www.youtube.com/watch?v=gMbhhW1Ks3w"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Documental Cuentos de pesca: econom\u00eda y saberes artesanales Documental Producci\u00f3n del ICANH que documenta la vida de pescadores artesanales de la Ci\u00e9naga de la Caimanera. Aborda su econom\u00eda, tradiciones y relaci\u00f3n con el agua, mostrando su papel en la historia y din\u00e1mica social del Caribe colombiano a trav\u00e9s de entrevistas y an\u00e1lisis de su entorno. Saber ganarse la vida en Colombia surge de conocer el entorno y adaptarse a \u00e9l, pero tambi\u00e9n de ser conscientes de nuestras herencias, de lo que aprendemos de nuestros antepasados. Producci\u00f3n ICANH Pescadores artesanales Ci\u00e9naga de la Caimanera Econom\u00eda local Tradiciones y cultura Relaci\u00f3n con el agua Historia social del Caribe colombiano Din\u00e1mica comunitaria Entrevistas y an\u00e1lisis del entorno Patrimonio cultural Saberes ancestrales Identidad comunitaria https://www.youtube.com/watch?v=gMbhhW1Ks3w"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-113",
       "row": 113,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Podcast El yagé: usos y efectos de su globalización",
+      "title": "Podcast El yag\u00e9: usos y efectos de su globalizaci\u00f3n",
       "type": "Podcast",
-      "description": "Programa de la serie de podcast Antropofonías del ICANH. Est episodio trata sobre los usos y los efectos que hoy en día tiene el consumo de ayahuasca o yagé en entornos urbanos, no solo a nivel local sino internacional. Para esta conversación tenemos como invitada a la reconocida investigadora de la ayahuasca: Alhena Caicedo, antropóloga y actual directora del Instituto Colombiano de Antropología e Historia (ICANH).",
+      "description": "Programa de la serie de podcast Antropofon\u00edas del ICANH. Est episodio trata sobre los usos y los efectos que hoy en d\u00eda tiene el consumo de ayahuasca o yag\u00e9 en entornos urbanos, no solo a nivel local sino internacional. Para esta conversaci\u00f3n tenemos como invitada a la reconocida investigadora de la ayahuasca: Alhena Caicedo, antrop\u00f3loga y actual directora del Instituto Colombiano de Antropolog\u00eda e Historia (ICANH).",
       "keywords": [
-        "Serie de podcast Antropofonías",
+        "Serie de podcast Antropofon\u00edas",
         "ICANH",
-        "Ayahuasca / yagé",
+        "Ayahuasca / yag\u00e9",
         "Consumo urbano",
-        "Efectos y usos contemporáneos",
+        "Efectos y usos contempor\u00e1neos",
         "Alcance local e internacional",
         "Invitada: Alhena Caicedo",
-        "Antropología",
-        "Investigación sobre plantas sagradas",
+        "Antropolog\u00eda",
+        "Investigaci\u00f3n sobre plantas sagradas",
         "Patrimonio cultural",
         "Saberes ancestrales",
-        "Prácticas rituales",
-        "Cultura amazónica"
+        "Pr\u00e1cticas rituales",
+        "Cultura amaz\u00f3nica"
       ],
       "link": "https://open.spotify.com/episode/0LsJ3LA8S8pKY6PMbn5K7Q?si=da951c6a81734971",
       "asset_link": "",
-      "force_message": "La herencia no es asunto del pasado: vive hoy en cada alimento, cada camino recorrido y cda símbolo del que nos enorgullecemos.",
+      "force_message": "La herencia no es asunto del pasado: vive hoy en cada alimento, cada camino recorrido y cda s\u00edmbolo del que nos enorgullecemos.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Podcast El yagé: usos y efectos de su globalización Podcast Programa de la serie de podcast Antropofonías del ICANH. Est episodio trata sobre los usos y los efectos que hoy en día tiene el consumo de ayahuasca o yagé en entornos urbanos, no solo a nivel local sino internacional. Para esta conversación tenemos como invitada a la reconocida investigadora de la ayahuasca: Alhena Caicedo, antropóloga y actual directora del Instituto Colombiano de Antropología e Historia (ICANH). La herencia no es asunto del pasado: vive hoy en cada alimento, cada camino recorrido y cda símbolo del que nos enorgullecemos. Serie de podcast Antropofonías ICANH Ayahuasca / yagé Consumo urbano Efectos y usos contemporáneos Alcance local e internacional Invitada: Alhena Caicedo Antropología Investigación sobre plantas sagradas Patrimonio cultural Saberes ancestrales Prácticas rituales Cultura amazónica https://open.spotify.com/episode/0LsJ3LA8S8pKY6PMbn5K7Q?si=da951c6a81734971"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Podcast El yag\u00e9: usos y efectos de su globalizaci\u00f3n Podcast Programa de la serie de podcast Antropofon\u00edas del ICANH. Est episodio trata sobre los usos y los efectos que hoy en d\u00eda tiene el consumo de ayahuasca o yag\u00e9 en entornos urbanos, no solo a nivel local sino internacional. Para esta conversaci\u00f3n tenemos como invitada a la reconocida investigadora de la ayahuasca: Alhena Caicedo, antrop\u00f3loga y actual directora del Instituto Colombiano de Antropolog\u00eda e Historia (ICANH). La herencia no es asunto del pasado: vive hoy en cada alimento, cada camino recorrido y cda s\u00edmbolo del que nos enorgullecemos. Serie de podcast Antropofon\u00edas ICANH Ayahuasca / yag\u00e9 Consumo urbano Efectos y usos contempor\u00e1neos Alcance local e internacional Invitada: Alhena Caicedo Antropolog\u00eda Investigaci\u00f3n sobre plantas sagradas Patrimonio cultural Saberes ancestrales Pr\u00e1cticas rituales Cultura amaz\u00f3nica https://open.spotify.com/episode/0LsJ3LA8S8pKY6PMbn5K7Q?si=da951c6a81734971"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-114",
       "row": 114,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
       "title": "Podcast La salud de la mujer, la luna y cuidados del cuerpo",
       "type": "Podcast",
-      "description": "Episodio de la serie de podcast Antropofonías del ICANH. Este episodio propone un diálogo entre la medicina alópata y la medicina ancestral Yanakuna. Nuestras invitadas hablarán, cada una desde su esquina, sobre el cuidado de la mujer y la salud femenina. De la mano de la doctora Paula Ramírez y la aprendiz de partera Sayari Campos Burbano podremos entender la diversidad de miradas y la singularidad frente a las concepciones del cuerpo y la salud de las mujeres.",
+      "description": "Episodio de la serie de podcast Antropofon\u00edas del ICANH. Este episodio propone un di\u00e1logo entre la medicina al\u00f3pata y la medicina ancestral Yanakuna. Nuestras invitadas hablar\u00e1n, cada una desde su esquina, sobre el cuidado de la mujer y la salud femenina. De la mano de la doctora Paula Ram\u00edrez y la aprendiz de partera Sayari Campos Burbano podremos entender la diversidad de miradas y la singularidad frente a las concepciones del cuerpo y la salud de las mujeres.",
       "keywords": [
-        "Serie de podcast Antropofonías",
+        "Serie de podcast Antropofon\u00edas",
         "ICANH",
-        "Medicina alópata y medicina ancestral Yanakuna",
+        "Medicina al\u00f3pata y medicina ancestral Yanakuna",
         "Cuidado de la mujer",
         "Salud femenina",
-        "Diversidad de miradas médicas",
+        "Diversidad de miradas m\u00e9dicas",
         "Conceptos del cuerpo y la salud",
-        "Invitadas: Dra. Paula Ramírez y Sayari Campos Burbano",
+        "Invitadas: Dra. Paula Ram\u00edrez y Sayari Campos Burbano",
         "Saberes ancestrales",
-        "Partería tradicional",
-        "Diálogo intercultural",
+        "Parter\u00eda tradicional",
+        "Di\u00e1logo intercultural",
         "Patrimonio intangible",
-        "Medicina tradicional y contemporánea"
+        "Medicina tradicional y contempor\u00e1nea"
       ],
       "link": "https://open.spotify.com/episode/51EPlgXf2rcNCoW9i7Jola?si=48d7d713ac524884",
       "asset_link": "",
-      "force_message": "La herencia no es asunto del pasado: vive hoy en cada alimento, cada camino recorrido y cda símbolo del que nos enorgullecemos.",
+      "force_message": "La herencia no es asunto del pasado: vive hoy en cada alimento, cada camino recorrido y cda s\u00edmbolo del que nos enorgullecemos.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Podcast La salud de la mujer, la luna y cuidados del cuerpo Podcast Episodio de la serie de podcast Antropofonías del ICANH. Este episodio propone un diálogo entre la medicina alópata y la medicina ancestral Yanakuna. Nuestras invitadas hablarán, cada una desde su esquina, sobre el cuidado de la mujer y la salud femenina. De la mano de la doctora Paula Ramírez y la aprendiz de partera Sayari Campos Burbano podremos entender la diversidad de miradas y la singularidad frente a las concepciones del cuerpo y la salud de las mujeres. La herencia no es asunto del pasado: vive hoy en cada alimento, cada camino recorrido y cda símbolo del que nos enorgullecemos. Serie de podcast Antropofonías ICANH Medicina alópata y medicina ancestral Yanakuna Cuidado de la mujer Salud femenina Diversidad de miradas médicas Conceptos del cuerpo y la salud Invitadas: Dra. Paula Ramírez y Sayari Campos Burbano Saberes ancestrales Partería tradicional Diálogo intercultural Patrimonio intangible Medicina tradicional y contemporánea https://open.spotify.com/episode/51EPlgXf2rcNCoW9i7Jola?si=48d7d713ac524884"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Podcast La salud de la mujer, la luna y cuidados del cuerpo Podcast Episodio de la serie de podcast Antropofon\u00edas del ICANH. Este episodio propone un di\u00e1logo entre la medicina al\u00f3pata y la medicina ancestral Yanakuna. Nuestras invitadas hablar\u00e1n, cada una desde su esquina, sobre el cuidado de la mujer y la salud femenina. De la mano de la doctora Paula Ram\u00edrez y la aprendiz de partera Sayari Campos Burbano podremos entender la diversidad de miradas y la singularidad frente a las concepciones del cuerpo y la salud de las mujeres. La herencia no es asunto del pasado: vive hoy en cada alimento, cada camino recorrido y cda s\u00edmbolo del que nos enorgullecemos. Serie de podcast Antropofon\u00edas ICANH Medicina al\u00f3pata y medicina ancestral Yanakuna Cuidado de la mujer Salud femenina Diversidad de miradas m\u00e9dicas Conceptos del cuerpo y la salud Invitadas: Dra. Paula Ram\u00edrez y Sayari Campos Burbano Saberes ancestrales Parter\u00eda tradicional Di\u00e1logo intercultural Patrimonio intangible Medicina tradicional y contempor\u00e1nea https://open.spotify.com/episode/51EPlgXf2rcNCoW9i7Jola?si=48d7d713ac524884"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-115",
       "row": 115,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Podcast La chicha: de bebida prohibida a producto turístico",
+      "title": "Podcast La chicha: de bebida prohibida a producto tur\u00edstico",
       "type": "Podcast",
-      "description": "Episodio de la serie de podcast Antropofonías del ICANH. Este episodio gira en torno a la bebida más importante para la historia de las comunidades indigenas de este territorio: la chicha. Esta bebida tradicional fue perseguida hasta hace no muchas décadas, porque se consideraba una sustancia nociva para la inteligencia y causante de criminalidad. ¿Cómo pasó de ser una bebida estigmatizada a ser parte del turismo gastronómico del país?",
+      "description": "Episodio de la serie de podcast Antropofon\u00edas del ICANH. Este episodio gira en torno a la bebida m\u00e1s importante para la historia de las comunidades indigenas de este territorio: la chicha. Esta bebida tradicional fue perseguida hasta hace no muchas d\u00e9cadas, porque se consideraba una sustancia nociva para la inteligencia y causante de criminalidad. \u00bfC\u00f3mo pas\u00f3 de ser una bebida estigmatizada a ser parte del turismo gastron\u00f3mico del pa\u00eds?",
       "keywords": [
-        "Serie de podcast Antropofonías",
+        "Serie de podcast Antropofon\u00edas",
         "ICANH",
         "Chicha",
-        "Bebida tradicional indígena",
+        "Bebida tradicional ind\u00edgena",
         "Historia y cultura alimentaria",
-        "Persecución y estigmatización",
-        "Percepción social y criminalización",
-        "Turismo gastronómico",
+        "Persecuci\u00f3n y estigmatizaci\u00f3n",
+        "Percepci\u00f3n social y criminalizaci\u00f3n",
+        "Turismo gastron\u00f3mico",
         "Patrimonio cultural",
         "Saberes ancestrales",
-        "Tradición y resiliencia",
+        "Tradici\u00f3n y resiliencia",
         "Identidad comunitaria"
       ],
       "link": "https://open.spotify.com/episode/2CyPcz2z3YSkJnWbkVVLvY?si=80fa7e3bdf84448b",
       "asset_link": "",
-      "force_message": "La herencia no es asunto del pasado: vive hoy en cada alimento, cada camino recorrido y cda símbolo del que nos enorgullecemos.",
+      "force_message": "La herencia no es asunto del pasado: vive hoy en cada alimento, cada camino recorrido y cda s\u00edmbolo del que nos enorgullecemos.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Podcast La chicha: de bebida prohibida a producto turístico Podcast Episodio de la serie de podcast Antropofonías del ICANH. Este episodio gira en torno a la bebida más importante para la historia de las comunidades indigenas de este territorio: la chicha. Esta bebida tradicional fue perseguida hasta hace no muchas décadas, porque se consideraba una sustancia nociva para la inteligencia y causante de criminalidad. ¿Cómo pasó de ser una bebida estigmatizada a ser parte del turismo gastronómico del país? La herencia no es asunto del pasado: vive hoy en cada alimento, cada camino recorrido y cda símbolo del que nos enorgullecemos. Serie de podcast Antropofonías ICANH Chicha Bebida tradicional indígena Historia y cultura alimentaria Persecución y estigmatización Percepción social y criminalización Turismo gastronómico Patrimonio cultural Saberes ancestrales Tradición y resiliencia Identidad comunitaria https://open.spotify.com/episode/2CyPcz2z3YSkJnWbkVVLvY?si=80fa7e3bdf84448b"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Podcast La chicha: de bebida prohibida a producto tur\u00edstico Podcast Episodio de la serie de podcast Antropofon\u00edas del ICANH. Este episodio gira en torno a la bebida m\u00e1s importante para la historia de las comunidades indigenas de este territorio: la chicha. Esta bebida tradicional fue perseguida hasta hace no muchas d\u00e9cadas, porque se consideraba una sustancia nociva para la inteligencia y causante de criminalidad. \u00bfC\u00f3mo pas\u00f3 de ser una bebida estigmatizada a ser parte del turismo gastron\u00f3mico del pa\u00eds? La herencia no es asunto del pasado: vive hoy en cada alimento, cada camino recorrido y cda s\u00edmbolo del que nos enorgullecemos. Serie de podcast Antropofon\u00edas ICANH Chicha Bebida tradicional ind\u00edgena Historia y cultura alimentaria Persecuci\u00f3n y estigmatizaci\u00f3n Percepci\u00f3n social y criminalizaci\u00f3n Turismo gastron\u00f3mico Patrimonio cultural Saberes ancestrales Tradici\u00f3n y resiliencia Identidad comunitaria https://open.spotify.com/episode/2CyPcz2z3YSkJnWbkVVLvY?si=80fa7e3bdf84448b"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-116",
       "row": 116,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Arte animado Susurros del Caquetá",
+      "title": "Arte animado Susurros del Caquet\u00e1",
       "type": "Arte animado",
-      "description": "Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Juegos visuales y sonoros que reflejan algunos aspectos de la vida campesina del Caquetá. Es una invitación a sumergirse en las emociones que transmiten los colores y las formas de la naturaleza en esta región de Colombia.",
+      "description": "Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Juegos visuales y sonoros que reflejan algunos aspectos de la vida campesina del Caquet\u00e1. Es una invitaci\u00f3n a sumergirse en las emociones que transmiten los colores y las formas de la naturaleza en esta regi\u00f3n de Colombia.",
       "keywords": [
         "Proyecto Vidas campesinas",
-        "Investigación y creación multimedia",
+        "Investigaci\u00f3n y creaci\u00f3n multimedia",
         "Vida campesina",
-        "Caquetá",
+        "Caquet\u00e1",
         "Juegos visuales y sonoros",
         "Emociones de la naturaleza",
         "Colores y formas del paisaje",
@@ -7039,27 +7284,27 @@
         "Identidad territorial",
         "Experiencia sensorial",
         "Patrimonio cultural",
-        "Conexión con el entorno natural"
+        "Conexi\u00f3n con el entorno natural"
       ],
       "link": "https://www.youtube.com/watch?v=pC0wF78s-9s",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Arte animado Susurros del Caquetá Arte animado Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Juegos visuales y sonoros que reflejan algunos aspectos de la vida campesina del Caquetá. Es una invitación a sumergirse en las emociones que transmiten los colores y las formas de la naturaleza en esta región de Colombia. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigación y creación multimedia Vida campesina Caquetá Juegos visuales y sonoros Emociones de la naturaleza Colores y formas del paisaje Cultura rural Identidad territorial Experiencia sensorial Patrimonio cultural Conexión con el entorno natural https://www.youtube.com/watch?v=pC0wF78s-9s"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Arte animado Susurros del Caquet\u00e1 Arte animado Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Juegos visuales y sonoros que reflejan algunos aspectos de la vida campesina del Caquet\u00e1. Es una invitaci\u00f3n a sumergirse en las emociones que transmiten los colores y las formas de la naturaleza en esta regi\u00f3n de Colombia. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigaci\u00f3n y creaci\u00f3n multimedia Vida campesina Caquet\u00e1 Juegos visuales y sonoros Emociones de la naturaleza Colores y formas del paisaje Cultura rural Identidad territorial Experiencia sensorial Patrimonio cultural Conexi\u00f3n con el entorno natural https://www.youtube.com/watch?v=pC0wF78s-9s"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-117",
       "row": 117,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
       "title": "Arte animado Evocaciones del Raudal del Guayabero",
       "type": "Arte animado",
-      "description": "Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. \nEsta animación busca acercar a las(os) espectadoras(es) desde la evocación poética a Raudal del Guayabero a partir del movimiento, el color y las formas mediante el uso de materiales propios del lugar como piedras y hojas sumados a la arena.",
+      "description": "Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. \nEsta animaci\u00f3n busca acercar a las(os) espectadoras(es) desde la evocaci\u00f3n po\u00e9tica a Raudal del Guayabero a partir del movimiento, el color y las formas mediante el uso de materiales propios del lugar como piedras y hojas sumados a la arena.",
       "keywords": [
         "Proyecto Vidas campesinas",
-        "Investigación y creación multimedia",
-        "Animación poética",
+        "Investigaci\u00f3n y creaci\u00f3n multimedia",
+        "Animaci\u00f3n po\u00e9tica",
         "Raudal del Guayabero",
         "Movimiento, color y formas",
         "Materiales locales: piedras, hojas, arena",
@@ -7068,89 +7313,89 @@
         "Experiencia sensorial",
         "Identidad territorial",
         "Patrimonio cultural",
-        "Conexión con el entorno"
+        "Conexi\u00f3n con el entorno"
       ],
       "link": "https://www.youtube.com/watch?v=Bbd2n09wVCQ",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Arte animado Evocaciones del Raudal del Guayabero Arte animado Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Esta animación busca acercar a las(os) espectadoras(es) desde la evocación poética a Raudal del Guayabero a partir del movimiento, el color y las formas mediante el uso de materiales propios del lugar como piedras y hojas sumados a la arena. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigación y creación multimedia Animación poética Raudal del Guayabero Movimiento, color y formas Materiales locales: piedras, hojas, arena Cultura campesina Paisaje y naturaleza Experiencia sensorial Identidad territorial Patrimonio cultural Conexión con el entorno https://www.youtube.com/watch?v=Bbd2n09wVCQ"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Arte animado Evocaciones del Raudal del Guayabero Arte animado Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Esta animaci\u00f3n busca acercar a las(os) espectadoras(es) desde la evocaci\u00f3n po\u00e9tica a Raudal del Guayabero a partir del movimiento, el color y las formas mediante el uso de materiales propios del lugar como piedras y hojas sumados a la arena. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigaci\u00f3n y creaci\u00f3n multimedia Animaci\u00f3n po\u00e9tica Raudal del Guayabero Movimiento, color y formas Materiales locales: piedras, hojas, arena Cultura campesina Paisaje y naturaleza Experiencia sensorial Identidad territorial Patrimonio cultural Conexi\u00f3n con el entorno https://www.youtube.com/watch?v=Bbd2n09wVCQ"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-118",
       "row": 118,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Arte animado Colores de Suárez, Cauca",
+      "title": "Arte animado Colores de Su\u00e1rez, Cauca",
       "type": "Arte animado",
-      "description": "Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas'. Un recorrido por los colores, la diversidad étnica y las formas de la naturaleza acompañadas por el testimonio de Cleste Ararat",
+      "description": "Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas'. Un recorrido por los colores, la diversidad \u00e9tnica y las formas de la naturaleza acompa\u00f1adas por el testimonio de Cleste Ararat",
       "keywords": [
         "Proyecto Vidas campesinas",
-        "Investigación y creación multimedia",
+        "Investigaci\u00f3n y creaci\u00f3n multimedia",
         "Colores y formas de la naturaleza",
-        "Diversidad étnica",
+        "Diversidad \u00e9tnica",
         "Testimonio de Cleste Ararat",
         "Cultura campesina",
         "Identidad territorial",
         "Patrimonio natural y cultural",
         "Experiencia sensorial",
-        "Conexión con el entorno",
+        "Conexi\u00f3n con el entorno",
         "Narrativa audiovisual"
       ],
       "link": "https://www.youtube.com/watch?v=6cGCIT1-8_w",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Arte animado Colores de Suárez, Cauca Arte animado Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas'. Un recorrido por los colores, la diversidad étnica y las formas de la naturaleza acompañadas por el testimonio de Cleste Ararat El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigación y creación multimedia Colores y formas de la naturaleza Diversidad étnica Testimonio de Cleste Ararat Cultura campesina Identidad territorial Patrimonio natural y cultural Experiencia sensorial Conexión con el entorno Narrativa audiovisual https://www.youtube.com/watch?v=6cGCIT1-8_w"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Arte animado Colores de Su\u00e1rez, Cauca Arte animado Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas'. Un recorrido por los colores, la diversidad \u00e9tnica y las formas de la naturaleza acompa\u00f1adas por el testimonio de Cleste Ararat El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigaci\u00f3n y creaci\u00f3n multimedia Colores y formas de la naturaleza Diversidad \u00e9tnica Testimonio de Cleste Ararat Cultura campesina Identidad territorial Patrimonio natural y cultural Experiencia sensorial Conexi\u00f3n con el entorno Narrativa audiovisual https://www.youtube.com/watch?v=6cGCIT1-8_w"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-119",
       "row": 119,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video Guardiana de las vida",
+      "title": "C\u00e1psula de video Guardiana de las vida",
       "type": "Video",
-      "description": "Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Las experiencias de vida de mujeres campesinas, indígenas y cimarronas del norte del Cauca nos hablan de cómo en sus prácticas cotidianas sostienen, cuidan y luchan por la vida, la familia, la comunidad y el territorio.",
+      "description": "Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Las experiencias de vida de mujeres campesinas, ind\u00edgenas y cimarronas del norte del Cauca nos hablan de c\u00f3mo en sus pr\u00e1cticas cotidianas sostienen, cuidan y luchan por la vida, la familia, la comunidad y el territorio.",
       "keywords": [
         "Proyecto Vidas campesinas",
-        "Investigación y creación multimedia",
-        "Mujeres campesinas, indígenas y cimarronas",
+        "Investigaci\u00f3n y creaci\u00f3n multimedia",
+        "Mujeres campesinas, ind\u00edgenas y cimarronas",
         "Norte del Cauca",
-        "Prácticas cotidianas",
+        "Pr\u00e1cticas cotidianas",
         "Cuidado de la vida, familia y comunidad",
         "Defensa del territorio",
         "Cultura y saberes ancestrales",
         "Identidad y resistencia",
-        "Economía y sostenibilidad local",
+        "Econom\u00eda y sostenibilidad local",
         "Patrimonio cultural",
         "Empoderamiento femenino"
       ],
       "link": "https://www.youtube.com/watch?v=Uy4sbBPS-4g",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video Guardiana de las vida Video Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Las experiencias de vida de mujeres campesinas, indígenas y cimarronas del norte del Cauca nos hablan de cómo en sus prácticas cotidianas sostienen, cuidan y luchan por la vida, la familia, la comunidad y el territorio. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigación y creación multimedia Mujeres campesinas, indígenas y cimarronas Norte del Cauca Prácticas cotidianas Cuidado de la vida, familia y comunidad Defensa del territorio Cultura y saberes ancestrales Identidad y resistencia Economía y sostenibilidad local Patrimonio cultural Empoderamiento femenino https://www.youtube.com/watch?v=Uy4sbBPS-4g"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video Guardiana de las vida Video Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Las experiencias de vida de mujeres campesinas, ind\u00edgenas y cimarronas del norte del Cauca nos hablan de c\u00f3mo en sus pr\u00e1cticas cotidianas sostienen, cuidan y luchan por la vida, la familia, la comunidad y el territorio. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigaci\u00f3n y creaci\u00f3n multimedia Mujeres campesinas, ind\u00edgenas y cimarronas Norte del Cauca Pr\u00e1cticas cotidianas Cuidado de la vida, familia y comunidad Defensa del territorio Cultura y saberes ancestrales Identidad y resistencia Econom\u00eda y sostenibilidad local Patrimonio cultural Empoderamiento femenino https://www.youtube.com/watch?v=Uy4sbBPS-4g"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-120",
       "row": 120,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video Vivir en armonía",
+      "title": "C\u00e1psula de video Vivir en armon\u00eda",
       "type": "Video",
-      "description": "Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. En Suárez, un territorio intercultural, las comunidades campesinas, indígenas y cimarronas tejen lazos de solidaridad y apoyo mutuo por la defensa de la vida y el territorio. Las voces de las mujeres del norte del Cauca hacen un llamado nacional a la unión, la paz y el respeto a la diferencia.",
+      "description": "Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. En Su\u00e1rez, un territorio intercultural, las comunidades campesinas, ind\u00edgenas y cimarronas tejen lazos de solidaridad y apoyo mutuo por la defensa de la vida y el territorio. Las voces de las mujeres del norte del Cauca hacen un llamado nacional a la uni\u00f3n, la paz y el respeto a la diferencia.",
       "keywords": [
         "Proyecto Vidas campesinas",
-        "Investigación y creación multimedia",
-        "Suárez, Norte del Cauca",
-        "Comunidades campesinas, indígenas y cimarronas",
+        "Investigaci\u00f3n y creaci\u00f3n multimedia",
+        "Su\u00e1rez, Norte del Cauca",
+        "Comunidades campesinas, ind\u00edgenas y cimarronas",
         "Solidaridad y apoyo mutuo",
         "Defensa de la vida y el territorio",
         "Voces de mujeres",
-        "Llamado a la unión y la paz",
+        "Llamado a la uni\u00f3n y la paz",
         "Respeto a la diversidad",
         "Identidad intercultural",
         "Cultura y saberes ancestrales",
@@ -7158,139 +7403,139 @@
       ],
       "link": "https://www.youtube.com/watch?v=jJv7O95eJrA",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video Vivir en armonía Video Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. En Suárez, un territorio intercultural, las comunidades campesinas, indígenas y cimarronas tejen lazos de solidaridad y apoyo mutuo por la defensa de la vida y el territorio. Las voces de las mujeres del norte del Cauca hacen un llamado nacional a la unión, la paz y el respeto a la diferencia. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigación y creación multimedia Suárez, Norte del Cauca Comunidades campesinas, indígenas y cimarronas Solidaridad y apoyo mutuo Defensa de la vida y el territorio Voces de mujeres Llamado a la unión y la paz Respeto a la diversidad Identidad intercultural Cultura y saberes ancestrales Resistencia comunitaria https://www.youtube.com/watch?v=jJv7O95eJrA"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video Vivir en armon\u00eda Video Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. En Su\u00e1rez, un territorio intercultural, las comunidades campesinas, ind\u00edgenas y cimarronas tejen lazos de solidaridad y apoyo mutuo por la defensa de la vida y el territorio. Las voces de las mujeres del norte del Cauca hacen un llamado nacional a la uni\u00f3n, la paz y el respeto a la diferencia. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigaci\u00f3n y creaci\u00f3n multimedia Su\u00e1rez, Norte del Cauca Comunidades campesinas, ind\u00edgenas y cimarronas Solidaridad y apoyo mutuo Defensa de la vida y el territorio Voces de mujeres Llamado a la uni\u00f3n y la paz Respeto a la diversidad Identidad intercultural Cultura y saberes ancestrales Resistencia comunitaria https://www.youtube.com/watch?v=jJv7O95eJrA"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-121",
       "row": 121,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Cápsula de video Cuidar la vida",
+      "title": "C\u00e1psula de video Cuidar la vida",
       "type": "Video",
-      "description": "Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Las prácticas de cuidado de las vidas campesinas en el norte del Cauca se expresan de múltiples maneras: en el cuidado de las plantas y la tierra, en procurar el bienestar colectivo de la vida en comunidad, en armonizar espiritualmente el territorio, pero sobre todo, en reír y disfrutar la vida.",
+      "description": "Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Las pr\u00e1cticas de cuidado de las vidas campesinas en el norte del Cauca se expresan de m\u00faltiples maneras: en el cuidado de las plantas y la tierra, en procurar el bienestar colectivo de la vida en comunidad, en armonizar espiritualmente el territorio, pero sobre todo, en re\u00edr y disfrutar la vida.",
       "keywords": [
         "Proyecto Vidas campesinas",
-        "Investigación y creación multimedia",
+        "Investigaci\u00f3n y creaci\u00f3n multimedia",
         "Norte del Cauca",
-        "Prácticas de cuidado campesinas",
+        "Pr\u00e1cticas de cuidado campesinas",
         "Cuidado de plantas y tierra",
         "Bienestar colectivo",
-        "Armonía espiritual con el territorio",
+        "Armon\u00eda espiritual con el territorio",
         "Comunidad y vida en colectivo",
-        "Alegría y disfrute de la vida",
+        "Alegr\u00eda y disfrute de la vida",
         "Saberes ancestrales",
-        "Cultura y tradición rural",
+        "Cultura y tradici\u00f3n rural",
         "Identidad territorial",
         "Resistencia y sostenibilidad"
       ],
       "link": "https://www.youtube.com/shorts/vu6FBMQ4HdE",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Cápsula de video Cuidar la vida Video Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Las prácticas de cuidado de las vidas campesinas en el norte del Cauca se expresan de múltiples maneras: en el cuidado de las plantas y la tierra, en procurar el bienestar colectivo de la vida en comunidad, en armonizar espiritualmente el territorio, pero sobre todo, en reír y disfrutar la vida. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigación y creación multimedia Norte del Cauca Prácticas de cuidado campesinas Cuidado de plantas y tierra Bienestar colectivo Armonía espiritual con el territorio Comunidad y vida en colectivo Alegría y disfrute de la vida Saberes ancestrales Cultura y tradición rural Identidad territorial Resistencia y sostenibilidad https://www.youtube.com/shorts/vu6FBMQ4HdE"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH C\u00e1psula de video Cuidar la vida Video Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Las pr\u00e1cticas de cuidado de las vidas campesinas en el norte del Cauca se expresan de m\u00faltiples maneras: en el cuidado de las plantas y la tierra, en procurar el bienestar colectivo de la vida en comunidad, en armonizar espiritualmente el territorio, pero sobre todo, en re\u00edr y disfrutar la vida. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigaci\u00f3n y creaci\u00f3n multimedia Norte del Cauca Pr\u00e1cticas de cuidado campesinas Cuidado de plantas y tierra Bienestar colectivo Armon\u00eda espiritual con el territorio Comunidad y vida en colectivo Alegr\u00eda y disfrute de la vida Saberes ancestrales Cultura y tradici\u00f3n rural Identidad territorial Resistencia y sostenibilidad https://www.youtube.com/shorts/vu6FBMQ4HdE"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-122",
       "row": 122,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Etnografía sonora Aquí me amaño, gracias a Dios",
+      "title": "Etnograf\u00eda sonora Aqu\u00ed me ama\u00f1o, gracias a Dios",
       "type": "Video",
-      "description": "Producción del proyecto Vidas campesinas que recorre la vida campesina en Caquetá. Entre ordeño, sonidos de la naturaleza y memorias del conflicto, sus protagonistas comparten saberes, riesgos y alegrías del día a día en el piedemonte amazónico, destacando su relación con el territorio y la cultura.",
+      "description": "Producci\u00f3n del proyecto Vidas campesinas que recorre la vida campesina en Caquet\u00e1. Entre orde\u00f1o, sonidos de la naturaleza y memorias del conflicto, sus protagonistas comparten saberes, riesgos y alegr\u00edas del d\u00eda a d\u00eda en el piedemonte amaz\u00f3nico, destacando su relaci\u00f3n con el territorio y la cultura.",
       "keywords": [
         "Proyecto Vidas campesinas",
         "Vida campesina",
-        "Caquetá",
-        "Ordeño y trabajo diario",
+        "Caquet\u00e1",
+        "Orde\u00f1o y trabajo diario",
         "Sonidos de la naturaleza",
         "Memorias del conflicto",
         "Saberes y tradiciones",
-        "Riesgos y alegrías cotidianas",
-        "Piedemonte amazónico",
-        "Relación con el territorio",
+        "Riesgos y alegr\u00edas cotidianas",
+        "Piedemonte amaz\u00f3nico",
+        "Relaci\u00f3n con el territorio",
         "Cultura campesina",
         "Identidad territorial",
         "Patrimonio cultural"
       ],
       "link": "https://open.spotify.com/episode/7mFMiaggcudi72cTttAtEd?si=a87f3e6c8dec4b40",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Etnografía sonora Aquí me amaño, gracias a Dios Video Producción del proyecto Vidas campesinas que recorre la vida campesina en Caquetá. Entre ordeño, sonidos de la naturaleza y memorias del conflicto, sus protagonistas comparten saberes, riesgos y alegrías del día a día en el piedemonte amazónico, destacando su relación con el territorio y la cultura. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Vida campesina Caquetá Ordeño y trabajo diario Sonidos de la naturaleza Memorias del conflicto Saberes y tradiciones Riesgos y alegrías cotidianas Piedemonte amazónico Relación con el territorio Cultura campesina Identidad territorial Patrimonio cultural https://open.spotify.com/episode/7mFMiaggcudi72cTttAtEd?si=a87f3e6c8dec4b40"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Etnograf\u00eda sonora Aqu\u00ed me ama\u00f1o, gracias a Dios Video Producci\u00f3n del proyecto Vidas campesinas que recorre la vida campesina en Caquet\u00e1. Entre orde\u00f1o, sonidos de la naturaleza y memorias del conflicto, sus protagonistas comparten saberes, riesgos y alegr\u00edas del d\u00eda a d\u00eda en el piedemonte amaz\u00f3nico, destacando su relaci\u00f3n con el territorio y la cultura. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Vida campesina Caquet\u00e1 Orde\u00f1o y trabajo diario Sonidos de la naturaleza Memorias del conflicto Saberes y tradiciones Riesgos y alegr\u00edas cotidianas Piedemonte amaz\u00f3nico Relaci\u00f3n con el territorio Cultura campesina Identidad territorial Patrimonio cultural https://open.spotify.com/episode/7mFMiaggcudi72cTttAtEd?si=a87f3e6c8dec4b40"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-123",
       "row": 123,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Etnografía sonora La tecnología del jaguar",
+      "title": "Etnograf\u00eda sonora La tecnolog\u00eda del jaguar",
       "type": "Video",
-      "description": "Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Cae la noche en Raudal del Guayabero; misteriosa, imponente, y con ella sus peligros. No se vale tener miedo, el jaguar sabe rastrearlo con su tecnología infalible, posando su pata sobre las huellas del caminante. Seguir el paso con valentía es la única defensa. Ciertamente, después de la noche vendrá el día y con él la luz del sol que todo ilumina.",
+      "description": "Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Cae la noche en Raudal del Guayabero; misteriosa, imponente, y con ella sus peligros. No se vale tener miedo, el jaguar sabe rastrearlo con su tecnolog\u00eda infalible, posando su pata sobre las huellas del caminante. Seguir el paso con valent\u00eda es la \u00fanica defensa. Ciertamente, despu\u00e9s de la noche vendr\u00e1 el d\u00eda y con \u00e9l la luz del sol que todo ilumina.",
       "keywords": [
         "Proyecto Vidas campesinas",
-        "Investigación y creación multimedia",
+        "Investigaci\u00f3n y creaci\u00f3n multimedia",
         "Raudal del Guayabero",
         "Noche y peligros del territorio",
-        "Jaguar como símbolo y guía",
+        "Jaguar como s\u00edmbolo y gu\u00eda",
         "Rastreo y supervivencia",
-        "Valentía y resiliencia",
+        "Valent\u00eda y resiliencia",
         "Huellas del caminante",
-        "Ciclo natural: noche y día",
-        "Luz del sol y renovación",
-        "Cultura y cosmovisión campesina",
-        "Conexión con la naturaleza",
-        "Patrimonio simbólico y narrativo"
+        "Ciclo natural: noche y d\u00eda",
+        "Luz del sol y renovaci\u00f3n",
+        "Cultura y cosmovisi\u00f3n campesina",
+        "Conexi\u00f3n con la naturaleza",
+        "Patrimonio simb\u00f3lico y narrativo"
       ],
       "link": "https://open.spotify.com/episode/1zyv56hxMof8HGgwTDseF8?si=85fcc47f4e044012",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Etnografía sonora La tecnología del jaguar Video Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Cae la noche en Raudal del Guayabero; misteriosa, imponente, y con ella sus peligros. No se vale tener miedo, el jaguar sabe rastrearlo con su tecnología infalible, posando su pata sobre las huellas del caminante. Seguir el paso con valentía es la única defensa. Ciertamente, después de la noche vendrá el día y con él la luz del sol que todo ilumina. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigación y creación multimedia Raudal del Guayabero Noche y peligros del territorio Jaguar como símbolo y guía Rastreo y supervivencia Valentía y resiliencia Huellas del caminante Ciclo natural: noche y día Luz del sol y renovación Cultura y cosmovisión campesina Conexión con la naturaleza Patrimonio simbólico y narrativo https://open.spotify.com/episode/1zyv56hxMof8HGgwTDseF8?si=85fcc47f4e044012"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Etnograf\u00eda sonora La tecnolog\u00eda del jaguar Video Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Cae la noche en Raudal del Guayabero; misteriosa, imponente, y con ella sus peligros. No se vale tener miedo, el jaguar sabe rastrearlo con su tecnolog\u00eda infalible, posando su pata sobre las huellas del caminante. Seguir el paso con valent\u00eda es la \u00fanica defensa. Ciertamente, despu\u00e9s de la noche vendr\u00e1 el d\u00eda y con \u00e9l la luz del sol que todo ilumina. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Investigaci\u00f3n y creaci\u00f3n multimedia Raudal del Guayabero Noche y peligros del territorio Jaguar como s\u00edmbolo y gu\u00eda Rastreo y supervivencia Valent\u00eda y resiliencia Huellas del caminante Ciclo natural: noche y d\u00eda Luz del sol y renovaci\u00f3n Cultura y cosmovisi\u00f3n campesina Conexi\u00f3n con la naturaleza Patrimonio simb\u00f3lico y narrativo https://open.spotify.com/episode/1zyv56hxMof8HGgwTDseF8?si=85fcc47f4e044012"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-124",
       "row": 124,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Etnografía sonora Cultivo de alegría",
+      "title": "Etnograf\u00eda sonora Cultivo de alegr\u00eda",
       "type": "Video",
-      "description": "Producción del proyecto Vidas campesinas que retrata un territorio donde la vida fluye sin prisa y la alegría es herencia ancestral. Entre cultivos, saberes y memorias, la comunidad celebra la abundancia, la risa y la unidad como formas de bienestar, resaltando su conexión con la tierra y una vida en armonía, “a tiempo” y sin reproches.",
+      "description": "Producci\u00f3n del proyecto Vidas campesinas que retrata un territorio donde la vida fluye sin prisa y la alegr\u00eda es herencia ancestral. Entre cultivos, saberes y memorias, la comunidad celebra la abundancia, la risa y la unidad como formas de bienestar, resaltando su conexi\u00f3n con la tierra y una vida en armon\u00eda, \u201ca tiempo\u201d y sin reproches.",
       "keywords": [
         "Proyecto Vidas campesinas",
         "Territorio y vida campesina",
         "Cultivos y agricultura local",
         "Saberes ancestrales",
         "Memorias comunitarias",
-        "Alegría y unidad",
+        "Alegr\u00eda y unidad",
         "Abundancia y bienestar",
-        "Conexión con la tierra",
-        "Armonía y ritmo de vida",
-        "Celebración de la vida cotidiana",
-        "Cultura y tradición rural",
+        "Conexi\u00f3n con la tierra",
+        "Armon\u00eda y ritmo de vida",
+        "Celebraci\u00f3n de la vida cotidiana",
+        "Cultura y tradici\u00f3n rural",
         "Identidad comunitaria",
         "Patrimonio intangible"
       ],
       "link": "https://open.spotify.com/episode/4E5Fe8AkyFri7aA33B99Ds?si=f9e0d390c67047fe",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Etnografía sonora Cultivo de alegría Video Producción del proyecto Vidas campesinas que retrata un territorio donde la vida fluye sin prisa y la alegría es herencia ancestral. Entre cultivos, saberes y memorias, la comunidad celebra la abundancia, la risa y la unidad como formas de bienestar, resaltando su conexión con la tierra y una vida en armonía, “a tiempo” y sin reproches. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Territorio y vida campesina Cultivos y agricultura local Saberes ancestrales Memorias comunitarias Alegría y unidad Abundancia y bienestar Conexión con la tierra Armonía y ritmo de vida Celebración de la vida cotidiana Cultura y tradición rural Identidad comunitaria Patrimonio intangible https://open.spotify.com/episode/4E5Fe8AkyFri7aA33B99Ds?si=f9e0d390c67047fe"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Etnograf\u00eda sonora Cultivo de alegr\u00eda Video Producci\u00f3n del proyecto Vidas campesinas que retrata un territorio donde la vida fluye sin prisa y la alegr\u00eda es herencia ancestral. Entre cultivos, saberes y memorias, la comunidad celebra la abundancia, la risa y la unidad como formas de bienestar, resaltando su conexi\u00f3n con la tierra y una vida en armon\u00eda, \u201ca tiempo\u201d y sin reproches. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Territorio y vida campesina Cultivos y agricultura local Saberes ancestrales Memorias comunitarias Alegr\u00eda y unidad Abundancia y bienestar Conexi\u00f3n con la tierra Armon\u00eda y ritmo de vida Celebraci\u00f3n de la vida cotidiana Cultura y tradici\u00f3n rural Identidad comunitaria Patrimonio intangible https://open.spotify.com/episode/4E5Fe8AkyFri7aA33B99Ds?si=f9e0d390c67047fe"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-125",
       "row": 125,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
       "title": "Mensaje sonoro Somos la ambulancia de todos",
       "type": "Sonoro",
-      "description": "Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Las plantas y remedios naturales son la farmacia natural frente a la incapacidad del sistema de salud de atender la ruralidad dispersa. \"Somos la ambulancia, todos de todos\" pues en las vidas campesinas caqueteas la solidaridad es sanadora.",
+      "description": "Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Las plantas y remedios naturales son la farmacia natural frente a la incapacidad del sistema de salud de atender la ruralidad dispersa. \"Somos la ambulancia, todos de todos\" pues en las vidas campesinas caqueteas la solidaridad es sanadora.",
       "keywords": [
         "Proyecto Vidas campesinas",
         "Plantas y remedios naturales",
@@ -7298,67 +7543,67 @@
         "Ruralidad dispersa",
         "Limitaciones del sistema de salud",
         "Solidaridad comunitaria",
-        "“Somos la ambulancia, todos de todos”",
+        "\u201cSomos la ambulancia, todos de todos\u201d",
         "Cuidado colectivo",
         "Saberes ancestrales",
         "Cultura campesina",
-        "Resiliencia y autonomía",
+        "Resiliencia y autonom\u00eda",
         "Patrimonio intangible",
         "Bienestar comunitario"
       ],
       "link": "https://open.spotify.com/episode/2kJwaVWI32dPr8yNZZ69KG?si=d5edf05cf46f4be2",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Mensaje sonoro Somos la ambulancia de todos Sonoro Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Las plantas y remedios naturales son la farmacia natural frente a la incapacidad del sistema de salud de atender la ruralidad dispersa. \"Somos la ambulancia, todos de todos\" pues en las vidas campesinas caqueteas la solidaridad es sanadora. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Plantas y remedios naturales Medicina tradicional Ruralidad dispersa Limitaciones del sistema de salud Solidaridad comunitaria “Somos la ambulancia, todos de todos” Cuidado colectivo Saberes ancestrales Cultura campesina Resiliencia y autonomía Patrimonio intangible Bienestar comunitario https://open.spotify.com/episode/2kJwaVWI32dPr8yNZZ69KG?si=d5edf05cf46f4be2"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Mensaje sonoro Somos la ambulancia de todos Sonoro Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Las plantas y remedios naturales son la farmacia natural frente a la incapacidad del sistema de salud de atender la ruralidad dispersa. \"Somos la ambulancia, todos de todos\" pues en las vidas campesinas caqueteas la solidaridad es sanadora. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Plantas y remedios naturales Medicina tradicional Ruralidad dispersa Limitaciones del sistema de salud Solidaridad comunitaria \u201cSomos la ambulancia, todos de todos\u201d Cuidado colectivo Saberes ancestrales Cultura campesina Resiliencia y autonom\u00eda Patrimonio intangible Bienestar comunitario https://open.spotify.com/episode/2kJwaVWI32dPr8yNZZ69KG?si=d5edf05cf46f4be2"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-126",
       "row": 126,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
       "title": "Mensaje sonoro Vivimos paz y tranquilidad",
       "type": "Sonoro",
-      "description": "Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. El apoyo mutuo en las vidas campesinas les permite tener una gran calidad de vida, especialmente en estos nuevos tiempos donde pasaron de depredadores a conservadores de la naturaleza con el turismo comunitario. El mensaje es para invertir y abrir las vías para un desarrollo sostenible en la región.",
+      "description": "Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. El apoyo mutuo en las vidas campesinas les permite tener una gran calidad de vida, especialmente en estos nuevos tiempos donde pasaron de depredadores a conservadores de la naturaleza con el turismo comunitario. El mensaje es para invertir y abrir las v\u00edas para un desarrollo sostenible en la regi\u00f3n.",
       "keywords": [
         "Proyecto Vidas campesinas",
         "Apoyo mutuo y solidaridad",
         "Calidad de vida campesina",
-        "Conservación de la naturaleza",
+        "Conservaci\u00f3n de la naturaleza",
         "Turismo comunitario",
-        "Transición de depredadores a conservadores",
+        "Transici\u00f3n de depredadores a conservadores",
         "Desarrollo sostenible",
-        "Economía local",
-        "Protección del territorio",
+        "Econom\u00eda local",
+        "Protecci\u00f3n del territorio",
         "Saberes ancestrales",
-        "Cultura y tradición rural",
+        "Cultura y tradici\u00f3n rural",
         "Identidad comunitaria",
         "Patrimonio natural y cultural"
       ],
       "link": "https://open.spotify.com/episode/2F7UA21wfO8uNl3IMPhbmM?si=556846a2938948d8",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Mensaje sonoro Vivimos paz y tranquilidad Sonoro Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. El apoyo mutuo en las vidas campesinas les permite tener una gran calidad de vida, especialmente en estos nuevos tiempos donde pasaron de depredadores a conservadores de la naturaleza con el turismo comunitario. El mensaje es para invertir y abrir las vías para un desarrollo sostenible en la región. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Apoyo mutuo y solidaridad Calidad de vida campesina Conservación de la naturaleza Turismo comunitario Transición de depredadores a conservadores Desarrollo sostenible Economía local Protección del territorio Saberes ancestrales Cultura y tradición rural Identidad comunitaria Patrimonio natural y cultural https://open.spotify.com/episode/2F7UA21wfO8uNl3IMPhbmM?si=556846a2938948d8"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Mensaje sonoro Vivimos paz y tranquilidad Sonoro Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. El apoyo mutuo en las vidas campesinas les permite tener una gran calidad de vida, especialmente en estos nuevos tiempos donde pasaron de depredadores a conservadores de la naturaleza con el turismo comunitario. El mensaje es para invertir y abrir las v\u00edas para un desarrollo sostenible en la regi\u00f3n. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Apoyo mutuo y solidaridad Calidad de vida campesina Conservaci\u00f3n de la naturaleza Turismo comunitario Transici\u00f3n de depredadores a conservadores Desarrollo sostenible Econom\u00eda local Protecci\u00f3n del territorio Saberes ancestrales Cultura y tradici\u00f3n rural Identidad comunitaria Patrimonio natural y cultural https://open.spotify.com/episode/2F7UA21wfO8uNl3IMPhbmM?si=556846a2938948d8"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-127",
       "row": 127,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
-      "title": "Mensaje sonoro Espantos de otras épocas",
+      "title": "Mensaje sonoro Espantos de otras \u00e9pocas",
       "type": "Sonoro",
-      "description": "Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. El Raudal del Guayabero fue en épocas de la bonanza cocalera un centro de acopio y distribución, con una vida comercial muy activa, que luego la violencia paramilitar arrasaría. Aún se escucha en la esquina donde quedaba el billar y allá donde quedaba el centro de salud, sonidos que recuerdan espantos de otros tiempos.",
+      "description": "Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. El Raudal del Guayabero fue en \u00e9pocas de la bonanza cocalera un centro de acopio y distribuci\u00f3n, con una vida comercial muy activa, que luego la violencia paramilitar arrasar\u00eda. A\u00fan se escucha en la esquina donde quedaba el billar y all\u00e1 donde quedaba el centro de salud, sonidos que recuerdan espantos de otros tiempos.",
       "keywords": [
         "Proyecto Vidas campesinas",
         "Raudal del Guayabero",
         "Bonanza cocalera",
-        "Centro de acopio y distribución",
+        "Centro de acopio y distribuci\u00f3n",
         "Vida comercial activa",
         "Violencia paramilitar",
-        "Memoria histórica",
+        "Memoria hist\u00f3rica",
         "Sonidos del pasado",
         "Espantos y recuerdos",
         "Transformaciones del territorio",
@@ -7368,29 +7613,29 @@
       ],
       "link": "https://open.spotify.com/episode/4YJZ9b4p7DOHMi1JHFMSJh?si=d5fc03e7ecca42c4",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Mensaje sonoro Espantos de otras épocas Sonoro Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. El Raudal del Guayabero fue en épocas de la bonanza cocalera un centro de acopio y distribución, con una vida comercial muy activa, que luego la violencia paramilitar arrasaría. Aún se escucha en la esquina donde quedaba el billar y allá donde quedaba el centro de salud, sonidos que recuerdan espantos de otros tiempos. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Raudal del Guayabero Bonanza cocalera Centro de acopio y distribución Vida comercial activa Violencia paramilitar Memoria histórica Sonidos del pasado Espantos y recuerdos Transformaciones del territorio Cultura y vida campesina Identidad comunitaria Patrimonio intangible https://open.spotify.com/episode/4YJZ9b4p7DOHMi1JHFMSJh?si=d5fc03e7ecca42c4"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Mensaje sonoro Espantos de otras \u00e9pocas Sonoro Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. El Raudal del Guayabero fue en \u00e9pocas de la bonanza cocalera un centro de acopio y distribuci\u00f3n, con una vida comercial muy activa, que luego la violencia paramilitar arrasar\u00eda. A\u00fan se escucha en la esquina donde quedaba el billar y all\u00e1 donde quedaba el centro de salud, sonidos que recuerdan espantos de otros tiempos. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Raudal del Guayabero Bonanza cocalera Centro de acopio y distribuci\u00f3n Vida comercial activa Violencia paramilitar Memoria hist\u00f3rica Sonidos del pasado Espantos y recuerdos Transformaciones del territorio Cultura y vida campesina Identidad comunitaria Patrimonio intangible https://open.spotify.com/episode/4YJZ9b4p7DOHMi1JHFMSJh?si=d5fc03e7ecca42c4"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-128",
       "row": 128,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
       "title": "Programa de radio Un raudal de historias",
       "type": "Sonoro",
-      "description": "Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Las vidas campesinas de las bocas del Raudal han sobrevivido a través de las bonanzas históricas: tigrilladas, marimba, pesca, coca y madera han depredado la naturaleza. Ahora viven un cambio radical en el que buscan conservar el patrimonio natural y cultural, en su nueva apuesta por el turismo comunitario.",
+      "description": "Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Las vidas campesinas de las bocas del Raudal han sobrevivido a trav\u00e9s de las bonanzas hist\u00f3ricas: tigrilladas, marimba, pesca, coca y madera han depredado la naturaleza. Ahora viven un cambio radical en el que buscan conservar el patrimonio natural y cultural, en su nueva apuesta por el turismo comunitario.",
       "keywords": [
         "Proyecto Vidas campesinas",
         "Vidas campesinas, bocas del Raudal",
-        "Bonanzas históricas: tigrilladas, marimba, pesca, coca, madera",
-        "Depredación de la naturaleza",
-        "Conservación del patrimonio natural y cultural",
+        "Bonanzas hist\u00f3ricas: tigrilladas, marimba, pesca, coca, madera",
+        "Depredaci\u00f3n de la naturaleza",
+        "Conservaci\u00f3n del patrimonio natural y cultural",
         "Turismo comunitario",
-        "Cambio y transición sostenible",
-        "Economía local",
-        "Cultura y tradición campesina",
+        "Cambio y transici\u00f3n sostenible",
+        "Econom\u00eda local",
+        "Cultura y tradici\u00f3n campesina",
         "Identidad territorial",
         "Saberes ancestrales",
         "Resiliencia comunitaria",
@@ -7398,84 +7643,84 @@
       ],
       "link": "https://open.spotify.com/episode/4zMnMsLhTlvVq94pmudiIv?si=34d2128af15b4d64",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Programa de radio Un raudal de historias Sonoro Una producción realizada en el marco del proyecto de investigación y creación multimedia Vidas campesinas. Las vidas campesinas de las bocas del Raudal han sobrevivido a través de las bonanzas históricas: tigrilladas, marimba, pesca, coca y madera han depredado la naturaleza. Ahora viven un cambio radical en el que buscan conservar el patrimonio natural y cultural, en su nueva apuesta por el turismo comunitario. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Vidas campesinas, bocas del Raudal Bonanzas históricas: tigrilladas, marimba, pesca, coca, madera Depredación de la naturaleza Conservación del patrimonio natural y cultural Turismo comunitario Cambio y transición sostenible Economía local Cultura y tradición campesina Identidad territorial Saberes ancestrales Resiliencia comunitaria Patrimonio intangible https://open.spotify.com/episode/4zMnMsLhTlvVq94pmudiIv?si=34d2128af15b4d64"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Programa de radio Un raudal de historias Sonoro Una producci\u00f3n realizada en el marco del proyecto de investigaci\u00f3n y creaci\u00f3n multimedia Vidas campesinas. Las vidas campesinas de las bocas del Raudal han sobrevivido a trav\u00e9s de las bonanzas hist\u00f3ricas: tigrilladas, marimba, pesca, coca y madera han depredado la naturaleza. Ahora viven un cambio radical en el que buscan conservar el patrimonio natural y cultural, en su nueva apuesta por el turismo comunitario. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Vidas campesinas, bocas del Raudal Bonanzas hist\u00f3ricas: tigrilladas, marimba, pesca, coca, madera Depredaci\u00f3n de la naturaleza Conservaci\u00f3n del patrimonio natural y cultural Turismo comunitario Cambio y transici\u00f3n sostenible Econom\u00eda local Cultura y tradici\u00f3n campesina Identidad territorial Saberes ancestrales Resiliencia comunitaria Patrimonio intangible https://open.spotify.com/episode/4zMnMsLhTlvVq94pmudiIv?si=34d2128af15b4d64"
     },
     {
       "id": "somos-territorios-bioculturales-y-economias-populares-129",
       "row": 129,
-      "theme": "Somos territorios bioculturales y economías populares",
+      "theme": "Somos territorios bioculturales y econom\u00edas populares",
       "theme_slug": "somos-territorios-bioculturales-y-economias-populares",
       "responsable": "ICANH",
       "title": "Programa de radio El cuidado de la Guardia es la vida",
       "type": "Sonoro",
-      "description": "Producción del proyecto Vidas campesinas que, desde el Consejo Comunitario Las Brisas en Suárez, Cauca, reúne a Guardias Cimarronas, Campesinas e Indígenas. Entre un zancocho con pipilongo y saberes compartidos, se dialoga sobre su labor en el cuidado del territorio, resaltando la unión, la tradición y la defensa colectiva de la vida.",
+      "description": "Producci\u00f3n del proyecto Vidas campesinas que, desde el Consejo Comunitario Las Brisas en Su\u00e1rez, Cauca, re\u00fane a Guardias Cimarronas, Campesinas e Ind\u00edgenas. Entre un zancocho con pipilongo y saberes compartidos, se dialoga sobre su labor en el cuidado del territorio, resaltando la uni\u00f3n, la tradici\u00f3n y la defensa colectiva de la vida.",
       "keywords": [
         "Proyecto Vidas campesinas",
-        "Consejo Comunitario Las Brisas, Suárez, Cauca",
-        "Guardias Cimarronas, Campesinas e Indígenas",
+        "Consejo Comunitario Las Brisas, Su\u00e1rez, Cauca",
+        "Guardias Cimarronas, Campesinas e Ind\u00edgenas",
         "Zancocho con pipilongo",
         "Saberes compartidos",
         "Cuidado del territorio",
-        "Unión y tradición",
+        "Uni\u00f3n y tradici\u00f3n",
         "Defensa colectiva de la vida",
         "Cultura y memoria comunitaria",
         "Identidad territorial",
-        "Resiliencia y cooperación",
+        "Resiliencia y cooperaci\u00f3n",
         "Patrimonio intangible",
-        "Economía y vida campesina"
+        "Econom\u00eda y vida campesina"
       ],
       "link": "https://open.spotify.com/episode/4j2CKdH3UTr05dPEbYR9Pb?si=257e89a52d8f49d2",
       "asset_link": "",
-      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios.",
+      "force_message": "El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales y economías populares ICANH Programa de radio El cuidado de la Guardia es la vida Sonoro Producción del proyecto Vidas campesinas que, desde el Consejo Comunitario Las Brisas en Suárez, Cauca, reúne a Guardias Cimarronas, Campesinas e Indígenas. Entre un zancocho con pipilongo y saberes compartidos, se dialoga sobre su labor en el cuidado del territorio, resaltando la unión, la tradición y la defensa colectiva de la vida. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro país nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Consejo Comunitario Las Brisas, Suárez, Cauca Guardias Cimarronas, Campesinas e Indígenas Zancocho con pipilongo Saberes compartidos Cuidado del territorio Unión y tradición Defensa colectiva de la vida Cultura y memoria comunitaria Identidad territorial Resiliencia y cooperación Patrimonio intangible Economía y vida campesina https://open.spotify.com/episode/4j2CKdH3UTr05dPEbYR9Pb?si=257e89a52d8f49d2"
+      "search_text": "Somos territorios bioculturales y econom\u00edas populares ICANH Programa de radio El cuidado de la Guardia es la vida Sonoro Producci\u00f3n del proyecto Vidas campesinas que, desde el Consejo Comunitario Las Brisas en Su\u00e1rez, Cauca, re\u00fane a Guardias Cimarronas, Campesinas e Ind\u00edgenas. Entre un zancocho con pipilongo y saberes compartidos, se dialoga sobre su labor en el cuidado del territorio, resaltando la uni\u00f3n, la tradici\u00f3n y la defensa colectiva de la vida. El campo vive y se vive en Colombia. Las historias de campesinas y campesinos de nuestro pa\u00eds nos revelan a diario las formas diversas en las que habitan sus territorios. Proyecto Vidas campesinas Consejo Comunitario Las Brisas, Su\u00e1rez, Cauca Guardias Cimarronas, Campesinas e Ind\u00edgenas Zancocho con pipilongo Saberes compartidos Cuidado del territorio Uni\u00f3n y tradici\u00f3n Defensa colectiva de la vida Cultura y memoria comunitaria Identidad territorial Resiliencia y cooperaci\u00f3n Patrimonio intangible Econom\u00eda y vida campesina https://open.spotify.com/episode/4j2CKdH3UTr05dPEbYR9Pb?si=257e89a52d8f49d2"
     },
     {
       "id": "somos-cultura-de-paz-130",
       "row": 130,
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios",
-      "title": "Animación Viaje a la resistencia comunitaria",
-      "type": "Animación",
-      "description": "Relato del recorrido de niños y niñas campesinos hacia la parcela comunitaria Puerto Luna (Bolívar), un espacio de resistencia agrosostenible. En el camino atraviesan monocultivos con escasa biodiversidad, contrastando con la riqueza natural que encuentran al llegar: animales, aire puro y árboles nativos. Allí, un campesino sabedor les comparte cómo han resistido mediante la siembra de alimentos propios, defendiendo el territorio y sus prácticas tradicionales.",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios",
+      "title": "Animaci\u00f3n Viaje a la resistencia comunitaria",
+      "type": "Animaci\u00f3n",
+      "description": "Relato del recorrido de ni\u00f1os y ni\u00f1as campesinos hacia la parcela comunitaria Puerto Luna (Bol\u00edvar), un espacio de resistencia agrosostenible. En el camino atraviesan monocultivos con escasa biodiversidad, contrastando con la riqueza natural que encuentran al llegar: animales, aire puro y \u00e1rboles nativos. All\u00ed, un campesino sabedor les comparte c\u00f3mo han resistido mediante la siembra de alimentos propios, defendiendo el territorio y sus pr\u00e1cticas tradicionales.",
       "keywords": [
-        "Niños y niñas campesinos",
-        "Parcela comunitaria Puerto Luna, Bolívar",
+        "Ni\u00f1os y ni\u00f1as campesinos",
+        "Parcela comunitaria Puerto Luna, Bol\u00edvar",
         "Resistencia agrosostenible",
         "Monocultivos vs biodiversidad",
-        "Animales, aire puro, árboles nativos",
+        "Animales, aire puro, \u00e1rboles nativos",
         "Sabedor campesino",
         "Defensa del territorio",
-        "Prácticas agrícolas tradicionales",
+        "Pr\u00e1cticas agr\u00edcolas tradicionales",
         "Siembra de alimentos propios",
         "Cultura y saberes campesinos",
         "Identidad territorial",
         "Patrimonio natural y cultural",
-        "Educación ambiental y comunitaria"
+        "Educaci\u00f3n ambiental y comunitaria"
       ],
       "link": "https://mcultura.sharepoint.com/:v:/s/DACMI/IQCi2cVGQbuIRZfwMpHB1Y0_ARdu2oIGwvgCcZ_txIRT35w?e=a3MyMx",
       "asset_link": "",
-      "force_message": "Desde el corazón de sus territorios bioculturales, campesinas y campesinos reafirman su compromiso con el cuidado y la defensa de la tierra, del agua y del alimento.",
+      "force_message": "Desde el coraz\u00f3n de sus territorios bioculturales, campesinas y campesinos reafirman su compromiso con el cuidado y la defensa de la tierra, del agua y del alimento.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios Animación Viaje a la resistencia comunitaria Animación Relato del recorrido de niños y niñas campesinos hacia la parcela comunitaria Puerto Luna (Bolívar), un espacio de resistencia agrosostenible. En el camino atraviesan monocultivos con escasa biodiversidad, contrastando con la riqueza natural que encuentran al llegar: animales, aire puro y árboles nativos. Allí, un campesino sabedor les comparte cómo han resistido mediante la siembra de alimentos propios, defendiendo el territorio y sus prácticas tradicionales. Desde el corazón de sus territorios bioculturales, campesinas y campesinos reafirman su compromiso con el cuidado y la defensa de la tierra, del agua y del alimento. Niños y niñas campesinos Parcela comunitaria Puerto Luna, Bolívar Resistencia agrosostenible Monocultivos vs biodiversidad Animales, aire puro, árboles nativos Sabedor campesino Defensa del territorio Prácticas agrícolas tradicionales Siembra de alimentos propios Cultura y saberes campesinos Identidad territorial Patrimonio natural y cultural Educación ambiental y comunitaria https://mcultura.sharepoint.com/:v:/s/DACMI/IQCi2cVGQbuIRZfwMpHB1Y0_ARdu2oIGwvgCcZ_txIRT35w?e=a3MyMx"
+      "search_text": "Somos cultura de paz MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios Animaci\u00f3n Viaje a la resistencia comunitaria Animaci\u00f3n Relato del recorrido de ni\u00f1os y ni\u00f1as campesinos hacia la parcela comunitaria Puerto Luna (Bol\u00edvar), un espacio de resistencia agrosostenible. En el camino atraviesan monocultivos con escasa biodiversidad, contrastando con la riqueza natural que encuentran al llegar: animales, aire puro y \u00e1rboles nativos. All\u00ed, un campesino sabedor les comparte c\u00f3mo han resistido mediante la siembra de alimentos propios, defendiendo el territorio y sus pr\u00e1cticas tradicionales. Desde el coraz\u00f3n de sus territorios bioculturales, campesinas y campesinos reafirman su compromiso con el cuidado y la defensa de la tierra, del agua y del alimento. Ni\u00f1os y ni\u00f1as campesinos Parcela comunitaria Puerto Luna, Bol\u00edvar Resistencia agrosostenible Monocultivos vs biodiversidad Animales, aire puro, \u00e1rboles nativos Sabedor campesino Defensa del territorio Pr\u00e1cticas agr\u00edcolas tradicionales Siembra de alimentos propios Cultura y saberes campesinos Identidad territorial Patrimonio natural y cultural Educaci\u00f3n ambiental y comunitaria https://mcultura.sharepoint.com/:v:/s/DACMI/IQCi2cVGQbuIRZfwMpHB1Y0_ARdu2oIGwvgCcZ_txIRT35w?e=a3MyMx"
     },
     {
       "id": "somos-cultura-de-paz-131",
       "row": 131,
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios",
       "title": "Audiovisual Poema Ser campesino",
       "type": "Audiovisual",
-      "description": "Este contenido narra el trabajo del hombre campesino de la Zona de Reserva Campesina del Pato Balsillas (Caquetá) ha sido fundamental para la sostenibilidad, el crecimiento económico y la organización social del territorio, en este poema audiovisual se exalta el trabajo, la lucha y la resistencia campesina.",
+      "description": "Este contenido narra el trabajo del hombre campesino de la Zona de Reserva Campesina del Pato Balsillas (Caquet\u00e1) ha sido fundamental para la sostenibilidad, el crecimiento econ\u00f3mico y la organizaci\u00f3n social del territorio, en este poema audiovisual se exalta el trabajo, la lucha y la resistencia campesina.",
       "keywords": [
         "Hombre campesino",
-        "Zona de Reserva Campesina del Pato Balsillas, Caquetá",
-        "Sostenibilidad y economía local",
-        "Organización social del territorio",
+        "Zona de Reserva Campesina del Pato Balsillas, Caquet\u00e1",
+        "Sostenibilidad y econom\u00eda local",
+        "Organizaci\u00f3n social del territorio",
         "Poema audiovisual",
         "Trabajo y esfuerzo cotidiano",
         "Lucha y resistencia campesina",
@@ -7487,38 +7732,38 @@
       ],
       "link": "https://mcultura.sharepoint.com/:v:/s/DACMI/IQDroyp-U31YTbdbCyESSnl2AfPHQ2kD-dGnBsZTMZemWzs?e=2MM0gU",
       "asset_link": "",
-      "force_message": "Desde el corazón de sus territorios bioculturales, campesinas y campesinos reafirman su compromiso con el cuidado y la defensa de la tierra, del agua y del alimento.",
+      "force_message": "Desde el coraz\u00f3n de sus territorios bioculturales, campesinas y campesinos reafirman su compromiso con el cuidado y la defensa de la tierra, del agua y del alimento.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios Audiovisual Poema Ser campesino Audiovisual Este contenido narra el trabajo del hombre campesino de la Zona de Reserva Campesina del Pato Balsillas (Caquetá) ha sido fundamental para la sostenibilidad, el crecimiento económico y la organización social del territorio, en este poema audiovisual se exalta el trabajo, la lucha y la resistencia campesina. Desde el corazón de sus territorios bioculturales, campesinas y campesinos reafirman su compromiso con el cuidado y la defensa de la tierra, del agua y del alimento. Hombre campesino Zona de Reserva Campesina del Pato Balsillas, Caquetá Sostenibilidad y economía local Organización social del territorio Poema audiovisual Trabajo y esfuerzo cotidiano Lucha y resistencia campesina Cultura y saberes rurales Identidad territorial Patrimonio intangible Comunidad y solidaridad Vida campesina https://mcultura.sharepoint.com/:v:/s/DACMI/IQDroyp-U31YTbdbCyESSnl2AfPHQ2kD-dGnBsZTMZemWzs?e=2MM0gU"
+      "search_text": "Somos cultura de paz MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios Audiovisual Poema Ser campesino Audiovisual Este contenido narra el trabajo del hombre campesino de la Zona de Reserva Campesina del Pato Balsillas (Caquet\u00e1) ha sido fundamental para la sostenibilidad, el crecimiento econ\u00f3mico y la organizaci\u00f3n social del territorio, en este poema audiovisual se exalta el trabajo, la lucha y la resistencia campesina. Desde el coraz\u00f3n de sus territorios bioculturales, campesinas y campesinos reafirman su compromiso con el cuidado y la defensa de la tierra, del agua y del alimento. Hombre campesino Zona de Reserva Campesina del Pato Balsillas, Caquet\u00e1 Sostenibilidad y econom\u00eda local Organizaci\u00f3n social del territorio Poema audiovisual Trabajo y esfuerzo cotidiano Lucha y resistencia campesina Cultura y saberes rurales Identidad territorial Patrimonio intangible Comunidad y solidaridad Vida campesina https://mcultura.sharepoint.com/:v:/s/DACMI/IQDroyp-U31YTbdbCyESSnl2AfPHQ2kD-dGnBsZTMZemWzs?e=2MM0gU"
     },
     {
       "id": "somos-cultura-de-paz-132",
       "row": 132,
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios",
-      "title": "Audiovisual El Río",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios",
+      "title": "Audiovisual El R\u00edo",
       "type": "Audiovisual",
-      "description": "El río Balsillas ubicado en el departamento del Caquetá ha sido contaminado por las manos de hombres y mujeres que han habitado el Valle de Balsillas desde los años 40. En este audiovisual el río hace un llamado a su cuidado, protección y abre la reflexión sobre qué pasaría si un día la comunidad despierta y el río ya no está.",
+      "description": "El r\u00edo Balsillas ubicado en el departamento del Caquet\u00e1 ha sido contaminado por las manos de hombres y mujeres que han habitado el Valle de Balsillas desde los a\u00f1os 40. En este audiovisual el r\u00edo hace un llamado a su cuidado, protecci\u00f3n y abre la reflexi\u00f3n sobre qu\u00e9 pasar\u00eda si un d\u00eda la comunidad despierta y el r\u00edo ya no est\u00e1.",
       "keywords": [
-        "Río Balsillas, Caquetá",
-        "Contaminación histórica",
+        "R\u00edo Balsillas, Caquet\u00e1",
+        "Contaminaci\u00f3n hist\u00f3rica",
         "Comunidad del valle de Balsillas",
-        "Llamado a cuidado y protección",
-        "Reflexión sobre pérdida ambiental",
+        "Llamado a cuidado y protecci\u00f3n",
+        "Reflexi\u00f3n sobre p\u00e9rdida ambiental",
         "Conciencia ambiental",
         "Patrimonio natural",
-        "Sustentabilidad y conservación",
-        "Educación ecológica",
+        "Sustentabilidad y conservaci\u00f3n",
+        "Educaci\u00f3n ecol\u00f3gica",
         "Impacto humano en el territorio",
-        "Cultura y relación con el río",
-        "Audiovisual de sensibilización"
+        "Cultura y relaci\u00f3n con el r\u00edo",
+        "Audiovisual de sensibilizaci\u00f3n"
       ],
       "link": "https://mcultura.sharepoint.com/:v:/s/DACMI/IQDYKWHlRlbcQYysuyxYKKIkAfR0uAoYtqQSfg0Gz46YVAM?e=00zIqP",
       "asset_link": "",
-      "force_message": "Desde el corazón de sus territorios bioculturales, campesinas y campesinos reafirman su compromiso con el cuidado y la defensa de la tierra, del agua y del alimento.",
+      "force_message": "Desde el coraz\u00f3n de sus territorios bioculturales, campesinas y campesinos reafirman su compromiso con el cuidado y la defensa de la tierra, del agua y del alimento.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios Audiovisual El Río Audiovisual El río Balsillas ubicado en el departamento del Caquetá ha sido contaminado por las manos de hombres y mujeres que han habitado el Valle de Balsillas desde los años 40. En este audiovisual el río hace un llamado a su cuidado, protección y abre la reflexión sobre qué pasaría si un día la comunidad despierta y el río ya no está. Desde el corazón de sus territorios bioculturales, campesinas y campesinos reafirman su compromiso con el cuidado y la defensa de la tierra, del agua y del alimento. Río Balsillas, Caquetá Contaminación histórica Comunidad del valle de Balsillas Llamado a cuidado y protección Reflexión sobre pérdida ambiental Conciencia ambiental Patrimonio natural Sustentabilidad y conservación Educación ecológica Impacto humano en el territorio Cultura y relación con el río Audiovisual de sensibilización https://mcultura.sharepoint.com/:v:/s/DACMI/IQDYKWHlRlbcQYysuyxYKKIkAfR0uAoYtqQSfg0Gz46YVAM?e=00zIqP"
+      "search_text": "Somos cultura de paz MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios Audiovisual El R\u00edo Audiovisual El r\u00edo Balsillas ubicado en el departamento del Caquet\u00e1 ha sido contaminado por las manos de hombres y mujeres que han habitado el Valle de Balsillas desde los a\u00f1os 40. En este audiovisual el r\u00edo hace un llamado a su cuidado, protecci\u00f3n y abre la reflexi\u00f3n sobre qu\u00e9 pasar\u00eda si un d\u00eda la comunidad despierta y el r\u00edo ya no est\u00e1. Desde el coraz\u00f3n de sus territorios bioculturales, campesinas y campesinos reafirman su compromiso con el cuidado y la defensa de la tierra, del agua y del alimento. R\u00edo Balsillas, Caquet\u00e1 Contaminaci\u00f3n hist\u00f3rica Comunidad del valle de Balsillas Llamado a cuidado y protecci\u00f3n Reflexi\u00f3n sobre p\u00e9rdida ambiental Conciencia ambiental Patrimonio natural Sustentabilidad y conservaci\u00f3n Educaci\u00f3n ecol\u00f3gica Impacto humano en el territorio Cultura y relaci\u00f3n con el r\u00edo Audiovisual de sensibilizaci\u00f3n https://mcultura.sharepoint.com/:v:/s/DACMI/IQDYKWHlRlbcQYysuyxYKKIkAfR0uAoYtqQSfg0Gz46YVAM?e=00zIqP"
     },
     {
       "id": "somos-territorios-bioculturales-134",
@@ -7528,18 +7773,18 @@
       "responsable": "ICANH",
       "title": "Documental Pescar la vida",
       "type": "Documental",
-      "description": "Producción de la serie Economías populares que sigue a Orlando Nobles, quien viaja a diario entre Sempegua y El Banco llevando encargos. En esta comunidad de pescadores, el trueque sostiene la vida: bocachico por yuca o plátano. Un retrato del rebusque diario y la cultura local en la ciénaga de Zapatosa, al ritmo del vallenato.",
+      "description": "Producci\u00f3n de la serie Econom\u00edas populares que sigue a Orlando Nobles, quien viaja a diario entre Sempegua y El Banco llevando encargos. En esta comunidad de pescadores, el trueque sostiene la vida: bocachico por yuca o pl\u00e1tano. Un retrato del rebusque diario y la cultura local en la ci\u00e9naga de Zapatosa, al ritmo del vallenato.",
       "keywords": [
-        "Serie Economías populares",
+        "Serie Econom\u00edas populares",
         "Orlando Nobles",
         "Sempegua y El Banco",
         "Comunidad de pescadores",
-        "Trueque: bocachico por yuca o plátano",
+        "Trueque: bocachico por yuca o pl\u00e1tano",
         "Rebusque diario",
         "Cultura local",
-        "Ciénaga de Zapatosa",
+        "Ci\u00e9naga de Zapatosa",
         "Vallenato como identidad cultural",
-        "Economía popular",
+        "Econom\u00eda popular",
         "Tradiciones y saberes comunitarios",
         "Vida cotidiana campesina",
         "Patrimonio intangible"
@@ -7548,7 +7793,7 @@
       "asset_link": "",
       "force_message": "Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental Pescar la vida Documental Producción de la serie Economías populares que sigue a Orlando Nobles, quien viaja a diario entre Sempegua y El Banco llevando encargos. En esta comunidad de pescadores, el trueque sostiene la vida: bocachico por yuca o plátano. Un retrato del rebusque diario y la cultura local en la ciénaga de Zapatosa, al ritmo del vallenato. Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor. Serie Economías populares Orlando Nobles Sempegua y El Banco Comunidad de pescadores Trueque: bocachico por yuca o plátano Rebusque diario Cultura local Ciénaga de Zapatosa Vallenato como identidad cultural Economía popular Tradiciones y saberes comunitarios Vida cotidiana campesina Patrimonio intangible https://www.youtube.com/watch?v=TvEfWT1VsIE"
+      "search_text": "Somos territorios bioculturales ICANH Documental Pescar la vida Documental Producci\u00f3n de la serie Econom\u00edas populares que sigue a Orlando Nobles, quien viaja a diario entre Sempegua y El Banco llevando encargos. En esta comunidad de pescadores, el trueque sostiene la vida: bocachico por yuca o pl\u00e1tano. Un retrato del rebusque diario y la cultura local en la ci\u00e9naga de Zapatosa, al ritmo del vallenato. Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor. Serie Econom\u00edas populares Orlando Nobles Sempegua y El Banco Comunidad de pescadores Trueque: bocachico por yuca o pl\u00e1tano Rebusque diario Cultura local Ci\u00e9naga de Zapatosa Vallenato como identidad cultural Econom\u00eda popular Tradiciones y saberes comunitarios Vida cotidiana campesina Patrimonio intangible https://www.youtube.com/watch?v=TvEfWT1VsIE"
     },
     {
       "id": "somos-territorios-bioculturales-135",
@@ -7558,18 +7803,18 @@
       "responsable": "ICANH",
       "title": "Documental Muchas aguas",
       "type": "Documental",
-      "description": "Producción de la serie Economías populares que retrata la vida en Inírida, Guainía. Nicolás impulsa el turismo ecológico hacia lugares como el Cerro de Mavecure, mientras comunidades curripaco y puinave viven de las artesanías. Entre mercados, ríos y recorridos en mototaxi, se muestra cómo la población sostiene su economía pese al aislamiento.",
+      "description": "Producci\u00f3n de la serie Econom\u00edas populares que retrata la vida en In\u00edrida, Guain\u00eda. Nicol\u00e1s impulsa el turismo ecol\u00f3gico hacia lugares como el Cerro de Mavecure, mientras comunidades curripaco y puinave viven de las artesan\u00edas. Entre mercados, r\u00edos y recorridos en mototaxi, se muestra c\u00f3mo la poblaci\u00f3n sostiene su econom\u00eda pese al aislamiento.",
       "keywords": [
-        "Serie Economías populares",
-        "Inírida, Guainía",
-        "Nicolás y turismo ecológico",
+        "Serie Econom\u00edas populares",
+        "In\u00edrida, Guain\u00eda",
+        "Nicol\u00e1s y turismo ecol\u00f3gico",
         "Cerro de Mavecure",
         "Comunidades curripaco y puinave",
-        "Artesanías como sustento",
-        "Mercados, ríos, mototaxi",
-        "Economía local y resiliente",
+        "Artesan\u00edas como sustento",
+        "Mercados, r\u00edos, mototaxi",
+        "Econom\u00eda local y resiliente",
         "Vida en territorios aislados",
-        "Cultura y tradiciones indígenas",
+        "Cultura y tradiciones ind\u00edgenas",
         "Rebusque y creatividad comunitaria",
         "Patrimonio intangible y material"
       ],
@@ -7577,7 +7822,7 @@
       "asset_link": "",
       "force_message": "Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental Muchas aguas Documental Producción de la serie Economías populares que retrata la vida en Inírida, Guainía. Nicolás impulsa el turismo ecológico hacia lugares como el Cerro de Mavecure, mientras comunidades curripaco y puinave viven de las artesanías. Entre mercados, ríos y recorridos en mototaxi, se muestra cómo la población sostiene su economía pese al aislamiento. Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor. Serie Economías populares Inírida, Guainía Nicolás y turismo ecológico Cerro de Mavecure Comunidades curripaco y puinave Artesanías como sustento Mercados, ríos, mototaxi Economía local y resiliente Vida en territorios aislados Cultura y tradiciones indígenas Rebusque y creatividad comunitaria Patrimonio intangible y material https://www.youtuhttps//www.youtube.com/watch?v=PPLtglwQZmA"
+      "search_text": "Somos territorios bioculturales ICANH Documental Muchas aguas Documental Producci\u00f3n de la serie Econom\u00edas populares que retrata la vida en In\u00edrida, Guain\u00eda. Nicol\u00e1s impulsa el turismo ecol\u00f3gico hacia lugares como el Cerro de Mavecure, mientras comunidades curripaco y puinave viven de las artesan\u00edas. Entre mercados, r\u00edos y recorridos en mototaxi, se muestra c\u00f3mo la poblaci\u00f3n sostiene su econom\u00eda pese al aislamiento. Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor. Serie Econom\u00edas populares In\u00edrida, Guain\u00eda Nicol\u00e1s y turismo ecol\u00f3gico Cerro de Mavecure Comunidades curripaco y puinave Artesan\u00edas como sustento Mercados, r\u00edos, mototaxi Econom\u00eda local y resiliente Vida en territorios aislados Cultura y tradiciones ind\u00edgenas Rebusque y creatividad comunitaria Patrimonio intangible y material https://www.youtuhttps//www.youtube.com/watch?v=PPLtglwQZmA"
     },
     {
       "id": "somos-territorios-bioculturales-136",
@@ -7585,19 +7830,19 @@
       "theme": "Somos territorios bioculturales",
       "theme_slug": "somos-territorios-bioculturales",
       "responsable": "ICANH",
-      "title": "Cápsula de video Celebrar la vida",
+      "title": "C\u00e1psula de video Celebrar la vida",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. Música, comida, juegos, bailes y coplas campesinas en San Pedro de Iguaque para disfrutar y celebrar la vida en familia y en comunidad. La fiesta como parte de la circulación de la economía popular y campesina.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. M\u00fasica, comida, juegos, bailes y coplas campesinas en San Pedro de Iguaque para disfrutar y celebrar la vida en familia y en comunidad. La fiesta como parte de la circulaci\u00f3n de la econom\u00eda popular y campesina.",
       "keywords": [
-        "Serie Economías populares",
+        "Serie Econom\u00edas populares",
         "San Pedro de Iguaque",
-        "Música, bailes, juegos, coplas campesinas",
+        "M\u00fasica, bailes, juegos, coplas campesinas",
         "Comida tradicional",
         "Vida en familia y comunidad",
-        "Celebración de la vida",
-        "Circulación de la economía popular",
+        "Celebraci\u00f3n de la vida",
+        "Circulaci\u00f3n de la econom\u00eda popular",
         "Cultura y tradiciones campesinas",
-        "Rebusque y economía local",
+        "Rebusque y econom\u00eda local",
         "Patrimonio intangible",
         "Festividades y memoria colectiva"
       ],
@@ -7605,7 +7850,7 @@
       "asset_link": "",
       "force_message": "Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Cápsula de video Celebrar la vida Video Producción de la serie audiovisual y sonora Economías populares. Música, comida, juegos, bailes y coplas campesinas en San Pedro de Iguaque para disfrutar y celebrar la vida en familia y en comunidad. La fiesta como parte de la circulación de la economía popular y campesina. Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor. Serie Economías populares San Pedro de Iguaque Música, bailes, juegos, coplas campesinas Comida tradicional Vida en familia y comunidad Celebración de la vida Circulación de la economía popular Cultura y tradiciones campesinas Rebusque y economía local Patrimonio intangible Festividades y memoria colectiva https://www.youtube.com/watch?v=Wmqv2f0U5rY"
+      "search_text": "Somos territorios bioculturales ICANH C\u00e1psula de video Celebrar la vida Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. M\u00fasica, comida, juegos, bailes y coplas campesinas en San Pedro de Iguaque para disfrutar y celebrar la vida en familia y en comunidad. La fiesta como parte de la circulaci\u00f3n de la econom\u00eda popular y campesina. Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor. Serie Econom\u00edas populares San Pedro de Iguaque M\u00fasica, bailes, juegos, coplas campesinas Comida tradicional Vida en familia y comunidad Celebraci\u00f3n de la vida Circulaci\u00f3n de la econom\u00eda popular Cultura y tradiciones campesinas Rebusque y econom\u00eda local Patrimonio intangible Festividades y memoria colectiva https://www.youtube.com/watch?v=Wmqv2f0U5rY"
     },
     {
       "id": "somos-territorios-bioculturales-137",
@@ -7613,27 +7858,27 @@
       "theme": "Somos territorios bioculturales",
       "theme_slug": "somos-territorios-bioculturales",
       "responsable": "ICANH",
-      "title": "Cápsula de video En tierra ajena",
+      "title": "C\u00e1psula de video En tierra ajena",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. Un grupo de campesinos del Consejo Comunitario de Sempegua en la Ciénaga de la Zapatosa, siembran yuca y maíz en tierra ajena, tierra fértil que tiene dueño pero no uso. Juan José vive de producir alimentos allí para comer, para vender y para transformarlos en la cocina con su esposa Isabel.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Un grupo de campesinos del Consejo Comunitario de Sempegua en la Ci\u00e9naga de la Zapatosa, siembran yuca y ma\u00edz en tierra ajena, tierra f\u00e9rtil que tiene due\u00f1o pero no uso. Juan Jos\u00e9 vive de producir alimentos all\u00ed para comer, para vender y para transformarlos en la cocina con su esposa Isabel.",
       "keywords": [
-        "Serie Economías populares",
-        "Consejo Comunitario de Sempegua, Ciénaga de la Zapatosa",
-        "Campesinos y siembra de yuca y maíz",
-        "Tierra fértil bajo uso compartido",
-        "Producción de alimentos: consumo, venta y transformación",
-        "Juan José e Isabel",
+        "Serie Econom\u00edas populares",
+        "Consejo Comunitario de Sempegua, Ci\u00e9naga de la Zapatosa",
+        "Campesinos y siembra de yuca y ma\u00edz",
+        "Tierra f\u00e9rtil bajo uso compartido",
+        "Producci\u00f3n de alimentos: consumo, venta y transformaci\u00f3n",
+        "Juan Jos\u00e9 e Isabel",
         "Cocina y saberes culinarios campesinos",
-        "Economía local y sostenible",
+        "Econom\u00eda local y sostenible",
         "Cultura y vida comunitaria",
         "Rebusque y trabajo diario",
-        "Patrimonio intangible y tradiciones agrícolas"
+        "Patrimonio intangible y tradiciones agr\u00edcolas"
       ],
       "link": "https://www.youtube.com/watch?v=JQy3FDhZy4o",
       "asset_link": "",
       "force_message": "Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Cápsula de video En tierra ajena Video Producción de la serie audiovisual y sonora Economías populares. Un grupo de campesinos del Consejo Comunitario de Sempegua en la Ciénaga de la Zapatosa, siembran yuca y maíz en tierra ajena, tierra fértil que tiene dueño pero no uso. Juan José vive de producir alimentos allí para comer, para vender y para transformarlos en la cocina con su esposa Isabel. Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor. Serie Economías populares Consejo Comunitario de Sempegua, Ciénaga de la Zapatosa Campesinos y siembra de yuca y maíz Tierra fértil bajo uso compartido Producción de alimentos: consumo, venta y transformación Juan José e Isabel Cocina y saberes culinarios campesinos Economía local y sostenible Cultura y vida comunitaria Rebusque y trabajo diario Patrimonio intangible y tradiciones agrícolas https://www.youtube.com/watch?v=JQy3FDhZy4o"
+      "search_text": "Somos territorios bioculturales ICANH C\u00e1psula de video En tierra ajena Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. Un grupo de campesinos del Consejo Comunitario de Sempegua en la Ci\u00e9naga de la Zapatosa, siembran yuca y ma\u00edz en tierra ajena, tierra f\u00e9rtil que tiene due\u00f1o pero no uso. Juan Jos\u00e9 vive de producir alimentos all\u00ed para comer, para vender y para transformarlos en la cocina con su esposa Isabel. Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor. Serie Econom\u00edas populares Consejo Comunitario de Sempegua, Ci\u00e9naga de la Zapatosa Campesinos y siembra de yuca y ma\u00edz Tierra f\u00e9rtil bajo uso compartido Producci\u00f3n de alimentos: consumo, venta y transformaci\u00f3n Juan Jos\u00e9 e Isabel Cocina y saberes culinarios campesinos Econom\u00eda local y sostenible Cultura y vida comunitaria Rebusque y trabajo diario Patrimonio intangible y tradiciones agr\u00edcolas https://www.youtube.com/watch?v=JQy3FDhZy4o"
     },
     {
       "id": "somos-territorios-bioculturales-138",
@@ -7641,26 +7886,26 @@
       "theme": "Somos territorios bioculturales",
       "theme_slug": "somos-territorios-bioculturales",
       "responsable": "ICANH",
-      "title": "Cápsula de video De aquí me alimento",
+      "title": "C\u00e1psula de video De aqu\u00ed me alimento",
       "type": "Video",
-      "description": "Producción de la serie audiovisual y sonora Economías populares. En las plazas de mercado diariamente confluyen y circulan alimentos, billetes, monedas, productos, oficios y formas de rebusque.",
+      "description": "Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. En las plazas de mercado diariamente confluyen y circulan alimentos, billetes, monedas, productos, oficios y formas de rebusque.",
       "keywords": [
-        "Serie Economías populares",
+        "Serie Econom\u00edas populares",
         "Plazas de mercado",
-        "Circulación de alimentos y productos",
+        "Circulaci\u00f3n de alimentos y productos",
         "Intercambio de dinero: billetes y monedas",
         "Diversos oficios y trabajos cotidianos",
-        "Rebusque y economía informal",
+        "Rebusque y econom\u00eda informal",
         "Vida comunitaria y social",
         "Tradiciones y cultura local",
-        "Economía popular y campesina",
-        "Patrimonio intangible y dinámicas urbanas"
+        "Econom\u00eda popular y campesina",
+        "Patrimonio intangible y din\u00e1micas urbanas"
       ],
       "link": "https://www.youtube.com/watch?v=hibXo_6dMX8",
       "asset_link": "",
       "force_message": "Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Cápsula de video De aquí me alimento Video Producción de la serie audiovisual y sonora Economías populares. En las plazas de mercado diariamente confluyen y circulan alimentos, billetes, monedas, productos, oficios y formas de rebusque. Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor. Serie Economías populares Plazas de mercado Circulación de alimentos y productos Intercambio de dinero: billetes y monedas Diversos oficios y trabajos cotidianos Rebusque y economía informal Vida comunitaria y social Tradiciones y cultura local Economía popular y campesina Patrimonio intangible y dinámicas urbanas https://www.youtube.com/watch?v=hibXo_6dMX8"
+      "search_text": "Somos territorios bioculturales ICANH C\u00e1psula de video De aqu\u00ed me alimento Video Producci\u00f3n de la serie audiovisual y sonora Econom\u00edas populares. En las plazas de mercado diariamente confluyen y circulan alimentos, billetes, monedas, productos, oficios y formas de rebusque. Los territorios bioculturales existen en Colombia gracias al intercambio de experiencias, alimentos y saberes que permiten vivir mejor. Serie Econom\u00edas populares Plazas de mercado Circulaci\u00f3n de alimentos y productos Intercambio de dinero: billetes y monedas Diversos oficios y trabajos cotidianos Rebusque y econom\u00eda informal Vida comunitaria y social Tradiciones y cultura local Econom\u00eda popular y campesina Patrimonio intangible y din\u00e1micas urbanas https://www.youtube.com/watch?v=hibXo_6dMX8"
     },
     {
       "id": "somos-territorios-bioculturales-139",
@@ -7670,26 +7915,26 @@
       "responsable": "ICANH",
       "title": "Serie documental Mundos concebidos: Una narrativa femenina",
       "type": "Video",
-      "description": "Producción escogida en el Programa de Estímulos del ICANH. Serie documental de cuatro capítulos que indaga en lo que significa concebirse y ser concebida como mujer Iku a través del seguimiento documental a las prácticas cotidianas de cuidado, sostenimiento y continuidad de la vida que las mujeres despliegan en sus comunidades. Será un acercamiento experimental a la investigación-creación de una narrativa intergeneracional y una experiencia sensorial en la vida de mujeres Iku.",
+      "description": "Producci\u00f3n escogida en el Programa de Est\u00edmulos del ICANH. Serie documental de cuatro cap\u00edtulos que indaga en lo que significa concebirse y ser concebida como mujer Iku a trav\u00e9s del seguimiento documental a las pr\u00e1cticas cotidianas de cuidado, sostenimiento y continuidad de la vida que las mujeres despliegan en sus comunidades. Ser\u00e1 un acercamiento experimental a la investigaci\u00f3n-creaci\u00f3n de una narrativa intergeneracional y una experiencia sensorial en la vida de mujeres Iku.",
       "keywords": [
-        "Programa de Estímulos ICANH",
-        "Serie documental, 4 capítulos",
+        "Programa de Est\u00edmulos ICANH",
+        "Serie documental, 4 cap\u00edtulos",
         "Mujeres Iku",
-        "Prácticas cotidianas de cuidado y sostenimiento de la vida",
+        "Pr\u00e1cticas cotidianas de cuidado y sostenimiento de la vida",
         "Continuidad cultural y comunitaria",
-        "Investigación-creación experimental",
+        "Investigaci\u00f3n-creaci\u00f3n experimental",
         "Narrativa intergeneracional",
         "Experiencia sensorial",
-        "Vida y rol de la mujer indígena",
+        "Vida y rol de la mujer ind\u00edgena",
         "Patrimonio cultural intangible",
         "Comunidad y memoria colectiva",
-        "Identidad y cosmovisión Iku"
+        "Identidad y cosmovisi\u00f3n Iku"
       ],
       "link": "https://www.youtube.com/watch?v=iZH7AJhRYFY#:~:text=Mundos%20concebidos:%20una%20narrativa%20femenina%20para%20transmitir,ik%E1%B5%BE%20a%20trav%C3%A9s%20del%20seguimiento%20documental%20a",
       "asset_link": "",
       "force_message": "Todas las formas de vida permiten la subsitencia de los territorios bioculturales. Colombia necesita cuidar y entender sus recursos naturales, las relaciones que tejemos con ellos y con otras vidas.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Serie documental Mundos concebidos: Una narrativa femenina Video Producción escogida en el Programa de Estímulos del ICANH. Serie documental de cuatro capítulos que indaga en lo que significa concebirse y ser concebida como mujer Iku a través del seguimiento documental a las prácticas cotidianas de cuidado, sostenimiento y continuidad de la vida que las mujeres despliegan en sus comunidades. Será un acercamiento experimental a la investigación-creación de una narrativa intergeneracional y una experiencia sensorial en la vida de mujeres Iku. Todas las formas de vida permiten la subsitencia de los territorios bioculturales. Colombia necesita cuidar y entender sus recursos naturales, las relaciones que tejemos con ellos y con otras vidas. Programa de Estímulos ICANH Serie documental, 4 capítulos Mujeres Iku Prácticas cotidianas de cuidado y sostenimiento de la vida Continuidad cultural y comunitaria Investigación-creación experimental Narrativa intergeneracional Experiencia sensorial Vida y rol de la mujer indígena Patrimonio cultural intangible Comunidad y memoria colectiva Identidad y cosmovisión Iku https://www.youtube.com/watch?v=iZH7AJhRYFY#:~:text=Mundos%20concebidos:%20una%20narrativa%20femenina%20para%20transmitir,ik%E1%B5%BE%20a%20trav%C3%A9s%20del%20seguimiento%20documental%20a"
+      "search_text": "Somos territorios bioculturales ICANH Serie documental Mundos concebidos: Una narrativa femenina Video Producci\u00f3n escogida en el Programa de Est\u00edmulos del ICANH. Serie documental de cuatro cap\u00edtulos que indaga en lo que significa concebirse y ser concebida como mujer Iku a trav\u00e9s del seguimiento documental a las pr\u00e1cticas cotidianas de cuidado, sostenimiento y continuidad de la vida que las mujeres despliegan en sus comunidades. Ser\u00e1 un acercamiento experimental a la investigaci\u00f3n-creaci\u00f3n de una narrativa intergeneracional y una experiencia sensorial en la vida de mujeres Iku. Todas las formas de vida permiten la subsitencia de los territorios bioculturales. Colombia necesita cuidar y entender sus recursos naturales, las relaciones que tejemos con ellos y con otras vidas. Programa de Est\u00edmulos ICANH Serie documental, 4 cap\u00edtulos Mujeres Iku Pr\u00e1cticas cotidianas de cuidado y sostenimiento de la vida Continuidad cultural y comunitaria Investigaci\u00f3n-creaci\u00f3n experimental Narrativa intergeneracional Experiencia sensorial Vida y rol de la mujer ind\u00edgena Patrimonio cultural intangible Comunidad y memoria colectiva Identidad y cosmovisi\u00f3n Iku https://www.youtube.com/watch?v=iZH7AJhRYFY#:~:text=Mundos%20concebidos:%20una%20narrativa%20femenina%20para%20transmitir,ik%E1%B5%BE%20a%20trav%C3%A9s%20del%20seguimiento%20documental%20a"
     },
     {
       "id": "somos-territorios-bioculturales-140",
@@ -7697,28 +7942,28 @@
       "theme": "Somos territorios bioculturales",
       "theme_slug": "somos-territorios-bioculturales",
       "responsable": "ICANH",
-      "title": "Cortometraje Al río lo hicieron cambiar",
+      "title": "Cortometraje Al r\u00edo lo hicieron cambiar",
       "type": "Cortometraje",
-      "description": "Producción del ICANH que explora el impacto de la minería de oro en el río Caquetá. A través de las voces de mujeres indígenas Murui-muina, Andoke, Muinane y Nonuya, analiza los cambios en su vida, el territorio y el ambiente, resaltando sus formas de resistencia desde una mirada de género.",
+      "description": "Producci\u00f3n del ICANH que explora el impacto de la miner\u00eda de oro en el r\u00edo Caquet\u00e1. A trav\u00e9s de las voces de mujeres ind\u00edgenas Murui-muina, Andoke, Muinane y Nonuya, analiza los cambios en su vida, el territorio y el ambiente, resaltando sus formas de resistencia desde una mirada de g\u00e9nero.",
       "keywords": [
-        "Producción ICANH",
-        "Minería de oro, río Caquetá",
-        "Mujeres indígenas: Murui-muina, Andoke, Muinane, Nonuya",
+        "Producci\u00f3n ICANH",
+        "Miner\u00eda de oro, r\u00edo Caquet\u00e1",
+        "Mujeres ind\u00edgenas: Murui-muina, Andoke, Muinane, Nonuya",
         "Impacto ambiental y territorial",
         "Cambios en la vida comunitaria",
         "Resistencia y liderazgo femenino",
-        "Perspectiva de género",
-        "Cultura y cosmovisión indígena",
+        "Perspectiva de g\u00e9nero",
+        "Cultura y cosmovisi\u00f3n ind\u00edgena",
         "Defensa del territorio",
         "Patrimonio natural y social",
-        "Saberes y prácticas ancestrales",
-        "Economía y sostenibilidad comunitaria"
+        "Saberes y pr\u00e1cticas ancestrales",
+        "Econom\u00eda y sostenibilidad comunitaria"
       ],
       "link": "https://www.youtube.com/watch?v=4ITBOYtNB7A",
       "asset_link": "",
       "force_message": "Todas las formas de vida permiten la subsitencia de los territorios bioculturales. Colombia necesita cuidar y entender sus recursos naturales, las relaciones que tejemos con ellos y con otras vidas.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Cortometraje Al río lo hicieron cambiar Cortometraje Producción del ICANH que explora el impacto de la minería de oro en el río Caquetá. A través de las voces de mujeres indígenas Murui-muina, Andoke, Muinane y Nonuya, analiza los cambios en su vida, el territorio y el ambiente, resaltando sus formas de resistencia desde una mirada de género. Todas las formas de vida permiten la subsitencia de los territorios bioculturales. Colombia necesita cuidar y entender sus recursos naturales, las relaciones que tejemos con ellos y con otras vidas. Producción ICANH Minería de oro, río Caquetá Mujeres indígenas: Murui-muina, Andoke, Muinane, Nonuya Impacto ambiental y territorial Cambios en la vida comunitaria Resistencia y liderazgo femenino Perspectiva de género Cultura y cosmovisión indígena Defensa del territorio Patrimonio natural y social Saberes y prácticas ancestrales Economía y sostenibilidad comunitaria https://www.youtube.com/watch?v=4ITBOYtNB7A"
+      "search_text": "Somos territorios bioculturales ICANH Cortometraje Al r\u00edo lo hicieron cambiar Cortometraje Producci\u00f3n del ICANH que explora el impacto de la miner\u00eda de oro en el r\u00edo Caquet\u00e1. A trav\u00e9s de las voces de mujeres ind\u00edgenas Murui-muina, Andoke, Muinane y Nonuya, analiza los cambios en su vida, el territorio y el ambiente, resaltando sus formas de resistencia desde una mirada de g\u00e9nero. Todas las formas de vida permiten la subsitencia de los territorios bioculturales. Colombia necesita cuidar y entender sus recursos naturales, las relaciones que tejemos con ellos y con otras vidas. Producci\u00f3n ICANH Miner\u00eda de oro, r\u00edo Caquet\u00e1 Mujeres ind\u00edgenas: Murui-muina, Andoke, Muinane, Nonuya Impacto ambiental y territorial Cambios en la vida comunitaria Resistencia y liderazgo femenino Perspectiva de g\u00e9nero Cultura y cosmovisi\u00f3n ind\u00edgena Defensa del territorio Patrimonio natural y social Saberes y pr\u00e1cticas ancestrales Econom\u00eda y sostenibilidad comunitaria https://www.youtube.com/watch?v=4ITBOYtNB7A"
     },
     {
       "id": "somos-territorios-bioculturales-141",
@@ -7726,28 +7971,28 @@
       "theme": "Somos territorios bioculturales",
       "theme_slug": "somos-territorios-bioculturales",
       "responsable": "ICANH",
-      "title": "Podcast Ríos de Historias: Narrativas Sonoras Campesinas",
+      "title": "Podcast R\u00edos de Historias: Narrativas Sonoras Campesinas",
       "type": "Podcast",
-      "description": "Producción del ICANH que recorre el Oriente antioqueño a través de sus ríos y paisajes. El podcast explora la relación entre comunidades campesinas y el agua, abordando tensiones como el desarrollo hidroeléctrico, el turismo y el desarraigo, mostrando los ríos como eje de cultura, sustento y vida en el territorio.",
+      "description": "Producci\u00f3n del ICANH que recorre el Oriente antioque\u00f1o a trav\u00e9s de sus r\u00edos y paisajes. El podcast explora la relaci\u00f3n entre comunidades campesinas y el agua, abordando tensiones como el desarrollo hidroel\u00e9ctrico, el turismo y el desarraigo, mostrando los r\u00edos como eje de cultura, sustento y vida en el territorio.",
       "keywords": [
-        "Producción ICANH",
-        "Oriente antioqueño: ríos y paisajes",
+        "Producci\u00f3n ICANH",
+        "Oriente antioque\u00f1o: r\u00edos y paisajes",
         "Podcast",
         "Comunidades campesinas y agua",
-        "Tensiones: desarrollo hidroeléctrico, turismo, desarraigo",
-        "Ríos como eje cultural y económico",
+        "Tensiones: desarrollo hidroel\u00e9ctrico, turismo, desarraigo",
+        "R\u00edos como eje cultural y econ\u00f3mico",
         "Sustento y vida en el territorio",
         "Cultura y patrimonio local",
         "Relaciones comunitarias y entorno natural",
         "Sostenibilidad y resistencia",
         "Identidad territorial",
-        "Dinámicas socioambientales"
+        "Din\u00e1micas socioambientales"
       ],
       "link": "https://riosdehistorias.com/",
       "asset_link": "",
       "force_message": "Todas las formas de vida permiten la subsitencia de los territorios bioculturales. Colombia necesita cuidar y entender sus recursos naturales, las relaciones que tejemos con ellos y con otras vidas.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Podcast Ríos de Historias: Narrativas Sonoras Campesinas Podcast Producción del ICANH que recorre el Oriente antioqueño a través de sus ríos y paisajes. El podcast explora la relación entre comunidades campesinas y el agua, abordando tensiones como el desarrollo hidroeléctrico, el turismo y el desarraigo, mostrando los ríos como eje de cultura, sustento y vida en el territorio. Todas las formas de vida permiten la subsitencia de los territorios bioculturales. Colombia necesita cuidar y entender sus recursos naturales, las relaciones que tejemos con ellos y con otras vidas. Producción ICANH Oriente antioqueño: ríos y paisajes Podcast Comunidades campesinas y agua Tensiones: desarrollo hidroeléctrico, turismo, desarraigo Ríos como eje cultural y económico Sustento y vida en el territorio Cultura y patrimonio local Relaciones comunitarias y entorno natural Sostenibilidad y resistencia Identidad territorial Dinámicas socioambientales https://riosdehistorias.com/"
+      "search_text": "Somos territorios bioculturales ICANH Podcast R\u00edos de Historias: Narrativas Sonoras Campesinas Podcast Producci\u00f3n del ICANH que recorre el Oriente antioque\u00f1o a trav\u00e9s de sus r\u00edos y paisajes. El podcast explora la relaci\u00f3n entre comunidades campesinas y el agua, abordando tensiones como el desarrollo hidroel\u00e9ctrico, el turismo y el desarraigo, mostrando los r\u00edos como eje de cultura, sustento y vida en el territorio. Todas las formas de vida permiten la subsitencia de los territorios bioculturales. Colombia necesita cuidar y entender sus recursos naturales, las relaciones que tejemos con ellos y con otras vidas. Producci\u00f3n ICANH Oriente antioque\u00f1o: r\u00edos y paisajes Podcast Comunidades campesinas y agua Tensiones: desarrollo hidroel\u00e9ctrico, turismo, desarraigo R\u00edos como eje cultural y econ\u00f3mico Sustento y vida en el territorio Cultura y patrimonio local Relaciones comunitarias y entorno natural Sostenibilidad y resistencia Identidad territorial Din\u00e1micas socioambientales https://riosdehistorias.com/"
     },
     {
       "id": "somos-territorios-bioculturales-142",
@@ -7757,26 +8002,26 @@
       "responsable": "ICANH",
       "title": "Podcast Vidas de animales ejemplares",
       "type": "Podcast",
-      "description": "Producción escogida en el Programa de Estímulos del ICANH. \nEsta serie podcast de ocho capítulos narra las vidas de un grupo de animales silvestres y domésticos que comparten la vida con campesinos del norte del Tolima. Presenta una exploración “desde adentro”, con observación participante, de las vidas compartidas de los animales y los campesinos en la coproducción de paisajes sonoros.",
+      "description": "Producci\u00f3n escogida en el Programa de Est\u00edmulos del ICANH. \nEsta serie podcast de ocho cap\u00edtulos narra las vidas de un grupo de animales silvestres y dom\u00e9sticos que comparten la vida con campesinos del norte del Tolima. Presenta una exploraci\u00f3n \u201cdesde adentro\u201d, con observaci\u00f3n participante, de las vidas compartidas de los animales y los campesinos en la coproducci\u00f3n de paisajes sonoros.",
       "keywords": [
-        "Programa de Estímulos ICANH",
-        "Serie podcast, 8 capítulos",
-        "Animales silvestres y domésticos",
+        "Programa de Est\u00edmulos ICANH",
+        "Serie podcast, 8 cap\u00edtulos",
+        "Animales silvestres y dom\u00e9sticos",
         "Campesinos del norte del Tolima",
-        "Vidas compartidas y coproducción de paisajes sonoros",
-        "Observación participante",
-        "Relación humano-animal",
-        "Ecología y cultura campesina",
+        "Vidas compartidas y coproducci\u00f3n de paisajes sonoros",
+        "Observaci\u00f3n participante",
+        "Relaci\u00f3n humano-animal",
+        "Ecolog\u00eda y cultura campesina",
         "Sostenibilidad y vida en el territorio",
         "Experiencia sensorial y sonora",
-        "Cotidianidad y prácticas rurales",
+        "Cotidianidad y pr\u00e1cticas rurales",
         "Memoria y patrimonio intangible"
       ],
       "link": "https://open.spotify.com/show/5bqfcSiFOCukYGI7y0eXOW",
       "asset_link": "",
       "force_message": "Todas las formas de vida permiten la subsitencia de los territorios bioculturales. Colombia necesita cuidar y entender sus recursos naturales, las relaciones que tejemos con ellos y con otras vidas.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Podcast Vidas de animales ejemplares Podcast Producción escogida en el Programa de Estímulos del ICANH. Esta serie podcast de ocho capítulos narra las vidas de un grupo de animales silvestres y domésticos que comparten la vida con campesinos del norte del Tolima. Presenta una exploración “desde adentro”, con observación participante, de las vidas compartidas de los animales y los campesinos en la coproducción de paisajes sonoros. Todas las formas de vida permiten la subsitencia de los territorios bioculturales. Colombia necesita cuidar y entender sus recursos naturales, las relaciones que tejemos con ellos y con otras vidas. Programa de Estímulos ICANH Serie podcast, 8 capítulos Animales silvestres y domésticos Campesinos del norte del Tolima Vidas compartidas y coproducción de paisajes sonoros Observación participante Relación humano-animal Ecología y cultura campesina Sostenibilidad y vida en el territorio Experiencia sensorial y sonora Cotidianidad y prácticas rurales Memoria y patrimonio intangible https://open.spotify.com/show/5bqfcSiFOCukYGI7y0eXOW"
+      "search_text": "Somos territorios bioculturales ICANH Podcast Vidas de animales ejemplares Podcast Producci\u00f3n escogida en el Programa de Est\u00edmulos del ICANH. Esta serie podcast de ocho cap\u00edtulos narra las vidas de un grupo de animales silvestres y dom\u00e9sticos que comparten la vida con campesinos del norte del Tolima. Presenta una exploraci\u00f3n \u201cdesde adentro\u201d, con observaci\u00f3n participante, de las vidas compartidas de los animales y los campesinos en la coproducci\u00f3n de paisajes sonoros. Todas las formas de vida permiten la subsitencia de los territorios bioculturales. Colombia necesita cuidar y entender sus recursos naturales, las relaciones que tejemos con ellos y con otras vidas. Programa de Est\u00edmulos ICANH Serie podcast, 8 cap\u00edtulos Animales silvestres y dom\u00e9sticos Campesinos del norte del Tolima Vidas compartidas y coproducci\u00f3n de paisajes sonoros Observaci\u00f3n participante Relaci\u00f3n humano-animal Ecolog\u00eda y cultura campesina Sostenibilidad y vida en el territorio Experiencia sensorial y sonora Cotidianidad y pr\u00e1cticas rurales Memoria y patrimonio intangible https://open.spotify.com/show/5bqfcSiFOCukYGI7y0eXOW"
     },
     {
       "id": "somos-territorios-bioculturales-143",
@@ -7786,16 +8031,16 @@
       "responsable": "ICANH",
       "title": "Documental La fuerza de pulowi",
       "type": "Documental",
-      "description": "Documental de la serie Diarios del agua del ICANH que explora la cosmovisión Wayúu, donde Pulowi es la deidad que encarna el agua. A través de la defensa del Arroyo Bruno frente a la minería de carbón, muestra la resistencia de esta comunidad por proteger su territorio, su cultura y sus formas de vida, resaltando la relación espiritual y vital con el agua.",
+      "description": "Documental de la serie Diarios del agua del ICANH que explora la cosmovisi\u00f3n Way\u00fau, donde Pulowi es la deidad que encarna el agua. A trav\u00e9s de la defensa del Arroyo Bruno frente a la miner\u00eda de carb\u00f3n, muestra la resistencia de esta comunidad por proteger su territorio, su cultura y sus formas de vida, resaltando la relaci\u00f3n espiritual y vital con el agua.",
       "keywords": [
         "Serie documental Diarios del agua ICANH",
-        "Cosmovisión Wayúu",
+        "Cosmovisi\u00f3n Way\u00fau",
         "Pulowi: deidad del agua",
-        "Arroyo Bruno: defensa frente a minería de carbón",
+        "Arroyo Bruno: defensa frente a miner\u00eda de carb\u00f3n",
         "Resistencia comunitaria",
-        "Protección del territorio y cultura",
+        "Protecci\u00f3n del territorio y cultura",
         "Formas de vida tradicionales",
-        "Relación espiritual con el agua",
+        "Relaci\u00f3n espiritual con el agua",
         "Sostenibilidad y medio ambiente",
         "Patrimonio natural y cultural",
         "Identidad y memoria colectiva",
@@ -7803,9 +8048,9 @@
       ],
       "link": "https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental La fuerza de pulowi Documental Documental de la serie Diarios del agua del ICANH que explora la cosmovisión Wayúu, donde Pulowi es la deidad que encarna el agua. A través de la defensa del Arroyo Bruno frente a la minería de carbón, muestra la resistencia de esta comunidad por proteger su territorio, su cultura y sus formas de vida, resaltando la relación espiritual y vital con el agua. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Serie documental Diarios del agua ICANH Cosmovisión Wayúu Pulowi: deidad del agua Arroyo Bruno: defensa frente a minería de carbón Resistencia comunitaria Protección del territorio y cultura Formas de vida tradicionales Relación espiritual con el agua Sostenibilidad y medio ambiente Patrimonio natural y cultural Identidad y memoria colectiva Conflictos socioambientales https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
+      "search_text": "Somos territorios bioculturales ICANH Documental La fuerza de pulowi Documental Documental de la serie Diarios del agua del ICANH que explora la cosmovisi\u00f3n Way\u00fau, donde Pulowi es la deidad que encarna el agua. A trav\u00e9s de la defensa del Arroyo Bruno frente a la miner\u00eda de carb\u00f3n, muestra la resistencia de esta comunidad por proteger su territorio, su cultura y sus formas de vida, resaltando la relaci\u00f3n espiritual y vital con el agua. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Serie documental Diarios del agua ICANH Cosmovisi\u00f3n Way\u00fau Pulowi: deidad del agua Arroyo Bruno: defensa frente a miner\u00eda de carb\u00f3n Resistencia comunitaria Protecci\u00f3n del territorio y cultura Formas de vida tradicionales Relaci\u00f3n espiritual con el agua Sostenibilidad y medio ambiente Patrimonio natural y cultural Identidad y memoria colectiva Conflictos socioambientales https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
     },
     {
       "id": "somos-territorios-bioculturales-144",
@@ -7815,26 +8060,26 @@
       "responsable": "ICANH",
       "title": "Documental Un manantial que resiste",
       "type": "Documental",
-      "description": "Documental de la serie Diarios del agua del ICANH que cuestiona la idea de una Guajira desértica, destacando su riqueza hídrica. En esta región, comunidades afrodescendientes han creado sistemas de gobernanza del agua, hoy amenazados por la minería de carbón. Estas comunidades luchan por proteger su territorio y evitar nuevos desastres ambientales.",
+      "description": "Documental de la serie Diarios del agua del ICANH que cuestiona la idea de una Guajira des\u00e9rtica, destacando su riqueza h\u00eddrica. En esta regi\u00f3n, comunidades afrodescendientes han creado sistemas de gobernanza del agua, hoy amenazados por la miner\u00eda de carb\u00f3n. Estas comunidades luchan por proteger su territorio y evitar nuevos desastres ambientales.",
       "keywords": [
         "Serie documental Diarios del agua ICANH",
-        "Guajira: riqueza hídrica",
+        "Guajira: riqueza h\u00eddrica",
         "Comunidades afrodescendientes",
         "Gobernanza comunitaria del agua",
-        "Minería de carbón: amenaza ambiental",
-        "Protección del territorio",
-        "Prevención de desastres ambientales",
+        "Miner\u00eda de carb\u00f3n: amenaza ambiental",
+        "Protecci\u00f3n del territorio",
+        "Prevenci\u00f3n de desastres ambientales",
         "Resistencia y sostenibilidad",
         "Patrimonio natural y cultural",
         "Conflictos socioambientales",
         "Identidad y memoria colectiva",
-        "Gestión del recurso hídrico"
+        "Gesti\u00f3n del recurso h\u00eddrico"
       ],
       "link": "https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental Un manantial que resiste Documental Documental de la serie Diarios del agua del ICANH que cuestiona la idea de una Guajira desértica, destacando su riqueza hídrica. En esta región, comunidades afrodescendientes han creado sistemas de gobernanza del agua, hoy amenazados por la minería de carbón. Estas comunidades luchan por proteger su territorio y evitar nuevos desastres ambientales. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Serie documental Diarios del agua ICANH Guajira: riqueza hídrica Comunidades afrodescendientes Gobernanza comunitaria del agua Minería de carbón: amenaza ambiental Protección del territorio Prevención de desastres ambientales Resistencia y sostenibilidad Patrimonio natural y cultural Conflictos socioambientales Identidad y memoria colectiva Gestión del recurso hídrico https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
+      "search_text": "Somos territorios bioculturales ICANH Documental Un manantial que resiste Documental Documental de la serie Diarios del agua del ICANH que cuestiona la idea de una Guajira des\u00e9rtica, destacando su riqueza h\u00eddrica. En esta regi\u00f3n, comunidades afrodescendientes han creado sistemas de gobernanza del agua, hoy amenazados por la miner\u00eda de carb\u00f3n. Estas comunidades luchan por proteger su territorio y evitar nuevos desastres ambientales. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Serie documental Diarios del agua ICANH Guajira: riqueza h\u00eddrica Comunidades afrodescendientes Gobernanza comunitaria del agua Miner\u00eda de carb\u00f3n: amenaza ambiental Protecci\u00f3n del territorio Prevenci\u00f3n de desastres ambientales Resistencia y sostenibilidad Patrimonio natural y cultural Conflictos socioambientales Identidad y memoria colectiva Gesti\u00f3n del recurso h\u00eddrico https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
     },
     {
       "id": "somos-territorios-bioculturales-145",
@@ -7842,9 +8087,9 @@
       "theme": "Somos territorios bioculturales",
       "theme_slug": "somos-territorios-bioculturales",
       "responsable": "ICANH",
-      "title": "Documental La canción del agua",
+      "title": "Documental La canci\u00f3n del agua",
       "type": "Documental",
-      "description": "Documental de la serie Diarios del agua del ICANH que explora La Mojana, una llanura clave para regular inundaciones. A través de su historia, muestra cómo antiguos pueblos crearon un sistema de canales y camellones para habitar el territorio, evidenciando una relación ancestral con el agua que aún define su vida y desafíos actuales.",
+      "description": "Documental de la serie Diarios del agua del ICANH que explora La Mojana, una llanura clave para regular inundaciones. A trav\u00e9s de su historia, muestra c\u00f3mo antiguos pueblos crearon un sistema de canales y camellones para habitar el territorio, evidenciando una relaci\u00f3n ancestral con el agua que a\u00fan define su vida y desaf\u00edos actuales.",
       "keywords": [
         "Serie documental Diarios del agua ICANH",
         "La Mojana: llanura reguladora de inundaciones",
@@ -7852,18 +8097,18 @@
         "Pueblos originarios",
         "Sistemas de canales y camellones",
         "Habitar y gestionar el territorio",
-        "Relación ancestral con el agua",
-        "Sostenibilidad hídrica",
-        "Desafíos contemporáneos",
+        "Relaci\u00f3n ancestral con el agua",
+        "Sostenibilidad h\u00eddrica",
+        "Desaf\u00edos contempor\u00e1neos",
         "Patrimonio cultural y ambiental",
         "Resiliencia comunitaria",
-        "Identidad y tradición"
+        "Identidad y tradici\u00f3n"
       ],
       "link": "https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental La canción del agua Documental Documental de la serie Diarios del agua del ICANH que explora La Mojana, una llanura clave para regular inundaciones. A través de su historia, muestra cómo antiguos pueblos crearon un sistema de canales y camellones para habitar el territorio, evidenciando una relación ancestral con el agua que aún define su vida y desafíos actuales. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Serie documental Diarios del agua ICANH La Mojana: llanura reguladora de inundaciones Historia y memoria ancestral Pueblos originarios Sistemas de canales y camellones Habitar y gestionar el territorio Relación ancestral con el agua Sostenibilidad hídrica Desafíos contemporáneos Patrimonio cultural y ambiental Resiliencia comunitaria Identidad y tradición https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
+      "search_text": "Somos territorios bioculturales ICANH Documental La canci\u00f3n del agua Documental Documental de la serie Diarios del agua del ICANH que explora La Mojana, una llanura clave para regular inundaciones. A trav\u00e9s de su historia, muestra c\u00f3mo antiguos pueblos crearon un sistema de canales y camellones para habitar el territorio, evidenciando una relaci\u00f3n ancestral con el agua que a\u00fan define su vida y desaf\u00edos actuales. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Serie documental Diarios del agua ICANH La Mojana: llanura reguladora de inundaciones Historia y memoria ancestral Pueblos originarios Sistemas de canales y camellones Habitar y gestionar el territorio Relaci\u00f3n ancestral con el agua Sostenibilidad h\u00eddrica Desaf\u00edos contempor\u00e1neos Patrimonio cultural y ambiental Resiliencia comunitaria Identidad y tradici\u00f3n https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
     },
     {
       "id": "somos-territorios-bioculturales-146",
@@ -7873,30 +8118,30 @@
       "responsable": "ICANH",
       "title": "Documental Los laberintos del agua",
       "type": "Documental",
-      "description": "Documental de la serie Diarios del agua del ICANH que revisa el impacto histórico del Canal del Dique en el sur del Atlántico. Muestra cómo el control del agua, visto antes como progreso, generó riesgos sociales y ecológicos, y plantea la posibilidad de replantear estas intervenciones para transformar el territorio.",
+      "description": "Documental de la serie Diarios del agua del ICANH que revisa el impacto hist\u00f3rico del Canal del Dique en el sur del Atl\u00e1ntico. Muestra c\u00f3mo el control del agua, visto antes como progreso, gener\u00f3 riesgos sociales y ecol\u00f3gicos, y plantea la posibilidad de replantear estas intervenciones para transformar el territorio.",
       "keywords": [
         "Documental",
         "Diarios del agua",
         "ICANH",
         "Canal del Dique",
-        "Sur del Atlántico",
-        "Impacto histórico",
+        "Sur del Atl\u00e1ntico",
+        "Impacto hist\u00f3rico",
         "Control del agua",
         "Progreso",
         "Riesgos sociales",
-        "Riesgos ecológicos",
+        "Riesgos ecol\u00f3gicos",
         "Intervenciones humanas",
-        "Transformación del territorio",
-        "Gestión del agua",
+        "Transformaci\u00f3n del territorio",
+        "Gesti\u00f3n del agua",
         "Historia ambiental",
         "Territorio",
         "Sostenibilidad"
       ],
       "link": "https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental Los laberintos del agua Documental Documental de la serie Diarios del agua del ICANH que revisa el impacto histórico del Canal del Dique en el sur del Atlántico. Muestra cómo el control del agua, visto antes como progreso, generó riesgos sociales y ecológicos, y plantea la posibilidad de replantear estas intervenciones para transformar el territorio. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Documental Diarios del agua ICANH Canal del Dique Sur del Atlántico Impacto histórico Control del agua Progreso Riesgos sociales Riesgos ecológicos Intervenciones humanas Transformación del territorio Gestión del agua Historia ambiental Territorio Sostenibilidad https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
+      "search_text": "Somos territorios bioculturales ICANH Documental Los laberintos del agua Documental Documental de la serie Diarios del agua del ICANH que revisa el impacto hist\u00f3rico del Canal del Dique en el sur del Atl\u00e1ntico. Muestra c\u00f3mo el control del agua, visto antes como progreso, gener\u00f3 riesgos sociales y ecol\u00f3gicos, y plantea la posibilidad de replantear estas intervenciones para transformar el territorio. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Documental Diarios del agua ICANH Canal del Dique Sur del Atl\u00e1ntico Impacto hist\u00f3rico Control del agua Progreso Riesgos sociales Riesgos ecol\u00f3gicos Intervenciones humanas Transformaci\u00f3n del territorio Gesti\u00f3n del agua Historia ambiental Territorio Sostenibilidad https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
     },
     {
       "id": "somos-territorios-bioculturales-147",
@@ -7906,30 +8151,30 @@
       "responsable": "ICANH",
       "title": "Documental Las conquistas del agua",
       "type": "Documental",
-      "description": "Documental de la serie Diarios del agua del ICANH que explora Santa María de la Antigua del Darién, primera fundación continental americana. A partir de hallazgos arqueológicos, aborda los retos históricos e interculturales de la región y resalta la importancia de incluir a comunidades locales así como proteger este territorio atravesado por el río Atrato.",
+      "description": "Documental de la serie Diarios del agua del ICANH que explora Santa Mar\u00eda de la Antigua del Dari\u00e9n, primera fundaci\u00f3n continental americana. A partir de hallazgos arqueol\u00f3gicos, aborda los retos hist\u00f3ricos e interculturales de la regi\u00f3n y resalta la importancia de incluir a comunidades locales as\u00ed como proteger este territorio atravesado por el r\u00edo Atrato.",
       "keywords": [
         "Documental",
         "Diarios del agua",
         "ICANH",
-        "Santa María de la Antigua del Darién",
-        "Primera fundación continental americana",
-        "Hallazgos arqueológicos",
-        "Arqueología",
-        "Retos históricos",
+        "Santa Mar\u00eda de la Antigua del Dari\u00e9n",
+        "Primera fundaci\u00f3n continental americana",
+        "Hallazgos arqueol\u00f3gicos",
+        "Arqueolog\u00eda",
+        "Retos hist\u00f3ricos",
         "Interculturalidad",
         "Comunidades locales",
         "Territorio",
-        "Río Atrato",
-        "Patrimonio histórico",
-        "Protección del territorio",
+        "R\u00edo Atrato",
+        "Patrimonio hist\u00f3rico",
+        "Protecci\u00f3n del territorio",
         "Historia colonial",
-        "Región del Darién"
+        "Regi\u00f3n del Dari\u00e9n"
       ],
       "link": "https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental Las conquistas del agua Documental Documental de la serie Diarios del agua del ICANH que explora Santa María de la Antigua del Darién, primera fundación continental americana. A partir de hallazgos arqueológicos, aborda los retos históricos e interculturales de la región y resalta la importancia de incluir a comunidades locales así como proteger este territorio atravesado por el río Atrato. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Documental Diarios del agua ICANH Santa María de la Antigua del Darién Primera fundación continental americana Hallazgos arqueológicos Arqueología Retos históricos Interculturalidad Comunidades locales Territorio Río Atrato Patrimonio histórico Protección del territorio Historia colonial Región del Darién https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
+      "search_text": "Somos territorios bioculturales ICANH Documental Las conquistas del agua Documental Documental de la serie Diarios del agua del ICANH que explora Santa Mar\u00eda de la Antigua del Dari\u00e9n, primera fundaci\u00f3n continental americana. A partir de hallazgos arqueol\u00f3gicos, aborda los retos hist\u00f3ricos e interculturales de la regi\u00f3n y resalta la importancia de incluir a comunidades locales as\u00ed como proteger este territorio atravesado por el r\u00edo Atrato. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Documental Diarios del agua ICANH Santa Mar\u00eda de la Antigua del Dari\u00e9n Primera fundaci\u00f3n continental americana Hallazgos arqueol\u00f3gicos Arqueolog\u00eda Retos hist\u00f3ricos Interculturalidad Comunidades locales Territorio R\u00edo Atrato Patrimonio hist\u00f3rico Protecci\u00f3n del territorio Historia colonial Regi\u00f3n del Dari\u00e9n https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
     },
     {
       "id": "somos-territorios-bioculturales-148",
@@ -7937,33 +8182,33 @@
       "theme": "Somos territorios bioculturales",
       "theme_slug": "somos-territorios-bioculturales",
       "responsable": "ICANH",
-      "title": "Documental Un sitio de libres entre el mar y el río",
+      "title": "Documental Un sitio de libres entre el mar y el r\u00edo",
       "type": "Documental",
-      "description": "Documental de la serie Diarios del agua del ICANH que recorre la historia de Barranquilla como ciudad portuaria ligada al río Magdalena. Explora su desarrollo desde el comercio fluvial, la transformación urbana y la pérdida de su memoria hídrica, así como los retos sociales que enfrentan las comunidades ribereñas ante los proyectos de modernización.",
+      "description": "Documental de la serie Diarios del agua del ICANH que recorre la historia de Barranquilla como ciudad portuaria ligada al r\u00edo Magdalena. Explora su desarrollo desde el comercio fluvial, la transformaci\u00f3n urbana y la p\u00e9rdida de su memoria h\u00eddrica, as\u00ed como los retos sociales que enfrentan las comunidades ribere\u00f1as ante los proyectos de modernizaci\u00f3n.",
       "keywords": [
         "Documental",
         "Diarios del agua",
         "ICANH",
         "Barranquilla",
         "Ciudad portuaria",
-        "Río Magdalena",
+        "R\u00edo Magdalena",
         "Historia urbana",
         "Comercio fluvial",
-        "Desarrollo económico",
-        "Transformación urbana",
-        "Memoria hídrica",
-        "Comunidades ribereñas",
+        "Desarrollo econ\u00f3mico",
+        "Transformaci\u00f3n urbana",
+        "Memoria h\u00eddrica",
+        "Comunidades ribere\u00f1as",
         "Retos sociales",
-        "Modernización",
+        "Modernizaci\u00f3n",
         "Infraestructura",
         "Territorio",
         "Patrimonio cultural"
       ],
       "link": "https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental Un sitio de libres entre el mar y el río Documental Documental de la serie Diarios del agua del ICANH que recorre la historia de Barranquilla como ciudad portuaria ligada al río Magdalena. Explora su desarrollo desde el comercio fluvial, la transformación urbana y la pérdida de su memoria hídrica, así como los retos sociales que enfrentan las comunidades ribereñas ante los proyectos de modernización. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Documental Diarios del agua ICANH Barranquilla Ciudad portuaria Río Magdalena Historia urbana Comercio fluvial Desarrollo económico Transformación urbana Memoria hídrica Comunidades ribereñas Retos sociales Modernización Infraestructura Territorio Patrimonio cultural https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
+      "search_text": "Somos territorios bioculturales ICANH Documental Un sitio de libres entre el mar y el r\u00edo Documental Documental de la serie Diarios del agua del ICANH que recorre la historia de Barranquilla como ciudad portuaria ligada al r\u00edo Magdalena. Explora su desarrollo desde el comercio fluvial, la transformaci\u00f3n urbana y la p\u00e9rdida de su memoria h\u00eddrica, as\u00ed como los retos sociales que enfrentan las comunidades ribere\u00f1as ante los proyectos de modernizaci\u00f3n. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Documental Diarios del agua ICANH Barranquilla Ciudad portuaria R\u00edo Magdalena Historia urbana Comercio fluvial Desarrollo econ\u00f3mico Transformaci\u00f3n urbana Memoria h\u00eddrica Comunidades ribere\u00f1as Retos sociales Modernizaci\u00f3n Infraestructura Territorio Patrimonio cultural https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
     },
     {
       "id": "somos-territorios-bioculturales-149",
@@ -7971,20 +8216,20 @@
       "theme": "Somos territorios bioculturales",
       "theme_slug": "somos-territorios-bioculturales",
       "responsable": "ICANH",
-      "title": "Documental El maritorio de la nación creole",
+      "title": "Documental El maritorio de la naci\u00f3n creole",
       "type": "Documental",
-      "description": "Documental de la serie Diarios del agua del ICANH que explora el Archipiélago de San Andrés, Providencia y Santa Catalina. Aborda su historia, identidad raizal y tensiones con el centralismo, así como el impacto del turismo masivo en la Reserva SeaFlower, resaltando la urgencia de proteger su cultura y ecosistemas.",
+      "description": "Documental de la serie Diarios del agua del ICANH que explora el Archipi\u00e9lago de San Andr\u00e9s, Providencia y Santa Catalina. Aborda su historia, identidad raizal y tensiones con el centralismo, as\u00ed como el impacto del turismo masivo en la Reserva SeaFlower, resaltando la urgencia de proteger su cultura y ecosistemas.",
       "keywords": [
         "Diarios del Agua",
         "ICANH",
-        "Archipiélago de San Andrés, Providencia y Santa Catalina",
+        "Archipi\u00e9lago de San Andr\u00e9s, Providencia y Santa Catalina",
         "Historia",
         "Identidad raizal",
         "Centralismo",
         "Turismo masivo",
         "Reserva Seaflower",
-        "Protección cultural",
-        "Protección ecosistemas",
+        "Protecci\u00f3n cultural",
+        "Protecci\u00f3n ecosistemas",
         "Agua",
         "Territorio",
         "Comunidad",
@@ -7994,9 +8239,9 @@
       ],
       "link": "https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental El maritorio de la nación creole Documental Documental de la serie Diarios del agua del ICANH que explora el Archipiélago de San Andrés, Providencia y Santa Catalina. Aborda su historia, identidad raizal y tensiones con el centralismo, así como el impacto del turismo masivo en la Reserva SeaFlower, resaltando la urgencia de proteger su cultura y ecosistemas. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Diarios del Agua ICANH Archipiélago de San Andrés, Providencia y Santa Catalina Historia Identidad raizal Centralismo Turismo masivo Reserva Seaflower Protección cultural Protección ecosistemas Agua Territorio Comunidad Biodiversidad Saberes tradicionales Gobernanza territorial https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
+      "search_text": "Somos territorios bioculturales ICANH Documental El maritorio de la naci\u00f3n creole Documental Documental de la serie Diarios del agua del ICANH que explora el Archipi\u00e9lago de San Andr\u00e9s, Providencia y Santa Catalina. Aborda su historia, identidad raizal y tensiones con el centralismo, as\u00ed como el impacto del turismo masivo en la Reserva SeaFlower, resaltando la urgencia de proteger su cultura y ecosistemas. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Diarios del Agua ICANH Archipi\u00e9lago de San Andr\u00e9s, Providencia y Santa Catalina Historia Identidad raizal Centralismo Turismo masivo Reserva Seaflower Protecci\u00f3n cultural Protecci\u00f3n ecosistemas Agua Territorio Comunidad Biodiversidad Saberes tradicionales Gobernanza territorial https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
     },
     {
       "id": "somos-territorios-bioculturales-150",
@@ -8006,26 +8251,26 @@
       "responsable": "ICANH",
       "title": "Documental Agua arriba; agua abajo",
       "type": "Documental",
-      "description": "Documental de la serie Diarios del agua del ICANH que recorre el Pacífico sur en Tumaco y Barbacoas. Explora su historia y diversidad cultural, marcada por ciclos del agua entre mar y montaña, y cómo estos territorios han sido transformados por cambios ambientales y sociales que alteran su relación con el entorno.",
+      "description": "Documental de la serie Diarios del agua del ICANH que recorre el Pac\u00edfico sur en Tumaco y Barbacoas. Explora su historia y diversidad cultural, marcada por ciclos del agua entre mar y monta\u00f1a, y c\u00f3mo estos territorios han sido transformados por cambios ambientales y sociales que alteran su relaci\u00f3n con el entorno.",
       "keywords": [
         "Diarios del Agua",
         "ICANH",
-        "Pacífico Sur",
+        "Pac\u00edfico Sur",
         "Tumaco",
         "Barbacoas",
         "Historia",
         "Diversidad cultural",
         "Ciclos del agua",
-        "Mar y montaña",
+        "Mar y monta\u00f1a",
         "Transformaciones ambientales",
         "Transformaciones sociales",
-        "Relación con el entorno"
+        "Relaci\u00f3n con el entorno"
       ],
       "link": "https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental Agua arriba; agua abajo Documental Documental de la serie Diarios del agua del ICANH que recorre el Pacífico sur en Tumaco y Barbacoas. Explora su historia y diversidad cultural, marcada por ciclos del agua entre mar y montaña, y cómo estos territorios han sido transformados por cambios ambientales y sociales que alteran su relación con el entorno. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Diarios del Agua ICANH Pacífico Sur Tumaco Barbacoas Historia Diversidad cultural Ciclos del agua Mar y montaña Transformaciones ambientales Transformaciones sociales Relación con el entorno https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
+      "search_text": "Somos territorios bioculturales ICANH Documental Agua arriba; agua abajo Documental Documental de la serie Diarios del agua del ICANH que recorre el Pac\u00edfico sur en Tumaco y Barbacoas. Explora su historia y diversidad cultural, marcada por ciclos del agua entre mar y monta\u00f1a, y c\u00f3mo estos territorios han sido transformados por cambios ambientales y sociales que alteran su relaci\u00f3n con el entorno. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Diarios del Agua ICANH Pac\u00edfico Sur Tumaco Barbacoas Historia Diversidad cultural Ciclos del agua Mar y monta\u00f1a Transformaciones ambientales Transformaciones sociales Relaci\u00f3n con el entorno https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
     },
     {
       "id": "somos-territorios-bioculturales-151",
@@ -8033,28 +8278,28 @@
       "theme": "Somos territorios bioculturales",
       "theme_slug": "somos-territorios-bioculturales",
       "responsable": "ICANH",
-      "title": "Documental El asesinato de un río",
+      "title": "Documental El asesinato de un r\u00edo",
       "type": "Documental",
-      "description": "Documental de la serie Diarios del agua del ICANH que explora el río Nechí y su historia ligada al oro. Desde la colonia hasta hoy, muestra cómo la explotación minera transformó el río y concentró su control, generando tensiones ambientales y sociales que cuestionan el costo de extraer riqueza del agua.",
+      "description": "Documental de la serie Diarios del agua del ICANH que explora el r\u00edo Nech\u00ed y su historia ligada al oro. Desde la colonia hasta hoy, muestra c\u00f3mo la explotaci\u00f3n minera transform\u00f3 el r\u00edo y concentr\u00f3 su control, generando tensiones ambientales y sociales que cuestionan el costo de extraer riqueza del agua.",
       "keywords": [
         "Diarios del Agua",
         "ICANH",
-        "Río Nechí",
+        "R\u00edo Nech\u00ed",
         "Historia",
         "Oro",
-        "Minería",
-        "Transformación del río",
+        "Miner\u00eda",
+        "Transformaci\u00f3n del r\u00edo",
         "Tensiones ambientales",
         "Tensiones sociales",
-        "Explotación de recursos",
+        "Explotaci\u00f3n de recursos",
         "Agua",
         "Conflicto socioambiental"
       ],
       "link": "https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental El asesinato de un río Documental Documental de la serie Diarios del agua del ICANH que explora el río Nechí y su historia ligada al oro. Desde la colonia hasta hoy, muestra cómo la explotación minera transformó el río y concentró su control, generando tensiones ambientales y sociales que cuestionan el costo de extraer riqueza del agua. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Diarios del Agua ICANH Río Nechí Historia Oro Minería Transformación del río Tensiones ambientales Tensiones sociales Explotación de recursos Agua Conflicto socioambiental https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
+      "search_text": "Somos territorios bioculturales ICANH Documental El asesinato de un r\u00edo Documental Documental de la serie Diarios del agua del ICANH que explora el r\u00edo Nech\u00ed y su historia ligada al oro. Desde la colonia hasta hoy, muestra c\u00f3mo la explotaci\u00f3n minera transform\u00f3 el r\u00edo y concentr\u00f3 su control, generando tensiones ambientales y sociales que cuestionan el costo de extraer riqueza del agua. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Diarios del Agua ICANH R\u00edo Nech\u00ed Historia Oro Miner\u00eda Transformaci\u00f3n del r\u00edo Tensiones ambientales Tensiones sociales Explotaci\u00f3n de recursos Agua Conflicto socioambiental https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
     },
     {
       "id": "somos-territorios-bioculturales-152",
@@ -8062,28 +8307,28 @@
       "theme": "Somos territorios bioculturales",
       "theme_slug": "somos-territorios-bioculturales",
       "responsable": "ICANH",
-      "title": "Documental Cauca: un río con derechos",
+      "title": "Documental Cauca: un r\u00edo con derechos",
       "type": "Documental",
-      "description": "Documental de la serie Diarios del agua del ICANH. Recorre municipios ribereños del río Cauca, explorando su riqueza ecológica y la red de afluentes que conforman su cuenca. Aborda los impactos de la minería, las hidroeléctricas y el monocultivo de caña. Ante esta crisis, la Corte Constitucional reconoció derechos al río Cauca y su cuenca, abriendo un camino para su protección y para las comunidades que lo habitan y defienden.",
+      "description": "Documental de la serie Diarios del agua del ICANH. Recorre municipios ribere\u00f1os del r\u00edo Cauca, explorando su riqueza ecol\u00f3gica y la red de afluentes que conforman su cuenca. Aborda los impactos de la miner\u00eda, las hidroel\u00e9ctricas y el monocultivo de ca\u00f1a. Ante esta crisis, la Corte Constitucional reconoci\u00f3 derechos al r\u00edo Cauca y su cuenca, abriendo un camino para su protecci\u00f3n y para las comunidades que lo habitan y defienden.",
       "keywords": [
         "Diarios del Agua",
         "ICANH",
-        "Río Cauca",
-        "Municipios ribereños",
-        "Riqueza ecológica",
-        "Cuenca hidrográfica",
-        "Minería",
-        "Hidroeléctricas",
-        "Monocultivo de caña",
+        "R\u00edo Cauca",
+        "Municipios ribere\u00f1os",
+        "Riqueza ecol\u00f3gica",
+        "Cuenca hidrogr\u00e1fica",
+        "Miner\u00eda",
+        "Hidroel\u00e9ctricas",
+        "Monocultivo de ca\u00f1a",
         "Crisis ambiental",
-        "Derechos del río",
-        "Protección comunitaria"
+        "Derechos del r\u00edo",
+        "Protecci\u00f3n comunitaria"
       ],
       "link": "https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental Cauca: un río con derechos Documental Documental de la serie Diarios del agua del ICANH. Recorre municipios ribereños del río Cauca, explorando su riqueza ecológica y la red de afluentes que conforman su cuenca. Aborda los impactos de la minería, las hidroeléctricas y el monocultivo de caña. Ante esta crisis, la Corte Constitucional reconoció derechos al río Cauca y su cuenca, abriendo un camino para su protección y para las comunidades que lo habitan y defienden. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Diarios del Agua ICANH Río Cauca Municipios ribereños Riqueza ecológica Cuenca hidrográfica Minería Hidroeléctricas Monocultivo de caña Crisis ambiental Derechos del río Protección comunitaria https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
+      "search_text": "Somos territorios bioculturales ICANH Documental Cauca: un r\u00edo con derechos Documental Documental de la serie Diarios del agua del ICANH. Recorre municipios ribere\u00f1os del r\u00edo Cauca, explorando su riqueza ecol\u00f3gica y la red de afluentes que conforman su cuenca. Aborda los impactos de la miner\u00eda, las hidroel\u00e9ctricas y el monocultivo de ca\u00f1a. Ante esta crisis, la Corte Constitucional reconoci\u00f3 derechos al r\u00edo Cauca y su cuenca, abriendo un camino para su protecci\u00f3n y para las comunidades que lo habitan y defienden. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Diarios del Agua ICANH R\u00edo Cauca Municipios ribere\u00f1os Riqueza ecol\u00f3gica Cuenca hidrogr\u00e1fica Miner\u00eda Hidroel\u00e9ctricas Monocultivo de ca\u00f1a Crisis ambiental Derechos del r\u00edo Protecci\u00f3n comunitaria https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
     },
     {
       "id": "somos-territorios-bioculturales-153",
@@ -8091,29 +8336,29 @@
       "theme": "Somos territorios bioculturales",
       "theme_slug": "somos-territorios-bioculturales",
       "responsable": "ICANH",
-      "title": "Documental Entre muertos y tambores de sanación",
+      "title": "Documental Entre muertos y tambores de sanaci\u00f3n",
       "type": "Documental",
-      "description": "Documental de la serie Diarios del agua del ICANH. En La Balsa, corregimiento de Buenos Aires (Cauca), comunidades afrodescendientes narran cómo el río Cauca fue escenario de la violencia del Bloque Calima en los años 2000, usado para ocultar crímenes. La JEP estima miles de víctimas arrojadas al río. En 2023 el río Cauca fue declarado víctima, impulsando procesos de memoria y sanación liderados por las comunidades ribereñas.",
+      "description": "Documental de la serie Diarios del agua del ICANH. En La Balsa, corregimiento de Buenos Aires (Cauca), comunidades afrodescendientes narran c\u00f3mo el r\u00edo Cauca fue escenario de la violencia del Bloque Calima en los a\u00f1os 2000, usado para ocultar cr\u00edmenes. La JEP estima miles de v\u00edctimas arrojadas al r\u00edo. En 2023 el r\u00edo Cauca fue declarado v\u00edctima, impulsando procesos de memoria y sanaci\u00f3n liderados por las comunidades ribere\u00f1as.",
       "keywords": [
         "Diarios del Agua",
         "ICANH",
         "La Balsa",
         "Buenos Aires, Cauca",
         "Comunidades afrodescendientes",
-        "Río Cauca",
+        "R\u00edo Cauca",
         "Bloque Calima",
         "Violencia",
-        "Víctimas",
+        "V\u00edctimas",
         "JEP",
         "Memoria",
-        "Sanación",
-        "Comunidades ribereñas"
+        "Sanaci\u00f3n",
+        "Comunidades ribere\u00f1as"
       ],
       "link": "https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Documental Entre muertos y tambores de sanación Documental Documental de la serie Diarios del agua del ICANH. En La Balsa, corregimiento de Buenos Aires (Cauca), comunidades afrodescendientes narran cómo el río Cauca fue escenario de la violencia del Bloque Calima en los años 2000, usado para ocultar crímenes. La JEP estima miles de víctimas arrojadas al río. En 2023 el río Cauca fue declarado víctima, impulsando procesos de memoria y sanación liderados por las comunidades ribereñas. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Diarios del Agua ICANH La Balsa Buenos Aires, Cauca Comunidades afrodescendientes Río Cauca Bloque Calima Violencia Víctimas JEP Memoria Sanación Comunidades ribereñas https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
+      "search_text": "Somos territorios bioculturales ICANH Documental Entre muertos y tambores de sanaci\u00f3n Documental Documental de la serie Diarios del agua del ICANH. En La Balsa, corregimiento de Buenos Aires (Cauca), comunidades afrodescendientes narran c\u00f3mo el r\u00edo Cauca fue escenario de la violencia del Bloque Calima en los a\u00f1os 2000, usado para ocultar cr\u00edmenes. La JEP estima miles de v\u00edctimas arrojadas al r\u00edo. En 2023 el r\u00edo Cauca fue declarado v\u00edctima, impulsando procesos de memoria y sanaci\u00f3n liderados por las comunidades ribere\u00f1as. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Diarios del Agua ICANH La Balsa Buenos Aires, Cauca Comunidades afrodescendientes R\u00edo Cauca Bloque Calima Violencia V\u00edctimas JEP Memoria Sanaci\u00f3n Comunidades ribere\u00f1as https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
     },
     {
       "id": "somos-territorios-bioculturales-156",
@@ -8121,11 +8366,11 @@
       "theme": "Somos territorios bioculturales",
       "theme_slug": "somos-territorios-bioculturales",
       "responsable": "ICANH",
-      "title": "Podcast La Mojana: 2.000 años de vida anfibia",
+      "title": "Podcast La Mojana: 2.000 a\u00f1os de vida anfibia",
       "type": "Podcast",
-      "description": "Podcast Antropofonías del ICANH. En su primer capítulo aborda La Mojana, región del Caribe colombiano afectada por inundaciones recurrentes. Analiza este fenómeno y su relación con las comunidades que habitan el territorio, con la participación de la arqueóloga Ana María Falchetti y la antropóloga Juana Camacho, quienes aportan miradas sobre historia, territorio y sistemas alimentarios.",
+      "description": "Podcast Antropofon\u00edas del ICANH. En su primer cap\u00edtulo aborda La Mojana, regi\u00f3n del Caribe colombiano afectada por inundaciones recurrentes. Analiza este fen\u00f3meno y su relaci\u00f3n con las comunidades que habitan el territorio, con la participaci\u00f3n de la arque\u00f3loga Ana Mar\u00eda Falchetti y la antrop\u00f3loga Juana Camacho, quienes aportan miradas sobre historia, territorio y sistemas alimentarios.",
       "keywords": [
-        "Antropofonías",
+        "Antropofon\u00edas",
         "ICANH",
         "La Mojana",
         "Caribe colombiano",
@@ -8134,14 +8379,14 @@
         "Historia",
         "Territorio",
         "Sistemas alimentarios",
-        "Ana María Falchetti",
+        "Ana Mar\u00eda Falchetti",
         "Juana Camacho"
       ],
       "link": "https://open.spotify.com/episode/0TnAe1XSYmU2dZziVznyLq?si=585a5b39af9444ab",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos territorios bioculturales ICANH Podcast La Mojana: 2.000 años de vida anfibia Podcast Podcast Antropofonías del ICANH. En su primer capítulo aborda La Mojana, región del Caribe colombiano afectada por inundaciones recurrentes. Analiza este fenómeno y su relación con las comunidades que habitan el territorio, con la participación de la arqueóloga Ana María Falchetti y la antropóloga Juana Camacho, quienes aportan miradas sobre historia, territorio y sistemas alimentarios. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Antropofonías ICANH La Mojana Caribe colombiano Inundaciones Comunidades locales Historia Territorio Sistemas alimentarios Ana María Falchetti Juana Camacho https://open.spotify.com/episode/0TnAe1XSYmU2dZziVznyLq?si=585a5b39af9444ab"
+      "search_text": "Somos territorios bioculturales ICANH Podcast La Mojana: 2.000 a\u00f1os de vida anfibia Podcast Podcast Antropofon\u00edas del ICANH. En su primer cap\u00edtulo aborda La Mojana, regi\u00f3n del Caribe colombiano afectada por inundaciones recurrentes. Analiza este fen\u00f3meno y su relaci\u00f3n con las comunidades que habitan el territorio, con la participaci\u00f3n de la arque\u00f3loga Ana Mar\u00eda Falchetti y la antrop\u00f3loga Juana Camacho, quienes aportan miradas sobre historia, territorio y sistemas alimentarios. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Antropofon\u00edas ICANH La Mojana Caribe colombiano Inundaciones Comunidades locales Historia Territorio Sistemas alimentarios Ana Mar\u00eda Falchetti Juana Camacho https://open.spotify.com/episode/0TnAe1XSYmU2dZziVznyLq?si=585a5b39af9444ab"
     },
     {
       "id": "somos-cultura-de-paz-157",
@@ -8149,26 +8394,26 @@
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
       "responsable": "ICANH",
-      "title": "Podcast Soacha: un patrimonio en construcción",
+      "title": "Podcast Soacha: un patrimonio en construcci\u00f3n",
       "type": "Podcast",
-      "description": "Episodio del podcast Antropofonías del ICANH. Aborda el patrimonio arqueológico de Soacha y su avance en planes de manejo, en medio de retos legales y sociales. A partir del ataque al símbolo El Dios Varón, ciudadanos y expertos reflexionan sobre los desafíos de proteger el patrimonio y aplicar estas políticas en contextos complejos.",
+      "description": "Episodio del podcast Antropofon\u00edas del ICANH. Aborda el patrimonio arqueol\u00f3gico de Soacha y su avance en planes de manejo, en medio de retos legales y sociales. A partir del ataque al s\u00edmbolo El Dios Var\u00f3n, ciudadanos y expertos reflexionan sobre los desaf\u00edos de proteger el patrimonio y aplicar estas pol\u00edticas en contextos complejos.",
       "keywords": [
-        "Antropofonías",
+        "Antropofon\u00edas",
         "ICANH",
         "Soacha",
-        "Patrimonio arqueológico",
+        "Patrimonio arqueol\u00f3gico",
         "Planes de manejo",
         "Retos legales",
         "Retos sociales",
-        "El Dios Varón",
-        "Protección del patrimonio",
-        "Políticas culturales"
+        "El Dios Var\u00f3n",
+        "Protecci\u00f3n del patrimonio",
+        "Pol\u00edticas culturales"
       ],
       "link": "https://open.spotify.com/episode/51EPlgXf2rcNCoW9i7Jola?si=48d7d713ac524884",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz ICANH Podcast Soacha: un patrimonio en construcción Podcast Episodio del podcast Antropofonías del ICANH. Aborda el patrimonio arqueológico de Soacha y su avance en planes de manejo, en medio de retos legales y sociales. A partir del ataque al símbolo El Dios Varón, ciudadanos y expertos reflexionan sobre los desafíos de proteger el patrimonio y aplicar estas políticas en contextos complejos. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Antropofonías ICANH Soacha Patrimonio arqueológico Planes de manejo Retos legales Retos sociales El Dios Varón Protección del patrimonio Políticas culturales https://open.spotify.com/episode/51EPlgXf2rcNCoW9i7Jola?si=48d7d713ac524884"
+      "search_text": "Somos cultura de paz ICANH Podcast Soacha: un patrimonio en construcci\u00f3n Podcast Episodio del podcast Antropofon\u00edas del ICANH. Aborda el patrimonio arqueol\u00f3gico de Soacha y su avance en planes de manejo, en medio de retos legales y sociales. A partir del ataque al s\u00edmbolo El Dios Var\u00f3n, ciudadanos y expertos reflexionan sobre los desaf\u00edos de proteger el patrimonio y aplicar estas pol\u00edticas en contextos complejos. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Antropofon\u00edas ICANH Soacha Patrimonio arqueol\u00f3gico Planes de manejo Retos legales Retos sociales El Dios Var\u00f3n Protecci\u00f3n del patrimonio Pol\u00edticas culturales https://open.spotify.com/episode/51EPlgXf2rcNCoW9i7Jola?si=48d7d713ac524884"
     },
     {
       "id": "somos-cultura-de-paz-158",
@@ -8176,26 +8421,26 @@
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
       "responsable": "ICANH",
-      "title": "Podcast Chiribiquete: huellas del poblemiento de América",
+      "title": "Podcast Chiribiquete: huellas del poblemiento de Am\u00e9rica",
       "type": "Podcast",
-      "description": "Episodio del podcast Antropofonías del ICANH. Explora Chiribiquete, territorio amazónico protegido por raudales y tepuyes, de difícil acceso y gran valor cultural. A partir de sus vestigios humanos y pictóricos milenarios, se reflexiona sobre el origen y las rutas de llegada de los primeros habitantes de América, destacando la importancia de su conservación.",
+      "description": "Episodio del podcast Antropofon\u00edas del ICANH. Explora Chiribiquete, territorio amaz\u00f3nico protegido por raudales y tepuyes, de dif\u00edcil acceso y gran valor cultural. A partir de sus vestigios humanos y pict\u00f3ricos milenarios, se reflexiona sobre el origen y las rutas de llegada de los primeros habitantes de Am\u00e9rica, destacando la importancia de su conservaci\u00f3n.",
       "keywords": [
-        "Antropofonías",
+        "Antropofon\u00edas",
         "ICANH",
         "Chiribiquete",
-        "Amazonía",
+        "Amazon\u00eda",
         "Raudales",
         "Tepuyes",
         "Patrimonio cultural",
         "Vestigios humanos",
         "Pinturas rupestres",
-        "Conservación"
+        "Conservaci\u00f3n"
       ],
       "link": "https://open.spotify.com/episode/05W93VLE9qaAv850YSZzFr?si=fb8a1fc86b6249ca",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz ICANH Podcast Chiribiquete: huellas del poblemiento de América Podcast Episodio del podcast Antropofonías del ICANH. Explora Chiribiquete, territorio amazónico protegido por raudales y tepuyes, de difícil acceso y gran valor cultural. A partir de sus vestigios humanos y pictóricos milenarios, se reflexiona sobre el origen y las rutas de llegada de los primeros habitantes de América, destacando la importancia de su conservación. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Antropofonías ICANH Chiribiquete Amazonía Raudales Tepuyes Patrimonio cultural Vestigios humanos Pinturas rupestres Conservación https://open.spotify.com/episode/05W93VLE9qaAv850YSZzFr?si=fb8a1fc86b6249ca"
+      "search_text": "Somos cultura de paz ICANH Podcast Chiribiquete: huellas del poblemiento de Am\u00e9rica Podcast Episodio del podcast Antropofon\u00edas del ICANH. Explora Chiribiquete, territorio amaz\u00f3nico protegido por raudales y tepuyes, de dif\u00edcil acceso y gran valor cultural. A partir de sus vestigios humanos y pict\u00f3ricos milenarios, se reflexiona sobre el origen y las rutas de llegada de los primeros habitantes de Am\u00e9rica, destacando la importancia de su conservaci\u00f3n. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Antropofon\u00edas ICANH Chiribiquete Amazon\u00eda Raudales Tepuyes Patrimonio cultural Vestigios humanos Pinturas rupestres Conservaci\u00f3n https://open.spotify.com/episode/05W93VLE9qaAv850YSZzFr?si=fb8a1fc86b6249ca"
     },
     {
       "id": "somos-cultura-de-paz-159",
@@ -8203,26 +8448,26 @@
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
       "responsable": "ICANH",
-      "title": "Podcast Gentrificación de Getsemaní: voces de la resistencia",
+      "title": "Podcast Gentrificaci\u00f3n de Getseman\u00ed: voces de la resistencia",
       "type": "Podcast",
-      "description": "Episodio del podcast Antropofonías del ICANH. \nEn este episodio conversamos con l antropólogo Patrick Morales y presentamos Gentrificación de Getsemaní: voces de resistencia, un laboratorio para entender todas estas dinámicas asociadas a la expulsión de la población local, la patrimonización y la resistencia de las comunidades a la turistificación.",
+      "description": "Episodio del podcast Antropofon\u00edas del ICANH. \nEn este episodio conversamos con l antrop\u00f3logo Patrick Morales y presentamos Gentrificaci\u00f3n de Getseman\u00ed: voces de resistencia, un laboratorio para entender todas estas din\u00e1micas asociadas a la expulsi\u00f3n de la poblaci\u00f3n local, la patrimonizaci\u00f3n y la resistencia de las comunidades a la turistificaci\u00f3n.",
       "keywords": [
-        "Antropofonías",
+        "Antropofon\u00edas",
         "ICANH",
         "Patrick Morales",
-        "Getsemaní",
-        "Gentrificación",
+        "Getseman\u00ed",
+        "Gentrificaci\u00f3n",
         "Voces de resistencia",
-        "Patrimonización",
-        "Turistificación",
+        "Patrimonizaci\u00f3n",
+        "Turistificaci\u00f3n",
         "Comunidades locales",
-        "Expulsión poblacional"
+        "Expulsi\u00f3n poblacional"
       ],
       "link": "https://open.spotify.com/episode/2haGzEoUw6dNgsZla9oDWq?si=b1b3817f2b4b44e1",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz ICANH Podcast Gentrificación de Getsemaní: voces de la resistencia Podcast Episodio del podcast Antropofonías del ICANH. En este episodio conversamos con l antropólogo Patrick Morales y presentamos Gentrificación de Getsemaní: voces de resistencia, un laboratorio para entender todas estas dinámicas asociadas a la expulsión de la población local, la patrimonización y la resistencia de las comunidades a la turistificación. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Antropofonías ICANH Patrick Morales Getsemaní Gentrificación Voces de resistencia Patrimonización Turistificación Comunidades locales Expulsión poblacional https://open.spotify.com/episode/2haGzEoUw6dNgsZla9oDWq?si=b1b3817f2b4b44e1"
+      "search_text": "Somos cultura de paz ICANH Podcast Gentrificaci\u00f3n de Getseman\u00ed: voces de la resistencia Podcast Episodio del podcast Antropofon\u00edas del ICANH. En este episodio conversamos con l antrop\u00f3logo Patrick Morales y presentamos Gentrificaci\u00f3n de Getseman\u00ed: voces de resistencia, un laboratorio para entender todas estas din\u00e1micas asociadas a la expulsi\u00f3n de la poblaci\u00f3n local, la patrimonizaci\u00f3n y la resistencia de las comunidades a la turistificaci\u00f3n. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Antropofon\u00edas ICANH Patrick Morales Getseman\u00ed Gentrificaci\u00f3n Voces de resistencia Patrimonizaci\u00f3n Turistificaci\u00f3n Comunidades locales Expulsi\u00f3n poblacional https://open.spotify.com/episode/2haGzEoUw6dNgsZla9oDWq?si=b1b3817f2b4b44e1"
     },
     {
       "id": "somos-cultura-de-paz-160",
@@ -8230,26 +8475,26 @@
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
       "responsable": "ICANH",
-      "title": "Podcast Las estatuas chamanes de San Agustín",
+      "title": "Podcast Las estatuas chamanes de San Agust\u00edn",
       "type": "Podcast",
-      "description": "Episodio del podcast Antropofonías del ICANH. Conversa con Héctor Llanos, historiador y arqueólogo de la Universidad Nacional, sobre la cultura agustiniana y su relación con las sociedades indígenas del Alto Magdalena. A partir de las estatuas chamán de San Agustín, se exploran los sistemas de pensamiento detrás de estos monumentos y su significado cultural.",
+      "description": "Episodio del podcast Antropofon\u00edas del ICANH. Conversa con H\u00e9ctor Llanos, historiador y arque\u00f3logo de la Universidad Nacional, sobre la cultura agustiniana y su relaci\u00f3n con las sociedades ind\u00edgenas del Alto Magdalena. A partir de las estatuas cham\u00e1n de San Agust\u00edn, se exploran los sistemas de pensamiento detr\u00e1s de estos monumentos y su significado cultural.",
       "keywords": [
-        "Antropofonías",
+        "Antropofon\u00edas",
         "ICANH",
-        "Héctor Llanos",
+        "H\u00e9ctor Llanos",
         "Universidad Nacional",
         "Cultura agustiniana",
-        "Sociedades indígenas",
+        "Sociedades ind\u00edgenas",
         "Alto Magdalena",
-        "Estatuas chamán",
+        "Estatuas cham\u00e1n",
         "Monumentos",
         "Significado cultural"
       ],
       "link": "https://open.spotify.com/episode/7npramYWSzx2gaoeOUPbtu?si=22e2ce9a3e5b4238",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz ICANH Podcast Las estatuas chamanes de San Agustín Podcast Episodio del podcast Antropofonías del ICANH. Conversa con Héctor Llanos, historiador y arqueólogo de la Universidad Nacional, sobre la cultura agustiniana y su relación con las sociedades indígenas del Alto Magdalena. A partir de las estatuas chamán de San Agustín, se exploran los sistemas de pensamiento detrás de estos monumentos y su significado cultural. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Antropofonías ICANH Héctor Llanos Universidad Nacional Cultura agustiniana Sociedades indígenas Alto Magdalena Estatuas chamán Monumentos Significado cultural https://open.spotify.com/episode/7npramYWSzx2gaoeOUPbtu?si=22e2ce9a3e5b4238"
+      "search_text": "Somos cultura de paz ICANH Podcast Las estatuas chamanes de San Agust\u00edn Podcast Episodio del podcast Antropofon\u00edas del ICANH. Conversa con H\u00e9ctor Llanos, historiador y arque\u00f3logo de la Universidad Nacional, sobre la cultura agustiniana y su relaci\u00f3n con las sociedades ind\u00edgenas del Alto Magdalena. A partir de las estatuas cham\u00e1n de San Agust\u00edn, se exploran los sistemas de pensamiento detr\u00e1s de estos monumentos y su significado cultural. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Antropofon\u00edas ICANH H\u00e9ctor Llanos Universidad Nacional Cultura agustiniana Sociedades ind\u00edgenas Alto Magdalena Estatuas cham\u00e1n Monumentos Significado cultural https://open.spotify.com/episode/7npramYWSzx2gaoeOUPbtu?si=22e2ce9a3e5b4238"
     },
     {
       "id": "somos-cultura-de-paz-161",
@@ -8257,26 +8502,26 @@
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
       "responsable": "ICANH",
-      "title": "Podcast Santa Marta 500 años: lugares comunes y debates sobre su fuindación",
+      "title": "Podcast Santa Marta 500 a\u00f1os: lugares comunes y debates sobre su fundaci\u00f3n",
       "type": "Podcast",
-      "description": "Episodio del podcast Antropofonías del ICANH. En este capítulo hablaremos con Antonio Jaramillo y Marcela Escandón, quienes aportan una perspectiva alternativa de la fundación de Santa Marta. Reconstruyendo los primeros años de una cuidad que comenzó ante todo como el punto de lanza para la invasión de una amplia región. Marcela y Antonio comparten algunos lugares comunes del mito fundamental.",
+      "description": "Episodio del podcast Antropofon\u00edas del ICANH. En este cap\u00edtulo hablaremos con Antonio Jaramillo y Marcela Escand\u00f3n, quienes aportan una perspectiva alternativa de la fundaci\u00f3n de Santa Marta. Reconstruyendo los primeros a\u00f1os de una ciudad que comenz\u00f3 ante todo como punto de lanza para la invasi\u00f3n de una amplia regi\u00f3n. Marcela y Antonio comparten algunos lugares comunes del mito fundacional.",
       "keywords": [
-        "Antropofonías",
+        "Antropofon\u00edas",
         "ICANH",
         "Antonio Jaramillo",
-        "Marcela Escandón",
+        "Marcela Escand\u00f3n",
         "Santa Marta",
-        "Fundación",
+        "Fundaci\u00f3n",
         "Historia colonial",
         "Mito fundacional",
-        "Invasión territorial",
-        "Reconstrucción histórica"
+        "Invasi\u00f3n territorial",
+        "Reconstrucci\u00f3n hist\u00f3rica"
       ],
       "link": "https://open.spotify.com/episode/6BgDgITEZJNXWG9WhbsH13?si=cf1c5f9b512043f8",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz ICANH Podcast Santa Marta 500 años: lugares comunes y debates sobre su fuindación Podcast Episodio del podcast Antropofonías del ICANH. En este capítulo hablaremos con Antonio Jaramillo y Marcela Escandón, quienes aportan una perspectiva alternativa de la fundación de Santa Marta. Reconstruyendo los primeros años de una cuidad que comenzó ante todo como el punto de lanza para la invasión de una amplia región. Marcela y Antonio comparten algunos lugares comunes del mito fundamental. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Antropofonías ICANH Antonio Jaramillo Marcela Escandón Santa Marta Fundación Historia colonial Mito fundacional Invasión territorial Reconstrucción histórica https://open.spotify.com/episode/6BgDgITEZJNXWG9WhbsH13?si=cf1c5f9b512043f8"
+      "search_text": "Somos cultura de paz ICANH Podcast Santa Marta 500 a\u00f1os: lugares comunes y debates sobre su fundaci\u00f3n Podcast Episodio del podcast Antropofon\u00edas del ICANH. En este cap\u00edtulo hablaremos con Antonio Jaramillo y Marcela Escand\u00f3n, quienes aportan una perspectiva alternativa de la fundaci\u00f3n de Santa Marta. Reconstruyendo los primeros a\u00f1os de una ciudad que comenz\u00f3 ante todo como punto de lanza para la invasi\u00f3n de una amplia regi\u00f3n. Marcela y Antonio comparten algunos lugares comunes del mito fundacional. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Antropofon\u00edas ICANH Antonio Jaramillo Marcela Escand\u00f3n Santa Marta Fundaci\u00f3n Historia colonial Mito fundacional Invasi\u00f3n territorial Reconstrucci\u00f3n hist\u00f3rica https://open.spotify.com/episode/6BgDgITEZJNXWG9WhbsH13?si=cf1c5f9b512043f8"
     },
     {
       "id": "somos-cultura-de-paz-162",
@@ -8284,26 +8529,26 @@
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
       "responsable": "ICANH",
-      "title": "Podcast Culturas creoles en el Océano Índico",
+      "title": "Podcast Culturas creoles en el Oc\u00e9ano \u00cdndico",
       "type": "Podcast",
-      "description": "Episodio del podcast Antropofonías del ICANH. Conversa con Andrés Leiva sobre las culturas créoles y mestizas de la isla de La Reunión, en el océano Índico. A partir de estas insularidades, se trazan puentes con el Caribe y otras islas, entendidas no como territorios aislados, sino como espacios de contacto, intercambio e interculturalidad desde la globalización temprana.",
+      "description": "Episodio del podcast Antropofon\u00edas del ICANH. Conversa con Andr\u00e9s Leiva sobre las culturas cr\u00e9oles y mestizas de la isla de La Reuni\u00f3n, en el oc\u00e9ano \u00cdndico. A partir de estas insularidades, se trazan puentes con el Caribe y otras islas, entendidas no como territorios aislados, sino como espacios de contacto, intercambio e interculturalidad desde la globalizaci\u00f3n temprana.",
       "keywords": [
-        "Antropofonías",
+        "Antropofon\u00edas",
         "ICANH",
-        "Andrés Leiva",
-        "Isla de La Reunión",
-        "Culturas créoles",
+        "Andr\u00e9s Leiva",
+        "Isla de La Reuni\u00f3n",
+        "Culturas cr\u00e9oles",
         "Culturas mestizas",
         "Caribe",
         "Insularidades",
         "Interculturalidad",
-        "Globalización temprana"
+        "Globalizaci\u00f3n temprana"
       ],
       "link": "https://open.spotify.com/episode/0DACyIVazKlJLokeqhBuTm?si=dddf069fb91b499c",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz ICANH Podcast Culturas creoles en el Océano Índico Podcast Episodio del podcast Antropofonías del ICANH. Conversa con Andrés Leiva sobre las culturas créoles y mestizas de la isla de La Reunión, en el océano Índico. A partir de estas insularidades, se trazan puentes con el Caribe y otras islas, entendidas no como territorios aislados, sino como espacios de contacto, intercambio e interculturalidad desde la globalización temprana. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Antropofonías ICANH Andrés Leiva Isla de La Reunión Culturas créoles Culturas mestizas Caribe Insularidades Interculturalidad Globalización temprana https://open.spotify.com/episode/0DACyIVazKlJLokeqhBuTm?si=dddf069fb91b499c"
+      "search_text": "Somos cultura de paz ICANH Podcast Culturas creoles en el Oc\u00e9ano \u00cdndico Podcast Episodio del podcast Antropofon\u00edas del ICANH. Conversa con Andr\u00e9s Leiva sobre las culturas cr\u00e9oles y mestizas de la isla de La Reuni\u00f3n, en el oc\u00e9ano \u00cdndico. A partir de estas insularidades, se trazan puentes con el Caribe y otras islas, entendidas no como territorios aislados, sino como espacios de contacto, intercambio e interculturalidad desde la globalizaci\u00f3n temprana. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Antropofon\u00edas ICANH Andr\u00e9s Leiva Isla de La Reuni\u00f3n Culturas cr\u00e9oles Culturas mestizas Caribe Insularidades Interculturalidad Globalizaci\u00f3n temprana https://open.spotify.com/episode/0DACyIVazKlJLokeqhBuTm?si=dddf069fb91b499c"
     },
     {
       "id": "somos-cultura-de-paz-163",
@@ -8311,38 +8556,38 @@
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
       "responsable": "ICANH",
-      "title": "Podcast Santa María la Antigua del Darién: cruce de caminos y resistencias",
+      "title": "Podcast Santa Mar\u00eda la Antigua del Dari\u00e9n: cruce de caminos y resistencias",
       "type": "Podcast",
-      "description": "Episodio del podcast Antropofonías del ICANH. Conversa con Carolina Quintero, curadora del Museo Nacional, y Alberto Sarcina, arqueólogo del ICANH, sobre el Parque Arqueológico y Casa Museo de Santa María la Antigua del Darién. Destaca un ejercicio participativo e intercultural donde la arqueología y la museología aportan a la construcción y reconstrucción del territorio junto a las comunidades.",
+      "description": "Episodio del podcast Antropofon\u00edas del ICANH. Conversa con Carolina Quintero, curadora del Museo Nacional, y Alberto Sarcina, arque\u00f3logo del ICANH, sobre el Parque Arqueol\u00f3gico y Casa Museo de Santa Mar\u00eda la Antigua del Dari\u00e9n. Destaca un ejercicio participativo e intercultural donde la arqueolog\u00eda y la museolog\u00eda aportan a la construcci\u00f3n y reconstrucci\u00f3n del territorio junto a las comunidades.",
       "keywords": [
-        "Antropofonías",
+        "Antropofon\u00edas",
         "ICANH",
         "Carolina Quintero",
         "Alberto Sarcina",
         "Museo Nacional",
-        "Parque Arqueológico",
+        "Parque Arqueol\u00f3gico",
         "Casa Museo",
-        "Santa María la Antigua del Darién",
-        "Arqueología",
-        "Museología",
-        "Participación comunitaria",
+        "Santa Mar\u00eda la Antigua del Dari\u00e9n",
+        "Arqueolog\u00eda",
+        "Museolog\u00eda",
+        "Participaci\u00f3n comunitaria",
         "Interculturalidad"
       ],
       "link": "https://open.spotify.com/episode/16TjnmykfIiRsQQCdZKaNx?si=5d404811e5174a13",
       "asset_link": "",
-      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz.",
+      "force_message": "Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz ICANH Podcast Santa María la Antigua del Darién: cruce de caminos y resistencias Podcast Episodio del podcast Antropofonías del ICANH. Conversa con Carolina Quintero, curadora del Museo Nacional, y Alberto Sarcina, arqueólogo del ICANH, sobre el Parque Arqueológico y Casa Museo de Santa María la Antigua del Darién. Destaca un ejercicio participativo e intercultural donde la arqueología y la museología aportan a la construcción y reconstrucción del territorio junto a las comunidades. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del país. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una nación en paz. Antropofonías ICANH Carolina Quintero Alberto Sarcina Museo Nacional Parque Arqueológico Casa Museo Santa María la Antigua del Darién Arqueología Museología Participación comunitaria Interculturalidad https://open.spotify.com/episode/16TjnmykfIiRsQQCdZKaNx?si=5d404811e5174a13"
+      "search_text": "Somos cultura de paz ICANH Podcast Santa Mar\u00eda la Antigua del Dari\u00e9n: cruce de caminos y resistencias Podcast Episodio del podcast Antropofon\u00edas del ICANH. Conversa con Carolina Quintero, curadora del Museo Nacional, y Alberto Sarcina, arque\u00f3logo del ICANH, sobre el Parque Arqueol\u00f3gico y Casa Museo de Santa Mar\u00eda la Antigua del Dari\u00e9n. Destaca un ejercicio participativo e intercultural donde la arqueolog\u00eda y la museolog\u00eda aportan a la construcci\u00f3n y reconstrucci\u00f3n del territorio junto a las comunidades. Nuestra historia fluye con el agua, su gente y las complejidades de habitar diferentes territorios del pa\u00eds. Cuidar nuestros recursos naturales y las diferentes formas de vida, nos permite seguir construyendo una naci\u00f3n en paz. Antropofon\u00edas ICANH Carolina Quintero Alberto Sarcina Museo Nacional Parque Arqueol\u00f3gico Casa Museo Santa Mar\u00eda la Antigua del Dari\u00e9n Arqueolog\u00eda Museolog\u00eda Participaci\u00f3n comunitaria Interculturalidad https://open.spotify.com/episode/16TjnmykfIiRsQQCdZKaNx?si=5d404811e5174a13"
     },
     {
       "id": "somos-cultura-de-paz-167",
       "row": 167,
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS",
       "title": "Documental Relatos de la Guajirita",
       "type": "Podcast",
-      "description": "Escuela De La Vista Al Lente. Relatos de la Guajirita. Documental que aborda historias de vida, saberes ancestrales y prácticas culturales del corregimiento afrodescendiente La Guajirita (Becerril, Cesar). A través de testimonios intergeneracionales, explora memoria, identidad, música, espiritualidad y tradiciones, evidenciando la fuerza de la comunidad para preservar su cultura y transmitirla a nuevas generaciones.",
+      "description": "Escuela De La Vista Al Lente. Relatos de la Guajirita. Documental que aborda historias de vida, saberes ancestrales y pr\u00e1cticas culturales del corregimiento afrodescendiente La Guajirita (Becerril, Cesar). A trav\u00e9s de testimonios intergeneracionales, explora memoria, identidad, m\u00fasica, espiritualidad y tradiciones, evidenciando la fuerza de la comunidad para preservar su cultura y transmitirla a nuevas generaciones.",
       "keywords": [
         "Escuela De La Vista Al Lente",
         "Relatos de la Guajirita",
@@ -8351,109 +8596,109 @@
         "Comunidades afrodescendientes",
         "Historias de vida",
         "Saberes ancestrales",
-        "Prácticas culturales",
+        "Pr\u00e1cticas culturales",
         "Memoria e identidad",
-        "Música y espiritualidad",
+        "M\u00fasica y espiritualidad",
         "Tradiciones",
-        "Transmisión generacional"
+        "Transmisi\u00f3n generacional"
       ],
       "link": "https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CCT%202025/003_CONVENIOS%20GRUPO%20COM_2025/1_0798_CONVENIO%20INTERADMINISTRATIVO%20FONDO%20MIXTO%20DE%20NARI%C3%91O/3_%20EJECUCI%C3%93N/5_%20ESTRATEGIAS/1_AFROCOLOMBIAS/1_FORMACI%C3%93N/004_Escuelas%20Comunicaci%C3%B3n%20Afrocolombias2025/7.%20BECERRIL/3_%20pago_10%25/1.%20Contenidos/2.%20contenio/RELATOS%20DE%20LA%20GUAJIRITA,%20DOCUMENTAL.mov?csf=1&web=1&e=Lm8KjO",
       "asset_link": "",
-      "force_message": "La comunicación en los territorios bio-culturales es un acto de memoria, resistencia y futuro. Desde las voces de sabedoras, jóvenes, liderazgos comunitarios y narrativas propias, las historias afrodescendientes nombran el territorio, defienden la vida y transforman la exclusión en dignidad. Comunicar desde lo afro no es solo contar lo que somos, es disputar sentidos frente al racismo, la violencia y el olvido, fortaleciendo la cultura de paz, la justicia racial y el derecho a narrarnos desde nuestros saberes, estéticas y espiritualidades.",
+      "force_message": "La comunicaci\u00f3n en los territorios bio-culturales es un acto de memoria, resistencia y futuro. Desde las voces de sabedoras, j\u00f3venes, liderazgos comunitarios y narrativas propias, las historias afrodescendientes nombran el territorio, defienden la vida y transforman la exclusi\u00f3n en dignidad. Comunicar desde lo afro no es solo contar lo que somos, es disputar sentidos frente al racismo, la violencia y el olvido, fortaleciendo la cultura de paz, la justicia racial y el derecho a narrarnos desde nuestros saberes, est\u00e9ticas y espiritualidades.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS Documental Relatos de la Guajirita Podcast Escuela De La Vista Al Lente. Relatos de la Guajirita. Documental que aborda historias de vida, saberes ancestrales y prácticas culturales del corregimiento afrodescendiente La Guajirita (Becerril, Cesar). A través de testimonios intergeneracionales, explora memoria, identidad, música, espiritualidad y tradiciones, evidenciando la fuerza de la comunidad para preservar su cultura y transmitirla a nuevas generaciones. La comunicación en los territorios bio-culturales es un acto de memoria, resistencia y futuro. Desde las voces de sabedoras, jóvenes, liderazgos comunitarios y narrativas propias, las historias afrodescendientes nombran el territorio, defienden la vida y transforman la exclusión en dignidad. Comunicar desde lo afro no es solo contar lo que somos, es disputar sentidos frente al racismo, la violencia y el olvido, fortaleciendo la cultura de paz, la justicia racial y el derecho a narrarnos desde nuestros saberes, estéticas y espiritualidades. Escuela De La Vista Al Lente Relatos de la Guajirita La Guajirita Becerril, Cesar Comunidades afrodescendientes Historias de vida Saberes ancestrales Prácticas culturales Memoria e identidad Música y espiritualidad Tradiciones Transmisión generacional https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CCT%202025/003_CONVENIOS%20GRUPO%20COM_2025/1_0798_CONVENIO%20INTERADMINISTRATIVO%20FONDO%20MIXTO%20DE%20NARI%C3%91O/3_%20EJECUCI%C3%93N/5_%20ESTRATEGIAS/1_AFROCOLOMBIAS/1_FORMACI%C3%93N/004_Escuelas%20Comunicaci%C3%B3n%20Afrocolombias2025/7.%20BECERRIL/3_%20pago_10%25/1.%20Contenidos/2.%20contenio/RELATOS%20DE%20LA%20GUAJIRITA,%20DOCUMENTAL.mov?csf=1&web=1&e=Lm8KjO"
+      "search_text": "Somos cultura de paz MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS Documental Relatos de la Guajirita Podcast Escuela De La Vista Al Lente. Relatos de la Guajirita. Documental que aborda historias de vida, saberes ancestrales y pr\u00e1cticas culturales del corregimiento afrodescendiente La Guajirita (Becerril, Cesar). A trav\u00e9s de testimonios intergeneracionales, explora memoria, identidad, m\u00fasica, espiritualidad y tradiciones, evidenciando la fuerza de la comunidad para preservar su cultura y transmitirla a nuevas generaciones. La comunicaci\u00f3n en los territorios bio-culturales es un acto de memoria, resistencia y futuro. Desde las voces de sabedoras, j\u00f3venes, liderazgos comunitarios y narrativas propias, las historias afrodescendientes nombran el territorio, defienden la vida y transforman la exclusi\u00f3n en dignidad. Comunicar desde lo afro no es solo contar lo que somos, es disputar sentidos frente al racismo, la violencia y el olvido, fortaleciendo la cultura de paz, la justicia racial y el derecho a narrarnos desde nuestros saberes, est\u00e9ticas y espiritualidades. Escuela De La Vista Al Lente Relatos de la Guajirita La Guajirita Becerril, Cesar Comunidades afrodescendientes Historias de vida Saberes ancestrales Pr\u00e1cticas culturales Memoria e identidad M\u00fasica y espiritualidad Tradiciones Transmisi\u00f3n generacional https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CCT%202025/003_CONVENIOS%20GRUPO%20COM_2025/1_0798_CONVENIO%20INTERADMINISTRATIVO%20FONDO%20MIXTO%20DE%20NARI%C3%91O/3_%20EJECUCI%C3%93N/5_%20ESTRATEGIAS/1_AFROCOLOMBIAS/1_FORMACI%C3%93N/004_Escuelas%20Comunicaci%C3%B3n%20Afrocolombias2025/7.%20BECERRIL/3_%20pago_10%25/1.%20Contenidos/2.%20contenio/RELATOS%20DE%20LA%20GUAJIRITA,%20DOCUMENTAL.mov?csf=1&web=1&e=Lm8KjO"
     },
     {
       "id": "somos-cultura-de-paz-168",
       "row": 168,
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS",
-      "title": "Ficción Gauchos de resistencia",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS",
+      "title": "Ficci\u00f3n Gauchos de resistencia",
       "type": "Podcast",
-      "description": "Gauchos de Resistencia narra la historia de Iván, un joven de 17 años que, junto a su hermano y su abuela, enfrenta dificultades económicas tras la pérdida de ingresos familiares. Mientras vende un dulce tradicional para sostener su hogar, se ve expuesto a riesgos de economías ilegales. Sin embargo, su pasión por el arte se convierte en una vía para resistir, proteger a su familia y proyectar un futuro distinto.",
+      "description": "Gauchos de Resistencia narra la historia de Iv\u00e1n, un joven de 17 a\u00f1os que, junto a su hermano y su abuela, enfrenta dificultades econ\u00f3micas tras la p\u00e9rdida de ingresos familiares. Mientras vende un dulce tradicional para sostener su hogar, se ve expuesto a riesgos de econom\u00edas ilegales. Sin embargo, su pasi\u00f3n por el arte se convierte en una v\u00eda para resistir, proteger a su familia y proyectar un futuro distinto.",
       "keywords": [
         "Gauchos de Resistencia",
-        "Iván",
-        "Jóvenes",
+        "Iv\u00e1n",
+        "J\u00f3venes",
         "Familia",
-        "Dificultades económicas",
+        "Dificultades econ\u00f3micas",
         "Dulce tradicional",
-        "Economías ilegales",
+        "Econom\u00edas ilegales",
         "Arte como resistencia",
-        "Protección familiar",
+        "Protecci\u00f3n familiar",
         "Futuro alternativo"
       ],
       "link": "https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CCT%202025/003_CONVENIOS%20GRUPO%20COM_2025/1_0798_CONVENIO%20INTERADMINISTRATIVO%20FONDO%20MIXTO%20DE%20NARI%C3%91O/3_%20EJECUCI%C3%93N/5_%20ESTRATEGIAS/1_AFROCOLOMBIAS/1_FORMACI%C3%93N/004_Escuelas%20Comunicaci%C3%B3n%20Afrocolombias2025/12.%20MAREA%20PRODUCCIONES/3_%20pago_10%25%20%20MAREA%20PRODUCCIONES/1.%20Contenidos/3.%20contenido/2.%20Gauchos%20de%20resistencia.mp4?csf=1&web=1&e=iwlNYl",
       "asset_link": "",
-      "force_message": "La comunicación en los territorios bio-culturales es un acto de memoria, resistencia y futuro. Desde las voces de sabedoras, jóvenes, liderazgos comunitarios y narrativas propias, las historias afrodescendientes nombran el territorio, defienden la vida y transforman la exclusión en dignidad. Comunicar desde lo afro no es solo contar lo que somos, es disputar sentidos frente al racismo, la violencia y el olvido, fortaleciendo la cultura de paz, la justicia racial y el derecho a narrarnos desde nuestros saberes, estéticas y espiritualidades.",
+      "force_message": "La comunicaci\u00f3n en los territorios bio-culturales es un acto de memoria, resistencia y futuro. Desde las voces de sabedoras, j\u00f3venes, liderazgos comunitarios y narrativas propias, las historias afrodescendientes nombran el territorio, defienden la vida y transforman la exclusi\u00f3n en dignidad. Comunicar desde lo afro no es solo contar lo que somos, es disputar sentidos frente al racismo, la violencia y el olvido, fortaleciendo la cultura de paz, la justicia racial y el derecho a narrarnos desde nuestros saberes, est\u00e9ticas y espiritualidades.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS Ficción Gauchos de resistencia Podcast Gauchos de Resistencia narra la historia de Iván, un joven de 17 años que, junto a su hermano y su abuela, enfrenta dificultades económicas tras la pérdida de ingresos familiares. Mientras vende un dulce tradicional para sostener su hogar, se ve expuesto a riesgos de economías ilegales. Sin embargo, su pasión por el arte se convierte en una vía para resistir, proteger a su familia y proyectar un futuro distinto. La comunicación en los territorios bio-culturales es un acto de memoria, resistencia y futuro. Desde las voces de sabedoras, jóvenes, liderazgos comunitarios y narrativas propias, las historias afrodescendientes nombran el territorio, defienden la vida y transforman la exclusión en dignidad. Comunicar desde lo afro no es solo contar lo que somos, es disputar sentidos frente al racismo, la violencia y el olvido, fortaleciendo la cultura de paz, la justicia racial y el derecho a narrarnos desde nuestros saberes, estéticas y espiritualidades. Gauchos de Resistencia Iván Jóvenes Familia Dificultades económicas Dulce tradicional Economías ilegales Arte como resistencia Protección familiar Futuro alternativo https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CCT%202025/003_CONVENIOS%20GRUPO%20COM_2025/1_0798_CONVENIO%20INTERADMINISTRATIVO%20FONDO%20MIXTO%20DE%20NARI%C3%91O/3_%20EJECUCI%C3%93N/5_%20ESTRATEGIAS/1_AFROCOLOMBIAS/1_FORMACI%C3%93N/004_Escuelas%20Comunicaci%C3%B3n%20Afrocolombias2025/12.%20MAREA%20PRODUCCIONES/3_%20pago_10%25%20%20MAREA%20PRODUCCIONES/1.%20Contenidos/3.%20contenido/2.%20Gauchos%20de%20resistencia.mp4?csf=1&web=1&e=iwlNYl"
+      "search_text": "Somos cultura de paz MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS Ficci\u00f3n Gauchos de resistencia Podcast Gauchos de Resistencia narra la historia de Iv\u00e1n, un joven de 17 a\u00f1os que, junto a su hermano y su abuela, enfrenta dificultades econ\u00f3micas tras la p\u00e9rdida de ingresos familiares. Mientras vende un dulce tradicional para sostener su hogar, se ve expuesto a riesgos de econom\u00edas ilegales. Sin embargo, su pasi\u00f3n por el arte se convierte en una v\u00eda para resistir, proteger a su familia y proyectar un futuro distinto. La comunicaci\u00f3n en los territorios bio-culturales es un acto de memoria, resistencia y futuro. Desde las voces de sabedoras, j\u00f3venes, liderazgos comunitarios y narrativas propias, las historias afrodescendientes nombran el territorio, defienden la vida y transforman la exclusi\u00f3n en dignidad. Comunicar desde lo afro no es solo contar lo que somos, es disputar sentidos frente al racismo, la violencia y el olvido, fortaleciendo la cultura de paz, la justicia racial y el derecho a narrarnos desde nuestros saberes, est\u00e9ticas y espiritualidades. Gauchos de Resistencia Iv\u00e1n J\u00f3venes Familia Dificultades econ\u00f3micas Dulce tradicional Econom\u00edas ilegales Arte como resistencia Protecci\u00f3n familiar Futuro alternativo https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CCT%202025/003_CONVENIOS%20GRUPO%20COM_2025/1_0798_CONVENIO%20INTERADMINISTRATIVO%20FONDO%20MIXTO%20DE%20NARI%C3%91O/3_%20EJECUCI%C3%93N/5_%20ESTRATEGIAS/1_AFROCOLOMBIAS/1_FORMACI%C3%93N/004_Escuelas%20Comunicaci%C3%B3n%20Afrocolombias2025/12.%20MAREA%20PRODUCCIONES/3_%20pago_10%25%20%20MAREA%20PRODUCCIONES/1.%20Contenidos/3.%20contenido/2.%20Gauchos%20de%20resistencia.mp4?csf=1&web=1&e=iwlNYl"
     },
     {
       "id": "somos-cultura-de-paz-169",
       "row": 169,
       "theme": "Somos cultura de paz",
       "theme_slug": "somos-cultura-de-paz",
-      "responsable": "MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS",
-      "title": "Ficción Altanegra",
+      "responsable": "MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS",
+      "title": "Ficci\u00f3n Altanegra",
       "type": "Podcast",
-      "description": "Escuela AfroguaJira, Audiovisual y Antirracista del Kuagro de Comunicaciones de Altanegra aborda el racismo estructural, laboral y de género a través de una pieza, visibilizando la exclusión que enfrentan las mujeres afro y reivindicando la estética como resistencia. También conecta estas violencias con el territorio y la justicia ambiental. Más que denuncia, es un acto cinematográfico que interpela sobre ser joven, negra y de pueblo en una sociedad que excluye.",
+      "description": "Escuela AfroguaJira, Audiovisual y Antirracista del Kuagro de Comunicaciones de Altanegra aborda el racismo estructural, laboral y de g\u00e9nero a trav\u00e9s de una pieza, visibilizando la exclusi\u00f3n que enfrentan las mujeres afro y reivindicando la est\u00e9tica como resistencia. Tambi\u00e9n conecta estas violencias con el territorio y la justicia ambiental. M\u00e1s que denuncia, es un acto cinematogr\u00e1fico que interpela sobre ser joven, negra y de pueblo en una sociedad que excluye.",
       "keywords": [
         "Escuela AfroguaJira",
         "Kuagro de Comunicaciones",
         "Racismo estructural",
         "Racismo laboral",
-        "Racismo de género",
+        "Racismo de g\u00e9nero",
         "Mujeres afro",
-        "Estética como resistencia",
+        "Est\u00e9tica como resistencia",
         "Territorio",
         "Justicia ambiental",
         "Juventud negra",
-        "Exclusión social",
+        "Exclusi\u00f3n social",
         "Cine documental"
       ],
       "link": "https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CCT%202025/003_CONVENIOS%20GRUPO%20COM_2025/1_0798_CONVENIO%20INTERADMINISTRATIVO%20FONDO%20MIXTO%20DE%20NARI%C3%91O/3_%20EJECUCI%C3%93N/5_%20ESTRATEGIAS/1_AFROCOLOMBIAS/1_FORMACI%C3%93N/004_Escuelas%20Comunicaci%C3%B3n%20Afrocolombias2025/10.%20%20MATA%20%27E%20PELO/3_%20pago_10%25/1.%20Contenidos/1.%20Contenido/Pelicula%20Altanegra%20Oficial%20.mp4?csf=1&web=1&e=N7do1K",
       "asset_link": "",
-      "force_message": "La comunicación en los territorios bio-culturales es un acto de memoria, resistencia y futuro. Desde las voces de sabedoras, jóvenes, liderazgos comunitarios y narrativas propias, las historias afrodescendientes nombran el territorio, defienden la vida y transforman la exclusión en dignidad. Comunicar desde lo afro no es solo contar lo que somos, es disputar sentidos frente al racismo, la violencia y el olvido, fortaleciendo la cultura de paz, la justicia racial y el derecho a narrarnos desde nuestros saberes, estéticas y espiritualidades.",
+      "force_message": "La comunicaci\u00f3n en los territorios bio-culturales es un acto de memoria, resistencia y futuro. Desde las voces de sabedoras, j\u00f3venes, liderazgos comunitarios y narrativas propias, las historias afrodescendientes nombran el territorio, defienden la vida y transforman la exclusi\u00f3n en dignidad. Comunicar desde lo afro no es solo contar lo que somos, es disputar sentidos frente al racismo, la violencia y el olvido, fortaleciendo la cultura de paz, la justicia racial y el derecho a narrarnos desde nuestros saberes, est\u00e9ticas y espiritualidades.",
       "availability_note": "",
-      "search_text": "Somos cultura de paz MinCulturas DACMI- Dirección de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicación, Culturas y Territorios-AFROCOLOMBIAS Ficción Altanegra Podcast Escuela AfroguaJira, Audiovisual y Antirracista del Kuagro de Comunicaciones de Altanegra aborda el racismo estructural, laboral y de género a través de una pieza, visibilizando la exclusión que enfrentan las mujeres afro y reivindicando la estética como resistencia. También conecta estas violencias con el territorio y la justicia ambiental. Más que denuncia, es un acto cinematográfico que interpela sobre ser joven, negra y de pueblo en una sociedad que excluye. La comunicación en los territorios bio-culturales es un acto de memoria, resistencia y futuro. Desde las voces de sabedoras, jóvenes, liderazgos comunitarios y narrativas propias, las historias afrodescendientes nombran el territorio, defienden la vida y transforman la exclusión en dignidad. Comunicar desde lo afro no es solo contar lo que somos, es disputar sentidos frente al racismo, la violencia y el olvido, fortaleciendo la cultura de paz, la justicia racial y el derecho a narrarnos desde nuestros saberes, estéticas y espiritualidades. Escuela AfroguaJira Kuagro de Comunicaciones Racismo estructural Racismo laboral Racismo de género Mujeres afro Estética como resistencia Territorio Justicia ambiental Juventud negra Exclusión social Cine documental https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CCT%202025/003_CONVENIOS%20GRUPO%20COM_2025/1_0798_CONVENIO%20INTERADMINISTRATIVO%20FONDO%20MIXTO%20DE%20NARI%C3%91O/3_%20EJECUCI%C3%93N/5_%20ESTRATEGIAS/1_AFROCOLOMBIAS/1_FORMACI%C3%93N/004_Escuelas%20Comunicaci%C3%B3n%20Afrocolombias2025/10.%20%20MATA%20%27E%20PELO/3_%20pago_10%25/1.%20Contenidos/1.%20Contenido/Pelicula%20Altanegra%20Oficial%20.mp4?csf=1&web=1&e=N7do1K"
+      "search_text": "Somos cultura de paz MinCulturas DACMI- Direcci\u00f3n de Audiovisuales, Cine y Medios Interactivos - Grupo Comunicaci\u00f3n, Culturas y Territorios-AFROCOLOMBIAS Ficci\u00f3n Altanegra Podcast Escuela AfroguaJira, Audiovisual y Antirracista del Kuagro de Comunicaciones de Altanegra aborda el racismo estructural, laboral y de g\u00e9nero a trav\u00e9s de una pieza, visibilizando la exclusi\u00f3n que enfrentan las mujeres afro y reivindicando la est\u00e9tica como resistencia. Tambi\u00e9n conecta estas violencias con el territorio y la justicia ambiental. M\u00e1s que denuncia, es un acto cinematogr\u00e1fico que interpela sobre ser joven, negra y de pueblo en una sociedad que excluye. La comunicaci\u00f3n en los territorios bio-culturales es un acto de memoria, resistencia y futuro. Desde las voces de sabedoras, j\u00f3venes, liderazgos comunitarios y narrativas propias, las historias afrodescendientes nombran el territorio, defienden la vida y transforman la exclusi\u00f3n en dignidad. Comunicar desde lo afro no es solo contar lo que somos, es disputar sentidos frente al racismo, la violencia y el olvido, fortaleciendo la cultura de paz, la justicia racial y el derecho a narrarnos desde nuestros saberes, est\u00e9ticas y espiritualidades. Escuela AfroguaJira Kuagro de Comunicaciones Racismo estructural Racismo laboral Racismo de g\u00e9nero Mujeres afro Est\u00e9tica como resistencia Territorio Justicia ambiental Juventud negra Exclusi\u00f3n social Cine documental https://mcultura.sharepoint.com/:v:/r/sites/DACMI/Documentos%20compartidos/General/Grupo%20CCT%202025/003_CONVENIOS%20GRUPO%20COM_2025/1_0798_CONVENIO%20INTERADMINISTRATIVO%20FONDO%20MIXTO%20DE%20NARI%C3%91O/3_%20EJECUCI%C3%93N/5_%20ESTRATEGIAS/1_AFROCOLOMBIAS/1_FORMACI%C3%93N/004_Escuelas%20Comunicaci%C3%B3n%20Afrocolombias2025/10.%20%20MATA%20%27E%20PELO/3_%20pago_10%25/1.%20Contenidos/1.%20Contenido/Pelicula%20Altanegra%20Oficial%20.mp4?csf=1&web=1&e=N7do1K"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-174",
       "row": 174,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
-      "responsable": "MinCulturas Dirección de Poblaciones - GIT Culturas Indígenas, Rrom y Lenguas Nativas",
-      "title": "Documentos de Memoria Viva de la nación gonawindua",
+      "responsable": "MinCulturas Direcci\u00f3n de Poblaciones - GIT Culturas Ind\u00edgenas, Rrom y Lenguas Nativas",
+      "title": "Documentos de Memoria Viva de la naci\u00f3n gonawindua",
       "type": "Documento cartilla",
-      "description": "Implementación Programa de jóvenes de la Sierra Nevada de Gonawindua El convenio 1619-2025 suscrito entre la CIT y el Ministerio de las Culturas, Artes y saberes hace parte de la ruta de cumplimiento del acuerdo IM-165, que exige: Garantizar el diseño e implementación de un programa para el fortalecimiento, reivindicación y transmisión intergeneracional de los conocimientos propios para los jóvenes de los pueblos de la Sierra Nevada de Gonawindúa, en concertación con el Consejo Territorial de Cabildos, de acuerdo a la ley de origen y cosmovisión propia de los pueblos de la Sierra Nevada de Gonawindúa.",
+      "description": "Implementaci\u00f3n Programa de j\u00f3venes de la Sierra Nevada de Gonawindua El convenio 1619-2025 suscrito entre la CIT y el Ministerio de las Culturas, Artes y saberes hace parte de la ruta de cumplimiento del acuerdo IM-165, que exige: Garantizar el dise\u00f1o e implementaci\u00f3n de un programa para el fortalecimiento, reivindicaci\u00f3n y transmisi\u00f3n intergeneracional de los conocimientos propios para los j\u00f3venes de los pueblos de la Sierra Nevada de Gonawind\u00faa, en concertaci\u00f3n con el Consejo Territorial de Cabildos, de acuerdo a la ley de origen y cosmovisi\u00f3n propia de los pueblos de la Sierra Nevada de Gonawind\u00faa.",
       "keywords": [
-        "Priorización y caracterización de los espacioos comunitarios. Saneaminto de los territorios, Trabajo Comunitario, Bautizo y entrega a la comunidad."
+        "Priorizaci\u00f3n y caracterizaci\u00f3n de los espacios comunitarios. Saneamiento de los territorios, trabajo comunitario, bautizo y entrega a la comunidad."
       ],
       "link": "https://mcultura-my.sharepoint.com/personal/atorresb_mincultura_gov_co/_layouts/15/onedrive.aspx?e=5%3A5c11216d2eb444ef99dd2b2198743a94&sharingv2=true&fromShare=true&at=9&CT=1776201569449&OR=OWA%2DNT%2DMail&CID=bb3765e8%2D3ad6%2D7c7d%2D1983%2D4e8f6f63eab1&clickParams=eyJYLUFwcE5hbWUiOiJNaWNyb3NvZnQgT3V0bG9vayBXZWIgQXBwIiwiWC1BcHBWZXJzaW9uIjoiMjAyNjA0MDMwMDEuMzEiLCJPUyI6IldpbmRvd3MgMTEifQ%3D%3D&cidOR=Client&id=%2Fpersonal%2Fatorresb%5Fmincultura%5Fgov%5Fco%2FDocuments%2FDIRECCION%20DE%20POBLACIONES%202025%2FDIRECCION%20DE%20POBLACIONES%202025%2FCONVENIOS%202025%2F3%2E%201619%2D2025%5F%20CONFERACION%20INDIGENA%20TAYRONA%5FCIT%2FEJECUCION%2FTERCER%20PAGO%2FINFORME%20TECNICO%2FEVIDENCIAS%2FCOMPONENTE%201%2F1%2E1&FolderCTID=0x0120004EEA25B391B440479AE8DF393CA887F8&view=0",
       "asset_link": "",
-      "force_message": "Visibilizar y fortalecer las voces, narrativas y reivindicaciones en los distintos escenarios sociales, culturales y políticos de las mujeres negras, afrodescendientes, raizales y palenqueras",
+      "force_message": "Visibilizar y fortalecer las voces, narrativas y reivindicaciones en los distintos escenarios sociales, culturales y pol\u00edticos de las mujeres negras, afrodescendientes, raizales y palenqueras",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural MinCulturas Dirección de Poblaciones - GIT Culturas Indígenas, Rrom y Lenguas Nativas Documentos de Memoria Viva de la nación gonawindua Documento cartilla Implementación Programa de jóvenes de la Sierra Nevada de Gonawindua El convenio 1619-2025 suscrito entre la CIT y el Ministerio de las Culturas, Artes y saberes hace parte de la ruta de cumplimiento del acuerdo IM-165, que exige: Garantizar el diseño e implementación de un programa para el fortalecimiento, reivindicación y transmisión intergeneracional de los conocimientos propios para los jóvenes de los pueblos de la Sierra Nevada de Gonawindúa, en concertación con el Consejo Territorial de Cabildos, de acuerdo a la ley de origen y cosmovisión propia de los pueblos de la Sierra Nevada de Gonawindúa. Visibilizar y fortalecer las voces, narrativas y reivindicaciones en los distintos escenarios sociales, culturales y políticos de las mujeres negras, afrodescendientes, raizales y palenqueras Priorización y caracterización de los espacioos comunitarios. Saneaminto de los territorios, Trabajo Comunitario, Bautizo y entrega a la comunidad. https://mcultura-my.sharepoint.com/personal/atorresb_mincultura_gov_co/_layouts/15/onedrive.aspx?e=5%3A5c11216d2eb444ef99dd2b2198743a94&sharingv2=true&fromShare=true&at=9&CT=1776201569449&OR=OWA%2DNT%2DMail&CID=bb3765e8%2D3ad6%2D7c7d%2D1983%2D4e8f6f63eab1&clickParams=eyJYLUFwcE5hbWUiOiJNaWNyb3NvZnQgT3V0bG9vayBXZWIgQXBwIiwiWC1BcHBWZXJzaW9uIjoiMjAyNjA0MDMwMDEuMzEiLCJPUyI6IldpbmRvd3MgMTEifQ%3D%3D&cidOR=Client&id=%2Fpersonal%2Fatorresb%5Fmincultura%5Fgov%5Fco%2FDocuments%2FDIRECCION%20DE%20POBLACIONES%202025%2FDIRECCION%20DE%20POBLACIONES%202025%2FCONVENIOS%202025%2F3%2E%201619%2D2025%5F%20CONFERACION%20INDIGENA%20TAYRONA%5FCIT%2FEJECUCION%2FTERCER%20PAGO%2FINFORME%20TECNICO%2FEVIDENCIAS%2FCOMPONENTE%201%2F1%2E1&FolderCTID=0x0120004EEA25B391B440479AE8DF393CA887F8&view=0"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural MinCulturas Direcci\u00f3n de Poblaciones - GIT Culturas Ind\u00edgenas, Rrom y Lenguas Nativas Documentos de Memoria Viva de la naci\u00f3n gonawindua Documento cartilla Implementaci\u00f3n Programa de j\u00f3venes de la Sierra Nevada de Gonawindua El convenio 1619-2025 suscrito entre la CIT y el Ministerio de las Culturas, Artes y saberes hace parte de la ruta de cumplimiento del acuerdo IM-165, que exige: Garantizar el dise\u00f1o e implementaci\u00f3n de un programa para el fortalecimiento, reivindicaci\u00f3n y transmisi\u00f3n intergeneracional de los conocimientos propios para los j\u00f3venes de los pueblos de la Sierra Nevada de Gonawind\u00faa, en concertaci\u00f3n con el Consejo Territorial de Cabildos, de acuerdo a la ley de origen y cosmovisi\u00f3n propia de los pueblos de la Sierra Nevada de Gonawind\u00faa. Visibilizar y fortalecer las voces, narrativas y reivindicaciones en los distintos escenarios sociales, culturales y pol\u00edticos de las mujeres negras, afrodescendientes, raizales y palenqueras Priorizaci\u00f3n y caracterizaci\u00f3n de los espacios comunitarios. Saneamiento de los territorios, trabajo comunitario, bautizo y entrega a la comunidad. https://mcultura-my.sharepoint.com/personal/atorresb_mincultura_gov_co/_layouts/15/onedrive.aspx?e=5%3A5c11216d2eb444ef99dd2b2198743a94&sharingv2=true&fromShare=true&at=9&CT=1776201569449&OR=OWA%2DNT%2DMail&CID=bb3765e8%2D3ad6%2D7c7d%2D1983%2D4e8f6f63eab1&clickParams=eyJYLUFwcE5hbWUiOiJNaWNyb3NvZnQgT3V0bG9vayBXZWIgQXBwIiwiWC1BcHBWZXJzaW9uIjoiMjAyNjA0MDMwMDEuMzEiLCJPUyI6IldpbmRvd3MgMTEifQ%3D%3D&cidOR=Client&id=%2Fpersonal%2Fatorresb%5Fmincultura%5Fgov%5Fco%2FDocuments%2FDIRECCION%20DE%20POBLACIONES%202025%2FDIRECCION%20DE%20POBLACIONES%202025%2FCONVENIOS%202025%2F3%2E%201619%2D2025%5F%20CONFERACION%20INDIGENA%20TAYRONA%5FCIT%2FEJECUCION%2FTERCER%20PAGO%2FINFORME%20TECNICO%2FEVIDENCIAS%2FCOMPONENTE%201%2F1%2E1&FolderCTID=0x0120004EEA25B391B440479AE8DF393CA887F8&view=0"
     },
     {
       "id": "somos-un-pais-plurietnico-y-multicultural-175",
       "row": 175,
-      "theme": "Somos un país pluriétnico y multicultural",
+      "theme": "Somos un pa\u00eds pluri\u00e9tnico y multicultural",
       "theme_slug": "somos-un-pais-plurietnico-y-multicultural",
-      "responsable": "MinCulturas Dirección de Poblaciones - GIT Culturas Indígenas, Rrom y Lenguas Nativas",
-      "title": "Documento de Actividaad de fortalecimiento de la shib romani kumpania de sabanalarga",
-      "type": "Docuemento Cartilla",
-      "description": "Los talleres de fortalecimiento tuvieron como objetivo principal la revitalización y preservación de la lengua Shib Romani para ñas 9 kumpnaias y 2 organizaciones del pueblo RROM A través de un enfoque comunitario, se buscó fortalecer la identidad cultural y asegurar la transmisión de nuestra lengua Romaní a las nuevas generaciones.",
+      "responsable": "MinCulturas Direcci\u00f3n de Poblaciones - GIT Culturas Ind\u00edgenas, Rrom y Lenguas Nativas",
+      "title": "Documento de actividad de fortalecimiento de la Shib Romani Kumpania de Sabanalarga",
+      "type": "Documento cartilla",
+      "description": "Los talleres de fortalecimiento tuvieron como objetivo principal la revitalizaci\u00f3n y preservaci\u00f3n de la lengua Shib Romani para las 9 kumpanias y 2 organizaciones del pueblo Rrom. A trav\u00e9s de un enfoque comunitario, se busc\u00f3 fortalecer la identidad cultural y asegurar la transmisi\u00f3n de nuestra lengua roman\u00ed a las nuevas generaciones.",
       "keywords": [
-        "Kumpania, pueblo Rrom. Shib Romaní."
+        "Kumpania, pueblo Rrom. Shib Roman\u00ed."
       ],
       "link": "https://mcultura.sharepoint.com/:b:/r/sites/Dir.Poblacion/Documentos%20compartidos/Direccion%20Poblaciones/02_Direcci%C3%B3n%20de%20Poblaciones_2025/02_Justicia_Cultural_%C3%89tnica/05_Rrom/Convenio%202025%20Rrom/segundo%20desembolso%20convenio%201644%20de%202025/L1_Fortalecimineto%20Lengua%20Romani%2011%20informe%2011%20talleres/INFORME,%20LISTADOS%20DE%20ASISTENCIA%20FOTOS%20Y%20VIDEOS%20KUMPANIA%20DE%20SABANALARGA/LEGALIZACION_TALLER_SHIB_ROMANI%20KUMPANIA%20DE%20SABANALARGA.pdf?csf=1&web=1&e=CYnB96",
       "asset_link": "",
-      "force_message": "Visibilizar y fortalecer las voces, narrativas y reivindicaciones en los distintos escenarios sociales, culturales y políticos de las mujeres negras, afrodescendientes, raizales y palenqueras",
+      "force_message": "Visibilizar y fortalecer las voces, narrativas y reivindicaciones en los distintos escenarios sociales, culturales y pol\u00edticos de las mujeres negras, afrodescendientes, raizales y palenqueras",
       "availability_note": "",
-      "search_text": "Somos un país pluriétnico y multicultural MinCulturas Dirección de Poblaciones - GIT Culturas Indígenas, Rrom y Lenguas Nativas Documento de Actividaad de fortalecimiento de la shib romani kumpania de sabanalarga Docuemento Cartilla Los talleres de fortalecimiento tuvieron como objetivo principal la revitalización y preservación de la lengua Shib Romani para ñas 9 kumpnaias y 2 organizaciones del pueblo RROM A través de un enfoque comunitario, se buscó fortalecer la identidad cultural y asegurar la transmisión de nuestra lengua Romaní a las nuevas generaciones. Visibilizar y fortalecer las voces, narrativas y reivindicaciones en los distintos escenarios sociales, culturales y políticos de las mujeres negras, afrodescendientes, raizales y palenqueras Kumpania, pueblo Rrom. Shib Romaní. https://mcultura.sharepoint.com/:b:/r/sites/Dir.Poblacion/Documentos%20compartidos/Direccion%20Poblaciones/02_Direcci%C3%B3n%20de%20Poblaciones_2025/02_Justicia_Cultural_%C3%89tnica/05_Rrom/Convenio%202025%20Rrom/segundo%20desembolso%20convenio%201644%20de%202025/L1_Fortalecimineto%20Lengua%20Romani%2011%20informe%2011%20talleres/INFORME,%20LISTADOS%20DE%20ASISTENCIA%20FOTOS%20Y%20VIDEOS%20KUMPANIA%20DE%20SABANALARGA/LEGALIZACION_TALLER_SHIB_ROMANI%20KUMPANIA%20DE%20SABANALARGA.pdf?csf=1&web=1&e=CYnB96"
+      "search_text": "Somos un pa\u00eds pluri\u00e9tnico y multicultural MinCulturas Direcci\u00f3n de Poblaciones - GIT Culturas Ind\u00edgenas, Rrom y Lenguas Nativas Documento de actividad de fortalecimiento de la Shib Romani Kumpania de Sabanalarga Documento cartilla Los talleres de fortalecimiento tuvieron como objetivo principal la revitalizaci\u00f3n y preservaci\u00f3n de la lengua Shib Romani para las 9 kumpanias y 2 organizaciones del pueblo Rrom. A trav\u00e9s de un enfoque comunitario, se busc\u00f3 fortalecer la identidad cultural y asegurar la transmisi\u00f3n de nuestra lengua roman\u00ed a las nuevas generaciones. Visibilizar y fortalecer las voces, narrativas y reivindicaciones en los distintos escenarios sociales, culturales y pol\u00edticos de las mujeres negras, afrodescendientes, raizales y palenqueras Kumpania, pueblo Rrom. Shib Roman\u00ed. https://mcultura.sharepoint.com/:b:/r/sites/Dir.Poblacion/Documentos%20compartidos/Direccion%20Poblaciones/02_Direcci%C3%B3n%20de%20Poblaciones_2025/02_Justicia_Cultural_%C3%89tnica/05_Rrom/Convenio%202025%20Rrom/segundo%20desembolso%20convenio%201644%20de%202025/L1_Fortalecimineto%20Lengua%20Romani%2011%20informe%2011%20talleres/INFORME,%20LISTADOS%20DE%20ASISTENCIA%20FOTOS%20Y%20VIDEOS%20KUMPANIA%20DE%20SABANALARGA/LEGALIZACION_TALLER_SHIB_ROMANI%20KUMPANIA%20DE%20SABANALARGA.pdf?csf=1&web=1&e=CYnB96"
     }
   ]
 }
@@ -8464,665 +8709,665 @@
     "date": "22 abril 2026",
     "time": "11:30 a. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Gobernanza Cultural para la Paz, Organizació y Formación sobre el Sistema Nacional de Cultura",
-    "description": "Generar, en la FILBo, un diálogo de saberes e intercambio de experiencias sobre gobernanza cultural para la paz y formación en el Sistema Nacional de Cultura en ocho regiones del país. Se instalará un stand con fotografías, relatos y publicaciones de la Dirección de Fomento Regional, donde se socializan experiencias y la caracterización de organizaciones en 15 nodos de distintas regiones.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Gobernanza Cultural para la Paz, Organizaci\u00f3n y Formaci\u00f3n sobre el Sistema Nacional de Cultura",
+    "description": "Generar, en la FILBo, un di\u00e1logo de saberes e intercambio de experiencias sobre gobernanza cultural para la paz y formaci\u00f3n en el Sistema Nacional de Cultura en ocho regiones del pa\u00eds. Se instalar\u00e1 un stand con fotograf\u00edas, relatos y publicaciones de la Direcci\u00f3n de Fomento Regional, donde se socializan experiencias y la caracterizaci\u00f3n de organizaciones en 15 nodos de distintas regiones.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "22 abril 2026",
     "time": "2:00 p. m.",
-    "entity": "Instituto Colombiano de Antropología e Historia",
-    "title": "Conflicto, Paz y Tierras: 10 años del Acuerdo de Paz",
-    "description": "Este conversatorio presenta los resultados de dos investigaciones sobre restitución de tierras y las transiciones del conflicto tras la firma del Acuerdo de Paz de 2016. Un espacio para analizar sus hallazgos y aportar a la comprensión de los cambios en los territorios.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "entity": "Instituto Colombiano de Antropolog\u00eda e Historia",
+    "title": "Conflicto, Paz y Tierras: 10 a\u00f1os del Acuerdo de Paz",
+    "description": "Este conversatorio presenta los resultados de dos investigaciones sobre restituci\u00f3n de tierras y las transiciones del conflicto tras la firma del Acuerdo de Paz de 2016. Un espacio para analizar sus hallazgos y aportar a la comprensi\u00f3n de los cambios en los territorios.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "22 abril 2026",
     "time": "4:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
     "title": "Novedades editoriales de la Biblioteca Nacional de Colombia",
-    "description": "Durante este evento, se presentarán las novedades editoriales que lanzó la BNC desde la pasada Feria Internacional del Libro de Bogotá.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "Durante este evento, se presentar\u00e1n las novedades editoriales que lanz\u00f3 la BNC desde la pasada Feria Internacional del Libro de Bogot\u00e1.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "22 abril 2026",
     "time": "5:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
     "title": "Crear para resistir, conversar para transformar",
-    "description": "A veces las palabras no alcanzan para expresar lo que duele o asusta. Por eso este espacio comienza creando: una experiencia que mezcla palabra, cuerpo y artes plásticas para explorar cómo el arte y la cultura nos ayudan a ser y expresarnos. Luego, abriremos una conversación sobre creatividad, comunidad y resistencia. Un lugar para sentir, pensar y hablar sin filtros, dirigido a jóvenes.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "A veces las palabras no alcanzan para expresar lo que duele o asusta. Por eso este espacio comienza creando: una experiencia que mezcla palabra, cuerpo y artes pl\u00e1sticas para explorar c\u00f3mo el arte y la cultura nos ayudan a ser y expresarnos. Luego, abriremos una conversaci\u00f3n sobre creatividad, comunidad y resistencia. Un lugar para sentir, pensar y hablar sin filtros, dirigido a j\u00f3venes.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "22 abril 2026",
     "time": "6:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Desde el principio, selección de cuentos, crónicas y otros escritos antes del guión de Humberto Dorado Miranda",
-    "description": "Participan: Humberto Dorado Miranda y Dominique Rodríguez Organiza: Ser Zanja",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Desde el principio, selecci\u00f3n de cuentos, cr\u00f3nicas y otros escritos antes del gui\u00f3n de Humberto Dorado Miranda",
+    "description": "Participan: Humberto Dorado Miranda y Dominique Rodr\u00edguez Organiza: Ser Zanja",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "23 abril 2026",
     "time": "10:30 a. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Red Estudiantil por la Memoria y el Patrimonio - Taller de apropiación social del patrimonio cultural",
-    "description": "Taller de apropiación social del patrimonio cultural, enfocado a estudiantes de 9 a 11 grado, con énfasis en proyectos que puedan servir para el cumplimiento de las 80 horas del servicio social obligatorio.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Red Estudiantil por la Memoria y el Patrimonio - Taller de apropiaci\u00f3n social del patrimonio cultural",
+    "description": "Taller de apropiaci\u00f3n social del patrimonio cultural, enfocado a estudiantes de 9 a 11 grado, con \u00e9nfasis en proyectos que puedan servir para el cumplimiento de las 80 horas del servicio social obligatorio.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "23 abril 2026",
     "time": "1:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "En la evolución del turismo cultural, la historia de los barrio extramuros en Cartagena- Taller Cartográfico",
-    "description": "Taller cartográfico para reconstruir la historia de los barrios extramurales surgidos junto a las murallas de Cartagena tras la Independencia y su retiro en el siglo XIX, medida que impulsó la consolidación de la ciudad como destino turístico. Un espacio para leer el territorio, reconocer memorias y comprender sus transformaciones urbanas.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "En la evoluci\u00f3n del turismo cultural, la historia de los barrios extramuros en Cartagena - Taller cartogr\u00e1fico",
+    "description": "Taller cartogr\u00e1fico para reconstruir la historia de los barrios extramurales surgidos junto a las murallas de Cartagena tras la Independencia y su retiro en el siglo XIX, medida que impuls\u00f3 la consolidaci\u00f3n de la ciudad como destino tur\u00edstico. Un espacio para leer el territorio, reconocer memorias y comprender sus transformaciones urbanas.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "23 abril 2026",
     "time": "2:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "¿Cómo se gestan herramientas para la educación musical en Colombia?",
-    "description": "Este conversatorio abre un diálogo sobre la creación de herramientas para la educación musical en Colombia, a partir de experiencias en la elaboración de guías y cuadernos de ejercicios para trompeta, eufonio y clarinete, publicados el último año, así como de la guía “En clave de PEM”. Procesos impulsados por el Grupo de Música de la Dirección de Artes, orientados a fortalecer la formación y las escuelas de música en el país.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "\u00bfC\u00f3mo se gestan herramientas para la educaci\u00f3n musical en Colombia?",
+    "description": "Este conversatorio abre un di\u00e1logo sobre la creaci\u00f3n de herramientas para la educaci\u00f3n musical en Colombia, a partir de experiencias en la elaboraci\u00f3n de gu\u00edas y cuadernos de ejercicios para trompeta, eufonio y clarinete, publicados el \u00faltimo a\u00f1o, as\u00ed como de la gu\u00eda \u201cEn clave de PEM\u201d. Procesos impulsados por el Grupo de M\u00fasica de la Direcci\u00f3n de Artes, orientados a fortalecer la formaci\u00f3n y las escuelas de m\u00fasica en el pa\u00eds.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "23 abril 2026",
     "time": "3:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Consciencia sonora: Taller introductorio sobre particularidades sonoras de lenguas indígenas en Colombia",
-    "description": "La lengua es un elemento clave de la cultura. Su pérdida implica el riesgo de desaparecer formas únicas de nombrar el mundo y sonidos poco comunes. Este espacio invita a conocer y reproducir rasgos consonánticos y vocálicos de lenguas indígenas de Colombia, y a reflexionar sobre su papel en la construcción de valores culturales y en la diversidad lingüística del país.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Consciencia sonora: Taller introductorio sobre particularidades sonoras de lenguas ind\u00edgenas en Colombia",
+    "description": "La lengua es un elemento clave de la cultura. Su p\u00e9rdida implica el riesgo de desaparecer formas \u00fanicas de nombrar el mundo y sonidos poco comunes. Este espacio invita a conocer y reproducir rasgos conson\u00e1nticos y voc\u00e1licos de lenguas ind\u00edgenas de Colombia, y a reflexionar sobre su papel en la construcci\u00f3n de valores culturales y en la diversidad ling\u00fc\u00edstica del pa\u00eds.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "23 abril 2026",
     "time": "5:00 p. m.",
-    "entity": "Instituto Colombiano de Antropología e Historia",
-    "title": "Territorialidades indígenas en tensión",
-    "description": "Presentación de los hallazgos y conclusiones de las investigaciones que se han llevado a cabo en el ICANH sobre territorialidades indígenas en tensión en diversos territorios del país.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "entity": "Instituto Colombiano de Antropolog\u00eda e Historia",
+    "title": "Territorialidades ind\u00edgenas en tensi\u00f3n",
+    "description": "Presentaci\u00f3n de los hallazgos y conclusiones de las investigaciones que se han llevado a cabo en el ICANH sobre territorialidades ind\u00edgenas en tensi\u00f3n en diversos territorios del pa\u00eds.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "23 abril 2026",
     "time": "6:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
     "title": "Disputar el canon de la novela colombiana: cuerpo, memoria y territorio en Zapata Olivella, Burgos Cantor y Espinosa",
-    "description": "Lanzamiento del libro Disputar el canon de la novela colombiana, con una charla entre el autor y Catalina Correa. El diálogo abordará cómo Manuel Zapata Olivella, Roberto Burgos Cantor y Germán Espinosa imaginaron el Caribe desde una perspectiva distinta al “boom”, visibilizando miradas y aspectos poco explorados en la literatura del país.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "Lanzamiento del libro Disputar el canon de la novela colombiana, con una charla entre el autor y Catalina Correa. El di\u00e1logo abordar\u00e1 c\u00f3mo Manuel Zapata Olivella, Roberto Burgos Cantor y Germ\u00e1n Espinosa imaginaron el Caribe desde una perspectiva distinta al \u201cboom\u201d, visibilizando miradas y aspectos poco explorados en la literatura del pa\u00eds.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "23 abril 2026",
     "time": "7:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Defendiendo del territorio desde el cine comunitario",
-    "description": "En este conversatorio, integrantes de los colectivos No le saque la piedra a la montaña (Bogotá), Yosokwi (Sierra Nevada de Santa Marta) y El Rostro de mi Pueblo (Curbaradó, Darién) nos contarán cómo a través del cine comunitario se da la defensa, resistencia y apropiación del territorio en el que se encuentran.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Defendiendo el territorio desde el cine comunitario",
+    "description": "En este conversatorio, integrantes de los colectivos No le saque la piedra a la monta\u00f1a (Bogot\u00e1), Yosokwi (Sierra Nevada de Santa Marta) y El Rostro de mi Pueblo (Curbarad\u00f3, Dari\u00e9n) nos contar\u00e1n c\u00f3mo a trav\u00e9s del cine comunitario se da la defensa, resistencia y apropiaci\u00f3n del territorio en el que se encuentran.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "24 abril 2026",
     "time": "10:30 a. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Paisaje Cultural Cafetero para niños",
-    "description": "Un taller para enseñar a los niños y niñas la importancia del Paisaje Cultural Cafetero de Colombia a través de material didáctico.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Paisaje Cultural Cafetero para ni\u00f1os",
+    "description": "Un taller para ense\u00f1ar a los ni\u00f1os y ni\u00f1as la importancia del Paisaje Cultural Cafetero de Colombia a trav\u00e9s de material did\u00e1ctico.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "24 abril 2026",
     "time": "1:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Conversatorio: Cómo hacer cine comunitario en Colombia",
-    "description": "Espacio de intercambio sobre cine comunitario en Colombia. A partir del diálogo entre procesos territoriales y pedagógicos, se abordarán creación colectiva, formación audiovisual, sostenibilidad y el papel del cine en la paz, la memoria y la transformación social. Participan iniciativas como las Escuelas Audiovisuales Comunitarias, la Escuela Audiovisual Infantil de Belén de los Andaquíes y Ojo al Sancocho.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Conversatorio: C\u00f3mo hacer cine comunitario en Colombia",
+    "description": "Espacio de intercambio sobre cine comunitario en Colombia. A partir del di\u00e1logo entre procesos territoriales y pedag\u00f3gicos, se abordar\u00e1n creaci\u00f3n colectiva, formaci\u00f3n audiovisual, sostenibilidad y el papel del cine en la paz, la memoria y la transformaci\u00f3n social. Participan iniciativas como las Escuelas Audiovisuales Comunitarias, la Escuela Audiovisual Infantil de Bel\u00e9n de los Andaqu\u00edes y Ojo al Sancocho.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "24 abril 2026",
     "time": "3:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
     "title": "Bibliotecas comunitarias, populares e itinerantes: tejiendo palabras, territorios y resistencias.",
-    "description": "En Colombia, las bibliotecas comunitarias, populares e itinerantes (BICOPOI) tienen una larga trayectoria y múltiples historias. Esta conversación presenta sus apuestas y esfuerzos por construir una red nacional que fortalezca su sostenibilidad, su agencia política y su papel como fuerzas transformadoras en diversos territorios del país.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "En Colombia, las bibliotecas comunitarias, populares e itinerantes (BICOPOI) tienen una larga trayectoria y m\u00faltiples historias. Esta conversaci\u00f3n presenta sus apuestas y esfuerzos por construir una red nacional que fortalezca su sostenibilidad, su agencia pol\u00edtica y su papel como fuerzas transformadoras en diversos territorios del pa\u00eds.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "24 abril 2026",
     "time": "5:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "Presentación del libro \"Casimiro. Memoria biocultural del barrio El Reposo de Quibdó, Chocó\"",
-    "description": "Casimiro, una quebrada del barrio El Reposo en Quibdó, es el centro de un proceso comunitario liderado por jóvenes de “La ruta de los cuidados”, enfocado en su limpieza y recuperación. La publicación Casimiro. Memoria biocultural… recoge voces sobre la memoria del barrio y sus especies. El libro surge junto a la Biblioteca Nacional, en el Plan “Arnoldo Palacios” del Chocó.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Presentaci\u00f3n del libro \"Casimiro. Memoria biocultural del barrio El Reposo de Quibd\u00f3, Choc\u00f3\"",
+    "description": "Casimiro, una quebrada del barrio El Reposo en Quibd\u00f3, es el centro de un proceso comunitario liderado por j\u00f3venes de \u201cLa ruta de los cuidados\u201d, enfocado en su limpieza y recuperaci\u00f3n. La publicaci\u00f3n Casimiro. Memoria biocultural\u2026 recoge voces sobre la memoria del barrio y sus especies. El libro surge junto a la Biblioteca Nacional, en el Plan \u201cArnoldo Palacios\u201d del Choc\u00f3.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "24 abril 2026",
     "time": "6:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "¿Quieres estudiar la Maestría en Enseñanza de Español como Lengua Extranjera? Descubre qué investigan nuestros estudiantes",
-    "description": "Encuentro con los profesores de la maestría y una muestra de clase abierta.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "\u00bfQuieres estudiar la Maestr\u00eda en Ense\u00f1anza de Espa\u00f1ol como Lengua Extranjera? Descubre qu\u00e9 investigan nuestros estudiantes",
+    "description": "Encuentro con los profesores de la maestr\u00eda y una muestra de clase abierta.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "24 abril 2026",
     "time": "7:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
     "title": "Club de escucha Gaceta sonora: El club negro de Colombia",
-    "description": "Espacio de escucha en torno al pódcast El club negro de Colombia, de Gaceta Sonora, basado en el libro de Rosa Chamorro. Tras un fragmento, dialoga el musicólogo Ángel Perea Escobar sobre memoria y pensamiento afrocolombiano, a partir de figuras como Manuel Zapata Olivella y Delia Zapata Olivella.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "Espacio de escucha en torno al p\u00f3dcast El club negro de Colombia, de Gaceta Sonora, basado en el libro de Rosa Chamorro. Tras un fragmento, dialoga el music\u00f3logo \u00c1ngel Perea Escobar sobre memoria y pensamiento afrocolombiano, a partir de figuras como Manuel Zapata Olivella y Delia Zapata Olivella.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "25 abril 2026",
     "time": "10:30 a. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "Pijaraña, pijaraña, ilustra los versos la araña",
-    "description": "Taller de la serie «leer es mi cuento» con la ilustradora: Gabriela Otálora hablará sobre el proceso de ilustrar un libro de poesía de tradición oral para niños y niñas, a partir de su trabajo en la serie «Leer es mi cuento». Un espacio para acercarse al universo de la ilustración infantil y a las decisiones creativas detrás de las imágenes que acompañan la lectura.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Pijara\u00f1a, pijara\u00f1a, ilustra los versos la ara\u00f1a",
+    "description": "Taller de la serie \u00ableer es mi cuento\u00bb con la ilustradora: Gabriela Ot\u00e1lora hablar\u00e1 sobre el proceso de ilustrar un libro de poes\u00eda de tradici\u00f3n oral para ni\u00f1os y ni\u00f1as, a partir de su trabajo en la serie \u00abLeer es mi cuento\u00bb. Un espacio para acercarse al universo de la ilustraci\u00f3n infantil y a las decisiones creativas detr\u00e1s de las im\u00e1genes que acompa\u00f1an la lectura.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "25 abril 2026",
     "time": "12:30 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Taller y charla: Así se construye un carnaval, oficios, redes y economías de la fiesta de Pasto",
-    "description": "Espacio híbrido de charla y taller para comprender el carnaval desde su producción material. Liderado por el Taller Escuela de Carnaval Ruano (Pasto), combina creación de una pieza breve con diálogo sobre oficios, materiales, economías y redes que sostienen la fiesta. Aborda el papel de las mujeres y las formas de vivir el carnaval más allá de la agenda oficial.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Taller y charla: As\u00ed se construye un carnaval, oficios, redes y econom\u00edas de la fiesta de Pasto",
+    "description": "Espacio h\u00edbrido de charla y taller para comprender el carnaval desde su producci\u00f3n material. Liderado por el Taller Escuela de Carnaval Ruano (Pasto), combina creaci\u00f3n de una pieza breve con di\u00e1logo sobre oficios, materiales, econom\u00edas y redes que sostienen la fiesta. Aborda el papel de las mujeres y las formas de vivir el carnaval m\u00e1s all\u00e1 de la agenda oficial.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "25 abril 2026",
     "time": "2:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "Isabel Carrasquilla y Magda Moreno: contando después de muertas",
-    "description": "En Santo Domingo (Antioquia), a finales del siglo XIX, surgió la Sociedad de El Tercer Piso y sus tertulias de lectura. En 2024 se retoma este espacio para leer, investigar y dialogar sobre sus integrantes. La actividad aborda textos de Isabel Carrasquilla y Magda Moreno, con lectura en voz alta y reflexión colectiva sobre su obra y contexto.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Isabel Carrasquilla y Magda Moreno: contando despu\u00e9s de muertas",
+    "description": "En Santo Domingo (Antioquia), a finales del siglo XIX, surgi\u00f3 la Sociedad de El Tercer Piso y sus tertulias de lectura. En 2024 se retoma este espacio para leer, investigar y dialogar sobre sus integrantes. La actividad aborda textos de Isabel Carrasquilla y Magda Moreno, con lectura en voz alta y reflexi\u00f3n colectiva sobre su obra y contexto.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "25 abril 2026",
     "time": "3:00 p. m.",
-    "entity": "Instituto Colombiano de Antropología e Historia",
-    "title": "El galeón cabe en una taza",
-    "description": "Una cata de chocolate para hablar sobre los cargamentos donde se hallaron tazas de porcelana y restos de cacao, recolectados en 2025 para su estudio. ¿Qué hacían estos objetos en una nave asociada a otros cargamentos? ¿Qué rutas siguieron y qué revelan sobre el comercio en el Caribe? Este encuentro explora estas preguntas y propone una experiencia con aroma y sabor a chocolate para acercarse a esta historia.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "entity": "Instituto Colombiano de Antropolog\u00eda e Historia",
+    "title": "El gale\u00f3n cabe en una taza",
+    "description": "Una cata de chocolate para hablar sobre los cargamentos donde se hallaron tazas de porcelana y restos de cacao, recolectados en 2025 para su estudio. \u00bfQu\u00e9 hac\u00edan estos objetos en una nave asociada a otros cargamentos? \u00bfQu\u00e9 rutas siguieron y qu\u00e9 revelan sobre el comercio en el Caribe? Este encuentro explora estas preguntas y propone una experiencia con aroma y sabor a chocolate para acercarse a esta historia.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "25 abril 2026",
     "time": "4:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "Relata 20 años. dos décadas de formación en escritura creativa.",
-    "description": "En esta charla, moderada por Juan Afanador, líder del componente de formación de la Gerencia de Literatura, discuten sobre el estado de la formación en escritura y sus futuros deseables. Charlan Giuseppe Caputo y Tania Ganitsky.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Relata 20 a\u00f1os: dos d\u00e9cadas de formaci\u00f3n en escritura creativa",
+    "description": "En esta charla, moderada por Juan Afanador, l\u00edder del componente de formaci\u00f3n de la Gerencia de Literatura, discuten sobre el estado de la formaci\u00f3n en escritura y sus futuros deseables. Charlan Giuseppe Caputo y Tania Ganitsky.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "25 abril 2026",
     "time": "6:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Presentación de la publicación \"Fundar Cuidado: seis figuras de conservación en territorios de Colombia\"",
-    "description": "En alianza con Fondo Acción, la Maestría en Escritura Creativa del Instituto Caro y Cuervo presenta siete cuadernillos sobre protección ambiental y vínculos con ecosistemas del país. Se lanza Fundar cuidado, que recoge experiencias comunitarias en distintas regiones. Resultado de un proyecto de apropiación social del conocimiento en 2025, dirigido al público general.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Presentaci\u00f3n de la publicaci\u00f3n \"Fundar Cuidado: seis figuras de conservaci\u00f3n en territorios de Colombia\"",
+    "description": "En alianza con Fondo Acci\u00f3n, la Maestr\u00eda en Escritura Creativa del Instituto Caro y Cuervo presenta siete cuadernillos sobre protecci\u00f3n ambiental y v\u00ednculos con ecosistemas del pa\u00eds. Se lanza Fundar cuidado, que recoge experiencias comunitarias en distintas regiones. Resultado de un proyecto de apropiaci\u00f3n social del conocimiento en 2025, dirigido al p\u00fablico general.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "25 abril 2026",
     "time": "7:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Sobre reparación simbólica y práctica artística",
-    "description": "Desde 2023, el Grupo de Artes Plásticas y Visuales acompaña procesos de memoria y reparación simbólica con víctimas del Estado, como Madres de Falsos Positivos, buscadoras de La Escombrera y la Comunidad de Paz de San José de Apartadó. Esta conversación aborda estos proyectos y cómo el arte, desde el rol creativo de las víctimas, se convierte en una herramienta de reparación y transformación.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Sobre reparaci\u00f3n simb\u00f3lica y pr\u00e1ctica art\u00edstica",
+    "description": "Desde 2023, el Grupo de Artes Pl\u00e1sticas y Visuales acompa\u00f1a procesos de memoria y reparaci\u00f3n simb\u00f3lica con v\u00edctimas del Estado, como Madres de Falsos Positivos, buscadoras de La Escombrera y la Comunidad de Paz de San Jos\u00e9 de Apartad\u00f3. Esta conversaci\u00f3n aborda estos proyectos y c\u00f3mo el arte, desde el rol creativo de las v\u00edctimas, se convierte en una herramienta de reparaci\u00f3n y transformaci\u00f3n.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "26 abril 2026",
     "time": "12:30 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Taller experiencial Memorias mayores, prácticas artísticas para la paz",
-    "description": "Taller vivencial que presenta el trabajo con personas mayores portadoras de saberes artísticos y culturales. A través de un diálogo intergeneracional con jóvenes, un sabedor tradicional compartirá su experiencia mediante la oralidad, la escucha, la experimentación y la creación. Un espacio para intercambiar conocimientos y disfrutar de las artes en la FILBo.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Taller experiencial Memorias mayores, pr\u00e1cticas art\u00edsticas para la paz",
+    "description": "Taller vivencial que presenta el trabajo con personas mayores portadoras de saberes art\u00edsticos y culturales. A trav\u00e9s de un di\u00e1logo intergeneracional con j\u00f3venes, un sabedor tradicional compartir\u00e1 su experiencia mediante la oralidad, la escucha, la experimentaci\u00f3n y la creaci\u00f3n. Un espacio para intercambiar conocimientos y disfrutar de las artes en la FILBo.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "26 abril 2026",
     "time": "2:00 p. m.",
     "entity": "AGN",
-    "title": "Colombia vista desde los archivos del National Security Archivos donados a la Comisión de la Verdad",
-    "description": "Lectura del conflicto armado colombiano a partir de documentos desclasificados de EE. UU. reunidos por el National Security Archive y usados por la Comisión de la Verdad. Se analizan cables, informes y memorandos sobre guerra, paz, narcotráfico y actores armados, en diálogo con archivos y testimonios, para abrir nuevas preguntas sobre memoria e investigación",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Colombia vista desde los archivos del National Security Archive donados a la Comisi\u00f3n de la Verdad",
+    "description": "Lectura del conflicto armado colombiano a partir de documentos desclasificados de EE. UU. reunidos por el National Security Archive y usados por la Comisi\u00f3n de la Verdad. Se analizan cables, informes y memorandos sobre guerra, paz, narcotr\u00e1fico y actores armados, en di\u00e1logo con archivos y testimonios, para abrir nuevas preguntas sobre memoria e investigaci\u00f3n.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "26 abril 2026",
     "time": "3:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "La traducción de literatura latinoamericana al bengalí Conversación con el escritor Anisuz Zaman (India)",
-    "description": "En conversación con Alfonso Carvajal, Anisuz Zaman reflexiona sobre los vínculos entre la literatura colombiana y la India a partir de su trabajo de traducción al bengalí. El diálogo aborda la traducción como lectura profunda y mediación cultural entre distintos contextos lingüísticos.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "La traducci\u00f3n de literatura latinoamericana al bengal\u00ed: conversaci\u00f3n con el escritor Anisuz Zaman (India)",
+    "description": "En conversaci\u00f3n con Alfonso Carvajal, Anisuz Zaman reflexiona sobre los v\u00ednculos entre la literatura colombiana y la India a partir de su trabajo de traducci\u00f3n al bengal\u00ed. El di\u00e1logo aborda la traducci\u00f3n como lectura profunda y mediaci\u00f3n cultural entre distintos contextos ling\u00fc\u00edsticos.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "26 abril 2026",
     "time": "4:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Presentación de libro “Mabungú triunfo: poéticas de resistencia afro en María Teresa Ramírez”de Francy Yobanna Morales Acosta",
-    "description": "Conversatorio sobre Mabungú triunfo: poéticas de resistencia afro en María Teresa Ramírez, con la autora y dos invitadas. El diálogo abordará la obra de María Teresa Ramírez y su valor en la poesía en palenquero, lengua poco estudiada en Colombia. Un espacio dirigido a público general y a especialistas en literatura y poesía.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Presentaci\u00f3n del libro \u201cMabung\u00fa triunfo: po\u00e9ticas de resistencia afro en Mar\u00eda Teresa Ram\u00edrez\u201d, de Francy Yobanna Morales Acosta",
+    "description": "Conversatorio sobre Mabung\u00fa triunfo: po\u00e9ticas de resistencia afro en Mar\u00eda Teresa Ram\u00edrez, con la autora y dos invitadas. El di\u00e1logo abordar\u00e1 la obra de Mar\u00eda Teresa Ram\u00edrez y su valor en la poes\u00eda en palenquero, lengua poco estudiada en Colombia. Un espacio dirigido a p\u00fablico general y a especialistas en literatura y poes\u00eda.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "26 abril 2026",
     "time": "5:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Lanzamiento publicaciones resultado Becas de Estímulos Grupo de Danza",
-    "description": "Presentación de publicaciones en danza: Dramaturgias del bailarín en Colombia de Lina Villegas; Cartilla pedagogía en movimiento del Colectivo Sol Femenino del Putumayo; Cartilla raíces en evolución de Andrés José Rincón; y Danzas y expresiones coreográficas de Tunja de Sofía Fonseca.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Lanzamiento de publicaciones resultado de las Becas de Est\u00edmulos del Grupo de Danza",
+    "description": "Presentaci\u00f3n de publicaciones en danza: Dramaturgias del bailar\u00edn en Colombia de Lina Villegas; Cartilla pedagog\u00eda en movimiento del Colectivo Sol Femenino del Putumayo; Cartilla ra\u00edces en evoluci\u00f3n de Andr\u00e9s Jos\u00e9 Rinc\u00f3n; y Danzas y expresiones coreogr\u00e1ficas de Tunja de Sof\u00eda Fonseca.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "26 abril 2026",
     "time": "6:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
     "title": "Curar como territorio",
-    "description": "A partir del 47 Salón Nacional de Artistas – KAUKA, asamblea de mundos posibles, esta conversación aborda la curaduría desde lo territorial como ejercicio de autonomía política, simbólica y cultural. El encuentro funciona como pre-lanzamiento de su línea editorial y catálogo, y propone reflexionar sobre otras formas de construir y narrar el arte desde los territorios.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "A partir del 47 Sal\u00f3n Nacional de Artistas \u2013 KAUKA, asamblea de mundos posibles, esta conversaci\u00f3n aborda la curadur\u00eda desde lo territorial como ejercicio de autonom\u00eda pol\u00edtica, simb\u00f3lica y cultural. El encuentro funciona como pre-lanzamiento de su l\u00ednea editorial y cat\u00e1logo, y propone reflexionar sobre otras formas de construir y narrar el arte desde los territorios.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "27 abril 2026",
     "time": "10:30 a. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Maguaré viaja con nosotros",
-    "description": "Taller “Maguaré viaja con nosotros”, dirigido a niñas y niños de 0 a 6 años, que promueve sus derechos culturales mediante experiencias lúdicas y sensoriales. A partir de un mapa de Colombia, se desarrollan actividades de juego, sonido, movimiento y creación colectiva para explorar la diversidad cultural, fortalecer la identidad territorial y fomentar la participación activa.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Maguar\u00e9 viaja con nosotros",
+    "description": "Taller \u201cMaguar\u00e9 viaja con nosotros\u201d, dirigido a ni\u00f1as y ni\u00f1os de 0 a 6 a\u00f1os, que promueve sus derechos culturales mediante experiencias l\u00fadicas y sensoriales. A partir de un mapa de Colombia, se desarrollan actividades de juego, sonido, movimiento y creaci\u00f3n colectiva para explorar la diversidad cultural, fortalecer la identidad territorial y fomentar la participaci\u00f3n activa.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "27 abril 2026",
     "time": "1:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Surgir: Memoria de la historia de la lengua de señas colombiana",
-    "description": "Conversatorio sobre un texto que narra la historia de la Lengua de Señas Colombiana (LSC), con participación de expertos. Dirigido a la comunidad sorda y al público interesado, propicia el diálogo y el intercambio de saberes. Presenta avances del proyecto “100 años de la educación de las personas sordas en Colombia – Fase II”, centrado en instituciones y colectivos.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Surgir: Memoria de la historia de la lengua de se\u00f1as colombiana",
+    "description": "Conversatorio sobre un texto que narra la historia de la Lengua de Se\u00f1as Colombiana (LSC), con participaci\u00f3n de expertos. Dirigido a la comunidad sorda y al p\u00fablico interesado, propicia el di\u00e1logo y el intercambio de saberes. Presenta avances del proyecto \u201c100 a\u00f1os de la educaci\u00f3n de las personas sordas en Colombia \u2013 Fase II\u201d, centrado en instituciones y colectivos.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "27 abril 2026",
     "time": "2:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "Entre letras y trazos, ¿cómo se recupera el patrimonio cultural?",
-    "description": "Entre letras y trazos, este conversatorio de la Biblioteca Nacional de Colombia explora la recuperación del patrimonio bibliográfico y documental. Con la mirada del caricaturista Andrés González, se reflexiona sobre el papel de la caricatura en la historia y la importancia de preservarla. Un espacio para pensar la memoria desde el arte y su proyección hacia el futuro.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Entre letras y trazos, \u00bfc\u00f3mo se recupera el patrimonio cultural?",
+    "description": "Entre letras y trazos, este conversatorio de la Biblioteca Nacional de Colombia explora la recuperaci\u00f3n del patrimonio bibliogr\u00e1fico y documental. Con la mirada del caricaturista Andr\u00e9s Gonz\u00e1lez, se reflexiona sobre el papel de la caricatura en la historia y la importancia de preservarla. Un espacio para pensar la memoria desde el arte y su proyecci\u00f3n hacia el futuro.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "27 abril 2026",
     "time": "3:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Taller: Radio Consultas. Experimentación radiofónica con el archivo de Radio Sutatenza",
-    "description": "Este taller explora, de forma práctica, el método de alfabetización de Radio Sutatenza. A partir de guiones, boletines y cartillas, recrea el curso de Alfabeto de 1962 para analizar sus estrategias. Dirigido a docentes, estudiantes e investigadores, propone un ejercicio sonoro que conecta radio, pedagogía y materiales impresos, y reflexiona sobre su impacto en la educación rural.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Taller: Radio Consultas. Experimentaci\u00f3n radiof\u00f3nica con el archivo de Radio Sutatenza",
+    "description": "Este taller explora, de forma pr\u00e1ctica, el m\u00e9todo de alfabetizaci\u00f3n de Radio Sutatenza. A partir de guiones, boletines y cartillas, recrea el curso de Alfabeto de 1962 para analizar sus estrategias. Dirigido a docentes, estudiantes e investigadores, propone un ejercicio sonoro que conecta radio, pedagog\u00eda y materiales impresos, y reflexiona sobre su impacto en la educaci\u00f3n rural.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "27 abril 2026",
     "time": "5:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Presentación de libro digital. \"De-volver al San Juan. Memorias y vivencias del Hospital San Juan de Dios\"",
-    "description": "Con 461 años, el Hospital Universitario San Juan de Dios es símbolo de cuidado y resistencia en Bogotá. De-volver al San Juan reúne voces de trabajadoras, vecinos y personas vinculadas que sostuvieron su memoria y defendieron su misión. El libro, resultado de un proyecto entre el Instituto Caro y Cuervo y MinCulturas, recoge testimonios que evidencian una resistencia colectiva y persistente.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Presentaci\u00f3n de libro digital. \"De-volver al San Juan. Memorias y vivencias del Hospital San Juan de Dios\"",
+    "description": "Con 461 a\u00f1os, el Hospital Universitario San Juan de Dios es s\u00edmbolo de cuidado y resistencia en Bogot\u00e1. De-volver al San Juan re\u00fane voces de trabajadoras, vecinos y personas vinculadas que sostuvieron su memoria y defendieron su misi\u00f3n. El libro, resultado de un proyecto entre el Instituto Caro y Cuervo y MinCulturas, recoge testimonios que evidencian una resistencia colectiva y persistente.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "27 abril 2026",
     "time": "6:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Presentación catálogo Metales y Numismáica",
-    "description": "Se realizará la presentación del libro, moderada por el equipo del museo, donde se compartirán los detalles de su proceso de creación y su relevancia para la cultura del país.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Presentaci\u00f3n del cat\u00e1logo Metales y Numism\u00e1tica",
+    "description": "Se realizar\u00e1 la presentaci\u00f3n del libro, moderada por el equipo del museo, donde se compartir\u00e1n los detalles de su proceso de creaci\u00f3n y su relevancia para la cultura del pa\u00eds.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "27 abril 2026",
     "time": "7:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Colombia, país de la oralidad",
-    "description": "La narración oral, o cuentería, ha sido clave para transmitir conocimientos, valores y memoria colectiva. Esta actividad presenta un balance de documentos sobre esta práctica entre 1990 y 2025, evidenciando su permanencia y aportes a la cultura, el arte y la sociedad. Un espacio para reconocer el valor de la palabra hablada y sus raíces ancestrales.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Colombia, pa\u00eds de la oralidad",
+    "description": "La narraci\u00f3n oral, o cuenter\u00eda, ha sido clave para transmitir conocimientos, valores y memoria colectiva. Esta actividad presenta un balance de documentos sobre esta pr\u00e1ctica entre 1990 y 2025, evidenciando su permanencia y aportes a la cultura, el arte y la sociedad. Un espacio para reconocer el valor de la palabra hablada y sus ra\u00edces ancestrales.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "28 abril 2026",
     "time": "10:30 a. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Taller: Al pie de los cerros, a la orilla del río",
-    "description": "Este taller explora la relación con el lugar que habitamos, desde las costumbres, la vida cotidiana, la comunidad y la memoria. A través de material didáctico sobre el barrio Las Aguas, se reflexiona sobre la importancia de reconocer el territorio como base para la apropiación y construcción del patrimonio local.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Taller: Al pie de los cerros, a la orilla del r\u00edo",
+    "description": "Este taller explora la relaci\u00f3n con el lugar que habitamos, desde las costumbres, la vida cotidiana, la comunidad y la memoria. A trav\u00e9s de material did\u00e1ctico sobre el barrio Las Aguas, se reflexiona sobre la importancia de reconocer el territorio como base para la apropiaci\u00f3n y construcci\u00f3n del patrimonio local.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "28 abril 2026",
     "time": "11:30 a. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
     "title": "Construyamos un hogar para la paz",
-    "description": "¿Sabías que la paz también se construye desde lo cotidiano? Este espacio invita a reconocer el hogar y la comunidad como puntos de partida para una sociedad más justa. A través de un material didáctico, crearemos casas y un barrio de papel, donde cada acción elegida aporta a la construcción colectiva de paz desde pequeñas decisiones diarias.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "\u00bfSab\u00edas que la paz tambi\u00e9n se construye desde lo cotidiano? Este espacio invita a reconocer el hogar y la comunidad como puntos de partida para una sociedad m\u00e1s justa. A trav\u00e9s de un material did\u00e1ctico, crearemos casas y un barrio de papel, donde cada acci\u00f3n elegida aporta a la construcci\u00f3n colectiva de paz desde peque\u00f1as decisiones diarias.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "28 abril 2026",
     "time": "1:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "Presentación de Poemas de superación personal o curso relámpago para ser un traficante de llovizna",
-    "description": "Poemas de superación personal o curso relámpago para ser un traficante de llovizna (Literatelia, 2025) reúne 28 poemas que exploran la vida cotidiana desde miradas múltiples atravesadas por lo emocional y lo mediático. Con prólogo de Hugo de Mendoza y edición de Manuel Ceballos, el libro rinde homenaje a Luis Vidales. Presenta: Jorge Valbuena.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Presentaci\u00f3n de Poemas de superaci\u00f3n personal o curso rel\u00e1mpago para ser un traficante de llovizna",
+    "description": "Poemas de superaci\u00f3n personal o curso rel\u00e1mpago para ser un traficante de llovizna (Literatelia, 2025) re\u00fane 28 poemas que exploran la vida cotidiana desde miradas m\u00faltiples atravesadas por lo emocional y lo medi\u00e1tico. Con pr\u00f3logo de Hugo de Mendoza y edici\u00f3n de Manuel Ceballos, el libro rinde homenaje a Luis Vidales. Presenta: Jorge Valbuena.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "28 abril 2026",
     "time": "2:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
     "title": "Memoriante: una experiencia para reconocer las memorias sobre la Toma y Retoma del Palacio de Justicia",
-    "description": "El Museo de la Independencia Casa del Florero presenta Memoriante, una experiencia educativa para reflexionar sobre la Toma y Retoma del Palacio de Justicia. Invita a acercarse al conflicto desde la escucha y la narración, y a explorar distintas memorias del 6 y 7 de noviembre de 1985 mediante dinámicas pedagógicas que promueven el diálogo y la construcción de relatos colectivos.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "El Museo de la Independencia Casa del Florero presenta Memoriante, una experiencia educativa para reflexionar sobre la Toma y Retoma del Palacio de Justicia. Invita a acercarse al conflicto desde la escucha y la narraci\u00f3n, y a explorar distintas memorias del 6 y 7 de noviembre de 1985 mediante din\u00e1micas pedag\u00f3gicas que promueven el di\u00e1logo y la construcci\u00f3n de relatos colectivos.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "28 abril 2026",
     "time": "3:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "Planes locales de lectura, escritura, oralidad y bibliotecas en el país: apuestas para la vida",
-    "description": "Conversatorio con equipos que lideran planes locales de lectura, escritura, oralidad y bibliotecas en distintas regiones del país. Moderado por el PNLEOB, el diálogo abordará cómo estas estrategias se relacionan con el cuidado de la vida, la justicia social y epistémica, y la construcción de paz desde los territorios.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Planes locales de lectura, escritura, oralidad y bibliotecas en el pa\u00eds: apuestas para la vida",
+    "description": "Conversatorio con equipos que lideran planes locales de lectura, escritura, oralidad y bibliotecas en distintas regiones del pa\u00eds. Moderado por el PNLEOB, el di\u00e1logo abordar\u00e1 c\u00f3mo estas estrategias se relacionan con el cuidado de la vida, la justicia social y epist\u00e9mica, y la construcci\u00f3n de paz desde los territorios.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "28 abril 2026",
     "time": "4:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Lanzamiento de publicaciones con enfoque étnico",
-    "description": "Lanzamiento de la cartilla Danzantes de Males: Historia de Kenana y Jeima, que narra la experiencia de dos jóvenes del pueblo Nukak Baká. Un espacio para conocer sus historias y acercarse a las memorias, saberes y expresiones culturales de esta comunidad.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Lanzamiento de publicaciones con enfoque \u00e9tnico",
+    "description": "Lanzamiento de la cartilla Danzantes de Males: Historia de Kenana y Jeima, que narra la experiencia de dos j\u00f3venes del pueblo Nukak Bak\u00e1. Un espacio para conocer sus historias y acercarse a las memorias, saberes y expresiones culturales de esta comunidad.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "28 abril 2026",
     "time": "5:00 p. m.",
     "entity": "AGN",
-    "title": "Los imperialismo del pasado y el presente",
-    "description": "De los imperios coloniales a las potencias actuales, este conversatorio cruza archivos, prensa y memoria para rastrear continuidades de dominación en América y el Caribe. Analiza cómo se justifican hoy las injerencias, qué resistencias han dejado huella y cómo leer el presente con mirada histórica. Un espacio para reconocer patrones, tensiones y abrir preguntas con el público.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Los imperialismos del pasado y del presente",
+    "description": "De los imperios coloniales a las potencias actuales, este conversatorio cruza archivos, prensa y memoria para rastrear continuidades de dominaci\u00f3n en Am\u00e9rica y el Caribe. Analiza c\u00f3mo se justifican hoy las injerencias, qu\u00e9 resistencias han dejado huella y c\u00f3mo leer el presente con mirada hist\u00f3rica. Un espacio para reconocer patrones, tensiones y abrir preguntas con el p\u00fablico.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "28 abril 2026",
     "time": "6:00 p. m.",
     "entity": "AGN",
-    "title": "Lanzamiento de la colección otras colombias Posibles",
-    "description": "En alianza con MiCASa, el Archivo General de la Nación presenta nuevos títulos de la colección Otras Colombias Posibles. A los dos libros de 2025 se suman diez más que abordan miradas afro e indígenas, luchas de las mujeres, culturas campesinas, migraciones, economía, ciudad, ambiente, estéticas disidentes y memorias para la paz y la reparación.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Lanzamiento de la colecci\u00f3n otras colombias Posibles",
+    "description": "En alianza con MiCASa, el Archivo General de la Naci\u00f3n presenta nuevos t\u00edtulos de la colecci\u00f3n Otras Colombias Posibles. A los dos libros de 2025 se suman diez m\u00e1s que abordan miradas afro e ind\u00edgenas, luchas de las mujeres, culturas campesinas, migraciones, econom\u00eda, ciudad, ambiente, est\u00e9ticas disidentes y memorias para la paz y la reparaci\u00f3n.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "28 abril 2026",
     "time": "7:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Charla: 50 años después de León de Greiff",
-    "description": "Charla sobre la vida y obra de León de Greiff, a 50 años de su muerte. El encuentro aborda sus múltiples facetas como poeta, editor, cuentista, traductor, melómano y hombre de radio, destacando su legado en la literatura y la cultura colombiana.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Charla: 50 a\u00f1os despu\u00e9s de Le\u00f3n de Greiff",
+    "description": "Charla sobre la vida y obra de Le\u00f3n de Greiff, a 50 a\u00f1os de su muerte. El encuentro aborda sus m\u00faltiples facetas como poeta, editor, cuentista, traductor, mel\u00f3mano y hombre de radio, destacando su legado en la literatura y la cultura colombiana.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "29 abril 2026",
     "time": "10:30 a. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
     "title": "Mi territorio es patrimonio - conoce y comparte los patrimonios con el material educativo",
-    "description": "Espacio que presenta una herramienta para la sensibilización y apropiación del patrimonio en contextos locales. Invita a reconocer lo propio, lo comunitario y lo colectivo. A través de actividades participativas, se exploran valores emocionales, simbólicos e históricos del patrimonio, fortaleciendo la conexión con los territorios, las memorias y los saberes que nos constituyen.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "Espacio que presenta una herramienta para la sensibilizaci\u00f3n y apropiaci\u00f3n del patrimonio en contextos locales. Invita a reconocer lo propio, lo comunitario y lo colectivo. A trav\u00e9s de actividades participativas, se exploran valores emocionales, simb\u00f3licos e hist\u00f3ricos del patrimonio, fortaleciendo la conexi\u00f3n con los territorios, las memorias y los saberes que nos constituyen.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "29 abril 2026",
     "time": "11:30 a. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "Presentación de El sacrilegio",
-    "description": "El amor y la violencia atraviesan esta novela histórica sobre una adolescente boliviana que huye con un cura y enfrenta múltiples peripecias en medio de las violencias colombianas. La historia se sitúa en el sur del Tolima, entre la pobreza y la lucha campesina, antes y después del asesinato de Jorge Eliécer Gaitán.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Presentaci\u00f3n de El sacrilegio",
+    "description": "El amor y la violencia atraviesan esta novela hist\u00f3rica sobre una adolescente boliviana que huye con un cura y enfrenta m\u00faltiples peripecias en medio de las violencias colombianas. La historia se sit\u00faa en el sur del Tolima, entre la pobreza y la lucha campesina, antes y despu\u00e9s del asesinato de Jorge Eli\u00e9cer Gait\u00e1n.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "29 abril 2026",
     "time": "2:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
     "title": "Lanzamiento Fugas de Tinta No. 18",
-    "description": "En este espacio, Cristian Valencia conversa con personas privadas de la libertad que han encontrado en la escritura creativa nuevas formas de expresión. Incluye el lanzamiento del más reciente volumen de Fugas de Tinta, en alianza con el INPEC.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "En este espacio, Cristian Valencia conversa con personas privadas de la libertad que han encontrado en la escritura creativa nuevas formas de expresi\u00f3n. Incluye el lanzamiento del m\u00e1s reciente volumen de Fugas de Tinta, en alianza con el INPEC.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "29 abril 2026",
     "time": "3:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Conversatorio. Promoción de lectura y crítica literaria desde clubes de lectura afrocentrados",
-    "description": "Los clubes de lectura son espacios clave del ecosistema cultural. Este conversatorio explora experiencias que van más allá de la difusión: el colectivo Kutusoma, con enfoque afrocentrado, y Entre Nosotras, dedicado a autoras racializadas. A través del diálogo con sus directoras, se conocerán sus dinámicas y su papel en la educación y la difusión cultural con enfoque equitativo.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Conversatorio. Promoci\u00f3n de lectura y cr\u00edtica literaria desde clubes de lectura afrocentrados",
+    "description": "Los clubes de lectura son espacios clave del ecosistema cultural. Este conversatorio explora experiencias que van m\u00e1s all\u00e1 de la difusi\u00f3n: el colectivo Kutusoma, con enfoque afrocentrado, y Entre Nosotras, dedicado a autoras racializadas. A trav\u00e9s del di\u00e1logo con sus directoras, se conocer\u00e1n sus din\u00e1micas y su papel en la educaci\u00f3n y la difusi\u00f3n cultural con enfoque equitativo.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "29 abril 2026",
     "time": "4:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "La causa criminal contra Rafael Larrañaga y el judío Barchillona. El genocidio cauchero más allá de La Vorágine",
-    "description": "Presentación de un libro sobre la causa criminal contra el pastuso Rafael Larrañaga y el judío Isaac Jacobo Barchillona, personajes retratados por José Eustasio Rivera. El texto aborda un proceso histórico inédito que permite conocer una faceta oscura del país y el contexto que dio origen a La Vorágine.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "La causa criminal contra Rafael Larra\u00f1aga y el jud\u00edo Barchillona. El genocidio cauchero m\u00e1s all\u00e1 de La Vor\u00e1gine",
+    "description": "Presentaci\u00f3n de un libro sobre la causa criminal contra el pastuso Rafael Larra\u00f1aga y el jud\u00edo Isaac Jacobo Barchillona, personajes retratados por Jos\u00e9 Eustasio Rivera. El texto aborda un proceso hist\u00f3rico in\u00e9dito que permite conocer una faceta oscura del pa\u00eds y el contexto que dio origen a La Vor\u00e1gine.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "29 abril 2026",
     "time": "5:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Maestrías ICC | Escuchamos tus preguntas",
-    "description": "Encuentro con los profesores de la maestría y una muestra de clase abierta.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Maestr\u00edas ICC | Escuchamos tus preguntas",
+    "description": "Encuentro con los profesores de la maestr\u00eda y una muestra de clase abierta.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "29 abril 2026",
     "time": "6:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Investigar el títere, imaginar un arte del objeto",
-    "description": "El arte titiritero es un sistema vivo de transmisión cultural que ha perdurado por la oralidad, la experiencia y la resistencia comunitaria. Su marginalidad ha impulsado lenguajes y pedagogías propias, donde música, voz y sonido son centrales. Ante una memoria fragmentada y en riesgo, se destaca la importancia de documentar y fortalecer espacios como la FIATO para su proyección.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Investigar el t\u00edtere, imaginar un arte del objeto",
+    "description": "El arte titiritero es un sistema vivo de transmisi\u00f3n cultural que ha perdurado por la oralidad, la experiencia y la resistencia comunitaria. Su marginalidad ha impulsado lenguajes y pedagog\u00edas propias, donde m\u00fasica, voz y sonido son centrales. Ante una memoria fragmentada y en riesgo, se destaca la importancia de documentar y fortalecer espacios como la FIATO para su proyecci\u00f3n.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "30 abril 2026",
     "time": "10:30 a. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Relatos polifónicos de país",
-    "description": "Mesa de radio en vivo sobre nuevas publicaciones de la DACMI, en el marco de la Red de Comunicación para la Vida. Libros como Relatos polifónicos de país y Pautas para el trabajo audiovisual con pueblos indígenas serán el punto de partida para un diálogo entre autores y público sobre diversidad cultural, comunicación y creación en Colombia.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Relatos polif\u00f3nicos de pa\u00eds",
+    "description": "Mesa de radio en vivo sobre nuevas publicaciones de la DACMI, en el marco de la Red de Comunicaci\u00f3n para la Vida. Libros como Relatos polif\u00f3nicos de pa\u00eds y Pautas para el trabajo audiovisual con pueblos ind\u00edgenas ser\u00e1n el punto de partida para un di\u00e1logo entre autores y p\u00fablico sobre diversidad cultural, comunicaci\u00f3n y creaci\u00f3n en Colombia.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "30 abril 2026",
     "time": "11:30 a. m.",
     "entity": "Biblioteca Nacional de Colombia",
     "title": "Del aguacate al zopilote: taller para buscar y compartir las palabras nativas de nuestro continente",
-    "description": "Clarisa Ruiz escribió un libro en el que las palabras son los personajes principales y, en esta entrega de la serie «Leer es mi cuento» recoge palabras que son muy propias de nuestra lengua (incluso cuando vienen de otros idiomas) para dotarlas de nuevos sentidos, los cuales dialogan a la perfección con las ilustraciones de Juan Camilo Mayorga",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "Clarisa Ruiz escribi\u00f3 un libro en el que las palabras son los personajes principales y, en esta entrega de la serie \u00abLeer es mi cuento\u00bb recoge palabras que son muy propias de nuestra lengua (incluso cuando vienen de otros idiomas) para dotarlas de nuevos sentidos, los cuales dialogan a la perfecci\u00f3n con las ilustraciones de Juan Camilo Mayorga",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "30 abril 2026",
     "time": "1:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "El ensayo narrativo en la disrupción del contenido: Presentación de La soberanía y el cuerpo: dialéctica de la resistencia.",
-    "description": "La soberanía y el cuerpo: dialéctica de la resistencia se inscribe en el ensayo narrativo. No busca trama ni clímax, sino indagar, desde la memoria y la experiencia, en escenas que piensan el mundo. Propone la literatura como forma de conocimiento y reflexión, y se distancia de tendencias que privilegian el exceso, el adorno y las moralejas de consuelo en el arte contemporáneo.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "El ensayo narrativo en la disrupci\u00f3n del contenido: Presentaci\u00f3n de La soberan\u00eda y el cuerpo: dial\u00e9ctica de la resistencia.",
+    "description": "La soberan\u00eda y el cuerpo: dial\u00e9ctica de la resistencia se inscribe en el ensayo narrativo. No busca trama ni cl\u00edmax, sino indagar, desde la memoria y la experiencia, en escenas que piensan el mundo. Propone la literatura como forma de conocimiento y reflexi\u00f3n, y se distancia de tendencias que privilegian el exceso, el adorno y las moralejas de consuelo en el arte contempor\u00e1neo.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "30 abril 2026",
     "time": "3:00 p. m.",
-    "entity": "Instituto Colombiano de Antropología e Historia",
-    "title": "Pirámides prehispánicas en Popayán",
-    "description": "Se presentarán los resultados de la investigación “Caracterización del conjunto de pirámides prehispánicas en Popayán” de Víctor González, que analiza su ubicación, tipologías, estado de conservación y valor patrimonial. El estudio aporta nuevas lecturas sobre estos vestigios arqueológicos, su relación con el territorio, sus usos históricos y su importancia para la memoria y la comprensión de las sociedades que habitaron la región.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "entity": "Instituto Colombiano de Antropolog\u00eda e Historia",
+    "title": "Pir\u00e1mides prehisp\u00e1nicas en Popay\u00e1n",
+    "description": "Se presentar\u00e1n los resultados de la investigaci\u00f3n \u201cCaracterizaci\u00f3n del conjunto de pir\u00e1mides prehisp\u00e1nicas en Popay\u00e1n\u201d de V\u00edctor Gonz\u00e1lez, que analiza su ubicaci\u00f3n, tipolog\u00edas, estado de conservaci\u00f3n y valor patrimonial. El estudio aporta nuevas lecturas sobre estos vestigios arqueol\u00f3gicos, su relaci\u00f3n con el territorio, sus usos hist\u00f3ricos y su importancia para la memoria y la comprensi\u00f3n de las sociedades que habitaron la regi\u00f3n.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "30 abril 2026",
     "time": "4:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "El Réquiem del Silencio y Don Guillermo: dos publicaciones para escuchar la voz de las víctimas en el marco del centenario de Guillermo Cano.",
-    "description": "Conversatorio con Lizeth Acosta, Diego Pérez y Johanna Calderón sobre dos publicaciones de la BNC: la colección Don Guillermo y el Réquiem del Silencio Op. 143 de Blas Emilio Atehortúa. El diálogo abordará sus procesos editoriales y su aporte a la memoria cultural del país.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "El R\u00e9quiem del Silencio y Don Guillermo: dos publicaciones para escuchar la voz de las v\u00edctimas en el marco del centenario de Guillermo Cano.",
+    "description": "Conversatorio con Lizeth Acosta, Diego P\u00e9rez y Johanna Calder\u00f3n sobre dos publicaciones de la BNC: la colecci\u00f3n Don Guillermo y el R\u00e9quiem del Silencio Op. 143 de Blas Emilio Atehort\u00faa. El di\u00e1logo abordar\u00e1 sus procesos editoriales y su aporte a la memoria cultural del pa\u00eds.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "30 abril 2026",
     "time": "5:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
     "title": "El circo investiga",
-    "description": "Panel de discusión entre ganadorxs de las becas de investigación en circo entre 2023 y 2025.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "Panel de discusi\u00f3n entre ganadorxs de las becas de investigaci\u00f3n en circo entre 2023 y 2025.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "30 abril 2026",
     "time": "6:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Relatos polifónicos de país",
-    "description": "Mesa de radio en vivo sobre nuevas publicaciones de la DACMI en la Red de Comunicación para la Vida. Libros como Relatos polifónicos de país y Pautas y recomendaciones para el trabajo audiovisual y cinematográfico con pueblos indígenas serán el punto de partida para un diálogo abierto entre autores y público sobre la diversidad cultural, la comunicación y las formas de creación en Colombia.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Relatos polif\u00f3nicos de pa\u00eds",
+    "description": "Mesa de radio en vivo sobre nuevas publicaciones de la DACMI en la Red de Comunicaci\u00f3n para la Vida. Libros como Relatos polif\u00f3nicos de pa\u00eds y Pautas y recomendaciones para el trabajo audiovisual y cinematogr\u00e1fico con pueblos ind\u00edgenas ser\u00e1n el punto de partida para un di\u00e1logo abierto entre autores y p\u00fablico sobre la diversidad cultural, la comunicaci\u00f3n y las formas de creaci\u00f3n en Colombia.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "30 abril 2026",
     "time": "7:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Lanzamiento del libro \"Rescate tipográfico. Perspectivas y experiencias de investigación en el suroccidente colombiano\"",
-    "description": "El evento ofrece una mirada actual de la tipografía en Colombia desde el Laboratorio Entre Plomos de la Universidad del Cauca y el trabajo de rescate patrimonial de La Linterna y el Taller Escuela de Artes Gráficas en Cali. Un espacio para que público y diseñadores conozcan la impresión tipográfica artesanal y las iniciativas que buscan mantenerla vigente.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Lanzamiento del libro \"Rescate tipogr\u00e1fico. Perspectivas y experiencias de investigaci\u00f3n en el suroccidente colombiano\"",
+    "description": "El evento ofrece una mirada actual de la tipograf\u00eda en Colombia desde el Laboratorio Entre Plomos de la Universidad del Cauca y el trabajo de rescate patrimonial de La Linterna y el Taller Escuela de Artes Gr\u00e1ficas en Cali. Un espacio para que p\u00fablico y dise\u00f1adores conozcan la impresi\u00f3n tipogr\u00e1fica artesanal y las iniciativas que buscan mantenerla vigente.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "1 mayo 2026",
     "time": "10:30 a. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "ZOOM AL PÚBLICO",
-    "description": "Taller creativo para socializar los resultados del Estudio de Públicos de Cine Colombiano 2025. Propone un espacio de mediación audiovisual que acerca esta investigación del FDC y la DACMI (2024–2025). Desde la pedagogía artística, introduce hallazgos clave y fomenta la reflexión sobre la creación audiovisual en diálogo con las demandas, deseos y motivaciones de los públicos.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "ZOOM AL P\u00daBLICO",
+    "description": "Taller creativo para socializar los resultados del Estudio de P\u00fablicos de Cine Colombiano 2025. Propone un espacio de mediaci\u00f3n audiovisual que acerca esta investigaci\u00f3n del FDC y la DACMI (2024\u20132025). Desde la pedagog\u00eda art\u00edstica, introduce hallazgos clave y fomenta la reflexi\u00f3n sobre la creaci\u00f3n audiovisual en di\u00e1logo con las demandas, deseos y motivaciones de los p\u00fablicos.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "1 mayo 2026",
     "time": "12:30 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Conversatorio entre talentos de la cinematografía nacional en torno a películas colombiana",
-    "description": "Este evento tiene como objetivo la promoción del cine colombiano en el marco de la campaña El Cine Colombiano ¡Nos Late! - nuestrocine.co",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Conversatorio entre talentos de la cinematograf\u00eda nacional en torno a pel\u00edculas colombiana",
+    "description": "Este evento tiene como objetivo la promoci\u00f3n del cine colombiano en el marco de la campa\u00f1a El Cine Colombiano \u00a1Nos Late! - nuestrocine.co",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "1 mayo 2026",
     "time": "2:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "La formación artística como política pública en el ámbito nacional e internacional",
-    "description": "Conversatorio entre expertos de políticas públicas del sector artístico y cultural.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "La formaci\u00f3n art\u00edstica como pol\u00edtica p\u00fablica en el \u00e1mbito nacional e internacional",
+    "description": "Conversatorio entre expertos de pol\u00edticas p\u00fablicas del sector art\u00edstico y cultural.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "1 mayo 2026",
     "time": "3:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Artes para la paz: Ecosistemas de formación Artística",
-    "description": "Conversatorio entre líderes de procesos de formación artística y cultural en ámbitos escolares y comunitarios. El diálogo aborda experiencias, retos y aportes a la consolidación de ecosistemas artísticos en los territorios, destacando el papel de la educación y la creación en el fortalecimiento cultural y la participación.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Artes para la paz: Ecosistemas de formaci\u00f3n Art\u00edstica",
+    "description": "Conversatorio entre l\u00edderes de procesos de formaci\u00f3n art\u00edstica y cultural en \u00e1mbitos escolares y comunitarios. El di\u00e1logo aborda experiencias, retos y aportes a la consolidaci\u00f3n de ecosistemas art\u00edsticos en los territorios, destacando el papel de la educaci\u00f3n y la creaci\u00f3n en el fortalecimiento cultural y la participaci\u00f3n.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "1 mayo 2026",
     "time": "4:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Lanzamiento del libro: Testamento goliardo, de Helcías Martán Góngora",
-    "description": "Esta antología hace parte de la colección Posteris Lvmen de la Universidad del Cauca, que publicará 100 libros de autores caucanos para conmemorar su centenario. Es resultado de un proyecto investigativo desarrollado en alianza con el Instituto Caro y Cuervo.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Lanzamiento del libro: Testamento goliardo, de Helc\u00edas Mart\u00e1n G\u00f3ngora",
+    "description": "Esta antolog\u00eda hace parte de la colecci\u00f3n Posteris Lvmen de la Universidad del Cauca, que publicar\u00e1 100 libros de autores caucanos para conmemorar su centenario. Es resultado de un proyecto investigativo desarrollado en alianza con el Instituto Caro y Cuervo.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "1 mayo 2026",
     "time": "5:00 p. m.",
     "entity": "AGN",
-    "title": "Las memorias incómodas de la migración en Colombia",
-    "description": "Mirada histórica a la migración “indeseada” en Colombia: sirio-libaneses, chinos, “comunistas” y otros grupos señalados como amenaza. Desde el siglo XIX se revisan leyes, expedientes y prensa para entender la construcción de prejuicios y controles. También se explora cómo estas comunidades resistieron, se asentaron y transformaron el país, y qué preguntas abre hoy ese archivo sobre ciudadanía y derechos.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Las memorias inc\u00f3modas de la migraci\u00f3n en Colombia",
+    "description": "Mirada hist\u00f3rica a la migraci\u00f3n \u201cindeseada\u201d en Colombia: sirio-libaneses, chinos, \u201ccomunistas\u201d y otros grupos se\u00f1alados como amenaza. Desde el siglo XIX se revisan leyes, expedientes y prensa para entender la construcci\u00f3n de prejuicios y controles. Tambi\u00e9n se explora c\u00f3mo estas comunidades resistieron, se asentaron y transformaron el pa\u00eds, y qu\u00e9 preguntas abre hoy ese archivo sobre ciudadan\u00eda y derechos.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "1 mayo 2026",
     "time": "6:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Lectura en voz alta: Mujeres y poesía contemporánea",
-    "description": "El Ministerio de las Culturas presenta una colección de poesía con cuatro cuadernillos que reúnen a 45 poetas colombianas en distintos momentos de su trayectoria. Sus voces exploran temas como ciencia ficción, erotismo y lo fantástico, ampliando el panorama de la poesía escrita por mujeres. El lanzamiento incluye lectura en voz alta y presentación de la compiladora Camila Charry.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Lectura en voz alta: Mujeres y poes\u00eda contempor\u00e1nea",
+    "description": "El Ministerio de las Culturas presenta una colecci\u00f3n de poes\u00eda con cuatro cuadernillos que re\u00fanen a 45 poetas colombianas en distintos momentos de su trayectoria. Sus voces exploran temas como ciencia ficci\u00f3n, erotismo y lo fant\u00e1stico, ampliando el panorama de la poes\u00eda escrita por mujeres. El lanzamiento incluye lectura en voz alta y presentaci\u00f3n de la compiladora Camila Charry.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "1 mayo 2026",
     "time": "7:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Presentación del libro: Vocabulario tipográfico",
-    "description": "El “Vocabulario tipográfico” del Instituto Caro y Cuervo da a conocer la terminología de la impresión tipográfica, un oficio que aún se preserva en la Imprenta Patriótica. Esta edición, basada en la guía de Juan José Morato Caldeiro, fue compuesta en linotipia e impresa en máquinas tipográficas, destacando su carácter artesanal y su vínculo con la tradición de la imprenta.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Presentaci\u00f3n del libro: Vocabulario tipogr\u00e1fico",
+    "description": "El \u201cVocabulario tipogr\u00e1fico\u201d del Instituto Caro y Cuervo da a conocer la terminolog\u00eda de la impresi\u00f3n tipogr\u00e1fica, un oficio que a\u00fan se preserva en la Imprenta Patri\u00f3tica. Esta edici\u00f3n, basada en la gu\u00eda de Juan Jos\u00e9 Morato Caldeiro, fue compuesta en linotipia e impresa en m\u00e1quinas tipogr\u00e1ficas, destacando su car\u00e1cter artesanal y su v\u00ednculo con la tradici\u00f3n de la imprenta.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "2 mayo 2026",
     "time": "10:30 a. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Red Estudiantil por la Memoria y el Patrimonio - Taller de apropiación social del patrimonio cultural",
-    "description": "Taller de apropiación social del patrimonio cultural dirigido a estudiantes de grados 9° a 11°. Se enfoca en el diseño de proyectos que aporten al cumplimiento de las 80 horas de servicio social obligatorio, promoviendo el reconocimiento, la valoración y la participación activa en la protección del patrimonio cultural.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Red Estudiantil por la Memoria y el Patrimonio - Taller de apropiaci\u00f3n social del patrimonio cultural",
+    "description": "Taller de apropiaci\u00f3n social del patrimonio cultural dirigido a estudiantes de grados 9\u00b0 a 11\u00b0. Se enfoca en el dise\u00f1o de proyectos que aporten al cumplimiento de las 80 horas de servicio social obligatorio, promoviendo el reconocimiento, la valoraci\u00f3n y la participaci\u00f3n activa en la protecci\u00f3n del patrimonio cultural.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "2 mayo 2026",
     "time": "1:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Taller sobre la tipografía de Yerbabuena del Instituto Caro y Cuervo",
-    "description": "Los participantes conocerán, de la voz de uno de sus creadores, el proceso de diseño de la tipografía de la estrategia “Colombia, casa común”. El espacio abordará decisiones estéticas, conceptuales y técnicas, y permitirá comprender cómo la tipografía contribuye a construir identidad visual y comunicar una apuesta cultural.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Taller sobre la tipograf\u00eda de Yerbabuena del Instituto Caro y Cuervo",
+    "description": "Los participantes conocer\u00e1n, de la voz de uno de sus creadores, el proceso de dise\u00f1o de la tipograf\u00eda de la estrategia \u201cColombia, casa com\u00fan\u201d. El espacio abordar\u00e1 decisiones est\u00e9ticas, conceptuales y t\u00e9cnicas, y permitir\u00e1 comprender c\u00f3mo la tipograf\u00eda contribuye a construir identidad visual y comunicar una apuesta cultural.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "2 mayo 2026",
     "time": "2:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "Lanzamiento Antología Relata 2025",
-    "description": "En este espacio, Johana Marcela Rozo charla con dos autores de la Antología Relata 2025.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Lanzamiento Antolog\u00eda Relata 2025",
+    "description": "En este espacio, Johana Marcela Rozo charla con dos autores de la Antolog\u00eda Relata 2025.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "2 mayo 2026",
     "time": "3:00 p. m.",
-    "entity": "Instituto Colombiano de Antropología e Historia",
-    "title": "El galeón San Jose a futuro. ¿Cómo conservarlo?",
-    "description": "El naufragio del galeón San José plantea un dilema: ¿conservar sus restos en el fondo del mar o extraerlos? Este evento, con sustento científico, aborda las implicaciones de ambas opciones y busca ofrecer elementos para comprender un debate vigente a nivel global sobre patrimonio, conservación y memoria.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "entity": "Instituto Colombiano de Antropolog\u00eda e Historia",
+    "title": "El gale\u00f3n San Jose a futuro. \u00bfC\u00f3mo conservarlo?",
+    "description": "El naufragio del gale\u00f3n San Jos\u00e9 plantea un dilema: \u00bfconservar sus restos en el fondo del mar o extraerlos? Este evento, con sustento cient\u00edfico, aborda las implicaciones de ambas opciones y busca ofrecer elementos para comprender un debate vigente a nivel global sobre patrimonio, conservaci\u00f3n y memoria.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "2 mayo 2026",
     "time": "4:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "El futuro está lleno de deseo. 20 años de Relata",
-    "description": "Encuentro teórico-práctico para explorar el deseo como motor de futuros posibles para Relata. A partir de poesía y literatura especulativa, se reflexiona sobre imaginación, fantasía y cuerpo en la construcción de espacios colectivos de lectura y escritura. Dirigido por Alejo Morales y Paula Castillo.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "El futuro est\u00e1 lleno de deseo. 20 a\u00f1os de Relata",
+    "description": "Encuentro te\u00f3rico-pr\u00e1ctico para explorar el deseo como motor de futuros posibles para Relata. A partir de poes\u00eda y literatura especulativa, se reflexiona sobre imaginaci\u00f3n, fantas\u00eda y cuerpo en la construcci\u00f3n de espacios colectivos de lectura y escritura. Dirigido por Alejo Morales y Paula Castillo.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "2 mayo 2026",
     "time": "6:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Presentación del libro: El oro no flota",
-    "description": "Presentación del libro El oro no flota. A partir del galeón San José, el encuentro propone mirar más allá del “tesoro sumergido” y acercarse, desde la imaginación, a lo que permanece en el fondo del mar. Con Andrés Ospina y Diego Bohórquez, se exploran cruces entre historia, literatura e ilustración para recrear y reinventar el pasado.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Presentaci\u00f3n del libro: El oro no flota",
+    "description": "Presentaci\u00f3n del libro El oro no flota. A partir del gale\u00f3n San Jos\u00e9, el encuentro propone mirar m\u00e1s all\u00e1 del \u201ctesoro sumergido\u201d y acercarse, desde la imaginaci\u00f3n, a lo que permanece en el fondo del mar. Con Andr\u00e9s Ospina y Diego Boh\u00f3rquez, se exploran cruces entre historia, literatura e ilustraci\u00f3n para recrear y reinventar el pasado.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "2 mayo 2026",
     "time": "7:00 p. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Pedagogías que caminan - sobre autonomías pedagógicas y escuelas territoriales",
-    "description": "Conversación sobre los giros pedagógicos en Artes Plásticas y Visuales desde la Escuela Itinerante de APV, que propone modelos horizontales, colectivos y situados para la formación artística. El encuentro incluye el lanzamiento de sus publicaciones 2024 y 2025 y reflexiona sobre nuevas formas de construir escuela desde los territorios.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Pedagog\u00edas que caminan - sobre autonom\u00edas pedag\u00f3gicas y escuelas territoriales",
+    "description": "Conversaci\u00f3n sobre los giros pedag\u00f3gicos en Artes Pl\u00e1sticas y Visuales desde la Escuela Itinerante de APV, que propone modelos horizontales, colectivos y situados para la formaci\u00f3n art\u00edstica. El encuentro incluye el lanzamiento de sus publicaciones 2024 y 2025 y reflexiona sobre nuevas formas de construir escuela desde los territorios.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "3 mayo 2026",
     "time": "10:30 a. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
     "title": "A de aerolito: leer con los sentidos",
-    "description": "Taller multisensorial para explorar formas de leer y comunicarnos. A partir del aerolito, pieza del Museo Nacional, se invita a descubrir la letra A en distintos sistemas: braille, Lengua de Señas Colombiana y sistema alfanumérico. Un espacio para reconocer la diversidad de lenguajes y promover la inclusión a través de experiencias sensoriales.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "description": "Taller multisensorial para explorar formas de leer y comunicarnos. A partir del aerolito, pieza del Museo Nacional, se invita a descubrir la letra A en distintos sistemas: braille, Lengua de Se\u00f1as Colombiana y sistema alfanum\u00e9rico. Un espacio para reconocer la diversidad de lenguajes y promover la inclusi\u00f3n a trav\u00e9s de experiencias sensoriales.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "3 mayo 2026",
     "time": "3:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Lanzamiento de la Biblioteca Rafael Gutiérrez Girardot (Capítulo Colombia). Tomo I. Poesía colombiana. Ensayos críticos",
-    "description": "Conversatorio sobre el proyecto Biblioteca Rafael Gutiérrez (Capítulo Colombia), investigación que reúne la obra de Rafael Gutiérrez Girardot. Liderado por el GELCIL de la Universidad de Antioquia y el Instituto Caro y Cuervo, presenta el primer tomo de una colección de 11 volúmenes, que recoge su mirada crítica sobre la poesía y el pensamiento en su tiempo.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Lanzamiento de la Biblioteca Rafael Guti\u00e9rrez Girardot (Cap\u00edtulo Colombia). Tomo I. Poes\u00eda colombiana. Ensayos cr\u00edticos",
+    "description": "Conversatorio sobre el proyecto Biblioteca Rafael Guti\u00e9rrez (Cap\u00edtulo Colombia), investigaci\u00f3n que re\u00fane la obra de Rafael Guti\u00e9rrez Girardot. Liderado por el GELCIL de la Universidad de Antioquia y el Instituto Caro y Cuervo, presenta el primer tomo de una colecci\u00f3n de 11 vol\u00famenes, que recoge su mirada cr\u00edtica sobre la poes\u00eda y el pensamiento en su tiempo.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "3 mayo 2026",
     "time": "4:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Voces vivas Presentación del primer repositorio de lenguas nativas de Colombia",
-    "description": "Presentación del primer repositorio de lenguas nativas de Colombia, desarrollado por comunidades indígenas y el Instituto Caro y Cuervo. El proyecto documenta 15 lenguas y reúne memorias lingüísticas y culturales. En la sesión se compartirá su proceso de creación y los contenidos disponibles, invitando a explorar la diversidad lingüística del país.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Voces vivas Presentaci\u00f3n del primer repositorio de lenguas nativas de Colombia",
+    "description": "Presentaci\u00f3n del primer repositorio de lenguas nativas de Colombia, desarrollado por comunidades ind\u00edgenas y el Instituto Caro y Cuervo. El proyecto documenta 15 lenguas y re\u00fane memorias ling\u00fc\u00edsticas y culturales. En la sesi\u00f3n se compartir\u00e1 su proceso de creaci\u00f3n y los contenidos disponibles, invitando a explorar la diversidad ling\u00fc\u00edstica del pa\u00eds.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "4 mayo 2026",
     "time": "10:30 a. m.",
     "entity": "Ministerio de las Culturas, las Artes y los Saberes",
-    "title": "Taller: Historias en capas, color en juego - El legado de Beatriz González",
-    "description": "A través de un juego creativo con imágenes de la Independencia y la exploración del color, este taller propone un acercamiento a la obra de Beatriz González. Los participantes experimentarán con la apropiación y transformación de imágenes para comprender cómo el arte resignifica el pasado y lo conecta con la vida cotidiana.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Taller: Historias en capas, color en juego - El legado de Beatriz Gonz\u00e1lez",
+    "description": "A trav\u00e9s de un juego creativo con im\u00e1genes de la Independencia y la exploraci\u00f3n del color, este taller propone un acercamiento a la obra de Beatriz Gonz\u00e1lez. Los participantes experimentar\u00e1n con la apropiaci\u00f3n y transformaci\u00f3n de im\u00e1genes para comprender c\u00f3mo el arte resignifica el pasado y lo conecta con la vida cotidiana.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "4 mayo 2026",
     "time": "3:00 p. m.",
     "entity": "Instituto Caro y Cuervo",
-    "title": "Lanzamiento de un nuevo título de la Biblioteca Común \"El trabajo de Waldina Dávila de Ponce\"",
-    "description": "La Biblioteca Común presenta el segundo título de su colección, dedicado a Waldina Dávila. El evento dará a conocer a esta autora del siglo XIX y destacará su pensamiento crítico sobre las consecuencias de la guerra en el ámbito familiar, invitando a redescubrir su obra y su lugar en la literatura colombiana.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Lanzamiento de un nuevo t\u00edtulo de la Biblioteca Com\u00fan \"El trabajo de Waldina D\u00e1vila de Ponce\"",
+    "description": "La Biblioteca Com\u00fan presenta el segundo t\u00edtulo de su colecci\u00f3n, dedicado a Waldina D\u00e1vila. El evento dar\u00e1 a conocer a esta autora del siglo XIX y destacar\u00e1 su pensamiento cr\u00edtico sobre las consecuencias de la guerra en el \u00e1mbito familiar, invitando a redescubrir su obra y su lugar en la literatura colombiana.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   },
   {
     "date": "4 mayo 2026",
     "time": "4:00 p. m.",
     "entity": "Biblioteca Nacional de Colombia",
-    "title": "Del taller a la publicación: presentación de Corazón de lava de Paula Alejandra Rojas",
-    "description": "Corazón de lava reúne ocho cuentos sobre niñas y adolescentes que, en su tránsito a la adultez, enfrentan su lado oculto. Finalista de premios nacionales, el libro surge del trabajo del Taller Lispector. En este espacio, su autora conversa con Natalia Guzmán y Dayro Martínez sobre procesos de lectura y edición colectiva.",
-    "location": "Auditorio estand: Colombia, casa común"
+    "title": "Del taller a la publicaci\u00f3n: presentaci\u00f3n de Coraz\u00f3n de lava de Paula Alejandra Rojas",
+    "description": "Coraz\u00f3n de lava re\u00fane ocho cuentos sobre ni\u00f1as y adolescentes que, en su tr\u00e1nsito a la adultez, enfrentan su lado oculto. Finalista de premios nacionales, el libro surge del trabajo del Taller Lispector. En este espacio, su autora conversa con Natalia Guzm\u00e1n y Dayro Mart\u00ednez sobre procesos de lectura y edici\u00f3n colectiva.",
+    "location": "Auditorio estand: Colombia, casa com\u00fan"
   }
 ]
 </script>
@@ -9274,11 +9519,17 @@
             const modalPanel = modal?.querySelector('.program-modal-panel');
             const modalCloseButtons = Array.from(document.querySelectorAll('[data-close-program-modal]'));
             const programList = document.getElementById('filbo-program-list');
+            const programDayFilter = document.getElementById('filbo-program-day-filter');
+            const programSearch = document.getElementById('filbo-program-search');
+            const programCount = document.getElementById('filbo-program-count');
+            const programHelper = document.getElementById('filbo-program-helper');
+            const programReset = document.getElementById('filbo-program-reset');
             let lastProgramTrigger = null;
             let previousBodyOverflow = '';
             const inertTargets = mainContent ? Array.from(mainContent.children).filter((element) => element !== modal) :
                 [];
             let scheduleLoaded = false;
+            let scheduleItems = [];
 
             if (!openProgramButton || !modal || !modalPanel) return;
 
@@ -9290,14 +9541,86 @@
                 .replace(/[^a-z0-9]+/g, '-')
                 .replace(/^-+|-+$/g, '') || 'fecha';
 
-            const renderSchedule = (items) => {
+            const normalizeText = (value) => (value || '')
+                .toString()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .trim();
+
+            const updateScheduleSummary = (visibleItems, totalItems) => {
+                const hasDayFilter = Boolean(programDayFilter?.value);
+                const hasSearchFilter = Boolean((programSearch?.value || '').trim());
+
+                if (programCount) {
+                    const label = visibleItems === 1 ? 'actividad' : 'actividades';
+                    programCount.textContent = `${visibleItems} ${label}`;
+                }
+
+                if (programHelper) {
+                    if (!totalItems) {
+                        programHelper.textContent = 'No hay actividades disponibles en este momento.';
+                    } else if (hasDayFilter || hasSearchFilter) {
+                        programHelper.textContent = `Mostrando ${visibleItems} de ${totalItems} actividades según los filtros aplicados.`;
+                    } else {
+                        programHelper.textContent = 'Use los filtros para encontrar más rápido cada actividad.';
+                    }
+                }
+
+                if (programReset) {
+                    programReset.hidden = !totalItems || (!hasDayFilter && !hasSearchFilter);
+                }
+            };
+
+            const populateScheduleDayFilter = (items) => {
+                if (!programDayFilter) return;
+
+                const dates = Array.from(new Set((Array.isArray(items) ? items : [])
+                    .map((item) => item?.date || '')
+                    .filter(Boolean)));
+                const currentValue = programDayFilter.value;
+
+                programDayFilter.innerHTML = '<option value="">Todos los días</option>';
+
+                dates.forEach((date) => {
+                    const option = document.createElement('option');
+                    option.value = date;
+                    option.textContent = date;
+                    programDayFilter.append(option);
+                });
+
+                programDayFilter.value = dates.includes(currentValue) ? currentValue : '';
+            };
+
+            const getFilteredSchedule = () => {
+                const dayValue = programDayFilter?.value || '';
+                const queryValue = normalizeText(programSearch?.value || '');
+
+                return scheduleItems.filter((item) => {
+                    const matchesDay = !dayValue || (item.date || '') === dayValue;
+                    const searchableText = normalizeText([
+                        item.date,
+                        item.time,
+                        item.entity,
+                        item.title,
+                        item.description
+                    ].join(' '));
+                    const matchesQuery = !queryValue || searchableText.includes(queryValue);
+                    return matchesDay && matchesQuery;
+                });
+            };
+
+            const renderSchedule = (items, totalItems = items.length) => {
                 if (!programList) return;
                 programList.innerHTML = '';
+                updateScheduleSummary(Array.isArray(items) ? items.length : 0, totalItems);
 
                 if (!Array.isArray(items) || !items.length) {
                     const empty = document.createElement('p');
-                    empty.className = 'program-modal-copy';
-                    empty.textContent = 'No hay programación disponible en este momento.';
+                    empty.className = 'program-modal-copy program-modal-empty';
+                    empty.textContent = totalItems ?
+                        'No hay resultados para los filtros aplicados. Pruebe otro día o una búsqueda más amplia.' :
+                        'No hay programación disponible en este momento.';
                     programList.append(empty);
                     return;
                 }
@@ -9325,11 +9648,18 @@
                     events.forEach((event) => {
                         const article = document.createElement('article');
                         article.className = 'program-modal-item';
+                        article.setAttribute('aria-label', `${event.time || 'Sin hora'} ${event.title || 'Actividad'}`);
 
                         const meta = document.createElement('div');
                         meta.className = 'program-modal-meta';
-                        meta.innerHTML =
-                            `<span>${event.time || ''}</span><span>${event.entity || ''}</span>`;
+
+                        const time = document.createElement('span');
+                        time.className = 'program-modal-time';
+                        time.textContent = event.time || 'Sin hora';
+
+                        const entity = document.createElement('span');
+                        entity.className = 'program-modal-entity';
+                        entity.textContent = event.entity || 'Entidad por confirmar';
 
                         const title = document.createElement('h4');
                         title.textContent = event.title || 'Actividad';
@@ -9337,6 +9667,7 @@
                         const description = document.createElement('p');
                         description.textContent = event.description || '';
 
+                        meta.append(time, entity);
                         article.append(meta, title, description);
                         section.append(article);
                     });
@@ -9345,19 +9676,37 @@
                 });
             };
 
+            const applyScheduleFilters = () => {
+                renderSchedule(getFilteredSchedule(), scheduleItems.length);
+            };
+
+            const clearScheduleFilters = () => {
+                if (programDayFilter) programDayFilter.value = '';
+                if (programSearch) programSearch.value = '';
+                applyScheduleFilters();
+                programDayFilter?.focus();
+            };
+
             const ensureScheduleLoaded = async () => {
                 if (scheduleLoaded) return;
                 try {
                     const dataNode = document.getElementById('filbo-schedule-data');
                     if (!dataNode) throw new Error('missing embedded schedule data');
-                    const data = JSON.parse(dataNode.textContent || '[]');
-                    renderSchedule(data);
+                    scheduleItems = JSON.parse(dataNode.textContent || '[]');
+                    populateScheduleDayFilter(scheduleItems);
+                    applyScheduleFilters();
                 } catch (error) {
-                    renderSchedule([]);
+                    scheduleItems = [];
+                    populateScheduleDayFilter(scheduleItems);
+                    renderSchedule([], 0);
                 } finally {
                     scheduleLoaded = true;
                 }
             };
+
+            programDayFilter?.addEventListener('change', applyScheduleFilters);
+            programSearch?.addEventListener('input', applyScheduleFilters);
+            programReset?.addEventListener('click', clearScheduleFilters);
 
             const getFocusableModalItems = () => {
                 return Array.from(modalPanel.querySelectorAll(
@@ -9366,6 +9715,11 @@
             };
 
             const focusFirstModalElement = () => {
+                if (programDayFilter) {
+                    programDayFilter.focus();
+                    return;
+                }
+
                 const focusableItems = getFocusableModalItems();
                 (focusableItems[0] || modalPanel).focus();
             };

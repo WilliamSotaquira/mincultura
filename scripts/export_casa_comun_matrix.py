@@ -224,7 +224,7 @@ def main():
     output_path = pathlib.Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     payload = build_payload(args.source)
-    output_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    output_path.write_text(json.dumps(payload, ensure_ascii=True, indent=2), encoding="utf-8")
     print(output_path)
     print(payload["total_items"])
 
