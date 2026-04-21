@@ -12,6 +12,10 @@ Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
+Route::get('/inicio/botones', function () {
+    return view('pages.secciones.inicio.botones');
+})->name('inicio.botones');
+
 Route::get('/pages/gob-minculturas-master', function () {
     $path = resource_path('views/pages/gob_minculturas_master.html');
 

@@ -57,6 +57,11 @@ THEME_META = {
     },
 }
 
+EXCLUDED_AVAILABILITY_FLAGS = (
+    "NO CUENTA CON AUTORIZACIÓN",
+    "PENDIENTE",
+)
+
 
 def clean(value):
     if value is None:
@@ -154,6 +159,9 @@ def build_payload(source_path):
             if candidate and not normalize_link(candidate) and any(flag in upper for flag in ("PENDIENTE", "NO CUENTA", "NO HAY", "IMPRESO", "SIN ENLACE", "AÚN NO HAY LINK", "AUN NO HAY LINK")):
                 availability_note = candidate
                 break
+
+        if any(flag in availability_note.upper() for flag in EXCLUDED_AVAILABILITY_FLAGS):
+            continue
 
         search_text = clean_inline(" ".join(part for part in (
             theme,

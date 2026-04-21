@@ -17,6 +17,15 @@
             <div class="col-md-6 col-xl-4">
                 <div class="card h-100 shadow-sm border-0">
                     <div class="card-body">
+                        <h2 class="h5 mb-2">Inicio / Botones</h2>
+                        <p class="text-body-secondary small mb-3">Accesos rapidos a las secciones principales.</p>
+                        <a href="{{ route('inicio.botones') }}">Inicio / Botones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
                         <h2 class="h5 mb-2">Ministerio</h2>
                         <p class="text-body-secondary small mb-3">Informacion institucional del ministerio.</p>
                         <a href="{{ route('ministerio.index') }}">Ministerio</a>
