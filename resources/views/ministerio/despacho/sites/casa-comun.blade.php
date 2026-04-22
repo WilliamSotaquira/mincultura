@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Casa Común</title>
-    <meta name="description" content="Casa Común: territorios de encuentro, temáticas y destacados culturales.">
+    <title>Casa Com&uacute;n</title>
+    <meta name="description" content="Casa Com&uacute;n: territorios de encuentro, tem&aacute;ticas y destacados culturales.">
     <style>
         @font-face {
             font-family: 'Alternate Gothic';
@@ -3576,7 +3576,7 @@
                             <div class="roof-slide is-active" data-roof-slide="0">
                                 <img class="roof-slide-media"
                                     src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/banner-casa-comun.png"
-                                    alt="Banner Casa Común">
+                                    alt="Banner Casa Com&uacute;n">
                             </div>
                             <div class="roof-slide" data-roof-slide="1" aria-hidden="true">
                                 <img class="roof-slide-media"
@@ -3603,10 +3603,10 @@
 
                     <div class="hero-intro">
                         <div class="hero-copy">
-                            <h1>Bienvenidos y bienvenidas a nuestra Casa Común</h1>
+                            <h1>Bienvenidos y bienvenidas a nuestra Casa Com&uacute;n</h1>
                             <p>Este especial digital contempla un repositorio de contenidos desarrollados por el
                                 Minculturas en el periodo 2022-2026. Esta iniciativa parte del reconocimiento de
-                                Colombia como un país construido desde la diversidad de pueblos, lenguas, saberes y
+                                Colombia como un pa&iacute;s construido desde la diversidad de pueblos, lenguas, saberes y
                                 territorios.</p>
                         </div>
                         <div class="hero-side">
@@ -3628,7 +3628,7 @@
 
             <section class="themes-section" id="tematicas">
                 <h2 class="themes-title">Tematicas</h2>
-                  <p class="themes-summary">Recorre nuestra Casa Común por tema, responsable, formato y palabras clave.</p>
+                  <p class="themes-summary">Recorre nuestra Casa Com&uacute;n por tema, responsable, formato y palabras clave.</p>
                 <div class="collage-left" aria-hidden="true">
                     <span class="performer-ghost">
                         <img src="https://www.mincultura.gov.co/especiales/casa-comun/PublishingImages/layer-performer.png"
@@ -3657,13 +3657,13 @@
                             <span class="chip-mobile-toggle-label" id="themes-mobile-toggle-label">Seleccionar temática</span>
                         </button>
                         <div class="chip-row" id="themes-tablist" role="tablist"
-                            aria-label="Tematicas de Casa Común" style="--chip-count: 7;"></div>
+                            aria-label="Tematicas de Casa Com&uacute;n" style="--chip-count: 7;"></div>
 
                         <div class="board-panel" id="temas-panel" role="tabpanel" tabindex="0"
                             aria-labelledby="tema-tab-1">
                             <div class="board-intro">
                                 <div class="board-copy">
-                                    <h2 id="themes-panel-title">Cargando temáticas...</h2>
+                                    <h2 id="themes-panel-title">Cargando tem&aacute;ticas...</h2>
                                     <p class="lead" id="themes-panel-lead">La información de la matriz se está
                                         preparando dentro de esta página.</p>
                                     <div class="catalog-keywords" id="themes-panel-keywords" hidden></div>
@@ -3778,7 +3778,7 @@
                 <div class="cards">
                     <article class="card d1">
                         <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/filbo-2026-casacomun.jpg"
-                            alt="Casa Común en FILBo 2026">
+                            alt="Casa Com&uacute;n en FILBo 2026">
                         <div class="card-body card-pink">
                             <h3>Bienvenidos a esta, nuestra casa común: así será la presencia del Ministerio de las
                                 Culturas, las Artes y los Saberes.</h3>
@@ -3884,7 +3884,7 @@
                 <div class="wrap-full strip-grid">
                     <div class="strip-copy">
                         <h2>Somos sonido, somos voces</h2>
-                        <p>Lenguas, memorias, acentos y ritmos que habitan nuestra Casa Común.</p>
+                        <p>Lenguas, memorias, acentos y ritmos que habitan nuestra Casa Com&uacute;n.</p>
                         <a class="strip-btn"
                             href="https://open.spotify.com/episode/48i7M7sDsiI61QItzJzmj7?si=67482ae837de418c"
                             target="_blank" rel="noreferrer">Escucha aquí</a>
@@ -11430,7 +11430,7 @@
                     button.dataset.lead = theme.lead || '';
                     button.dataset.copy = theme.copy || '';
                     button.dataset.count = theme.count || 0;
-                    button.dataset.types = (theme.types || []).join(' · ');
+                    button.dataset.types = (theme.types || []).join(' / ');
                     button.dataset.keywords = (theme.keywords || []).join('||');
                     button.setAttribute('aria-label',
                         `${theme.name || 'Temática'} (${theme.count || 0} contenidos)`);
@@ -11593,9 +11593,9 @@
                 if (initialTab) activateTab(initialTab, false);
                 else syncMobileTabsUI(null);
             } catch (error) {
-                title.textContent = 'No fue posible cargar las temáticas';
+                title.textContent = 'No fue posible cargar las tematicas';
                 lead.textContent = 'Verifique la disponibilidad de los datos embebidos en la página.';
-                copy.textContent = 'El catálogo no está disponible en este momento.';
+                copy.textContent = 'El catalogo no esta disponible en este momento.';
                 if (types) types.textContent = 'Sin datos';
                 if (keywords) keywords.hidden = true;
                 resultsCount.textContent = '0 contenidos';
