@@ -3585,7 +3585,7 @@
                                 <div class="roof-slide-content">
                                     <a class="roof-slide-btn is-secondary"
                                         href="https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.mincultura.gov.co%2Fnoticias%2FPaginas%2Fbienvenidos-a-esta-nuestra-casa-comun-asi-sera-la-presencia-del-ministerio-de-las-culturas-las-artes-y-los-saberes.aspx&data=05%7C02%7Cwsotaquira%40mincultura.gov.co%7Ca37f478f0ca04f073a3308de9ff56dfb%7C93f28b4e935c4c1488ace48697c1fc97%7C0%7C0%7C639124073669619225%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=qXvOuUOdcQkGLSPD%2FHavC4XPZKPe%2ByFzwT5L4bjzTZo%3D&reserved=0"
-                                        target="_blank" rel="noreferrer">¡Sigue la ruta del Ministerio!</a>
+                                        target="_blank" rel="noreferrer">¡Sigue la ruta del Minculturas!</a>
                                     <button class="roof-slide-btn" type="button" data-open-program-modal
                                         aria-haspopup="dialog" aria-controls="filbo-program-modal">Ver
                                         programación</button>
