@@ -29,3 +29,15 @@ Route::get('/despacho/PublishingImages/{path}', function () {
 
     return redirect()->away('https://www.mincultura.gov.co' . $rawUri);
 })->where('path', '.*')->name('publishing-images.redirect');
+
+Route::get('/despacho/oficina-de-control-interno/servicios-informacion/programa-anual-de-auditorias', function () {
+    return view('ministerio.despacho.oficina-de-control-interno.servicios-informacion.programa-anual-de-auditorias');
+})->name('despacho.oficina-de-control-interno.servicios-informacion.programa-anual-de-auditorias');
+
+Route::get('/despacho/oficina-de-control-interno/servicios-informacion', function () {
+    return view('ministerio.despacho.oficina-de-control-interno.servicios-informacion.index');
+})->name('despacho.oficina-de-control-interno.servicios-informacion.public.index');
+
+Route::get('/despacho/oficina-de-control-interno/servicios-informacion/informes-de-la-oficina-de-control-interno', function () {
+    return view('ministerio.despacho.oficina-de-control-interno.servicios-informacion.informes-de-la-oficina-de-control-interno');
+})->name('despacho.oficina-de-control-interno.servicios-informacion.informes-de-la-oficina-de-control-interno');

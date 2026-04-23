@@ -2,11 +2,11 @@
     <!--INICIO (se cambia el número de identificación 5 veces)-->
     <div class="accordion-item">
         <h2 class="accordion-header" id="heading1">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1"
-                aria-expanded="true" aria-controls="collapse1">1. Consolidados informes plan anual de
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1"
+                aria-expanded="false" aria-controls="collapse1">1. Consolidados informes plan anual de
                 auditorías<br /></button>
         </h2>
-        <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1"
+        <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <p>
@@ -28,8 +28,8 @@
                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Auditorias%20de%20Calidad%202022.pdf"
                                 target="_blank"
-                                style="--bs-link-color-rgb: var(--bs-link-hover-color-rgb); font-family: &quot;nunito sans&quot;; background-color: #eaeafe; color: #7730c1 !important;"><img
-                                    class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                style="--bs-link-color-rgb: var(--bs-link-hover-color-rgb); font-family: &quot;nunito sans&quot;; background-color: #eaeafe; color: #7730c1 !important;">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
                                     alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 Auditorias de Calidad 2022</a><br />
@@ -39,8 +39,8 @@
                         <p
                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Auditorias%20de%20Calidad%202020.pdf"
-                                target="_blank" style="text-align: var(--bs-body-text-align);"><img
-                                    class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                target="_blank" style="text-align: var(--bs-body-text-align);">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
                                     alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 Auditorias de Calidad 2020</a>
@@ -51,8 +51,8 @@
                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Auditorias%20de%20Calidad%202019.pdf"
                                 target="_blank"
-                                style="text-align: var(--bs-body-text-align); --bs-link-color-rgb: var(--bs-link-hover-color-rgb);"><img
-                                    class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                style="text-align: var(--bs-body-text-align); --bs-link-color-rgb: var(--bs-link-hover-color-rgb);">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
                                     alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 Auditorias de Calidad 2019</a>
@@ -62,8 +62,8 @@
                         <p
                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Auditorias%20de%20Calidad%202018.pdf"
-                                target="_blank" style="text-align: var(--bs-body-text-align);"><img
-                                    class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                target="_blank" style="text-align: var(--bs-body-text-align);">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
                                     alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 Auditorias de Calidad 2018</a>
@@ -74,8 +74,8 @@
                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Auditorias%20de%20Calidad%202017.pdf"
                                 target="_blank"
-                                style="text-align: var(--bs-body-text-align); --bs-link-color-rgb: var(--bs-link-hover-color-rgb);"><img
-                                    class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                style="text-align: var(--bs-body-text-align); --bs-link-color-rgb: var(--bs-link-hover-color-rgb);">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
                                     alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 Auditorias de Calidad 2017</a>
@@ -86,8 +86,8 @@
                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Auditorias%20de%20Calidad%202016.pdf"
                                 target="_blank"
-                                style="text-align: var(--bs-body-text-align); --bs-link-color-rgb: var(--bs-link-hover-color-rgb);"><img
-                                    class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                style="text-align: var(--bs-body-text-align); --bs-link-color-rgb: var(--bs-link-hover-color-rgb);">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
                                     alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 Auditorias de Calidad 2016</a><br />
@@ -97,8 +97,9 @@
                         <p
                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Auditorias%20de%20Calidad%202015.pdf"
-                                target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
-                                    src="/_layouts/images/icpdf.png" alt=""
+                                target="_blank">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                    alt=""
                                     style="width: 20px; object-fit: contain; align-self: stretch; margin: 5px;" />Informe
                                 Auditorias de Calidad 2015</a>​<br /><br />
                         </p>
@@ -109,8 +110,9 @@
                     <li style="font-family: &quot;nunito sans&quot;; line-height: 27px;">
                         <p style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Auditori%CC%81as%20Internas%20de%20Gestio%CC%81n%202023.pdf"
-                                target="_blank" style="color: #281e52;"><img class="ms-asset-icon ms-rtePosition-4"
-                                    src="/_layouts/images/icpdf.png" alt=""
+                                target="_blank" style="color: #281e52;">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                    alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 de Auditorías Internas de Gestión 2023​</a>
                         </p>
@@ -118,8 +120,9 @@
                     <li style="font-family: &quot;nunito sans&quot;; line-height: 27px;">
                         <p style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Auditori%CC%81as%20Internas%20de%20Gestio%CC%81n%202022%E2%80%8B.pdf"
-                                target="_blank" style="color: #281e52;"><img class="ms-asset-icon ms-rtePosition-4"
-                                    src="/_layouts/images/icpdf.png" alt=""
+                                target="_blank" style="color: #281e52;">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                    alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 de Auditorías Internas de Gestión 2022</a>
                         </p>
@@ -127,8 +130,9 @@
                     <li style="font-family: &quot;nunito sans&quot;; line-height: 27px;">
                         <p style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Auditori%CC%81as%20Internas%20de%20Gestio%CC%81n%202021%E2%80%8B.pdf"
-                                target="_blank" style="color: #281e52;"><img class="ms-asset-icon ms-rtePosition-4"
-                                    src="/_layouts/images/icpdf.png" alt=""
+                                target="_blank" style="color: #281e52;">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                    alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 de Auditorías Internas de Gestión 2021​</a>
                         </p>
@@ -136,8 +140,9 @@
                     <li style="font-family: &quot;nunito sans&quot;; line-height: 27px;">
                         <p style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Auditori%CC%81as%20Internas%20de%20Gestio%CC%81n%202020%E2%80%8B.pdf"
-                                target="_blank" style="color: #281e52;"><img class="ms-asset-icon ms-rtePosition-4"
-                                    src="/_layouts/images/icpdf.png" alt=""
+                                target="_blank" style="color: #281e52;">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                    alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 de Auditorías Internas de Gestión 2020</a>
                         </p>
@@ -145,8 +150,9 @@
                     <li style="font-family: &quot;nunito sans&quot;; line-height: 27px;">
                         <p style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Auditorias%20Internas%20de%20Gestio%CC%81n%202019.pdf"
-                                target="_blank" style="color: #281e52;"><img class="ms-asset-icon ms-rtePosition-4"
-                                    src="/_layouts/images/icpdf.png" alt=""
+                                target="_blank" style="color: #281e52;">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                    alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe&#160;de
                                 Auditorias Internas de Gestión 2019</a>
                         </p>
@@ -154,8 +160,9 @@
                     <li style="font-family: &quot;nunito sans&quot;; line-height: 27px;">
                         <p style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Auditorias%20Internas%20de%20Gestio%CC%81n%202018.pdf"
-                                target="_blank" style="color: #281e52;"><img class="ms-asset-icon ms-rtePosition-4"
-                                    src="/_layouts/images/icpdf.png" alt=""
+                                target="_blank" style="color: #281e52;">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                    alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 Auditorias Internas de Gestión 2018</a>
                         </p>
@@ -163,8 +170,9 @@
                     <li style="font-family: &quot;nunito sans&quot;; line-height: 27px;">
                         <p style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Auditorias%20Internas%20de%20Gestio%CC%81n%202017.pdf"
-                                target="_blank" style="color: #281e52;"><img class="ms-asset-icon ms-rtePosition-4"
-                                    src="/_layouts/images/icpdf.png" alt=""
+                                target="_blank" style="color: #281e52;">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                    alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 Auditorias Internas de Gestión 2017</a>​
                         </p>
@@ -172,8 +180,9 @@
                     <li style="font-family: &quot;nunito sans&quot;; line-height: 27px;">
                         <p style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Auditorias%20internas%20de%20Calidad%202016.pdf"
-                                target="_blank" style="color: #281e52;"><img class="ms-asset-icon ms-rtePosition-4"
-                                    src="/_layouts/images/icpdf.png" alt=""
+                                target="_blank" style="color: #281e52;">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                    alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                 Auditorias internas de Calidad 2016</a>
                         </p>
@@ -181,8 +190,9 @@
                     <li style="font-family: &quot;nunito sans&quot;; line-height: 27px;">
                         <p style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Auditorias%20internas%20%20de%20Gestio%CC%81n%202015.pdf"
-                                target="_blank" style="color: #281e52;"><img class="ms-asset-icon ms-rtePosition-4"
-                                    src="/_layouts/images/icpdf.png" alt=""
+                                target="_blank" style="color: #281e52;">
+                                <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                    alt=""
                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Inform​e
                                 Auditorias internas&#160; de Gestión 2015</a>​<br />
                         </p>
@@ -234,8 +244,9 @@
                         <li>
                             <p>
                                 <a href="/despacho/Documents/oficina-de-control-interno/2025/10_05_2024_FURAG_2023.pdf"
-                                    target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
-                                        src="/_layouts/images/icpdf.png" alt=""
+                                    target="_blank">
+                                    <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                        alt=""
                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />FURAG
                                     2023</a>​<br />
                             </p>
@@ -334,8 +345,9 @@
                             <li>
                                 <p>
                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20del%20Sistema%20de%20Control%20Interno%20Contable%202023.pdf"
-                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
-                                            src="/_layouts/images/icpdf.png" alt=""
+                                        target="_blank">
+                                        <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                            alt=""
                                             style="width: 20px; object-fit: contain; align-self: stretch; margin: 5px;" />Informe
                                         del Sistema de Control Interno Contable 2023</a>
                                 </p>
@@ -343,8 +355,9 @@
                             <li>
                                 <p>
                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20del%20Sistema%20de%20Control%20Interno%20Contable%202022.pdf"
-                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
-                                            src="/_layouts/images/icpdf.png" alt=""
+                                        target="_blank">
+                                        <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                            alt=""
                                             style="width: 20px; margin-top: 5px; margin-bottom: 5px;" />Informe del
                                         Sistema de Control Interno Contable 2022</a>
                                 </p>
@@ -352,8 +365,9 @@
                             <li>
                                 <p>
                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20del%20Sistema%20de%20Control%20Interno%20Contable%202021.pdf"
-                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
-                                            src="/_layouts/images/icpdf.png" alt=""
+                                        target="_blank">
+                                        <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                            alt=""
                                             style="width: 20px; margin-top: 5px; margin-bottom: 5px;" />Informe del
                                         Sistema de Control Interno Contable 2021</a><br />
                                 </p>
@@ -361,10 +375,10 @@
                             <li>
                                 <p>
                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20del%20Sistema%20de%20Control%20Interno%20Contable%202020.pdf"
-                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
-                                            src="/_layouts/images/icpdf.png" alt=""
-                                            style="width: 20px;" />Informe del Sistema de Control Interno Contable
-                                        2020</a><br />
+                                        target="_blank">
+                                        <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                            alt="" style="width: 20px;" />Informe del Sistema de Control
+                                        Interno Contable 2020</a><br />
                                 </p>
                             </li>
                         </ul>
@@ -398,11 +412,12 @@
                                 <li>
                                     <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe%20EKOGUI%20segundo%20semestre%202025.pdf"
                                         target="_blank"
-                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
-                                            class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                        <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
                                             alt=""
                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
-                                        Ekogui segundo semestre 2025</a>&#160;&#160;<em class="ms-rteThemeForeColor-1-5"
+                                        Ekogui segundo semestre 2025</a>&#160;&#160;<em
+                                        class="ms-rteThemeForeColor-1-5"
                                         style="text-decoration-style: solid; text-decoration-color: #7f7f7f;">(18-03-2026)</em>
                                 </li>
                             </ul>
@@ -418,11 +433,12 @@
                                     style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                     <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe%20de%20seguimiento%20PPDA%202024%20-2025%20versi%C3%B3n%202.pdf"
                                         target="_blank"
-                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
-                                            class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                        <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
                                             alt=""
                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
-                                        de seguimiento PPDA 2024 -2025 versión 2.</a>&#160;&#160;<em class="ms-rteThemeForeColor-1-5"
+                                        de seguimiento PPDA 2024 -2025 versión 2.</a>&#160;&#160;<em
+                                        class="ms-rteThemeForeColor-1-5"
                                         style="text-decoration-style: solid; text-decoration-color: #7f7f7f;">(18-03-2026)</em>
                                 </li>
                             </ul>
@@ -444,8 +460,8 @@
                                 <li>
                                     <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe_Ekogui_Primer_Semestre_de_2025.pdf"
                                         target="_blank"
-                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
-                                            class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                        <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
                                             alt=""
                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                         Ekogui primer semestre de 2025</a>&#160;&#160;<em
@@ -475,8 +491,8 @@
                                     style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                     <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe%20de%20seguimiento%20al%20Comite%20de%20Conciliacion%20vigencia%20segundo%20semestre%20de%202024%20y%20primer%20semestre%20de%202025.pdf"
                                         target="_blank"
-                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
-                                            class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                        <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
                                             alt=""
                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                         de seguimiento al Comité de Conciliación vigencia segundo semestre de 2024 y
@@ -502,8 +518,8 @@
                                     style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                     <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe_Ekogui_%20Segundo%20Semestre%202024.pdf"
                                         target="_blank"
-                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
-                                            class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                        style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                        <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
                                             alt=""
                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                         Ekogui segundo&#160;semestre de 2024</a>&#160;&#160;<em
@@ -515,8 +531,8 @@
                                     <p>
                                         <a href="/despacho/Documents/oficina-de-control-interno/2024/Informe%20Ekogui%20Primer%20Semestre%20de%202024.pdf"
                                             target="_blank"
-                                            style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
-                                                class="ms-asset-icon ms-rtePosition-4"
+                                            style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                             Ekogui primer semestre de 2024</a>&#160;&#160;<em
@@ -548,8 +564,8 @@
                                 <li style="color: #4d4d4d; font-size: 18px; line-height: 27px;">
                                     <p>
                                         <a href="/despacho/Documents/oficina-de-control-interno/2025/Resoluci%C3%B3n%200326_DM_Pol%C3%ADtica%20de%20Prevenci%C3%B3n%20del%20da%C3%B1o%20Antijuridico%202024_2025.pdf"
-                                            target="_blank" style="color: #281e52;"><img
-                                                class="ms-asset-icon ms-rtePosition-4"
+                                            target="_blank" style="color: #281e52;">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Resolución
                                             0326_DM_Política de Prevención del daño Antijuridico
@@ -563,8 +579,8 @@
                                     <p
                                         style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                                         <a href="/despacho/Documents/oficina-de-control-interno/2025/Seguimiento%20al%20Comit%C3%A9%20de%20Conciliaci%C3%B3n%202%C2%B0%20semestre%20de%202023%20y%201%C2%B0semestre%20de%202024.pdf"
-                                            target="_blank" style="color: #281e52;"><img
-                                                class="ms-asset-icon ms-rtePosition-4"
+                                            target="_blank" style="color: #281e52;">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Seguimiento
                                             al Comité de Conciliación 2° semestre de 2023 y 1°semestre de
@@ -576,8 +592,8 @@
                                 </li>
                                 <li style="color: #4d4d4d; font-size: 18px; line-height: 27px;">
                                     <a href="/despacho/Documents/oficina-de-control-interno/2024/informe%20actividades%20grupo%20defensa%20judicial%20a%C3%B1o%20-%202024.pdf"
-                                        target="_blank" style="color: #281e52;"><img
-                                            class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                        target="_blank" style="color: #281e52;">
+                                        <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
                                             alt=""
                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                         actividades grupo defensa judicial año ​2024</a>&#160;&#160;<em
@@ -600,7 +616,8 @@
                                 <li>
                                     <p>
                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20primer%20semestre%20de%202023.pdf"
-                                            target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                            target="_blank">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="width: 20px; object-fit: contain; align-self: stretch; margin: 5px;" />Informe
                                             Ekogui primer semestre de 2023</a>
@@ -609,7 +626,8 @@
                                 <li>
                                     <p>
                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20segundo%20semestre%20de%202023.pdf"
-                                            target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                            target="_blank">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="width: 20px; object-fit: contain; align-self: stretch; margin: 5px;" />Informe
                                             Ekogui segundo semestre de 2023​</a>
@@ -639,8 +657,8 @@
                             </p>
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20primer%20semestre%20de%202022.pdf"
                                 target="_blank"
-                                style="font-family: &quot;nunito sans&quot;; font-size: 18px; text-align: var(--bs-body-text-align);"></a><a
-                                href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20primer%20semestre%20de%202022.pdf"
+                                style="font-family: &quot;nunito sans&quot;; font-size: 18px; text-align: var(--bs-body-text-align);"></a>
+                            <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20primer%20semestre%20de%202022.pdf"
                                 target="_blank"
                                 style="font-family: &quot;nunito sans&quot;; font-size: 18px; text-align: var(--bs-body-text-align);"></a>
                             <p>
@@ -653,7 +671,8 @@
                                 <li>
                                     <p>
                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20primer%20semestre%20de%202022.pdf"
-                                            target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                            target="_blank">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="width: 20px; margin-top: 5px; margin-bottom: 5px;" />Informe
                                             Ekogui primer semestre de 2022</a>
@@ -662,7 +681,8 @@
                                 <li>
                                     <p>
                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20segundo%20semestre%20de%202022.pdf"
-                                            target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                            target="_blank">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="width: 20px; margin-top: 5px; margin-bottom: 5px;" />Informe
                                             Ekogui segundo semestre de 2022​</a>
@@ -687,8 +707,10 @@
                             <p>
                             </p>
                             <div style="display: inline !important;">
-                                <font color="#4d4d4d" face="Nunito Sans"><span style="font-size: 18px;"><span
-                                            style="font-weight: bolder;">2021</span></span></font>
+                                <font color="#4d4d4d" face="Nunito Sans">
+                                    <span style="font-size: 18px;">
+                                        <span style="font-weight: bolder;">2021</span></span>
+                                </font>
                             </div>
                             <p>
                             </p>
@@ -698,7 +720,8 @@
                                 <li>
                                     <p>
                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20primer%20semestre%20de%202021.pdf"
-                                            target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                            target="_blank">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="width: 20px; margin-top: 5px; margin-bottom: 5px;" />Informe
                                             Ekogui primer semestre de 2021</a>
@@ -707,7 +730,8 @@
                                 <li>
                                     <p>
                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20segundo%20semestre%20de%202021.pdf"
-                                            target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                            target="_blank">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="width: 20px; margin-top: 5px; margin-bottom: 5px;" />Informe
                                             Ekogui segundo semestre de 2021​</a>
@@ -724,8 +748,8 @@
                             </p>
                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20primer%20semestre%20de%202021.pdf"
                                 target="_blank"
-                                style="font-family: &quot;nunito sans&quot;; font-size: 18px; text-align: var(--bs-body-text-align);"></a><a
-                                href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20primer%20semestre%20de%202021.pdf"
+                                style="font-family: &quot;nunito sans&quot;; font-size: 18px; text-align: var(--bs-body-text-align);"></a>
+                            <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20primer%20semestre%20de%202021.pdf"
                                 target="_blank"
                                 style="font-family: &quot;nunito sans&quot;; font-size: 18px; text-align: var(--bs-body-text-align);"></a>
                             <p>
@@ -757,7 +781,8 @@
                                 <li>
                                     <p>
                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20primer%20semestre%20de%202020.pdf"
-                                            target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                            target="_blank">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="width: 20px; margin-top: 5px; margin-bottom: 5px;" />Informe
                                             Ekogui primer semestre de 2020</a>
@@ -766,7 +791,8 @@
                                 <li>
                                     <p>
                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20segundo%20semestre%20de%202020.pdf"
-                                            target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                            target="_blank">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="width: 20px; margin-top: 5px; margin-bottom: 5px;" />Informe
                                             Ekogui segundo semestre de 2020</a>​
@@ -791,7 +817,8 @@
                                 <li>
                                     <p>
                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20primer%20semestre%20de%202019.PDF"
-                                            target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                            target="_blank">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="width: 20px;" />Informe Ekogui primer semestre de 2019</a>
                                     </p>
@@ -799,7 +826,8 @@
                                 <li>
                                     <p>
                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20Ekogui%20segundo%20semestre%20de%202019.pdf"
-                                            target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                            target="_blank">
+                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                 src="/_layouts/images/icpdf.png" alt=""
                                                 style="width: 20px;" />Informe Ekogui segundo semestre de
                                             2019​</a><br />
@@ -838,6 +866,35 @@
                             <div class="accordion-body">
                                 <p
                                     style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
+                                    <span style="font-weight: bolder;">2026&#160;</span><br />
+                                </p>
+                                <p
+                                    style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
+                                </p>
+                                <ul>
+                                    <li
+                                        style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
+                                        <p
+                                            style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
+                                            <a href="/despacho/Documents/oficina-de-control-interno/2026/MC01096I2026_PRIMER_INFORME_SEGUIMIENTO_HALLAZGOS_2026.pdf"
+                                                target="_blank"
+                                                style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
+                                                    src="/_layouts/images/icpdf.png" alt=""
+                                                    style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />1°&#160;Informe
+                                                de Seguimiento al Estado de Hallazgos de Gestión y&#160;No
+                                                Conformidades​ 2026​</a>&#160;&#160;<em
+                                                class="ms-rteThemeForeColor-1-5"
+                                                style="text-decoration-style: solid; text-decoration-color: #7f7f7f;">(23-04-2026)​</em>
+                                        </p>
+                                    </li>
+                                </ul>
+                                <p
+                                    style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
+                                    <br />
+                                </p>
+                                <p
+                                    style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
                                     <span style="font-weight: bolder;">2025&#160;</span><br />
                                 </p>
                                 <p
@@ -850,8 +907,8 @@
                                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                             <a href="/despacho/Documents/oficina-de-control-interno/2025/2%C2%B0%20Informe%20de%20Seguimiento%20al%20Estado%20de%20Hallazgos%20de%20Gesti%C3%B3n%20y%20No%20Conformidades%E2%80%8B%202025%E2%80%8B.pdf"
                                                 target="_blank"
-                                                style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
-                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                     src="/_layouts/images/icpdf.png" alt=""
                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />2°&#160;Informe
                                                 de Seguimiento al Estado de Hallazgos de Gestión y&#160;No
@@ -869,8 +926,8 @@
                                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                             <a href="/despacho/Documents/oficina-de-control-interno/2025/MC01986I2025%20PRIMER_INFORME_SEGUIMIENTO_HALLAZGOS_2025.pdf"
                                                 target="_blank"
-                                                style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
-                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                     src="/_layouts/images/icpdf.png" alt=""
                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />1°&#160;Informe
                                                 de Seguimiento al Estado de Hallazgos de Gestión y&#160;No
@@ -899,8 +956,8 @@
                                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                             <a href="/despacho/Documents/oficina-de-control-interno/2024/MC00296I2025_SEGUNDO_INFORME_SEGUIMIENTO_HALLAZGOS_2024.pdf"
                                                 target="_blank"
-                                                style="--bs-link-color-rgb: var(--bs-link-hover-color-rgb); color: #7730c1 !important;"><img
-                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                style="--bs-link-color-rgb: var(--bs-link-hover-color-rgb); color: #7730c1 !important;">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                     src="/_layouts/images/icpdf.png" alt=""
                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />2°&#160;Informe
                                                 de Seguimiento al Estado de Hallazgos de Gestión y&#160;No
@@ -915,7 +972,8 @@
                                         <p
                                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
                                             <a href="/despacho/Documents/oficina-de-control-interno/2024/MC01278I2024_PRIMER_INFORME_ESTADO_DE_HALLAZGOS_2024.pdf"
-                                                target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                target="_blank">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                     src="/_layouts/images/icpdf.png" alt=""
                                                     style="width: 20px; object-fit: contain; align-self: stretch; margin: 5px;" />1°&#160;Informe
                                                 de Seguimiento al Estado de Hallazgos de Gestión y demás actividades de
@@ -926,7 +984,8 @@
                                     </li>
                                 </ul>
                                 <p>
-                                    <strong><br /></strong>
+                                    <strong>
+                                        <br /></strong>
                                 </p>
                                 <p>
                                     <strong>2023&#160;</strong><br />
@@ -937,7 +996,8 @@
                                     <li>
                                         <p>
                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Estado%20de%20Hallazgos%20vigencia%202023.pdf"
-                                                target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                target="_blank">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                     src="/_layouts/images/icpdf.png" alt=""
                                                     style="width: 20px;" />Informe de Estado de Hallazgos vigencia
                                                 2023​</a>&#160;
@@ -956,7 +1016,8 @@
                                     <li>
                                         <p>
                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Estado%20de%20Hallazgos%20vigencia%202022.pdf"
-                                                target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                target="_blank">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                     src="/_layouts/images/icpdf.png" alt=""
                                                     style="width: 20px;" />Informe de Estado de Hallazgos vigencia
                                                 2022</a>&#160;
@@ -973,7 +1034,8 @@
                                     <li>
                                         <p>
                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Estado%20de%20Hallazgos%20segundo%20semestre%202021.pdf"
-                                                target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                target="_blank">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                     src="/_layouts/images/icpdf.png" alt=""
                                                     style="width: 20px;" />Informe de Estado de Hallazgos segundo
                                                 semestre 2021</a>&#160;
@@ -982,7 +1044,8 @@
                                     <li>
                                         <p>
                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Estado%20de%20Hallazgos%20primer%20semestre%202021.pdf"
-                                                target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                target="_blank">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                     src="/_layouts/images/icpdf.png" alt=""
                                                     style="width: 20px;" />Informe de Estado de Hallazgos primer
                                                 semestre 2021</a>&#160;
@@ -993,14 +1056,15 @@
                                     <br />
                                 </p>
                                 <p>
-                                    <span
-                                        style="text-align: var(--bs-body-text-align);"><strong>2020&#160;</strong></span><br />
+                                    <span style="text-align: var(--bs-body-text-align);">
+                                        <strong>2020&#160;</strong></span><br />
                                 </p>
                                 <ul>
                                     <li>
                                         <p>
                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Estado%20de%20Hallazgos%20segundo%20semestre%202020.pdf"
-                                                target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                target="_blank">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                     src="/_layouts/images/icpdf.png" alt=""
                                                     style="width: 20px;" />Informe de Estado de Hallazgos segundo
                                                 semestre 2020</a>
@@ -1009,7 +1073,8 @@
                                     <li>
                                         <p>
                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Estado%20de%20Hallazgos%20primer%20semestre%202020.pdf"
-                                                target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                target="_blank">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                     src="/_layouts/images/icpdf.png" alt=""
                                                     style="width: 20px;" />Informe de Estado de Hallazgos primer
                                                 semestre 2020</a>&#160;
@@ -1026,7 +1091,8 @@
                                     <li>
                                         <p>
                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Estado%20de%20Hallazgos%20segundo%20semestre%202019.pdf"
-                                                target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                target="_blank">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                     src="/_layouts/images/icpdf.png" alt=""
                                                     style="width: 20px;" />Informe de Estado de Hallazgos segundo
                                                 semestre 2019</a>&#160;
@@ -1035,7 +1101,8 @@
                                     <li>
                                         <p>
                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Estado%20de%20Hallazgos%20primer%20semestre%202019.pdf"
-                                                target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                target="_blank">
+                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                     src="/_layouts/images/icpdf.png" alt=""
                                                     style="width: 20px;" />Informe de Estado de Hallazgos primer
                                                 semestre 2019</a>&#160;​
@@ -1067,7 +1134,8 @@
                                             <p
                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                 <a href="/despacho/Documents/oficina-de-control-interno/2025/MC00919I2025_Certificaci%C3%B3n_Informe_Software_Legal_Vigencia_2024.pdf"
-                                                    target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                    target="_blank">
+                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                         src="/_layouts/images/icpdf.png" alt=""
                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                                     de Derechos de Autor vigencia 2024</a><span
@@ -1081,7 +1149,8 @@
                                             <p
                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                 <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe%20de%20Seguimiento%20al%20Licenciamiento%20de%20Software%202025.pdf"
-                                                    target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                    target="_blank">
+                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                         src="/_layouts/images/icpdf.png" alt=""
                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                                     de Seguimiento al Licenciamiento de Software 2025</a><span
@@ -1104,7 +1173,8 @@
                                             <p
                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
                                                 <a href="/despacho/Documents/oficina-de-control-interno/2024/MC00922I2024_INFORME_DERECHOS_DE_AUTOR_VIGENCIA_2023.pdf"
-                                                    target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                    target="_blank">
+                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                         src="/_layouts/images/icpdf.png" alt=""
                                                         style="width: 20px; object-fit: contain; align-self: stretch; margin: 5px;" />Informe
                                                     de Derechos de Autor vigencia 2023</a><br />
@@ -1116,7 +1186,8 @@
                                             <p
                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                 <a href="/despacho/Documents/oficina-de-control-interno/2024/MC05097I2024_Informe_Seguimiento_Licenciamiento_Software_MInisterio_de_las_Culturas_2024.pdf"
-                                                    target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                    target="_blank">
+                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                         src="/_layouts/images/icpdf.png" alt=""
                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                                     de Seguimiento al Licenciamiento de Software y Derechos de
@@ -1138,7 +1209,8 @@
                                         <li>
                                             <p>
                                                 <a href="/despacho/Documents/oficina-de-control-interno/Informe%E2%80%8B%20Derechos%20de%20Autor%20segundo%20semestre%202023.pdf"
-                                                    target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                    target="_blank">
+                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                         src="/_layouts/images/icpdf.png" alt=""
                                                         style="width: 20px;" />Informe de Derechos de Autor segundo
                                                     semestre 2023</a>&#160;
@@ -1147,7 +1219,8 @@
                                         <li>
                                             <p>
                                                 <a href="/despacho/Documents/oficina-de-control-interno/Informe%E2%80%8B%20Derechos%20de%20Autor%20primer%20semestre%202023.pdf"
-                                                    target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                    target="_blank">
+                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                         src="/_layouts/images/icpdf.png" alt=""
                                                         style="width: 20px;" />Informe de Derechos de Autor primer
                                                     semestre 2023</a>&#160;
@@ -1164,7 +1237,8 @@
                                         <li>
                                             <p>
                                                 <a href="/despacho/Documents/oficina-de-control-interno/Informe_%20Derechos%20de%20Autor%20segundo%20semestre%202022.pdf"
-                                                    target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                    target="_blank">
+                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                         src="/_layouts/images/icpdf.png" alt=""
                                                         style="width: 20px;" />Informe de Derechos de Autor vigencia
                                                     2022</a>&#160;<br />
@@ -1175,14 +1249,15 @@
                                         <br />
                                     </p>
                                     <p>
-                                        <span
-                                            style="text-align: var(--bs-body-text-align);"><strong>2021&#160;</strong></span><br />
+                                        <span style="text-align: var(--bs-body-text-align);">
+                                            <strong>2021&#160;</strong></span><br />
                                     </p>
                                     <ul>
                                         <li>
                                             <p>
                                                 <a href="/despacho/Documents/oficina-de-control-interno/Informe%E2%80%8B%20Derechos%20de%20Autor%20segundo%20semestre%202021.pdf"
-                                                    target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                    target="_blank">
+                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                         src="/_layouts/images/icpdf.png" alt=""
                                                         style="width: 20px;" />Informe de Derechos de Autor segundo
                                                     semestre 2021​</a>&#160;
@@ -1191,7 +1266,8 @@
                                         <li>
                                             <p>
                                                 <a href="/despacho/Documents/oficina-de-control-interno/Informe%E2%80%8B%20Derechos%20de%20Autor%20primer%20semestre%202021.pdf"
-                                                    target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                    target="_blank">
+                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                         src="/_layouts/images/icpdf.png" alt=""
                                                         style="width: 20px;" />Informe de Derechos de Autor primer
                                                     semestre 2021</a>&#160;​
@@ -1221,8 +1297,24 @@
                                         <ul>
                                             <li>
                                                 <p>
+                                                </p>
+                                                <p
+                                                    style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
+                                                    <a href="/despacho/Documents/oficina-de-control-interno/2026/MC01284I2026_Informe_Seguimiento_a_PQRSD%202%C2%B0_semestre_2025.pdf"
+                                                        target="_blank" style="color: #281e52;">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
+                                                            src="/_layouts/images/icpdf.png" alt=""
+                                                            style="width: 20px; object-fit: contain; align-self: stretch; margin: 5px;" />Informe
+                                                        PQRSD 2° semestre 2025</a>&#160;&#160;<em
+                                                        class="ms-rteThemeForeColor-1-5"
+                                                        style="text-decoration-style: solid; text-decoration-color: #7f7f7f;">(23-04-2026)</em><br />
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
                                                     <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe%20PQRSD%20I%C2%B0%20semestre%202025.pdf"
-                                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                        target="_blank">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                             src="/_layouts/images/icpdf.png" alt=""
                                                             style="width: 20px;" />Informe PQRSD I° semestre
                                                         2025</a>&#160;<em class="ms-rteThemeForeColor-1-5"
@@ -1240,7 +1332,8 @@
                                             <li>
                                                 <p>
                                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20PQRSD%20I%20semestre%202024.pdf"
-                                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                        target="_blank">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                             src="/_layouts/images/icpdf.png" alt=""
                                                             style="width: 20px;" />Informe PQRSD I semestre
                                                         2024</a><br />
@@ -1269,7 +1362,8 @@
                                             <li>
                                                 <p>
                                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20PQRSD%20I%20semestre%202023.pdf"
-                                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                        target="_blank">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                             src="/_layouts/images/icpdf.png" alt=""
                                                             style="width: 20px;" />Informe PQRSD I semestre
                                                         2023</a><br />
@@ -1278,7 +1372,8 @@
                                             <li>
                                                 <p>
                                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20PQRSD%20II%20semestre%202023.pdf"
-                                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                        target="_blank">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                             src="/_layouts/images/icpdf.png" alt=""
                                                             style="width: 20px;" />Informe PQRSD II semestre
                                                         2023</a>&#160;
@@ -1295,7 +1390,8 @@
                                             <li>
                                                 <p>
                                                     <a href="https://despacho/Documents/oficina-de-control-interno/Informe%20PQRSD%20I%20semestre%202022.pdf"
-                                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                        target="_blank">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                             src="/_layouts/images/icpdf.png" alt=""
                                                             style="width: 20px;" />Informe PQRSD I semestre
                                                         2022</a>&#160;
@@ -1304,7 +1400,8 @@
                                             <li>
                                                 <p>
                                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20PQRSD%20II%20semestre%202022.pdf"
-                                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                        target="_blank">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                             src="/_layouts/images/icpdf.png" alt=""
                                                             style="width: 20px;" />Informe PQRSD II semestre
                                                         2022</a>&#160;
@@ -1321,7 +1418,8 @@
                                             <li>
                                                 <p>
                                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20PQRSD%20I%20semestre%202021.pdf"
-                                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                        target="_blank">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                             src="/_layouts/images/icpdf.png" alt=""
                                                             style="width: 20px;" />Informe PQRSD I semestre
                                                         2021</a>&#160;
@@ -1330,7 +1428,8 @@
                                             <li>
                                                 <p>
                                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20PQRSD%20II%20semestre%202021.pdf"
-                                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                        target="_blank">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                             src="/_layouts/images/icpdf.png" alt=""
                                                             style="width: 20px;" />Informe PQRSD II semestre
                                                         2021</a>&#160;
@@ -1347,7 +1446,8 @@
                                             <li>
                                                 <p>
                                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20PQRSD%20I%20semestre%202020.pdf"
-                                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                        target="_blank">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                             src="/_layouts/images/icpdf.png" alt=""
                                                             style="width: 20px;" />Informe PQRSD I semestre
                                                         2020</a>&#160;
@@ -1356,7 +1456,8 @@
                                             <li>
                                                 <p>
                                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20PQRSD%20II%20semestre%202020.pdf"
-                                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                        target="_blank">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                             src="/_layouts/images/icpdf.png" alt=""
                                                             style="width: 20px;" />Informe PQRSD II semestre
                                                         2020</a>&#160;
@@ -1373,7 +1474,8 @@
                                             <li>
                                                 <p>
                                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20PQRSD%20I%20Semestre%202019.pdf"
-                                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                        target="_blank">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                             src="/_layouts/images/icpdf.png" alt=""
                                                             style="width: 20px;" />Informe PQRSD I semestre 2019</a>
                                                 </p>
@@ -1381,7 +1483,8 @@
                                             <li>
                                                 <p>
                                                     <a href="/despacho/Documents/oficina-de-control-interno/Informe%20PQRSD%20II%20semestre%202019.pdf"
-                                                        target="_blank"><img class="ms-asset-icon ms-rtePosition-4"
+                                                        target="_blank">
+                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                             src="/_layouts/images/icpdf.png" alt=""
                                                             style="width: 20px;" />Informe PQRSD II semestre
                                                         2019​</a>&#160;​
@@ -1421,8 +1524,8 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe_de_Evaluaci%C3%B3n_de_la_Estrategia_de_Rendici%C3%B3n_de_Cuentas_2024_y_Avance_de_Gesti%C3%B3n_2025.pdf"
                                                             target="_blank"
-                                                            style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                            style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                                             de Evaluación de la Estrategia de Rendición de Cuentas 2024
@@ -1435,8 +1538,8 @@
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/2025/25082025_Informe%20Arqueo_de_Caja.pdf"
                                                                 target="_blank"
-                                                                style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informes
                                                                 de Arqueos de Caja</a>&#160;&#160;<em
@@ -1446,8 +1549,11 @@
                                                     </li>
                                                 </ul>
                                                 <div>
-                                                    <font color="#7f7f7f" face="Nunito Sans"><span
-                                                            style="font-size: 18px;"><i><br /></i></span></font>
+                                                    <font color="#7f7f7f" face="Nunito Sans">
+                                                        <span style="font-size: 18px;">
+                                                            <i>
+                                                                <br /></i></span>
+                                                    </font>
                                                 </div>
                                                 <p>
                                                 </p>
@@ -1463,8 +1569,8 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <a href="/despacho/Documents/oficina-de-control-interno/2024/16022025_Arqueo_de_Caja_asignada_al_despacho__febrero_2024._Comunicaci%C3%B3n_Oficial_Interna_1.pdf"
                                                             target="_blank"
-                                                            style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                            style="--bs-link-color-rgb: 32, 24, 66; color: #7730c1 !important;">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informes
                                                             de Arqueos de Caja</a>&#160;&#160;<em
@@ -1497,32 +1603,32 @@
                                                     </li>
                                                     <li>
                                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20seguimiento%20Secop%20II%202022.pdf"
-                                                            target="_blank"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                            target="_blank">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="width: 20px;" />Informe de seguimiento Secop II
                                                             Vigencia 2022</a>&#160;
                                                     </li>
                                                     <li>
                                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20seguimiento%20Secop%20II%202021.pdf"
-                                                            target="_blank"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                            target="_blank">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="width: 20px;" />Informe de seguimiento Secop II
                                                             Vigencia 2021</a>&#160;
                                                     </li>
                                                     <li>
                                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20seguimiento%20Secop%20II%202020.pdf"
-                                                            target="_blank"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                            target="_blank">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="width: 20px;" />Informe de seguimiento Secop II
                                                             Vigencia 2020</a>&#160;
                                                     </li>
                                                     <li>
                                                         <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20seguimiento%20Secop%20II%202019.pdf"
-                                                            target="_blank"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                            target="_blank">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="width: 20px;" />Informe de seguimiento Secop II
                                                             Vigencia 2019</a>&#160;​
@@ -1562,8 +1668,8 @@
                                                         <p
                                                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                                                             <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe%20de%20austeridad%20en%20el%20gasto%20p%C3%BAblico%201%C2%B0%20trimestre%202025.pdf"
-                                                                target="_blank" style="color: #281e52;"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank" style="color: #281e52;">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px; object-fit: contain; align-self: stretch; margin: 5px;" />Informe
                                                                 de austeridad en el gasto público 1° trimestre
@@ -1581,8 +1687,8 @@
                                                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                                                             <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe%20de%20austeridad%20en%20el%20gasto%20p%C3%BAblico%202%C2%B0%20trimestre%202025.pdf"
                                                                 target="_blank"
-                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                                                 de austeridad en el gasto público 2° trimestre
@@ -1598,8 +1704,8 @@
                                                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                                                             <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe%20de%20austeridad%20en%20el%20gasto%20p%C3%BAblico%203%C2%B0%20trimestre%202025%E2%80%8B.pdf"
                                                                 target="_blank"
-                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                                                 de austeridad en el gasto público 3° trimestre
@@ -1611,8 +1717,11 @@
                                                     </li>
                                                 </ul>
                                                 <div>
-                                                    <font color="#7f7f7f" face="Nunito Sans"><span
-                                                            style="font-size: 18px;"><i><br /></i></span></font>
+                                                    <font color="#7f7f7f" face="Nunito Sans">
+                                                        <span style="font-size: 18px;">
+                                                            <i>
+                                                                <br /></i></span>
+                                                    </font>
                                                 </div>
                                                 <p>
                                                     <strong>2024&#160;</strong><br />
@@ -1623,8 +1732,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%201%C2%B0%20Trimestre%202024.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de austeridad en el
                                                                 gasto público 1° trimestre 2024​&#160;​</a><br />
@@ -1644,8 +1753,8 @@
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/2024/MC04916I2024_Informe%20de%20Austeridad%20en%20el%20gasto%20III%20TRIM%202024.pdf"
                                                                 target="_blank"
-                                                                style="font-family: &quot;nunito sans&quot;; font-size: 18px; background-color: #eaeafe;"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                style="font-family: &quot;nunito sans&quot;; font-size: 18px; background-color: #eaeafe;">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px; object-fit: contain; align-self: stretch; margin: 5px;" />Informe
                                                                 de austeridad en el gasto público 3​° trimestre
@@ -1656,8 +1765,8 @@
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/2024/MC01264I2025_Informe_de_Austeridad_en_el_%20Gasto_IV_TRIMESTRE_%202024.pdf"
                                                                 target="_blank"
-                                                                style="color: #281e52; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                style="color: #281e52; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
                                                                 de austeridad en el gasto público 4​° trimestre
@@ -1675,8 +1784,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%204%C2%B0%20Trimestre%202023%E2%80%8B.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 4° Trimestre 2023</a>​&#160;
@@ -1685,8 +1794,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%203%C2%B0%20Trimestre%202023%E2%80%8B.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 3° Trimestre 2023</a>​&#160;
@@ -1695,8 +1804,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%202%C2%B0%20Trimestre%202023%E2%80%8B.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 2° Trimestre 2023</a>​&#160;
@@ -1705,8 +1814,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%201%C2%B0%20Trimestre%202023%E2%80%8B.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 1° Trimestre 2023​</a>
@@ -1723,8 +1832,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%204%C2%B0%20Trimestre%202022.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 4° Trimestre 2022</a>​&#160;
@@ -1733,8 +1842,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%203%C2%B0%20Trimestre%202022.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 3° Trimestre 2022</a>​&#160;
@@ -1743,8 +1852,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%202%C2%B0%20Trimestre%202022.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 2° Trimestre 2022</a>​&#160;
@@ -1753,8 +1862,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%201%C2%B0%20Trimestre%202022.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 1° Trimestre 2022</a>​&#160;
@@ -1771,8 +1880,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%204%C2%B0%20Trimestre%202021.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 4° Trimestre 2021</a>&#160;
@@ -1781,8 +1890,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%203%C2%B0%20Trimestre%202021.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 3° Trimestre 2021</a>​&#160;
@@ -1791,8 +1900,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%202%C2%B0%20Trimestre%202021.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 2° Trimestre 2021</a>​&#160;
@@ -1801,8 +1910,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%201%C2%B0%20Trimestre%202021.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 1° Trimestre 2021</a>​&#160;
@@ -1819,8 +1928,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%204%C2%B0%20Trimestre%202020.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 ga​sto público 4° Trimestre 2020​</a>&#160;
@@ -1829,8 +1938,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%203%C2%B0%20Trimestre%202020.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 3° Trimestre 2020</a>&#160;
@@ -1839,8 +1948,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%202%C2%B0%20Trimestre%202020.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 2° Trimestre 2020</a>​&#160;
@@ -1849,8 +1958,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%201%C2%B0%20Trimestre%202020.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 1° Trimestre 2020​</a>&#160;
@@ -1867,8 +1976,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%204%C2%B0%20Trimestre%202019.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 4° Trimestre 2019​</a>&#160;
@@ -1877,8 +1986,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%203%C2%B0%20Trimestre%202019.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 3° Trimestre 2019</a>&#160;
@@ -1887,8 +1996,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%202%C2%B0%20Trimestre%202019%E2%80%8B.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 2° Trimestre 2019</a>​&#160;​
@@ -1897,8 +2006,8 @@
                                                     <li>
                                                         <p>
                                                             <a href="/despacho/Documents/oficina-de-control-interno/Informe%20de%20Austeridad%20en%20el%20gasto%20pu%CC%81blico%201%C2%B0%20Trimestre%202019%E2%80%8B.pdf"
-                                                                target="_blank"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                target="_blank">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="width: 20px;" />Informe de Austeridad en el
                                                                 gasto público 1° Trimestre 2019</a>​&#160;​
@@ -1933,10 +2042,10 @@
                                                             <p
                                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                                 <span data-contrast="none" xml:lang="ES-CO"
-                                                                    lang="ES-CO"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/2025/1%C2%B0%20Informe%20de%20Seguimiento%20a%20la%20Administraci%C3%B3n%20del%20Riesgo%202025.pdf"
-                                                                        target="_blank" style="color: #281e52;"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                    lang="ES-CO">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/2025/1%C2%B0%20Informe%20de%20Seguimiento%20a%20la%20Administraci%C3%B3n%20del%20Riesgo%202025.pdf"
+                                                                        target="_blank" style="color: #281e52;">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
                                                                             alt=""
                                                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />1°
@@ -1954,11 +2063,11 @@
                                                             <p
                                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                                 <span data-contrast="none" xml:lang="ES-CO"
-                                                                    lang="ES-CO"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/2025/2%C2%B0%20Informe%20de%20Seguimiento%20a%20la%20Administraci%C3%B3n%20del%20Riesgo%202025.pdf"
+                                                                    lang="ES-CO">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/2025/2%C2%B0%20Informe%20de%20Seguimiento%20a%20la%20Administraci%C3%B3n%20del%20Riesgo%202025.pdf"
                                                                         target="_blank"
-                                                                        style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                        style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
                                                                             alt=""
                                                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />2°
@@ -1971,11 +2080,11 @@
                                                             <p
                                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                                 <span data-contrast="none" xml:lang="ES-CO"
-                                                                    lang="ES-CO"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/2025/3%C2%B0%20Informe%20de%20Seguimiento%20a%20la%20administraci%C3%B3n%20del%20riesgo%202025.pdf"
+                                                                    lang="ES-CO">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/2025/3%C2%B0%20Informe%20de%20Seguimiento%20a%20la%20administraci%C3%B3n%20del%20riesgo%202025.pdf"
                                                                         target="_blank"
-                                                                        style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                        style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
                                                                             alt=""
                                                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />3°
@@ -2004,10 +2113,10 @@
                                                             <p
                                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
                                                                 <span data-contrast="none" xml:lang="ES-CO"
-                                                                    lang="ES-CO"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/2024/MC00640I2024_PRIMER_INFORME_SEGUIMIENTO_RIESGOS_2024.pdf"
-                                                                        target="_blank"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                    lang="ES-CO">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/2024/MC00640I2024_PRIMER_INFORME_SEGUIMIENTO_RIESGOS_2024.pdf"
+                                                                        target="_blank">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
                                                                             alt=""
                                                                             style="width: 20px; object-fit: contain; align-self: stretch; margin: 5px;" />1°&#160;Informe
@@ -2022,10 +2131,10 @@
                                                             <p
                                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px;">
                                                                 <span data-contrast="none" xml:lang="ES-CO"
-                                                                    lang="ES-CO"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/2024/MC02105I2024_SEGUNDO_INFORME_SEGUIMIENTO_RIESGOS_2024%20(2).pdf"
-                                                                        target="_blank"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                    lang="ES-CO">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/2024/MC02105I2024_SEGUNDO_INFORME_SEGUIMIENTO_RIESGOS_2024%20(2).pdf"
+                                                                        target="_blank">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
                                                                             alt=""
                                                                             style="width: 20px; object-fit: contain; align-self: stretch; margin: 5px;" />2°
@@ -2043,10 +2152,10 @@
                                                             <p
                                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                                 <span data-contrast="none" xml:lang="ES-CO"
-                                                                    lang="ES-CO"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/2024/MC05053I2024_TERCER_INFORME_SEGUIMIENTO_A_LA_ADMINISTRACION_DEL_RIESGO.pdf"
-                                                                        target="_blank"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                    lang="ES-CO">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/2024/MC05053I2024_TERCER_INFORME_SEGUIMIENTO_A_LA_ADMINISTRACION_DEL_RIESGO.pdf"
+                                                                        target="_blank">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
                                                                             alt=""
                                                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />3°
@@ -2060,8 +2169,11 @@
                                                         </li>
                                                     </ul>
                                                     <div>
-                                                        <font color="#7f7f7f" face="nunito sans"><span
-                                                                style="font-size: 18px;"><i><br /></i></span></font>
+                                                        <font color="#7f7f7f" face="nunito sans">
+                                                            <span style="font-size: 18px;">
+                                                                <i>
+                                                                    <br /></i></span>
+                                                        </font>
                                                     </div>
                                                     <p>
                                                         <strong>2023&#160;</strong><br />
@@ -2086,10 +2198,10 @@
                                                         <li>
                                                             <p>
                                                                 <span data-contrast="none" xml:lang="ES-CO"
-                                                                    lang="ES-CO"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/Seguimiento%20Mapa%20de%20Riesgos%20primer%20semestre%20de%202023.pdf"
-                                                                        target="_blank"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                    lang="ES-CO">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/Seguimiento%20Mapa%20de%20Riesgos%20primer%20semestre%20de%202023.pdf"
+                                                                        target="_blank">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
                                                                             alt=""
                                                                             style="width: 20px;" />Seguimiento Mapa de
@@ -2136,13 +2248,14 @@
                                                             <li>
                                                                 <p>
                                                                     <span data-contrast="none" xml:lang="ES-CO"
-                                                                        lang="ES-CO"><a
-                                                                            href="/despacho/Documents/oficina-de-control-interno/Seguimiento%20Mapa%20de%20Riesgos%20segundo%20semestre%20de%202022.pdf"
-                                                                            target="_blank"><img
-                                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                                        lang="ES-CO">
+                                                                        <a href="/despacho/Documents/oficina-de-control-interno/Seguimiento%20Mapa%20de%20Riesgos%20segundo%20semestre%20de%202022.pdf"
+                                                                            target="_blank">
+                                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                                 src="/_layouts/images/icpdf.png"
                                                                                 alt=""
-                                                                                style="width: 20px;" /><span
+                                                                                style="width: 20px;" />
+                                                                            <span
                                                                                 data-ccp-parastyle="Comentario">Seguimiento
                                                                                 Mapa de Riesgos segundo semestre de
                                                                                 20</span><span
@@ -2190,13 +2303,13 @@
                                                         <li>
                                                             <p>
                                                                 <span data-contrast="none" xml:lang="ES-CO"
-                                                                    lang="ES-CO"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/Seguimiento%20Mapa%20de%20Riesgos%20segundo%20semestre%20de%202021.pdf"
-                                                                        target="_blank"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                    lang="ES-CO">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/Seguimiento%20Mapa%20de%20Riesgos%20segundo%20semestre%20de%202021.pdf"
+                                                                        target="_blank">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
-                                                                            alt=""
-                                                                            style="width: 20px;" /><span
+                                                                            alt="" style="width: 20px;" />
+                                                                        <span
                                                                             data-ccp-parastyle="Comentario">Seguimiento
                                                                             Mapa de Riesgos segundo semestre de
                                                                             202</span><span
@@ -2241,11 +2354,11 @@
                                                         <li>
                                                             <p>
                                                                 <a href="/despacho/Documents/oficina-de-control-interno/Seguimiento%20Mapa%20de%20Riesgos%20segundo%20semestre%20de%202020.pdf"
-                                                                    target="_blank"><img
-                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                    target="_blank">
+                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                         src="/_layouts/images/icpdf.png"
-                                                                        alt="" style="width: 20px;" /><span
-                                                                        data-ccp-parastyle="Comentario"
+                                                                        alt="" style="width: 20px;" />
+                                                                    <span data-ccp-parastyle="Comentario"
                                                                         style="text-align: var(--bs-body-text-align);">Seguimiento
                                                                         Mapa de Riesgos segundo semestre de
                                                                         202</span><span
@@ -2271,14 +2384,13 @@
                                                         <li>
                                                             <p>
                                                                 <span data-contrast="none" xml:lang="ES-CO"
-                                                                    lang="ES-CO"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/Seguimiento%20Mapa%20de%20Riesgos%20primer%20semestre%20de%202019.pdf"
-                                                                        target="_blank"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                    lang="ES-CO">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/Seguimiento%20Mapa%20de%20Riesgos%20primer%20semestre%20de%202019.pdf"
+                                                                        target="_blank">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
-                                                                            alt=""
-                                                                            style="width: 20px;" /><span
-                                                                            data-ccp-parastyle="Comentario"
+                                                                            alt="" style="width: 20px;" />
+                                                                        <span data-ccp-parastyle="Comentario"
                                                                             data-ccp-parastyle-defn="{&quot;ObjectId&quot;:&quot;45f2cc37-6587-44a9-acbc-a3dd0d8d627e|43&quot;,&quot;ClassId&quot;:1073872969,&quot;Properties&quot;:[335551547,&quot;3082&quot;,335559740,&quot;279&quot;,201341983,&quot;0&quot;,201342446,&quot;1&quot;,201342447,&quot;5&quot;,201342448,&quot;3&quot;,201342449,&quot;1&quot;,469777841,&quot;Aptos&quot;,469777842,&quot;&quot;,469777843,&quot;&quot;,469777844,&quot;Aptos&quot;,201341986,&quot;3&quot;,469769226,&quot;Aptos&quot;,268442635,&quot;20&quot;,335559704,&quot;1025&quot;,335559705,&quot;1033&quot;,335559739,&quot;160&quot;,469775450,&quot;Comentario&quot;,201340122,&quot;2&quot;,134234082,&quot;true&quot;,134233614,&quot;true&quot;,469778129,&quot;Comentario&quot;,335572020,&quot;1&quot;,134224901,&quot;true&quot;,335551500,&quot;8421504&quot;,469777929,&quot;Comentario Char&quot;,469778324,&quot;Normal&quot;]}"
                                                                             data-ccp-parastyle-linked-defn="{&quot;ObjectId&quot;:&quot;45f2cc37-6587-44a9-acbc-a3dd0d8d627e|44&quot;,&quot;ClassId&quot;:1073872969,&quot;Properties&quot;:[201342446,&quot;1&quot;,201342447,&quot;5&quot;,201342448,&quot;3&quot;,201342449,&quot;1&quot;,469777841,&quot;Aptos&quot;,469777842,&quot;&quot;,469777843,&quot;&quot;,469777844,&quot;Aptos&quot;,201341986,&quot;3&quot;,469769226,&quot;Aptos&quot;,268442635,&quot;20&quot;,469775450,&quot;Comentario Char&quot;,201340122,&quot;1&quot;,134233614,&quot;true&quot;,469778129,&quot;ComentarioChar&quot;,335572020,&quot;1&quot;,134231262,&quot;true&quot;,134224901,&quot;true&quot;,335551500,&quot;8421504&quot;,335551547,&quot;3082&quot;,469777929,&quot;Comentario&quot;,469778324,&quot;Default Paragraph Font&quot;]}">Seguimiento
                                                                             Mapa de Riesgos primer semestre de
@@ -2290,13 +2402,13 @@
                                                         <li>
                                                             <p>
                                                                 <span data-contrast="none" xml:lang="ES-CO"
-                                                                    lang="ES-CO"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/Seguimiento%20Mapa%20de%20Riesgos%20segundo%20semestre%20de%202019.pdf"
-                                                                        target="_blank"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                    lang="ES-CO">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/Seguimiento%20Mapa%20de%20Riesgos%20segundo%20semestre%20de%202019.pdf"
+                                                                        target="_blank">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
-                                                                            alt=""
-                                                                            style="width: 20px;" /><span
+                                                                            alt="" style="width: 20px;" />
+                                                                        <span
                                                                             data-ccp-parastyle="Comentario">Seguimiento
                                                                             Mapa de Riesgos segundo semestre de
                                                                             20</span><span
@@ -2337,10 +2449,10 @@
                                                         <p
                                                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                             <span data-contrast="none" xml:lang="ES-CO"
-                                                                lang="ES-CO"><a
-                                                                    href="/despacho/Documents/oficina-de-control-interno/2025/Informe_%20Consolidado_Seguimiento_Indicadores_Gesti%C3%B3n_1%C2%B0_Sem_2025.pdf"
-                                                                    target="_blank" style="color: #281e52;"><img
-                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                lang="ES-CO">
+                                                                <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe_%20Consolidado_Seguimiento_Indicadores_Gesti%C3%B3n_1%C2%B0_Sem_2025.pdf"
+                                                                    target="_blank" style="color: #281e52;">
+                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                         src="/_layouts/images/icpdf.png"
                                                                         alt=""
                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
@@ -2356,11 +2468,11 @@
                                                         <p
                                                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                             <span data-contrast="none" xml:lang="ES-CO"
-                                                                lang="ES-CO"><a
-                                                                    href="/despacho/Documents/oficina-de-control-interno/2025/Informe_%20Consolidado_Seguimiento_Indicadores_Gesti%C3%B3n_2%C2%B0_Sem_2024.pdf"
+                                                                lang="ES-CO">
+                                                                <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe_%20Consolidado_Seguimiento_Indicadores_Gesti%C3%B3n_2%C2%B0_Sem_2024.pdf"
                                                                     target="_blank"
-                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                         src="/_layouts/images/icpdf.png"
                                                                         alt=""
                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
@@ -2382,10 +2494,10 @@
                                                         <p
                                                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                             <span data-contrast="none" xml:lang="ES-CO"
-                                                                lang="ES-CO"><a
-                                                                    href="/despacho/Documents/oficina-de-control-interno/2025/Informe_%20Consolidado_Seguimiento_Indicadores_Gesti%C3%B3n_1%C2%B0_Sem_2024.pdf"
-                                                                    target="_blank" style="color: #281e52;"><img
-                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                lang="ES-CO">
+                                                                <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe_%20Consolidado_Seguimiento_Indicadores_Gesti%C3%B3n_1%C2%B0_Sem_2024.pdf"
+                                                                    target="_blank" style="color: #281e52;">
+                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                         src="/_layouts/images/icpdf.png"
                                                                         alt=""
                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
@@ -2401,11 +2513,11 @@
                                                         <p
                                                             style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                             <span data-contrast="none" xml:lang="ES-CO"
-                                                                lang="ES-CO"><a
-                                                                    href="/despacho/Documents/oficina-de-control-interno/2025/Informe_%20Consolidado_Seguimiento_Indicadores_Gesti%C3%B3n_2%C2%B0_Sem_2023.pdf"
+                                                                lang="ES-CO">
+                                                                <a href="/despacho/Documents/oficina-de-control-interno/2025/Informe_%20Consolidado_Seguimiento_Indicadores_Gesti%C3%B3n_2%C2%B0_Sem_2023.pdf"
                                                                     target="_blank"
-                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                         src="/_layouts/images/icpdf.png"
                                                                         alt=""
                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />Informe
@@ -2450,10 +2562,10 @@
                                                     <p
                                                         style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                                                         <span data-contrast="none" xml:lang="ES-CO"
-                                                            lang="ES-CO"><a
-                                                                href="/despacho/Documents/oficina-de-control-interno/2025/2026_03_02_384_CERTIFICADO%20_ANUAL_2025.pdf"
-                                                                target="_blank" style="color: #281e52;"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                            lang="ES-CO">
+                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/2026_03_02_384_CERTIFICADO%20_ANUAL_2025.pdf"
+                                                                target="_blank" style="color: #281e52;">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />2026_03_02_384_Certificado_ANUAL_2025</a></span><span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
@@ -2466,10 +2578,10 @@
                                                     <p
                                                         style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px;">
                                                         <span data-contrast="none" xml:lang="ES-CO"
-                                                            lang="ES-CO"><a
-                                                                href="/despacho/Documents/oficina-de-control-interno/2025/2025_02_28_384_Certificado_ANUAL_2024.pdf"
-                                                                target="_blank" style="color: #281e52;"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                            lang="ES-CO">
+                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/2025_02_28_384_Certificado_ANUAL_2024.pdf"
+                                                                target="_blank" style="color: #281e52;">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />2025_02_28_384_Certificado_ANUAL_2024</a></span><span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
@@ -2490,10 +2602,10 @@
                                             <ul
                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                 <li>
-                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO"><a
-                                                            href="/despacho/Documents/oficina-de-control-interno/2025/07_07_2025_I_SEM_2025.pdf"
-                                                            target="_blank" style="color: #281e52;"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO">
+                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/07_07_2025_I_SEM_2025.pdf"
+                                                            target="_blank" style="color: #281e52;">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />07_07_2025_I_SEM_2025</a></span><span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
@@ -2501,11 +2613,11 @@
                                                             style="color: #7f7f7f; background-color: #eaeafe; text-decoration-style: solid; text-decoration-color: #7f7f7f;">(09-11-2025)</em></span>
                                                 </li>
                                                 <li>
-                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO"><a
-                                                            href="/despacho/Documents/oficina-de-control-interno/2025/19_02_2025_II_SEM_2024.pdf"
+                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO">
+                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/19_02_2025_II_SEM_2024.pdf"
                                                             target="_blank"
-                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />19_02_2025_II_SEM_2024</a></span><span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
@@ -2559,11 +2671,11 @@
                                             </p>
                                             <ul>
                                                 <li>
-                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO"><a
-                                                            href="/despacho/Documents/oficina-de-control-interno/2025/06_02_2026_II_SEM_2025.pdf"
+                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO">
+                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/06_02_2026_II_SEM_2025.pdf"
                                                             target="_blank"
-                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />06_02_2026_II_SEM_2025</a>&#160;</span><span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
@@ -2571,11 +2683,11 @@
                                                             style="color: #7f7f7f; background-color: #eaeafe; text-decoration-style: solid; text-decoration-color: #7f7f7f;">(18-03-2026)</em></span>
                                                 </li>
                                                 <li>
-                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO"><a
-                                                            href="/despacho/Documents/oficina-de-control-interno/2025/14_07_2025_I_SEM_2025.pdf"
+                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO">
+                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/14_07_2025_I_SEM_2025.pdf"
                                                             target="_blank"
-                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />14_07_2025_I_SEM_2025</a>&#160;</span><span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
@@ -2583,11 +2695,11 @@
                                                             style="color: #7f7f7f; background-color: #eaeafe; text-decoration-style: solid; text-decoration-color: #7f7f7f;">(09-11-2025)</em></span>
                                                 </li>
                                                 <li>
-                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO"><a
-                                                            href="/despacho/Documents/oficina-de-control-interno/2025/07_02_2025_II_SEM_2024.pdf"
+                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO">
+                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/07_02_2025_II_SEM_2024.pdf"
                                                             target="_blank"
-                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />07_02_2025_II_SEM_2024</a>&#160;</span><span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
@@ -2623,9 +2735,10 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                data-contrast="none" xml:lang="ES-CO"
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span data-contrast="none" xml:lang="ES-CO"
                                                                 lang="ES-CO"
                                                                 style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">​<a
                                                                     href="/despacho/Documents/oficina-de-control-interno/2025/03_03_2026_FEB_2026.pdf"
@@ -2643,9 +2756,10 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                data-contrast="none" xml:lang="ES-CO"
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span data-contrast="none" xml:lang="ES-CO"
                                                                 lang="ES-CO"
                                                                 style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">​<a
                                                                     href="/despacho/Documents/oficina-de-control-interno/2025/03_02_2026_ENE_2026.pdf"
@@ -2670,9 +2784,10 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                data-contrast="none" xml:lang="ES-CO"
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span data-contrast="none" xml:lang="ES-CO"
                                                                 lang="ES-CO"
                                                                 style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">​<a
                                                                     href="/despacho/Documents/oficina-de-control-interno/2025/02_01_2026_DIC_2025.pdf"
@@ -2690,9 +2805,10 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                data-contrast="none" xml:lang="ES-CO"
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span data-contrast="none" xml:lang="ES-CO"
                                                                 lang="ES-CO"
                                                                 style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">​<a
                                                                     href="/despacho/Documents/oficina-de-control-interno/2025/04_12_2025_NOV_2025.pdf"
@@ -2710,9 +2826,10 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                data-contrast="none" xml:lang="ES-CO"
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span data-contrast="none" xml:lang="ES-CO"
                                                                 lang="ES-CO"
                                                                 style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">​<a
                                                                     href="/despacho/Documents/oficina-de-control-interno/2025/07_11_2025_OCT_2025.pdf"
@@ -2730,9 +2847,10 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                data-contrast="none" xml:lang="ES-CO"
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span data-contrast="none" xml:lang="ES-CO"
                                                                 lang="ES-CO"
                                                                 style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">​<a
                                                                     href="/despacho/Documents/oficina-de-control-interno/2025/07_10_2025_SEP_2025.pdf"
@@ -2750,18 +2868,21 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                        data-contrast="none" xml:lang="ES-CO"
+                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span data-contrast="none" xml:lang="ES-CO"
                                                                         lang="ES-CO"
-                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;"><a
-                                                                            href="/despacho/Documents/oficina-de-control-interno/2025/08_09_2025_AGO_2025.pdf"
+                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;">
+                                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/08_09_2025_AGO_2025.pdf"
                                                                             target="_blank"
-                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                                 src="/_layouts/images/icpdf.png"
                                                                                 alt=""
                                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​08_09_2025_AGO_2025</a>&#160;</span><span
@@ -2773,18 +2894,21 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                        data-contrast="none" xml:lang="ES-CO"
+                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span data-contrast="none" xml:lang="ES-CO"
                                                                         lang="ES-CO"
-                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;"><a
-                                                                            href="/despacho/Documents/oficina-de-control-interno/2025/05_08_2025_JUL_2025.pdf"
+                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;">
+                                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/05_08_2025_JUL_2025.pdf"
                                                                             target="_blank"
-                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                                 src="/_layouts/images/icpdf.png"
                                                                                 alt=""
                                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​05_08_2025_JUL_2025</a>&#160;</span><span
@@ -2796,18 +2920,21 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                        data-contrast="none" xml:lang="ES-CO"
+                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span data-contrast="none" xml:lang="ES-CO"
                                                                         lang="ES-CO"
-                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;"><a
-                                                                            href="/despacho/Documents/oficina-de-control-interno/2025/04_07_2025_JUN_2025.pdf"
+                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;">
+                                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/04_07_2025_JUN_2025.pdf"
                                                                             target="_blank"
-                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                                 src="/_layouts/images/icpdf.png"
                                                                                 alt=""
                                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​04_07_2025_JUN_2025</a>&#160;</span><span
@@ -2819,18 +2946,21 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                        data-contrast="none" xml:lang="ES-CO"
+                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span data-contrast="none" xml:lang="ES-CO"
                                                                         lang="ES-CO"
-                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;"><a
-                                                                            href="/despacho/Documents/oficina-de-control-interno/2025/03_06_2025_MAY_2025.pdf"
+                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;">
+                                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/03_06_2025_MAY_2025.pdf"
                                                                             target="_blank"
-                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                                 src="/_layouts/images/icpdf.png"
                                                                                 alt=""
                                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​03_06_2025_MAY_2025</a>&#160;</span><span
@@ -2842,18 +2972,21 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                        data-contrast="none" xml:lang="ES-CO"
+                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span data-contrast="none" xml:lang="ES-CO"
                                                                         lang="ES-CO"
-                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;"><a
-                                                                            href="/despacho/Documents/oficina-de-control-interno/2025/05_05_2025_ABR_2025.pdf"
+                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;">
+                                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/05_05_2025_ABR_2025.pdf"
                                                                             target="_blank"
-                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                                 src="/_layouts/images/icpdf.png"
                                                                                 alt=""
                                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​05_05_2025_ABR_2025</a>&#160;</span><span
@@ -2865,18 +2998,21 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                        data-contrast="none" xml:lang="ES-CO"
+                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span data-contrast="none" xml:lang="ES-CO"
                                                                         lang="ES-CO"
-                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;"><a
-                                                                            href="/despacho/Documents/oficina-de-control-interno/2025/02_04_2025_MAR_2025.pdf"
+                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;">
+                                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/02_04_2025_MAR_2025.pdf"
                                                                             target="_blank"
-                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                                 src="/_layouts/images/icpdf.png"
                                                                                 alt=""
                                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​02_04_2025_MAR_2025</a>&#160;</span><span
@@ -2888,18 +3024,21 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                        data-contrast="none" xml:lang="ES-CO"
+                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span data-contrast="none" xml:lang="ES-CO"
                                                                         lang="ES-CO"
-                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;"><a
-                                                                            href="/despacho/Documents/oficina-de-control-interno/2025/03_03_2025_FEB_2025.pdf"
+                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;">
+                                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/03_03_2025_FEB_2025.pdf"
                                                                             target="_blank"
-                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                                 src="/_layouts/images/icpdf.png"
                                                                                 alt=""
                                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​03_03_2025_FEB_2025</a>&#160;</span><span
@@ -2911,18 +3050,21 @@
                                                 <li>
                                                     <span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                        style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                        <span
+                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                            <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                        data-contrast="none" xml:lang="ES-CO"
+                                                                style="color: #4d4d4d; font-size: 18px; font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span data-contrast="none" xml:lang="ES-CO"
                                                                         lang="ES-CO"
-                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;"><a
-                                                                            href="/despacho/Documents/oficina-de-control-interno/2025/05_02_2025_ENE_2025.pdf"
+                                                                        style="font-family: &quot;nunito sans&quot;; font-size: 18px; color: #4d4d4d; background-color: #eaeafe;">
+                                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/05_02_2025_ENE_2025.pdf"
                                                                             target="_blank"
-                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                                 src="/_layouts/images/icpdf.png"
                                                                                 alt=""
                                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​05_02_2025_E​​NE_2025</a>&#160;</span><span
@@ -2958,11 +3100,11 @@
                                                     <li
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span data-contrast="none" xml:lang="ES-CO"
-                                                            lang="ES-CO"><a
-                                                                href="/despacho/Documents/oficina-de-control-interno/2025/08_01_2025_DIC_2024.pdf"
+                                                            lang="ES-CO">
+                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/08_01_2025_DIC_2024.pdf"
                                                                 target="_blank"
-                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />08_01_2025_DIC_2024</a>&#160;</span><span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
@@ -2972,11 +3114,11 @@
                                                     <li
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span data-contrast="none" xml:lang="ES-CO"
-                                                            lang="ES-CO"><a
-                                                                href="/despacho/Documents/oficina-de-control-interno/2025/04_12_2024_NOV_2024.pdf"
+                                                            lang="ES-CO">
+                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/04_12_2024_NOV_2024.pdf"
                                                                 target="_blank"
-                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />04_12_2024_NOV_2024</a>&#160;</span><span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
@@ -3002,9 +3144,10 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                    data-contrast="none" xml:lang="ES-CO"
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span data-contrast="none" xml:lang="ES-CO"
                                                                     lang="ES-CO" style="color: #4d4d4d;">​<a
                                                                         href="/despacho/Documents/oficina-de-control-interno/2025/09_10_2024_SEP_2024.pdf"
                                                                         target="_blank"
@@ -3022,18 +3165,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/09_09_2024_AGOSTO_2024.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/09_09_2024_AGOSTO_2024.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​09_09_2024_AGOSTO_2024</a>&#160;</span><span
@@ -3046,18 +3191,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/08_08_2024_JULIO_2024.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/08_08_2024_JULIO_2024.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​08_08_2024_JULIO_2024</a>&#160;</span><span
@@ -3070,18 +3217,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/12_07_2024_JUNIO_2024.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/12_07_2024_JUNIO_2024.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​12_07_2024_JUNIO_2024</a>&#160;</span><span
@@ -3094,18 +3243,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/12_07_2024_MAYO_2024.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/12_07_2024_MAYO_2024.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​12_07_2024_MAYO_2024</a>&#160;</span><span
@@ -3118,18 +3269,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/09_05_2024_ABRIL_2024.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/09_05_2024_ABRIL_2024.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​09_05_2024_ABRIL_2024</a>&#160;</span><span
@@ -3142,18 +3295,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/11_04_2024_MARZO_2024.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/11_04_2024_MARZO_2024.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​11_04_2024_MARZO_2024</a>&#160;</span><span
@@ -3166,18 +3321,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/13_03_2024_FEB_2024.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/13_03_2024_FEB_2024.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​13_03_2024_FEB_2024</a>&#160;</span><span
@@ -3190,18 +3347,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/13_03_2024_ENE_2024.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/13_03_2024_ENE_2024.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​13_03_2024_E​​NE_2024</a>&#160;</span><span
@@ -3227,10 +3386,10 @@
                                                 style="margin-right: 0px; margin-bottom: 10px; margin-left: 0px; line-height: 27px; font-family: &quot;nunito sans&quot;;">
                                                 <li
                                                     style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
-                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO"><a
-                                                            href="/despacho/Documents/oficina-de-control-interno/2025/07_07_2025_I_SEM_2025_2.pdf"
-                                                            target="_blank" style="color: #281e52;"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO">
+                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/07_07_2025_I_SEM_2025_2.pdf"
+                                                            target="_blank" style="color: #281e52;">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />07_07_2025_I_SEM_2025</a></span><span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
@@ -3239,11 +3398,11 @@
                                                 </li>
                                                 <li
                                                     style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
-                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO"><a
-                                                            href="/despacho/Documents/oficina-de-control-interno/2025/23_01_2025_II_SEM_2024_2.pdf"
+                                                    <span data-contrast="none" xml:lang="ES-CO" lang="ES-CO">
+                                                        <a href="/despacho/Documents/oficina-de-control-interno/2025/23_01_2025_II_SEM_2024_2.pdf"
                                                             target="_blank"
-                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                class="ms-asset-icon ms-rtePosition-4"
+                                                            style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                            <img class="ms-asset-icon ms-rtePosition-4"
                                                                 src="/_layouts/images/icpdf.png" alt=""
                                                                 style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />23_01_2025_II_SEM_2024</a></span><span
                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
@@ -3293,11 +3452,11 @@
                                                     <li
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span data-contrast="none" xml:lang="ES-CO"
-                                                            lang="ES-CO"><a
-                                                                href="/despacho/Documents/oficina-de-control-interno/2025/03_04_2025_ANUAL_2024.pdf"
+                                                            lang="ES-CO">
+                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/03_04_2025_ANUAL_2024.pdf"
                                                                 target="_blank"
-                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                     src="/_layouts/images/icpdf.png" alt=""
                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />03_04_2025_ANUAL_2024</a>&#160;</span><span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"><span
@@ -3317,9 +3476,10 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                    data-contrast="none" xml:lang="ES-CO"
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span data-contrast="none" xml:lang="ES-CO"
                                                                     lang="ES-CO" style="color: #4d4d4d;">​<a
                                                                         href="/despacho/Documents/oficina-de-control-interno/2025/12_01_2026_DIC_2025.pdf"
                                                                         target="_blank"
@@ -3337,9 +3497,10 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                    data-contrast="none" xml:lang="ES-CO"
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span data-contrast="none" xml:lang="ES-CO"
                                                                     lang="ES-CO" style="color: #4d4d4d;">​<a
                                                                         href="/despacho/Documents/oficina-de-control-interno/2025/07_12_2025_NOV_2025.pdf"
                                                                         target="_blank"
@@ -3357,9 +3518,10 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                    data-contrast="none" xml:lang="ES-CO"
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span data-contrast="none" xml:lang="ES-CO"
                                                                     lang="ES-CO" style="color: #4d4d4d;">​<a
                                                                         href="/despacho/Documents/oficina-de-control-interno/2025/31_10_2025_OCT_2025.pdf"
                                                                         target="_blank"
@@ -3377,9 +3539,10 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                    data-contrast="none" xml:lang="ES-CO"
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span data-contrast="none" xml:lang="ES-CO"
                                                                     lang="ES-CO" style="color: #4d4d4d;">​<a
                                                                         href="/despacho/Documents/oficina-de-control-interno/2025/08_10_2024_SEP_2025.pdf"
                                                                         target="_blank"
@@ -3397,18 +3560,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/08_09_2024_AGOS_2025.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/08_09_2024_AGOS_2025.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​08_09_2024_AGOS_2025</a>&#160;</span><span
@@ -3421,18 +3586,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/07_08_2024_JUL_2025.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/07_08_2024_JUL_2025.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​07_08_2024_JUL_2025</a>&#160;</span><span
@@ -3445,18 +3612,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/07_07_2024_JUN_2025.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/07_07_2024_JUN_2025.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​07_07_2024_JUN_2025</a>&#160;</span><span
@@ -3469,18 +3638,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/08_06_2024_MAY_2025.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/08_06_2024_MAY_2025.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​08_06_2024_MAY_2025</a>&#160;</span><span
@@ -3493,18 +3664,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/12_05_2024_ABR_2025.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/12_05_2024_ABR_2025.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​12_05_2024_ABR_2025</a>&#160;</span><span
@@ -3517,18 +3690,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/02_04_2025_MAR_2025.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/02_04_2025_MAR_2025.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​08_04_2024_MAR_2025</a>&#160;</span><span
@@ -3541,18 +3716,20 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span
                                                                     data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                    style="color: #4d4d4d;"><span
-                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                            data-contrast="none" xml:lang="ES-CO"
-                                                                            lang="ES-CO"
-                                                                            style="color: #4d4d4d;"><a
-                                                                                href="/despacho/Documents/oficina-de-control-interno/2025/11_03_2024_FEB_2025.pdf"
+                                                                    style="color: #4d4d4d;">
+                                                                    <span
+                                                                        style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                        <span data-contrast="none" xml:lang="ES-CO"
+                                                                            lang="ES-CO" style="color: #4d4d4d;">
+                                                                            <a href="/despacho/Documents/oficina-de-control-interno/2025/11_03_2024_FEB_2025.pdf"
                                                                                 target="_blank"
-                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                    class="ms-asset-icon ms-rtePosition-4"
+                                                                                style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                <img class="ms-asset-icon ms-rtePosition-4"
                                                                                     src="/_layouts/images/icpdf.png"
                                                                                     alt=""
                                                                                     style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​11_03_2024_FEB_2025</a>&#160;</span><span
@@ -3565,14 +3742,15 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                    data-contrast="none" xml:lang="ES-CO"
-                                                                    lang="ES-CO" style="color: #4d4d4d;"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/2025/09_02_2024_ENE_2025.pdf"
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span data-contrast="none" xml:lang="ES-CO"
+                                                                    lang="ES-CO" style="color: #4d4d4d;">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/2025/09_02_2024_ENE_2025.pdf"
                                                                         target="_blank"
-                                                                        style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                        style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
                                                                             alt=""
                                                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​09_02_2024_ENE_2025</a>&#160;</span><span
@@ -3585,15 +3763,16 @@
                                                         style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                         <span
                                                             data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;"><span
-                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                    data-contrast="none" xml:lang="ES-CO"
+                                                            style="font-family: &quot;nunito sans&quot;; background-color: #eaeafe;">
+                                                            <span
+                                                                style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                <span data-contrast="none" xml:lang="ES-CO"
                                                                     lang="ES-CO"
-                                                                    style="font-family: &quot;nunito sans&quot;; font-size: 18px; background-color: #eaeafe; color: #4d4d4d;"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/2025/09_01_2024_DIC_2024.pdf"
+                                                                    style="font-family: &quot;nunito sans&quot;; font-size: 18px; background-color: #eaeafe; color: #4d4d4d;">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/2025/09_01_2024_DIC_2024.pdf"
                                                                         target="_blank"
-                                                                        style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                        style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
                                                                             alt=""
                                                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​​​09_01_2024_DIC_2024</a>&#160;</span><span
@@ -3613,11 +3792,11 @@
                                                         <li
                                                             style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                             <span data-contrast="none" xml:lang="ES-CO"
-                                                                lang="ES-CO"><a
-                                                                    href="/despacho/Documents/oficina-de-control-interno/2024/07_12_2024_NOV_2024.pdf"
+                                                                lang="ES-CO">
+                                                                <a href="/despacho/Documents/oficina-de-control-interno/2024/07_12_2024_NOV_2024.pdf"
                                                                     target="_blank"
-                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                         src="/_layouts/images/icpdf.png"
                                                                         alt=""
                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />07_12_2024_NOV_2024</a>&#160;</span><span
@@ -3646,9 +3825,10 @@
                                                             style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                             <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                        data-contrast="none" xml:lang="ES-CO"
+                                                                style="background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span data-contrast="none" xml:lang="ES-CO"
                                                                         lang="ES-CO" style="color: #4d4d4d;">​<a
                                                                             href="/despacho/Documents/oficina-de-control-interno/2024/07_10_2024_SEP_2024.pdf"
                                                                             target="_blank"
@@ -3666,18 +3846,21 @@
                                                             style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                             <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                                style="background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span
                                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                        style="color: #4d4d4d;"><span
-                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                                data-contrast="none"
+                                                                        style="color: #4d4d4d;">
+                                                                        <span
+                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                            <span data-contrast="none"
                                                                                 xml:lang="ES-CO" lang="ES-CO"
-                                                                                style="color: #4d4d4d;"><a
-                                                                                    href="/despacho/Documents/oficina-de-control-interno/2024/09_09_2024_AGOS_2024.pdf"
+                                                                                style="color: #4d4d4d;">
+                                                                                <a href="/despacho/Documents/oficina-de-control-interno/2024/09_09_2024_AGOS_2024.pdf"
                                                                                     target="_blank"
-                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                                         src="/_layouts/images/icpdf.png"
                                                                                         alt=""
                                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​09_09_2024_AGOS_2024</a>&#160;</span><span
@@ -3690,18 +3873,21 @@
                                                             style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                             <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                                style="background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span
                                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                        style="color: #4d4d4d;"><span
-                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                                data-contrast="none"
+                                                                        style="color: #4d4d4d;">
+                                                                        <span
+                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                            <span data-contrast="none"
                                                                                 xml:lang="ES-CO" lang="ES-CO"
-                                                                                style="color: #4d4d4d;"><a
-                                                                                    href="/despacho/Documents/oficina-de-control-interno/2024/12_08_2024_JUL_2024.pdf"
+                                                                                style="color: #4d4d4d;">
+                                                                                <a href="/despacho/Documents/oficina-de-control-interno/2024/12_08_2024_JUL_2024.pdf"
                                                                                     target="_blank"
-                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                                         src="/_layouts/images/icpdf.png"
                                                                                         alt=""
                                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​12_08_2024_JUL_2024</a>&#160;</span><span
@@ -3714,18 +3900,21 @@
                                                             style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                             <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                                style="background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span
                                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                        style="color: #4d4d4d;"><span
-                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                                data-contrast="none"
+                                                                        style="color: #4d4d4d;">
+                                                                        <span
+                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                            <span data-contrast="none"
                                                                                 xml:lang="ES-CO" lang="ES-CO"
-                                                                                style="color: #4d4d4d;"><a
-                                                                                    href="/despacho/Documents/oficina-de-control-interno/2024/10_07_2024_JUN_2024.pdf"
+                                                                                style="color: #4d4d4d;">
+                                                                                <a href="/despacho/Documents/oficina-de-control-interno/2024/10_07_2024_JUN_2024.pdf"
                                                                                     target="_blank"
-                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                                         src="/_layouts/images/icpdf.png"
                                                                                         alt=""
                                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​10_07_2024_JUN_2024</a>&#160;</span><span
@@ -3738,18 +3927,21 @@
                                                             style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                             <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                                style="background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span
                                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                        style="color: #4d4d4d;"><span
-                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                                data-contrast="none"
+                                                                        style="color: #4d4d4d;">
+                                                                        <span
+                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                            <span data-contrast="none"
                                                                                 xml:lang="ES-CO" lang="ES-CO"
-                                                                                style="color: #4d4d4d;"><a
-                                                                                    href="/despacho/Documents/oficina-de-control-interno/2024/11_06_2024_MAY_2024.pdf"
+                                                                                style="color: #4d4d4d;">
+                                                                                <a href="/despacho/Documents/oficina-de-control-interno/2024/11_06_2024_MAY_2024.pdf"
                                                                                     target="_blank"
-                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                                         src="/_layouts/images/icpdf.png"
                                                                                         alt=""
                                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​11_06_2024_MAY_2024</a>&#160;</span><span
@@ -3762,18 +3954,21 @@
                                                             style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                             <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                                style="background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span
                                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                        style="color: #4d4d4d;"><span
-                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                                data-contrast="none"
+                                                                        style="color: #4d4d4d;">
+                                                                        <span
+                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                            <span data-contrast="none"
                                                                                 xml:lang="ES-CO" lang="ES-CO"
-                                                                                style="color: #4d4d4d;"><a
-                                                                                    href="/despacho/Documents/oficina-de-control-interno/2024/09_05_2024_ABR_2024.pdf"
+                                                                                style="color: #4d4d4d;">
+                                                                                <a href="/despacho/Documents/oficina-de-control-interno/2024/09_05_2024_ABR_2024.pdf"
                                                                                     target="_blank"
-                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                                         src="/_layouts/images/icpdf.png"
                                                                                         alt=""
                                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​09_05_2024_ABR_2024</a>&#160;</span><span
@@ -3786,18 +3981,21 @@
                                                             style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                             <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                                style="background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span
                                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                        style="color: #4d4d4d;"><span
-                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                                data-contrast="none"
+                                                                        style="color: #4d4d4d;">
+                                                                        <span
+                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                            <span data-contrast="none"
                                                                                 xml:lang="ES-CO" lang="ES-CO"
-                                                                                style="color: #4d4d4d;"><a
-                                                                                    href="/despacho/Documents/oficina-de-control-interno/2024/08_04_2024_MAR_2024.pdf"
+                                                                                style="color: #4d4d4d;">
+                                                                                <a href="/despacho/Documents/oficina-de-control-interno/2024/08_04_2024_MAR_2024.pdf"
                                                                                     target="_blank"
-                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                                         src="/_layouts/images/icpdf.png"
                                                                                         alt=""
                                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​08_04_2024_MAR_2024</a>&#160;</span><span
@@ -3810,18 +4008,21 @@
                                                             style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                             <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                                style="background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span
                                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                        style="color: #4d4d4d;"><span
-                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                                data-contrast="none"
+                                                                        style="color: #4d4d4d;">
+                                                                        <span
+                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                            <span data-contrast="none"
                                                                                 xml:lang="ES-CO" lang="ES-CO"
-                                                                                style="color: #4d4d4d;"><a
-                                                                                    href="/despacho/Documents/oficina-de-control-interno/2024/11_03_2024_FEB_2024.pdf"
+                                                                                style="color: #4d4d4d;">
+                                                                                <a href="/despacho/Documents/oficina-de-control-interno/2024/11_03_2024_FEB_2024.pdf"
                                                                                     target="_blank"
-                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                                         src="/_layouts/images/icpdf.png"
                                                                                         alt=""
                                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​11_03_2024_FEB_2024</a>&#160;</span><span
@@ -3834,18 +4035,21 @@
                                                             style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                             <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                                style="background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span
                                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                        style="color: #4d4d4d;"><span
-                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
-                                                                                data-contrast="none"
+                                                                        style="color: #4d4d4d;">
+                                                                        <span
+                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                            <span data-contrast="none"
                                                                                 xml:lang="ES-CO" lang="ES-CO"
-                                                                                style="color: #4d4d4d;"><a
-                                                                                    href="/despacho/Documents/oficina-de-control-interno/2024/09_02_2024_ENE_2024.pdf"
+                                                                                style="color: #4d4d4d;">
+                                                                                <a href="/despacho/Documents/oficina-de-control-interno/2024/09_02_2024_ENE_2024.pdf"
                                                                                     target="_blank"
-                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                                        class="ms-asset-icon ms-rtePosition-4"
+                                                                                    style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                                    <img class="ms-asset-icon ms-rtePosition-4"
                                                                                         src="/_layouts/images/icpdf.png"
                                                                                         alt=""
                                                                                         style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />​​​​09_02_2024_ENE_2024</a>&#160;</span><span
@@ -3858,11 +4062,11 @@
                                                             style="color: #4d4d4d; font-family: &quot;nunito sans&quot;; font-size: 18px; line-height: 27px;">
                                                             <p>
                                                                 <span data-contrast="none" xml:lang="ES-CO"
-                                                                    lang="ES-CO"><a
-                                                                        href="/despacho/Documents/oficina-de-control-interno/2024/12_01_2024_DIC_2023.pdf"
+                                                                    lang="ES-CO">
+                                                                    <a href="/despacho/Documents/oficina-de-control-interno/2024/12_01_2024_DIC_2023.pdf"
                                                                         target="_blank"
-                                                                        style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;"><img
-                                                                            class="ms-asset-icon ms-rtePosition-4"
+                                                                        style="color: #281e52; --bs-link-color-rgb: 32, 24, 66;">
+                                                                        <img class="ms-asset-icon ms-rtePosition-4"
                                                                             src="/_layouts/images/icpdf.png"
                                                                             alt=""
                                                                             style="margin: 5px; width: 20px; object-fit: contain; align-self: stretch;" />12_01_2024_DIC_2023</a>&#160;</span><span
@@ -3872,14 +4076,20 @@
                                                             </p>
                                                             <span
                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                style="background-color: #eaeafe;"><span
-                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                                style="background-color: #eaeafe;">
+                                                                <span
+                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                    <span
                                                                         data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                        style="color: #4d4d4d;"><span
-                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><span
+                                                                        style="color: #4d4d4d;">
+                                                                        <span
+                                                                            style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                            <span
                                                                                 data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:279}"
-                                                                                style="color: #4d4d4d;"><em
-                                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;"><br /></em></span></span></span></span></span>
+                                                                                style="color: #4d4d4d;">
+                                                                                <em
+                                                                                    style="color: #7f7f7f; text-decoration-style: solid; text-decoration-color: #7f7f7f;">
+                                                                                    <br /></em></span></span></span></span></span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -3891,7 +4101,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--FIN (se repite de inicio a fin para cada nuevo elemento)--</div>--><br />
+                                <!--FIN (se repite de inicio a fin para cada nuevo elemento)--</div>--><br /> ​<br />
                             </div>
                         </div>
                     </div>

@@ -4,7 +4,7 @@
 <p>
     <br />
 </p>
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionLineamientos">
     <!--INICIO 2025-2-->
     <div class="accordion-item">
         <h2 class="accordion-header" id="heading2025-2">
@@ -13,14 +13,14 @@
                 Auditorías</button>
         </h2>
         <div id="collapse2025-2" class="accordion-collapse collapse" aria-labelledby="heading2025-2"
-            data-bs-parent="#accordionExample">
+            data-bs-parent="#accordionLineamientos">
             <div class="accordion-body">
                 <ul>
                     <li>
                         <a href="/despacho/Documents/programa-anual-de-auditorias/2025/DI-OCI-002_ESTATUTO%20DE%20AUDITORIA%20INTERNA%20V2_2024.pdf"
                             target="_blank">
                             <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png" alt=""
-                                style="width: 20px;" />Estatuto de auditoría interna​</a><em
+                                style="width: 20px;" />Estatuto de auditorí​a interna​</a><em
                             class="ms-rteThemeForeColor-1-5"
                             style="font-family: &quot;nunito sans&quot;; font-size: 18px; background-color: #eaeafe; text-decoration-style: solid; text-decoration-color: #7f7f7f;">&#160;
                             (07-11-2025)</em>​
@@ -31,15 +31,39 @@
     </div>
     <!--FIN 2025-2-->
 </div>
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionAuditorias">
+    <!--INICIO 2026-->
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading2026">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2026"
+                aria-expanded="true" aria-controls="collapse2026">2026</button>
+        </h2>
+        <div id="collapse2026" class="accordion-collapse collapse show" aria-labelledby="heading2026"
+            data-bs-parent="#accordionAuditorias">
+            <div class="accordion-body">
+                <ul>
+                    <li>
+                        <a href="/despacho/Documents/programa-anual-de-auditorias/2026/Plan%20Anual%20de%20Auditoria%20Vigencia%202026%20V1.pdf"
+                            target="_blank">
+                            <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png" alt=""
+                                style="width: 20px;" />Plan Anual de Auditoria Vigencia 2026 V1</a><em
+                            class="ms-rteThemeForeColor-1-5"
+                            style="font-family: &quot;nunito sans&quot;; font-size: 18px; background-color: #eaeafe; text-decoration-style: solid; text-decoration-color: #7f7f7f;">&#160;
+                            (23-04-2026)</em>​
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--FIN 2026-->
     <!--INICIO 2025-->
     <div class="accordion-item">
         <h2 class="accordion-header" id="heading2025">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2025"
-                aria-expanded="true" aria-controls="collapse2025">2025</button>
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse2025" aria-expanded="false" aria-controls="collapse2025">2025</button>
         </h2>
-        <div id="collapse2025" class="accordion-collapse collapse show" aria-labelledby="heading2024"
-            data-bs-parent="#accordionExample">
+        <div id="collapse2025" class="accordion-collapse collapse" aria-labelledby="heading2025"
+            data-bs-parent="#accordionAuditorias">
             <div class="accordion-body">
                 <ul>
                     <li>
@@ -55,24 +79,24 @@
                             target="_blank">
                             <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png" alt=""
                                 style="width: 20px;" />2. Informe final Biblioteca Nacional</a><em
-                            class="ms-rteThemeForeColor-1-5"
-                            style="text-decoration: #7f7f7f;">&#160; (17-03-2026)</em><br />
+                            class="ms-rteThemeForeColor-1-5" style="text-decoration: #7f7f7f;">&#160;
+                            (17-03-2026)</em><br />
                     </li>
                     <li>
                         <a href="/despacho/Documents/programa-anual-de-auditorias/2025/3%C2%B0_Informe_FINAL_Auditoria_de_Contratos_y_Convenios_vigencia_2024-2025.pdf"
                             target="_blank">
                             <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png" alt=""
                                 style="width: 20px;" />3. Informe final auditoría de contratos y convenios vigencia
-                            2024-2025</a><em class="ms-rteThemeForeColor-1-5"
-                            style="text-decoration: #7f7f7f;">&#160; (17-03-2026)</em><br />
+                            2024-2025</a><em class="ms-rteThemeForeColor-1-5" style="text-decoration: #7f7f7f;">&#160;
+                            (17-03-2026)</em><br />
                     </li>
                     <li>
                         <a href="/despacho/Documents/programa-anual-de-auditorias/2025/4%C2%B0_Informe_Final_Auditoria_de_Gestion_Financiera_y_Contable.pdf"
                             target="_blank">
                             <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png" alt=""
                                 style="width: 20px;" />4. Informe final auditoría de gestión financiera y
-                            contable</a><em class="ms-rteThemeForeColor-1-5"
-                            style="text-decoration: #7f7f7f;">&#160; (17-03-2026)</em><br />
+                            contable</a><em class="ms-rteThemeForeColor-1-5" style="text-decoration: #7f7f7f;">&#160;
+                            (17-03-2026)</em><br />
                     </li>
                     <li>
                         <a href="/despacho/Documents/programa-anual-de-auditorias/2025/F-OCI-020_Programa_Anual_Auditorias_2025_V1.pdf"
@@ -106,15 +130,16 @@
                     <li>
                         <a href="/despacho/Documents/programa-anual-de-auditorias/2025/MC00880I2025_Informe_Final_Auditor%C3%ADa_Interna_de_Gesti%C3%B3n_Programa_Sonidos_para_la_Construcci%C3%B3n_de_Paz_Vigencia_2024.pdf"
                             target="_blank">
-                            <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png" alt=""
-                                style="width: 20px;" />​​​Informe Final de Auditoria Interna de Gestión Programa Sonidos
-                            para la Construcción de Paz Vigencia 2024​​</a><br />
+                            <img class="ms-asset-icon ms-rtePosition-4" src="/_layouts/images/icpdf.png"
+                                alt="" style="width: 20px;" />​​​Informe Final de Auditoria Interna de Gestión
+                            Programa Sonidos para la Construcción de Paz Vigencia 2024​​</a><br />
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    <!--FIN 2025--><!--INICIO 2024-->
+    <!--FIN 2025-->
+    <!--INICIO 2024-->
     <div class="accordion-item">
         <h2 class="accordion-header" id="heading2024">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -244,7 +269,8 @@
             </div>
         </div>
     </div>
-    <!--FIN 2024--><!--INICIO 2023-->
+    <!--FIN 2024-->
+    <!--INICIO 2023-->
     <div class="accordion-item">
         <h2 class="accordion-header" id="heading2023">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -410,7 +436,8 @@
             </div>
         </div>
     </div>
-    <!--FIN 2023--><!--INICIO 2022-->
+    <!--FIN 2023-->
+    <!--INICIO 2022-->
     <div class="accordion-item">
         <h2 class="accordion-header" id="heading2022">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -510,7 +537,8 @@
             </div>
         </div>
     </div>
-    <!--FIN 2022--><!--INICIO 2021-->
+    <!--FIN 2022-->
+    <!--INICIO 2021-->
     <div class="accordion-item">
         <h2 class="accordion-header" id="heading2021">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -647,5 +675,6 @@
             </div>
         </div>
     </div>
-    <!--FIN 2021--><br />​<br />
+    <!--FIN 2021-->
+    <br />​<br /> ​<br />
 </div>
