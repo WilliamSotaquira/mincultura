@@ -22,6 +22,10 @@ Route::get('/despacho/sites/casa-comun', function () {
     return view('ministerio.despacho.sites.casa-comun');
 })->name('despacho.sites.casa-comun');
 
+Route::get('/despacho/sites/congreso', function () {
+    return view('ministerio.despacho.sites.congreso');
+})->name('despacho.sites.congreso');
+
 Route::get('/despacho/oficina-de-control-interno/servicios-informacion', function () {
     return view('ministerio.despacho.oficina-de-control-interno.servicios-informacion.index');
 })->name('despacho.oficina-de-control-interno.servicios-informacion.index');

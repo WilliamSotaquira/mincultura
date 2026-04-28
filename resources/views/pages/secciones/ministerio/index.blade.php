@@ -22,6 +22,9 @@
             <a href="{{ route('ministerio.despacho.sites.casa-comun') }}" class="list-group-item list-group-item-action">
                 Casa Común
             </a>
+            <a href="{{ route('ministerio.despacho.sites.congreso') }}" class="list-group-item list-group-item-action">
+                Congreso
+            </a>
             <a href="{{ route('ministerio.despacho.oficina-de-control-interno.servicios-informacion.index') }}"
                 class="list-group-item list-group-item-action">
                 Oficina de Control Interno - Servicios de información
