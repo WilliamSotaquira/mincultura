@@ -217,13 +217,15 @@
             right: 0;
             bottom: 0;
             left: 0;
-            height: 54%;
+            height: 50%;
             z-index: 0;
             pointer-events: none;
             background:
-                radial-gradient(circle at 74% 58%, rgba(39, 31, 79, 0.68) 0%, rgba(39, 31, 79, 0.46) 22%, rgba(39, 31, 79, 0.08) 46%, rgba(39, 31, 79, 0) 64%),
-                linear-gradient(90deg, rgba(39, 31, 79, 0.18) 0%, rgba(39, 31, 79, 0.12) 48%, rgba(39, 31, 79, 0.44) 100%),
-                linear-gradient(180deg, rgba(39, 31, 79, 0) 0%, rgba(39, 31, 79, 0.18) 34%, rgba(39, 31, 79, 0.58) 100%);
+                radial-gradient(circle at 74% 46%, rgba(39, 31, 79, 0.62) 0%, rgba(39, 31, 79, 0.38) 26%, rgba(39, 31, 79, 0.08) 56%, rgba(39, 31, 79, 0) 78%),
+                linear-gradient(90deg, rgba(39, 31, 79, 0.06) 0%, rgba(39, 31, 79, 0.12) 48%, rgba(39, 31, 79, 0.38) 100%),
+                linear-gradient(180deg, rgba(39, 31, 79, 0) 0%, rgba(39, 31, 79, 0.16) 36%, rgba(39, 31, 79, 0.58) 100%);
+            -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.18) 18%, rgba(0, 0, 0, 1) 44%);
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.18) 18%, rgba(0, 0, 0, 1) 44%);
         }
 
         .hero-inner {
@@ -1292,10 +1294,10 @@
             }
 
             .hero::before {
-                height: 58%;
+                height: 52%;
                 background:
-                    linear-gradient(180deg, rgba(39, 31, 79, 0) 0%, rgba(39, 31, 79, 0.28) 36%, rgba(39, 31, 79, 0.7) 100%),
-                    radial-gradient(circle at 68% 68%, rgba(39, 31, 79, 0.68) 0%, rgba(39, 31, 79, 0.3) 30%, rgba(39, 31, 79, 0) 58%);
+                    linear-gradient(180deg, rgba(39, 31, 79, 0) 0%, rgba(39, 31, 79, 0.26) 42%, rgba(39, 31, 79, 0.7) 100%),
+                    radial-gradient(circle at 68% 48%, rgba(39, 31, 79, 0.6) 0%, rgba(39, 31, 79, 0.28) 32%, rgba(39, 31, 79, 0) 62%);
             }
 
             .hero-inner {
