@@ -288,7 +288,7 @@
 
         .hero-video {
             width: min(524px, 45vw);
-            aspect-ratio: 524 / 299;
+            aspect-ratio: 16 / 9;
             margin: 32px 0 0 clamp(0px, 3.2vw, 36px);
             display: flex;
             align-items: center;
@@ -299,6 +299,15 @@
             font-weight: 400;
             letter-spacing: 0.06em;
             text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-video iframe {
+            width: 100%;
+            height: calc(100% + 2px);
+            display: block;
+            margin-top: -1px;
+            border: 0;
         }
 
         .hero-partners {
@@ -691,7 +700,7 @@
             max-width: 500px;
             margin: 0 0 30px;
             color: #fff;
-            font-size: clamp(0.9rem, 1vw, 1.05rem);
+            font-size: clamp(1.12rem, 1.24vw, 1.32rem);
             font-weight: 500;
             line-height: 1.25;
         }
@@ -700,7 +709,7 @@
         .policy-subtitle {
             margin: 0 0 22px;
             color: var(--congreso-violet);
-            font-size: clamp(1.18rem, 1.45vw, 1.55rem);
+            font-size: clamp(1.44rem, 1.8vw, 1.9rem);
             font-weight: 800;
             line-height: 1.08;
         }
@@ -727,7 +736,7 @@
             max-width: 520px;
             margin: 0;
             color: #fff;
-            font-size: clamp(0.9rem, 1vw, 1.05rem);
+            font-size: clamp(1.12rem, 1.24vw, 1.32rem);
             font-weight: 500;
             line-height: 1.24;
         }
@@ -741,15 +750,23 @@
             margin-bottom: 20px;
             background: rgba(92, 94, 91, 0.98);
             color: rgba(255, 255, 255, 0.88);
-            font-size: clamp(0.86rem, 1vw, 1rem);
+            font-size: clamp(1.06rem, 1.22vw, 1.24rem);
             font-weight: 500;
             text-align: center;
+            overflow: hidden;
+        }
+
+        .policy-video iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border: 0;
         }
 
         .policy-lead {
             margin: 0 0 24px;
             color: #fff;
-            font-size: clamp(0.88rem, 0.95vw, 1rem);
+            font-size: clamp(1.1rem, 1.22vw, 1.28rem);
             font-weight: 500;
             line-height: 1.24;
         }
@@ -767,7 +784,7 @@
             align-items: baseline;
             gap: 10px;
             color: #fff;
-            font-size: clamp(1rem, 1.34vw, 1.42rem);
+            font-size: clamp(1.24rem, 1.68vw, 1.78rem);
             font-weight: 800;
             line-height: 1.12;
         }
@@ -785,7 +802,7 @@
         .policy-note {
             margin: 0 0 46px;
             color: #fff;
-            font-size: clamp(0.86rem, 0.95vw, 1rem);
+            font-size: clamp(1.1rem, 1.22vw, 1.28rem);
             font-weight: 500;
             line-height: 1.22;
         }
@@ -799,7 +816,7 @@
         .policy-methods p {
             margin: 0;
             color: #fff;
-            font-size: clamp(0.82rem, 0.88vw, 0.96rem);
+            font-size: clamp(1.02rem, 1.14vw, 1.2rem);
             font-weight: 500;
             line-height: 1.2;
         }
@@ -1052,6 +1069,7 @@
             width: min(100%, 520px);
             margin-left: clamp(10px, 3vw, 48px);
             padding: clamp(34px, 4vw, 58px) 0;
+            transform: translateX(clamp(-92px, -6vw, -48px));
         }
 
         .regional-cta-title {
@@ -1122,6 +1140,24 @@
             line-height: 1;
             text-decoration: none;
             letter-spacing: 0;
+            transition:
+                background-color 180ms ease,
+                color 180ms ease,
+                box-shadow 180ms ease,
+                transform 180ms ease;
+        }
+
+        .footer-email:hover,
+        .footer-email:focus-visible {
+            background: var(--congreso-yellow);
+            color: var(--congreso-ink);
+            box-shadow: 0 10px 20px rgba(132, 94, 255, 0.28);
+            transform: translateY(-2px);
+        }
+
+        .footer-email:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 4px;
         }
 
         .footer-socials {
@@ -1139,6 +1175,20 @@
             flex: 0 0 auto;
             border-radius: 50%;
             text-decoration: none;
+            transition:
+                filter 180ms ease,
+                transform 180ms ease;
+        }
+
+        .footer-social-link:hover,
+        .footer-social-link:focus-visible {
+            filter: drop-shadow(0 10px 14px rgba(132, 94, 255, 0.42));
+            transform: translateY(-3px) scale(1.08);
+        }
+
+        .footer-social-link:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 4px;
         }
 
         .footer-social-link img {
@@ -1528,13 +1578,13 @@
             .policy-territory p,
             .policy-lead,
             .policy-note {
-                font-size: 0.88rem;
+                font-size: 1.08rem;
             }
 
             .policy-impact-title,
             .policy-subtitle {
                 margin-bottom: 16px;
-                font-size: 1.16rem;
+                font-size: 1.4rem;
             }
 
             .policy-map {
@@ -1548,7 +1598,7 @@
             }
 
             .policy-audience li {
-                font-size: 1.08rem;
+                font-size: 1.32rem;
             }
 
             .policy-photos {
@@ -1658,6 +1708,7 @@
                 margin: 0;
                 padding: 44px 0 124px;
                 text-align: center;
+                transform: translateX(clamp(-44px, -7vw, -24px));
             }
 
             .regional-cta-title {
@@ -1737,7 +1788,10 @@
                 </h1>
 
                 <div class="hero-video" id="explorar">
-                    Video explicativo del congreso
+                    <iframe src="https://www.youtube.com/embed/Hq74rmz3hNs"
+                        title="Video explicativo del congreso"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
                 <img class="hero-partners" src="{{ asset('assets/congreso/hero-partners.png') }}"
@@ -1920,7 +1974,12 @@
                     </div>
 
                     <div class="policy-right">
-                        <div class="policy-video">Video testimoniales</div>
+                        <div class="policy-video">
+                            <iframe src="https://www.youtube.com/embed/videoseries?list=PLVuqm0kP5cqcw2lJhaWcWY1gOZD_wbceP"
+                                title="Lista de reproducción de testimonios de Artes para la Paz"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
                         <p class="policy-lead">No formamos solo artistas. Fortalecemos territorios.</p>
 
                         <ul class="policy-audience" aria-label="Públicos fortalecidos">
