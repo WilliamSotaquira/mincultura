@@ -30,6 +30,12 @@ Route::get('/despacho/PublishingImages/{path}', function () {
     return redirect()->away('https://www.mincultura.gov.co' . $rawUri);
 })->where('path', '.*')->name('publishing-images.redirect');
 
+Route::get('/despacho/ley-general-de-cultura/index', function () {
+    return view('ministerio.despacho.ley-general-de-cultura.index');
+})->name('despacho.ley-general-de-cultura.index');
+
+Route::redirect('/despacho/ley-general-de-cultura/Paginas/index.aspx', '/despacho/ley-general-de-cultura/index', 301);
+
 Route::get('/despacho/oficina-de-control-interno/servicios-informacion/programa-anual-de-auditorias', function () {
     return view('ministerio.despacho.oficina-de-control-interno.servicios-informacion.programa-anual-de-auditorias');
 })->name('despacho.oficina-de-control-interno.servicios-informacion.programa-anual-de-auditorias');

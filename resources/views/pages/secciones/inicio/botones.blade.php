@@ -55,7 +55,7 @@
     </a>
   </div>
   <div class="boton-custom">
-    <a href="/despacho/ley-general-de-cultura/Paginas/index.aspx" target="_blank" class="enlace-boton">
+    <a href="{{ route('despacho.ley-general-de-cultura.index') }}" target="_blank" class="enlace-boton">
       <img src="/resources/boton-ley-general-cultura.jpg" class="img-fluid"
         alt="Fortalecimiento Ley General de Cultura">
     </a>

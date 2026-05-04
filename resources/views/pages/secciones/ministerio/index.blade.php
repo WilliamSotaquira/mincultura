@@ -25,6 +25,10 @@
             <a href="{{ route('ministerio.despacho.sites.congreso') }}" class="list-group-item list-group-item-action">
                 Congreso
             </a>
+            <a href="{{ route('despacho.ley-general-de-cultura.index') }}"
+                class="list-group-item list-group-item-action">
+                Ley General de Cultura
+            </a>
             <a href="{{ route('ministerio.despacho.oficina-de-control-interno.servicios-informacion.index') }}"
                 class="list-group-item list-group-item-action">
                 Oficina de Control Interno - Servicios de información
