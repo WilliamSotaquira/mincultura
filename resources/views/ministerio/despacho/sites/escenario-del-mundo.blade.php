@@ -1568,16 +1568,10 @@
                     <div class="gif-overlay">
                         <div class="gif-overlay-inner">
                             <p>
-                                Nuestro país está vivo cuando nuestras culturas, artes y saberes se movilizan y generan
-                                encuentros en nuestros territorios y el mundo. Por eso, creamos el Sistema Nacional de
-                                Circulación que da origen a la Plataforma Circuitos Vivos.
+                                Cuando las artes y los saberes llegan a los parques, las plazas y las calles, la cultura deja de ser un privilegio y se convierte en un derecho. Eso es lo que propone Circuitos Vivos, la plataforma de circulación cultural del Sistema Nacional de Circulación Artística y Cultural del Ministerio de las Culturas, que busca acercar las artes y los saberes a las comunidades en sus propios territorios, y crear encuentros donde el cuerpo, la presencia y el espacio compartido son el corazón de la experiencia.
                             </p>
-                            <p>
-                                Comenzamos este viaje con una agenda durante marzo y abril en torno a las artes escénicas
-                                y vivas.
-                            </p>
-                            <p class="gif-overlay-highlight">¡Tú también eres parte!</p>
-                            <a class="pill-btn" href="https://www.mincultura.gov.co/noticias/Paginas/el-minculturas-lanza-el-sistema-nacional-de-circulacion-artistica-y-cultural-para-impulsar-el-acceso-de-las%20comunidades-a-las-expresiones-culturales.aspx">Conoce más</a>
+                            <p class="gif-overlay-highlight">¡Conoce la programación de mayo! </p>
+                            <a class="pill-btn" href="https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/Documents/mayo.pdf">Conoce más</a>
                         </div>
                     </div>
                 </div>
@@ -1587,38 +1581,6 @@
         <section id="movimiento" class="banner">
             <div class="content-limit content-pad-tight banner-layout">
                 <div class="banner-track" id="banner-track">
-                    <article class="banner-slide is-active" data-banner-slide
-                        style="--banner-bg: linear-gradient(90deg, rgba(157, 149, 40, 0.98), rgba(201, 183, 177, 0.9)); --banner-bg-opacity: 0.18;">
-                        <div class="banner-art"
-                            style="--banner-art-desktop: url('https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-1869x350-teatro-alt.png'); --banner-art-mobile: url('https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-mobile-banner-circulos-alt.png'); opacity: 1; mix-blend-mode: normal; background-position: center center;"></div>
-                        <div class="banner-copy">
-                            <h2>¡Celebra el Día Internacional del Teatro!</h2>
-                            <p>135 funciones gratuitas a nivel nacional en salas concertadas de todo el país.</p>
-                            <div>
-                                <a class="pill-btn" href="#contenidos">Más información</a>
-                            </div>
-                        </div>
-                        <div class="banner-logo-wrap">
-                            <img class="banner-logo" src="https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-logo-teatro.png"
-                                alt="Logo del banner">
-                        </div>
-                    </article>
-
-                    <article class="banner-slide" data-banner-slide
-                        style="--banner-bg: linear-gradient(90deg, rgba(42, 22, 92, 0.98), rgba(230, 0, 151, 0.84)); --banner-bg-opacity: 0.18;">
-                        <div class="banner-art"
-                            style="--banner-art-desktop: url('https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-1869x350-fiav-alt.png'); --banner-art-mobile: url('https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-mobile-banner-circulos-alt-2.png'); opacity: 1; mix-blend-mode: normal; background-position: center center;"></div>
-                        <div class="banner-copy">
-                            <h2>El FIAV se descentraliza y viaja a todas las regiones</h2>
-                            <div>
-                                <a class="pill-btn" href="#contenidos">Más información</a>
-                            </div>
-                        </div>
-                        <div class="banner-logo-wrap">
-                            <img class="banner-logo" src="https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/PublishingImages/escenario-logo-fian.png"
-                                alt="Logo del banner">
-                        </div>
-                    </article>
 
                     <article class="banner-slide" data-banner-slide
                         style="--banner-bg: linear-gradient(90deg, rgba(75, 41, 129, 0.98), rgba(120, 54, 168, 0.94)); --banner-bg-opacity: 0.24;">
@@ -1627,7 +1589,7 @@
                         <div class="banner-copy">
                             <h2>Culturas, artes y saberes en movimiento</h2>
                             <div>
-                                <a class="pill-btn" href="#contenidos">Más información</a>
+                                <a class="pill-btn" href="https://www.mincultura.gov.co/especiales/colombia-escenario-del-mundo/Documents/mayo.pdf">Más información</a>
                             </div>
                         </div>
                         <div class="banner-logo-wrap">
@@ -1636,43 +1598,10 @@
                         </div>
                     </article>
 
-                    <article class="banner-slide" data-banner-slide data-banner-light
-                        style="--banner-bg: linear-gradient(90deg, #e7e7e7, #e7e7e7); --banner-bg-opacity: 1;">
-                        <div class="banner-art"
-                            style="--banner-art-desktop: none; --banner-art-mobile: none; opacity: 0;"></div>
-                        <div class="banner-copy">
-                            <h2>Iberescena 2026- 25 al 28 de marzo</h2>
-                            <p>
-                                Colombia es la sede de la Reunión del Consejo Intergubernamental de IBERESCENA, el Fondo
-                                de Ayudas para las Artes Escénicas Iberoamericanas
-                            </p>
-                            <div>
-                                <a class="pill-btn" href="#contenidos">Más información</a>
-                            </div>
-                        </div>
-                        <div class="banner-logo-wrap"></div>
-                    </article>
-
-                    <article class="banner-slide" data-banner-slide data-banner-light
-                        style="--banner-bg: linear-gradient(90deg, #e7e7e7, #e7e7e7); --banner-bg-opacity: 1;">
-                        <div class="banner-art"
-                            style="--banner-art-desktop: none; --banner-art-mobile: none; opacity: 0;"></div>
-                        <div class="banner-copy">
-                            <h2>Colombia le rinde homenaje a la maestra Delia Zapata Olivella</h2>
-                            <div>
-                                <a class="pill-btn" href="#contenidos">Más información</a>
-                            </div>
-                        </div>
-                        <div class="banner-logo-wrap"></div>
-                    </article>
-
                     <div class="banner-controls">
                         <div class="banner-dots" id="banner-dots">
                             <button class="banner-dot is-active" type="button" aria-label="Ir al banner 1"></button>
-                            <button class="banner-dot" type="button" aria-label="Ir al banner 2"></button>
-                            <button class="banner-dot" type="button" aria-label="Ir al banner 3"></button>
-                            <button class="banner-dot" type="button" aria-label="Ir al banner 4"></button>
-                            <button class="banner-dot" type="button" aria-label="Ir al banner 5"></button>
+                            {{-- <button class="banner-dot" type="button" aria-label="Ir al banner 2"></button> --}}
                         </div>
                         <div class="banner-arrows">
                             <button class="banner-toggle" id="banner-toggle" type="button" aria-pressed="false"
