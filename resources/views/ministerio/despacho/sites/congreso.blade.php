@@ -17,7 +17,7 @@
 
     <style>
         :root {
-            --congreso-ink: #271f4f;
+            --congreso-ink: #241b4c;
             --congreso-purple: #493189ff;
             --congreso-yellow: #ffcf24;
             --congreso-violet: #8b6aff;
@@ -158,7 +158,7 @@
 
         .congreso-menu {
             display: flex;
-            align-items: stretch;
+            align-items: flex-start;
             justify-content: flex-end;
             gap: 0;
         }
@@ -172,6 +172,30 @@
 
         .nav-link-small:hover {
             color: var(--congreso-ink);
+        }
+
+        .nav-submenu-toggle {
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            background: transparent;
+            border: 0;
+        }
+
+        .nav-submenu-toggle::after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            margin-left: 10px;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: translateY(-1px) rotate(45deg);
+            transition: transform 160ms ease;
+            flex: 0 0 auto;
+        }
+
+        .nav-group.is-open>.nav-submenu-toggle::after {
+            transform: translateY(1px) rotate(-135deg);
         }
 
         .congreso-menu .nav-link-small {
@@ -199,6 +223,78 @@
             color: var(--congreso-yellow);
         }
 
+        .nav-group {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            min-width: 0;
+        }
+
+        .nav-group>.nav-link-small,
+        .nav-group>.nav-submenu-toggle {
+            position: relative;
+            z-index: 1;
+            border-right: 0;
+        }
+
+        .nav-group--agenda>.nav-submenu-toggle {
+            border-right: 1px solid rgba(255, 255, 255, 0.72);
+        }
+
+        .congreso-menu>.nav-group {
+            border-right: 1px solid rgba(255, 255, 255, 0.72);
+        }
+
+        .congreso-menu>.nav-group:last-child {
+            border-right: 1px solid rgba(255, 255, 255, 0.72);
+        }
+
+        .nav-submenu {
+            position: absolute;
+            top: calc(100% - 1px);
+            right: 0;
+            left: auto;
+            z-index: 3;
+            width: max(360px, 100%);
+            min-width: 320px;
+            max-width: min(460px, calc(100vw - 24px));
+            display: none;
+            gap: 0;
+            padding: 10px 0;
+            border-radius: 0 0 10px 10px;
+            background: rgba(39, 31, 79, 0.98);
+            box-shadow: 0 16px 28px rgba(32, 22, 62, 0.22);
+        }
+
+        .nav-group.is-open .nav-submenu {
+            display: grid;
+        }
+
+        .congreso-menu .nav-submenu .nav-link-small {
+            min-height: 40px;
+            justify-content: flex-start;
+            padding: 10px 22px;
+            border-left: 0;
+            border-right: 0;
+            color: rgba(255, 255, 255, 0.98);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            line-height: 1.2;
+            text-transform: none;
+            white-space: normal;
+            text-align: left;
+        }
+
+        .congreso-menu .nav-submenu .nav-link-small+.nav-link-small {
+            border-top: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .congreso-menu .nav-submenu .nav-link-small:hover {
+            color: var(--congreso-yellow);
+        }
+
         .hero {
             position: relative;
             min-height: 724px;
@@ -206,7 +302,7 @@
             isolation: isolate;
             background:
                 linear-gradient(90deg, rgba(39, 31, 79, 0.12) 0%, rgba(39, 31, 79, 0) 58%),
-                url('{{ asset('assets/congreso/hero-background.png') }}') center top / cover no-repeat,
+                url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/image969.png') center top / cover no-repeat,
                 #292153;
             color: #fff;
         }
@@ -231,14 +327,15 @@
         .hero-inner {
             position: relative;
             min-height: inherit;
-            padding-top: clamp(124px, 10vw, 148px);
+            padding-top: clamp(168px, 12vw, 204px);
             padding-bottom: 50px;
             z-index: 1;
         }
 
         .hero-title {
-            max-width: 540px;
-            margin: 0 0 0 clamp(0px, 3.8vw, 52px);
+            width: min(524px, 45vw);
+            max-width: 720px;
+            margin: 32px 0 0 clamp(0px, 3.2vw, 36px);
             text-align: center;
             text-transform: uppercase;
         }
@@ -248,46 +345,70 @@
         }
 
         .hero-title-kicker {
-            color: rgba(255, 255, 255, 0.82);
-            font-size: clamp(1rem, 2vw, 1.48rem);
-            font-weight: 400;
-            letter-spacing: 0.26em;
-            line-height: 1.28;
+            color: #fff;
+            font-size: clamp(0.94rem, 1.35vw, 1.18rem);
+            font-weight: 500;
+            letter-spacing: 0.28em;
+            line-height: 1.08;
+        }
+
+        .hero-title-kicker:first-of-type {
+            color: var(--congreso-yellow);
+            font-size: clamp(0.98rem, 1.48vw, 1.26rem);
+            letter-spacing: 0.32em;
+        }
+
+        .hero-title-kicker+.hero-title-kicker {
+            margin-top: 6px;
+            font-size: clamp(1rem, 1.75vw, 1.42rem);
+            letter-spacing: 0.16em;
         }
 
         .hero-title-main {
-            margin-top: 2px;
-            color: #fff;
-            font-size: clamp(1.85rem, 3.25vw, 2.72rem);
-            font-weight: 900;
+            margin-top: 10px;
+            color: var(--congreso-yellow);
+            font-size: clamp(2.05rem, 4vw, 2.75rem);
+            font-weight: bolder;
             letter-spacing: 0.01em;
-            line-height: 1.05;
+            line-height: 0.98;
         }
 
         .hero-title-y {
-            width: 0.95em;
-            height: 0.95em;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 1.5px solid rgba(255, 255, 255, 0.82);
+            width: 0.98em;
+            height: 0.98em;
+            display: inline-grid;
+            place-items: center;
+            margin: 0 0.11em 0 0.09em;
+            border: 1.75px solid var(--congreso-yellow);
             border-radius: 50%;
-            font-size: 0.46em;
+            color: var(--congreso-yellow);
+            font-size: 0.65em;
+            font-weight: bolder;
             line-height: 1;
-            transform: translateY(-0.08em);
+            transform: translateY(-0.01em);
+        }
+
+        .hero-title-after {
+            margin-top: 6px;
+            color: var(--congreso-yellow);
+            font-size: clamp(1.1rem, 2.85vw, 2.25rem);
+            font-weight: bolder;
+            letter-spacing: 0.01em;
+            line-height: 0.98;
         }
 
         .hero-title-accent {
-            margin-top: 8px;
-            color: var(--congreso-yellow);
-            font-size: clamp(1.55rem, 2.7vw, 2.28rem);
-            font-weight: 900;
-            letter-spacing: 0.02em;
-            line-height: 1.05;
+            margin-top: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(0.84rem, 1vw, 0.98rem);
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            line-height: 1.1;
         }
 
         .hero-video {
             width: min(524px, 45vw);
+            max-width: 720px;
             aspect-ratio: 16 / 9;
             margin: 32px 0 0 clamp(0px, 3.2vw, 36px);
             display: flex;
@@ -314,7 +435,7 @@
             position: relative;
             left: auto;
             bottom: auto;
-            width: clamp(220px, 22vw, 300px);
+            width: clamp(220px, 35vw, 500px);
             height: auto;
             display: block;
             margin: clamp(28px, 3vw, 42px) 0 0 clamp(0px, 3.2vw, 36px);
@@ -324,7 +445,25 @@
             position: absolute;
             left: 52%;
             bottom: 72px;
-            width: clamp(390px, 41vw, 555px);
+            width: clamp(90px, 41vw, 200px);
+            height: auto;
+            display: block;
+            z-index: 1;
+        }
+
+        .hero-artes-link {
+            transform: translateX(-50%);
+        }
+
+        .hero-artes-link:hover .hero-artes {
+            filter: drop-shadow(0 0 4px var(--congreso-yellow));
+        }
+
+        .hero-artes {
+            position: absolute;
+            left: 75%;
+            bottom: 86px;
+            width: clamp(72px, 20vw, 190px);
             height: auto;
             display: block;
             z-index: 1;
@@ -332,9 +471,10 @@
 
         .inflection {
             position: relative;
-            min-height: 482px;
+            min-height: 650px;
             display: flex;
             align-items: center;
+            padding: 82px 0 70px;
             overflow: hidden;
             background:
                 url('{{ asset('assets/congreso/inflection-background.png') }}') center center / cover no-repeat,
@@ -355,7 +495,220 @@
         .inflection-inner {
             position: relative;
             width: 100%;
-            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(340px, 510px);
+            gap: clamp(34px, 5vw, 76px);
+            align-items: center;
+            z-index: 3;
+        }
+
+        .inflection-showcase {
+            width: min(100%, 640px);
+            display: grid;
+            gap: 26px;
+        }
+
+        .inflection-slider-block {
+            min-width: 0;
+        }
+
+        .inflection-slider-title {
+            max-width: 620px;
+            margin: 0 0 14px;
+            color: var(--congreso-ink);
+            font-size: 1.18rem;
+            font-weight: 900;
+            line-height: 1.12;
+        }
+
+        .inflection-slider {
+            display: grid;
+            grid-template-columns: 36px minmax(0, 1fr) 36px;
+            gap: 10px;
+            align-items: center;
+            min-width: 0;
+        }
+
+        .inflection-slider-track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 136px;
+            gap: 12px;
+            min-width: 0;
+            overflow-x: auto;
+            overscroll-behavior-inline: contain;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+
+        .inflection-slider-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .inflection-slider-track--regions {
+            grid-auto-columns: 268px;
+        }
+
+        .inflection-slide {
+            scroll-snap-align: start;
+        }
+
+        .slider-control {
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 50%;
+            background: var(--congreso-ink);
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 900;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(36, 27, 76, 0.22);
+        }
+
+        .slider-control:disabled {
+            cursor: default;
+            opacity: 0.36;
+            box-shadow: none;
+        }
+
+        .country-slide {
+            min-height: 116px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 12px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 14px 28px rgba(36, 27, 76, 0.12);
+        }
+
+        .country-flag {
+            position: relative;
+            width: 58px;
+            height: 38px;
+            display: block;
+            flex: 0 0 auto;
+            overflow: hidden;
+            border-radius: 4px;
+            background: #ddd;
+            box-shadow: 0 0 0 1px rgba(36, 27, 76, 0.16);
+
+            background-size: cover;
+            background-position: center;
+
+        }
+
+        .country-name {
+            color: var(--congreso-ink);
+            font-size: 0.76rem;
+            font-weight: 900;
+            line-height: 1.12;
+            text-align: center;
+        }
+
+        .flag--colombia {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/colombia.jpg');
+            background-size: cover;
+        }
+
+        .flag--portugal {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/portugal.jpg');
+        }
+
+        .flag--brasil {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/brasil.jpg');
+        }
+
+        .flag--cuba {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/cuba.jpg');
+        }
+
+        .flag--panama {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/panama.jpg');
+        }
+
+        .flag--guatemala {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/guatemala.jpg');
+        }
+
+        .flag--dominicana {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/dominicana.jpg');
+        }
+
+        .flag--peru {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/peru.jpg');
+        }
+
+        .flag--honduras {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/honduras.jpg');
+        }
+
+        .flag--bolivia {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/bolivia.jpg');
+        }
+
+        .flag--paraguay {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/paraguay.jpg');
+        }
+
+        .flag--francia {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/francia.jpg');
+        }
+
+        .flag--uruguay {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/uruguay.jpg');
+        }
+
+        .flag--mexico {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/mexico.jpg');
+        }
+
+        .flag--salvador {
+            background-image: url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/banderas/salvador.jpg');
+        }
+
+        .region-slide {
+            min-height: 218px;
+            overflow: hidden;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 14px 28px rgba(36, 27, 76, 0.12);
+        }
+
+        .region-slide img {
+            width: 100%;
+            height: 118px;
+            display: block;
+            object-fit: cover;
+            filter: grayscale(0.18) saturate(0.9);
+        }
+
+        .region-slide-body {
+            padding: 13px 15px 15px;
+        }
+
+        .region-name {
+            margin: 0 0 6px;
+            color: var(--congreso-ink);
+            font-size: 0.95rem;
+            font-weight: 900;
+            line-height: 1.12;
+        }
+
+        .region-cities {
+            margin: 0;
+            color: var(--congreso-ink);
+            font-size: 0.78rem;
+            font-weight: 700;
+            line-height: 1.28;
         }
 
         .inflection-content {
@@ -407,7 +760,7 @@
         .inflection-mask {
             position: absolute;
             top: 0;
-            left: 42%;
+            left: 52%;
             width: clamp(70px, 7vw, 84px);
             height: auto;
             z-index: 2;
@@ -622,10 +975,10 @@
         }
 
         .workflow-grid {
-            width: min(100%, 1120px);
+            width: min(100%, 980px);
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: clamp(38px, 5.2vw, 84px);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(34px, 4.7vw, 78px);
             margin: 0 auto;
         }
 
@@ -680,6 +1033,26 @@
             z-index: 2;
         }
 
+        .policy-artes-link {
+            transform: translateX(-50%);
+        }
+
+
+        .policy-artes-img {
+            position: absolute;
+            left: 8%;
+            top: -50px;
+            width: clamp(72px, 20vw, 190px);
+            height: auto;
+            display: block;
+            z-index: 1;
+            transition: filter 0.3s ease;
+        }
+
+        .policy-artes-link:hover .policy-artes-img {
+            filter: drop-shadow(0 0 4px var(--congreso-yellow));
+        }
+
         .policy-title {
             margin: 0 0 clamp(48px, 4.4vw, 66px);
             color: #fff;
@@ -694,6 +1067,10 @@
             grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
             gap: clamp(48px, 6vw, 92px);
             align-items: start;
+        }
+
+        .policy-left {
+            margin-left: clamp(0px, 7vw, 92px);
         }
 
         .policy-copy {
@@ -725,7 +1102,7 @@
             width: min(100%, 470px);
             height: auto;
             display: block;
-            margin: 0 0 36px;
+            margin: 0 0 36px clamp(12px, 3vw, 44px);
         }
 
         .policy-territory {
@@ -849,6 +1226,207 @@
             pointer-events: none;
             user-select: none;
             z-index: 1;
+        }
+
+        .planner-slider {
+            padding: clamp(42px, 4.8vw, 70px) 0 clamp(54px, 5.6vw, 88px);
+            background: #f5f1df;
+            color: var(--congreso-ink);
+        }
+
+        .planner-slider-inner {
+            max-width: var(--congreso-section-max);
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .planner-slider-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+
+        .planner-slider-title {
+            margin: 0;
+            color: var(--congreso-ink);
+            font-size: clamp(1.38rem, 2.2vw, 2.02rem);
+            font-weight: 800;
+            line-height: 1.04;
+        }
+
+        .planner-slider-controls {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .planner-control {
+            min-width: 44px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 16px;
+            border: 0;
+            border-radius: 999px;
+            background: var(--congreso-ink);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition:
+                transform 180ms ease,
+                box-shadow 180ms ease,
+                background-color 180ms ease;
+        }
+
+        .planner-control:hover,
+        .planner-control:focus-visible {
+            background: #3b2d75;
+            box-shadow: 0 12px 24px rgba(36, 27, 76, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .planner-control--icon {
+            width: 44px;
+            padding: 0;
+            font-size: 1.2rem;
+        }
+
+        .planner-control-label {
+            white-space: nowrap;
+        }
+
+        .planner-carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: #2c225a;
+            box-shadow: 0 22px 42px rgba(36, 27, 76, 0.22);
+        }
+
+        .planner-carousel-track {
+            display: flex;
+            transition: transform 420ms ease;
+            will-change: transform;
+        }
+
+        .planner-slide {
+            position: relative;
+            width: 100%;
+            min-width: 100%;
+            min-height: clamp(220px, 30vw, 334px);
+            overflow: hidden;
+            isolation: isolate;
+            background: #241b4c;
+            color: #fff;
+        }
+
+        .planner-slide::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(36, 27, 76, 0.88) 0%, rgba(36, 27, 76, 0.46) 34%, rgba(36, 27, 76, 0.16) 60%, rgba(36, 27, 76, 0.18) 100%),
+                linear-gradient(180deg, rgba(36, 27, 76, 0.1) 0%, rgba(36, 27, 76, 0.4) 100%);
+            z-index: 1;
+        }
+
+        .planner-slide img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .planner-slide-content {
+            position: relative;
+            z-index: 2;
+            min-height: inherit;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 24px;
+            padding: clamp(28px, 4vw, 46px) clamp(24px, 4vw, 42px);
+        }
+
+        .planner-slide-copy {
+            max-width: 460px;
+        }
+
+        .planner-slide-copy h3 {
+            margin: 0 0 10px;
+            color: var(--congreso-yellow);
+            font-size: clamp(1.32rem, 2vw, 2rem);
+            font-weight: 800;
+            line-height: 1.02;
+        }
+
+        .planner-slide-copy p {
+            margin: 0 0 20px;
+            color: rgba(255, 255, 255, 0.96);
+            font-size: clamp(0.92rem, 1vw, 1.02rem);
+            font-weight: 500;
+            line-height: 1.34;
+        }
+
+        .planner-slide-link {
+            display: inline-flex;
+            min-height: 34px;
+            align-items: center;
+            justify-content: center;
+            padding: 0 16px;
+            border-radius: 999px;
+            background: #ff4fd8;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 800;
+            line-height: 1;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .planner-slide-date {
+            position: absolute;
+            max-width: 200px;
+            width: 100%;
+            right: 150px;
+            bottom: calc(50% + 75px);
+            padding: 6px 12px;
+            text-align: right;
+            line-height: 0.9;
+            text-transform: lowercase;
+            text-shadow: 0 10px 24px rgba(36, 27, 76, 0.22);
+        }
+
+        .planner-slide-date:empty {
+            display: none;
+        }
+
+        .planner-slide-date img {
+            width: auto;
+            height: 150px;
+            display: inline-block;
+            filter: grayscale(0.18) brightness(1.2);
+        }
+
+
+        .planner-carousel-status {
+            margin-top: 16px;
+            color: rgba(36, 27, 76, 0.72);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .mapping {
@@ -1016,6 +1594,14 @@
             flex-direction: column;
             align-items: flex-start;
             padding: clamp(28px, 2.4vw, 34px) clamp(28px, 2.6vw, 36px);
+        }
+
+        .news-card-body h3 {
+            margin: 0 0 12px;
+            color: var(--congreso-ink);
+            font-size: clamp(1.18rem, 1.8vw, 1.25rem);
+            font-weight: 800;
+            line-height: 1.04;
         }
 
         .news-card-body p {
@@ -1265,6 +1851,73 @@
             .congreso-menu .nav-link-small:last-child {
                 border-right: 0;
             }
+
+            .nav-group {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .congreso-menu>.nav-group {
+                border-right: 0;
+            }
+
+            .nav-group--agenda>.nav-submenu-toggle {
+                width: 100%;
+                justify-content: flex-start;
+                border-right: 0;
+            }
+
+            .nav-submenu {
+                position: static;
+                min-width: 0;
+                width: 100%;
+                max-width: none;
+                display: none;
+                gap: 0;
+                padding: 0 0 8px;
+                border-radius: 0;
+                background: transparent;
+                box-shadow: none;
+            }
+
+            .nav-group.is-open .nav-submenu {
+                display: grid;
+            }
+
+            .congreso-menu .nav-submenu .nav-link-small {
+                min-height: 40px;
+                padding: 0 22px 0 42px;
+                color: rgba(255, 255, 255, 0.98);
+                font-size: 0.8rem;
+                letter-spacing: 0.04em;
+            }
+
+            .congreso-menu .nav-submenu .nav-link-small+.nav-link-small {
+                border-top-color: rgba(255, 255, 255, 0.12);
+            }
+
+            .planner-slider-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .planner-slide-content {
+                grid-template-columns: 1fr;
+                align-items: end;
+                gap: 18px;
+            }
+
+            .planner-slide-date {
+                right: 28px;
+                bottom: 22px;
+                max-width: 150px;
+            }
+
+            .planner-slide-date img {
+                height: 118px;
+            }
+
+
         }
 
         @media (max-width: 767.98px) {
@@ -1335,11 +1988,120 @@
                 border-right: 0;
             }
 
+            .nav-group {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .congreso-menu>.nav-group {
+                border-right: 0;
+            }
+
+            .nav-group--agenda>.nav-submenu-toggle {
+                width: 100%;
+                justify-content: flex-start;
+                border-right: 0;
+            }
+
+            .nav-submenu {
+                position: static;
+                min-width: 0;
+                width: 100%;
+                max-width: none;
+                display: none;
+                gap: 0;
+                padding: 0 0 8px;
+                border-radius: 0;
+                background: transparent;
+                box-shadow: none;
+            }
+
+            .nav-group.is-open .nav-submenu {
+                display: grid;
+            }
+
+            .congreso-menu .nav-submenu .nav-link-small {
+                min-height: 40px;
+                padding: 0 22px 0 42px;
+                color: rgba(255, 255, 255, 0.98);
+                font-size: 0.8rem;
+                letter-spacing: 0.04em;
+            }
+
+            .congreso-menu .nav-submenu .nav-link-small+.nav-link-small {
+                border-top-color: rgba(255, 255, 255, 0.12);
+            }
+
+            .planner-slider {
+                padding: 36px 0 52px;
+            }
+
+            .planner-slider-heading {
+                margin-bottom: 18px;
+            }
+
+            .planner-slider-controls {
+                gap: 8px;
+            }
+
+            .planner-control {
+                min-height: 40px;
+                padding: 0 14px;
+                font-size: 0.72rem;
+            }
+
+            .planner-control--icon {
+                width: 40px;
+                min-width: 40px;
+                font-size: 1.08rem;
+            }
+
+            .planner-slide {
+                min-height: 248px;
+            }
+
+            .planner-slide-content {
+                grid-template-columns: 1fr;
+                align-items: end;
+                gap: 16px;
+                padding: 24px 20px 22px;
+            }
+
+            .planner-slide-copy {
+                max-width: 100%;
+            }
+
+            .planner-slide-copy p {
+                margin-bottom: 16px;
+            }
+
+            .planner-slide-link {
+                font-size: 0.64rem;
+            }
+
+            .planner-slide-date {
+                right: 14px;
+                bottom: 14px;
+                max-width: 112px;
+                padding: 0;
+            }
+
+            .planner-slide-date img {
+                height: 82px;
+            }
+
+
+            .planner-carousel-status {
+                margin-top: 12px;
+                font-size: 0.72rem;
+                letter-spacing: 0.06em;
+            }
+
             .hero {
                 min-height: 860px;
                 background:
                     linear-gradient(180deg, rgba(39, 31, 79, 0.9) 0%, rgba(39, 31, 79, 0.18) 58%),
-                    url('{{ asset('assets/congreso/hero-background.png') }}') 66% top / auto 100% no-repeat,
+                    url('https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/image969.png') 85% 48% / auto 150% no-repeat,
                     #292153;
             }
 
@@ -1351,27 +2113,28 @@
             }
 
             .hero-inner {
-                padding-top: 124px;
+                padding-top: 168px;
                 padding-bottom: 36px;
             }
 
             .hero-title {
-                max-width: 100%;
-                margin-left: 0;
-                text-align: left;
+                width: min(524px, 82vw);
+                margin: 0 auto;
+                text-align: center;
             }
 
             .hero-title-kicker {
-                font-size: clamp(0.78rem, 3.55vw, 0.96rem);
-                letter-spacing: 0.14em;
+                font-size: clamp(0.9rem, 3.55vw, 1.06rem);
+                letter-spacing: 0.18em;
             }
 
             .hero-title-main {
-                font-size: clamp(1.34rem, 6.35vw, 1.75rem);
+                font-size: clamp(1.56rem, 6.35vw, 2.1rem);
             }
 
             .hero-title-accent {
-                font-size: clamp(1.22rem, 5.95vw, 1.64rem);
+                font-size: clamp(0.82rem, 3.2vw, 0.98rem);
+                letter-spacing: 0.2em;
             }
 
             .hero-video {
@@ -1381,26 +2144,32 @@
             }
 
             .hero-date,
-            .hero-partners {
+            .hero-partners,
+            .hero-artes {
                 position: relative;
                 left: auto;
                 bottom: auto;
             }
 
             .hero-date {
-                width: min(100%, 460px);
-                margin-top: 30px;
+                width: min(100%, 110px);
+                margin: 24px auto 0;
             }
 
             .hero-partners {
                 width: min(78vw, 270px);
-                margin: 34px 0 0;
+                margin: 34px auto;
+            }
+
+            .hero-artes {
+                width: min(78vw, 150px);
+                margin: 32px auto;
             }
 
             .inflection {
-                min-height: 640px;
+                min-height: auto;
                 align-items: flex-start;
-                padding: 118px 0 56px;
+                padding: 118px 0 68px;
                 background-position: 28% center;
             }
 
@@ -1408,7 +2177,44 @@
                 width: 42%;
             }
 
+            .inflection-inner {
+                grid-template-columns: 1fr;
+                gap: 34px;
+            }
+
+            .inflection-showcase {
+                order: 2;
+                width: 100%;
+                gap: 30px;
+            }
+
+            .inflection-slider-title {
+                max-width: 340px;
+                margin-bottom: 12px;
+                font-size: 1.02rem;
+            }
+
+            .inflection-slider {
+                grid-template-columns: 32px minmax(0, 1fr) 32px;
+                gap: 7px;
+            }
+
+            .slider-control {
+                width: 32px;
+                height: 32px;
+                font-size: 1.05rem;
+            }
+
+            .inflection-slider-track {
+                grid-auto-columns: minmax(132px, 72%);
+            }
+
+            .inflection-slider-track--regions {
+                grid-auto-columns: minmax(228px, 82%);
+            }
+
             .inflection-content {
+                order: 1;
                 max-width: 100%;
                 margin-left: 0;
                 padding-right: 0;
@@ -1563,16 +2369,30 @@
                 padding: 60px 0 68px;
             }
 
+
+            .policy-inner {
+                position: relative;
+                max-width: 360px;
+                margin: 0 auto;
+                display: grid;
+                gap: 34px;
+            }
+
+
+
             .policy-title {
                 max-width: 320px;
                 margin: 0 auto 34px;
                 font-size: clamp(1.5rem, 7.6vw, 1.9rem);
             }
 
+
+
             .policy-layout {
                 grid-template-columns: 1fr;
                 gap: 34px;
             }
+
 
             .policy-copy,
             .policy-territory p,
@@ -1760,8 +2580,8 @@
                 <img src="{{ asset('assets/congreso/header-logos.png') }}" alt="Ministerio de las Culturas y OEI">
             </a>
 
-            <a class="congreso-menu-toggle" href="#congreso-menu" role="button" aria-controls="congreso-menu" aria-expanded="false"
-                aria-label="Abrir menú">
+            <a class="congreso-menu-toggle" href="#congreso-menu" role="button" aria-controls="congreso-menu"
+                aria-expanded="false" aria-label="Abrir menú">
                 <span class="congreso-menu-toggle-lines" aria-hidden="true">
                     <span></span>
                     <span></span>
@@ -1770,9 +2590,20 @@
             </a>
 
             <div class="congreso-menu" id="congreso-menu">
-                <a class="nav-link-small" href="#inscripcion">Inscribirme</a>
+                <a class="nav-link-small" href="https://forms.cloud.microsoft/r/M163HTGGjr">Inscripción</a>
                 <a class="nav-link-small" href="#explorar">Explorar<br>el Congreso</a>
-                <a class="nav-link-small" href="#agenda">Ver agenda</a>
+                <div class="nav-group nav-group--agenda">
+                    <button class="nav-link-small nav-submenu-toggle" type="button" aria-controls="agenda-submenu"
+                        aria-expanded="false">Ver agenda</button>
+                    <div class="nav-submenu" id="agenda-submenu" aria-label="Submenú de agenda">
+                        <a class="nav-link-small"
+                            href="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/Documents/Borrador%20agenda%20nacional_7_5_2026.pdf">Programación
+                            nacional en universidades</a>
+                        <a class="nav-link-small"
+                            href="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/Documents/Borrador%20agenda%20bogota_7_5_2026.pdf">Programación
+                            en Bogotá</a>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -1783,21 +2614,29 @@
                 <h1 class="hero-title">
                     <span class="hero-title-kicker">Congreso Iberoamericano</span>
                     <span class="hero-title-kicker">de Educación y Formación</span>
-                    <span class="hero-title-main">Artística <span class="hero-title-y">y</span> Cultural</span>
+                    <span class="hero-title-main">Artística <span class="hero-title-y">y</span><span
+                            class="hero-title-after"> Cultural</span></span>
                     <span class="hero-title-accent">Artes para la Paz</span>
                 </h1>
 
                 <div class="hero-video" id="explorar">
-                    <iframe src="https://www.youtube.com/embed/Hq74rmz3hNs"
-                        title="Video explicativo del congreso"
+                    <iframe src="https://www.youtube.com/embed/dobsyi1MX8Y?si=f0Drt5FCV9p0p9Rf"
+                        title="Video final del congreso"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
-                <img class="hero-partners" src="{{ asset('assets/congreso/hero-partners.png') }}"
+                <img class="hero-partners"
+                    src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/path1521.png"
                     alt="UNESCO, Secretaría General Iberoamericana y CAF Banco de Desarrollo de América Latina y el Caribe">
-                <img class="hero-date" src="{{ asset('assets/congreso/hero-date.png') }}"
+                <img class="hero-date"
+                    src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/path172.png"
                     alt="13 al 15 de mayo en Bogotá. Artes para la Paz 2026">
+                <a class="hero-artes-link" href="https://artesparalapaz.mincultura.gov.co/Paginas/index.aspx">
+                    <img class="hero-artes"
+                        src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/path1080.png"
+                        alt="Logo Artes para la paz">
+                </a>
             </div>
         </section>
 
@@ -1808,6 +2647,119 @@
                 aria-hidden="true">
 
             <div class="container inflection-inner">
+                <div class="inflection-showcase" aria-label="Participación internacional y regional">
+                    <section class="inflection-slider-block" aria-labelledby="countries-slider-title">
+                        <h3 class="inflection-slider-title" id="countries-slider-title">15 países de Iberoamérica se
+                            reunirán en Colombia para llegar a acuerdos en educación y formación artística y cultural
+                        </h3>
+                        <div class="inflection-slider" data-inflection-slider>
+                            <button class="slider-control" type="button" aria-label="Anterior país"
+                                data-slider-prev>&lsaquo;</button>
+                            <div class="inflection-slider-track" tabindex="0">
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--colombia" aria-hidden="true"></span>
+                                    <span class="country-name">Colombia</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--portugal" aria-hidden="true"></span>
+                                    <span class="country-name">Portugal</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--brasil" aria-hidden="true"></span>
+                                    <span class="country-name">Brasil</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--cuba" aria-hidden="true"></span>
+                                    <span class="country-name">Cuba</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--panama" aria-hidden="true"></span>
+                                    <span class="country-name">Panamá</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--guatemala" aria-hidden="true"></span>
+                                    <span class="country-name">Guatemala</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--dominicana" aria-hidden="true"></span>
+                                    <span class="country-name">República Dominicana</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--peru" aria-hidden="true"></span>
+                                    <span class="country-name">Perú</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--honduras" aria-hidden="true"></span>
+                                    <span class="country-name">Honduras</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--bolivia" aria-hidden="true"></span>
+                                    <span class="country-name">Bolivia</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--paraguay" aria-hidden="true"></span>
+                                    <span class="country-name">Paraguay</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--francia" aria-hidden="true"></span>
+                                    <span class="country-name">Francia</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--uruguay" aria-hidden="true"></span>
+                                    <span class="country-name">Uruguay</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--mexico" aria-hidden="true"></span>
+                                    <span class="country-name">México</span>
+                                </article>
+                                <article class="inflection-slide country-slide">
+                                    <span class="country-flag flag--salvador" aria-hidden="true"></span>
+                                    <span class="country-name">El Salvador</span>
+                                </article>
+                            </div>
+                            <button class="slider-control" type="button" aria-label="Siguiente país"
+                                data-slider-next>&rsaquo;</button>
+                        </div>
+                    </section>
+
+                    <section class="inflection-slider-block" aria-labelledby="regions-slider-title">
+                        <h3 class="inflection-slider-title" id="regions-slider-title">El congreso se descentraliza
+                            llegando a estas regiones del país</h3>
+                        <div class="inflection-slider" data-inflection-slider>
+                            <button class="slider-control" type="button" aria-label="Anterior región"
+                                data-slider-prev>&lsaquo;</button>
+                            <div class="inflection-slider-track inflection-slider-track--regions" tabindex="0">
+                                <article class="inflection-slide region-slide">
+                                    <img src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/ANDINA.jpeg"
+                                        alt="" aria-hidden="true">
+                                    <div class="region-slide-body">
+                                        <h4 class="region-name">Región Andina</h4>
+                                        <p class="region-cities">Bogotá, Manizales, Bucaramanga y Medellín</p>
+                                    </div>
+                                </article>
+                                <article class="inflection-slide region-slide">
+                                    <img src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/CARIBE.jpg.jpeg"
+                                        alt="" aria-hidden="true">
+                                    <div class="region-slide-body">
+                                        <h4 class="region-name">Región Caribe</h4>
+                                        <p class="region-cities">Santa Marta</p>
+                                    </div>
+                                </article>
+                                <article class="inflection-slide region-slide">
+                                    <img src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/PACIFICO.jpg.jpeg"
+                                        alt="" aria-hidden="true">
+                                    <div class="region-slide-body">
+                                        <h4 class="region-name">Región Pacífica</h4>
+                                        <p class="region-cities">Popayán</p>
+                                    </div>
+                                </article>
+                            </div>
+                            <button class="slider-control" type="button" aria-label="Siguiente región"
+                                data-slider-next>&rsaquo;</button>
+                        </div>
+                    </section>
+                </div>
+
                 <div class="inflection-content">
                     <h2>Un punto de inflexión para la región</h2>
                     <p>
@@ -1823,16 +2775,79 @@
                         la OEI y con el apoyo de UNESCO, SEGIB y CAF, este encuentro articula visiones y compromisos
                         para toda Iberoamérica.
                     </p>
-                    <a class="inflection-button" href="#lo-que-deja">Conoce más</a>
+                    <a class="inflection-button"
+                        href="https://www.mincultura.gov.co/noticias/Paginas/160-paises-de-iberoamerica-se-reuniran-en-colombia-para-llegar-a-acuerdos-sobre-educacion-y-formacion-artistica-y-cultural.aspx">Conoce
+                        más</a>
                 </div>
+            </div>
+        </section>
+
+        <section class="planner-slider" aria-label="Agenda del Congreso" id="agenda">
+            <div class="container planner-slider-inner">
+                <div class="planner-slider-heading">
+                    <h2 class="planner-slider-title">Agenda del Congreso</h2>
+                    <div class="planner-slider-controls" aria-label="Controles del planificador">
+                        <button class="planner-control planner-control--icon" type="button"
+                            aria-label="Slide anterior" data-planner-prev>&lsaquo;</button>
+                        <button class="planner-control" type="button" aria-pressed="false" data-planner-toggle>
+                            <span class="planner-control-label">Pausar</span>
+                        </button>
+                        <button class="planner-control planner-control--icon" type="button"
+                            aria-label="Slide siguiente" data-planner-next>&rsaquo;</button>
+                    </div>
+                </div>
+
+                <div class="planner-carousel" data-planner-carousel>
+                    <div class="planner-carousel-track">
+                        <article class="planner-slide">
+                            <img src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/image1.png"
+                                alt="" aria-hidden="true">
+                            <div class="planner-slide-content">
+                                <div class="planner-slide-copy">
+                                    <h3>Programación nacional en universidades</h3>
+                                    <p>Jornadas académicas y conversaciones territoriales en distintas regiones del
+                                        país.</p>
+                                    <a class="planner-slide-link"
+                                        href="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/Documents/Borrador%20agenda%20nacional_7_5_2026.pdf">Conoce
+                                        la agenda</a>
+                                </div>
+                                <div class="planner-slide-date" aria-label="11 y 12 de mayo">
+                                    <img src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/text2005.png"
+                                        alt="del 13 al 15 de mayo" aria-hidden="true" aria-label="11 y 12 de mayo">
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="planner-slide">
+                            <img src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/g1188.png"
+                                alt="" aria-hidden="true">
+                            <div class="planner-slide-content">
+                                <div class="planner-slide-copy">
+                                    <h3>Programación en Bogotá</h3>
+                                    <p>Centro Nacional de las Artes Delia Zapata Olivella con agenda central del
+                                        Congreso.</p>
+                                    <a class="planner-slide-link"
+                                        href="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/Documents/Borrador%20agenda%20bogota_7_5_2026.pdf">Conoce
+                                        la agenda detallada aquí</a>
+                                </div>
+                                <div class="planner-slide-date" aria-label="Del 13 al 15 de mayo">
+                                    <img src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/text2004.png"
+                                        alt="del 13 al 15 de mayo" aria-hidden="true"
+                                        aria-label="Del 13 al 15 de mayo">
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <p class="planner-carousel-status" data-planner-status>1 de 2</p>
             </div>
         </section>
 
         <section class="outcomes" id="lo-que-deja" aria-labelledby="outcomes-title">
             <img class="outcomes-mask" src="{{ asset('assets/congreso/outcomes-mask.png') }}" alt=""
                 aria-hidden="true">
-            <img class="outcomes-character" src="{{ asset('assets/congreso/outcomes-character.png') }}" alt=""
-                aria-hidden="true">
+            <img class="outcomes-character" src="{{ asset('assets/congreso/outcomes-character.png') }}"
+                alt="" aria-hidden="true">
 
             <div class="outcomes-frame">
                 <div class="container outcomes-inner">
@@ -1841,21 +2856,23 @@
                     <div class="outcomes-grid">
                         <article class="outcome-card">
                             <img class="outcome-icon"
-                                src="{{ asset('assets/congreso/outcomes-icon-declaration.png') }}" alt=""
-                                aria-hidden="true">
+                                src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/path1401.png"
+                                alt="" aria-hidden="true">
                             <h3>Declaración<br>de Bogotá</h3>
                             <p>Un acuerdo regional para posicionar la educación artística como derecho.</p>
                         </article>
 
                         <article class="outcome-card">
-                            <img class="outcome-icon" src="{{ asset('assets/congreso/outcomes-icon-redartes.png') }}"
+                            <img class="outcome-icon"
+                                src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/path1411.png"
                                 alt="" aria-hidden="true">
                             <h3>REDARTES</h3>
                             <p>Creación de la Red Iberoamericana de Educación Artística y Cultural.</p>
                         </article>
 
                         <article class="outcome-card">
-                            <img class="outcome-icon" src="{{ asset('assets/congreso/outcomes-icon-roadmap.png') }}"
+                            <img class="outcome-icon"
+                                src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/path1409.png"
                                 alt="" aria-hidden="true">
                             <h3>Hoja de ruta<br>2026-2028</h3>
                             <p>Acciones concretas para implementar políticas en los países.</p>
@@ -1866,8 +2883,8 @@
         </section>
 
         <section class="conversations" id="conversaciones" aria-labelledby="conversations-title">
-            <img class="conversations-waves" src="{{ asset('assets/congreso/conversation-waves.png') }}" alt=""
-                aria-hidden="true">
+            <img class="conversations-waves" src="{{ asset('assets/congreso/conversation-waves.png') }}"
+                alt="" aria-hidden="true">
 
             <div class="container conversations-inner">
                 <h2 class="conversations-title" id="conversations-title">Cuatro conversaciones clave</h2>
@@ -1909,8 +2926,8 @@
         </section>
 
         <section class="workflow" id="agenda" aria-labelledby="workflow-title">
-            <img class="workflow-character" src="{{ asset('assets/congreso/workflow-character.png') }}" alt=""
-                aria-hidden="true">
+            <img class="workflow-character" src="{{ asset('assets/congreso/workflow-character.png') }}"
+                alt="" aria-hidden="true">
 
             <div class="container workflow-inner">
                 <h2 class="workflow-title" id="workflow-title">Cómo trabajaremos</h2>
@@ -1931,14 +2948,9 @@
                     <article class="workflow-card">
                         <img class="workflow-icon" src="{{ asset('assets/congreso/workflow-icon-tables.png') }}"
                             alt="" aria-hidden="true">
-                        <h3>Mesas técnicas<br>por país</h3>
+                        <h3>Talleres</h3>
                     </article>
 
-                    <article class="workflow-card">
-                        <img class="workflow-icon" src="{{ asset('assets/congreso/workflow-icon-experiences.png') }}"
-                            alt="" aria-hidden="true">
-                        <h3>Experiencias<br>inmersivas</h3>
-                    </article>
                 </div>
             </div>
         </section>
@@ -1948,6 +2960,11 @@
                 aria-hidden="true">
 
             <div class="container policy-inner">
+                <a class="policy-artes-link" href="https://artesparalapaz.mincultura.gov.co/Paginas/index.aspx">
+                    <img class="policy-artes-img"
+                        src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/path1080.png"
+                        alt="Logo Artes para la paz">
+                </a>
                 <h2 class="policy-title" id="policy-title">Una política que ya está en marcha</h2>
 
                 <div class="policy-layout">
@@ -1961,7 +2978,8 @@
                         <h3 class="policy-impact-title">Impacto</h3>
                         <img class="policy-map" src="{{ asset('assets/congreso/policy-map.png') }}"
                             alt="Mapa de Colombia con cobertura territorial de Artes para la Paz">
-                        <img class="policy-stats" src="{{ asset('assets/congreso/policy-impact-stats.png') }}"
+                        <img class="policy-stats"
+                            src="https://www.mincultura.gov.co/despacho/congreso-artes-para-la-paz/PublishingImages/text302.png"
                             alt="726 municipios, más de 538.332 personas, presencia en 2 de cada 3 municipios">
 
                         <div class="policy-territory">
@@ -1975,7 +2993,8 @@
 
                     <div class="policy-right">
                         <div class="policy-video">
-                            <iframe src="https://www.youtube.com/embed/videoseries?list=PLVuqm0kP5cqcw2lJhaWcWY1gOZD_wbceP"
+                            <iframe
+                                src="https://www.youtube.com/embed/videoseries?list=PLVuqm0kP5cqcw2lJhaWcWY1gOZD_wbceP"
                                 title="Lista de reproducción de testimonios de Artes para la Paz"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -2032,7 +3051,8 @@
                             educación artística en Iberoamérica, identificar brechas y orientar decisiones de política
                             pública.
                         </p>
-                        <a class="mapping-button" href="#inscripcion">Participar en el mapeo</a>
+                        <a class="mapping-button" href="https://forms.cloud.microsoft/r/FVusmZ5QFY"
+                            target="_blank">Participar en el mapeo</a>
                     </div>
                 </div>
             </div>
@@ -2057,31 +3077,39 @@
         <section class="news-cards" aria-label="Noticias y experiencias del Congreso">
             <div class="container news-cards-inner">
                 <div class="news-card-grid">
+
                     <article class="news-card" style="--card-bg: var(--congreso-lime)">
-                        <img src="{{ asset('assets/congreso/news-card-band.png') }}"
-                            alt="Comunidad cantando en un espacio de formación artística">
+                        <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/ruta-compartida-artes-paz-portada.jpg"
+                            alt="Iberoamérica se cita en Bogotá para consolidar la ruta compartida de las Artes para la Paz">
                         <div class="news-card-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                            </p>
-                            <a class="news-card-link" href="#">Leer más</a>
+                            <h3>
+                                Iberoamérica se cita en Bogotá para consolidar la ruta compartida de las Artes para la
+                                Paz
+                            </h3>
+
+                            <a class="news-card-link"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/iberoamerica-se-cita-en-bogota-para-consolidar-la-ruta-compartida-de-las-artes-para-la-paz.aspx"
+                                aria-label="Leer más sobre Iberoamérica se cita en Bogotá para consolidar la ruta compartida de las Artes para la Paz">Leer
+                                más</a>
                         </div>
                     </article>
 
                     <article class="news-card" style="--card-bg: #18bfe4">
-                        <img src="{{ asset('assets/congreso/news-card-youth.png') }}"
-                            alt="Jóvenes celebrando durante una actividad cultural">
+                        <img src="https://www.mincultura.gov.co/noticias/PublishingImages/Imagenes-noticias/congreso-iberoamericano-de-educacion-y-formacion-artistica-y-cultural-noticia.jpg"
+                            alt="XXIII Consejo Intergubernamental de Ibermúsicas">
                         <div class="news-card-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                            </p>
-                            <a class="news-card-link" href="#">Leer más</a>
+                            <h3>
+                                16 países de Iberoamérica se reunirán en Colombia para llegar a acuerdos sobre educación
+                                y formación artística y cultural
+                            </h3>
+                            <a class="news-card-link"
+                                href="https://www.mincultura.gov.co/noticias/Paginas/xxiii-consejo-intergubernamental-de-ibermusicas.aspx"
+                                aria-label="Leer más sobre XXIII Consejo Intergubernamental de Ibermúsicas">Leer
+                                más</a>
                         </div>
                     </article>
 
-                    <article class="news-card" style="--card-bg: var(--congreso-magenta)">
+                    {{-- <article class="news-card" style="--card-bg: var(--congreso-magenta)">
                         <img src="{{ asset('assets/congreso/news-card-community.png') }}"
                             alt="Jóvenes intérpretes tocando saxofón en una agrupación musical">
                         <div class="news-card-body">
@@ -2091,7 +3119,7 @@
                             </p>
                             <a class="news-card-link" href="#">Leer más</a>
                         </div>
-                    </article>
+                    </article> --}}
                 </div>
             </div>
         </section>
@@ -2102,8 +3130,9 @@
 
             <div class="container regional-cta-inner">
                 <div class="regional-cta-content">
-                    <h2 class="regional-cta-title" id="regional-cta-title">Sé parte de esta<br>conversación regional</h2>
-                    <a class="regional-cta-button" href="#">Inscribirme</a>
+                    <h2 class="regional-cta-title" id="regional-cta-title">Sé parte de esta<br>conversación regional
+                    </h2>
+                    <a class="regional-cta-button" href="https://forms.cloud.microsoft/r/M163HTGGjr">Inscripción</a>
                 </div>
             </div>
         </section>
@@ -2140,15 +3169,27 @@
             const header = document.getElementById('congreso-header');
             const menuToggle = header.querySelector('.congreso-menu-toggle');
             const menuLinks = header.querySelectorAll('.congreso-menu a');
+            const agendaGroup = header.querySelector('.nav-group--agenda');
+            const agendaToggle = header.querySelector('.nav-submenu-toggle');
 
             const updateHeader = () => {
                 header.classList.toggle('is-scrolled', window.scrollY > 12);
+            };
+
+            const closeAgendaMenu = () => {
+                if (!agendaGroup || !agendaToggle) {
+                    return;
+                }
+
+                agendaGroup.classList.remove('is-open');
+                agendaToggle.setAttribute('aria-expanded', 'false');
             };
 
             const closeMenu = () => {
                 header.classList.remove('is-menu-open');
                 menuToggle.setAttribute('aria-expanded', 'false');
                 menuToggle.setAttribute('aria-label', 'Abrir menú');
+                closeAgendaMenu();
             };
 
             updateHeader();
@@ -2161,6 +3202,151 @@
                 const isOpen = header.classList.toggle('is-menu-open');
                 menuToggle.setAttribute('aria-expanded', String(isOpen));
                 menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+            });
+
+            if (agendaToggle && agendaGroup) {
+                agendaToggle.addEventListener('click', () => {
+                    const isOpen = agendaGroup.classList.toggle('is-open');
+                    agendaToggle.setAttribute('aria-expanded', String(isOpen));
+                });
+            }
+
+            document.querySelectorAll('[data-inflection-slider]').forEach((slider) => {
+                const track = slider.querySelector('.inflection-slider-track');
+                const prev = slider.querySelector('[data-slider-prev]');
+                const next = slider.querySelector('[data-slider-next]');
+
+                if (!track || !prev || !next) {
+                    return;
+                }
+
+                const updateControls = () => {
+                    const maxScroll = track.scrollWidth - track.clientWidth;
+                    prev.disabled = track.scrollLeft <= 2;
+                    next.disabled = track.scrollLeft >= maxScroll - 2;
+                };
+
+                const getScrollStep = () => {
+                    const slide = track.querySelector('.inflection-slide');
+
+                    if (!slide) {
+                        return track.clientWidth;
+                    }
+
+                    const styles = window.getComputedStyle(track);
+                    const gap = Number.parseFloat(styles.columnGap || styles.gap || '0') || 0;
+
+                    return slide.getBoundingClientRect().width + gap;
+                };
+
+                prev.addEventListener('click', () => {
+                    track.scrollBy({
+                        left: -getScrollStep(),
+                        behavior: 'smooth'
+                    });
+                });
+
+                next.addEventListener('click', () => {
+                    track.scrollBy({
+                        left: getScrollStep(),
+                        behavior: 'smooth'
+                    });
+                });
+
+                track.addEventListener('scroll', () => {
+                    window.requestAnimationFrame(updateControls);
+                }, {
+                    passive: true
+                });
+
+                window.addEventListener('resize', updateControls);
+                updateControls();
+            });
+
+            document.querySelectorAll('[data-planner-carousel]').forEach((carousel) => {
+                const track = carousel.querySelector('.planner-carousel-track');
+                const slides = Array.from(carousel.querySelectorAll('.planner-slide'));
+                const section = carousel.closest('.planner-slider');
+                const prev = section?.querySelector('[data-planner-prev]');
+                const next = section?.querySelector('[data-planner-next]');
+                const toggle = section?.querySelector('[data-planner-toggle]');
+                const toggleLabel = toggle?.querySelector('.planner-control-label');
+                const status = section?.querySelector('[data-planner-status]');
+
+                if (!track || slides.length <= 1 || !prev || !next || !toggle || !toggleLabel || !status) {
+                    return;
+                }
+
+                let currentIndex = 0;
+                let isPlaying = true;
+                let autoplayId = null;
+                const autoplayDelay = 7800;
+
+                const updateCarousel = () => {
+                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    status.textContent = `${currentIndex + 1} de ${slides.length}`;
+                    toggleLabel.textContent = isPlaying ? 'Pausar' : 'Reproducir';
+                    toggle.setAttribute('aria-pressed', String(!isPlaying));
+                };
+
+                const stopAutoplay = () => {
+                    if (autoplayId) {
+                        window.clearInterval(autoplayId);
+                        autoplayId = null;
+                    }
+                };
+
+                const startAutoplay = () => {
+                    stopAutoplay();
+
+                    if (!isPlaying) {
+                        return;
+                    }
+
+                    autoplayId = window.setInterval(() => {
+                        currentIndex = (currentIndex + 1) % slides.length;
+                        updateCarousel();
+                    }, autoplayDelay);
+                };
+
+                prev.addEventListener('click', () => {
+                    currentIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+                    updateCarousel();
+                    startAutoplay();
+                });
+
+                next.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel();
+                    startAutoplay();
+                });
+
+                toggle.addEventListener('click', () => {
+                    isPlaying = !isPlaying;
+                    updateCarousel();
+
+                    if (isPlaying) {
+                        startAutoplay();
+                    } else {
+                        stopAutoplay();
+                    }
+                });
+
+                carousel.addEventListener('mouseenter', stopAutoplay);
+                carousel.addEventListener('mouseleave', () => {
+                    if (isPlaying) {
+                        startAutoplay();
+                    }
+                });
+                carousel.addEventListener('focusin', stopAutoplay);
+                carousel.addEventListener('focusout', (event) => {
+                    if (isPlaying && !carousel.contains(event.relatedTarget)) {
+                        startAutoplay();
+                    }
+                });
+
+                updateCarousel();
+                startAutoplay();
             });
 
             menuLinks.forEach((link) => {
