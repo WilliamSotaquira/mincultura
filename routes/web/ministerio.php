@@ -26,6 +26,10 @@ Route::get('/despacho/sites/congreso', function () {
     return view('ministerio.despacho.sites.congreso');
 })->name('despacho.sites.congreso');
 
+Route::get('/despacho/sites/artes', function () {
+    return view('ministerio.despacho.sites.artes');
+})->name('despacho.sites.artes');
+
 Route::get('/despacho/oficina-de-control-interno/servicios-informacion', function () {
     return view('ministerio.despacho.oficina-de-control-interno.servicios-informacion.index');
 })->name('despacho.oficina-de-control-interno.servicios-informacion.index');
