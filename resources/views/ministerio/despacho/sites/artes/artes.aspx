@@ -152,7 +152,7 @@
 
     <!-- Navbar Principal -->
     <nav class="navbar navbar-expand-lg navbar-main sticky-top">
-        <div class="container"><div><a href="https://www.mincultura.gov.co/"><img src="assets/img/logos/logo-minculturas.png" style="padding-left: 0;width: 80px;margin-right: 10px;" alt="MinCulturas"></a><a href="https://artesparalapaz.mincultura.gov.co/Paginas/index.aspx"><img src="assets/img/logos/logo-artesparalapaz.png" style="padding-left: 0;width: 130px;" alt="MinCulturas"></a></div><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navcol-1"><ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-link active" href="#top">Inicio</a></li><li class="nav-item"><a class="nav-link active" href="#que-es">¿Qué es?</a></li><li class="nav-item"><a class="nav-link active" href="#logros">Logros 2023 - 2026</a></li><li class="nav-item dropdown" style="color: var(--bs-black);"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" style="color: var(--bs-black);" href="#campos">Campos de acción</a><div class="dropdown-menu"><h6 class="dropdown-header">Educación Formal</h6><a class="dropdown-item" href="sonidos.aspx" style="color: var(--bs-black);">Sonidos</a><a class="dropdown-item" href="danza.aspx" style="color: var(--bs-black);">Danza</a><a class="dropdown-item" href="teatro.aspx" style="color: var(--bs-black);">Teatro</a><a class="dropdown-item" href="palabras.aspx" style="color: var(--bs-black);">Palabras</a><a class="dropdown-item" href="audiovisuales.aspx" style="color: var(--bs-black);">Audiovisuales</a><div class="dropdown-divider"></div><a class="dropdown-item" href="index.aspx#ed-noformal" style="color: var(--bs-black);">Educación Informal</a><div class="dropdown-divider"></div><a class="dropdown-item" href="index.aspx#ed-formacioncontinua" style="color: var(--bs-black);">Escuela de Formación Contínua</a><div class="dropdown-divider"></div><a class="dropdown-item" href="index.aspx#dotaciones" style="color: var(--bs-black);">Dotaciones</a></div></li><li class="nav-item"><a class="nav-link active" href="#noticias">Noticias</a></li><li class="nav-item"><a class="nav-link active" href="#agenda">Agenda</a></li><li class="nav-item dropdown" style="color: var(--bs-black);"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" style="color: var(--bs-black);">Multimedia</a><div class="dropdown-menu"><a class="dropdown-item" href="#multimedia" style="color: var(--bs-black);">Videos</a><a class="dropdown-item" href="#fotos" style="color: var(--bs-black);">Fotos</a></div></li><li class="nav-item"><a class="nav-link active" href="#aliados">Aliados</a></li><li class="nav-item"><a class="nav-link active" href="https://artespaz.mincultura.gov.co/" target="_blank">Ingreso</a></li></ul></div></div>
+        <div class="container"><div><a href="https://www.mincultura.gov.co/"><img src="assets/img/logos/logo-minculturas.png" style="padding-left: 0;width: 80px;margin-right: 10px;" alt="MinCulturas"></a><a href="https://artesparalapaz.mincultura.gov.co/Paginas/index.aspx"><img src="assets/img/logos/logo-artesparalapaz.png" style="padding-left: 0;width: 130px;" alt="MinCulturas"></a></div><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navcol-1"><ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-link active" href="#top">Inicio</a></li><li class="nav-item"><a class="nav-link active" href="#que-es">¿Qué es?</a></li><li class="nav-item"><a class="nav-link active" href="#logros">Logros 2023 - 2026</a></li><li class="nav-item dropdown" style="color: var(--bs-black);"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" style="color: var(--bs-black);" href="#campos">Campos de acción</a><div class="dropdown-menu"><h6 class="dropdown-header">Educación Formal</h6><a class="dropdown-item" href="sonidos.aspx" style="color: var(--bs-black);">Sonidos</a><a class="dropdown-item" href="danza.aspx" style="color: var(--bs-black);">Danza</a><a class="dropdown-item" href="teatro.aspx" style="color: var(--bs-black);">Teatro</a><a class="dropdown-item" href="palabras.aspx" style="color: var(--bs-black);">Palabras</a><a class="dropdown-item" href="audiovisuales.aspx" style="color: var(--bs-black);">Audiovisuales</a><div class="dropdown-divider"></div><a class="dropdown-item" href="index.aspx#ed-noformal" style="color: var(--bs-black);">Educación Informal</a><div class="dropdown-divider"></div><a class="dropdown-item" href="index.aspx#ed-formacioncontinua" style="color: var(--bs-black);">Escuela de Formación Contínua</a><div class="dropdown-divider"></div><a class="dropdown-item" href="index.aspx#dotaciones" style="color: var(--bs-black);">Dotaciones</a></div></li><li class="nav-item"><a class="nav-link active" href="#noticias">Noticias</a></li><li class="nav-item"><a class="nav-link active" href="#agenda">Agenda</a></li><li class="nav-item dropdown" style="color: var(--bs-black);"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" style="color: var(--bs-black);">Multimedia</a><div class="dropdown-menu"><a class="dropdown-item" href="#multimedia" style="color: var(--bs-black);">Videos</a><a class="dropdown-item" href="#fotos" style="color: var(--bs-black);">Fotos</a></div></li><li class="nav-item"><a class="nav-link active" href="#aliados">Aliados</a></li><li class="nav-item"><a class="nav-link active" href="https://agoravirtual.mincultura.gov.co/?new_loc=%2Fultra%2Fcourse" target="_blank">Ingreso</a></li></ul></div></div>
     </nav>
 
     <!-- Hero Banner Slider -->
@@ -160,12 +160,16 @@
         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2 - Ágora Virtual"></button>
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="https://artesparalapaz.mincultura.gov.co/Paginas/assets/img/hero_app_1.jpg" class="d-block w-100" alt="Arte que transforma vidas y territorios">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://artesparalapaz.mincultura.gov.co/Paginas/assets/img/8200bff3-9762-4ee7-bb90-ef37f701efc6.jpg" class="d-block w-100" alt="Ágora Virtual - Escuela virtual artística y cultural">
                 </div>
                 <div class="carousel-item">
                     <img src="https://artesparalapaz.mincultura.gov.co/Paginas/assets/img/hero_app_2.jpg" class="d-block w-100" alt="Artes para la Paz">
@@ -174,11 +178,11 @@
                     <img src="https://artesparalapaz.mincultura.gov.co/Paginas/assets/img/hero_app_3.jpg" class="d-block w-100" alt="Educación y formación artística">
                 </div>
             </div>
-            <!-- Overlay con texto -->
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: linear-gradient(90deg, rgba(26,10,74,0.85) 0%, rgba(26,10,74,0.4) 60%, transparent 100%); z-index: 2; pointer-events: none;">
+            <!-- Overlay con texto dinámico -->
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: linear-gradient(90deg, rgba(26,10,74,0.55) 0%, rgba(26,10,74,0.15) 40%, transparent 100%); z-index: 2; pointer-events: none;">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-7">
+                        <div class="col-lg-7" id="heroOverlayContent">
                             <h1 style="font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1.1;">ARTE QUE TRANSFORMA<br>VIDAS Y TERRITORIOS</h1>
                             <p class="mt-3" style="color: #ddd; font-size: 1.1rem;">Educación y formación artística para<br>construir paz, reconocer la diversidad<br>y crear futuros posibles.</p>
                             <a href="#que-es" class="btn btn-hero mt-3" style="pointer-events: auto;">Conoce más sobre Artes para la Paz <i class="bi bi-arrow-right"></i></a>
@@ -203,7 +207,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-9">
                     <div class="ratio ratio-16x9" style="border-radius: 12px; overflow: hidden;">
-                        <iframe src="https://www.instagram.com/reel/DYZ7NHUgBzP/embed" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/4BdT0vf8UEw" allowfullscreen title="Video Artes para la Paz - Firma RedArtes"></iframe>
                     </div>
                 </div>
             </div>
@@ -443,14 +447,14 @@
         </div>
     </section>
 
-    <!-- Logros 2023-2026 (Genially embebido) -->
+    <!-- Logros 2023-2026 (Power BI embebido) -->
     <section id="logros" class="py-5" style="background: var(--color-secondary);">
         <div class="container">
             <h2 class="section-title text-center text-uppercase mb-4">Logros 2023 – 2026</h2>
             <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div style="width:100%;min-height:500px;">
-                        <iframe src="https://view.genially.com/69bc55dde9f2206b8c79a8c9" style="width:100%;height:500px;border:none;border-radius:12px;" allowfullscreen></iframe>
+                <div class="col-lg-11">
+                    <div style="width:100%;min-height:600px;">
+                        <iframe title="Tablero de control misional Artes para la Paz" src="https://app.powerbi.com/reportEmbed?reportId=0844c0ca-cf48-4012-bc92-5c6293dddbde&groupId=me&pageName=d717ea1ce52f04c2c73a&ctid=93f28b4e-935c-4c14-88ac-e48697c1fc97" style="width:100%;height:600px;border:none;border-radius:12px;" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -734,6 +738,16 @@
             <div class="row g-4">
                 <div class="col-6 col-md-4 col-lg">
                     <div class="video-thumb">
+                        <a href="https://www.youtube.com/watch?v=4BdT0vf8UEw" target="_blank">
+                            <img src="https://img.youtube.com/vi/4BdT0vf8UEw/mqdefault.jpg" alt="Artes para la Paz - RedArtes">
+                            <div class="play-icon"><i class="bi bi-play-fill"></i></div>
+                            <span class="duration">1:49</span>
+                        </a>
+                    </div>
+                    <p class="mt-2 fw-bold" style="font-size: 0.8rem;">Artes para la Paz - RedArtes</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg">
+                    <div class="video-thumb">
                         <a href="https://www.youtube.com/watch?v=1px8dc0Kw_Y" target="_blank">
                             <img src="https://img.youtube.com/vi/1px8dc0Kw_Y/mqdefault.jpg" alt="Conoce el programa Artes para la Paz">
                             <div class="play-icon"><i class="bi bi-play-fill"></i></div>
@@ -929,6 +943,45 @@
             icon.classList.add('bi-play-fill');
             btn.setAttribute('aria-label', 'Reproducir carrusel de infografía');
         });
+
+        // Hero carousel - cambiar texto del overlay según slide
+        var heroSlides = [
+            {
+                title: 'ARTE QUE TRANSFORMA<br>VIDAS Y TERRITORIOS',
+                text: 'Educación y formación artística para<br>construir paz, reconocer la diversidad<br>y crear futuros posibles.',
+                btnText: 'Conoce más sobre Artes para la Paz',
+                btnHref: '#que-es'
+            },
+            {
+                title: 'ÁGORA VIRTUAL',
+                text: 'Transforma a Colombia y pre-inscríbete en una escuela virtual artística, cultural y gratuita con cursos académicamente certificados y que convierten las artes en un derecho.',
+                btnText: 'Ingresar a Blackboard Ágora Virtual',
+                btnHref: 'https://agoravirtual.mincultura.gov.co/?new_loc=%2Fultra%2Fcourse'
+            },
+            {
+                title: 'ARTE QUE TRANSFORMA<br>VIDAS Y TERRITORIOS',
+                text: 'Educación y formación artística para<br>construir paz, reconocer la diversidad<br>y crear futuros posibles.',
+                btnText: 'Conoce más sobre Artes para la Paz',
+                btnHref: '#que-es'
+            },
+            {
+                title: 'ARTE QUE TRANSFORMA<br>VIDAS Y TERRITORIOS',
+                text: 'Educación y formación artística para<br>construir paz, reconocer la diversidad<br>y crear futuros posibles.',
+                btnText: 'Conoce más sobre Artes para la Paz',
+                btnHref: '#que-es'
+            }
+        ];
+        var heroEl = document.getElementById('heroCarousel');
+        if (heroEl) {
+            heroEl.addEventListener('slid.bs.carousel', function(e) {
+                var data = heroSlides[e.to];
+                var overlay = document.getElementById('heroOverlayContent');
+                var target = data.btnHref.startsWith('#') ? '' : ' target="_blank" rel="noopener noreferrer"';
+                overlay.innerHTML = '<h1 style="font-size:2.8rem;font-weight:800;color:#fff;line-height:1.1;">' + data.title + '</h1>' +
+                    '<p class="mt-3" style="color:#ddd;font-size:1.1rem;">' + data.text + '</p>' +
+                    '<a href="' + data.btnHref + '" class="btn btn-hero mt-3" style="pointer-events:auto;"' + target + '>' + data.btnText + ' <i class="bi bi-arrow-right"></i></a>';
+            });
+        }
 
         // Noticias carousel - actualizar indicador de slide (WCAG aria-live)
         var noticiasEl = document.getElementById('noticiasCarousel');
