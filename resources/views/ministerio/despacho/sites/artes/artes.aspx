@@ -454,7 +454,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-11">
                     <div style="width:100%;min-height:600px;">
-                        <iframe title="Tablero de control misional Artes para la Paz" src="https://app.powerbi.com/reportEmbed?reportId=0844c0ca-cf48-4012-bc92-5c6293dddbde&groupId=me&pageName=d717ea1ce52f04c2c73a&ctid=93f28b4e-935c-4c14-88ac-e48697c1fc97" style="width:100%;height:600px;border:none;border-radius:12px;" allowfullscreen></iframe>
+                        <iframe title="Formación Formal 2023-2026" width="1140" height="541.25" src="https://app.fabric.microsoft.com/reportEmbed?reportId=0844c0ca-cf48-4012-bc92-5c6293dddbde&autoAuth=true&ctid=93f28b4e-935c-4c14-88ac-e48697c1fc97&actionBarEnabled=true" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
                 </div>
             </div>
